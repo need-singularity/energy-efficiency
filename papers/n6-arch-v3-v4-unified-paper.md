@@ -17,7 +17,7 @@ alien_index_target: 10
 
 # HEXA-ARCH-V3-V4-UNIFIED — v3/v4 evolutionary design unification paper (N6-121)
 
-> **Author**: Park Min-woo (n6-architecture)
+> **Author**: Park Min-woo (canon)
 > **Category**: arch-v3-v4-unified — P2 extension v3/v4 unification meta paper
 > **Version**: v3/v4 unified (2026-04-14 P2 extension)
 > **Prior BT**: BT-195, BT-366~371, BT-1108, BT-1414, BT-1415
@@ -27,7 +27,7 @@ alien_index_target: 10
 
 ## 0. Abstract
 
-This paper unifies versions v3 (self-organization / adaptation) and v4 (evolution / self-reference) of the n6-architecture roadmap into
+This paper unifies versions v3 (self-organization / adaptation) and v4 (evolution / self-reference) of the canon roadmap into
 a **single layer via the n=6 arithmetic structure**. Three prior papers — HEXA-ARCH-SELFORG-EMERGENCE
 (N6-118), HEXA-ARCH-ADAPTIVE-HOMEOSTASIS (N6-119), HEXA-ARCH-EVOLUTION-OUROBOROS (N6-120) —
 are aligned onto a single 6-fold meta hierarchy.
@@ -44,7 +44,7 @@ This paper **makes no new theoretical claim**; it merges the coordinates of the 
 
 ## 1. Introduction — WHY
 
-The n6-architecture version lineage has been defined as v1 (industrial demonstration) → v2 (scale extension) → v3 (self-organization / adaptation) →
+The canon version lineage has been defined as v1 (industrial demonstration) → v2 (scale extension) → v3 (self-organization / adaptation) →
 v4 (evolution / self-reference), a 4-stage progression. Each version was described in a separate paper, but
 **the v3/v4 boundary** and the **unified coordinates** were an open gap.
 
@@ -79,7 +79,7 @@ This paper shows that the n=6 uniqueness of the identity σ(n)·φ(n)=n·τ(n) i
 ### 3.2 Transition gate τ=4
 
 The L1→L2, L3→L4, L5→L6 transitions are quantized at τ(6)=4 steps. This gate is directly linked to the
-"τ=4 gate + 2 fibers = n=6" structure of HEXA-GATE Mk.I (n6-architecture memory).
+"τ=4 gate + 2 fibers = n=6" structure of HEXA-GATE Mk.I (canon memory).
 
 ### 3.3 Operational dimension σφ=24
 

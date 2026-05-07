@@ -301,7 +301,7 @@ In that case this roadmap is recorded as an **honest MISS**, and L13 is shrunk-r
 
 **B1 (absence of MeV optomech) is the single largest gap in the L13 design**, and this roadmap will **experimentally verify it honestly** over 2027~2029 in three existence-capability-efficiency stages. The σ-τ=8 main theorem (MK4-THEOREM-B) is used as an **invariant** for resource allocation, measurement binning, and control-group design — on success it records the **physical demonstration** of n=6 uniqueness in atlas.n6, and on failure it records the **honest fixation** of the L13 engineering boundary.
 
-Roadmap submitter: n6-architecture design team
+Roadmap submitter: canon design team
 Date: 2026-04-15
 Verdict: **SPECULATIVE-EXPERIMENT-PROPOSAL** (Mk.III-δ L13 successor)
 

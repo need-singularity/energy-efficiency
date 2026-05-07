@@ -90,10 +90,10 @@ fabricating numbers. That is what this report does.
 - atlas
   - `meta_fp = phi / n = 1 / 3 :: meta [10*!]` (`atlas/atlas.n6:81`)
   - `n = 6 :: foundation [11*]` (block width M of the N:M mask)
-- KG nodes (`n6shared/discovery_graph.json`)
+- KG nodes (`canonshared/discovery_graph.json`)
   - `arch:n6-native-accelerator`
   - `principle:honesty-triad`
-- domain (`n6shared/n6/docs/domains.json`)
+- domain (`canonshared/n6/docs/domains.json`)
   - `ai-native-architecture` (axis: compute)
 
 This experiment does not write to atlas, KG, or domains.json.

@@ -19,7 +19,7 @@
     "1.3.0 (2026-04-24): own#16 registry sync — chip-eda, chip-hbm, chip-interconnect, chip-materials, chip-packaging, chip-process, chip-thermal-power, chip-verify-test, chip-yield 9 domains registered (disk measured, body .md present)."
   ],
   "chip_6stage_roadmap": {
-    "_doc": "HEXA-1 -> PIM -> 3D -> Photonic -> Wafer -> Superconducting 6단 진화 로드맵. 출처: ~/.claude-claude2/projects/-Users-ghost-Dev-n6-architecture/memory/project_chip_architecture_goal.md",
+    "_doc": "HEXA-1 -> PIM -> 3D -> Photonic -> Wafer -> Superconducting 6단 진화 로드맵. 출처: ~/.claude-claude2/projects/-Users-ghost-Dev-canon/memory/project_chip_architecture_goal.md",
     "stages": [
       {
         "stage": 1,

@@ -1,5 +1,5 @@
 2026-04-12
-# n6-architecture Audit Report v6
+# canon Audit Report v6
 
 > Audit basis: filesystem actuals (find/wc-based)
 > Writing principle: honest verification (report as-is, no exaggeration)

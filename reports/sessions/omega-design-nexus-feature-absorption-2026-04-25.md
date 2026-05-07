@@ -22,8 +22,8 @@ This is a **design-only, read-only audit**. Concretely:
 - ZERO files in `~/core/nexus/` are modified by this report. All
   references to nexus are read-only inspections (file paths, content
   excerpts, lens/tool inventory). The single output of this session is
-  the present markdown file in `~/core/n6-architecture/reports/sessions/`.
-- ZERO files in n6-architecture's `atlas/`, `state/`, `inventory/`,
+  the present markdown file in `~/core/canon/reports/sessions/`.
+- ZERO files in canon's `atlas/`, `state/`, `inventory/`,
   `theory/canon/`, or any L9/D1/D2/D3 source are modified.
 - NO Millennium claim is made. The 10 features under audit include
   several that produced 0/4 FAIL verdicts on Millennium BTs (F-MOLT-A);
@@ -47,7 +47,7 @@ nxs promotion count: **N/N0 unchanged** (no nexus inventory write).
 
 ## §1 Feature inventory (10 entries)
 
-The 10 features generated during the n6-architecture 2026-04-25
+The 10 features generated during the canon 2026-04-25
 session, beyond the 3 honesty-triad constraints already deployed:
 
 | #  | Feature                                  | One-line description                                                                                            | Source artefacts                                                                                          |
@@ -60,7 +60,7 @@ session, beyond the 3 honesty-triad constraints already deployed:
 | 6  | Discriminator-type bias diagnostic       | distributional/structural-import (PASS family) vs discrete-equality/numerical-interval/vacuous (FAIL family)    | `omega-meta-audit-discriminator-type-bias-2026-04-25.md`                                                  |
 | 7  | Honesty-amendment protocol               | append-only scope-caveat block format for amending past reports without rewrites                                | `omega-amend-perbt-honesty-2026-04-25.md`                                                                 |
 | 8  | Fabrication-refusal cascade              | when tool/data is absent, return UNKNOWN/INCONCLUSIVE/TIMEOUT *with diagnostic*; the diagnostic enables next step | `omega-audit-constraint-no-fabrication-2026-04-25.md`, `nexus/design/honesty_triad.md` (constraint #3)    |
-| 9  | Cross-repo graph mismatch finding        | `nexus/n6/atlas.blowup.jsonl` (graph) ≠ `n6-architecture/atlas/atlas.n6` (canonical entries) -- separate objects | `nexus/design/next_session_handoff.md` §nxs-002 graph diagnostics; nexus 2026-04-25 update block          |
+| 9  | Cross-repo graph mismatch finding        | `nexus/n6/atlas.blowup.jsonl` (graph) ≠ `canon/atlas/atlas.n6` (canonical entries) -- separate objects | `nexus/design/next_session_handoff.md` §nxs-002 graph diagnostics; nexus 2026-04-25 update block          |
 | 10 | Patched n6 tools (per-BT)                | `cremona_joint_covariance.py --per-stratum` (28-stratum), `bt541_leadB_sle6_gue.py`, `bt544_q1_molt_validation.py`, etc. | `tool/cremona_joint_covariance.py`, `tool/bt5{4*}_*.py`                                                   |
 
 The 3 KEEP_AS_IS honesty-triad constraints (promotion-counter,
@@ -293,7 +293,7 @@ cosmetic).
   layer; Q1 6-soliton Gram lattice is for KdV. nexus has no Millennium
   workflow -- it operates atlas.blowup graph + n=6 resonance + drill.
 - **Cross-repo principle (`atlas_n6_omega_closure.md` §6):** "n6
-  body direct modification is n6-architecture-side work. This nexus
+  body direct modification is canon-side work. This nexus
   repo is tooling + diagnostics + proposals only." -- BT-specific tools are explicitly outside
   nexus scope.
 
@@ -506,7 +506,7 @@ content:
   - 2x2 contingency template (PASS x FAIL on the discriminator-type
     axis vs molt verdict axis)
   - worked example pointer:
-    n6-architecture/reports/sessions/omega-meta-audit-discriminator-type-bias-2026-04-25.md
+    canon/reports/sessions/omega-meta-audit-discriminator-type-bias-2026-04-25.md
   - non-claim disclaimer: this is a *diagnostic vocabulary*, not a
     proof technique
 falsifier on the absorption itself:
@@ -533,7 +533,7 @@ content:
   - rule: append-only; never rewrite numbered §s of past report
   - rule: amendment block goes at the END of the report, not inline
   - one worked example pointer:
-    n6-architecture/reports/sessions/omega-amend-perbt-honesty-2026-04-25.md
+    canon/reports/sessions/omega-amend-perbt-honesty-2026-04-25.md
 falsifier on the absorption itself:
   - if an amendment ever needs to *retract* (not narrow) a past
     claim, the format is INSUFFICIENT and a separate retraction
@@ -558,7 +558,7 @@ content:
   - inverted-flow note: nexus default is forward (drill->absorb->
     promote); this protocol inverts (target->probe selection)
   - worked example pointer:
-    n6-architecture/reports/sessions/omega-cycle-backtrace-strategy-2026-04-25.md
+    canon/reports/sessions/omega-cycle-backtrace-strategy-2026-04-25.md
 falsifier on the absorption itself:
   - if a closure target is reached *without* the 5-step chain
     being applicable (e.g., a discovery is found without backward
@@ -680,7 +680,7 @@ Features explicitly considered for absorption and rejected:
   + n=6 resonance + drill -- it has no Millennium workflow.
 - The cross-repo principle in
   `~/core/nexus/design/atlas_n6_omega_closure.md` §6 explicitly says
-  "n6 body direct modification is n6-architecture-side work". Tooling for n6 BTs
+  "n6 body direct modification is canon-side work". Tooling for n6 BTs
   belongs in n6.
 - Absorbing them would create dead code in nexus tool/ that nothing in
   nexus calls.
@@ -766,12 +766,12 @@ no-fabrication / honesty-triad regime that the n6 session deployed.
   `nxs-20260424-002` (`Ω_saturation_cycle`) ack=in_progress as before.
 - **NO nexus files modified by this design (read-only).** Verified by
   the constraint that all bash invocations in this session are reads
-  (ls/grep/cat) on nexus/ paths and only the n6-architecture-side
+  (ls/grep/cat) on nexus/ paths and only the canon-side
   output file is `Write`-created.
 - The 6 ABSORB-class candidates (1 ABSORB_GAP + 5 ABSORB) are
   next-session deploy targets in the order given in §5 and §6.
 - The 4 SKIP candidates have explicit reasons in §7 anti-list and
   should not be revisited unless their falsifier triggers fire.
 - Output file:
-  `~/core/n6-architecture/reports/sessions/omega-design-nexus-feature-absorption-2026-04-25.md`
+  `~/core/canon/reports/sessions/omega-design-nexus-feature-absorption-2026-04-25.md`
   (this file).

@@ -58,7 +58,7 @@ This file (the README) is the formal raw_91 disclosure for the stub layer.
 - Roadmap entries:
   - `.roadmap.weave` §Falsifier preregister F-CL-FORMAL-1/2/3/4 — flipped
     from `DEFERRED — canonical work pending` to `STUB LANDED 2026-05-06
-    (n6-architecture canonical, sorry-count=4)`.
+    (canon canonical, sorry-count=4)`.
   - `.roadmap.hexa_bio` §G GATE-26-2 — flipped from `SCAFFOLD LANDED` to
     `STUB LANDED (cross-repo, 4-sorry placeholder; actual proof bodies
     cycle 30+)`.
@@ -68,6 +68,6 @@ This file (the README) is the formal raw_91 disclosure for the stub layer.
 - This README does **not** claim any formal correctness. It claims only
   that the file tree exists and that consumer-contract theorem names lock
   in for downstream witness emission.
-- This stub layer does not replace or modify the existing `~/core/n6-architecture/lean4-n6/`
+- This stub layer does not replace or modify the existing `~/core/canon/lean4-n6/`
   number-theory package. The two coexist; this one (`formal/lean4/`) is
   scoped to the hexa-bio consumer contract.

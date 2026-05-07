@@ -147,7 +147,7 @@ entries proposed in 4-barriers survey (`MILL-BARRIER-PX1-four-barriers-catalog [
 **OPEN.** No type-system / formal-language closure document exists for BT-542 (e.g. no
 Lean4 formalization of Out(S_6) uniqueness or Schaefer dichotomy in this repo;
 `lean4-formalization-plan-2026-04-15.md` lists BT-542 but as planning-only). The 4 barriers
-themselves have no closed-form type-statement anchor in n6-architecture.
+themselves have no closed-form type-statement anchor in canon.
 
 ### c. X verified (cross-path / 3-way agreement)
 

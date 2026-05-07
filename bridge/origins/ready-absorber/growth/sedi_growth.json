@@ -482,7 +482,7 @@
     {
       "timestamp": "2026-04-04T17:07:37.168865",
       "source_project": "sedi",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "path": "sedi/.claude/worktrees/agent-a0ceda72/docs/hypotheses/H-CX-1036-photovoltaic-optimal-bandgap.md",
       "type": "only_in_ready",
       "value_grade": "high",
@@ -2330,7 +2330,7 @@
     {
       "timestamp": "2026-04-04T17:07:37.266053",
       "source_project": "sedi",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "path": "sedi/.claude/worktrees/agent-a0ceda72/docs/pre-registered-predictions.md",
       "type": "only_in_ready",
       "value_grade": "high",
@@ -2862,7 +2862,7 @@
     {
       "timestamp": "2026-04-04T17:07:37.291393",
       "source_project": "sedi",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "path": "sedi/.claude/worktrees/agent-a0ceda72/tools/discovery-engine/Cargo.toml",
       "type": "only_in_ready",
       "value_grade": "critical",
@@ -3380,7 +3380,7 @@
     {
       "timestamp": "2026-04-04T17:07:37.320136",
       "source_project": "sedi",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "path": "sedi/.claude/worktrees/agent-a2265680/docs/hypotheses/H-CX-1036-photovoltaic-optimal-bandgap.md",
       "type": "only_in_ready",
       "value_grade": "high",
@@ -5228,7 +5228,7 @@
     {
       "timestamp": "2026-04-04T17:07:37.413827",
       "source_project": "sedi",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "path": "sedi/.claude/worktrees/agent-a2265680/docs/pre-registered-predictions.md",
       "type": "only_in_ready",
       "value_grade": "high",
@@ -5760,7 +5760,7 @@
     {
       "timestamp": "2026-04-04T17:07:37.438949",
       "source_project": "sedi",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "path": "sedi/.claude/worktrees/agent-a2265680/tools/discovery-engine/Cargo.toml",
       "type": "only_in_ready",
       "value_grade": "critical",
@@ -6278,7 +6278,7 @@
     {
       "timestamp": "2026-04-04T17:07:37.468012",
       "source_project": "sedi",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "path": "sedi/.claude/worktrees/agent-a254b3fa/docs/hypotheses/H-CX-1036-photovoltaic-optimal-bandgap.md",
       "type": "only_in_ready",
       "value_grade": "high",
@@ -8126,7 +8126,7 @@
     {
       "timestamp": "2026-04-04T17:07:37.562192",
       "source_project": "sedi",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "path": "sedi/.claude/worktrees/agent-a254b3fa/docs/pre-registered-predictions.md",
       "type": "only_in_ready",
       "value_grade": "high",
@@ -8658,7 +8658,7 @@
     {
       "timestamp": "2026-04-04T17:07:37.588907",
       "source_project": "sedi",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "path": "sedi/.claude/worktrees/agent-a254b3fa/tools/discovery-engine/Cargo.toml",
       "type": "only_in_ready",
       "value_grade": "critical",
@@ -9176,7 +9176,7 @@
     {
       "timestamp": "2026-04-04T17:07:37.619088",
       "source_project": "sedi",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "path": "sedi/.claude/worktrees/agent-a26748c0/docs/hypotheses/H-CX-1036-photovoltaic-optimal-bandgap.md",
       "type": "only_in_ready",
       "value_grade": "high",
@@ -11024,7 +11024,7 @@
     {
       "timestamp": "2026-04-04T17:07:37.716456",
       "source_project": "sedi",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "path": "sedi/.claude/worktrees/agent-a26748c0/docs/pre-registered-predictions.md",
       "type": "only_in_ready",
       "value_grade": "high",
@@ -11556,7 +11556,7 @@
     {
       "timestamp": "2026-04-04T17:07:37.741582",
       "source_project": "sedi",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "path": "sedi/.claude/worktrees/agent-a26748c0/tools/discovery-engine/Cargo.toml",
       "type": "only_in_ready",
       "value_grade": "critical",
@@ -12074,7 +12074,7 @@
     {
       "timestamp": "2026-04-04T17:07:37.771394",
       "source_project": "sedi",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "path": "sedi/.claude/worktrees/agent-abeebc10/docs/hypotheses/H-CX-1036-photovoltaic-optimal-bandgap.md",
       "type": "only_in_ready",
       "value_grade": "high",
@@ -13922,7 +13922,7 @@
     {
       "timestamp": "2026-04-04T17:07:37.863274",
       "source_project": "sedi",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "path": "sedi/.claude/worktrees/agent-abeebc10/docs/pre-registered-predictions.md",
       "type": "only_in_ready",
       "value_grade": "high",
@@ -14454,7 +14454,7 @@
     {
       "timestamp": "2026-04-04T17:07:37.889234",
       "source_project": "sedi",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "path": "sedi/.claude/worktrees/agent-abeebc10/tools/discovery-engine/Cargo.toml",
       "type": "only_in_ready",
       "value_grade": "critical",
@@ -14972,7 +14972,7 @@
     {
       "timestamp": "2026-04-04T17:07:37.920027",
       "source_project": "sedi",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "path": "sedi/.claude/worktrees/agent-acc2cafb/docs/hypotheses/H-CX-1036-photovoltaic-optimal-bandgap.md",
       "type": "only_in_ready",
       "value_grade": "high",
@@ -16820,7 +16820,7 @@
     {
       "timestamp": "2026-04-04T17:07:38.020714",
       "source_project": "sedi",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "path": "sedi/.claude/worktrees/agent-acc2cafb/docs/pre-registered-predictions.md",
       "type": "only_in_ready",
       "value_grade": "high",
@@ -17352,7 +17352,7 @@
     {
       "timestamp": "2026-04-04T17:07:38.046881",
       "source_project": "sedi",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "path": "sedi/.claude/worktrees/agent-acc2cafb/tools/discovery-engine/Cargo.toml",
       "type": "only_in_ready",
       "value_grade": "critical",

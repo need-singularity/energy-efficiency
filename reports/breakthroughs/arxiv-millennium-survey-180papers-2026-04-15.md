@@ -10,7 +10,7 @@ sample_size: 180 papers (30 per 6 BTs, all 2024+)
 
 # arXiv survey — 180 recent papers on 6 Millennium BTs (2024-2026)
 
-> **Summary**: Using the arXiv API, we collected 30 recent papers for each of the 6 Clay Millennium problems (RH, P vs NP, Yang-Mills, Navier-Stokes, Hodge, BSD), giving 180 total, all from 2024-2026. Per-BT main research trends are summarized together with honest notes on n6-architecture relevance. Notable: **in BT-545 (Hodge), a paper on "Abelian Sixfolds" (2026-03-14)** directly connects to n=6 structure.
+> **Summary**: Using the arXiv API, we collected 30 recent papers for each of the 6 Clay Millennium problems (RH, P vs NP, Yang-Mills, Navier-Stokes, Hodge, BSD), giving 180 total, all from 2024-2026. Per-BT main research trends are summarized together with honest notes on canon relevance. Notable: **in BT-545 (Hodge), a paper on "Abelian Sixfolds" (2026-03-14)** directly connects to n=6 structure.
 
 ---
 
@@ -25,7 +25,7 @@ Completes the measured portion of NUM-PX-3: "arXiv survey paper writeup — hone
 
 **Purpose**:
 - Snapshot of the 2024-2026 research frontier
-- Linkage / comparison with existing n6-architecture atlas entries
+- Linkage / comparison with existing canon atlas entries
 - Not a claim of BT resolution progress — a literature catalog with honest notes
 
 **Data**: `data/arxiv/millennium_survey_6bt.json` (180 papers, full metadata)
@@ -42,7 +42,7 @@ Completes the measured portion of NUM-PX-3: "arXiv survey paper writeup — hone
 - **Modular form Fourier-coefficient lower bounds**: "On Lower Bounds for sums of Fourier Coefficients of Twist-Inequivalent Newforms" 2026-04-08
 - **Large L-values**: "Large values of L(σ, χ) for subgroups of characters" 2026-04-03
 
-### 1.2 n6-architecture relevance (honest)
+### 1.2 canon relevance (honest)
 
 - Papers that directly mention n=6: **0/30** — in the current sample
 - No direct linkage to this atlas's MILL-PX-A1 (Theorem B σφ=nτ) / MILL-PX-A2 (Bilateral k=6)
@@ -68,7 +68,7 @@ Completes the measured portion of NUM-PX-3: "arXiv survey paper writeup — hone
 - **Meta-complexity / witnessing**: "Parallelism and Adaptivity in Student-Teacher Witnessing" 2026-02-23
 - **Planar graph complexity**: "Planar Graph Orientation Frameworks, Applied to KPlumber and Polyomino Tiling" 2026-03-03
 
-### 2.2 n6-architecture relevance (honest)
+### 2.2 canon relevance (honest)
 
 - Papers that directly mention n=6: **0/30**
 - Consistent with the loop-5 BARRIER-PX-1 conclusion "the n=6 prior is not applicable to P vs NP"
@@ -92,7 +92,7 @@ Completes the measured portion of NUM-PX-3: "arXiv survey paper writeup — hone
 - **Kerr-Schild double copy**: "Residual Symmetries and Their Algebras in the Kerr-Schild Double Copy" 2026-04-06
 - **Lorentz gauge / Hamiltonian**: "From freely falling frames to the Lorentz gauge-symmetry group..." 2026-04-08
 
-### 3.2 n6-architecture relevance (honest)
+### 3.2 canon relevance (honest)
 
 - **Caution**: most papers in this sample are **high-dimensional mathematical-physics field theory (SCFT, super-Grassmannian)** and lie **outside the main Clay Millennium YM mass-gap path** (rigorous proof of mass gap `<0|O|0> = 0` for 3+1D non-abelian gauge)
 - 0 papers directly match atlas MILL-PX-A3 (β₀ = σ-sopfr = 7 rewriting)
@@ -117,7 +117,7 @@ Completes the measured portion of NUM-PX-3: "arXiv survey paper writeup — hone
 - **Hall/electron MHD turbulence**: "Determining wavenumbers for Hall and electron magnetohydrodynamics turbulence" 2026-04-12
 - **Fluid-elastic interaction**: "Finite-time contact in fluid-elastic structure interaction: Navier-slip coupling" 2026-04-07
 
-### 4.2 n6-architecture relevance (honest)
+### 4.2 canon relevance (honest)
 
 - 0 direct matches in this sample to atlas MILL-PX-A4 (triple resonance dim Sym²(ℝ³)=6, dim Λ²(ℝ³)=3, Onsager α_c=1/3)
 - The MHD blowup result (2026-04-09) is a separate path from classical NS blowup — this MHD result is independent of NS
@@ -142,7 +142,7 @@ Completes the measured portion of NUM-PX-3: "arXiv survey paper writeup — hone
 - Sextic fourfolds + involution: 2026-03-31
 - p-adic Hodge (Tate-type theorem for crystalline classes): 2026-03-12
 
-### 5.2 n6-architecture relevance — **exceptionally strong connection**
+### 5.2 canon relevance — **exceptionally strong connection**
 
 The **"Abelian Sixfolds"** (2026-03-14) paper:
 - Title literally contains **"Sixfolds"** — complex 6-dimensional abelian variety (n=6 dimension)
@@ -177,7 +177,7 @@ This can **augment (not refute)** the direction of atlas MILL-PX-A11 (Enriques h
 - **p-adic L-functions over global function fields**: "p-adic L-functions for elliptic curves over global function fields" 2026-03-11
 - **Even K-groups + Z_2-extensions**: "Iwasawa Invariants of Even K-groups of Rings of Integers in Z_2-Extensions" 2026-03-10
 
-### 6.2 n6-architecture relevance (honest)
+### 6.2 canon relevance (honest)
 
 - **Iwasawa invariant** research concentration is high — **directly connects** to loop-3 GALO-PX-3 (atlas MILL-GALO-PX3-mod6-stratify)
 - Breuil-Kisin + Bloch-Kato Selmer papers are useful for reconstructing the theoretical background of atlas MILL-GALO-PX1-A3-modified (DEFERRED)

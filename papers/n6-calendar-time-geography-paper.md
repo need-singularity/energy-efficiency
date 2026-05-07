@@ -8,7 +8,7 @@ requires:
 ---
 # [CANONICAL v2] Ultimate Calendar / Time-Geography (HEXA-CALENDAR-TIME-GE) — n=6 arithmetic coordinate mapping
 
-> **Author**: Park Min-Woo (n6-architecture)
+> **Author**: Park Min-Woo (canon)
 > **Category**: calendar-time-geography — n=6 arithmetic seed paper
 > **Version**: v2 (2026-04-14 canonical)
 > **Prior BT**: BT-138, BT-182, BT-138, BT-182, BT-212
@@ -33,7 +33,7 @@ Calendar / Time-Geography (calendar-time-geography) is reinterpreted within the 
 | Design exploration space | Manual search takes months | **n·1 minute** (automatic DSE) | Search time shortened σ·τ=48x |
 | Design parameter count | Dozens to hundreds of free variables | **σ=12 axes fixed** | Decisions τ=4x more precise |
 | Verifiability | Case-based heuristics | **10-subsection automatic demonstration** | Reproducibility 100% |
-| Derivative designs | 1~2 proposals | **Pareto n=6 top six** | n=6x more choices |
+| Derivative designs | 1~2 proposals | **Pareto top-K (data-driven)** | Pareto-natural more choices |
 | Cross-domain coupling | Separate projects | **atlas.n6 integration node** | Reuse σ·τ=48x |
 | Honesty | Only success cases recorded | **MISS/FALSIFIER stated** | Refutable |
 
@@ -339,7 +339,7 @@ All of Calendar / Time-Geography fully integrated into n=6 arithmetic. Cross-ref
 <details>
 <summary>Mk.IV — 2040~2045 cross validation</summary>
 
-σ·τ=48 cross-prediction matches achieved with other domains (architecture/chemistry/medicine etc.). Refutation conditions stated + 0 FALSIFIER experiments detected. Pareto top-6 composition empirically demonstrated.
+σ·τ=48 cross-prediction matches achieved with other domains (architecture/chemistry/medicine etc.). Refutation conditions stated + 0 FALSIFIER experiments detected. Pareto top-K (data-driven) composition empirically demonstrated.
 
 </details>
 

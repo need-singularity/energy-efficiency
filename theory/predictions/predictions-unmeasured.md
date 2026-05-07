@@ -1,4 +1,4 @@
-# N6 Architecture -- Predictions for Unmeasured / Undetermined Constants
+# CANON -- Predictions for Unmeasured / Undetermined Constants
 
 > Predictions derived from n=6 arithmetic for quantities that are either
 > unmeasured, imprecisely known, or will be determined by future experiments.

@@ -608,8 +608,8 @@ This section covers dependencies for the domain. Initial scaffold content -- exp
 | Dependency | Repo | Path | Layer | Status |
 |------------|------|------|-------|--------|
 | hexa-bio NANOBOT (single-molecule architectural primitive, L0-L6 producer) | `hexa-bio` | `nanobot/` (Require N-R2 in `.roadmap.nanobot`) | L0-L6 | pre-registered 2026-04-28 |
-| Canonical handoff JSON | `n6-architecture` (this repo) | `handoff/2026-05-28_hexa-nanobot-therapeutic-nanobot-boundary.json` | L7-L9 declaration | `DECLARED` v1.0.0-stub (2026-05-06) |
-| Acceptance schema | `n6-architecture` (this repo) | `raw_77_therapeutic_nanobot_l7_acceptance_v1` (declared in handoff JSON; per-layer schemas placeholder until cycle 30+) | L7-L9 | stub |
+| Canonical handoff JSON | `canon` (this repo) | `handoff/2026-05-28_hexa-nanobot-therapeutic-nanobot-boundary.json` | L7-L9 declaration | `DECLARED` v1.0.0-stub (2026-05-06) |
+| Acceptance schema | `canon` (this repo) | `raw_77_therapeutic_nanobot_l7_acceptance_v1` (declared in handoff JSON; per-layer schemas placeholder until cycle 30+) | L7-L9 | stub |
 
 Boundary contract: hexa-bio side polls the handoff JSON via `_python_bridge/module/nanobot_n_r2_boundary_audit.py` and computes Jaccard `collision_overlap_ratio = |L0_L6 INTERSECT L7_L9| / |L0_L6 UNION L7_L9|`; PASS gate is `ratio < 0.5` per F-NB-1-c. Stub handoff guarantees disjoint primitive label sets (expected ratio = 0.0). Wet-lab integration, IP review, and joint witness contracts deferred to cycle 30+.
 

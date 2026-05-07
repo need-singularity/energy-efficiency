@@ -5,7 +5,7 @@
   "phase": "step-a-cleanup-step-b-launchd-step-c-hive-spec",
   "topic": "own 1 HARD English-only enforcement 3-phase path: retroactive cleanup (Step A) + daily detection (Step B) + atomic prevention forward-spec (Step C)",
   "verdict": "STEP-A-COMPLETE-STEP-B-COMPLETE-STEP-C-FORWARD-SPEC-AUTHORED",
-  "verdict_detail": "User directive 'english only 인데 안지켜진다 . lint 체크' 후 3-step path 모두 진행. (A) cycle 1-22 누적 17 proposals CJK 1086c → 0c 일괄 영어 번역 (own 1 violation 17→0). (B) launchd plist com.n6-architecture.own-doc-lint 신설 + tool/own_doc_lint_with_alert.sh wrapper (raw 66 trailer + raw 77 ledger). (C) proposals/hexa-weave-hive-lock-own-doc-lint-integration-2026-04-29.md forward-spec (cycle 27+ implementation, hive raw 99 가 atomic gate path). 5/5 sub-agent 모두 server-side rate-limited; 메인 thread 직접 진행.",
+  "verdict_detail": "User directive 'english only 인데 안지켜진다 . lint 체크' 후 3-step path 모두 진행. (A) cycle 1-22 누적 17 proposals CJK 1086c → 0c 일괄 영어 번역 (own 1 violation 17→0). (B) launchd plist com.canon.own-doc-lint 신설 + tool/own_doc_lint_with_alert.sh wrapper (raw 66 trailer + raw 77 ledger). (C) proposals/hexa-weave-hive-lock-own-doc-lint-integration-2026-04-29.md forward-spec (cycle 27+ implementation, hive raw 99 가 atomic gate path). 5/5 sub-agent 모두 server-side rate-limited; 메인 thread 직접 진행.",
   "step_a_results": {
     "phase": "retroactive cleanup of 17 proposals",
     "before_total_cjk": 2843,
@@ -22,13 +22,13 @@
   "step_b_results": {
     "phase": "launchd plist + daily own_doc_lint",
     "files_created": [
-      "config/launchd/com.n6-architecture.own-doc-lint.plist (plutil OK)",
+      "config/launchd/com.canon.own-doc-lint.plist (plutil OK)",
       "tool/own_doc_lint_with_alert.sh (executable, smoke test PASS PASS)"
     ],
     "plist_schedule": "StartInterval 86400 (daily) + RunAtLoad true",
     "wrapper_emits": "raw 66 ai-native-error trailer (reason + fix + ssot) on violation > 0",
     "audit_ledger": "state/audit/own_doc_lint_events.jsonl (raw 77 schema, append-only)",
-    "user_install_command": "cp config/launchd/com.n6-architecture.own-doc-lint.plist ~/Library/LaunchAgents/ && launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.n6-architecture.own-doc-lint.plist",
+    "user_install_command": "cp config/launchd/com.canon.own-doc-lint.plist ~/Library/LaunchAgents/ && launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.canon.own-doc-lint.plist",
     "agent_executes_install": false,
     "smoke_test_pass": "__OWN_DOC_LINT_RESULT__ PASS  ts=2026-04-29T01:56:56Z"
   },
@@ -68,7 +68,7 @@
   "files_changed": [
     "16 proposals/*.md (Step A — Korean translation rounds)",
     "tool/own_doc_lint_with_alert.sh (Step B wrapper, executable)",
-    "config/launchd/com.n6-architecture.own-doc-lint.plist (Step B plist, plutil OK)",
+    "config/launchd/com.canon.own-doc-lint.plist (Step B plist, plutil OK)",
     "proposals/hexa-weave-hive-lock-own-doc-lint-integration-2026-04-29.md (Step C forward-spec)",
     "design/kick/2026-04-29_cycle25-step-abc-own1-enforcement_omega_cycle.json (this witness)"
   ],

@@ -1,7 +1,7 @@
 {
   "kick_kind": "omega_cycle",
   "kick_id": "2026-04-28_cycle6-commit-push",
-  "kick_title": "Cycle 6 fan-out 1/5 — n6-architecture multi-repo monolithic commit + push",
+  "kick_title": "Cycle 6 fan-out 1/5 — canon multi-repo monolithic commit + push",
   "kick_date": "2026-04-28",
   "umbrella": "session-governance",
   "cost_center": "cycle6-multi-repo-commit",
@@ -49,7 +49,7 @@
   },
   "safety_gates": {
     "secrets_scan": "PASS (no sk-/ghp_/AKIA/Bearer literals across cycle-6 staged files)",
-    "chflags_uchg": "n/a (.raw not present in n6-architecture; .own not chflag-locked but unmodified this cycle)",
+    "chflags_uchg": "n/a (.raw not present in canon; .own not chflag-locked but unmodified this cycle)",
     "raw_13_hooks": "deferred — pre-commit hook runs at git commit time",
     "destructive_ops": 0,
     "git_history_modified": false

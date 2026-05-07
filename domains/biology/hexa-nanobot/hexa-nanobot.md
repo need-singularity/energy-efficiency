@@ -22,7 +22,7 @@ requires:
 
 ## §1 WHY (why a molecular nano-machine architectural layer matters)
 
-Molecular nanotechnology has a 40-year literature corpus (Drexler 1986 productive nanotechnology, Seeman 1982 immobile-junction DNA scaffolds, Rothemund 2006 DNA origami) but lacks a canonical body inside n6-architecture that ties nano-machine primitives to the n=6 invariant. HEXA-NANOBOT registers this gap as a domain so the architectural primitives — power-stroke quartet, vertex skeleton, pose-equivalence group, binary actuator output — have an explicit ordinal-class workload trace and a 90-day MVP gate.
+Molecular nanotechnology has a 40-year literature corpus (Drexler 1986 productive nanotechnology, Seeman 1982 immobile-junction DNA scaffolds, Rothemund 2006 DNA origami) but lacks a canonical body inside canon that ties nano-machine primitives to the n=6 invariant. HEXA-NANOBOT registers this gap as a domain so the architectural primitives — power-stroke quartet, vertex skeleton, pose-equivalence group, binary actuator output — have an explicit ordinal-class workload trace and a 90-day MVP gate.
 
 | Aspect | HEXA-WEAVE (sister) | HEXA-NANOBOT (this domain) |
 |--------|---------------------|----------------------------|
@@ -243,7 +243,7 @@ Aggregate: 15 falsifiers across 5 measurable claims, at least 3 per claim, satis
 
 | Date | Cycle | Milestone | Witness |
 |------|-------|-----------|---------|
-| 2026-04-28 | 13 / fan-out 2/5 | Domain registration in n6-architecture (this body + 2 _index.json updates + 1 witness JSON) | design/kick/2026-04-28_hexa-nanobot-domain-registration_omega_cycle.json |
+| 2026-04-28 | 13 / fan-out 2/5 | Domain registration in canon (this body + 2 _index.json updates + 1 witness JSON) | design/kick/2026-04-28_hexa-nanobot-domain-registration_omega_cycle.json |
 | 2026-05-28 | TBD | F-NB-5 collision audit with life/therapeutic-nanobot completed | F-NB-5 audit row |
 | 2026-07-28 | TBD | F-NB-4 90-day MVP — 4-state 12-vertex DNA-origami simulation | proposals/hexa_nanobot_mvp_<date>.md |
 | 2026-09-28 | TBD | F-NB-2 Bayesian audit (30 architectures) completed | F-NB-2 audit row |
@@ -263,10 +263,10 @@ Aggregate: 15 falsifiers across 5 measurable claims, at least 3 per claim, satis
 
 | Role | Responsibility | Owner |
 |------|----------------|-------|
-| Domain steward | Maintain this body and its sub-index entry | n6-architecture maintainers |
+| Domain steward | Maintain this body and its sub-index entry | canon maintainers |
 | Sister-domain liaison | Maintain HEXA-WEAVE handshake at small-P boundary | hexa-weave + hexa-nanobot stewards jointly |
 | MVP runner | Deliver F-NB-4 90-day 4-state 12-vertex simulation | TBD by 2026-07-28 |
-| Falsifier monitor | Watch F-NB-1..F-NB-5 with deadlines 2026-05-28 / 2026-07-28 / 2026-09-28 / 2027-04-28 | n6-architecture honesty-charter team |
+| Falsifier monitor | Watch F-NB-1..F-NB-5 with deadlines 2026-05-28 / 2026-07-28 / 2026-09-28 / 2027-04-28 | canon honesty-charter team |
 | Cross-domain liaison | life/therapeutic-nanobot collision audit + materials/ industrial route | per-axis domain stewards |
 
 ## §15 REFERENCES
@@ -281,6 +281,6 @@ Aggregate: 15 falsifiers across 5 measurable claims, at least 3 per claim, satis
 8. Bustamante C., Liphardt J., Ritort F. 2005 "The Nonequilibrium Thermodynamics of Small Systems" Phys Today 58:43-48 (Brownian-floor + small-system thermodynamics for §10 RISKS measurable claim 5).
 9. Astumian R. D. 1997 "Thermodynamics and Kinetics of a Brownian Motor" Science 276:917-922 (stochastic-ratchet alternative to power-stroke mechanism; cited in F-NB-3-c falsifier).
 10. Landauer R. 1961 "Irreversibility and Heat Generation in the Computing Process" IBM J Res Dev 5:183-191 (kT ln 2 floor reference; comparison point for HEXA-WEAVE Landauer ceiling vs HEXA-NANOBOT Brownian floor).
-11. n6-architecture sister domain: domains/biology/hexa-weave/hexa-weave.md (multi-strand composition counterpart).
-12. n6-architecture domain registration witness: design/kick/2026-04-28_hexa-nanobot-domain-registration_omega_cycle.json (this cycle 13 fan-out 2/5).
-13. n6-architecture sister-domain closure witness: design/kick/2026-04-28_hexa-weave-closure_omega_cycle.json (tri-axis Omega-saturation PASS at workload ceiling, referenced for handshake protocol at small-P boundary).
+11. canon sister domain: domains/biology/hexa-weave/hexa-weave.md (multi-strand composition counterpart).
+12. canon domain registration witness: design/kick/2026-04-28_hexa-nanobot-domain-registration_omega_cycle.json (this cycle 13 fan-out 2/5).
+13. canon sister-domain closure witness: design/kick/2026-04-28_hexa-weave-closure_omega_cycle.json (tri-axis Omega-saturation PASS at workload ceiling, referenced for handshake protocol at small-P boundary).

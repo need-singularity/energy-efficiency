@@ -43,7 +43,7 @@ Round 5's three conditions:
 
 ### 0.4 R5 output structure
 
-- §1 R5-C1 n6-arch internal submodules (bridge/engine/n6shared)
+- §1 R5-C1 n6-arch internal submodules (bridge/engine/canonshared)
 - §2 R5-C2 3-hop residual chains (seeds 4 × 2 additional)
 - §3 R5-C3 microphase residuals (BT-543/544/545/547 microphase introduction)
 - §4 R5-C4 rules individual details
@@ -57,24 +57,24 @@ Round 5's three conditions:
 
 ---
 
-## 1. R5-C1 n6-architecture internal submodules (bridge/engine/n6shared)
+## 1. R5-C1 canon internal submodules (bridge/engine/canonshared)
 
-R4 organized 10 anima subrepos; but **within n6-architecture itself** there are still unorganized submodules.
+R4 organized 10 anima subrepos; but **within canon itself** there are still unorganized submodules.
 
 **D201 — n6-arch Bridge Rust Workspace Field**
-- Path: `/Users/ghost/Dev/n6-architecture/bridge/` (CLAUDE.md: "Rust integration workspace (nexus hub repo bridge)").
+- Path: `/Users/ghost/Dev/canon/bridge/` (CLAUDE.md: "Rust integration workspace (nexus hub repo bridge)").
 - BT: 542 (workspace build NP), 545.
 - n=6: nexus hub + 7 repos = bridge dimension.
 - Self-evolution: YES (Rust compile caching, self-evolving build).
 
 **D202 — n6-arch Engine Runtime Field**
-- Path: `/Users/ghost/Dev/n6-architecture/engine/` (CLAUDE.md: "training/math runtime (.hexa)").
+- Path: `/Users/ghost/Dev/canon/engine/` (CLAUDE.md: "training/math runtime (.hexa)").
 - BT: 542 + 544.
 - n=6: hexa runtime = SELF-EVO main engine file.
 - Self-evolution: YES.
 
-**D203 — n6shared Harness Meta-Field**
-- Path: `/Users/ghost/Dev/n6-architecture/n6shared/` (absent — only noted in CLAUDE.md) + `/Users/ghost/Dev/nexus/shared/harness/` (exists, CLAUDE.md link). **Honesty note**: n6-architecture/n6shared is physically linked to nexus/shared. Evidence resides in nexus/shared/harness/.
+**D203 — canonshared Harness Meta-Field**
+- Path: `/Users/ghost/Dev/canon/canonshared/` (absent — only noted in CLAUDE.md) + `/Users/ghost/Dev/nexus/shared/harness/` (exists, CLAUDE.md link). **Honesty note**: canon/canonshared is physically linked to nexus/shared. Evidence resides in nexus/shared/harness/.
 - BT: 542 + 547.
 - n=6: 50+ harness files (breakthrough/blowup/ouroboros/growth_tick etc.).
 - Self-evolution: YES.
@@ -174,7 +174,7 @@ R4 D167 aggregated the R0~R27 28 rules as a single domain. R5 individually promo
 - Self-evolution: YES (L0 file addition procedure).
 
 **D215 — Rule N61 Atlas Promotion Field**
-- Evidence: `/Users/ghost/Dev/nexus/shared/rules/n6-architecture.json` (atlas promotion within N61~N65 range).
+- Evidence: `/Users/ghost/Dev/nexus/shared/rules/canon.json` (atlas promotion within N61~N65 range).
 - BT: 545 + 541.
 - n=6: [7]→[10\*] promotion = atlas grading.
 - Self-evolution: YES.
@@ -194,19 +194,19 @@ R4 D167 aggregated the R0~R27 28 rules as a single domain. R5 individually promo
 R4 D170/D171/D172 covered only attention/moe/sparse·compress·optim groupings. R5 individually addresses the remaining arch/graph/sota + 3 items among sparse/compress/optim.
 
 **D217 — Techniques Arch Category Field**
-- Evidence: `/Users/ghost/Dev/n6-architecture/techniques/arch/`.
+- Evidence: `/Users/ghost/Dev/canon/techniques/arch/`.
 - BT: 542 + 547.
 - n=6: architecture category.
 - Self-evolution: YES.
 
 **D218 — Techniques Graph Category Field**
-- Evidence: `/Users/ghost/Dev/n6-architecture/techniques/graph/`.
+- Evidence: `/Users/ghost/Dev/canon/techniques/graph/`.
 - BT: 547 (graph topology) + 542.
 - n=6: graph theory n=6 nodes minimum complete graph K_6.
 - Self-evolution: YES.
 
 **D219 — Techniques SOTA Baseline Field**
-- Evidence: `/Users/ghost/Dev/n6-architecture/techniques/sota/`.
+- Evidence: `/Users/ghost/Dev/canon/techniques/sota/`.
 - BT: 542 (SOTA distribution).
 - n=6: SOTA competition ratchet.
 - Self-evolution: YES.
@@ -220,25 +220,25 @@ R4 D170/D171/D172 covered only attention/moe/sparse·compress·optim groupings. 
 R4 D173/D174 covered only MC + BT audit. R5 takes **4 meaningful items** from the remaining blowup/cross/dse/lens-verify/meta/paper/structural/anomaly/chip-verify/ai-efficiency (preventing over-count in some supporting categories).
 
 **D220 — Experiments Blowup Field**
-- Evidence: `/Users/ghost/Dev/n6-architecture/experiments/blowup/` + MEMORY `project_blowup_mk2.md`.
+- Evidence: `/Users/ghost/Dev/canon/experiments/blowup/` + MEMORY `project_blowup_mk2.md`.
 - BT: 542 + 543.
 - n=6: 6 blowups stage.
 - Self-evolution: YES.
 
 **D221 — Experiments Cross-DSE Field**
-- Evidence: `/Users/ghost/Dev/n6-architecture/experiments/cross/` + MEMORY `project_millennium_dfs_complete.md` "DFS 5th-cycle loop cross-DSE".
+- Evidence: `/Users/ghost/Dev/canon/experiments/cross/` + MEMORY `project_millennium_dfs_complete.md` "DFS 5th-cycle loop cross-DSE".
 - BT: 542 + 545.
 - n=6: cross-DSE 7 BT × 12 buckets = 84 cells.
 - Self-evolution: YES.
 
 **D222 — Experiments Lens-Verify Field**
-- Evidence: `/Users/ghost/Dev/n6-architecture/experiments/lens-verify/` (distinct from D142: D142 is nexus lenses, D222 is n6-arch experiments/lens-verify).
+- Evidence: `/Users/ghost/Dev/canon/experiments/lens-verify/` (distinct from D142: D142 is nexus lenses, D222 is n6-arch experiments/lens-verify).
 - BT: 542 + 545.
 - n=6: lens verification pipeline.
 - Self-evolution: YES.
 
 **D223 — Experiments Structural/Anomaly Field**
-- Evidence: `/Users/ghost/Dev/n6-architecture/experiments/structural/` + `anomaly/`.
+- Evidence: `/Users/ghost/Dev/canon/experiments/structural/` + `anomaly/`.
 - BT: 542 + 547.
 - n=6: structural anomaly detection.
 - Self-evolution: YES.
@@ -256,7 +256,7 @@ R4's 193 domains + R5's new entries itemized:
 | D1~D200 | (see R1/R2/R3/R4) | | | | 130 YES |
 | D201 | n6-arch Bridge Rust Workspace | R5·C1 | 542+545 | nexus hub | YES |
 | D202 | n6-arch Engine Runtime | R5·C1 | 542+544 | hexa runtime | YES |
-| D203 | n6shared Harness Meta | R5·C1 | 542+547 | harness 50+ | YES |
+| D203 | canonshared Harness Meta | R5·C1 | 542+547 | harness 50+ | YES |
 | D204 | 3-hop CE·Phi→Fisher Metric | R5·C2 | 545+541 | Fisher | YES |
 | D205 | 3-hop Skill→Dynamic Type | R5·C2 | 542 | Mk.I/II/III | YES |
 | D206 | 3-hop Memristor→Chua Circuit | R5·C2 | 544 | 5=sopfr+observer=6 | PART |
@@ -298,7 +298,7 @@ R4's 193 domains + R5's new entries itemized:
   ┌─────────────────────────────────────────────────────────┐
   │  [R5 scavenge 6 axes]                                   │
   ├─────────────────────────────────────────────────────────┤
-  │  §1 n6-arch internal: bridge/engine/n6shared → D201~D203│
+  │  §1 n6-arch internal: bridge/engine/canonshared → D201~D203│
   │  §2 3-hop residual: ALM/CLM/physics/SELF-EVO → D204~D207│
   │  §3 microphase residual: BT-543/544/545/547 → D208~D211 │
   │  §4 rules individual: R0/R1/L0/N61/honesty → D212~D216  │
@@ -460,13 +460,13 @@ With R6 skipped, **axis-final.md** is entered immediately.
 
 - D201~D223 name/path cross-check: 0 duplicates.
 - Differentiation notes:
-  - D203 n6shared (physically linked to nexus/shared) vs R4 D181 Anima Engines (anima-side).
+  - D203 canonshared (physically linked to nexus/shared) vs R4 D181 Anima Engines (anima-side).
   - D212 Rule R0 (rule itself) vs R4 D167 R0~R27 aggregate (bundle).
   - D222 Experiments Lens-Verify (n6-arch) vs R3 D142 DSE Lens Ecology (nexus).
 
 ### 11.2 Source · existing-file evidence
 
-- §1: n6-architecture/{bridge,engine} directories + nexus/shared/harness/.
+- §1: canon/{bridge,engine} directories + nexus/shared/harness/.
 - §2: anima-physics/memristor/ + ouroboros_unified.hexa exist.
 - §3: theory/study/p0~p3/ transition files.
 - §4: nexus/shared/rules/*.json + MEMORY citations.
@@ -494,7 +494,7 @@ With R6 skipped, **axis-final.md** is entered immediately.
 ### 11.7 Critical review
 
 R5 over-count self-audit:
-- D203 n6shared: **boundary issue**. n6-architecture/n6shared has no physical entity and links to nexus/shared — honesty note included. Domain accepted.
+- D203 canonshared: **boundary issue**. canon/canonshared has no physical entity and links to nexus/shared — honesty note included. Domain accepted.
 - D206 Chua Circuit: observer-inclusive 5+1=6 analogy — honestly downgraded to PART.
 - D213 Rule R1 Hangul: NO honesty maintained (static rule).
 

@@ -69,7 +69,7 @@ Both are exercised in §5 below.
 
 ## §2 Implementation summary
 
-**File**: `/Users/ghost/core/n6-architecture/scripts/quality/discriminator_2x2_maintainer.py`
+**File**: `/Users/ghost/core/canon/scripts/quality/discriminator_2x2_maintainer.py`
 **Line count**: 297 lines (Python; stdlib only: `argparse`, `json`,
 `math`, `re`, `sys`, `pathlib`).
 **Constraint compliance**: ≤ 300 lines (target ~200-300 from spec).
@@ -402,7 +402,7 @@ Implementation-level falsifiers added by this session:
 
 ## §10 Closing
 
-**I3 implemented.** `/Users/ghost/core/n6-architecture/scripts/quality/discriminator_2x2_maintainer.py`,
+**I3 implemented.** `/Users/ghost/core/canon/scripts/quality/discriminator_2x2_maintainer.py`,
 297 lines, stdlib-only Python with three subcommands (`append`,
 `report`, `bootstrap`).
 

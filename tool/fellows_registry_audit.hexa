@@ -8,7 +8,7 @@
 //   hexa tool/fellows_registry_audit.hexa
 //
 // 입력:
-//   n6shared/config/n6_fellows_registry_spec.json — 6 group / 42 item 명세 (raw#15: no hardcode)
+//   canonshared/config/n6_fellows_registry_spec.json — 6 group / 42 item 명세 (raw#15: no hardcode)
 //
 // 출력:
 //   stdout — per-item PASS/FAIL 표 + Integrity Score %
@@ -51,12 +51,12 @@ fn find_repo_root() -> string {
     if envr != "" && dir_exists(envr) { return envr }
     // git rev-parse 로 polylith 내부 worktree 에서도 정상 동작
     let git_root = sh("git rev-parse --show-toplevel")
-    if git_root != "" && file_exists(git_root + "/n6shared/config/n6_fellows_registry_spec.json") {
+    if git_root != "" && file_exists(git_root + "/canonshared/config/n6_fellows_registry_spec.json") {
         return git_root
     }
     // common-dir 폴백: worktree 가 있는 경우 실제 메인 체크아웃 위치
     let home = env("HOME")
-    let candidate = home + "/core/n6-architecture"
+    let candidate = home + "/core/canon"
     if dir_exists(candidate) { return candidate }
     return ""
 }
@@ -67,7 +67,7 @@ if REPO == "" {
     exit(2)
 }
 
-let SPEC = REPO + "/n6shared/config/n6_fellows_registry_spec.json"
+let SPEC = REPO + "/canonshared/config/n6_fellows_registry_spec.json"
 if !file_exists(SPEC) {
     eprintln("N6_AUDIT_FAIL {\"group\":\"_init\",\"item\":\"spec\",\"reason\":\"spec missing: " + SPEC + "\"}")
     exit(2)
@@ -238,7 +238,7 @@ println("")
 
 // ── G5: discovery_graph meta.version ≥ 16 + 실측 일치 + notes_v16 존재 ────
 println("── G5: discovery_graph (4 items) ──")
-let dg_path = REPO + "/n6shared/discovery_graph.json"
+let dg_path = REPO + "/canonshared/discovery_graph.json"
 if !file_exists(dg_path) {
     record_fail("G5_discovery_graph", "version_gte_v16", "file missing")
     record_fail("G5_discovery_graph", "total_nodes_matches_measured", "file missing")

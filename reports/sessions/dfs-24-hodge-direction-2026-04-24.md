@@ -9,9 +9,9 @@
 
 ## Context Inventory (read)
 
-- `/Users/ghost/core/n6-architecture/domains/physics/millennium-hodge/millennium-hodge.md` — HEXA-HODGE §X blowup (2026-04-19): CY3 d_R=n=6 minimal open locus; Π_HODGE_int = τ·n·J_2 = 576; abelian sixfold h^{3,3} = φ·J_2 − σ + τ = 20; dim H^3(CY3) ≤ 2σ·τ = 96 (heuristic, not proved).
-- `/Users/ghost/core/n6-architecture/theory/breakthroughs/breakthrough-theorems.md` BT-545 block (lines 19966–20033): 30/30 EXACT rows, including K3 χ=24=J_2, K3 h^{1,1}=20=J_2−τ, b_2=22=J_2−φ, Enriques χ=12=σ, Enriques h^{1,1}=10=σ−φ trivially algebraic, Bagnera 7 bielliptic types=σ−sopfr, Fano 3-folds 105=(n/φ)·sopfr·(σ−sopfr), sporadic 26=J_2+φ, S(5,8,24)=(sopfr,σ−τ,J_2), Kodaira 4 κ-levels=τ, BHPV 10 families=σ−φ, Noether σ=12 denominator, Miyaoka-Yau n/φ=3, BMY→Shimura σ−τ=8.
-- `/Users/ghost/core/n6-architecture/reports/breakthroughs/bt-1409-millennium-dfs-round17-2026-04-12.md` §BT-1409-03: Voevodsky/Beilinson–Lichtenbaum; Bloch–Kato degree 3 = n/φ is Rost–Voevodsky inductive core; cd_l(Q)=2=φ; motivic Bott element β ∈ π_{0,1}(HZ/l); β^{-1} HZ/l = HZ/l_{et}. Honesty note already present: "cd_l=2 is standard; degree 3 being hardest is historical, not n=6-derived."
+- `/Users/ghost/core/canon/domains/physics/millennium-hodge/millennium-hodge.md` — HEXA-HODGE §X blowup (2026-04-19): CY3 d_R=n=6 minimal open locus; Π_HODGE_int = τ·n·J_2 = 576; abelian sixfold h^{3,3} = φ·J_2 − σ + τ = 20; dim H^3(CY3) ≤ 2σ·τ = 96 (heuristic, not proved).
+- `/Users/ghost/core/canon/theory/breakthroughs/breakthrough-theorems.md` BT-545 block (lines 19966–20033): 30/30 EXACT rows, including K3 χ=24=J_2, K3 h^{1,1}=20=J_2−τ, b_2=22=J_2−φ, Enriques χ=12=σ, Enriques h^{1,1}=10=σ−φ trivially algebraic, Bagnera 7 bielliptic types=σ−sopfr, Fano 3-folds 105=(n/φ)·sopfr·(σ−sopfr), sporadic 26=J_2+φ, S(5,8,24)=(sopfr,σ−τ,J_2), Kodaira 4 κ-levels=τ, BHPV 10 families=σ−φ, Noether σ=12 denominator, Miyaoka-Yau n/φ=3, BMY→Shimura σ−τ=8.
+- `/Users/ghost/core/canon/reports/breakthroughs/bt-1409-millennium-dfs-round17-2026-04-12.md` §BT-1409-03: Voevodsky/Beilinson–Lichtenbaum; Bloch–Kato degree 3 = n/φ is Rost–Voevodsky inductive core; cd_l(Q)=2=φ; motivic Bott element β ∈ π_{0,1}(HZ/l); β^{-1} HZ/l = HZ/l_{et}. Honesty note already present: "cd_l=2 is standard; degree 3 being hardest is historical, not n=6-derived."
 
 ---
 
@@ -90,10 +90,10 @@ No probe proposes a proof of Hodge conjecture. All three stay within the "tight 
 
 ## Files referenced (absolute)
 
-- `/Users/ghost/core/n6-architecture/domains/physics/millennium-hodge/millennium-hodge.md`
-- `/Users/ghost/core/n6-architecture/theory/breakthroughs/breakthrough-theorems.md` (lines 19966–20033, 20251)
-- `/Users/ghost/core/n6-architecture/reports/breakthroughs/bt-1409-millennium-dfs-round17-2026-04-12.md` (lines 94–126)
-- `/Users/ghost/core/n6-architecture/theory/breakthroughs/_hypotheses_index.json` (BT-1409-c row, status=conjecture)
+- `/Users/ghost/core/canon/domains/physics/millennium-hodge/millennium-hodge.md`
+- `/Users/ghost/core/canon/theory/breakthroughs/breakthrough-theorems.md` (lines 19966–20033, 20251)
+- `/Users/ghost/core/canon/reports/breakthroughs/bt-1409-millennium-dfs-round17-2026-04-12.md` (lines 94–126)
+- `/Users/ghost/core/canon/theory/breakthroughs/_hypotheses_index.json` (BT-1409-c row, status=conjecture)
 
 ---
 Session end. Three probe proposals registered. No proof claims produced. Honesty gate preserved.

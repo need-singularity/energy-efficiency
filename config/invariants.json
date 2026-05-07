@@ -1,6 +1,6 @@
 {
   "_doc": "n6-engine ↔ atlas.n6 foundation functor F : machine-readable manifest. Declared at R24+26 after 26-round manual probe series (state/atlas_convergence_witness.jsonl). This file formalizes the closed foundation inventory and F's image in engine-structural counts. Not yet enforced — documentation-first formalization.",
-  "schema": "n6-architecture/invariants/1",
+  "schema": "canon/invariants/1",
   "declared_round": "R24+26",
   "declared_ts": "2026-04-24T09:40:00Z",
   "source_witness": "state/atlas_convergence_witness.jsonl (26 rows)",

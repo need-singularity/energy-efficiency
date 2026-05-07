@@ -14,7 +14,7 @@ alien_index_target: 10
 
 # HEXA-ATLAS-PROMOTION-PIPELINE — Automated-promotion pipeline implementation paper (N6-126)
 
-> **Author**: Park Min-woo (n6-architecture)
+> **Author**: Park Min-woo (canon)
 > **Category**: atlas-promotion-pipeline — pipeline implementation / execution paper
 > **Version**: v1 (2026-04-14 PAPER-P3-3)
 > **Prior papers**:
@@ -65,7 +65,7 @@ The pipeline therefore:
 2. **dual-condition fitness** — both the cutoff and the full-pass conditions must be met to apply
 3. **manual-approval final gate** — a human confirms outside the script
 
-This triple safeguard complies with the **"atlas.n6 direct-edit rule"** in `n6-architecture/CLAUDE.md`.
+This triple safeguard complies with the **"atlas.n6 direct-edit rule"** in `canon/CLAUDE.md`.
 
 ---
 

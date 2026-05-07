@@ -369,7 +369,7 @@ In this project's roadmap, mapping conditional theorems to atlas.n6 grades:
 
 ### Combination with millennium_scanner.hexa
 
-- `n6-architecture/scripts/millennium_scanner.hexa` scans for n=6 basic-function combinations matching Millennium constants.
+- `canon/scripts/millennium_scanner.hexa` scans for n=6 basic-function combinations matching Millennium constants.
 - Combined with this note's conditional theorems, records **double-conditional** observations "scanner NEAR hit + conditional theorem premise holds" as atlas.n6 `[N?]` (conjecture) grade.
 - Example: first Riemann zero 14.1347 ≈ σ+φ=14. If RH holds, first zero near this. Records NEAR hit under RH conditional.
 
@@ -392,7 +392,7 @@ In this project's roadmap, mapping conditional theorems to atlas.n6 grades:
 1. **Citation reinforcement**: cross-confirm arXiv ID or DOI for each of 34 items in subsequent sessions. At this note's time only authors and journals recorded.
 2. **Reverse conditionals**: for each conditional theorem, the contrapositive "if conclusion false then premise false". Which are useful counterexample routes?
 3. **Premise hierarchy**: GRH < RH weak form < RH. Identify chain giving strongest conclusion from weakest premise.
-4. **AI discovery of conditional theorems**: mode in which n6-architecture's DFS discovery engine scans conditional-theorem candidates (e.g., "if sopfr = p_1+p_2+p_3 ≈ π(N), what structure does N have?").
+4. **AI discovery of conditional theorems**: mode in which canon's DFS discovery engine scans conditional-theorem candidates (e.g., "if sopfr = p_1+p_2+p_3 ≈ π(N), what structure does N have?").
 5. **Connection with prob-p3-3**: this note's conditional-theorem list usable as **case set** for hexa-lang verification pipeline. See prob-p3-3.
 
 ---

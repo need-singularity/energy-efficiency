@@ -1,4 +1,4 @@
-# n6-architecture 7 Millennium Problems Roadmap v2 — FINAL master (Y-axis system, 2026-04-15)
+# canon 7 Millennium Problems Roadmap v2 — FINAL master (Y-axis system, 2026-04-15)
 
 **Roadmap version**: v2 (Y1~Y9 9-axis emergence system)
 **Baseline date**: 2026-04-15
@@ -12,7 +12,7 @@
 
 ```
 +====================================================================+
-|   n6-architecture 7 Millennium Problems Roadmap v2 -- FINAL         |
+|   canon 7 Millennium Problems Roadmap v2 -- FINAL         |
 |   (Y-axis system)                                                   |
 |                                                                     |
 |  Axis system:         9 (Y1~Y9 — emergence saturation confirmed)    |

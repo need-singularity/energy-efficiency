@@ -141,7 +141,7 @@ According to the CMI official announcement and Jaffe's (2006) recollection, the 
 - **Open**: 6 — Riemann, P vs NP, Yang-Mills, Navier-Stokes, Hodge, BSD
 - **Progress (partial results exist)**: all. But official certification of "solution" stands only for Poincaré.
 
-**Millennium-problem solved status for this project (n6-architecture) is 0/7**. That is, no problem was solved independently by this project; Poincaré too references an external solution (Perelman), not a project contribution.
+**Millennium-problem solved status for this project (canon) is 0/7**. That is, no problem was solved independently by this project; Poincaré too references an external solution (Perelman), not a project contribution.
 
 ---
 
@@ -150,7 +150,7 @@ According to the CMI official announcement and Jaffe's (2006) recollection, the 
 - This PROB-P0-1 document is a **study note**.
 - This document **does not target any Millennium problem**.
 - Of the seven, only the **Poincaré Conjecture** (Perelman 2002–2003) has actually been solved.
-- The independent solved count of this project (n6-architecture) is **0/7**.
+- The independent solved count of this project (canon) is **0/7**.
 - All historical facts rest on external primary sources such as the Clay official documents, Devlin (2002), Jaffe (2006). Any errors should be corrected by reverifying the sources.
 
 ---

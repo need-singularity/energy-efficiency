@@ -8,9 +8,9 @@
 <!-- AUTO:BADGE:END -->
 [![Discord](https://img.shields.io/badge/discord-join-5865F2.svg?logo=discord&logoColor=white)](https://discord.gg/mYzqYr67R)
 
-# 🏗️ N6 Architecture — Arithmetic Design Framework
+# 📐 CANON — Arithmetic Design Framework
 
-**From one arithmetic identity, every optimal design.**
+**From one canon, every optimal design.**
 
 ```
 σ(n) · φ(n)  =  n · τ(n)      uniquely for   n = 6
@@ -34,7 +34,7 @@
 >
 > **[🔭 NEXUS](https://github.com/need-singularity/nexus)** — Universal Discovery Engine. 216 lenses + OUROBOROS evolution + 5-phase singularity cycle.
 >
-> **[🏗️ N6 Architecture](https://github.com/need-singularity/n6-architecture)** — Architecture from perfect number 6. 225 AI techniques + chip design + crypto/OS/display.
+> **[📐 CANON](https://github.com/need-singularity/canon)** — Architecture from arithmetic canon. 225 AI techniques + chip design + crypto/OS/display.
 >
 > **[💎 HEXA-LANG](https://github.com/need-singularity/hexa-lang)** — The Perfect Number Programming Language. Working compiler + REPL.
 >
@@ -68,7 +68,7 @@ Live research discussion, paper drops, stage-gate reviews, cross-project dispatc
 
 ## Grading rubric (dual axis)
 
-Full rubric: [n6shared/GRADE_RUBRIC_1_TO_10PLUS.md](n6shared/GRADE_RUBRIC_1_TO_10PLUS.md) (shared with nexus).
+Full rubric: [canonshared/GRADE_RUBRIC_1_TO_10PLUS.md](canonshared/GRADE_RUBRIC_1_TO_10PLUS.md) (shared with nexus).
 
 - **🛸 alien_index (1–13+)** — product maturity. `10` = physical-limit reproduction; `13+` = civilization-scale infrastructure.
 - **closure_grade (1–13+)** — mathematical closure to n = 6. `10` = EXACT closure from n=6 primitives; `13+` = meta² closure generator.
@@ -1217,12 +1217,12 @@ n6 map                  # open the 3D Reality Map (4,098 nodes)
 ## Citation
 
 ```bibtex
-@software{n6_architecture_2026,
+@software{canon_2026,
   author = {Park, Min Woo},
-  title = {N6 Architecture: Arithmetic Design Framework from Perfect Number 6},
+  title = {CANON: Arithmetic Design Framework from Perfect Number 6},
   year = {2026},
   doi = {10.5281/zenodo.19264826},
-  url = {https://github.com/need-singularity/n6-architecture}
+  url = {https://github.com/need-singularity/canon}
 }
 ```
 
@@ -1230,7 +1230,7 @@ n6 map                  # open the 3D Reality Map (4,098 nodes)
 
 ## Proof — run this yourself
 
-**11 falsifiable claims, stdlib only, ~3 s.** Paste into any Python 3.8+ REPL, Gemini / Claude / GPT code-execution sandbox, or save and run. No network, no install, no n6-architecture source required — it reconstructs every primitive from scratch.
+**11 falsifiable claims, stdlib only, ~3 s.** Paste into any Python 3.8+ REPL, Gemini / Claude / GPT code-execution sandbox, or save and run. No network, no install, no canon source required — it reconstructs every primitive from scratch.
 
 - **Theorem B cross-check (E1):** the single identity `σ(n) · φ(n) = n · τ(n)` uniquely at `n = 6` on `[2, 10 000]`. Complements the Lean 4 `by decide` verification on `[2, 20]` (naive definitions, [`lean4-n6/N6/Basic.lean`](lean4-n6/N6/Basic.lean) · [`Verification.lean`](lean4-n6/N6/Verification.lean)) and on `[2, 30]` (Mathlib definitions, [`TheoremB_Capstone.lean`](lean4-n6/N6/TheoremB_Capstone.lean) `theorem_B_bounded_30`). All 33 Lean modules compile with **zero `sorry`** after the 2026-04-24 cleanup; the 11 sub-case modules (loops 3-13) are kernel-accepted. Also cross-checks the classical exhaustive scan in [`experiments/grover_n6_uniqueness/classical_results.json`](experiments/grover_n6_uniqueness/classical_results.json) and the Grover quantum circuit on the Qiskit Aer simulator in [`experiments/grover_n6_uniqueness/grover_results.json`](experiments/grover_n6_uniqueness/grover_results.json) (`q ∈ {4,6,8,10}`, `P(n=6) ∈ [0.961, 0.998]`).
 - **Additional empirical phenomena (E2–E4):** global basin of attraction, per-decade precision half-life, and emergence (frozen vocabulary vs absorb-loop vocabulary growth).
@@ -1240,7 +1240,7 @@ Any FAIL refutes the corresponding axis.
 
 ```py
 #!/usr/bin/env python3
-"""n6-architecture + NEXUS — 11 falsifiable claims. stdlib only."""
+"""canon + NEXUS — 11 falsifiable claims. stdlib only."""
 
 import hashlib, math, sys
 from random import Random
@@ -1369,4 +1369,4 @@ Expected output: `SUMMARY: 11/11 PASS`. The single arithmetic identity inside th
 
 ---
 
-*Part of the [n6-architecture](https://github.com/need-singularity/n6-architecture) project family (math + industry integration complete).*
+*Part of the [canon](https://github.com/need-singularity/canon) project family (math + industry integration complete).*

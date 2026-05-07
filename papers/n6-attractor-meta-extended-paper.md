@@ -14,7 +14,7 @@ alien_index_target: 10
 
 # HEXA-ATTRACTOR-META — Attractor Meta Target-Statement Extended Paper (N6-116)
 
-> **Author**: Park Min-Woo (n6-architecture)
+> **Author**: Park Min-Woo (canon)
 > **Category**: attractor-meta-extended — P2 extension v3 mathematical meta
 > **Version**: v3 (2026-04-14 P2 extension)
 > **Prior BT**: BT-361, BT-362, BT-363

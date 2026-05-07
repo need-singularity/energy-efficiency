@@ -867,7 +867,7 @@ Test plan:
 | OpenAI | CLIP-B/16 model weights (Apache 2.0 release) | content-aware suggestion |
 | Stripe Inc. | Stripe Connect | mk5 marketplace 70/30 royalty (US) |
 | Adyen NV | Adyen Marketplace | mk5 marketplace 70/30 royalty (EU) |
-| n6-architecture private framework | own_doc_lint / own31 lint | docs gate |
+| canon private framework | own_doc_lint / own31 lint | docs gate |
 | apps/hexa-filter-algebra (internal) | filter authoring engine | internal dependency |
 | apps/camera-filter-app (internal) | sister capture-side domain | apps axis sibling |
 

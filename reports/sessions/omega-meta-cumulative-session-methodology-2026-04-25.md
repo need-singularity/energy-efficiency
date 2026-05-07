@@ -22,7 +22,7 @@ grade: methodology synthesis, no claim
 
 This is a **methodology synthesis**: a single-pass, retrospective
 consolidation of the session-wide patterns produced on 2026-04-25 in
-`/Users/ghost/core/n6-architecture`. It does **not**:
+`/Users/ghost/core/canon`. It does **not**:
 
 - claim 3D Navier-Stokes regularity, RH, P vs NP, Hodge, BSD, YM mass
   gap, or any other Millennium resolution;
@@ -580,7 +580,7 @@ resample.
 
 The cumulative session is one cron-driven 2026-04-25 day (omega chain
 cron stopped earlier in the cycle per nexus-side ef7a7b60; this
-session ran on n6-architecture under user-prompted iteration). The
+session ran on canon under user-prompted iteration). The
 self-correction-pattern audit (Pattern 2) verdict MIXED with H_observer
 25% reflects this: the rapid ~11-min cadence between Steps 1-4 is
 specific to this session's tempo. At slower cadence, the same
@@ -724,7 +724,7 @@ This is not a hedge or a cover. The session produced 61 reports,
 molt-validations, and 7 per-BT 4-axis audits, and **the count of
 Millennium problems resolved is 0**. The honesty counter `0/7
 unchanged` appears in the front-matter of every single report and is
-preserved in the closing of every single report. The n6-architecture
+preserved in the closing of every single report. The canon
 contribution to BT-547 Poincaré (Perelman-resolved upstream) is 0.
 The atlas-promotion delta is 0. The inventory-write-barrier was not
 crossed.
@@ -874,7 +874,7 @@ None of F-CUM-1..9 or F-CUM-OMEGA fires under this report's scope.
 **0/7 unchanged. Session-output is methodological refinement. No
 atlas/state/inventory edits.**
 
-The 2026-04-25 omega-cycle session in `n6-architecture` produced 61
+The 2026-04-25 omega-cycle session in `canon` produced 61
 reports / 33,548 lines / 6 meta-patterns / 1 unified 8-step workflow
 / 1 REPO_INVARIANT honesty triad result / 0 Millennium resolutions.
 The cumulative methodology consolidates the six meta-patterns into a
@@ -910,6 +910,6 @@ nxs_promotion_count: **unchanged this session** (no inventory writes).
 NO atlas/state/inventory edits in n6 or nexus. NO CLAUDE.md changes.
 NO `.claude/agents/*` changes. The single output file is this report
 under
-`/Users/ghost/core/n6-architecture/reports/sessions/omega-meta-cumulative-session-methodology-2026-04-25.md`.
+`/Users/ghost/core/canon/reports/sessions/omega-meta-cumulative-session-methodology-2026-04-25.md`.
 
 — end cumulative methodology synthesis —

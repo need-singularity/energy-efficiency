@@ -83,7 +83,7 @@ export GHCR_TOKEN_FILE="$HOME/.config/hexa/ghcr.token"   # or age-decrypt FIFO
 ### §1.4 Step 4 — automation script execution
 
 ```sh
-cd ~/core/n6-architecture
+cd ~/core/canon
 
 # 4a. dry-run review (PAT use not  must ; onlymaintain plan output)
 bash tool/ghcr_push.hexa --plan

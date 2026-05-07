@@ -1,5 +1,5 @@
 {
-  "schema": "n6-architecture/n6_own21_drift/1",
+  "schema": "canon/n6_own21_drift/1",
   "rule": "own#21",
   "slug": "readme-nexus6-tests-count-drift",
   "ts": "2026-04-29T12:27:35Z",

@@ -23,7 +23,7 @@ requires:
 
 ## §1 WHY (why a catalytic-RNA architectural layer matters)
 
-Catalytic RNA has a 40-year experimental corpus (Cech 1982 Tetrahymena self-splicing intron, Guerrier-Takada 1983 RNase P RNA-only catalysis, Symons 1981 hammerhead self-cleavage in viroids, Buzayan 1986 hairpin satellite, Wu-Lai 1989 HDV ribozyme, Steitz 2000 ribosome peptidyl transferase) but no canonical body inside n6-architecture ties ribozyme primitives to the n=6 invariant. HEXA-RIBOZYME registers this gap as a domain so the architectural primitives — catalytic-core residue cardinality, reaction-state quartet, transition-state pose-symmetry, and binary cleavage output — have an explicit ordinal-class workload trace and a 90-day MVP gate.
+Catalytic RNA has a 40-year experimental corpus (Cech 1982 Tetrahymena self-splicing intron, Guerrier-Takada 1983 RNase P RNA-only catalysis, Symons 1981 hammerhead self-cleavage in viroids, Buzayan 1986 hairpin satellite, Wu-Lai 1989 HDV ribozyme, Steitz 2000 ribosome peptidyl transferase) but no canonical body inside canon ties ribozyme primitives to the n=6 invariant. HEXA-RIBOZYME registers this gap as a domain so the architectural primitives — catalytic-core residue cardinality, reaction-state quartet, transition-state pose-symmetry, and binary cleavage output — have an explicit ordinal-class workload trace and a 90-day MVP gate.
 
 | Aspect | HEXA-WEAVE (sister) | HEXA-NANOBOT (sister) | HEXA-RIBOZYME (this domain) |
 |--------|---------------------|------------------------|------------------------------|
@@ -254,7 +254,7 @@ Aggregate: 15 falsifiers across 5 measurable claims, at least 3 per claim, satis
 
 | Date | Cycle | Milestone | Witness |
 |------|-------|-----------|---------|
-| 2026-04-28 | 15 / fan-out 3/3 | Domain registration in n6-architecture (this body + 2 _index.json updates + 1 witness JSON) | design/kick/2026-04-28_hexa-ribozyme-registration-cycle15_omega_cycle.json |
+| 2026-04-28 | 15 / fan-out 3/3 | Domain registration in canon (this body + 2 _index.json updates + 1 witness JSON) | design/kick/2026-04-28_hexa-ribozyme-registration-cycle15_omega_cycle.json |
 | 2026-05-28 | TBD | F-RB-5 collision audit with life/crispr-gene-editing + life/synbio completed | F-RB-5 audit row |
 | 2026-07-28 | TBD | F-RB-4 90-day MVP — hammerhead-minimal 12-nt 4-state chemical-kinetics simulation | proposals/hexa_ribozyme_mvp_<date>.md |
 | 2026-09-28 | TBD | F-RB-2 Bayesian audit (30 ribozyme architectures across 7 classes) completed | F-RB-2 audit row |
@@ -274,10 +274,10 @@ Aggregate: 15 falsifiers across 5 measurable claims, at least 3 per claim, satis
 
 | Role | Responsibility | Owner |
 |------|----------------|-------|
-| Domain steward | Maintain this body and its sub-index entry | n6-architecture maintainers |
+| Domain steward | Maintain this body and its sub-index entry | canon maintainers |
 | Sister-domain liaison | Maintain HEXA-WEAVE handshake at multi-strand catalytic-bundle boundary AND HEXA-NANOBOT handshake at ribozyme-driven actuator boundary | hexa-weave + hexa-nanobot + hexa-ribozyme stewards jointly |
 | MVP runner | Deliver F-RB-4 90-day hammerhead-minimal 12-nt 4-state chemical-kinetics simulation | TBD by 2026-07-28 |
-| Falsifier monitor | Watch F-RB-1..F-RB-5 with deadlines 2026-05-28 / 2026-07-28 / 2026-09-28 / 2027-04-28 | n6-architecture honesty-charter team |
+| Falsifier monitor | Watch F-RB-1..F-RB-5 with deadlines 2026-05-28 / 2026-07-28 / 2026-09-28 / 2027-04-28 | canon honesty-charter team |
 | Cross-domain liaison | life/crispr-gene-editing collision audit + life/synbio SELEX route | per-axis domain stewards |
 
 ## §15 REFERENCES
@@ -295,8 +295,8 @@ Aggregate: 15 falsifiers across 5 measurable claims, at least 3 per claim, satis
 11. Eigen M. & Hammes G. G. 1963 "Elementary steps in enzyme reactions" Adv Enzymol 25:1-38 (diffusion-limit ceiling 10^8-10^9 M^-1 s^-1; primary-constraint reference for §1 / §10 measurable claim 5).
 12. Tang J. & Breaker R. R. 2000 "Structural diversity of self-cleaving ribozymes" PNAS 97:5784-5789 (cross-class catalytic-core comparison; Bayesian audit reference for F-RB-2).
 13. Wilson T. J. & Lilley D. M. J. 2009 "The evolution of ribozyme chemistry" Science 323:1436-1438 (catalytic-RNA mechanism evolution; cross-validation of multi-realizability).
-14. n6-architecture sister domain: domains/biology/hexa-weave/hexa-weave.md (multi-strand composition counterpart).
-15. n6-architecture sister domain: domains/biology/hexa-nanobot/hexa-nanobot.md (single mechanical actuator counterpart).
-16. n6-architecture domain registration witness: design/kick/2026-04-28_hexa-ribozyme-registration-cycle15_omega_cycle.json (this cycle 15 fan-out 3/3).
-17. n6-architecture sister-domain registration witness: design/kick/2026-04-28_hexa-nanobot-domain-registration_omega_cycle.json (cycle 13 fan-out 2/5; precursor; referenced for handshake protocol at ribozyme-driven nano-machine boundary).
-18. n6-architecture sister-domain closure witness: design/kick/2026-04-28_hexa-weave-closure_omega_cycle.json (tri-axis Omega-saturation PASS at workload ceiling, referenced for handshake protocol at multi-strand catalytic-bundle boundary).
+14. canon sister domain: domains/biology/hexa-weave/hexa-weave.md (multi-strand composition counterpart).
+15. canon sister domain: domains/biology/hexa-nanobot/hexa-nanobot.md (single mechanical actuator counterpart).
+16. canon domain registration witness: design/kick/2026-04-28_hexa-ribozyme-registration-cycle15_omega_cycle.json (this cycle 15 fan-out 3/3).
+17. canon sister-domain registration witness: design/kick/2026-04-28_hexa-nanobot-domain-registration_omega_cycle.json (cycle 13 fan-out 2/5; precursor; referenced for handshake protocol at ribozyme-driven nano-machine boundary).
+18. canon sister-domain closure witness: design/kick/2026-04-28_hexa-weave-closure_omega_cycle.json (tri-axis Omega-saturation PASS at workload ceiling, referenced for handshake protocol at multi-strand catalytic-bundle boundary).

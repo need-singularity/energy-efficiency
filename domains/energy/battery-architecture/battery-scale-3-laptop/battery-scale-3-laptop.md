@@ -81,7 +81,7 @@
 **number theory  weekstone ①**: φ(6)=2 → 2cell configuration laptop battery standard. MacBook Air(2cell), iPad Pro(1cell→internal 2S effect), ThinkPad X1(2cell series) all 2S basis.
 **number theory  weekstone ②**: σ·τ=48 → USB-C PD 48W PD 3.0 spec standard power prasfile. Apple formula chargingphase 35W~67W range of median.
 **number theory  weekstone ③**: sopfr(6)=5 → 5 mm cell thickness Ultrabook internal space constraint of physical optimalpoint. thickness rise → Capacity increaseor heat dissipation lowdo. 5 mm in balance.
-**number theory  weekstone ④**: Egyptian fraction 1/2+1/3+1/6=1 → perfect number 6 of divisor reverseseveral sum. CC/CV/trickle 3step charging profile of energy  mintimes ratio and accurate response. charging CC 50% + CV 33% + trickle 17% = 100%.
+**number theory  weekstone ④**: Egyptian fraction 1/2+1/3+1/6=1 → arithmetic canon of divisor reverseseveral sum. CC/CV/trickle 3step charging profile of energy  mintimes ratio and accurate response. charging CC 50% + CV 33% + trickle 17% = 100%.
 **number theory  weekstone ⑤**: R(6)=σ·φ/(n·τ)=1 →  ratio exactly 1 be uniqueone several n=6. battery energy numbernode complete balance → swelling 0.
 **number theory  weekstone ⑥**: Core Theorem σ(n)·φ(n)=n·τ(n) ⟺ n=6 (n≥2) → all parameter span upperprotectrelation of mathematical necessity-ness guarantee. 3 independent proofs done.
 

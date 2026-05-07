@@ -14,7 +14,7 @@
 //   - "상태] pass" 마커 검출은 원본 정의 그대로 재사용.
 
 let HOME = env("HOME")
-let REPO = HOME + "/Dev/n6-architecture"
+let REPO = HOME + "/Dev/canon"
 let EXPER = REPO + "/experiments"
 let CACHE_PATH = EXPER + "/.verify_mtime_cache.json"
 let HEXA_BIN_DEFAULT = HOME + "/.hx/bin/hexa"

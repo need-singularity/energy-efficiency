@@ -692,6 +692,6 @@ observation:
 ## 7. Verification environment
 
 - Date: 2026-04-12
-- Project: n6-architecture
+- Project: canon
 - Preceding BT: BT-1394~1411
 - Reference atlas: $NEXUS/shared/n6/atlas.n6

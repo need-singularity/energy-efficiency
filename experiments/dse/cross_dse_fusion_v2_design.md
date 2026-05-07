@@ -84,7 +84,7 @@ Output            top_pairs[30]              top_pairs[400] + hubs[20]
   top_pairs[400], hubs[20] (top degree), bridges[50] (top betweenness),
   clusters[16] (greedy modularity)
       v
-  n6shared/dse/dse_cross_results.json  (v2)
+  canonshared/dse/dse_cross_results.json  (v2)
       v
   atlas.n6 auto-absorption (R28)
 ```
@@ -252,7 +252,7 @@ Draw the Pareto-dominance relation as a DAG and add hub/bridge/cluster metrics:
 | TOML missing `bt_refs` | Default to [], bt_overlap=0 |
 | Some of 400 TOMLs still on v1 schema | v2 parser injects `energy_pareto=false`, `evidence_grade=7` defaults if Delta1~Delta5 fields absent |
 | O(N^2) memory explosion | Stream-process in batches of 16, retain only high_conf in memory |
-| Hardcoded re-introduction | Externalize synergy rules into `n6shared/config/bt_weights.json` (R2) |
+| Hardcoded re-introduction | Externalize synergy rules into `canonshared/config/bt_weights.json` (R2) |
 | Duplicate-discovery miss (R28) | At end of run, auto-absorb results into atlas.n6 |
 
 ## 8. Verification procedure (N63)
@@ -266,7 +266,7 @@ Draw the Pareto-dominance relation as a DAG and add hub/bridge/cluster metrics:
 
 ## 9. Promotion-completion criteria (R4/R9)
 
-- convergence/n6-architecture.json `CROSS_DSE` -> add v2 ossified block:
+- convergence/canon.json `CROSS_DSE` -> add v2 ossified block:
   - status=PASS
   - value="400 TOML cross fusion complete — 100K+ pairs, 99.5%+ high_conf, hubs/bridges/clusters included"
   - threshold="100,000 pairs + 400 TOML + Delta1~Delta5 schema"

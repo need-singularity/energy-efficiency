@@ -1,0 +1,97 @@
+// verify_product_links.hexa — 제품 링크 단일화 규칙 강제 (pure HEXA, 외부의존 0)
+//
+// SSOT: canonshared/n6/docs/domains.json (2026-04-19 이전 완료. papers/_products.json 폐기).
+// 규칙: 각 entry 는 links 배열에 항목 1개만 허용 (엄격).
+// 다중 논문 → "통합 논문 1개" 를 .doc-rules.json paper 규칙(21섹션)으로 수동 작성 후 연결.
+//
+// 역할: 탐지 + 에러 반환. 자동 병합 없음.
+//   - 위반 발견 → 구조화된 출력 + exit(1)
+//   - Claude Code CLI / git hook / CI 가 stdout 파싱해서 후속 작업 결정
+//
+// 용법: hexa canonshared/schemas/verify_product_links.hexa
+//
+// 출력 포맷 (위반 시):
+//   VIOLATION <product_id> <link_count> <path1>|<path2>|...
+//   ...
+//   SUMMARY total=<N> violations=<M>
+//   exit 1
+//
+// OK 시:
+//   OK total=<N>
+//   exit 0
+
+let TARGET = "canonshared/n6/docs/domains.json"
+
+fn count_substr(haystack: string, needle: string) -> int {
+    let parts = haystack.split(needle)
+    return len(parts) - 1
+}
+
+fn extract_links_array(block: string) -> string {
+    if !block.contains("\"links\":") { return "" }
+    let after = block.split("\"links\":")[1]
+    let open = after.split("[")
+    if len(open) < 2 { return "" }
+    return open[1].split("]")[0]
+}
+
+fn extract_id(block: string) -> string {
+    let parts = block.split("\"")
+    if len(parts) < 2 { return "?" }
+    return parts[1]
+}
+
+fn extract_paths(arr: string) -> string {
+    // arr 안의 모든 "path": "..." 값을 | 로 구분해 반환
+    let parts = arr.split("\"path\":")
+    let out = ""
+    let k = 1
+    while k < len(parts) {
+        let p = parts[k]
+        let quoted = p.split("\"")
+        if len(quoted) >= 2 {
+            if len(out) > 0 { out = out + "|" }
+            out = out + quoted[1]
+        }
+        k = k + 1
+    }
+    return out
+}
+
+let exists = to_string(exec("test -f '" + TARGET + "' && echo y || echo n")).trim()
+if exists != "y" {
+    eprintln("FATAL target_missing " + TARGET)
+    exit(2)
+}
+let raw = read_file(TARGET)
+
+let chunks = raw.split("\"id\":")
+let total = 0
+let violations = 0
+
+let i = 1
+while i < len(chunks) {
+    let block = chunks[i]
+    let id = extract_id(block)
+    let arr = extract_links_array(block)
+    if len(arr) > 0 {
+        let link_count = count_substr(arr, "\"label\":")
+        total = total + 1
+        if link_count > 1 {
+            violations = violations + 1
+            let paths = extract_paths(arr)
+            println("VIOLATION " + id + " " + to_string(link_count) + " " + paths)
+        }
+    }
+    i = i + 1
+}
+
+println("SUMMARY total=" + to_string(total) + " violations=" + to_string(violations))
+
+if violations > 0 {
+    println("RULE links-single")
+    println("FIX manual: 통합 논문 1개(.doc-rules.json paper 21섹션) 작성 → domains.json links 교체")
+    exit(1)
+}
+
+exit(0)

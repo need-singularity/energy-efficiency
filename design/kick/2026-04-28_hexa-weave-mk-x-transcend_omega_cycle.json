@@ -13,7 +13,7 @@
     "cause_chain": [
       "hetzner remote dispatched (route=external reason=hetzner_up, LB pick=hetzner avail=125866MB)",
       "ubu / ubu2 still in oauth-blacklist (~/.hx/state/oauth_blacklisted_hosts.jsonl); only hetzner viable",
-      "30s timeout: hetzner subagent_dispatch produced no __KICK_RESULT__ banner and no design/kick/*mk-x-transcend* file under either /Users/ghost/core/nexus/design/kick/ or /Users/ghost/core/n6-architecture/design/kick/",
+      "30s timeout: hetzner subagent_dispatch produced no __KICK_RESULT__ banner and no design/kick/*mk-x-transcend* file under either /Users/ghost/core/nexus/design/kick/ or /Users/ghost/core/canon/design/kick/",
       "this is a 4th orthogonal kick-infra failure mode across 3 cycles: cycle 1 OAuth-401, cycle 2 slot-saturated + container-no-node, cycle 3 hetzner-silent-no-witness",
       "F-CL3-b ('4th orthogonal failure mode emerges') from predecessor IS now triggered — kick fragility is systemic, not transient"
     ],
@@ -211,11 +211,11 @@
       {"claim": "Kick infra F-CL3-b falsifier fired (4th orthogonal mode)", "tag": "VERIFIED-OBSERVATION (silent-timeout observed in this run)"}
     ],
     "evidence_paths": [
-      "/Users/ghost/core/n6-architecture/design/kick/2026-04-28_hexa-weave-mk-x-transcend_omega_cycle.json (this file)",
-      "/Users/ghost/core/n6-architecture/design/kick/2026-04-28_hexa-weave-closure_omega_cycle.json (predecessor APPROACH)",
-      "/Users/ghost/core/n6-architecture/design/kick/2026-04-28_hexa-weave-abstraction-to-limits_omega_cycle.json (great-predecessor PARTIAL)",
-      "/Users/ghost/core/n6-architecture/domains/biology/hexa-weave/hexa-weave.md (registered domain doc)",
-      "/Users/ghost/core/n6-architecture/state/discovery_absorption/registry.jsonl (absorption registry)",
+      "/Users/ghost/core/canon/design/kick/2026-04-28_hexa-weave-mk-x-transcend_omega_cycle.json (this file)",
+      "/Users/ghost/core/canon/design/kick/2026-04-28_hexa-weave-closure_omega_cycle.json (predecessor APPROACH)",
+      "/Users/ghost/core/canon/design/kick/2026-04-28_hexa-weave-abstraction-to-limits_omega_cycle.json (great-predecessor PARTIAL)",
+      "/Users/ghost/core/canon/domains/biology/hexa-weave/hexa-weave.md (registered domain doc)",
+      "/Users/ghost/core/canon/state/discovery_absorption/registry.jsonl (absorption registry)",
       "Tarski 1936, Hartogs 1915, Kanamori 2003, Bekenstein 1981, Bousso 2002, 't Hooft 1993, Susskind 1995, Solomonoff 1964, Chaitin 1975, Li-Vitanyi 2008, Hutter 2005 (literature)"
     ],
     "limits_acknowledged": [
@@ -251,7 +251,7 @@
   "domain_doc_update_required": false,
   "domain_doc_update_rationale": "Per TP-MX-5 raw 106 scope creep HIGH disclosure, the cosmological paradigm violates HEXA-WEAVE biology-domain genus; updating `domains/biology/hexa-weave/hexa-weave.md` §6 EVOLVE with cosmological-scale ladder addendum would mis-classify the domain. Recommended path is EITHER (i) leave the biology-domain doc untouched (this option, current recommendation) and treat this TRANSCEND witness as a paradigm-extension witness that does not require domain-doc reflection, OR (ii) propose a separate `domains/physics/cosmological-information-weave/` registration per F-MX-5-c. Option (i) is the lower-disturbance honest default; option (ii) is the more-rigorous future path. The biology domain doc's existing §12 TIMELINE entry 'Mk.X TRANSCEND universe-ceiling cycle queued separately and out of scope' is now satisfied by this witness without §6 EVOLVE modification; update the §12 row only if option (ii) is pursued.",
   "trawl_witness_raw_47": {
-    "n6-architecture": "/Users/ghost/core/n6-architecture/ — this repo, all 3 cycle witnesses + domain doc",
+    "canon": "/Users/ghost/core/canon/ — this repo, all 3 cycle witnesses + domain doc",
     "nexus": "/Users/ghost/core/nexus/ — kick infra source (silent-timeout 4th-failure observed)",
     "anima": "/Users/ghost/core/anima/ — bootstrap absorption registry sentinel (raw 135 cross-project mandate)",
     "hexa-lang": "/Users/ghost/core/hexa-lang/ — hexa-runner image + hexa CLI (no-node fault history)",
@@ -280,7 +280,7 @@
     "raw_53_compliant": true
   },
   "report_summary": {
-    "witness_path": "/Users/ghost/core/n6-architecture/design/kick/2026-04-28_hexa-weave-mk-x-transcend_omega_cycle.json",
+    "witness_path": "/Users/ghost/core/canon/design/kick/2026-04-28_hexa-weave-mk-x-transcend_omega_cycle.json",
     "transcend_construction_chosen": "δ-blended-with-α (n=6 cosmological structural law × universe-as-protein holographic workload)",
     "tri_axis_per_axis_at_universe_scale": {
       "FORMAL": "PARTIAL (Tarski-undefinability abstract argument; specific (T,Φ) instantiation missing)",

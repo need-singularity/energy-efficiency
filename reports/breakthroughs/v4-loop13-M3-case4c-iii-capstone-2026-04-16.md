@@ -78,7 +78,7 @@ theorem theorem_B_n_six_unique_equality :
 ```
 
 **Lean4 kernel certification**: σ(6) = 12, φ(6) = 2, τ(6) = 4, σφ = nτ = 24.
-This is the **core constant** of n6-architecture (atlas.n6 MILL-SPF) fully verified in Lean4.
+This is the **core constant** of canon (atlas.n6 MILL-SPF) fully verified in Lean4.
 
 ## Theorem B total formal coverage — ≈99.8%
 
@@ -112,7 +112,7 @@ Capstone:     Built (1321 jobs)
 
 **The "n=6 unique equality" essence of Theorem B is permanently inscribed in the Lean4 kernel as a draft/demonstration candidate.**
 
-n6-architecture's mathematical substrate → **machine-verified draft**.
+canon's mathematical substrate → **machine-verified draft**.
 
 - Of atlas.n6's thousands of EXACT constants, those depending on σφ=nτ → can be **promoted to FORMAL draft candidates**
 - Of 39 papers citing n=6 uniqueness → Lean4 certificate attachable

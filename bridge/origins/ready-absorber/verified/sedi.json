@@ -895,7 +895,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-a0ceda72/docs/cern-submission.md",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -903,7 +903,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-a0ceda72/docs/cross-discovery-triangular.md",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -1175,7 +1175,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-a0ceda72/docs/hypotheses/H-CERN-13-topological-sensitivity-bsm.md",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -1671,7 +1671,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-a0ceda72/docs/hypotheses/H-CX-1036-photovoltaic-optimal-bandgap.md",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "high",
       "score": 16.666666666666664,
       "n6_matches": 0
@@ -6439,7 +6439,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-a0ceda72/docs/parallel-verification-2026-03-27.md",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -6447,7 +6447,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-a0ceda72/docs/pre-registered-predictions.md",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "high",
       "score": 14.285714285714285,
       "n6_matches": 0
@@ -7639,7 +7639,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-a0ceda72/tools/Cargo.lock",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -7647,7 +7647,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-a0ceda72/tools/Cargo.toml",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -7655,7 +7655,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-a0ceda72/tools/dashboard/index.html",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -7663,7 +7663,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-a0ceda72/tools/discovery-engine/Cargo.lock",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -7671,7 +7671,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-a0ceda72/tools/discovery-engine/Cargo.toml",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "critical",
       "score": 35.714285714285715,
       "n6_matches": 0
@@ -7687,7 +7687,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-a0ceda72/tools/formula-miner/Cargo.lock",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -7695,7 +7695,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-a0ceda72/tools/formula-miner/Cargo.toml",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -7711,7 +7711,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-a0ceda72/tools/graph-builder/Cargo.lock",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -7719,7 +7719,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-a0ceda72/tools/graph-builder/Cargo.toml",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -7735,7 +7735,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-a0ceda72/tools/signal-analyzer/Cargo.lock",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -7743,7 +7743,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-a0ceda72/tools/signal-analyzer/Cargo.toml",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -8271,7 +8271,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-a2265680/docs/cern-submission.md",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -8279,7 +8279,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-a2265680/docs/cross-discovery-triangular.md",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -8551,7 +8551,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-a2265680/docs/hypotheses/H-CERN-13-topological-sensitivity-bsm.md",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -9047,7 +9047,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-a2265680/docs/hypotheses/H-CX-1036-photovoltaic-optimal-bandgap.md",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "high",
       "score": 16.666666666666664,
       "n6_matches": 0
@@ -13815,7 +13815,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-a2265680/docs/parallel-verification-2026-03-27.md",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -13823,7 +13823,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-a2265680/docs/pre-registered-predictions.md",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "high",
       "score": 14.285714285714285,
       "n6_matches": 0
@@ -15015,7 +15015,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-a2265680/tools/Cargo.lock",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -15023,7 +15023,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-a2265680/tools/Cargo.toml",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -15031,7 +15031,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-a2265680/tools/dashboard/index.html",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -15039,7 +15039,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-a2265680/tools/discovery-engine/Cargo.lock",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -15047,7 +15047,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-a2265680/tools/discovery-engine/Cargo.toml",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "critical",
       "score": 35.714285714285715,
       "n6_matches": 0
@@ -15063,7 +15063,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-a2265680/tools/formula-miner/Cargo.lock",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -15071,7 +15071,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-a2265680/tools/formula-miner/Cargo.toml",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -15087,7 +15087,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-a2265680/tools/graph-builder/Cargo.lock",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -15095,7 +15095,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-a2265680/tools/graph-builder/Cargo.toml",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -15111,7 +15111,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-a2265680/tools/signal-analyzer/Cargo.lock",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -15119,7 +15119,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-a2265680/tools/signal-analyzer/Cargo.toml",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -15647,7 +15647,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-a254b3fa/docs/cern-submission.md",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -15655,7 +15655,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-a254b3fa/docs/cross-discovery-triangular.md",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -15927,7 +15927,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-a254b3fa/docs/hypotheses/H-CERN-13-topological-sensitivity-bsm.md",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -16423,7 +16423,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-a254b3fa/docs/hypotheses/H-CX-1036-photovoltaic-optimal-bandgap.md",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "high",
       "score": 16.666666666666664,
       "n6_matches": 0
@@ -21191,7 +21191,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-a254b3fa/docs/parallel-verification-2026-03-27.md",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -21199,7 +21199,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-a254b3fa/docs/pre-registered-predictions.md",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "high",
       "score": 14.285714285714285,
       "n6_matches": 0
@@ -22391,7 +22391,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-a254b3fa/tools/Cargo.lock",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -22399,7 +22399,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-a254b3fa/tools/Cargo.toml",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -22407,7 +22407,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-a254b3fa/tools/dashboard/index.html",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -22415,7 +22415,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-a254b3fa/tools/discovery-engine/Cargo.lock",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -22423,7 +22423,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-a254b3fa/tools/discovery-engine/Cargo.toml",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "critical",
       "score": 35.714285714285715,
       "n6_matches": 0
@@ -22439,7 +22439,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-a254b3fa/tools/formula-miner/Cargo.lock",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -22447,7 +22447,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-a254b3fa/tools/formula-miner/Cargo.toml",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -22463,7 +22463,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-a254b3fa/tools/graph-builder/Cargo.lock",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -22471,7 +22471,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-a254b3fa/tools/graph-builder/Cargo.toml",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -22487,7 +22487,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-a254b3fa/tools/signal-analyzer/Cargo.lock",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -22495,7 +22495,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-a254b3fa/tools/signal-analyzer/Cargo.toml",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -23023,7 +23023,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-a26748c0/docs/cern-submission.md",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -23031,7 +23031,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-a26748c0/docs/cross-discovery-triangular.md",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -23303,7 +23303,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-a26748c0/docs/hypotheses/H-CERN-13-topological-sensitivity-bsm.md",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -23799,7 +23799,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-a26748c0/docs/hypotheses/H-CX-1036-photovoltaic-optimal-bandgap.md",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "high",
       "score": 16.666666666666664,
       "n6_matches": 0
@@ -28567,7 +28567,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-a26748c0/docs/parallel-verification-2026-03-27.md",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -28575,7 +28575,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-a26748c0/docs/pre-registered-predictions.md",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "high",
       "score": 14.285714285714285,
       "n6_matches": 0
@@ -29767,7 +29767,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-a26748c0/tools/Cargo.lock",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -29775,7 +29775,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-a26748c0/tools/Cargo.toml",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -29783,7 +29783,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-a26748c0/tools/dashboard/index.html",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -29791,7 +29791,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-a26748c0/tools/discovery-engine/Cargo.lock",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -29799,7 +29799,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-a26748c0/tools/discovery-engine/Cargo.toml",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "critical",
       "score": 35.714285714285715,
       "n6_matches": 0
@@ -29815,7 +29815,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-a26748c0/tools/formula-miner/Cargo.lock",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -29823,7 +29823,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-a26748c0/tools/formula-miner/Cargo.toml",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -29839,7 +29839,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-a26748c0/tools/graph-builder/Cargo.lock",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -29847,7 +29847,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-a26748c0/tools/graph-builder/Cargo.toml",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -29863,7 +29863,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-a26748c0/tools/signal-analyzer/Cargo.lock",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -29871,7 +29871,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-a26748c0/tools/signal-analyzer/Cargo.toml",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -30399,7 +30399,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-abeebc10/docs/cern-submission.md",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -30407,7 +30407,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-abeebc10/docs/cross-discovery-triangular.md",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -30679,7 +30679,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-abeebc10/docs/hypotheses/H-CERN-13-topological-sensitivity-bsm.md",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -31175,7 +31175,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-abeebc10/docs/hypotheses/H-CX-1036-photovoltaic-optimal-bandgap.md",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "high",
       "score": 16.666666666666664,
       "n6_matches": 0
@@ -35943,7 +35943,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-abeebc10/docs/parallel-verification-2026-03-27.md",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -35951,7 +35951,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-abeebc10/docs/pre-registered-predictions.md",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "high",
       "score": 14.285714285714285,
       "n6_matches": 0
@@ -37143,7 +37143,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-abeebc10/tools/Cargo.lock",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -37151,7 +37151,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-abeebc10/tools/Cargo.toml",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -37159,7 +37159,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-abeebc10/tools/dashboard/index.html",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -37167,7 +37167,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-abeebc10/tools/discovery-engine/Cargo.lock",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -37175,7 +37175,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-abeebc10/tools/discovery-engine/Cargo.toml",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "critical",
       "score": 35.714285714285715,
       "n6_matches": 0
@@ -37191,7 +37191,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-abeebc10/tools/formula-miner/Cargo.lock",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -37199,7 +37199,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-abeebc10/tools/formula-miner/Cargo.toml",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -37215,7 +37215,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-abeebc10/tools/graph-builder/Cargo.lock",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -37223,7 +37223,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-abeebc10/tools/graph-builder/Cargo.toml",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -37239,7 +37239,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-abeebc10/tools/signal-analyzer/Cargo.lock",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -37247,7 +37247,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-abeebc10/tools/signal-analyzer/Cargo.toml",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -37775,7 +37775,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-acc2cafb/docs/cern-submission.md",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -37783,7 +37783,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-acc2cafb/docs/cross-discovery-triangular.md",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -38055,7 +38055,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-acc2cafb/docs/hypotheses/H-CERN-13-topological-sensitivity-bsm.md",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -38551,7 +38551,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-acc2cafb/docs/hypotheses/H-CX-1036-photovoltaic-optimal-bandgap.md",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "high",
       "score": 16.666666666666664,
       "n6_matches": 0
@@ -43319,7 +43319,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-acc2cafb/docs/parallel-verification-2026-03-27.md",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -43327,7 +43327,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-acc2cafb/docs/pre-registered-predictions.md",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "high",
       "score": 14.285714285714285,
       "n6_matches": 0
@@ -44519,7 +44519,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-acc2cafb/tools/Cargo.lock",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -44527,7 +44527,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-acc2cafb/tools/Cargo.toml",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -44535,7 +44535,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-acc2cafb/tools/dashboard/index.html",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -44543,7 +44543,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-acc2cafb/tools/discovery-engine/Cargo.lock",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -44551,7 +44551,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-acc2cafb/tools/discovery-engine/Cargo.toml",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "critical",
       "score": 35.714285714285715,
       "n6_matches": 0
@@ -44567,7 +44567,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-acc2cafb/tools/formula-miner/Cargo.lock",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -44575,7 +44575,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-acc2cafb/tools/formula-miner/Cargo.toml",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -44591,7 +44591,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-acc2cafb/tools/graph-builder/Cargo.lock",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -44599,7 +44599,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-acc2cafb/tools/graph-builder/Cargo.toml",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -44615,7 +44615,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-acc2cafb/tools/signal-analyzer/Cargo.lock",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -44623,7 +44623,7 @@
     {
       "path": "sedi/.claude/worktrees/agent-acc2cafb/tools/signal-analyzer/Cargo.toml",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0

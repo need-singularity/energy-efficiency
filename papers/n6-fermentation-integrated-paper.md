@@ -8,7 +8,7 @@ requires:
 ---
 # [CANONICAL v2] Ultimate fermentation / brewing n=6 perfect-number stoichiometry integration (HEXA-FERMENT-INT) — n=6 arithmetic coordinate mapping
 
-> **Author**: Park Minwoo (n6-architecture)
+> **Author**: Park Minwoo (canon)
 > **Category**: fermentation-integrated — P-110 integrated seed paper
 > **Version**: v2 (2026-04-18 canonical)
 > **Upstream BT**: BT-1391, BT-15, BT-401, BT-403, BT-408
@@ -143,10 +143,10 @@ Number-theoretic prerequisites:
 
 | Primitive | Role | Reference |
 |-----------|------|-----------|
-| σ(n) divisor sum | OEIS A000203, σ(6)=12 | n6shared/rules/common.json |
-| τ(n) divisor count | OEIS A000005, τ(6)=4 | n6shared/rules/common.json |
-| φ(n) Euler / smallest prime | OEIS A000010, φ(6)=2 | n6shared/rules/common.json |
-| sopfr(n) sum of prime factors | OEIS A001414, sopfr(6)=5 | n6shared/rules/common.json |
+| σ(n) divisor sum | OEIS A000203, σ(6)=12 | canonshared/rules/common.json |
+| τ(n) divisor count | OEIS A000005, τ(6)=4 | canonshared/rules/common.json |
+| φ(n) Euler / smallest prime | OEIS A000010, φ(6)=2 | canonshared/rules/common.json |
+| sopfr(n) sum of prime factors | OEIS A001414, sopfr(6)=5 | canonshared/rules/common.json |
 
 ## §4 STRUCT (system structure) — n=6 Architecture
 
@@ -984,8 +984,8 @@ C6H12O6 -> 2 C2H5OH + 2 CO2          (EMP glycolysis)
 
 ### D. References
 
-- n6shared/rules/common.json (R0–R27)
-- n6shared/rules/n6-architecture.json (N61–N65)
+- canonshared/rules/common.json (R0–R27)
+- canonshared/rules/canon.json (N61–N65)
 - atlas.n6 (`$NEXUS/shared/n6/atlas.n6`) — `@R fermentation = 6/6 EXACT :: n6atlas [10*]`
 - papers/_registry.json (P-110 registered)
 - OEIS A000203/A000005/A000010/A001414

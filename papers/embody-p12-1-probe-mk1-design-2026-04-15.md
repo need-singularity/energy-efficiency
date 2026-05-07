@@ -24,7 +24,7 @@ requires:
 ---
 # [EMBODY P12-1] HEXA-PROPULSION Probe Mk.I — detailed design for a 2030 deep-space 0.01c probe
 
-> **Author**: Minwoo Park (n6-architecture)
+> **Author**: Minwoo Park (canon)
 > **Category**: hexa-propulsion — EMBODY P12-1 Probe completed specification
 > **Version**: v1 (2026-04-15 initial)
 > **Prior**: P10-2 HEXA-PROPULSION τ=4+2 + P11-1 D-³He Q>1 formalisation
@@ -456,9 +456,9 @@ risk items.
 5. Forward, R., "Roundtrip Interstellar Travel Using Laser-Pushed Lightsails", JSR, 1984.
 6. NASA, "New Horizons Mission Overview", 2015. (Pluto flyby)
 7. ESA, "Starlight Mission Concept", 2024. (Laser-driven probe)
-8. n6-architecture, "HEXA-PROPULSION P10-2", papers/embody-p10-2-new-domain-design-2026-04-15.md.
-9. n6-architecture, "HEXA-PROPULSION P11-1 D-³He Q>1", papers/embody-p11-1-hexa-propulsion-fusion-2026-04-15.md.
-10. n6-architecture, "HEXA-GATE Mk.I completion candidate", commit eb520438.
+8. canon, "HEXA-PROPULSION P10-2", papers/embody-p10-2-new-domain-design-2026-04-15.md.
+9. canon, "HEXA-PROPULSION P11-1 D-³He Q>1", papers/embody-p11-1-hexa-propulsion-fusion-2026-04-15.md.
+10. canon, "HEXA-GATE Mk.I completion candidate", commit eb520438.
 11. atlas.n6, σ·φ=n·τ L0 lock, $NEXUS/shared/n6/atlas.n6.
 
 ---

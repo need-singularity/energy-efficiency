@@ -43,7 +43,7 @@ For each paper, the following **10-criterion Certification Card (CC)** is issued
 
 ## 1. Nine papers under certification
 
-Among the representative papers of the n6-architecture repository, the following nine are the objects of verification-worthiness review in this session (2026-04-14):
+Among the representative papers of the canon repository, the following nine are the objects of verification-worthiness review in this session (2026-04-14):
 
 | # | Paper file | Domain | Prior BT links |
 |---|-----------|--------|----------------|
@@ -285,7 +285,7 @@ Among the representative papers of the n6-architecture repository, the following
 
 ### 4.1 Review scope limitation
 
-This certification chain reviews **9 of the 120 papers** in the n6-architecture repository. The remaining 111 are **unreviewed** and **outside the scope of this session**. Extension in future sessions is required.
+This certification chain reviews **9 of the 120 papers** in the canon repository. The remaining 111 are **unreviewed** and **outside the scope of this session**. Extension in future sessions is required.
 
 ### 4.2 CC-3 counter-example criterion
 

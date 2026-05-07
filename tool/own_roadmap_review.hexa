@@ -10,11 +10,11 @@
 // + raw 47 cross-repo + raw 65 idempotent (same JSON schema, same exit codes).
 //
 // @tool(slug="own_roadmap_review", desc="own#19 weekly roadmap-review reminder — scans known roadmap artifacts (millennium.json / ROADMAP.md / theory/roadmap-v3/ / etc) for staleness > THRESHOLD_DAYS=7 since last git commit, emits JSON report, exits non-zero on staleness.")
-// @usage(hexa /Users/ghost/core/n6-architecture/tool/own_roadmap_review.hexa)
+// @usage(hexa /Users/ghost/core/canon/tool/own_roadmap_review.hexa)
 // @omega-saturation-exempt("simple cron reminder — single-file scan over fixed candidate list, converges trivially")
 // @exit_codes(0=fresh, 1=stale roadmap detected, 2=internal error)
 
-let REPO_ROOT       = "/Users/ghost/core/n6-architecture"
+let REPO_ROOT       = "/Users/ghost/core/canon"
 let THRESHOLD_DAYS  = 7
 let REPORT_PATH     = REPO_ROOT + "/reports/n6_own19_roadmap_review.json"
 

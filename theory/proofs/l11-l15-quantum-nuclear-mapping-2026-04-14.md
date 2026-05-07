@@ -1,7 +1,7 @@
 # L11-L15 n=6 quantum / nuclear / Planck mapping
 
 > **Date**: 2026-04-14
-> **Task**: DSE-P6-2 (n6-architecture P6 Mk.III-β)
+> **Task**: DSE-P6-2 (canon P6 Mk.III-β)
 > **Purpose**: beyond the existing L0-L10 (quarks to DNA/molecules), empirically map the extensibility of the n=6 framework up to L11 (quantum dots), L12 (nuclear isomers), L13 (quark confinement), L14 (sub-standard model), L15 (Planck)
 > **Principles**: HEXA-FIRST, English required, strict error recording, honest EXPLORE/FAIL labeling
 > **Input SSOTs**:
@@ -355,4 +355,4 @@ In short: n=6 can organize the **discrete arithmetic skeleton of the universe** 
 
 *Verification method*: per the HEXA-FIRST principle, all values are verified against the integer arithmetic of n=6 functions. Decimal values record errors against PDG 2024 / CODATA 2018 measurements.
 
-*Author*: n6-architecture P6 Mk.III-β task DSE-P6-2, 2026-04-14
+*Author*: canon P6 Mk.III-β task DSE-P6-2, 2026-04-14

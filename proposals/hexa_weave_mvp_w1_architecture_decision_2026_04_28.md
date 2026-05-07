@@ -75,7 +75,7 @@ Implementation (clone, env setup, weight download) is gated on user approval and
 | Option | Path | Pro | Con |
 |--------|------|-----|-----|
 | **A** | `~/core/hexa-weave/` (new sister) | clean separation; no own/raw rule pollution; matches parent spec's `core/hexa-weave/` references in §3 W1/W2 rows | requires new repo + .own/CLAUDE.md scaffold + CI integration |
-| B | `n6-architecture/experiments/hexa-weave/` | reuses existing repo + own gates | **violates own 5 theory-report-separation** (experiments/ is for time-stamped results, not for live ML pipeline code) — disqualifying |
+| B | `canon/experiments/hexa-weave/` | reuses existing repo + own gates | **violates own 5 theory-report-separation** (experiments/ is for time-stamped results, not for live ML pipeline code) — disqualifying |
 | C | `~/core/anima/<sub-domain>/` | anima already has anima-physics, anima-cpgd-research with research-pipeline patterns | anima is consciousness/physics-focused; hexa-weave is biology/ML; thematic mismatch + risks anima's own-rule scope creep |
 | D | `~/core/nexus/labs/hexa-weave/` | nexus has lab pattern conceptually | `nexus/labs/` does not exist (verified by `ls /Users/ghost/core/nexus/`); nexus is engine/dispatch infra, not lab incubator |
 
@@ -87,7 +87,7 @@ Implementation (clone, env setup, weight download) is gated on user approval and
 2. **own 5 violation blocks Option B**: `experiments/` is project-local for time-stamped artifacts (per own 5 scope text). Hosting a 12-week live ML pipeline there would violate the theory-report separation gate.
 3. **Option D path doesn't exist**: `~/core/nexus/labs/` was hypothesized but `ls` confirms no such directory. Creating it would extend nexus's footprint into a new responsibility (lab incubation) that nexus's current scope (engine/dispatch/discovery) doesn't claim.
 4. **Option C thematic mismatch**: anima's existing sub-repos (anima-physics, anima-cpgd-research, anima-eeg, anima-hexad, etc.) are consciousness/physics/EEG-themed. Adding a protein-folding ML pipeline would break anima's umbrella coherence.
-5. **Sister repo isolation**: hexa-weave has its own dependency stack (PyTorch, BioPython, OpenFold), CI cadence, and dataset weight (~50 GB PDB-multimer subset). Sister-repo isolation prevents these from polluting n6-architecture's repo size or CI.
+5. **Sister repo isolation**: hexa-weave has its own dependency stack (PyTorch, BioPython, OpenFold), CI cadence, and dataset weight (~50 GB PDB-multimer subset). Sister-repo isolation prevents these from polluting canon's repo size or CI.
 
 ### §3.3 Repo init plan (W1 mock-up only — NOT executed)
 

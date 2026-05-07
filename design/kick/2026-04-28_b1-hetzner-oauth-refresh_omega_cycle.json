@@ -92,7 +92,7 @@
   },
 
   "registry_sync": {
-    "registry_path": "/Users/ghost/core/n6-architecture/state/discovery_absorption/registry.jsonl",
+    "registry_path": "/Users/ghost/core/canon/state/discovery_absorption/registry.jsonl",
     "to_be_absorbed": true,
     "marker_required": true
   },

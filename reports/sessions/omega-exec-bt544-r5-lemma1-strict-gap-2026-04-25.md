@@ -523,7 +523,7 @@ partial-result density** and **easier near-term tractability**
 
 This report's verdict places the joint outcome in the **first or
 third row** (R5 PASS_LITERATURE established here); the R1 Lemma 1
-column is **not yet decided** in the n6-architecture corpus.
+column is **not yet decided** in the canon corpus.
 
 ### §5.4 R1↔R5 confusion guard
 

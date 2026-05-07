@@ -1,0 +1,104 @@
+{
+  "_doc": "n6 fellows-research integrity audit spec — Seed E+F drift prevention. 42 items over 6 groups. Counted per fellows-research.md §연결 레지스트리 declaration. raw#15: no hardcode — tool reads this spec.",
+  "_schema_version": "1.0.0",
+  "_created": "2026-04-21",
+  "_source_commit": "f7939c66",
+  "_rationale": "Seed E drill (2026-04-21) detected 10 drifts (32/42 = 76.2%). Commit f7939c66 restored 42/42. This spec encodes the invariants so drift is caught by pre-commit.",
+  "_total_items": 42,
+
+  "repo_root_env": "N6_REPO_ROOT",
+  "repo_root_fallback": "$HOME/core/canon",
+
+  "groups": [
+    {
+      "id": "G1_domain_mds",
+      "label": "domains/cognitive/ai-*/ai-*.md × 8",
+      "items_per_domain": 3,
+      "domains": [
+        "ai-inference-cost",
+        "ai-training-cost",
+        "ai-quality-scale",
+        "ai-agent-serving",
+        "ai-enterprise-custom",
+        "ai-eval-pipeline",
+        "ai-consciousness",
+        "ai-safety"
+      ],
+      "checks": [
+        { "key": "has_s6_evolve", "pattern": "## S6 EVOLVE", "kind": "contains" },
+        { "key": "has_mkv_verify", "pattern": "## Mk.V VERIFY", "kind": "contains" },
+        { "key": "has_self_bt_ref", "pattern": "BT-142", "kind": "contains_self_bt" }
+      ],
+      "_count": 24,
+      "_comment": "8 domains × 3 content checks = 24. BT numbers map positionally: inference-cost→1421, training-cost→1422, quality-scale→1423, agent-serving→1424, enterprise-custom→1425, eval-pipeline→1426, consciousness→1427, safety→1428."
+    },
+
+    {
+      "id": "G2_bt_nodes",
+      "label": "theory/breakthroughs/bt-142{1..8}-*-2026-04-20.md × 8",
+      "path_pattern": "theory/breakthroughs/bt-{N}-*-2026-04-20.md",
+      "bt_numbers": [1421, 1422, 1423, 1424, 1425, 1426, 1427, 1428],
+      "checks": [
+        { "key": "file_exists_and_self_ref", "pattern": "BT-{N}", "kind": "exists_and_contains_self" }
+      ],
+      "_count": 8
+    },
+
+    {
+      "id": "G3_atlas_constants",
+      "label": "theory/constants/atlas-constants.md §Mk.V Anchor + 8 EXACT",
+      "path": "theory/constants/atlas-constants.md",
+      "checks": [
+        { "key": "has_mkv_anchor_section", "pattern": "Mk.V Anchor Constants (AI Fellows 8-domain)", "kind": "contains" },
+        { "key": "has_8_mkv_constants", "pattern": "(Mk.V)", "kind": "min_count", "min": 8 }
+      ],
+      "_count": 2
+    },
+
+    {
+      "id": "G4_cognitive_index",
+      "label": "domains/cognitive/_index.json _version ≥ 1.4.0 + 8 mk5 + ai-safety",
+      "path": "domains/cognitive/_index.json",
+      "checks": [
+        { "key": "version_gte_1_4_0", "field": "_version", "kind": "semver_gte", "min": "1.4.0" },
+        { "key": "has_ai_safety_slug", "field": "domains[*].slug", "kind": "list_contains", "value": "ai-safety" }
+      ],
+      "_count": 2
+    },
+
+    {
+      "id": "G5_discovery_graph",
+      "label": "canonshared/discovery_graph.json meta v16 + measured node/edge match",
+      "path": "canonshared/discovery_graph.json",
+      "checks": [
+        { "key": "version_gte_v16", "field": "meta.version", "kind": "semver_gte", "min": "16.0.0" },
+        { "key": "total_nodes_matches_measured", "field": "meta.total_nodes", "kind": "eq_measured_nodes" },
+        { "key": "total_edges_matches_measured", "field": "meta.total_edges", "kind": "eq_measured_edges" },
+        { "key": "has_notes_v16_ai_fellows_mk5", "field": "meta.notes_v16_ai_fellows_mk5", "kind": "field_nonempty" }
+      ],
+      "_count": 4
+    },
+
+    {
+      "id": "G6_hypotheses_index",
+      "label": "theory/breakthroughs/_hypotheses_index.json verified field present",
+      "path": "theory/breakthroughs/_hypotheses_index.json",
+      "checks": [
+        { "key": "has_meta_verified", "field": "_meta.verified", "kind": "field_exists" },
+        { "key": "verified_gte_666", "field": "_meta.verified", "kind": "int_gte", "min": 666 }
+      ],
+      "_count": 2
+    }
+  ],
+
+  "exit_codes": {
+    "pass_42_of_42": 0,
+    "any_fail": 1,
+    "spec_or_repo_error": 2
+  },
+
+  "output_format": {
+    "stdout": "human_readable_per_item_table_then_integrity_score_percent",
+    "stderr_on_fail": "one_json_line_per_fail: N6_AUDIT_FAIL {\"group\":\"...\",\"item\":\"...\",\"reason\":\"...\"}"
+  }
+}

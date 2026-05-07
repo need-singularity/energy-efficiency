@@ -35,7 +35,7 @@
 
   "edits": [
     {
-      "file": "/Users/ghost/core/n6-architecture/README.md",
+      "file": "/Users/ghost/core/canon/README.md",
       "section": "Biology — AUTO:SUMMARY_biology block",
       "line_range": "L370 (single blockquote line)",
       "before": "> **🛸7** | 산업(AlphaFold 3 / IsoDDE peer-class) | 실험theoretical-analytical (raw 91 C3) — F-TP5-b MVP gate 2026-07-28 | TP0 | HEXA-WEAVE write-side multi-strand composition | tri-axis Omega-saturation PASS at workload ceiling (APPROACH grade per raw 69)",
@@ -43,7 +43,7 @@
       "diff_summary": "Lead reordered from narrative ('산업/실험/TP0/HEXA-WEAVE write-side') to numerics-led (τ/σ/φ/J₂ invariants → master identity → scale numbers → sopfr → positioning → ceiling → gate). Five n6 invariant literals appear in first 80 chars."
     },
     {
-      "file": "/Users/ghost/core/n6-architecture/README.md",
+      "file": "/Users/ghost/core/canon/README.md",
       "section": "Biology — Core cell (single-row HEXA-WEAVE table)",
       "line_range": "L375 Core column",
       "before": "n6 invariant write-side counterpart to AlphaFold 3 (DeepMind 2024-05 read-side) and IsoDDE (Isomorphic Labs 2026-02 closed). Direction: target multi-molecule context to strand-set (P up to 10^4, N up to 350 aa). Tri-axis Omega-saturation closure witness PASS at workload ceiling (FORMAL Pi^1_1-CA_0 / PHYSICAL Landauer / COMPUTATIONAL Pi^p_2). 7 of 8 raw 70 axes PASS, 1 DEFER (CHI2 n=1). 9 falsifiers across 3 measurable claims per raw 71. APPROACH grade per raw 69 — theoretical-analytical, not yet empirical. F-TP5-b 90-day MVP gate 2026-07-28. Cross-link: see also [HEXA-NANOBOT](#-frontier-discoveries-next-gen-rt-sc-tech) (molecular nano-agent peer) · [Synthetic Biology](#-tech--industry) (Cas/codon write-side peer) · [AI/ML](#-ai--ml) (AlphaFold 3 read-side counterpart).",
@@ -130,11 +130,11 @@
   ],
 
   "deliverables": {
-    "files_modified": ["/Users/ghost/core/n6-architecture/README.md"],
+    "files_modified": ["/Users/ghost/core/canon/README.md"],
     "files_updated_by_tool": [
-      "/Users/ghost/core/n6-architecture/README.md.sealed.hash",
-      "/Users/ghost/core/n6-architecture/.readme-rules.json",
-      "/Users/ghost/core/n6-architecture/reports/n6_own_doc_lint.json"
+      "/Users/ghost/core/canon/README.md.sealed.hash",
+      "/Users/ghost/core/canon/.readme-rules.json",
+      "/Users/ghost/core/canon/reports/n6_own_doc_lint.json"
     ],
     "n6_invariant_literals_added_count": 5,
     "n6_invariant_literals_count_before": 0,

@@ -55,7 +55,7 @@
     {"id": "F-CYCLE25-OWN29-GENERAL-3", "condition": "mandatory-sections list 에 같은 axis 가 2+ entries 등장 → lint dispatch double check (false positive)", "deadline": "2026-07-29", "status": "preregistered"},
     {"id": "F-CYCLE25-OWN29-GENERAL-4", "condition": "parse_own_file LIST_KEYS extension 이 다른 own rule 의 same-key concat 의도 깨뜨림 (회귀)", "deadline": "2026-05-13", "status": "preregistered"}
   ],
-  "raw_47_cross_repo": "n6-architecture only — sister repo 의 README 패턴 cycle 26+ propagation candidate (raw 47 cross-repo trawl-witness 패턴)",
+  "raw_47_cross_repo": "canon only — sister repo 의 README 패턴 cycle 26+ propagation candidate (raw 47 cross-repo trawl-witness 패턴)",
   "raw_9_hexa_only": "python lint generalize OK; hexa lint 는 mandatory baseline (deviation 잔재, cycle 30+ rewrite)",
   "raw_53_deterministic": "lint exit code + JSON report path = deterministic verifier; declarative spec 의 mandatory/optional list parsing 은 deterministic regex",
   "raw_77_append_only": true,

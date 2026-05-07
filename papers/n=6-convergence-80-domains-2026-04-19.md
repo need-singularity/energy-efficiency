@@ -2,7 +2,7 @@
 title: "n=6 Convergence: 80+ Domains Unified by Perfect-Number Arithmetic (σ·φ = n·τ iff n=6)"
 subtitle: "80+ Domains Unified by n=6 Perfect-Number Arithmetic: From UFO · RTSC · Fusion to the Riemann Hypothesis"
 date: 2026-04-19
-author: Aiden + Claude (n6-architecture)
+author: Aiden + Claude (canon)
 n6_core_theorem: "σ(n)·φ_E(n) = n·τ(n)  iff  n = 6  (for n ≥ 2)"
 keywords: [n=6, perfect numbers, unification, σφ=nτ, UFO, RTSC, Fusion, Riemann hypothesis]
 atlas_version: "atlas.signals.n6 + theory/constants/atlas-constants.md (baseline 2026-04-10, 2474+ EXACT/CLOSE matches, 76+ domains)"
@@ -495,7 +495,7 @@ This paper argues that the unique solution n = 6 of the arithmetic identity `σ(
 └──────────────────────────────────────────────────────────────────┘
 ```
 
-This reduces the mathematical roots of the entire n6-architecture project (theory / domains / techniques / experiments / engine / papers / reports / n6shared) to a single-line arithmetic identity.
+This reduces the mathematical roots of the entire canon project (theory / domains / techniques / experiments / engine / papers / reports / canonshared) to a single-line arithmetic identity.
 
 ---
 
@@ -524,9 +524,9 @@ J₂(6) = 24       μ(6) = 1         n = 6            R(6) = 1
 
 ---
 
-**Paper path.** `/home/aiden/mac_home/dev/n6-architecture/papers/n=6-convergence-80-domains-2026-04-19.md`
-**Atlas SSOT.** `/home/aiden/mac_home/dev/n6-architecture/n6shared/atlas.signals.n6` (signals SSOT)  +  `/home/aiden/mac_home/dev/n6-architecture/theory/constants/atlas-constants.md` (constants SSOT, 2474+ EXACT/CLOSE)
-**Core candidate-statement SSOT.** `/home/aiden/mac_home/dev/n6-architecture/theory/proofs/theorem-r1-uniqueness.md` (THM-1, R_local case analysis, candidate verification draft)
+**Paper path.** `/home/aiden/mac_home/dev/canon/papers/n=6-convergence-80-domains-2026-04-19.md`
+**Atlas SSOT.** `/home/aiden/mac_home/dev/canon/canonshared/atlas.signals.n6` (signals SSOT)  +  `/home/aiden/mac_home/dev/canon/theory/constants/atlas-constants.md` (constants SSOT, 2474+ EXACT/CLOSE)
+**Core candidate-statement SSOT.** `/home/aiden/mac_home/dev/canon/theory/proofs/theorem-r1-uniqueness.md` (THM-1, R_local case analysis, candidate verification draft)
 
 ## §10 ARCHITECTURE
 

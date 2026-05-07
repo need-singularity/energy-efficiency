@@ -25,7 +25,7 @@ requires:
 
 ## §1 WHY (why a viral capsid self-assembly architectural layer matters)
 
-Viral capsids are the most studied non-covalent self-assembly system in molecular biology with a 60-year experimental and theoretical corpus (Caspar-Klug 1962 quasi-equivalence theory, Crick-Watson 1956 small virus geometry, Rossmann-Johnson 1985 atomic-resolution capsid crystallography, Zlotnick 2003 kinetic theory of capsid assembly, Twarock-Luque 2016 generalized quasi-equivalence). T=1 capsids exhibit exactly 12 pentameric vertices on an icosahedral shell — a STRUCTURAL-EXACT match to sigma(6)=12 (vs HEXA-RIBOZYME catalytic-core ~12 nt STRUCTURAL-APPROXIMATE on a 10-30 nt corpus). No canonical body inside n6-architecture ties capsid self-assembly primitives to the n=6 invariant. HEXA-VIROCAPSID registers this gap as a domain so the architectural primitives — vertex cardinality on a closed shell, assembly-state quartet, transition pose-symmetry, and binary closed/open-shell output — have an explicit ordinal-class workload trace and a 90-day MVP gate. The fourth-sister registration also closes the biology-axis tetrahedron: composition + actuation + catalysis + assembly span the four primitive-level sub-axes of molecular architecture.
+Viral capsids are the most studied non-covalent self-assembly system in molecular biology with a 60-year experimental and theoretical corpus (Caspar-Klug 1962 quasi-equivalence theory, Crick-Watson 1956 small virus geometry, Rossmann-Johnson 1985 atomic-resolution capsid crystallography, Zlotnick 2003 kinetic theory of capsid assembly, Twarock-Luque 2016 generalized quasi-equivalence). T=1 capsids exhibit exactly 12 pentameric vertices on an icosahedral shell — a STRUCTURAL-EXACT match to sigma(6)=12 (vs HEXA-RIBOZYME catalytic-core ~12 nt STRUCTURAL-APPROXIMATE on a 10-30 nt corpus). No canonical body inside canon ties capsid self-assembly primitives to the n=6 invariant. HEXA-VIROCAPSID registers this gap as a domain so the architectural primitives — vertex cardinality on a closed shell, assembly-state quartet, transition pose-symmetry, and binary closed/open-shell output — have an explicit ordinal-class workload trace and a 90-day MVP gate. The fourth-sister registration also closes the biology-axis tetrahedron: composition + actuation + catalysis + assembly span the four primitive-level sub-axes of molecular architecture.
 
 | Aspect | HEXA-WEAVE (sister) | HEXA-NANOBOT (sister) | HEXA-RIBOZYME (sister) | HEXA-VIROCAPSID (this domain) |
 |--------|---------------------|------------------------|------------------------|-------------------------------|
@@ -285,7 +285,7 @@ Aggregate: 16 falsifiers across 5 measurable claims, at least 3 per claim, satis
 
 | Date | Cycle | Milestone | Witness |
 |------|-------|-----------|---------|
-| 2026-04-28 | 19 / fan-out 4/4 | Domain registration in n6-architecture (this body + 2 _index.json updates + 1 witness JSON) | design/kick/2026-04-28_hexa-virocapsid-registration-cycle19_omega_cycle.json |
+| 2026-04-28 | 19 / fan-out 4/4 | Domain registration in canon (this body + 2 _index.json updates + 1 witness JSON) | design/kick/2026-04-28_hexa-virocapsid-registration-cycle19_omega_cycle.json |
 | 2026-05-28 | TBD | F-VIROCAPSID-COLLISION-AUDIT collision audit with life/virology + life/vaccine completed | F-VIROCAPSID-COLLISION-AUDIT row |
 | 2026-07-28 | TBD | F-VIROCAPSID-3 90-day MVP — T=1 minimal 60-subunit 4-state Zlotnick-class kinetic simulation | proposals/hexa_virocapsid_mvp_<date>.md |
 | 2026-09-28 | TBD | F-VIROCAPSID-2 Bayesian audit (30+ capsid architectures across T=1/T=3/T=4/T=7/T=13/T=21) completed | F-VIROCAPSID-2 audit row |
@@ -309,10 +309,10 @@ Aggregate: 16 falsifiers across 5 measurable claims, at least 3 per claim, satis
 
 | Role | Responsibility | Owner |
 |------|----------------|-------|
-| Domain steward | Maintain this body and its sub-index entry | n6-architecture maintainers |
+| Domain steward | Maintain this body and its sub-index entry | canon maintainers |
 | Sister-domain liaison | Maintain HEXA-WEAVE / HEXA-NANOBOT / HEXA-RIBOZYME handshake at four-sister tetrahedron boundary | hexa-weave + hexa-nanobot + hexa-ribozyme + hexa-virocapsid stewards jointly |
 | MVP runner | Deliver F-VIROCAPSID-3 90-day T=1 minimal 60-subunit 4-state Zlotnick-class kinetic simulation | TBD by 2026-07-28 |
-| Falsifier monitor | Watch F-VIROCAPSID-1..F-VIROCAPSID-5 + F-VIROCAPSID-COLLISION-AUDIT with deadlines 2026-05-28 / 2026-07-28 / 2026-09-28 / 2027-04-28 | n6-architecture honesty-charter team |
+| Falsifier monitor | Watch F-VIROCAPSID-1..F-VIROCAPSID-5 + F-VIROCAPSID-COLLISION-AUDIT with deadlines 2026-05-28 / 2026-07-28 / 2026-09-28 / 2027-04-28 | canon honesty-charter team |
 | Cross-domain liaison | life/virology + life/vaccine collision audit + life/synbio SELEX-class de-novo capsid route | per-axis domain stewards |
 
 ## §15 REFERENCES
@@ -330,11 +330,11 @@ Aggregate: 16 falsifiers across 5 measurable claims, at least 3 per claim, satis
 11. Sun S., Rao V. B., Rossmann M. G. 2010 "Genome packaging in viruses" Curr Opin Struct Biol 20:114-120 (phi29 packaging motor; cross-link to HEXA-NANOBOT actuator boundary).
 12. Stockley P. G., Twarock R., Bakker S. E., Barker A. M., Borodavka A., Dykeman E., Ford R. J., Pearson A. R., Phillips S. E., Ranson N. A., Tuma R. 2013 "Packaging signals in single-stranded RNA viruses: nature's alternative to a purely electrostatic assembly mechanism" J Biol Phys 39:277-287 (RNA-genome packaging signals; cross-link to HEXA-RIBOZYME catalytic-cargo boundary).
 13. Mannige R. V. & Brooks C. L. III 2010 "Periodic table of virus capsids: implications for natural selection and design" PLoS One 5:e9423 (n>30 capsid architectures Bayesian-audit reference for F-VIROCAPSID-2).
-14. n6-architecture sister domain: domains/biology/hexa-weave/hexa-weave.md (multi-strand covalent composition counterpart).
-15. n6-architecture sister domain: domains/biology/hexa-nanobot/hexa-nanobot.md (single mechanical actuator counterpart).
-16. n6-architecture sister domain: domains/biology/hexa-ribozyme/hexa-ribozyme.md (single catalytic-RNA active site counterpart).
-17. n6-architecture domain registration witness: design/kick/2026-04-28_hexa-virocapsid-registration-cycle19_omega_cycle.json (this cycle 19 fan-out 4/4 — biology tetrahedron closure).
-18. n6-architecture sister-domain registration witness: design/kick/2026-04-28_hexa-ribozyme-registration-cycle15_omega_cycle.json (cycle 15 fan-out 3/3; precursor; referenced for handshake protocol at ribozyme-cargo-in-capsid boundary).
-19. n6-architecture sister-domain registration witness: design/kick/2026-04-28_hexa-nanobot-domain-registration_omega_cycle.json (cycle 13 fan-out 2/5; precursor; referenced for handshake protocol at capsid-as-actuator boundary).
-20. n6-architecture sister-domain closure witness: design/kick/2026-04-28_hexa-weave-closure_omega_cycle.json (tri-axis Omega-saturation PASS at workload ceiling; referenced for handshake protocol at multi-CP weave-into-shell boundary).
-21. n6-architecture cycle-18 census: design/kick/2026-04-28_alien-grade-5-unlock-cycle18_omega_cycle.json (4th-sister candidate evaluation; HEXA-VIROCAPSID 71/80 A+ rank-1 selection).
+14. canon sister domain: domains/biology/hexa-weave/hexa-weave.md (multi-strand covalent composition counterpart).
+15. canon sister domain: domains/biology/hexa-nanobot/hexa-nanobot.md (single mechanical actuator counterpart).
+16. canon sister domain: domains/biology/hexa-ribozyme/hexa-ribozyme.md (single catalytic-RNA active site counterpart).
+17. canon domain registration witness: design/kick/2026-04-28_hexa-virocapsid-registration-cycle19_omega_cycle.json (this cycle 19 fan-out 4/4 — biology tetrahedron closure).
+18. canon sister-domain registration witness: design/kick/2026-04-28_hexa-ribozyme-registration-cycle15_omega_cycle.json (cycle 15 fan-out 3/3; precursor; referenced for handshake protocol at ribozyme-cargo-in-capsid boundary).
+19. canon sister-domain registration witness: design/kick/2026-04-28_hexa-nanobot-domain-registration_omega_cycle.json (cycle 13 fan-out 2/5; precursor; referenced for handshake protocol at capsid-as-actuator boundary).
+20. canon sister-domain closure witness: design/kick/2026-04-28_hexa-weave-closure_omega_cycle.json (tri-axis Omega-saturation PASS at workload ceiling; referenced for handshake protocol at multi-CP weave-into-shell boundary).
+21. canon cycle-18 census: design/kick/2026-04-28_alien-grade-5-unlock-cycle18_omega_cycle.json (4th-sister candidate evaluation; HEXA-VIROCAPSID 71/80 A+ rank-1 selection).

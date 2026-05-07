@@ -362,7 +362,7 @@ DFS round 8(128 item) after prior DFSnot covered in 8 count areas explored:
 - K_n of (spanning tree) count = n^{n-2} = 6^4 = 1296 = n^tau (Cayley)
 - det(g) = n * ( count) = n * n^tau = n^sopfr = 7776
 - ** link**: Fisher determinant det(g) = n^sopfr = 7776
-- DSE(n6-architecture): 6^5 = 7776 dim color space and same value
+- DSE(canon): 6^5 = 7776 dim color space and same value
 - Cayley count: n^{n-2} = n^tau = 1296 = 6^4 = n^tau
 - Fisher det = n * Cayley = n^sopfr
 - n^{n-2} = n^tau n-2=tau iff n=6 (DFS7-06 uniqueness) of **re-appears**

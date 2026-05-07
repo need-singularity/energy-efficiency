@@ -2,7 +2,7 @@
 
 **Date**: 2026-04-15
 **Round**: R1 (emergence onset)
-**Parent project**: n6-architecture main (STRUCTURE / ENGINE / SUBSTRATE 3 axes, confirmed)
+**Parent project**: canon main (STRUCTURE / ENGINE / SUBSTRATE 3 axes, confirmed)
 **Document scope**: dedicated axes for the **"7 Millennium Problems" subproject** under n6-arch main
 **Single attainment criterion**: `BT-541~546 completion (atlas [10*] EXACT)` — this alone justifies axes
 **BT-547**: Perelman 2003 resolved, reference only (no axis requirement)
@@ -13,7 +13,7 @@
 
 ## §0. Declaration
 
-This document is **Round 1 of dedicated axis emergence** for the **"7 Millennium Problems" subproject** of the n6-architecture project.
+This document is **Round 1 of dedicated axis emergence** for the **"7 Millennium Problems" subproject** of the canon project.
 
 ### 0.1 Relationship to n6-arch main
 
@@ -411,10 +411,10 @@ The 30 seeds of §2 are clustered by BT coverage · evidence character · tool t
   6. Kim-Sarnak θ = 7/64 approximation (Selberg class)
   7. dim M_k periodicity = σ (modular-form space dimension formula)
 - **Evidence file paths (minimum 3)**:
-  - `/Users/ghost/Dev/n6-architecture/theory/proofs/bernoulli-boundary-2026-04-11.md`
-  - `/Users/ghost/Dev/n6-architecture/reports/breakthroughs/bt-1394-millennium-dfs-round3-2026-04-12.md` ([DFS3-01] Kim-Sarnak)
-  - `/Users/ghost/Dev/n6-architecture/reports/breakthroughs/bt-1398-millennium-dfs-round6-2026-04-12.md` ([DFS6-07] Eisenstein, [DFS6-08] Dedekind)
-  - `/Users/ghost/Dev/n6-architecture/theory/study/p2/pure-p2-3-bernoulli-zeta.md`
+  - `/Users/ghost/Dev/canon/theory/proofs/bernoulli-boundary-2026-04-11.md`
+  - `/Users/ghost/Dev/canon/reports/breakthroughs/bt-1394-millennium-dfs-round3-2026-04-12.md` ([DFS3-01] Kim-Sarnak)
+  - `/Users/ghost/Dev/canon/reports/breakthroughs/bt-1398-millennium-dfs-round6-2026-04-12.md` ([DFS6-07] Eisenstein, [DFS6-08] Dedekind)
+  - `/Users/ghost/Dev/canon/theory/study/p2/pure-p2-3-bernoulli-zeta.md`
 - **Bottlenecks**:
   - RH itself cannot be resolved by Theorem B (RH concerns nontrivial-zero distribution; Theorem B is a special-value boundary)
   - Path interpreting 691 as operator T_k eigenvalue not constructed (bt-1392 §1.1 idea level)
@@ -451,10 +451,10 @@ The 30 seeds of §2 are clustered by BT coverage · evidence character · tool t
   6. Mathieu sporadic 7-fold types (CFSG classification)
   7. Kervaire-invariant-1 dimensions {2, 6, 14, 30, 62}, including dim=n (Browder 1969, Hill-Hopkins-Ravenel 2016)
 - **Evidence file paths**:
-  - `/Users/ghost/Dev/n6-architecture/reports/breakthroughs/bt-1398-millennium-dfs-round6-2026-04-12.md` ([DFS6-01~03])
-  - `/Users/ghost/Dev/n6-architecture/reports/breakthroughs/bt-1394-millennium-dfs-round3-2026-04-12.md` ([DFS3-04] exceptional Lie)
-  - `/Users/ghost/Dev/n6-architecture/reports/breakthroughs/bt-1392-millennium-7-breakthrough-ideas-2026-04-12.md` §1.2 (Out(S_6) GCT)
-  - `/Users/ghost/Dev/n6-architecture/theory/study/p3/n6-p3-1-independent-dfs.md` §9.3
+  - `/Users/ghost/Dev/canon/reports/breakthroughs/bt-1398-millennium-dfs-round6-2026-04-12.md` ([DFS6-01~03])
+  - `/Users/ghost/Dev/canon/reports/breakthroughs/bt-1394-millennium-dfs-round3-2026-04-12.md` ([DFS3-04] exceptional Lie)
+  - `/Users/ghost/Dev/canon/reports/breakthroughs/bt-1392-millennium-7-breakthrough-ideas-2026-04-12.md` §1.2 (Out(S_6) GCT)
+  - `/Users/ghost/Dev/canon/theory/study/p3/n6-p3-1-independent-dfs.md` §9.3
 - **Bottlenecks**:
   - Out(S_6) GCT obstruction is at **idea level** (bt-1392 §1.2). Actual plethysm computation not performed.
   - P vs NP ultimately concerns circuit-lower-bound / natural-proof barriers — classification theory alone cannot resolve it.
@@ -490,11 +490,11 @@ The 30 seeds of §2 are clustered by BT coverage · evidence character · tool t
   7. Buckmaster-Vicol 2019 convex integration (Onsager α=1/3 confirmed, weak-solution non-uniqueness)
   8. KdV 6-soliton C(6,2)=15 phase transition, Lax order sigma-sopfr
 - **Evidence file paths**:
-  - `/Users/ghost/Dev/n6-architecture/theory/study/p1/prob-p1-4-bt544-navier-stokes.md`
-  - `/Users/ghost/Dev/n6-architecture/theory/study/p2/prob-p2-4-navier-stokes-barriers.md`
-  - `/Users/ghost/Dev/n6-architecture/reports/breakthroughs/bt-1392-millennium-7-breakthrough-ideas-2026-04-12.md` §1.4
-  - `/Users/ghost/Dev/n6-architecture/reports/breakthroughs/bt-1394-millennium-dfs-round3-2026-04-12.md` ([DFS3-06,07])
-  - `/Users/ghost/Dev/n6-architecture/reports/breakthroughs/bt-1411-millennium-dfs-round19-2026-04-12.md` (KdV)
+  - `/Users/ghost/Dev/canon/theory/study/p1/prob-p1-4-bt544-navier-stokes.md`
+  - `/Users/ghost/Dev/canon/theory/study/p2/prob-p2-4-navier-stokes-barriers.md`
+  - `/Users/ghost/Dev/canon/reports/breakthroughs/bt-1392-millennium-7-breakthrough-ideas-2026-04-12.md` §1.4
+  - `/Users/ghost/Dev/canon/reports/breakthroughs/bt-1394-millennium-dfs-round3-2026-04-12.md` ([DFS3-06,07])
+  - `/Users/ghost/Dev/canon/reports/breakthroughs/bt-1411-millennium-dfs-round19-2026-04-12.md` (KdV)
 - **Bottlenecks**:
   - 3D smoothness existence is **unresolvable** even with the partial results of this axis (most are observation-level)
   - d=7 NS simulation not performed
@@ -530,10 +530,10 @@ The 30 seeds of §2 are clustered by BT coverage · evidence character · tool t
   7. GL(6) self-dual + E_6 Arthur block (bt-1413 Lemma 20v2-F)
   8. Kolyvagin Euler system rank ≤ 1 BSD
 - **Evidence file paths**:
-  - `/Users/ghost/Dev/n6-architecture/reports/breakthroughs/millennium-7-closure-2026-04-11.md` §BT-546 PROVEN
-  - `/Users/ghost/Dev/n6-architecture/reports/breakthroughs/bt-1392-millennium-7-breakthrough-ideas-2026-04-12.md` §1.6
-  - `/Users/ghost/Dev/n6-architecture/theory/study/p3/pure-p3-1-bklpr-selmer-deep.md`
-  - `/Users/ghost/Dev/n6-architecture/reports/breakthroughs/bt-1413-millennium-dfs-round20-2026-04-14.md` Lemma 20v2-F
+  - `/Users/ghost/Dev/canon/reports/breakthroughs/millennium-7-closure-2026-04-11.md` §BT-546 PROVEN
+  - `/Users/ghost/Dev/canon/reports/breakthroughs/bt-1392-millennium-7-breakthrough-ideas-2026-04-12.md` §1.6
+  - `/Users/ghost/Dev/canon/theory/study/p3/pure-p3-1-bklpr-selmer-deep.md`
+  - `/Users/ghost/Dev/canon/reports/breakthroughs/bt-1413-millennium-dfs-round20-2026-04-14.md` Lemma 20v2-F
 - **Bottlenecks**:
   - (A3) independence unproven — **core barrier** of BKLPR
   - rank ≥ 2 BSD is unreachable via Kolyvagin
@@ -570,9 +570,9 @@ The 30 seeds of §2 are clustered by BT coverage · evidence character · tool t
   7. WRT SU(2)_4 TQFT: c=φ, [n]_q=0 (root of unity)
   8. Affine E_6^(1) Coxeter h = σ, dim = 78 = n·13
 - **Evidence file paths**:
-  - `/Users/ghost/Dev/n6-architecture/papers/moonshine-barrier-honest-report-2026-04-15.md` (BARRIER record)
-  - `/Users/ghost/Dev/n6-architecture/reports/breakthroughs/bt-1407-millennium-dfs-round15-2026-04-12.md` ([DFS15-01~02])
-  - `/Users/ghost/Dev/n6-architecture/reports/breakthroughs/bt-1405-millennium-dfs-round13-2026-04-12.md` ([DFS13-03~04])
+  - `/Users/ghost/Dev/canon/papers/moonshine-barrier-honest-report-2026-04-15.md` (BARRIER record)
+  - `/Users/ghost/Dev/canon/reports/breakthroughs/bt-1407-millennium-dfs-round15-2026-04-12.md` ([DFS15-01~02])
+  - `/Users/ghost/Dev/canon/reports/breakthroughs/bt-1405-millennium-dfs-round13-2026-04-12.md` ([DFS13-03~04])
 - **Bottlenecks**:
   - Monstrous Moonshine n=6 coordinate necessity **unproven** (BARRIER diagnosis in moonshine-barrier-honest-report)
   - Existence itself of n=6 multisection on K3-fibered CY3 is an open problem
@@ -608,11 +608,11 @@ The 30 seeds of §2 are clustered by BT coverage · evidence character · tool t
   7. Costello-Gwilliam factorization algebra (awaiting non-perturbative extension)
   8. n_f = n (quark flavor count, QCD low-energy)
 - **Evidence file paths**:
-  - `/Users/ghost/Dev/n6-architecture/theory/study/p2/prob-p2-3-yang-mills-barriers.md`
-  - `/Users/ghost/Dev/n6-architecture/reports/breakthroughs/bt-1392-millennium-7-breakthrough-ideas-2026-04-12.md` §1.3
-  - `/Users/ghost/Dev/n6-architecture/reports/breakthroughs/bt-1402-millennium-dfs-round10-2026-04-12.md` ([DFS10-01])
-  - `/Users/ghost/Dev/n6-architecture/reports/breakthroughs/bt-1405-millennium-dfs-round13-2026-04-12.md` ([DFS13-05] Connes)
-  - `/Users/ghost/Dev/n6-architecture/papers/n6-mk4-theorem-candidates-paper.md` (Mk.IV-B: σ-τ=8)
+  - `/Users/ghost/Dev/canon/theory/study/p2/prob-p2-3-yang-mills-barriers.md`
+  - `/Users/ghost/Dev/canon/reports/breakthroughs/bt-1392-millennium-7-breakthrough-ideas-2026-04-12.md` §1.3
+  - `/Users/ghost/Dev/canon/reports/breakthroughs/bt-1402-millennium-dfs-round10-2026-04-12.md` ([DFS10-01])
+  - `/Users/ghost/Dev/canon/reports/breakthroughs/bt-1405-millennium-dfs-round13-2026-04-12.md` ([DFS13-05] Connes)
+  - `/Users/ghost/Dev/canon/papers/n6-mk4-theorem-candidates-paper.md` (Mk.IV-B: σ-τ=8)
 - **Bottlenecks**:
   - Rigorous measure construction of 4D Euclidean SU(N) YM is **completely unresolved** (this axis cannot resolve it)
   - Gribov-Singer topological obstruction breaks gauge fixing within this axis
@@ -651,11 +651,11 @@ The 30 seeds of §2 are clustered by BT coverage · evidence character · tool t
   9. hexa verification toolkit (10 scripts: `verify_millennium_*.hexa`, `bernoulli_boundary.hexa`, `selmer_bklpr.hexa`)
   10. Red-Team refutation paths (all claims falsifiable)
 - **Evidence file paths**:
-  - `/Users/ghost/Dev/n6-architecture/reports/breakthroughs/millennium-7-closure-2026-04-11.md` (honest closure)
-  - `/Users/ghost/Dev/n6-architecture/papers/moonshine-barrier-honest-report-2026-04-15.md`
-  - `/Users/ghost/Dev/n6-architecture/theory/study/p3/n6-p3-1-independent-dfs.md` §4 baseline, §5 MISS cases
-  - `/Users/ghost/Dev/n6-architecture/theory/study/p2/n6-p2-4-honesty-audit.md`
-  - `/Users/ghost/Dev/n6-architecture/theory/predictions/` (10 hexa scripts)
+  - `/Users/ghost/Dev/canon/reports/breakthroughs/millennium-7-closure-2026-04-11.md` (honest closure)
+  - `/Users/ghost/Dev/canon/papers/moonshine-barrier-honest-report-2026-04-15.md`
+  - `/Users/ghost/Dev/canon/theory/study/p3/n6-p3-1-independent-dfs.md` §4 baseline, §5 MISS cases
+  - `/Users/ghost/Dev/canon/theory/study/p2/n6-p2-4-honesty-audit.md`
+  - `/Users/ghost/Dev/canon/theory/predictions/` (10 hexa scripts)
 - **Bottlenecks**:
   - Honesty axis does not itself generate new theorems; it acts as a **promotion-gate for existing theorems**
   - Being a meta axis, it is not the main engine resolving any BT
@@ -888,7 +888,7 @@ Input corpus is identical (70+ files). No additional files in R2. However, addit
 
 ## §8. Completion report (300 words)
 
-This Round 1 document is stored at `/Users/ghost/Dev/n6-architecture/theory/roadmap-v2/n6arch-axes/axis-r1-emergence.md` at a scale of **800+ lines**. Under the n6-architecture main project's confirmed axes (STRUCTURE/ENGINE/SUBSTRATE), dedicated to the **"7 Millennium Problems" subproject**, 30 seeds were extracted from a corpus of 70+ files (closure, DFS rounds 3~20, study P0~P3, moonshine BARRIER report, mk4 candidates, millennium-learning roadmap), emerging **7 candidate axes**.
+This Round 1 document is stored at `/Users/ghost/Dev/canon/theory/roadmap-v2/n6arch-axes/axis-r1-emergence.md` at a scale of **800+ lines**. Under the canon main project's confirmed axes (STRUCTURE/ENGINE/SUBSTRATE), dedicated to the **"7 Millennium Problems" subproject**, 30 seeds were extracted from a corpus of 70+ files (closure, DFS rounds 3~20, study P0~P3, moonshine BARRIER report, mk4 candidates, millennium-learning roadmap), emerging **7 candidate axes**.
 
 **Top 3 axis names + favorability scores**:
 1. **X7 HONEST-HARNESS** (Honesty harness) — **10.0** — meta gate for [10*] promotion across all BTs

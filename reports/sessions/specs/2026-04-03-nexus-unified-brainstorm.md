@@ -3,7 +3,7 @@
 > **Date**: 2026-04-03
 > **Name**: NEXUS-6 (connection point + n=6)
 > **Status**: brainstorming complete, implementation plan pending
-> **Scope**: integrated across 4 projects (TECS-L + n6-architecture + anima + SEDI)
+> **Scope**: integrated across 4 projects (TECS-L + canon + anima + SEDI)
 > **Goal**: auto-discover new materials / new tech / new laws / new signals via the n=6 framework
 > **Runtime**: local M4 Mac (Rust + metal-rs GPU), 0 Claude API tokens
 

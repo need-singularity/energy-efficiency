@@ -12,7 +12,7 @@
 
 ## 1. 개요
 
-n6-architecture 의 AI 기법 축은 2026-04-12 기준 **8 서브축 × 68 BODY**
+canon 의 AI 기법 축은 2026-04-12 기준 **8 서브축 × 68 BODY**
 (총 18,630줄) 로 구성된다. 각 축은 독립 설계서 `design.md` 를 가지며,
 본 문서는 이들을 통합한 루트 인덱스다.
 
@@ -79,4 +79,4 @@ rad(6) = 6    ← sparse radical norm
 - 벤치: `./_bench_plan.md` (16 기준선)
 - 칩맵: `./_chip_mapping.md`
 - 레지스트리: `./_registry.json` v1.3.0
-- 수렴: `../n6shared/convergence/n6-architecture.json`
+- 수렴: `../canonshared/convergence/canon.json`

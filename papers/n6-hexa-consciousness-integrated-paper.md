@@ -16,7 +16,7 @@ requires:
 
 # [CANONICAL v1] Ultimate Consciousness Processor Integrated Paper (HEXA-CONSCIOUSNESS-INTEGRATED) — Chip to SoC to System Full-Stack Roadmap
 
-> **Author**: Park Min-woo (n6-architecture)
+> **Author**: Park Min-woo (canon)
 > **Category**: P-151 consciousness integration — chip + SoC two-level reconfiguration
 > **Version**: v1.0 (2026-04-18 canonical_full)
 > **Prior BT**: BT-28, BT-33, BT-37, BT-55, BT-58, BT-90, BT-344~346
@@ -63,7 +63,7 @@ SoC (system integration) two levels under a single **n=6 arithmetic coordinate**
 | Consciousness measurement | Qualitative inference | **Φ (integrated information) 24-node lattice** | Reduced to numbers |
 | Chip-SoC alignment | Separate design | **Common n=6 coordinate reuse** | Reintegration cost 0 |
 | Verifiability | Case-based heuristics | **10-subsection auto-demonstration** | Reproducibility 100% |
-| Derived design proposals | 1~2 prototypes | **Pareto n=6 top 6** | n=6x more options |
+| Derived design proposals | 1~2 prototypes | **Pareto top-K (data-driven)** | Pareto-natural more options |
 | Cross-domain capability | Separate project isolation | **atlas.n6 integrated node** | Reuse σ·τ=48x |
 | Safety/ethics gate | Post-verification | **τ=4 layer pre-blocking** | Accidents < 10⁻⁶ |
 | Honesty | Records only success cases | **MISS/FALSIFIER explicit** | Falsifiable |
@@ -438,7 +438,7 @@ BCI 16ch biosignal → Φ computation → safety gate → host response end-to-e
 
 Cross-prediction agreement of σ·τ=48 cases reached with other domains (architecture,
 chemistry, medicine, etc.). Refutation conditions explicit + FALSIFIER experiments
-0 found. Pareto top-6 configurations demonstrated. Chip die + SoC package field test
+0 found. Pareto top-K (data-driven) configurations demonstrated. Chip die + SoC package field test
 1000 hours fault-free.
 
 </details>
@@ -1511,9 +1511,9 @@ TIPS KRW 600 M + KIAT KRW 400 M + Nano-jonggi-won MPW discount KRW 200 M = KRW 1
 
 | Version | Date | Change | Author |
 |---|---|---|---|
-| 0.1 | 2026-04-14 | n6-consciousness-chip-paper.md v2 initial engineering version | n6-architecture |
-| 0.2 | 2026-04-14 | n6-consciousness-soc-paper.md v2 SoC engineering version | n6-architecture |
-| 1.0 | 2026-04-18 | chip + SoC integrated (21 canonical, §8~§21 engineering full expansion) | n6-architecture |
+| 0.1 | 2026-04-14 | n6-consciousness-chip-paper.md v2 initial engineering version | canon |
+| 0.2 | 2026-04-14 | n6-consciousness-soc-paper.md v2 SoC engineering version | canon |
+| 1.0 | 2026-04-18 | chip + SoC integrated (21 canonical, §8~§21 engineering full expansion) | canon |
 
 ### §20.6 recipient acknowledgment signature
 

@@ -9,10 +9,10 @@
 // Migrated from tool/own_doc_lint_legacy.py:399-428 + lines 379-396 per raw 9.
 //
 // @tool(slug="own6_paper_verify_embedded_lint", desc="own#6 paper verify-embedded HARD — papers/*.md must contain inline ```python verify block; sibling verify files forbidden")
-// @usage(hexa /Users/ghost/core/n6-architecture/tool/own6_paper_verify_embedded_lint.hexa [--selftest])
+// @usage(hexa /Users/ghost/core/canon/tool/own6_paper_verify_embedded_lint.hexa [--selftest])
 // @exit_codes(0=PASS, 1=violations, 2=internal error)
 
-let REPO_ROOT = "/Users/ghost/core/n6-architecture"
+let REPO_ROOT = "/Users/ghost/core/canon"
 let PAPERS_ROOT = REPO_ROOT + "/papers"
 
 // Frozen 16-entry legacy allowlist (relative paths from repo root)

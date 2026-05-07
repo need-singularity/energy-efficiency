@@ -26,7 +26,7 @@ use std::string::{lower, replace, contains, split, starts_with, trim}
 // ------------------------------------------------------------
 // 1. 경로 상수 — R2 하드코딩 금지
 // ------------------------------------------------------------
-const ROOT       = env("N6_ARCH") || (env("HOME") + "/Dev/n6-architecture")
+const ROOT       = env("N6_ARCH") || (env("HOME") + "/Dev/canon")
 const PAPERS_DIR = ROOT + "/papers"
 const TECH_DIR   = ROOT + "/techniques"
 const EDGE_FILE  = PAPERS_DIR + "/lint_progress.jsonl"

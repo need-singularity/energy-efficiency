@@ -1,6 +1,6 @@
 # Phase 3 — Y4 GATE-BARRIER-led BT-542 P=NP Attack
 
-**Roadmap**: 7-millennium-targets subproject v2 (n6-architecture × roadmap-v2)
+**Roadmap**: 7-millennium-targets subproject v2 (canon × roadmap-v2)
 **Stage**: Phase 3 / barrier integrity audit + τ boundary summary
 **Created**: 2026-04-15
 **Scope**: Y4 GATE-BARRIER-led audit of BT-542 P=NP + assistance from Y2 DISCRETE-CLASS · Y3 COMPUTATIONAL-TAU · Y9 HONEST-HARNESS
@@ -981,7 +981,7 @@ Next Phase 4 (Y5+Y6-led):
 
 ## §14 Completion Report
 
-**File path**: `/Users/ghost/Dev/n6-architecture/theory/roadmap-v2/phase-03-Y4-bt542-pnp.md`
+**File path**: `/Users/ghost/Dev/canon/theory/roadmap-v2/phase-03-Y4-bt542-pnp.md`
 
 **Phase**: Phase 3 (2nd draft-attempt phase of the v2 roadmap)
 

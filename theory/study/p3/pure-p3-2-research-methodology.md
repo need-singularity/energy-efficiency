@@ -1,6 +1,6 @@
 # PURE P3-2 — Research-Mathematics Methodology
 
-This study note is the 2nd output of the P3 PURE track in the n6-architecture millennium-learning roadmap. It organizes, on the basis of primary literature, the tools actually used in number theory / arithmetic geometry research (LMFDB, Sage, Magma, PARI/GP), the corresponding workflows, and conditional-draft techniques.
+This study note is the 2nd output of the P3 PURE track in the canon millennium-learning roadmap. It organizes, on the basis of primary literature, the tools actually used in number theory / arithmetic geometry research (LMFDB, Sage, Magma, PARI/GP), the corresponding workflows, and conditional-draft techniques.
 
 ## Honesty declaration
 

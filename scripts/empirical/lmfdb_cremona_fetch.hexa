@@ -91,9 +91,9 @@ def compute_sel_size_3(rank: int, torsion_structure: list, sha: int | None) -> i
 def main():
     n_target = int(sys.argv[1]) if len(sys.argv) > 1 else 50000
     # hexa shim: __file__ points to /tmp/_hexa_..._shim.py — use repo path injected by hexa wrapper.
-    base = Path(\"/Users/ghost/core/n6-architecture\")
+    base = Path(\"/Users/ghost/core/canon\")
     if not base.exists():
-        base = Path(\"/Users/ghost/Dev/n6-architecture\")
+        base = Path(\"/Users/ghost/Dev/canon\")
     out_path = base / \"data\" / \"cremona\" / f\"cremona_sample_{n_target}.json\"
     out_path.parent.mkdir(parents=True, exist_ok=True)
 

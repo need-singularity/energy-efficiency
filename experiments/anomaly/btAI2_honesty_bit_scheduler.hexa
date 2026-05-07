@@ -23,7 +23,7 @@
 // underlying python3 invocation. Determinism preserved (fixed integer seed).
 //
 // @tool(slug="btAI2_honesty_bit_scheduler", desc="BT-AI2 honesty-bit scheduler simulator — SimPy embed")
-// @usage(hexa /Users/ghost/core/n6-architecture/experiments/anomaly/btAI2_honesty_bit_scheduler.hexa --seed 42 --cycles 10000 --workload full [--baseline] [--paired] [--results-out PATH])
+// @usage(hexa /Users/ghost/core/canon/experiments/anomaly/btAI2_honesty_bit_scheduler.hexa --seed 42 --cycles 10000 --workload full [--baseline] [--paired] [--results-out PATH])
 // @allow-bare-exec
 // @no-sandbox
 // @exit_codes(0=PASS F-AI2-A and F-AI2-B, 1=at least one falsifier FAIL)
@@ -68,14 +68,14 @@ Dependencies: simpy, numpy.
 References (do not modify atlas / KG / domains.json from this file):
 
   - atlas: provenance_bit_overhead = phi/sigma_n = 1/36
-    (atlas/atlas.append.n6-architecture-historical-absorption-2026-04-26.n6:526)
+    (atlas/atlas.append.canon-historical-absorption-2026-04-26.n6:526)
   - KG nodes: silicon:provenance-bit, silicon:promotion-counter-mmu,
     silicon:bt-id-isa, arch:n6-native-accelerator,
     principle:honesty-triad, principle:write-barrier,
     principle:constraint-honesty
-    (n6shared/discovery_graph.json)
+    (canonshared/discovery_graph.json)
   - domain: ai-native-architecture (axis: compute)
-    (n6shared/n6/docs/domains.json)
+    (canonshared/n6/docs/domains.json)
   - parent session:
     reports/sessions/omega-cycle-ai-native-arch-beyond-gpu-2026-04-26.md
 
@@ -130,7 +130,7 @@ TAU_STAGES = 4
 SPARSITY_FLOOR = 1.0 / 3.0
 
 # atlas: provenance_bit_overhead = phi / sigma_n = 1 / 36 :: architecture [10*]
-# atlas/atlas.append.n6-architecture-historical-absorption-2026-04-26.n6:526
+# atlas/atlas.append.canon-historical-absorption-2026-04-26.n6:526
 PROVENANCE_BIT_OVERHEAD = 1.0 / 36.0  # ~= 0.02778
 
 # Provenance flag values.

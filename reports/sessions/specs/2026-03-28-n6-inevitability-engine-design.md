@@ -3,7 +3,7 @@
 **Date:** 2026-03-28
 **Status:** Draft
 **Scope:** Unified energy-efficiency framework fusing TECS-L, Anima, SEDI
-**Parent:** n6-architecture (TECS-L family)
+**Parent:** canon (TECS-L family)
 
 ---
 
@@ -451,7 +451,7 @@ If they diverge: hypothesis requires revision.
 ## 9. File Structure
 
 ```
-n6-architecture/
+canon/
   techniques/
     # Existing (1-10)
     phi6simple.py

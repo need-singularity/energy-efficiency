@@ -1,7 +1,7 @@
 {
   "timestamp": "2026-04-29T13:21:52Z",
   "version": "v2_namespace_aware",
-  "atlas_path": "/Users/ghost/core/n6-architecture/n6shared/atlas.n6",
+  "atlas_path": "/Users/ghost/core/canon/canonshared/atlas.n6",
   "n_entries": 5154,
   "total_cycles": 20,
   "total_self_loops": 0,

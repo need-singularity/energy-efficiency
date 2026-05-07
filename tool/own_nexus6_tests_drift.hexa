@@ -12,10 +12,10 @@
 // pure-hexa JSON parser deferred to follow-up cycle.
 //
 // @tool(slug="own_nexus6_tests_drift", desc="own#21 readme-nexus6-tests-count-drift checker — extracts `tests: NNNN` tokens from README.md, compares against reports/n6_selftest.json#total, emits drift report")
-// @usage(hexa /Users/ghost/core/n6-architecture/tool/own_nexus6_tests_drift.hexa [--verbose])
+// @usage(hexa /Users/ghost/core/canon/tool/own_nexus6_tests_drift.hexa [--verbose])
 // @exit_codes(0=PASS or WARN_NO_TOKEN or WARN_NO_SELFTEST, 1=DRIFT, 2=ERROR)
 
-let REPO_ROOT     = "/Users/ghost/core/n6-architecture"
+let REPO_ROOT     = "/Users/ghost/core/canon"
 let README_PATH   = REPO_ROOT + "/README.md"
 let SELFTEST_PATH = REPO_ROOT + "/reports/n6_selftest.json"
 let REPORT_PATH   = REPO_ROOT + "/reports/n6_own21_drift.json"
@@ -137,7 +137,7 @@ fn _extract_claims(text: string) -> list {
 fn _emit_report(verdict: string, detail: string, authoritative: string,
                 source_desc: string, claims: list, mismatches: list) -> void {
   let mut out = "{\n"
-  out = out + "  \"schema\": \"n6-architecture/n6_own21_drift/1\",\n"
+  out = out + "  \"schema\": \"canon/n6_own21_drift/1\",\n"
   out = out + "  \"rule\": \"own#21\",\n"
   out = out + "  \"slug\": \"readme-nexus6-tests-count-drift\",\n"
   out = out + "  \"ts\": \"" + _utc_now() + "\",\n"

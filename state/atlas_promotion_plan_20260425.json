@@ -2,7 +2,7 @@
   "sealed_at": "2026-04-25T03:51:21.095368Z",
   "baseline_date": "2026-04-25",
   "dry_run": true,
-  "atlas_path": "/Users/ghost/core/n6-architecture/atlas/atlas.n6",
+  "atlas_path": "/Users/ghost/core/canon/atlas/atlas.n6",
   "atlas_total_entries": 9615,
   "tasks": {
     "grade10_to_grade10_star": {

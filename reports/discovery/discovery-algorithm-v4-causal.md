@@ -17,7 +17,7 @@
 
 ## 0. The Problem
 
-The n6-architecture project has accumulated 93 breakthrough theorems and 900+ EXACT
+The canon project has accumulated 93 breakthrough theorems and 900+ EXACT
 matches across 307 domains. The Bayesian scoring framework computes Bayes factors for
 individual matches. The falsification framework tests whether these matches exceed
 chance (current answer: z=0.74 for raw numerical matching, which is NOT significant;

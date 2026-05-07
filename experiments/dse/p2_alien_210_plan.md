@@ -1,7 +1,7 @@
 # P2-3 + P2-4 Integrated Plan (2026-04-14)
 
 > **SSOT**: `$NEXUS/shared/n6/docs/domains.json` (204 products · 40 sections · 40/40 alien_index=10, migration from legacy products.json completed)
-> **Roadmap**: `$NEXUS/shared/roadmaps/n6-architecture.json` (DSE-P2-3, DSE-P2-4)
+> **Roadmap**: `$NEXUS/shared/roadmaps/canon.json` (DSE-P2-3, DSE-P2-4)
 > **Authored**: 2026-04-14 session, based on actual scan
 
 ## 0. Current Snapshot (Measured)
@@ -24,7 +24,7 @@
 
 ### 1.1 Deliverables
 
-- `/Users/ghost/Dev/n6-architecture/bridge/ouroboros_5phase.hexa` (newly authored)
+- `/Users/ghost/Dev/canon/bridge/ouroboros_5phase.hexa` (newly authored)
   - 5-phase sequential invocation: **Absorb → LensForge → BlowupEngine → CycleEngine → Evolution**
   - Fixed T1 lens 22-constant table (telescope_optics + combo_blowup 15 + accel 6)
   - Demo-grade: each phase returns a stub result while specifying the real engine path in comments
@@ -48,7 +48,7 @@
 ### 1.4 Demo Execution
 
 ```bash
-hexa /Users/ghost/Dev/n6-architecture/bridge/ouroboros_5phase.hexa
+hexa /Users/ghost/Dev/canon/bridge/ouroboros_5phase.hexa
 # → domain=ai-efficiency, depth=3, completes 3 cycles
 # → returns 45 total promotion candidates (seed 5 × corollary 5 × cycle 3 − duplicates)
 ```

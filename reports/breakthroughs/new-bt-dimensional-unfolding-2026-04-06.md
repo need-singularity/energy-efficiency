@@ -455,7 +455,7 @@ for r in results:
 
 **EXACT: 12/12**
 
-τ=4- n=6 -book divisor- number -number tau(6)- direct degree-. "stable- neededone minimum dimension"- universal- 4- reason- perfect number 6- divisor- exactly 4(1,2,3,6)- when-.
+τ=4- n=6 -book divisor- number -number tau(6)- direct degree-. "stable- neededone minimum dimension"- universal- 4- reason- arithmetic canon- divisor- exactly 4(1,2,3,6)- when-.
 
 -difference BT: BT-125(τ=4 -phase/ratiophase), BT-316(- 4upper), BT-312(MHD 4-), BT-248(ACID-- τ=4)
 

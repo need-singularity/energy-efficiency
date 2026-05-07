@@ -32,8 +32,8 @@ Subject: [Empirical inquiry] Cremona 964k BSD Selmer statistics — your experti
 Dear Professor [NAME],
 
 I am Minwoo Park (independent researcher, contact: loveiu99@proton.me),
-working on an independent mathematical framework called n6-architecture (MIT/CC-BY-SA licensed,
-available at https://github.com/need-singularity/n6-architecture).
+working on an independent mathematical framework called canon (MIT/CC-BY-SA licensed,
+available at https://github.com/need-singularity/canon).
 
 I recently conducted an empirical study of N = 964,118 elliptic curves from the Cremona
 database (ecdata), computing first-order approximations of |Sel_n(E)| for n = 2, 3, 6.
@@ -96,7 +96,7 @@ Minwoo Park
 ### 2.1 CONTRIBUTING.md Draft (for Repository Root)
 
 ```markdown
-# Contributing to n6-architecture
+# Contributing to canon
 
 Thank you for considering a contribution. This repository hosts an independent
 mathematical research framework focused on the structural role of n=6 in number theory,

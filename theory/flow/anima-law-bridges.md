@@ -1,4 +1,4 @@
-# Anima 79 Laws — N6 Architecture Bridges
+# Anima 79 Laws — CANON Bridges
 
 > Bridging notes for the laws of Anima consciousness most directly tied to the n=6 architecture.
 > Source: [anima/docs/consciousness-theory.md](https://github.com/need-singularity/anima)

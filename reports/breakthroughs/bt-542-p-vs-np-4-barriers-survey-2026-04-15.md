@@ -20,7 +20,7 @@ P vs NP (Clay Millennium) is the **most-attempted-and-failed** of the 7 Millenni
 **Scope of this document**:
 1. Mathematical definition of the 4 barriers + main theorems
 2. Bypass attempts (2020-2026) of new techniques (meta-complexity, circuit complexity, proof complexity)
-3. **Honest evaluation** from the n6-architecture perspective — confirmed no direct angle
+3. **Honest evaluation** from the canon perspective — confirmed no direct angle
 4. atlas entry candidates (literature taxonomy; not a progress claim)
 
 **Honesty declaration**: No sentence in this document asserts "this path can prove P ≠ NP". It is a literature catalog + MISS confirmation.
@@ -165,7 +165,7 @@ Core target: whether certain rectangular Kronecker coefficients are 0 or large c
 
 ---
 
-## §6 Honest Evaluation from the n6-architecture Perspective
+## §6 Honest Evaluation from the canon Perspective
 
 ### 6.1 Does n=6 structure relate to P vs NP?
 
@@ -181,7 +181,7 @@ Systematic check of paths where the n=6 prior could contribute to P vs NP:
 
 **Conclusion**: **the n=6 structure has no directly applicable angle to P vs NP**. Unlike other BTs (RH, BSD, NS), this problem is far from "number-matching" patterns.
 
-### 6.2 Possible indirect contributions of n6-architecture (honest)
+### 6.2 Possible indirect contributions of canon (honest)
 
 - **Honest-record infrastructure**: the atlas-grade + MISS-tagging system can **systematically record** the barrier literature of this problem. This document is an example.
 - **Statistical-thinking transfer**: the BKLPR asymptotic-verification methodology in BSD is partly transferable to finite-barrier statistical analysis of P vs NP (e.g., reinterpretation of random-SAT phase transitions) — but this is **empirical analysis, not a Millennium resolution**.
@@ -201,7 +201,7 @@ Systematic check of paths where the n=6 prior could contribute to P vs NP:
 
 **MISS_MAINTAINED**. In the scope of BT-542 "P ≠ NP proof":
 - No new technique proposed that bypasses any of the 4 barriers
-- No n6-architecture contribution confirmed
+- No canon contribution confirmed
 - Research 2020-2026 also has **no direct arrival** at P vs NP separation
 
 ### 7.2 BARRIER-PX-1 scope verdict
@@ -221,7 +221,7 @@ Systematic check of paths where the n=6 prior could contribute to P vs NP:
    2. Natural proofs (Razborov-Rudich 1997)
    3. Algebraization (Aaronson-Wigderson 2008)
    4. GCT (Mulmuley 2001- + Ikenmeyer-Panova 2017)
-   Definition and bypass attempts recorded for each barrier. BT-542 main body MISS maintained. n6-architecture has no directly applicable angle — recorded honestly"
+   Definition and bypass attempts recorded for each barrier. BT-542 main body MISS maintained. canon has no directly applicable angle — recorded honestly"
 
 @R MILL-BARRIER-PX1-n6-nonapplicability = n=6 structural prior does not apply to P vs NP :: n6atlas [10*]
   "BARRIER-PX-1 honest record: the n=6 structural prior has no direct applicability to a P vs NP proof.

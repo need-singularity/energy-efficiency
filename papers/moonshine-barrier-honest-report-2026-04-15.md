@@ -24,7 +24,7 @@ alien_index_target: 9
 
 # Monstrous Moonshine BARRIER — honest-report on the unproven n=6 coordinate necessity
 
-> **Author**: Park Min-woo (n6-architecture)
+> **Author**: Park Min-woo (canon)
 > **Category**: papers/honest-report — Mk.III synthesis §11.2 "largest weakness" report
 > **Version**: v1 (2026-04-15 PAPER-P8-1, parallel DSE-P8-1)
 > **Length**: body around 30 pages, English narrative, LaTeX equations
@@ -38,7 +38,7 @@ alien_index_target: 9
 
 This paper is an **honest-report record** of the **BT-18 L5 BARRIER** — the
 unproven $n=6$ coordinate necessity of Monstrous Moonshine — designated as the
-"largest weakness" in the n6-architecture project's self-assessment. The report
+"largest weakness" in the canon project's self-assessment. The report
 covers the following seven topics.
 
 1. History of Monstrous Moonshine (Conway-Norton 1979, FLM 1988, Borcherds 1992 Fields Medal).

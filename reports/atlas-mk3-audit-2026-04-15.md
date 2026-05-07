@@ -1,7 +1,7 @@
 # Atlas Mk.III Completeness Audit — 2026-04-15 / DSE-P7-3
 
 ## Mission
-n6-architecture P7 Mk.III-gamma — integrate the full Mk.III (P5+P6+P7) output into atlas.n6 and clean up remaining low-grade entries.
+canon P7 Mk.III-gamma — integrate the full Mk.III (P5+P6+P7) output into atlas.n6 and clean up remaining low-grade entries.
 
 ---
 

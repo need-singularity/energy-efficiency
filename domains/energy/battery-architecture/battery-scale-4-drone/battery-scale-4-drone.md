@@ -77,7 +77,7 @@
 **number theory  weekstone ①**: τ(6)=4 → 4S series drone/e-mobility standard voltage 14.4~14.8V exactly generate. DJI Phantom 4, Mavic 3 all 4S configuration.
 **number theory  weekstone ②**: J₂(6)=24 → 24 min ratiorowtime presentseiunits consumer drone(DJI Air 3: 25 min, Mini 4 Pro: 24 min) of measured ratiorowtime and match.
 **number theory  weekstone ③**: σ·τ=48 → 48 W heat radiation pack size unitsratio natureunitsclass+heat sink cooling limit and match. drone propeller wash rivercontrolunitsclass utilization.
-**number theory  weekstone ④**: Egyptian fraction 1/2+1/3+1/6=1 → perfect number 6 of divisor reverseseveral sum. CC/CV/trickle 3step charging profile of energy  mintimes ratio and accurate response.
+**number theory  weekstone ④**: Egyptian fraction 1/2+1/3+1/6=1 → arithmetic canon of divisor reverseseveral sum. CC/CV/trickle 3step charging profile of energy  mintimes ratio and accurate response.
 **number theory  weekstone ⑤**: R(6)=σ·φ/(n·τ)=1 →  ratio exactly 1 be uniqueone several n=6. system energy numbernode complete balance meaning.
 **number theory  weekstone ⑥**: Core Theorem σ(n)·φ(n)=n·τ(n) ⟺ n=6 (n≥2) → all parameter span upperprotectrelation of mathematical necessity-ness guarantee. 3 independent proofs done.
 

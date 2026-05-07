@@ -1,7 +1,7 @@
 # goal.md Axis Expansion Audit — 20 -> 295
 
 > **Date**: 2026-04-11
-> **Background**: The `n6shared/convergence/n6-architecture.json` GOAL_MD_20 (ossified) entry recorded "20 created", but filesystem investigation found that **only 1 standalone goal.md file existed (`domains/compute/software-design/hexa-ssh/goal.md`, nested path)**. The remaining 294 domains had their `goal.md` content absorbed into the `### Source: goal.md` section inside their integrated `<name>.md` files.
+> **Background**: The `canonshared/convergence/canon.json` GOAL_MD_20 (ossified) entry recorded "20 created", but filesystem investigation found that **only 1 standalone goal.md file existed (`domains/compute/software-design/hexa-ssh/goal.md`, nested path)**. The remaining 294 domains had their `goal.md` content absorbed into the `### Source: goal.md` section inside their integrated `<name>.md` files.
 > **Goal**: create a `domains/<axis>/<name>/goal.md` standalone file for every domain in the 295 domain SSOT (`domains/_index.json`).
 
 ---
@@ -52,7 +52,7 @@ For a domain without a folded goal.md section, a 4-section English template (1 D
 ```markdown
 # <name> -- n=6 Design Goal
 
-> Axis: **<axis>** (<axis>) * n6-architecture * auto-generated template
+> Axis: **<axis>** (<axis>) * canon * auto-generated template
 
 ## 1. Domain Goal
 ## 2. n=6 Consistency Points (n=6 / sigma=12 / tau=4 / phi=2 / sopfr=5 / J_2=24)
@@ -73,7 +73,7 @@ For a domain without a folded goal.md section, a 4-section English template (1 D
 
 ## 5. SSOT Update Recommendation
 
-Recommend updating `n6shared/convergence/n6-architecture.json` `GOAL_MD_20` entry to:
+Recommend updating `canonshared/convergence/canon.json` `GOAL_MD_20` entry to:
 
 ```json
 "GOAL_MD_295": {

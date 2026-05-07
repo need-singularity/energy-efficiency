@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "catalog_version": "1.0.0",
   "generated": "2026-04-16",
-  "project": "N6 Architecture",
+  "project": "CANON",
   "framework": "sigma(n)*phi(n) = n*tau(n), unique solution n=6",
   "total_predictions": 98,
   "total_verification_harnesses": 113,

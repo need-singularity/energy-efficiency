@@ -784,7 +784,7 @@ def main():
     }
     out_path = os.environ.get('BTAI2C_SWEEP_OUT')
     if not out_path:
-        out_path = '/Users/ghost/core/n6-architecture/reports/anomaly/btAI2c_h1_rollback_results.json'
+        out_path = '/Users/ghost/core/canon/reports/anomaly/btAI2c_h1_rollback_results.json'
     os.makedirs(os.path.dirname(out_path), exist_ok=True)
     with open(out_path, 'w', encoding='utf-8') as f:
         json.dump(out, f, indent=2)

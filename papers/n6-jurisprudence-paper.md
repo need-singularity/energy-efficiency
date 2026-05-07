@@ -5,7 +5,7 @@ requires: []
 ---
 # [CANONICAL v2] Ultimate Jurisprudence (HEXA-JURISPRUDENCE) — n=6 arithmetic coordinate mapping
 
-> **Author**: Park Minwoo (n6-architecture)
+> **Author**: Park Minwoo (canon)
 > **Category**: jurisprudence — n=6 arithmetic seed paper
 > **Version**: v2 (2026-04-14 canonical)
 > **Upstream BT**: BT-374, BT-374, BT-374, BT-374, BT-374
@@ -30,7 +30,7 @@ Jurisprudence is reinterpreted within the n=6 arithmetic system. The perfect num
 | Design search space | manual search, several months | **n·1 minute** (automated DSE) | search time shortened σ·τ=48× |
 | Design parameter count | tens to hundreds of free variables | **σ=12 axes fixed** | decision-making τ=4× sharper |
 | Verifiability | case-based heuristic | **10 subsections, auto-demonstrated** | 100% reproducibility |
-| Derivative designs | 1–2 drafts | **Pareto n=6 top 6** | n=6× more options |
+| Derivative designs | 1–2 drafts | **Pareto top-K (data-driven)** | Pareto-natural more options |
 | Cross-domain reuse | separate per-project | **atlas.n6 integrated node** | reuse σ·τ=48× |
 | Honesty | only success cases recorded | **MISS / FALSIFIER explicit** | falsifiable |
 
@@ -121,10 +121,10 @@ This domain is designed directly on top of the n=6 number-theoretic foundations 
 
 | Primitive | Role | Reference |
 |-----------|------|-----------|
-| σ(n) divisor sum | OEIS A000203, σ(6)=12 | n6shared/rules/common.json |
-| τ(n) divisor count | OEIS A000005, τ(6)=4 | n6shared/rules/common.json |
-| φ(n) smallest prime factor | φ(6)=2 | n6shared/rules/common.json |
-| sopfr(n) sum of prime factors | OEIS A001414, sopfr(6)=5 | n6shared/rules/common.json |
+| σ(n) divisor sum | OEIS A000203, σ(6)=12 | canonshared/rules/common.json |
+| τ(n) divisor count | OEIS A000005, τ(6)=4 | canonshared/rules/common.json |
+| φ(n) smallest prime factor | φ(6)=2 | canonshared/rules/common.json |
+| sopfr(n) sum of prime factors | OEIS A001414, sopfr(6)=5 | canonshared/rules/common.json |
 
 ## §4 STRUCT (system structure) — n=6 Architecture
 
@@ -340,7 +340,7 @@ Prerequisites: all §3 REQUIRES domains at maturity 10. chi2(49df) < 30, p > 0.9
 <summary>Mk.IV — 2040-2045 cross verification</summary>
 
 Achieves σ·τ=48 cross-domain prediction matches with other domains (architecture/chemistry/medicine, etc.).
-Falsifiers explicit + 0 FALSIFIER experiments hit. Pareto top-6 empirically validated.
+Falsifiers explicit + 0 FALSIFIER experiments hit. Pareto top-K (data-driven) empirically validated.
 
 </details>
 

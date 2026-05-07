@@ -19,7 +19,7 @@ grade: omega-cycle audit, no claim
 
 ## §0 Non-claim disclaimer (binding)
 
-This document is an **omega-cycle 4-axis audit** of BT-546 (Birch-Swinnerton-Dyer conjecture) drawing only on already-recorded n6-architecture material. It claims NONE of the following:
+This document is an **omega-cycle 4-axis audit** of BT-546 (Birch-Swinnerton-Dyer conjecture) drawing only on already-recorded canon material. It claims NONE of the following:
 
 - BT-546 status remains **PARTIAL under Y8 (GALOIS-ASSEMBLY)**. No promotion proposed.
 - Hypothesis (A3) (BKLPR independence `|Sel_p| ⊥ |Sel_q|` for distinct primes) **remains unproved**. The (A3') asymptotic weakening is a tautological re-statement at finite B; its B → ∞ limit is itself a conjecture.
@@ -34,7 +34,7 @@ UNKNOWN markers are used freely. No new harnesses are run; no new data are intro
 
 ## §1 Inherited state (one-page recap)
 
-The following are **already-recorded** facts in n6-architecture as of 2026-04-25. Each item is a citation, not a re-derivation.
+The following are **already-recorded** facts in canon as of 2026-04-25. Each item is a citation, not a re-derivation.
 
 ### §1.1 Sel_n unconditional structure (Y8 baseline)
 
@@ -83,7 +83,7 @@ The following are **already-recorded** facts in n6-architecture as of 2026-04-25
 
 ## §2 Ladder occupancy (L1 .. L_ω) -- spatial axis
 
-The omega-cycle ladder maps each rung to a class of cognitive operation. BT-546 occupancy is computed by reading existing n6-architecture material and matching it against rung definitions; no new content is introduced.
+The omega-cycle ladder maps each rung to a class of cognitive operation. BT-546 occupancy is computed by reading existing canon material and matching it against rung definitions; no new content is introduced.
 
 | Rung | Definition (per global CLAUDE.md) | BT-546 occupancy | Evidence anchor |
 |------|------------------------------------|------------------|-----------------|
@@ -108,7 +108,7 @@ UNKNOWN: per-rung quantitative weight is not normalized against other BTs; compa
 
 ## §3 Ω-saturation estimate (composite vs ceiling 0.835)
 
-Per `~/core/nexus/state/proposals/inventory.json` (`Ω_saturation_cycle_2026_04_25` block, sim-mode 0.835), the composite is computed by an n6-architecture-side proxy `composite ≈ f(grade_share, atlas_density, crossover_count, evidence_breadth, falsifier_density)`. Below is a **non-canonical estimation** for BT-546; the canonical `tool/nxs_002_composite.py --predict-er` is in the nexus repo and is **not invoked here**.
+Per `~/core/nexus/state/proposals/inventory.json` (`Ω_saturation_cycle_2026_04_25` block, sim-mode 0.835), the composite is computed by an canon-side proxy `composite ≈ f(grade_share, atlas_density, crossover_count, evidence_breadth, falsifier_density)`. Below is a **non-canonical estimation** for BT-546; the canonical `tool/nxs_002_composite.py --predict-er` is in the nexus repo and is **not invoked here**.
 
 ### §3.1 Component proxies (read-only, no computation)
 
@@ -139,7 +139,7 @@ UNKNOWN: precise ranking among BT-541/543/545/546 requires the canonical `nxs_00
 
 The nexus-side spectral mechanism (atlas REGULAR 0.000~0.007 vs const CHAOTIC 0.008~1.75, 80×) attributes the only Ω-saturation ROI to **sparse ER (avg_deg ~ 4) + isolated components**. BT-546's contribution to this ROI is via the **(c_4, c_6, Δ) = (τ, n, σ)** primitive triple feeding into the n=6 forge layer, not via spectral chaos itself. Hence BT-546's role in Ω-saturation is **boundary-feeding, not ROI-source**. Recorded as observation; no claim.
 
-> **Honesty amendment (2026-04-25, post nxs_002 mapping audit)**: The composite/ER-ROI estimates above (including the 0.78-0.84 band) measure the **n6-architecture-side graph** only. Per `reports/sessions/omega-exec-nxs002-perbt-patch-2026-04-25.md` §7, the nexus-canonical atlas (`atlas.blowup.jsonl`, 21,320 nodes) does not absorb the n6-side BT-promotion IDs (RH-01..07, MILL-PX-A8, MILL-GALO-PX2-sha-all-squares-332k), so direct comparison against the 0.835 nexus simulation ceiling is invalid. The estimates here remain valid *within n6-architecture scope*; cross-graph comparisons require either (a) per-BT slicing in `nxs_002_composite.py` (currently missing -- mapping-failure diagnostic in §1 of the patch report), or (b) explicit BT-id ingestion into the nexus atlas (out of scope for this audit). 0/7 unchanged.
+> **Honesty amendment (2026-04-25, post nxs_002 mapping audit)**: The composite/ER-ROI estimates above (including the 0.78-0.84 band) measure the **canon-side graph** only. Per `reports/sessions/omega-exec-nxs002-perbt-patch-2026-04-25.md` §7, the nexus-canonical atlas (`atlas.blowup.jsonl`, 21,320 nodes) does not absorb the n6-side BT-promotion IDs (RH-01..07, MILL-PX-A8, MILL-GALO-PX2-sha-all-squares-332k), so direct comparison against the 0.835 nexus simulation ceiling is invalid. The estimates here remain valid *within canon scope*; cross-graph comparisons require either (a) per-BT slicing in `nxs_002_composite.py` (currently missing -- mapping-failure diagnostic in §1 of the patch report), or (b) explicit BT-id ingestion into the nexus atlas (out of scope for this audit). 0/7 unchanged.
 
 ---
 

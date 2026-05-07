@@ -17,7 +17,7 @@ alien_index_target: 10
 
 # HEXA-CYCLE-ENGINE-FEEDBACK — cycle feedback engine design paper (N6-125)
 
-> **Author**: Park Minwoo (n6-architecture)
+> **Author**: Park Minwoo (canon)
 > **Category**: cycle-engine-feedback — P2 extended cycle engine seed
 > **Version**: v3 (2026-04-14 P2 extended)
 > **Prior BT**: BT-195, BT-371, BT-404, BT-1108
@@ -28,7 +28,7 @@ alien_index_target: 10
 ## 0. Abstract
 
 This paper demonstrates a pattern where the **shared cycle feedback structure** of the
-loop-guard system, roadmap loop engine, and nexus6 growth daemon in n6-architecture is
+loop-guard system, roadmap loop engine, and nexus6 growth daemon in canon is
 unified under n=6 arithmetic. All three systems share a loop of "scan -> weakness
 identification -> agent -> test -> commit -> push", and the **stage count, channel count,
 direction, and cycle length** of that loop converge at n=6.
@@ -47,7 +47,7 @@ loop, nexus6 growth daemon).
 
 ## 1. Introduction — WHY
 
-n6-architecture operates three kinds of cycle engines in parallel:
+canon operates three kinds of cycle engines in parallel:
 1. **loop-guard** (project_loop_guard) — automatic registry/doc-consistency fixer
 2. **roadmap loop** (global ~/.claude/skills/loop + hexa engine) — auto 3-track x phase x gate
 3. **nexus6 growth daemon** (nexus6_growth_system) — automatic 15-dimensional growth
@@ -123,7 +123,7 @@ per roadmap loop phase.
 ### 4.1 Measured data
 
 - loop-guard execution logs (project_loop_guard memory) — 5 stages -> 4 meta gates mapping confirmed
-- roadmap loop n6-architecture.json — 3-track x phase x gate structure confirmed
+- roadmap loop canon.json — 3-track x phase x gate structure confirmed
 - nexus6 growth daemon growth records — 15 dimensions observed, compressibility to 12 channels confirmed
 - atlas.n6 `cycle-engine-feedback` node — 20/22 EXACT
 

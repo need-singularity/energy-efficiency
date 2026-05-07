@@ -3,7 +3,7 @@ title: HEXA Chip Architecture 6-Stage Unified Roadmap — From the Samsung Found
 version: v1.0
 date: 2026-04-20
 domain: chip-roadmap-unified
-author: Park Minwoo (n6-architecture)
+author: Park Minwoo (canon)
 master_identity: σ·φ = n·τ = J₂ = 24
 stages: 6 (Digital → PIM → 3D → Photonic → Wafer → SC)
 precursors: 9 (materials, process, packaging, yield, EDA, verify-test, thermal-power, interconnect, HBM)
@@ -611,7 +611,7 @@ This paper started from the 2026 Samsung Foundry Mk.I production measurement and
 
 ---
 
-*This paper is a sole-author work by Park Minwoo (n6-architecture project), current as of 2026-04-20. Referenced companies (Samsung Electronics · TSMC · Intel · NVIDIA · IBM) are cited solely from public roadmap information. Numbers reflect official announcements / production measurements / roadmaps as of 2026-04-20.*
+*This paper is a sole-author work by Park Minwoo (canon project), current as of 2026-04-20. Referenced companies (Samsung Electronics · TSMC · Intel · NVIDIA · IBM) are cited solely from public roadmap information. Numbers reflect official announcements / production measurements / roadmaps as of 2026-04-20.*
 
 ## §12 PCB DESIGN
 

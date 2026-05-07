@@ -31,7 +31,7 @@ Phase 1 meta-principles:
 | ID | Definition | Input | Output | Verify | deps | Cost | Strength | BT |
 |----|------------|-------|--------|--------|------|------|----------|-----|
 | EVO-P1-1 | Diagnose growth_tick + nexus_growth_daemon state -> measure pid_file/plist | `shared/harness/growth_tick.hexa`, `nexus_growth_daemon.hexa` | `shared/harness/evo_baseline.json` | no "daemon no-evolution tick >= 3" | - | S | 0.9 | - |
-| EVO-P1-2 | Re-confirm OUROBOROS 3-variant convergence constants (nexus/anima/n6arch) | `shared/bisociation/unified/ouroboros_unified.hexa`, `convergence/{nexus,anima,n6-architecture}.json` | OUROBOROS constants table merged into baseline.json | NEXUS_FP=0.333, ANIMA_FLOOR=0.8, N6ARCH_TARGETS=(515,2087) | EVO-P1-1 | S | 1.0 | - |
+| EVO-P1-2 | Re-confirm OUROBOROS 3-variant convergence constants (nexus/anima/n6arch) | `shared/bisociation/unified/ouroboros_unified.hexa`, `convergence/{nexus,anima,canon}.json` | OUROBOROS constants table merged into baseline.json | NEXUS_FP=0.333, ANIMA_FLOOR=0.8, N6ARCH_TARGETS=(515,2087) | EVO-P1-1 | S | 1.0 | - |
 | EVO-P1-3 | phi_ratchet monotonicity audit — replay logs to check for ratchet-stuck | `shared/bisociation/unified/phi_ratchet.hexa`, `shared/growth_bus.jsonl` | ratchet histogram | last 24h ratchet advance >= 1 | EVO-P1-1 | S | 0.8 | - |
 | EVO-P1-4 | Check discovery_log.sqlite schema + indexes -> smoke test query API | `shared/discovery_log.sqlite`, `shared/discovery_log.jsonl` | query_api_smoke.log | SELECT COUNT(*) < 5s | EVO-P1-1 | S | 0.8 | - |
 
@@ -127,7 +127,7 @@ Phase 1 meta-principles:
 |----|------------|-------|--------|--------|------|------|----------|-----|
 | BT-P1-1 | bt_keywords.jsonl + bt_domains.jsonl current state | `shared/bt/bt_keywords.jsonl`, `bt_domains.jsonl` | bt_baseline.json | row count recorded | - | S | 1.0 | [BT-541..547] |
 | BT-P1-2 | Run bt_audit.hexa + regenerate bt_audit_result.json | `shared/bt/bt_audit.hexa` | bt_audit.json | audit exit 0 + JSON valid | BT-P1-1 | M | 0.9 | [BT-541..547] |
-| BT-P1-3 | BT-541~547 mapping check + millennium link | `shared/bt/bt_keywords.jsonl`, n6-architecture millennium closure | bt_millennium_map.json | 7/7 BT correspond | BT-P1-1 | S | 1.0 | [BT-541..547] |
+| BT-P1-3 | BT-541~547 mapping check + millennium link | `shared/bt/bt_keywords.jsonl`, canon millennium closure | bt_millennium_map.json | 7/7 BT correspond | BT-P1-1 | S | 1.0 | [BT-541..547] |
 | BT-P1-4 | alien/alien_index_* UAP branch state | `shared/alien/alien_index_*` | alien_idx.json | row count recorded | - | S | 0.6 | - |
 | BT-P1-5 | BT-HEXA 25-keyword extension SSOT | `shared/bt/bt_keywords.jsonl` (BT-HEXA branch) | bt_hexa_list.json | 25 keywords present | BT-P1-1 | S | 0.8 | - |
 

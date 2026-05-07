@@ -42,7 +42,7 @@ fn py_backend() -> String {
     return "
 import sys, os, json, datetime, glob, re
 
-REPO = '/Users/ghost/core/n6-architecture'
+REPO = '/Users/ghost/core/canon'
 WITNESSES = [
     ('L4', REPO + '/design/kick/2026-04-28_hexa-weave-mk-x-transcend_omega_cycle.json'),
     ('L5', REPO + '/design/kick/2026-04-28_hexa-weave-mk-x-formal-closure_omega_cycle.json'),

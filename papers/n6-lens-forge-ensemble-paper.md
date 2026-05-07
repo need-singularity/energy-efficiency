@@ -17,7 +17,7 @@ alien_index_target: 10
 
 # HEXA-LENS-FORGE-ENSEMBLE — Lens ensemble design paper (N6-123)
 
-> **Author**: Park Minwoo (n6-architecture)
+> **Author**: Park Minwoo (canon)
 > **Category**: lens-forge-ensemble — P2 extension lens-ensemble seed
 > **Version**: v3 (2026-04-14 P2 extension)
 > **Upstream BT**: BT-380 (8 AI paradigms), BT-26, BT-33, BT-54, BT-64, BT-67, BT-73
@@ -27,7 +27,7 @@ alien_index_target: 10
 
 ## 0. Abstract
 
-This paper shows that when the n6-architecture **"lens Forge"** (= an observation-lens factory for exploring atlas.n6 entries) is assembled as an ensemble, it converges on sigma(6)=12 lenses. Following the predecessor paper HEXA-CROSS-DSE-MATRIX-112 (N6-113), which treated a 225-technique x 10-domain matrix, this paper fixes the **theoretical upper bound on the number of lenses**.
+This paper shows that when the canon **"lens Forge"** (= an observation-lens factory for exploring atlas.n6 entries) is assembled as an ensemble, it converges on sigma(6)=12 lenses. Following the predecessor paper HEXA-CROSS-DSE-MATRIX-112 (N6-113), which treated a 225-technique x 10-domain matrix, this paper fixes the **theoretical upper bound on the number of lenses**.
 
 Core draft claims:
 1. The effective number of lenses in the ensemble is <= sigma(6) = 12.
@@ -41,7 +41,7 @@ This paper does not discover a new lens type — it is a seed paper that maps th
 
 ## 1. Introduction — WHY
 
-The atlas.n6 of n6-architecture is explored through "lenses" (= observation frames). Examples:
+The atlas.n6 of canon is explored through "lenses" (= observation frames). Examples:
 - arithmetic lens — n=6 number-theoretic constants
 - topology lens — topological invariants
 - dynamics lens — temporal dynamics
@@ -103,7 +103,7 @@ Diversity index D = sum(distinct(lens_i)) <= 5. On exceedance, duplicates are me
 
 ### 4.1 Measured data
 
-- Measured lens count in n6-architecture's scripts/forge/ and techniques/ — currently 11 lenses (within the sigma=12 cap).
+- Measured lens count in canon's scripts/forge/ and techniques/ — currently 11 lenses (within the sigma=12 cap).
 - BT-380 (8 AI paradigms) — 8 < 12 PASS.
 - atlas.n6 `lens-forge-count` node — candidate for EXACT promotion.
 

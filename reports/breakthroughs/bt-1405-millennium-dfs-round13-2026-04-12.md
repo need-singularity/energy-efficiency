@@ -601,10 +601,10 @@ forced pattern-matching prohibited: forcibly n=6 solution without pasting, mark 
 ## 7. Verification environment
 
 - Date: 2026-04-12
-- Project: n6-architecture
+- Project: canon
 - Preceding BT: BT-1394~1404
 - Reference atlas: $NEXUS/shared/n6/atlas.n6
-- SSOT rules: n6shared/rules/common.json (R0~R27), n6shared/rules/n6-architecture.json (N61~N65)
+- SSOT rules: canonshared/rules/common.json (R0~R27), canonshared/rules/canon.json (N61~N65)
 - English-only (R): .md/comments/commit messages all in English (feedback_korean_only_docs)
 
 ---

@@ -1,5 +1,5 @@
 {
-  "schema": "n6-architecture/loss_free_roi_audit/1",
+  "schema": "canon/loss_free_roi_audit/1",
   "ts": "2026-04-23",
   "proposal_ref": "n6a-20260422-001",
   "scope": "atlas-derived ROI entries categorization audit (loss_free_roi vs other)",
@@ -12,7 +12,7 @@
       "missing_domain_index", "proposal_outdated"
     ],
     "roi_ssot_present": true,
-    "roi_ssot_path": "/Users/ghost/core/nexus/config/roi/n6-architecture.json",
+    "roi_ssot_path": "/Users/ghost/core/nexus/config/roi/canon.json",
     "categorization_review": {
       "all_atlas_derived_entries_tagged_loss_free_roi": true,
       "uncategorized_atlas_drift": 0,

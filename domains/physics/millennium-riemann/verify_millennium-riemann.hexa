@@ -3,7 +3,7 @@
 # 출처: millennium-riemann.md (EXACT 20/20)
 # SSOT 이관 예정: nexus/shared/n6/scripts/verify_millennium-riemann_n6.hexa
 # Stage A: bin/n6_verify_run <file> (proposals/dup_derivation_consolidation_phase2_2026_04_24.md)
-use "n6shared/_shared_constants"
+use "canonshared/_shared_constants"
 fn main() {
     println("[리만] BT-541 제타 함수 n=6 수렴 검증 시작")
 

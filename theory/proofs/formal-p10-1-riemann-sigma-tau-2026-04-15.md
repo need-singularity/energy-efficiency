@@ -1,6 +1,6 @@
 > FORMAL P10-1 — Re-check of the candidate correspondence between Riemann ζ zero spacings and σ-τ=8 / 2026-04-15
 >
-> Author: DSE-P10-1 / n6-architecture P10 (FORMAL axis)
+> Author: DSE-P10-1 / canon P10 (FORMAL axis)
 > Purpose: honestly adjudicate 3 candidate correspondences between the Mk.IV main theorem B (σ(6)-τ(6)=8) and the Riemann ζ non-trivial zero spacing constants
 > Rules: no self-reference, use only Odlyzko-measured zeros, English, a MISS verdict is also valuable
 

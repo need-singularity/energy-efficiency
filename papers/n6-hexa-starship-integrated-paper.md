@@ -10,7 +10,7 @@ requires:
 ---
 # [CANONICAL v1] Ultimate Reusable Launch Vehicle (HEXA-STARSHIP) — n=6 Arithmetic Coordinate Integrated Paper
 
-> **Author**: Park Min-woo (n6-architecture)
+> **Author**: Park Min-woo (canon)
 > **Category**: hexa-starship-integrated — aerospace/transport + space-systems integrated seed paper
 > **Version**: v1 (2026-04-18 canonical integrated)
 > **Product code**: P-062
@@ -266,7 +266,7 @@ already candidate-mapped onto the n=6 coordinate frame; this integrated paper ha
 exhaustive: 6×5×4×5×4 = 2,400 | compatibility filter: 576 (24%=J₂) | Pareto: σ=12 path
 ```
 
-#### Pareto top-6 (top n=6 alignment)
+#### Pareto top-K (data-driven) (data-driven cardinality)
 
 | Rank | K1 | K2 | K3 | K4 | K5 | n6% | Note |
 |------|----|----|----|----|----|-----|------|
@@ -768,7 +768,7 @@ if __name__ == "__main__":
 
 | Item | Value | Note |
 |------|-------|------|
-| Product code | P-062 | n6-architecture product registry |
+| Product code | P-062 | canon product registry |
 | Integration target | 2 papers → 1 | aerospace-transport + space-systems |
 | atlas integration | 150/150 EXACT | [10*] grade candidate |
 | Engine count | σ·n/φ = 36 | Raptor-class reusable |
@@ -1202,7 +1202,7 @@ const int FBW_REDUN = N / PHI;          // 3
 
 - `papers/_registry.json` — papers SSOT
 - `papers/_dag.json` — domain dependencies
-- `n6shared/config/projects.json` — P-062 product registry
+- `canonshared/config/projects.json` — P-062 product registry
 - `reports/` — testing/verification point reports
 
 ## §21 IMPACT

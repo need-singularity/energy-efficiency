@@ -84,7 +84,7 @@
     "companion_b3_save_load": "proposals/hexa_weave_kick_infra_b3_registry_2026_04_28.md",
     "data_source_cascade": "/Users/ghost/core/nexus/state/audit/cascade_blocked_events.jsonl",
     "data_source_creds_glob": "/Users/ghost/.claude-claudeN/.credentials.json (N=1..12)",
-    "tool_used": "/Users/ghost/core/n6-architecture/tool/manual_login_reminder.hexa (logic; direct python3 invoked due to PATH issue)"
+    "tool_used": "/Users/ghost/core/canon/tool/manual_login_reminder.hexa (logic; direct python3 invoked due to PATH issue)"
   },
   "next_cycle": [
     "cycle 11: investigate slot_pool=13/12 dir-glob anomaly (F-CASCADE-METRIC-1)",

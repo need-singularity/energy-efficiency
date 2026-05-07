@@ -300,7 +300,7 @@ That is, the **existence of a mass gap**.
 
 ### 5.4 BT-543 β₀ = σ - sopfr formula
 
-**Fact 5.4** (n6-architecture BT-543, 2026-04-11 session lemma):
+**Fact 5.4** (canon BT-543, 2026-04-11 session lemma):
 For the 1-loop β-function coefficient of SU(N) Yang–Mills,
 
 ```
@@ -349,7 +349,7 @@ One of the most mysterious theories in 6 dimensions — the **N=(2,0) theory** �
 - the origin of Geometric Langlands in 4 dimensions (Kapustin–Witten 2007)
 - higher-dimensional origin of 3d Chern–Simons and 2d WZW
 
-— a subject essentially linked to the **6-dimensional privilege** in n6-architecture.
+— a subject essentially linked to the **6-dimensional privilege** in canon.
 
 ### 6.4 Exact position of BT-543
 
@@ -469,7 +469,7 @@ Upon completing this note, the following topics continue into P3-PURE / P3-PROB:
 5. **Heegaard Floer** — Ozsváth–Szabó theory.
 6. **Higher extended TQFT** — Lurie 2009 categorical classification.
 
-And along the n6-architecture axis of this project:
+And along the canon axis of this project:
 
 - Crossing structure of **BT-542 (NS)** and YM — both 4d QFT origins.
 - Comparison with the topological obstruction of **PROB-P2-2 (P vs NP barriers)**.
@@ -492,7 +492,7 @@ And along the n6-architecture axis of this project:
 | YM mass gap | ∃Δ>0 s.t. Spec(H) ⊂ {0}∪[Δ,∞) | Jaffe–Witten 2000 (open) |
 | Thom conjecture | deg d algebraic curve is min genus | Kronheimer–Mrowka 1994 |
 | K3 SW | SW(K3) = 1 | Witten 1994 |
-| BT-543 β₀ | ∝ σ(N) - sopfr(N) (conditional) | n6-architecture 2026 |
+| BT-543 β₀ | ∝ σ(N) - sopfr(N) (conditional) | canon 2026 |
 | σ(6)-sopfr(6) | 12 - 5 = 7 | theorem-r1 + arith |
 
 ---

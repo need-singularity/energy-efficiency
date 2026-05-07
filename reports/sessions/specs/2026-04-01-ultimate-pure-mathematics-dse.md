@@ -7,7 +7,7 @@
 
 ## 1. Overview
 
-Pure mathematics underlies every domain in n6-architecture. Unlike the physical stack (materials -> process -> core -> chip -> system), here we define a DSE chain across the layers of mathematical structure.
+Pure mathematics underlies every domain in canon. Unlike the physical stack (materials -> process -> core -> chip -> system), here we define a DSE chain across the layers of mathematical structure.
 
 **Goal**: Exhaustively explore every link between n=6 arithmetic functions and pure-mathematics theorems/structures, and systematically derive undiscovered BT draft candidates.
 

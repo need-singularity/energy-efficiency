@@ -14,7 +14,7 @@ alien_index_target: 10
 
 # HEXA-ARCH-SELFORG — Self-organization emergence design paper (N6-109)
 
-> **Author**: Park Min-woo (n6-architecture)
+> **Author**: Park Min-woo (canon)
 > **Category**: arch-selforg-design — P2 extension v3 evolution seed
 > **Version**: v3 (2026-04-14 P2 extension)
 > **Prior BT**: BT-366, BT-368, BT-195
@@ -157,7 +157,7 @@ The v4 track plans to extend this to **multi-layer networks**.
 2. Bak, P. *How Nature Works: The Science of Self-Organized Criticality*. Copernicus, 1996.
 3. papers/n6-swarm-intelligence-paper.md (N6-106 collective intelligence)
 4. theory/breakthroughs/bt-361-attractor-n2-36.md
-5. arch_selforg.hexa engine (n6-architecture/engine/)
+5. arch_selforg.hexa engine (canon/engine/)
 
 ## §1 WHY
 

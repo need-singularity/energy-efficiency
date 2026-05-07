@@ -3163,7 +3163,7 @@ This section honestly analyzes the weaknesses, risks, and uncertainties of the H
 
 ---
 
-*This document is the ultimate fusion-design specification for the n6-architecture project.*
+*This document is the ultimate fusion-design specification for the canon project.*
 *DSE basis: tools/universal-dse/domains/fusion.toml*
 *Hypothesis basis: docs/fusion/hypotheses.md (H-FU-1~77)*
 *Cross-DSE: energy-generation, battery, solar, chip, superconductor*

@@ -95,7 +95,7 @@
       {"sibling": "hive", "applicable": false, "reason": "orchestration, not modeling"},
       {"sibling": "nexus", "applicable": false, "reason": "auth/billing"},
       {"sibling": "pixie", "applicable": false, "reason": "desktop/UI"},
-      {"sibling": "n6-architecture", "applicable": "n/a", "reason": "parent of sibling; provides theoretical n6"},
+      {"sibling": "canon", "applicable": "n/a", "reason": "parent of sibling; provides theoretical n6"},
       {"sibling": "hexa-weave", "applicable": true, "reason": "target sandbox itself"},
       {"sibling": "hexa-os", "applicable": false, "reason": "OS layer"},
       {"sibling": "hexa-lang", "applicable": false, "reason": "language tooling"}

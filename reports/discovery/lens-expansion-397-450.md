@@ -131,4 +131,4 @@ test result: ok. 2593 passed; 0 failed; 0 ignored; 0 measured
 - Telescope: `$N6_ARCH/nexus/src/telescope/mod.rs`
 - Registry wiring: `$N6_ARCH/nexus/src/telescope/registry.rs`
 - Tests: `$N6_ARCH/nexus/tests/telescope_test.rs`
-- JSON: `$N6_ARCH/n6shared/config/lens_registry.json`
+- JSON: `$N6_ARCH/canonshared/config/lens_registry.json`

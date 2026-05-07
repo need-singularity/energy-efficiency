@@ -226,6 +226,6 @@ GL(7) | GL(7)  | 1             | -
 ## 4. Verification environment
 
 - Date: 2026-04-14
-- Project: n6-architecture
+- Project: canon
 - Prior BT: BT-1412@04-14 (round 20 first half 3 items)
 - atlas reference: $NEXUS/shared/n6/atlas.n6

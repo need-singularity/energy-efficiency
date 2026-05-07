@@ -110,4 +110,4 @@
 
 - JSON: `experiments/dse/cross_matrix_112x10.json`
 - Summary: `experiments/dse/cross_matrix_112x10_summary.md` (this document)
-- Roadmap: `$NEXUS/shared/roadmaps/n6-architecture.json` DSE-P1-3 done
+- Roadmap: `$NEXUS/shared/roadmaps/canon.json` DSE-P1-3 done

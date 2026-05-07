@@ -144,7 +144,7 @@ optional unary negation. This admits:
 - length-3, length-4: ±(a·b)/(c·d)
 
 This is the standard `(p·q)/(r·s)` length-4 enumeration used in the
-n6-architecture Q1 / Q2 molt-validation scripts (cf.
+canon Q1 / Q2 molt-validation scripts (cf.
 `bt544_q1_molt_validation.py`).
 
 ### §2.3 Enumeration cardinality

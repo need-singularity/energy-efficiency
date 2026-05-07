@@ -406,7 +406,7 @@
     {
       "path": "nexus/docs/gpu-metal-roadmap.md",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -1812,7 +1812,7 @@
       "n6_matches": 0
     },
     {
-      "path": "nexus/shared/events/n6-architecture_calc_req_1775262229.json",
+      "path": "nexus/shared/events/canon_calc_req_1775262229.json",
       "type": "only_in_ready",
       "destination": "tecs-l",
       "value": "medium",
@@ -1820,7 +1820,7 @@
       "n6_matches": 0
     },
     {
-      "path": "nexus/shared/events/n6-architecture_discovery_1775262229.json",
+      "path": "nexus/shared/events/canon_discovery_1775262229.json",
       "type": "only_in_ready",
       "destination": "nexus",
       "value": "medium",
@@ -1828,7 +1828,7 @@
       "n6_matches": 0
     },
     {
-      "path": "nexus/shared/events/n6-architecture_discovery_1775263013.json",
+      "path": "nexus/shared/events/canon_discovery_1775263013.json",
       "type": "only_in_ready",
       "destination": "nexus",
       "value": "medium",
@@ -1836,7 +1836,7 @@
       "n6_matches": 0
     },
     {
-      "path": "nexus/shared/events/n6-architecture_sync_req_1775262229.json",
+      "path": "nexus/shared/events/canon_sync_req_1775262229.json",
       "type": "only_in_ready",
       "destination": "nexus",
       "value": "low",
@@ -2838,7 +2838,7 @@
     {
       "path": "nexus/src/telescope/mod.rs",
       "type": "different",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "high",
       "score": 0,
       "n6_matches": 0

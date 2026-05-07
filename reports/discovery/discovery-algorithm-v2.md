@@ -7,7 +7,7 @@
 
 ## 0. Motivation
 
-The n6-architecture project has produced 93 Breakthrough Theorems (BTs) across 30+ domains.
+The canon project has produced 93 Breakthrough Theorems (BTs) across 30+ domains.
 A recurring meta-pattern: discoveries combined with other discoveries yield larger discoveries.
 This document formalizes that meta-pattern as a computable algorithm.
 
@@ -771,7 +771,7 @@ WHERE:
 ### 6.1 Role Division
 
 ```
-TECS-L (theory)                    n6-architecture (empirical)
+TECS-L (theory)                    canon (empirical)
 +--------------------------+       +--------------------------+
 | Mathematical foundation  |       | Industrial verification  |
 | DFS identity mining      |  <->  | DSE combination search   |

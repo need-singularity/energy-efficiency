@@ -16,7 +16,7 @@ grade: constraint-functional audit, no removal recommendation without 3-of-3 aud
 This document is a **research-layer audit** of the existing
 `atlas/state/inventory no-modify` write-barrier prompt-level constraint that
 is injected into general-purpose / session / research agent invocations
-in the n6-architecture repo. It is **not** a removal proposal, **not** a
+in the canon repo. It is **not** a removal proposal, **not** a
 relaxation request, **not** a policy change. The barrier remains in
 force during and after this audit. Per the spec, no file under
 `atlas/`, `state/`, `state/proposals/inventory.json`, or
@@ -107,7 +107,7 @@ sessions depends on the barrier being present in the prompt.
 
 ## sec 2 — Privileged-agent map
 
-### 2.1 Local agent definitions (`/Users/ghost/core/n6-architecture/.claude/agents/`)
+### 2.1 Local agent definitions (`/Users/ghost/core/canon/.claude/agents/`)
 
 | Agent | File | Tool privilege | SSOT write privilege |
 |-------|------|----------------|----------------------|

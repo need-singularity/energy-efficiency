@@ -18,11 +18,11 @@ requires:
 
 # HEXA-WEAVE — write-side multi-strand molecular design composition under the n=6 invariant
 
-> Positioning: HEXA-WEAVE is the n6-architecture write-side counterpart to AlphaFold 3 (DeepMind 2024-05, open read-side single-protein prediction) and IsoDDE (Isomorphic Labs 2026-02, proprietary closed drug-design). Where FOLD answers "given a sequence, what is its structure?", WEAVE answers "given a target multi-molecule context, design the strand-set that produces it." The shift is from prediction over a single chain to composition over a strand bundle, threaded by the n6 invariant lattice (σ(6)=12 / τ(6)=4 / φ(6)=2 / J₂=24).
+> Positioning: HEXA-WEAVE is the canon write-side counterpart to AlphaFold 3 (DeepMind 2024-05, open read-side single-protein prediction) and IsoDDE (Isomorphic Labs 2026-02, proprietary closed drug-design). Where FOLD answers "given a sequence, what is its structure?", WEAVE answers "given a target multi-molecule context, design the strand-set that produces it." The shift is from prediction over a single chain to composition over a strand bundle, threaded by the n6 invariant lattice (σ(6)=12 / τ(6)=4 / φ(6)=2 / J₂=24).
 
 ## §1 WHY (why a write-side weave layer matters)
 
-Read-side folding tools have crossed the high-quality threshold for single-chain inference (AlphaFold 3 reports median TM-score >0.9 across CASP15 single-domain targets) but the design problem — specifying multi-molecule assemblies that satisfy thermodynamic, kinetic, and proteome-compatibility constraints jointly — remains open. HEXA-WEAVE registers this as a domain in n6-architecture so that write-side design composition has a canonical body, an explicit ordinal-class workload ceiling, and a falsifiable 90-day MVP gate.
+Read-side folding tools have crossed the high-quality threshold for single-chain inference (AlphaFold 3 reports median TM-score >0.9 across CASP15 single-domain targets) but the design problem — specifying multi-molecule assemblies that satisfy thermodynamic, kinetic, and proteome-compatibility constraints jointly — remains open. HEXA-WEAVE registers this as a domain in canon so that write-side design composition has a canonical body, an explicit ordinal-class workload ceiling, and a falsifiable 90-day MVP gate.
 
 | Aspect | Read-side (AlphaFold 3 / IsoDDE) | Write-side (HEXA-WEAVE) |
 |--------|----------------------------------|------------------------|
@@ -30,7 +30,7 @@ Read-side folding tools have crossed the high-quality threshold for single-chain
 | Object | Single chain or small complex | Multi-strand bundle (P up to 10^4) |
 | Cost driver | Inference compute | Inverse-search × Landauer floor |
 | Constraint set | Geometric likelihood | Geometry + thermodynamics + proteome non-interference |
-| Open vs closed | AF3 open, IsoDDE proprietary | HEXA-WEAVE open under n6-architecture |
+| Open vs closed | AF3 open, IsoDDE proprietary | HEXA-WEAVE open under canon |
 | Verdict horizon | Empirical (CASP) | Theoretical-analytical (this revision) |
 
 Claim: a write-side composition layer is a distinct technical object from a read-side prediction layer, and its workload ceiling is set jointly by formal proof-strength, physical Landauer accounting, and computational complexity rather than by inference compute alone. Evidence: tri-axis Ω-saturation closure witness `design/kick/2026-04-28_hexa-weave-closure_omega_cycle.json` binds all three axes on a single workload (whole-proteome inverse design at thermodynamic floor). Limit: closure verdict is APPROACH grade per raw 69 ceiling-classification — workload ceiling, not absolute universe ceiling; theoretical-analytical, not yet empirical.
@@ -259,7 +259,7 @@ Aggregate (revised): 15 falsifiers across 5 measurable claims, ≥3 per claim, s
 |------|-------|-----------|---------|
 | 2026-04-28 | 1 | Predecessor witness PARTIAL | `design/kick/2026-04-28_hexa-weave-abstraction-to-limits_omega_cycle.json` |
 | 2026-04-28 | 1 | Closure witness PASS | `design/kick/2026-04-28_hexa-weave-closure_omega_cycle.json` |
-| 2026-04-28 | 1 | Domain registration in n6-architecture | this body + `_index.json` updates |
+| 2026-04-28 | 1 | Domain registration in canon | this body + `_index.json` updates |
 | 2026-04-28 | 2 | W1 architecture decision + lean4 audit baseline | `design/kick/2026-04-28_hexa-weave-mvp-w1-architecture_omega_cycle.json` + W1-lean4-audit |
 | 2026-04-28 | 3 | W2 base-model integration spec + AX-1 lean4 reverse-direction PROVED + bounded forward [2,30] PASS | `design/kick/2026-04-28_hexa-weave-mvp-w2-base-model_omega_cycle.json` |
 | 2026-04-28 | 4 | W3 AX-1 Robin/Hardy-Wright/Wigert tail named axiom + AX-2 ZFC+V_κ bridge | `design/kick/2026-04-28_lean4-w3-ax1-robin_omega_cycle.json` + `design/kick/2026-04-28_lean4-w3-ax2_omega_cycle.json` |
@@ -289,10 +289,10 @@ Aggregate (revised): 15 falsifiers across 5 measurable claims, ≥3 per claim, s
 
 | Role | Responsibility | Owner |
 |------|----------------|-------|
-| Domain steward | Maintain this body and its sub-index entry | n6-architecture maintainers |
+| Domain steward | Maintain this body and its sub-index entry | canon maintainers |
 | Closure auditor | Verify tri-axis Ω-saturation witnesses | reverse-math + Landauer reviewers |
 | MVP runner | Deliver F-TP5-b 90-day end-to-end MVP | TBD by 2026-07-28 |
-| Falsifier monitor | Watch F-CL2-a..c, F-CL3-a..c, F-TP5-b..d | n6-architecture honesty-charter team |
+| Falsifier monitor | Watch F-CL2-a..c, F-CL3-a..c, F-TP5-b..d | canon honesty-charter team |
 | Cross-domain liaison | Synbio / crispr / bio-pharma handshake | per-axis domain stewards |
 
 ## §15 REFERENCES
@@ -311,9 +311,9 @@ Aggregate (revised): 15 falsifiers across 5 measurable claims, ≥3 per claim, s
 12. Rathjen M. 1991 "Proof-Theoretic Analysis of KPM" Arch Math Logic 30:377-403 (Bachmann-Howard ψ(Ω_ω) calibration of Π¹_1-CA₀).
 13. Schütte K. 1977 "Proof Theory" Springer Grundlehren (ψ ordinal notation reference).
 14. Solomonoff R. 1964 "A Formal Theory of Inductive Inference" parts I and II Inf Control 7:1-22 and 7:224-254 (Kolmogorov / halting-equivalence references for §6 L12-L14).
-15. n6-architecture predecessor witness: `design/kick/2026-04-28_hexa-weave-abstraction-to-limits_omega_cycle.json` (16-level abstraction ladder, PARTIAL verdict).
-16. n6-architecture closure witness: `design/kick/2026-04-28_hexa-weave-closure_omega_cycle.json` (tri-axis Ω-saturation PASS at workload ceiling).
-17. n6-architecture cosmological-extension chain L4-L7: `design/kick/2026-04-28_hexa-weave-mk-x-transcend_omega_cycle.json` through `2026-04-28_hexa-weave-mk-x-transcend-closure-all_omega_cycle.json` (Mk.X TRANSCEND PASS-WITH-C3-CAVEATS).
-18. n6-architecture cycle 2-8 W1-W6 proposals: `proposals/hexa_weave_mvp_w1_architecture_decision_2026_04_28.md` (W1) → `proposals/hexa_weave_mvp_w2_base_model_integration_2026_04_28.md` (W2) → `proposals/hexa_weave_mvp_w3_lean4_ax2_2026_04_28.md` + `proposals/hexa_weave_mvp_w3_ax1_robin_2026_04_28.md` (W3) → `proposals/hexa_weave_mvp_w4_lean4_mk_decision_2026_04_28.md` + `proposals/hexa_weave_mvp_w4_openfold_dryrun_2026_04_28.md` (W4) → `proposals/hexa_weave_mvp_w5_ax2_mkbridge_integration_2026_04_28.md` (W5) → `proposals/hexa_weave_mvp_w6_axioms_shared_refactor_2026_04_28.md` + `proposals/hexa_weave_mvp_w6_felgner_full_proof_2026_04_28.md` (W6).
-19. n6-architecture cycle 6 (cycle 7 in this doc's numbering) external paper: `papers/hexa-weave-formal-mechanical-w2-2026-04-28.md` (Option-E disclosure tier; Option-A Zenodo DOI deposit prep underway, gated on user approval per `proposals/hexa_weave_zenodo_deposit_prep_2026_04_28.md`).
-20. n6-architecture cycle 7-8 lean4 mechanical body: `lean4-n6/N6/MechVerif/AX1.lean` + `AX2.lean` + `MKBridge.lean` + `Foundation/Strand.lean` + `Foundation/Axioms.lean` (Lean 4 v4.30.0-rc1 + mathlib4 rev `19c4978`; sorry count 0; 7 named axioms surfaced via `#print axioms`).
+15. canon predecessor witness: `design/kick/2026-04-28_hexa-weave-abstraction-to-limits_omega_cycle.json` (16-level abstraction ladder, PARTIAL verdict).
+16. canon closure witness: `design/kick/2026-04-28_hexa-weave-closure_omega_cycle.json` (tri-axis Ω-saturation PASS at workload ceiling).
+17. canon cosmological-extension chain L4-L7: `design/kick/2026-04-28_hexa-weave-mk-x-transcend_omega_cycle.json` through `2026-04-28_hexa-weave-mk-x-transcend-closure-all_omega_cycle.json` (Mk.X TRANSCEND PASS-WITH-C3-CAVEATS).
+18. canon cycle 2-8 W1-W6 proposals: `proposals/hexa_weave_mvp_w1_architecture_decision_2026_04_28.md` (W1) → `proposals/hexa_weave_mvp_w2_base_model_integration_2026_04_28.md` (W2) → `proposals/hexa_weave_mvp_w3_lean4_ax2_2026_04_28.md` + `proposals/hexa_weave_mvp_w3_ax1_robin_2026_04_28.md` (W3) → `proposals/hexa_weave_mvp_w4_lean4_mk_decision_2026_04_28.md` + `proposals/hexa_weave_mvp_w4_openfold_dryrun_2026_04_28.md` (W4) → `proposals/hexa_weave_mvp_w5_ax2_mkbridge_integration_2026_04_28.md` (W5) → `proposals/hexa_weave_mvp_w6_axioms_shared_refactor_2026_04_28.md` + `proposals/hexa_weave_mvp_w6_felgner_full_proof_2026_04_28.md` (W6).
+19. canon cycle 6 (cycle 7 in this doc's numbering) external paper: `papers/hexa-weave-formal-mechanical-w2-2026-04-28.md` (Option-E disclosure tier; Option-A Zenodo DOI deposit prep underway, gated on user approval per `proposals/hexa_weave_zenodo_deposit_prep_2026_04_28.md`).
+20. canon cycle 7-8 lean4 mechanical body: `lean4-n6/N6/MechVerif/AX1.lean` + `AX2.lean` + `MKBridge.lean` + `Foundation/Strand.lean` + `Foundation/Axioms.lean` (Lean 4 v4.30.0-rc1 + mathlib4 rev `19c4978`; sorry count 0; 7 named axioms surfaced via `#print axioms`).

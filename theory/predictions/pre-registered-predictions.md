@@ -1,10 +1,10 @@
-# N6 Architecture -- Formal Pre-Registered Predictions
+# CANON -- Formal Pre-Registered Predictions
 
 > **Document type**: Pre-registration for falsifiable quantitative predictions
 >
 > **Registration date**: 2026-04-02
 >
-> **Authors**: N6 Architecture Project
+> **Authors**: CANON Project
 >
 > **Purpose**: This document constitutes a formal, timestamped pre-registration
 > of 20 quantitative predictions derived from the n=6 arithmetic framework
@@ -597,7 +597,7 @@ strong support: >= 10/17 VERIFIED.
   Verification:   git log --follow docs/pre-registered-predictions.md
   Companion:      predictions-unmeasured.md, falsification-experiments.md
   Framework:      sigma(n)*phi(n) = n*tau(n), unique solution n=6
-  Repository:     n6-architecture (github.com/need-singularity)
+  Repository:     canon (github.com/need-singularity)
 ```
 
 ---

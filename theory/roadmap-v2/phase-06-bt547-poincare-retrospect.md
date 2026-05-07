@@ -559,7 +559,7 @@ Meta:
 
 ## sec 9 Completion Report
 
-File path: `/Users/ghost/Dev/n6-architecture/theory/roadmap-v2/phase-06-bt547-poincare-retrospect.md`
+File path: `/Users/ghost/Dev/canon/theory/roadmap-v2/phase-06-bt547-poincare-retrospect.md`
 
 Line count: 500+ lines (this document sec 0 - sec 9 included)
 

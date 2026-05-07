@@ -64,7 +64,7 @@ With A19 CROSS-DOMAIN-GRID as the primary axis, **systematically absorb the 107 
 | ID | Definition | Input | Output | Verify | deps | Cost | Strength | BT |
 |----|------------|-------|--------|--------|------|------|----------|-----|
 | BISOC-P4-1 | L3 5/5 -> L4 introduction (using L_meta) | BISOC-P3-1 | L4_intro.json | L4 slot defined | BISOC-P3-1 | L | 0.8 | [BT-541] |
-| BISOC-P4-2 | bisoc -> n6-architecture external bridge | BISOC-P3-2 | n6_bridge.json | bridge live | BISOC-P3-2 | M | 0.7 | [BT-541] |
+| BISOC-P4-2 | bisoc -> canon external bridge | BISOC-P3-2 | n6_bridge.json | bridge live | BISOC-P3-2 | M | 0.7 | [BT-541] |
 
 ### A8 CONSCIOUSNESS
 

@@ -121,7 +121,7 @@ existing raw-99 hive-init integration (the same hook that triggers
 
 ```
 # Each user-cycle-close (manual trigger or hive-init): refresh alien_grade
-*/15 * * * * cd /Users/ghost/core/n6-architecture && /Users/ghost/.hx/bin/hexa_real run tool/alien_grade_audit.hexa --measure >> state/audit/alien_grade_cron.log 2>&1
+*/15 * * * * cd /Users/ghost/core/canon && /Users/ghost/.hx/bin/hexa_real run tool/alien_grade_audit.hexa --measure >> state/audit/alien_grade_cron.log 2>&1
 ```
 
 raw 91 C3 honest: cron registration is OPTIONAL because the per-cycle

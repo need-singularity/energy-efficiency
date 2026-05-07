@@ -7,9 +7,9 @@ status: draft
 
 # Kolon Industries × Z=6 (Carbon) Boundarization Materials Proposal
 
-Author: Park Minwoo (independent researcher, n6-architecture project lead)
+Author: Park Minwoo (independent researcher, canon project lead)
 Recipient: Kolon Industries Central R&D Center / Materials Research Institute / Future Technology Institute
-Project: n6-architecture (https://github.com/need-singularity/n6-architecture)
+Project: canon (https://github.com/need-singularity/canon)
 Related domain: `domains/compute/chip-materials/chip-materials.md`
 Related BT: BT-85 Carbon Z=6 universality
 
@@ -74,7 +74,7 @@ and mechanical performance.
 ### Phase 1 — Material-characterization sharing (2026 Q3, 3 months)
 
 - Kolon **re-measures** 10 samples of existing Heracron / CF / PI film using the
-  n6-architecture measurement protocol (thermal conductivity, tensile, heat resistance, optical)
+  canon measurement protocol (thermal conductivity, tensile, heat resistance, optical)
 - n6 side issues a detailed report comparing each measurement with n=6 boundary predictions
 - Cost: samples + measurement borne by Kolon; analysis by n6 is free of charge
 
@@ -146,7 +146,7 @@ Conditions under which this proposal would be judged wrong:
 ## §8. Contact
 
 - Park Minwoo (mk911tb@proton.me)
-- GitHub: need-singularity/n6-architecture
+- GitHub: need-singularity/canon
 - Preferred meeting: once during 2026 Q2 ~ Q3, Kolon's schedule prioritized
 
 ---

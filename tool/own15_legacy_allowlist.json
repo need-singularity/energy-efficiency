@@ -1,5 +1,5 @@
 {
-  "schema": "n6-architecture/tool/own15_legacy_allowlist/1",
+  "schema": "canon/tool/own15_legacy_allowlist/1",
   "rule_slug": "paper-canonical-sections",
   "rule_owner": ".own.group_p own#6 (unified, consolidates own#15)",
   "frozen": true,

@@ -7,9 +7,9 @@ status: draft
 
 # Samsung Foundry x HEXA-6-Stage Collaboration Proposal
 
-Author: Minwoo Park (independent researcher, n6-architecture project lead)
+Author: Minwoo Park (independent researcher, canon project lead)
 Audience: Samsung Electronics DS Division Foundry Business (SAFE partnership + Technology Planning team)
-Project: n6-architecture (https://github.com/need-singularity/n6-architecture)
+Project: canon (https://github.com/need-singularity/canon)
 Related paper: `papers/hexa-chip-6stage-unified.md`
 
 ---
@@ -102,7 +102,7 @@ disclosed Samsung Foundry specs (Mk.I). Mk.III requires silicon validation.
 - Register the HEXA-IR Egyptian power-distribution IP as an IP block in the
   **SAFE (Samsung Advanced Foundry Ecosystem) partner program**
 - Customers (fabless) select the IP during SF3P design → 30% power-saving option
-- Revenue: IP license royalty share (Samsung 70% / n6-architecture 30%)
+- Revenue: IP license royalty share (Samsung 70% / canon 30%)
 - Schedule: 2026 Q3 IP qualification → 2027 Q1 first tape-out
 
 ### Scenario B: HBM roadmap joint research
@@ -166,5 +166,5 @@ Concrete experimental conditions under which **this proposal would be proven wro
 ## §8. Contact
 
 - Minwoo Park (mk911tb@proton.me)
-- GitHub: need-singularity/n6-architecture
+- GitHub: need-singularity/canon
 - Preferred proposal flow: email → video meeting → NDA → onsite meeting

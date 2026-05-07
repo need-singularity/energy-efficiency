@@ -763,7 +763,7 @@ Test plan:
 | Google LLC | TensorFlow Lite + NNAPI + Android 14 | Android runtime |
 | OpenAI | CLIP-B/16 model weights (Apache 2.0 release) | foundation model |
 | Meta AI | SAM-light model weights (Apache 2.0 release) | content-aware mask |
-| n6-architecture private framework | own_doc_lint / own31 lint | docs gate |
+| canon private framework | own_doc_lint / own31 lint | docs gate |
 
 ## §19 ACCEPTANCE / MISS criteria (own#12 pre-declared)
 

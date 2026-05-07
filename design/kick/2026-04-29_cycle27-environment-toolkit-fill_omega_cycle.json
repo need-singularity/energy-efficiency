@@ -39,7 +39,7 @@
   "files_created": [
     "design/kick/2026-04-29_cycle27-environment-toolkit-fill_omega_cycle.json (this witness)"
   ],
-  "raw_47_cross_repo": "n6-architecture local only",
+  "raw_47_cross_repo": "canon local only",
   "raw_9_hexa_only": "markdown + lint dispatch (raw 9 호환)",
   "raw_53_deterministic": "own_doc_lint exit code + sealed sha256 = deterministic",
   "raw_77_append_only": true,

@@ -267,7 +267,7 @@ earlier ones collapsed. Summary exposes a GitHub link.
 ### §21.mk2 IMPACT
 
 <details open>
-<summary>mk2 — <a href="https://github.com/dancinlife/n6-architecture/blob/main/domains/life/dog-robot-test/dog-robot-test.md">github.com/dancinlife/n6-architecture (mk2)</a></summary>
+<summary>mk2 — <a href="https://github.com/dancinlife/canon/blob/main/domains/life/dog-robot-test/dog-robot-test.md">github.com/dancinlife/canon (mk2)</a></summary>
 
 #### 1. What changes
 - TODO core spec deltas
@@ -292,7 +292,7 @@ earlier ones collapsed. Summary exposes a GitHub link.
 ### §21.mk1 IMPACT
 
 <details>
-<summary>mk1 — <a href="https://github.com/dancinlife/n6-architecture/compare/dog-robot-test-mk1-v1.0...main" data-old-blob="domains/life/dog-robot-test/dog-robot-test.md">github.com/dancinlife/n6-architecture (mk1)</a></summary>
+<summary>mk1 — <a href="https://github.com/dancinlife/canon/compare/dog-robot-test-mk1-v1.0...main" data-old-blob="domains/life/dog-robot-test/dog-robot-test.md">github.com/dancinlife/canon (mk1)</a></summary>
 
 #### 1. What changes
 - TODO core spec deltas

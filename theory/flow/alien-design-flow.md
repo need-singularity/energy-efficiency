@@ -82,7 +82,7 @@
   │       - core constants table (EXACT only)                     │
   │       - "why is n=6 optimal for this domain"                  │
   │                                                              │
-  │    3. DSE optimal path (n6-architecture)                      │
+  │    3. DSE optimal path (canon)                      │
   │       - Pareto frontier table                                 │
   │       - optimal design path (material→process→core→chip→sys) │
   │       - Cross-DSE inter-domain synergies                      │

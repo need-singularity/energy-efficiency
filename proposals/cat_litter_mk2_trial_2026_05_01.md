@@ -2,7 +2,7 @@
 
 > **Domain**: `domains/pets/cat-litter` (inaugural pets-axis domain)
 > **Status**: PROPOSAL (mk1 DRAFT → mk2 PILOT transition spec)
-> **Author**: M. Park (n6-architecture private framework)
+> **Author**: M. Park (canon private framework)
 > **Date**: 2026-05-01
 > **Predecessor**: `domains/pets/cat-litter/cat-litter.md` (mk1, registered 2026-05-01)
 > **Successor gate**: F-CL-MVP-1..4 falsifier resolution (2026-07-30 / 2026-08-30)

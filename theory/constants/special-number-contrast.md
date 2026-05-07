@@ -210,7 +210,7 @@ and that we do not overclaim "every mathematical constant points to 6."
 1. **Selection-bias risk**: since we began searching for links among π/e/φ and 6, confirmation bias may be present
 2. **MISS items exist**: the integer part of π being 3=n/φ is trivial; the denominator 945 in ζ(6) is not clean; and there is no direct connection between the golden-ratio continued fraction and 6
 3. **Causation vs correlation**: ζ(2)=π²/6 is a mathematical fact, but whether that is because "6 is special" or because "6 is a small number" is debatable
-4. **Counter-argument**: the 6 in ζ(2) arises from 3!=6, which is the structure constant of 3D space. That "perfect number 6" and "factorial 6" coincide may be accidental
+4. **Counter-argument**: the 6 in ζ(2) arises from 3!=6, which is the structure constant of 3D space. That "arithmetic canon" and "factorial 6" coincide may be accidental
 
 ### 4.3 Conclusion
 

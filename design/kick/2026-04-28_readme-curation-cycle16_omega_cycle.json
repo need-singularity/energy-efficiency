@@ -34,7 +34,7 @@
   },
 
   "files_modified": [
-    "n6shared/readme-data.json",
+    "canonshared/readme-data.json",
     "domains/_index.json",
     "domains/biology/_index.json",
     "README.md",
@@ -76,7 +76,7 @@
   },
 
   "sync_readme_pipeline_result": {
-    "command": "/Users/ghost/core/hexa-lang/hexa run n6shared/sync-readme.hexa",
+    "command": "/Users/ghost/core/hexa-lang/hexa run canonshared/sync-readme.hexa",
     "exit_status": 0,
     "markers_total": 64,
     "markers_changed": 1,
@@ -120,7 +120,7 @@
     "F-CONS-3 (between-table-and-footer blockquote claim: PARTIAL PASS -> still RESOLVED post cycle-16; honest disclosure relocated to global Honest Limitations section as per cycle-3 FIX-1 option (a))"
   ],
 
-  "raw_47_cross_repo_impact": "none (n6-architecture-internal only). Other repos referencing this README via cross-link should pick up the new HEXA-NANOBOT + HEXA-RIBOZYME anchors automatically since the section heading '# 🧫 Biology' is unchanged.",
+  "raw_47_cross_repo_impact": "none (canon-internal only). Other repos referencing this README via cross-link should pick up the new HEXA-NANOBOT + HEXA-RIBOZYME anchors automatically since the section heading '# 🧫 Biology' is unchanged.",
 
   "raw_65_68_idempotent": true,
   "raw_65_68_idempotent_note": "re-running this cycle's edits is safe: readme-data.json + biology/_index.json + domains/_index.json updates are all string-replace level idempotent (running a second time yields no diff); README.md table rows are unique anchored on table position which is idempotent.",
@@ -128,7 +128,7 @@
   "raw_138_sentinel": "__README_CURATION_CYCLE_16_RESULT__ PASS",
 
   "raw_142_d2_revertible": true,
-  "raw_142_d2_revertible_note": "all changes revertible via single `git checkout HEAD -- README.md README.md.sealed.hash .readme-rules.json n6shared/readme-data.json domains/_index.json domains/biology/_index.json` if a downstream regression is found.",
+  "raw_142_d2_revertible_note": "all changes revertible via single `git checkout HEAD -- README.md README.md.sealed.hash .readme-rules.json canonshared/readme-data.json domains/_index.json domains/biology/_index.json` if a downstream regression is found.",
 
   "next_cycle_recommendations": [
     "cycle-17: investigate cycle-11 hexa-runtime sync-readme pipeline bug for per-domain SUMMARY/FOOTER markers (render_summary returns different content but replace_marker reports no diff). Trace via instrumentation: print before/after marker content lengths + hash for biology marker.",

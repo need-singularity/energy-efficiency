@@ -319,7 +319,7 @@ atlas.n6 L15424-L15444:
 
 ### 6.4 Cross-DSE Extension
 
-Cross-discoveries (Cross-DSE) across the 9-axis navigation (theory / domains / bridge / techniques / experiments / engine / papers / reports / n6shared) are the future core area:
+Cross-discoveries (Cross-DSE) across the 9-axis navigation (theory / domains / bridge / techniques / experiments / engine / papers / reports / canonshared) are the future core area:
 
 - **theory × techniques**: σ·φ=n·τ demonstration -> auto-apply to AI methods 66 kinds
 - **domains × experiments**: 295 domains -> 122 experiments auto-matched
@@ -465,8 +465,8 @@ Each question ≤3 minutes.
 
 ## 11. Source Reconfirmation
 
-- `/Users/ghost/Dev/n6-architecture/CLAUDE.md` — top-level rules, 9-axis navigation, atlas section
-- `/Users/ghost/Dev/n6-architecture/theory/CLAUDE.md` — theory layer sub-rules
+- `/Users/ghost/Dev/canon/CLAUDE.md` — top-level rules, 9-axis navigation, atlas section
+- `/Users/ghost/Dev/canon/theory/CLAUDE.md` — theory layer sub-rules
 - `/Users/ghost/Dev/nexus/shared/n6/atlas.n6` — whole-region measurements (106,899 lines, 2026-04-15)
 - `theory/proofs/theorem-r1-uniqueness.md` — σ·φ=n·τ 3 demonstrations original
 - `theory/proofs/bernoulli-boundary-2026-04-11.md` — Theorem B

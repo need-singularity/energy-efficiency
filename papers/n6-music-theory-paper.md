@@ -5,7 +5,7 @@ requires: []
 ---
 # [CANONICAL v2] Ultimate music theory (HEXA-MUSIC-THEORY) — n=6 Arithmetic Coordinate Mapping
 
-> **Author**: Minwoo Park (n6-architecture)
+> **Author**: Minwoo Park (canon)
 > **Category**: music-theory — n=6 arithmetic seed paper
 > **Version**: v2 (2026-04-14 canonical)
 > **Upstream BT**: BT-143, BT-189, BT-402, BT-403
@@ -41,7 +41,7 @@ coordinate system on top of existing music theory knowledge.**
 | Design search space | Months of manual search | **n·1 minute** (auto DSE) | search time cut σ·τ=48× |
 | Design parameter count | Dozens–hundreds of free variables | **σ=12 axes fixed** | decisions τ=4× sharper |
 | Verifiability | Case-based heuristics | **10 auto-demonstration subsections** | reproducibility 100% |
-| Derived design drafts | 1–2 candidates | **Pareto n=6 top six** | choices n=6× |
+| Derived design drafts | 1–2 candidates | **Pareto top-K (data-driven)** | choices n=6× |
 | Cross-domain reach | Separate projects | **atlas.n6 integrated node** | reuse σ·τ=48× |
 | Honesty | Only success cases recorded | **MISS/FALSIFIER stated** | falsifiable |
 
@@ -136,10 +136,10 @@ upstream domain (`requires: []`). The core number-theoretic functions σ(n),
 
 | Primitive | Role | Reference |
 |-----------|------|-----------|
-| σ(n) divisor sum | OEIS A000203, σ(6)=12 | n6shared/rules/common.json |
-| τ(n) divisor count | OEIS A000005, τ(6)=4 | n6shared/rules/common.json |
-| φ(n) least prime factor | φ(6)=2 | n6shared/rules/common.json |
-| sopfr(n) sum of prime factors | OEIS A001414, sopfr(6)=5 | n6shared/rules/common.json |
+| σ(n) divisor sum | OEIS A000203, σ(6)=12 | canonshared/rules/common.json |
+| τ(n) divisor count | OEIS A000005, τ(6)=4 | canonshared/rules/common.json |
+| φ(n) least prime factor | φ(6)=2 | canonshared/rules/common.json |
+| sopfr(n) sum of prime factors | OEIS A001414, sopfr(6)=5 | canonshared/rules/common.json |
 
 ## §4 STRUCT (system structure) — n=6 Architecture
 
@@ -217,7 +217,7 @@ upstream domain (`requires: []`). The core number-theoretic functions σ(n),
 Total: 6×5×4×5×4 = 2,400 | compat filter: 576 (24%=J₂) | Pareto: σ=12 path
 ```
 
-#### Pareto top-6 (n=6 alignment)
+#### Pareto top-K (data-driven cardinality)
 
 | Rank | K1 | K2 | K3 | K4 | K5 | n6% | Note |
 |------|-----|-----|-----|-----|-----|-----|------|
@@ -356,7 +356,7 @@ p > 0.9.
 <summary>Mk.IV — 2040–2045 cross validation</summary>
 
 σ·τ=48 cross-domain prediction matches (architecture/chemistry/medicine etc.).
-Falsifier conditions stated + 0 FALSIFIER experiments found. Pareto top-6
+Falsifier conditions stated + 0 FALSIFIER experiments found. Pareto top-K (data-driven)
 configuration demonstrated.
 
 </details>

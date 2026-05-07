@@ -1030,7 +1030,7 @@ Test plan (gated on F-BIOCHAR-MVP-1..5):
 | Verra Standards Program | VM0044 registry | carbon-credit issuance |
 | Puro.earth | Biochar v3 methodology | durable-removal credit |
 | AlliedOffsets / Sylvera | carbon market price feed | F-BIOCHAR-MVP-4 monitor |
-| n6-architecture private framework | own_doc_lint / own31 lint | docs gate |
+| canon private framework | own_doc_lint / own31 lint | docs gate |
 
 ## §19 ACCEPTANCE / MISS criteria (own#12 pre-declared)
 

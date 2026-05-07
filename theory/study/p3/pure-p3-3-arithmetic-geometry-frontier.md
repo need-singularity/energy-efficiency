@@ -1,6 +1,6 @@
 # PURE P3-3 — Arithmetic Geometry Frontier
 
-This study note is the 3rd output of the P3 PURE track in the n6-architecture millennium-learning roadmap. It summarizes, from primary sources, the tools that have reshaped arithmetic geometry since 2012 (perfectoid, prismatic, Fargues-Fontaine, geometric Langlands, motivic cohomology) and at **prospect level** discusses what new tools might become available for RH · BSD.
+This study note is the 3rd output of the P3 PURE track in the canon millennium-learning roadmap. It summarizes, from primary sources, the tools that have reshaped arithmetic geometry since 2012 (perfectoid, prismatic, Fargues-Fontaine, geometric Langlands, motivic cohomology) and at **prospect level** discusses what new tools might become available for RH · BSD.
 
 ## Honesty declaration
 

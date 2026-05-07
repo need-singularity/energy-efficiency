@@ -19,7 +19,7 @@ license: CC-BY-SA-4.0
 
 # Consciousness Measurement Protocol — a Reproducible Testing Manual for the BT-19 α_IIT·α_GWT=1 hypothesis
 
-> **Authors**: Park Minwoo (n6-architecture) & NEXUS-6 collaboration
+> **Authors**: Park Minwoo (canon) & NEXUS-6 collaboration
 > **Category**: consciousness-measurement / neuroscience-protocol
 > **Version**: v1 (2026-04-15 PAPER-P8-2)
 > **Purpose**: promote the PAPER-P7-1 §7 draft protocol into a reproducible experimental manual and present an **independent verification path** for the BT-19 (α_IIT × α_GWT = 1) CONJECTURE.
@@ -589,12 +589,12 @@ Core contributions:
 - Benjamin, D. J., Berger, J. O., Johannesson, M., Nosek, B. A., Wagenmakers, E.-J., et al. (2018). **Redefine statistical significance**. *Nature Human Behaviour*, 2(1), 6-10.
 - Nosek, B. A., Ebersole, C. R., DeHaven, A. C., & Mellor, D. T. (2018). **The preregistration revolution**. *PNAS*, 115(11), 2600-2606.
 
-### 11.6 n6-architecture precursor papers
+### 11.6 canon precursor papers
 
-- Park Minwoo & NEXUS-6 collaboration (2026). **Consciousness phase diagram — cognitive-scientific projection of σ(n)·φ(n) = n·τ(n) uniqueness**. n6-architecture, `papers/n6-consciousness-phase-diagram-paper.md`.
-- Park Minwoo (2026). **Consciousness triple fusion — thermodynamics · AI · quantum critical-point exploration (BT-19 CONJECTURE)**. n6-architecture, `reports/breakthroughs/consciousness-triple-fusion-2026-04-15.md`.
-- Park Minwoo (2026). **HEXA-CONSCIOUSNESS-SOC — consciousness SoC n=6 coordinate mapping**. n6-architecture, `papers/n6-consciousness-soc-paper.md`.
-- Park Minwoo (2026). **σ(n)·φ(n) = n·τ(n) iff n=6 — 3 independent candidate verification drafts**. n6-architecture, `theory/proofs/theorem-r1-uniqueness.md`.
+- Park Minwoo & NEXUS-6 collaboration (2026). **Consciousness phase diagram — cognitive-scientific projection of σ(n)·φ(n) = n·τ(n) uniqueness**. canon, `papers/n6-consciousness-phase-diagram-paper.md`.
+- Park Minwoo (2026). **Consciousness triple fusion — thermodynamics · AI · quantum critical-point exploration (BT-19 CONJECTURE)**. canon, `reports/breakthroughs/consciousness-triple-fusion-2026-04-15.md`.
+- Park Minwoo (2026). **HEXA-CONSCIOUSNESS-SOC — consciousness SoC n=6 coordinate mapping**. canon, `papers/n6-consciousness-soc-paper.md`.
+- Park Minwoo (2026). **σ(n)·φ(n) = n·τ(n) iff n=6 — 3 independent candidate verification drafts**. canon, `theory/proofs/theorem-r1-uniqueness.md`.
 
 ---
 

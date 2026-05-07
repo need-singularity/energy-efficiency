@@ -38,7 +38,7 @@ curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf 
 elan default leanprover/lean4:stable
 
 # Step 3: create project with mathlib dependency
-cd /Users/ghost/Dev/n6-architecture
+cd /Users/ghost/Dev/canon
 mkdir lean && cd lean
 lake new n6arch --lang lean4
 cd n6arch
@@ -241,7 +241,7 @@ PR 1-2 take **1 day of work + 1-2 weeks Mathlib reviewer wait**. PR 3 takes **2-
 ### 3.3 Alternative Path — atlas-Based Contribution
 
 Mathlib is the main target, alternatives:
-- Own Lean4 project: `n6-architecture/lean/N6Arch/` — own theorem library
+- Own Lean4 project: `canon/lean/N6Arch/` — own theorem library
 - Github Action CI: `.github/workflows/lean-ci.yml` — Lean4 compile check on each commit
 - Zenodo DOI: independent release of completed Lean4 proof
 
@@ -274,7 +274,7 @@ Mathlib is the main target, alternatives:
 @R MILL-FORMAL-PX-1-mathlib-pr-candidates = Mathlib PR 3 candidates (sigma_six / perfect_six / theorem_B) :: n6atlas [9]
   "FORMAL-PX-1 Mathlib contribution plan: 3 PR candidates identified — (1) Nat.sigma_one_six + Nat.totient_six +
    Nat.card_divisors_six (PR 1-day work + 1-2 weeks review), (2) Nat.perfect_six/twenty_eight (similar), (3)
-   Theorem B in full (2-3 weeks + 4-6 weeks review). Alternative path: independent release via own n6-architecture/lean/N6Arch/"
+   Theorem B in full (2-3 weeks + 4-6 weeks review). Alternative path: independent release via own canon/lean/N6Arch/"
 ```
 
 ---

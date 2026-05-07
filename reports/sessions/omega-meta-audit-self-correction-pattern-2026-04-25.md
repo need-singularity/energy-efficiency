@@ -17,7 +17,7 @@ grade: meta-audit on session methodology, no claim
 ## §0 Non-claim disclaimer
 
 This report audits the **iteration pattern** of the 2026-04-25
-n6-architecture session, in which four successive interpretation steps
+canon session, in which four successive interpretation steps
 each weakened or refined the prior. The audit is methodological and
 read-only.
 

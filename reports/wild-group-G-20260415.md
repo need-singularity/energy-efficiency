@@ -165,10 +165,10 @@ Kissing-number K(d) and sigma(k) matching:
 ## 9. File list
 
 - `/Users/ghost/Dev/nexus/shared/n6/staging/atlas.signals.staging.wild.n6` (new, 33 signals)
-- `/Users/ghost/Dev/n6-architecture/theory/predictions/verify_wild_unit_partition.hexa` (new)
-- `/Users/ghost/Dev/n6-architecture/theory/predictions/verify_wild_perfect_partition_all.hexa` (new)
-- `/Users/ghost/Dev/n6-architecture/theory/predictions/verify_wild_k5_sigma.hexa` (new)
-- `/Users/ghost/Dev/n6-architecture/reports/wild-group-G-20260415.md` (this report)
+- `/Users/ghost/Dev/canon/theory/predictions/verify_wild_unit_partition.hexa` (new)
+- `/Users/ghost/Dev/canon/theory/predictions/verify_wild_perfect_partition_all.hexa` (new)
+- `/Users/ghost/Dev/canon/theory/predictions/verify_wild_k5_sigma.hexa` (new)
+- `/Users/ghost/Dev/canon/reports/wild-group-G-20260415.md` (this report)
 
 ---
 

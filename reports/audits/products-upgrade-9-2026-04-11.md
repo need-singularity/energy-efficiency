@@ -3,7 +3,7 @@
 - Date: 2026-04-11
 - Target: `$NEXUS/shared/n6/docs/products.json`
 - Operator: Claude Opus 4.6 (GO session)
-- Criterion: `$N6_ARCH/n6shared/GRADE_RUBRIC_1_TO_10PLUS.md` -- grade 10 = EXACT full closure (n=6 primitive finite combo)
+- Criterion: `$N6_ARCH/canonshared/GRADE_RUBRIC_1_TO_10PLUS.md` -- grade 10 = EXACT full closure (n=6 primitive finite combo)
 - Backup: `/tmp/products_backup_before_upgrade_20260411.json`
 - Prior report: `reports/audits/products-drift-fix-2026-04-11.md` (2026-04-11 drift fix)
 
@@ -103,7 +103,7 @@ This audit performed per `R14` (shared JSON single truth) and `R25` (shared-conf
 
 ## 7. Rule Compliance
 
-- R8: `n6shared/n6/docs/` direct-edit allowed scope OK
+- R8: `canonshared/n6/docs/` direct-edit allowed scope OK
 - R14: SSOT consistency maintained OK
 - R25: shared-config gate -- GO mode OK
 - Backup: `/tmp/products_backup_before_upgrade_20260411.json` (176 KB) OK

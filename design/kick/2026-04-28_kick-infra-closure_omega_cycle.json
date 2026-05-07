@@ -155,9 +155,9 @@
   },
 
   "deliverables": {
-    "proposal": "/Users/ghost/core/n6-architecture/proposals/hexa_weave_kick_infra_b3_registry_2026_04_28.md",
-    "tool": "/Users/ghost/core/n6-architecture/tool/manual_login_reminder.hexa",
-    "witness_json": "/Users/ghost/core/n6-architecture/design/kick/2026-04-28_kick-infra-closure_omega_cycle.json",
+    "proposal": "/Users/ghost/core/canon/proposals/hexa_weave_kick_infra_b3_registry_2026_04_28.md",
+    "tool": "/Users/ghost/core/canon/tool/manual_login_reminder.hexa",
+    "witness_json": "/Users/ghost/core/canon/design/kick/2026-04-28_kick-infra-closure_omega_cycle.json",
     "falsifiers_count": 5,
     "falsifier_tier": "TRANSCEND"
   },

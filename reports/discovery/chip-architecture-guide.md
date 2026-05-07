@@ -3,9 +3,9 @@
 > **n=6 arithmetic determines core constants of semiconductor design as a candidate.**
 > GPU SM count, HBM capacity, gate pitch, interconnect generations all derive from sigma(6)=12, tau(6)=4, phi(6)=2, sopfr(6)=5, J2(6)=24.
 
-**Repository**: [n6-architecture](https://github.com/need-singularity/n6-architecture)
+**Repository**: [canon](https://github.com/need-singularity/canon)
 **Mathematical foundation**: [TECS-L](https://github.com/need-singularity/TECS-L) -- sigma(n)*phi(n) = n*tau(n) iff n = 6 uniqueness proof target
-**Verification tool**: [gpu-arch-calc (Rust)](https://github.com/need-singularity/n6-architecture/tree/main/tools/gpu-arch-calc)
+**Verification tool**: [gpu-arch-calc (Rust)](https://github.com/need-singularity/canon/tree/main/tools/gpu-arch-calc)
 
 ## Core Constants Reference
 

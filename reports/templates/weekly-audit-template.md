@@ -1,4 +1,4 @@
-# n6-architecture Weekly Audit Report — {YYYY-MM-DD}
+# canon Weekly Audit Report — {YYYY-MM-DD}
 
 > **Audit range**: {WEEK_START} ~ {WEEK_END} (last 7 days)
 > **Generated at**: {TIMESTAMP}
@@ -10,7 +10,7 @@
 
 ```
   +------------------------------------------------------------------+
-  |                n6-architecture weekly audit summary              |
+  |                canon weekly audit summary              |
   +--------------+--------------+--------------+--------------------+
   |  commits     |  growth bus  |  disc graph  |  atlas promotion   |
   +--------------+--------------+--------------+--------------------+
@@ -110,7 +110,7 @@
 
 ---
 
-## 6. Convergence state (`n6shared/convergence/n6-architecture.json`)
+## 6. Convergence state (`canonshared/convergence/canon.json`)
 
 | Category | Item count |
 |------|---------|

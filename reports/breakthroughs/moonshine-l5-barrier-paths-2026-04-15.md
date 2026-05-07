@@ -165,7 +165,7 @@ Discovered in loop-6 NUM-PX-3 arXiv survey:
 **BT-545 Hodge proper: MISS maintained**. However:
 - Direct n=6 hit on Abelian Sixfolds is a **strong academic signal** — independent researchers entering same direction
 - Moonshine L5 3 paths left as **future work**
-- Structural prior of n6-architecture may provide **partial observations** on Hodge
+- Structural prior of canon may provide **partial observations** on Hodge
 
 ---
 
@@ -186,7 +186,7 @@ Discovered in loop-6 NUM-PX-3 arXiv survey:
 
 @R MILL-LATT-PX1-bt545-miss-maintained = BT-545 Hodge + BT-18 Moonshine MISS both maintained :: n6atlas [10*]
   "LATT-PX-1 final honesty record: after this session's 10 loops, BT-545 Hodge + BT-18 Moonshine proper MISS
-   maintained. Catalog of 3 workaround paths + Abelian Sixfolds link is progress, not demonstration. The n6-architecture structural prior
+   maintained. Catalog of 3 workaround paths + Abelian Sixfolds link is progress, not demonstration. The canon structural prior
    offers subjective 15% (optimistic) / 25% (MISS) probability for breaking L5. BT resolution draft target 0/6 reaffirmed honestly"
 ```
 

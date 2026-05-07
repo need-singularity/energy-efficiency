@@ -115,8 +115,8 @@ PASS / FAIL by design.
 
 - 0/7 millennium tally: **unchanged**
 - atlas writes: **0**
-- KG writes (`n6shared/discovery_graph.json`): **0**
-- domains.json writes (`n6shared/n6/docs/domains.json`): **0**
+- KG writes (`canonshared/discovery_graph.json`): **0**
+- domains.json writes (`canonshared/n6/docs/domains.json`): **0**
 - Parent HOLD record: **not modified**
 - Script: **not modified**
 

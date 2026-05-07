@@ -44,4 +44,4 @@ Core identity: sigma(6)*phi(6) = n*tau(6) = 24. Constant set: sigma=12, phi=2, t
 
 Total nodes: 450 (+28), edges: 1702 (+163). 20 new BTs, 8 new domains.
 
-*Prepared: 2026-04-11 | n6-architecture NEXUS-6 agent*
+*Prepared: 2026-04-11 | canon NEXUS-6 agent*

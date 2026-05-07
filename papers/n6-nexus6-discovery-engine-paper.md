@@ -14,7 +14,7 @@ alien_index_target: 10
 
 # HEXA-NEXUS6-DISCOVERY-ENGINE — SEDI + brainwire integrated discovery engine (N6-112)
 
-> **Author**: Minwoo Park (n6-architecture)
+> **Author**: Minwoo Park (canon)
 > **Category**: nexus6-discovery-engine — P2 expansion v3 engine paper
 > **Version**: v3 (2026-04-14 P2 expansion)
 > **Upstream BT**: BT-380 meta, BT-195, BT-350
@@ -24,7 +24,7 @@ alien_index_target: 10
 
 ## 0. Abstract
 
-This paper formally documents the core engine of n6-architecture, the
+This paper formally documents the core engine of canon, the
 **NEXUS-6 Discovery Engine**. The engine is built on two axes:
 (a) **SEDI** (Systematic Exploration and Discovery Index) — static DSE search,
 (b) **brainwire** — cumulative session-experience absorption. The two axes fuse
@@ -42,7 +42,7 @@ automated discovery engines had not existed. Special-purpose engines such as
 Google AlphaFold and Microsoft PhysicsX exist, but a **general-purpose
 discovery engine** is rare.
 
-This paper demonstrates that the NEXUS-6 engine of n6-architecture performs
+This paper demonstrates that the NEXUS-6 engine of canon performs
 the role of a **general-purpose discovery engine** via (a) arithmetic-structure
 constraints + (b) cumulative learning.
 

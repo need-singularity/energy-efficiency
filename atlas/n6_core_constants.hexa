@@ -3,7 +3,7 @@
 // This is the single source of truth for the n=6 derivation constants.
 // Stage A consolidation (proposals/dup_derivation_consolidation_phase2_2026_04_24.md):
 //   * Per-domain verify_*.hexa files no longer inline these values.
-//     Instead they `use "n6shared/_shared_constants"`, which is an
+//     Instead they `use "canonshared/_shared_constants"`, which is an
 //     AUTO-GENERATED derivative of THIS file produced by
 //     `scripts/gen_shared_constants.sh`.
 //   * This file remains the one human-edited artifact.

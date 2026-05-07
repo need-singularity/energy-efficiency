@@ -4,7 +4,7 @@
 //   axis-I × axis-J actuation (2026-04-28 cycle).
 //
 // @tool(slug="atlas_self_arch_lint", desc="atlas.n6 self-architecture lint: (D1) ENUMERATION GAP — meta-closure prose declared count vs enumerated names (axis-I retro-migration); (D2) axis-K introduced_at sentinel/ISO-8601 vocabulary check (pre-axis-K grandfather list); (D3) supersession_kind 5-set vocabulary check; (D4) supersession_kind cycle classifier (replacement→DAG-strict; verdict-on→cycle-allowed)")
-// @usage(hexa /Users/ghost/core/n6-architecture/tool/atlas_self_arch_lint.hexa [<file>] [--severity warn|block] [--selftest])
+// @usage(hexa /Users/ghost/core/canon/tool/atlas_self_arch_lint.hexa [<file>] [--severity warn|block] [--selftest])
 // @omega-saturation-exempt("structural lint over a single SSOT file (atlas.n6); converges in O(N) per pass")
 // @exit_codes(0=PASS or warn-only, 1=usage/io error, 2=block mode with violations or any FAIL fixture)
 //
@@ -47,7 +47,7 @@
 //   - stdout JSON summary (one line)
 //   - ai-native trailer per raw 66 on non-PASS
 //   - audit ledger JSONL append per raw 77 to
-//       /Users/ghost/core/n6-architecture/state/atlas_self_arch_audit/audit.jsonl
+//       /Users/ghost/core/canon/state/atlas_self_arch_audit/audit.jsonl
 //   - last stdout line (raw 80 sentinel): __ATLAS_SELF_ARCH_LINT_RESULT__ PASS|FAIL
 //
 // SCOPE / NON-GOALS
@@ -539,7 +539,7 @@ fn _validate_file(path: string) -> array {
 // ─── audit ledger (raw 77) ────────────────────────────────────────────
 
 fn _audit_dir() -> string {
-    return "/Users/ghost/core/n6-architecture/state/atlas_self_arch_audit"
+    return "/Users/ghost/core/canon/state/atlas_self_arch_audit"
 }
 
 fn _esc_json(s: string) -> string {
@@ -863,7 +863,7 @@ fn main() -> void {
             i = i + 1
             if i < len(cli) { severity = cli[i] }
         } else if a == "--help" {
-            println("usage: hexa /Users/ghost/core/n6-architecture/tool/atlas_self_arch_lint.hexa [<file>] [--severity warn|block] [--selftest]")
+            println("usage: hexa /Users/ghost/core/canon/tool/atlas_self_arch_lint.hexa [<file>] [--severity warn|block] [--selftest]")
             println("__ATLAS_SELF_ARCH_LINT_RESULT__ PASS")
             exit(0)
         } else if a.substring(0, 2) != "--" {
@@ -872,7 +872,7 @@ fn main() -> void {
         i = i + 1
     }
     if len(target) == 0 {
-        target = "/Users/ghost/core/n6-architecture/atlas/atlas.n6"
+        target = "/Users/ghost/core/canon/atlas/atlas.n6"
     }
 
     let rc = _scan(target, severity)

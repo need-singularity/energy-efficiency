@@ -1,21 +1,21 @@
 // ═══════════════════════════════════════════════════════════
-// weekly_audit.hexa — n6-architecture 주간 감사 자동 생성기
+// weekly_audit.hexa — canon 주간 감사 자동 생성기
 // ═══════════════════════════════════════════════════════════
 //
 // 목적: 지난 7일간 프로젝트 전방위 감사 → 한글 리포트 자동 작성
 //
 // 집계 항목:
 //   1) git log (커밋 수, 저자, 파일 변경, 9축 분포)
-//   2) n6shared/growth_bus.jsonl 신규 엔트리
-//   3) n6shared/discovery_graph.json 노드/엣지 변화량 (스냅샷 대비)
+//   2) canonshared/growth_bus.jsonl 신규 엔트리
+//   3) canonshared/discovery_graph.json 노드/엣지 변화량 (스냅샷 대비)
 //   4) $NEXUS/shared/n6/atlas.n6 승격 건수 ([7]→[10*])
 //   5) cargo test 결과 (nexus 워크스페이스, 옵션)
-//   6) n6shared/convergence/n6-architecture.json 상태 변화
+//   6) canonshared/convergence/canon.json 상태 변화
 //
 // 산출:
 //   reports/sessions/{YYYY-MM-DD}-weekly-audit.md   (한글, box-drawing 표)
 //   reports/changelogs/{YYYY-MM-DD}-weekly.md       (자동 체인지로그 템플릿)
-//   n6shared/logs/weekly_audit_state.json             (다음 주 델타용 스냅샷)
+//   canonshared/logs/weekly_audit_state.json             (다음 주 델타용 스냅샷)
 //
 // 사용:
 //   hexa nexus/scripts/weekly_audit.hexa              # 기본 (이번 주)
@@ -38,10 +38,10 @@
 
 // ─── 경로 상수 ───
 let PROJECT_ROOT = "."
-let GROWTH_BUS = "n6shared/growth_bus.jsonl"
-let DISC_GRAPH = "n6shared/discovery_graph.json"
-let CONV_JSON = "n6shared/convergence/n6-architecture.json"
-let STATE_JSON = "n6shared/logs/weekly_audit_state.json"
+let GROWTH_BUS = "canonshared/growth_bus.jsonl"
+let DISC_GRAPH = "canonshared/discovery_graph.json"
+let CONV_JSON = "canonshared/convergence/canon.json"
+let STATE_JSON = "canonshared/logs/weekly_audit_state.json"
 let mut NEXUS_ROOT = env("NEXUS")
 if len(NEXUS_ROOT) == 0 {
   NEXUS_ROOT = env("HOME") + "/Dev/nexus"
@@ -410,7 +410,7 @@ if file_exists_simple(CONV_JSON) {
 log_err("[render] 리포트 작성")
 
 let mut md = ""
-md = md + "# n6-architecture 주간 감사 리포트 — " + TODAY + "\n\n"
+md = md + "# canon 주간 감사 리포트 — " + TODAY + "\n\n"
 md = md + "> **감사 범위**: " + WEEK_START + " ~ " + TODAY + " (지난 " + to_string(SINCE_DAYS) + "일)\n"
 md = md + "> **생성 시각**: " + NOW_STR + "\n"
 md = md + "> **생성기**: `nexus/scripts/weekly_audit.hexa` (자동)\n\n"
@@ -420,7 +420,7 @@ md = md + "---\n\n"
 md = md + "## 요약 스냅샷\n\n"
 md = md + "```\n"
 md = md + "  ┌────────────────────────────────────────────────────────────────────┐\n"
-md = md + "  │                n6-architecture 주간 감사 요약                       │\n"
+md = md + "  │                canon 주간 감사 요약                       │\n"
 md = md + "  ├──────────────┬──────────────┬──────────────┬──────────────────────┤\n"
 md = md + "  │  커밋         │  성장버스     │  발견그래프   │  atlas 승격          │\n"
 md = md + "  ├──────────────┼──────────────┼──────────────┼──────────────────────┤\n"
@@ -535,7 +535,7 @@ if len(cargo_summary) > 0 {
 }
 
 // convergence
-md = md + "## 6. convergence 상태 (`n6shared/convergence/n6-architecture.json`)\n\n"
+md = md + "## 6. convergence 상태 (`canonshared/convergence/canon.json`)\n\n"
 md = md + "| 구분 | 항목 수 |\n"
 md = md + "|------|---------|\n"
 md = md + "| 🔒 ossified (골화 완료) | **" + to_string(conv_ossified) + "** |\n"
@@ -581,7 +581,7 @@ if DRY_RUN {
     println(md)
     log_err("[dry-run] 파일 작성 없음")
 } else {
-    sh("mkdir -p '" + OUT_SESS_DIR + "' '" + OUT_CHLG_DIR + "' 'n6shared/logs'")
+    sh("mkdir -p '" + OUT_SESS_DIR + "' '" + OUT_CHLG_DIR + "' 'canonshared/logs'")
 
     if file_exists_simple(out_path) && !FORCE {
         out_path = OUT_SESS_DIR + "/" + TODAY + "-weekly-audit_rerun-" + TODAY_HM + ".md"

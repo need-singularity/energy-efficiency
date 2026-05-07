@@ -28,7 +28,7 @@ audit improvement.
 The 7-millennium tally is **0/7**, unchanged. The nexus repo `atlas.blowup.jsonl`
 is untouched. The nexus tool `~/core/nexus/tool/nxs_002_composite.py` is
 **unmodified on disk**. No commits in either repo. No
-`state/proposals/inventory.json` edits in n6-architecture.
+`state/proposals/inventory.json` edits in canon.
 
 ---
 
@@ -42,28 +42,28 @@ is untouched. The nexus tool `~/core/nexus/tool/nxs_002_composite.py` is
 | `~/core/nexus/n6/atlas.blowup.jsonl` summary/source fields | regex `bt-(\d+)` extraction | 352 unique BT-ids referenced; range 1..1391; **none in 530..560** band |
 | atlas `domain` field distribution | does it carry a per-millennium tag? | top-level domain values are `7-millennium` (12,506 nodes), `math` (4,215), `physics` (1,780), `geometry` (733), etc. -- `7-millennium` is shared across all 7 Millennium BTs (no per-BT discrimination) |
 | atlas connected-components | are there per-BT subgraphs? | 24 components: comp0 has 21,249 nodes (99.66%), comp1=27, comp2=15, rest ≤ 3. The giant component cannot be sliced by BT; small components are too tiny for K=100 Lanczos eigenvalue computation (`scipy.sparse.linalg.eigsh` with K=100 requires N >> K). |
-| atlas node-id capitalized prefixes (e.g., `RH-`, `YM-`, `MILL-`, `NS-`, `BSD-`, `HOD-`) | do the audit-cited atlas entries (RH-01..RH-07, MILL-PX-A8, MILL-GALO-PX2, etc.) actually exist in nexus atlas? | **0 matches** for `rh-`, `ym-`, `hod-`, `bsd-`, `mill-rh`, `mill-px`, `mill-galo`, `riemann`, `yang`, `navier`, `hodge`, `poincare`. (`ns-` returns 60 matches but all are coincidental "constants" L6 edges, not Navier-Stokes related.) These prefixes are **n6-architecture-side conceptual labels** only, never absorbed into nexus atlas. |
+| atlas node-id capitalized prefixes (e.g., `RH-`, `YM-`, `MILL-`, `NS-`, `BSD-`, `HOD-`) | do the audit-cited atlas entries (RH-01..RH-07, MILL-PX-A8, MILL-GALO-PX2, etc.) actually exist in nexus atlas? | **0 matches** for `rh-`, `ym-`, `hod-`, `bsd-`, `mill-rh`, `mill-px`, `mill-galo`, `riemann`, `yang`, `navier`, `hodge`, `poincare`. (`ns-` returns 60 matches but all are coincidental "constants" L6 edges, not Navier-Stokes related.) These prefixes are **canon-side conceptual labels** only, never absorbed into nexus atlas. |
 | `~/core/nexus/state/bt_progress.json` | does it map BT-541..547 -> atlas node-IDs? | maps BT-id -> `domain` field with values `analytic_NT`, `complexity`, `particle_QCD`, `fluid_dynamics`, `algebraic_geom`, `number_theory`, `topology` -- **none of these match nexus atlas `domain` values**. No node-id list per BT. |
-| `~/core/n6-architecture/theory/breakthroughs/breakthrough-theorems.md` lines 19737..20200+ (BT-541..547 blocks) | explicit atlas-node-ID citations? | narrative blocks with cross-BT crossovers (e.g., "BT-547 #24 = BT-546 #18 504 crossover") and semantic labels; **no `blowup-d0_*` or `n6-bt-*` style atlas node-IDs**. |
-| `~/core/n6-architecture/domains/physics/millennium-{riemann,yang-mills,navier-stokes,hodge,bsd}/*.md` | atlas-promotion sections cite specific atlas node-IDs? | Yes -- e.g., `millennium-riemann.md` §X.6 cites `RH-01-critical-line-phi`, `RH-02-polya-hadamard-tau`, ..., `RH-07-uniqueness-phi-drop` (7 entries proposed). But these IDs **do not exist in `atlas.blowup.jsonl`** (verified above). They are atlas-promotion *proposals*, not absorbed nodes. |
+| `~/core/canon/theory/breakthroughs/breakthrough-theorems.md` lines 19737..20200+ (BT-541..547 blocks) | explicit atlas-node-ID citations? | narrative blocks with cross-BT crossovers (e.g., "BT-547 #24 = BT-546 #18 504 crossover") and semantic labels; **no `blowup-d0_*` or `n6-bt-*` style atlas node-IDs**. |
+| `~/core/canon/domains/physics/millennium-{riemann,yang-mills,navier-stokes,hodge,bsd}/*.md` | atlas-promotion sections cite specific atlas node-IDs? | Yes -- e.g., `millennium-riemann.md` §X.6 cites `RH-01-critical-line-phi`, `RH-02-polya-hadamard-tau`, ..., `RH-07-uniqueness-phi-drop` (7 entries proposed). But these IDs **do not exist in `atlas.blowup.jsonl`** (verified above). They are atlas-promotion *proposals*, not absorbed nodes. |
 | `~/core/nexus/state/proposals/inventory.json` (read-only) | nxs-002 block contains BT->slice mapping? | nxs-002 block describes Ω-saturation cycle metrics on the global atlas; no per-BT slice. |
 
 ### §1.2 Why every fallback fails
 
 The task's suggested fallback was: "each `domains/physics/millennium-<X>/`
-directory in n6-architecture corresponds to one BT -- extract the node-IDs /
+directory in canon corresponds to one BT -- extract the node-IDs /
 atlas references from those directories' SSOT files."
 
 This fallback is structurally blocked because:
 
 1. **The atlas references in the millennium-*.md files (RH-01..07, MILL-PX-A8,
-   MILL-GALO-PX2-sha-all-squares-332k, etc.) point into `~/core/n6-architecture/atlas/atlas.n6`**
-   (the n6-architecture-side atlas, 21,800 lines / 9,624 entries per
+   MILL-GALO-PX2-sha-all-squares-332k, etc.) point into `~/core/canon/atlas/atlas.n6`**
+   (the canon-side atlas, 21,800 lines / 9,624 entries per
    `~/core/nexus/design/atlas_n6_omega_closure.md`).
 2. **The `nxs_002_composite.py` tool reads `~/core/nexus/n6/atlas.blowup.jsonl`**
    (the nexus-side atlas, 21,320 nodes), which is a *different* artifact built
    from atomic blowup deductions over the n=6 primitive set
-   (n, σ, φ, τ, sopfr, J_2, M_3 etc.), **not** from the n6-architecture
+   (n, σ, φ, τ, sopfr, J_2, M_3 etc.), **not** from the canon
    millennium-rooted RH-/YM-/MILL- entries.
 3. The two atlases are not the same graph and their node-ID namespaces do not
    intersect. Constructing a "BT-541 slice" by mapping `RH-01..07` into
@@ -76,7 +76,7 @@ This fallback is structurally blocked because:
 To restore a clean Phase 1 path, **either**:
 
 (a) **Build a separate composite tool** that reads
-    `~/core/n6-architecture/atlas/atlas.n6` (the n6-side atlas) and applies
+    `~/core/canon/atlas/atlas.n6` (the n6-side atlas) and applies
     the same scipy pipeline (`scipy.sparse.linalg.eigsh` Laplacian K=100 σ=1e-3
     + paircorr + composite_aligned). On that atlas, slicing by RH-/YM-/MILL-
     prefix is feasible in principle. **However**, this is a new tool (not a
@@ -192,7 +192,7 @@ section:
 > --predict-er` cannot currently produce a BT-specific composite; see
 > `reports/sessions/omega-exec-nxs002-perbt-patch-2026-04-25.md` §1 for the
 > mapping-failure diagnostic. The composite given here is a non-canonical
-> n6-architecture-side proxy.
+> canon-side proxy.
 
 Per-audit line numbers for the §3 section header:
 - `omega-cycle-bt541-riemann-2026-04-25.md` line 83 (`## §3 Axis B -- Omega-saturation estimate`)
@@ -211,7 +211,7 @@ honesty-amendment session.
 **No commit recommended in either repo.**
 
 - nexus: tool unchanged on disk; nothing to commit.
-- n6-architecture: this report (new file) is the only artifact; commit only
+- canon: this report (new file) is the only artifact; commit only
   if the user wants it preserved as a session record.
 
 The originally-anticipated cross-repo concern (nexus tool patch with
@@ -233,7 +233,7 @@ domain `7-millennium` (12,506 nodes) is so coarse that it does not separate
 BT-541 from BT-543/544/545/546/547. This is consistent with the
 `atlas_n6_omega_closure.md` design note that the nexus n6 atlas is built
 from "n=6 primitive blowup deductions", not from millennium-rooted research
-threads -- millennium structure is on the n6-architecture side of the
+threads -- millennium structure is on the canon side of the
 boundary.
 
 A second anomaly: `bt_progress.json` uses different domain conventions
@@ -243,7 +243,7 @@ attractor and should be reconciled before any per-BT slicing tool is built.
 
 A third anomaly: the audit-cited atlas-promotion entries (RH-01..07,
 MILL-PX-A8, MILL-GALO-PX2-sha-all-squares-332k) live exclusively in
-n6-architecture-side files and are **not** absorbed into the nexus atlas
+canon-side files and are **not** absorbed into the nexus atlas
 that nxs-002 measures. This means the per-audit composite proxies and the
 nexus-canonical composite are *measuring different graphs* -- a baseline
 incompatibility that no `--bt` flag can fix on its own.
@@ -255,14 +255,14 @@ incompatibility that no `--bt` flag can fix on its own.
 For this readiness diagnostic:
 
 - **F-1 (mapping-search completeness)**: if a registry file in
-  `~/core/nexus/` or `~/core/n6-architecture/` mapping BT-541..547 to atlas
+  `~/core/nexus/` or `~/core/canon/` mapping BT-541..547 to atlas
   node-IDs exists and was not checked, this report's "FAILED" verdict is
   falsified. Specifically: any JSON/YAML file with both a `bt_id ∈
   {541..547}` field and a `node_ids` / `atlas_nodes` array would falsify.
   Search performed: substring scan over all `*.json`, `*.md` in
   `~/core/nexus/state/`, `~/core/nexus/design/`, and
-  `~/core/n6-architecture/atlas/`, `~/core/n6-architecture/state/`,
-  `~/core/n6-architecture/theory/breakthroughs/`. No match.
+  `~/core/canon/atlas/`, `~/core/canon/state/`,
+  `~/core/canon/theory/breakthroughs/`. No match.
 
 - **F-2 (atlas content)**: if `atlas.blowup.jsonl` does in fact carry
   BT-541..547 markers under a name not yet checked (e.g.,
@@ -292,4 +292,4 @@ If any of F-1..F-3 is later falsified by new evidence, this session's
 
 0/7 unchanged. nexus tool patched on disk only -- not committed (in fact
 not patched at all this session: Phase 1 stopped on missing BT->slice
-mapping). No n6-architecture state/atlas/inventory edits.
+mapping). No canon state/atlas/inventory edits.

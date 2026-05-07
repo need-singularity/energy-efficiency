@@ -5,7 +5,7 @@
 
 @module verify_millennium_axes
 @version 1.0
-@ssot /Users/ghost/Dev/n6-architecture/theory/roadmap-v2/n6arch-axes/axis-final-millennium.md
+@ssot /Users/ghost/Dev/canon/theory/roadmap-v2/n6arch-axes/axis-final-millennium.md
 
 # --- 데이터 구조 ---
 
@@ -126,7 +126,7 @@ fn test_phase_consistency(axes: list[Axis], phases: list[PhaseMap]) -> bool {
 
 fn test_r3_final(axes: list[Axis]) -> bool {
   # 신규 축 수 == 0, 흡수율 == 100%
-  let r3_path = "/Users/ghost/Dev/n6-architecture/theory/roadmap-v2/n6arch-axes/axis-r3-finalization.md"
+  let r3_path = "/Users/ghost/Dev/canon/theory/roadmap-v2/n6arch-axes/axis-r3-finalization.md"
   let content = read_file(r3_path)
   let final_declared = content.contains("FINAL 선언") and content.contains("100%")
   let new_axes_zero = content.contains("R3 신규 축 0")

@@ -1,4 +1,4 @@
-# N6 Architecture — New AI Algorithm Hypotheses (2026-03-31)
+# CANON — New AI Algorithm Hypotheses (2026-03-31)
 
 > Beyond existing BTs (26,31,33,34,39,42,44,46,54,56,58,59).
 > Each hypothesis: n=6 expression, verified industry value, error %, grade.

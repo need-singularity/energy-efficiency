@@ -1,7 +1,7 @@
 {
   "_meta": {
     "description": "own#1 doc-english-required — legacy CJK-containing .md files grandfathered at HARD promotion (2026-04-24).",
-    "policy": "FROZEN, SHRINK-ONLY. New .md files under own#1 decl scope (domains/, theory/, reports/, experiments/, papers/, bridge/, n6shared/, proposals/) and CONTRIBUTING.md must be English-only (CJK density 0%). Entries may be REMOVED upon translation but never ADDED. Long-term goal: shrink to zero via Korean-to-English migration.",
+    "policy": "FROZEN, SHRINK-ONLY. New .md files under own#1 decl scope (domains/, theory/, reports/, experiments/, papers/, bridge/, canonshared/, proposals/) and CONTRIBUTING.md must be English-only (CJK density 0%). Entries may be REMOVED upon translation but never ADDED. Long-term goal: shrink to zero via Korean-to-English migration.",
     "promoted_date": "2026-04-24",
     "directive": "user 'hard go' — promote own#1 from SOFT log to HARD block",
     "count": 4,
@@ -12,7 +12,7 @@
       "experiments/",
       "papers/",
       "bridge/",
-      "n6shared/",
+      "canonshared/",
       "proposals/"
     ],
     "tool": "tool/own_doc_lint.py check_rule_1_doc_english()",
@@ -51,7 +51,7 @@
       {
         "date": "2026-04-24",
         "removed": 10,
-        "scope": "bridge + n6shared",
+        "scope": "bridge + canonshared",
         "batch": "phase-0"
       },
       {

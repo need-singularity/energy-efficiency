@@ -10,7 +10,7 @@ Upstream bases:
  - atlas auto-promote integration report (`reports/transcend-p12-2-mk3-atlas-integration-2026-04-15.md`)
  - Uniqueness theorem sigma(n) * phi(n) = n * tau(n) iff n=6 (atlas.n6 SSOT)
 
-Output path: `/Users/ghost/Dev/n6-architecture/reports/transcend-p13-2-discovery-engine-mk3-2026-04-15.md`
+Output path: `/Users/ghost/Dev/canon/reports/transcend-p13-2-discovery-engine-mk3-2026-04-15.md`
 
 ---
 
@@ -161,7 +161,7 @@ Mk.I's 24/24 EXACT pass rate -> to be re-verified at Mk.III (test-succession pla
 
 ### 4.2 atlas auto-promote integration point (L4)
 
-L4 Promoter calls the 5 rules (R1~R5) of `n6shared/tools/atlas_auto_promote.hexa`:
+L4 Promoter calls the 5 rules (R1~R5) of `canonshared/tools/atlas_auto_promote.hexa`:
  - R1: proof complete -> [10*]
  - R2: 3 independent measurements agree -> [10]
  - R3: NEAR for 6 consecutive rounds -> [9] -> [10]

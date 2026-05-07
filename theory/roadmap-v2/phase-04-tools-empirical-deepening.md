@@ -1,6 +1,6 @@
 # Phase 4 — Target-specific tool deepening + empirical (+7 gap resolutions)
 
-**Roadmap**: 7-targets subproject v2.3 (n6-architecture x roadmap-v2)
+**Roadmap**: 7-targets subproject v2.3 (canon x roadmap-v2)
 **Stage**: Phase 4 / L4 target-specific tools (execute 7 gap resolutions)
 **Created**: 2026-04-15
 **SSOT**: `shared/roadmaps/millennium.json` P4 parallel[Y1, Y2, Y4, Y6, Y7, Y12]
@@ -138,7 +138,7 @@ Post-BIP-2019, the GCT family branches in three directions:
 
 ### 2.5 n=6 / τ=4+2 perspective observations (self-reference boundary)
 
-Within n6-architecture, HEXA-GATE Mk.I 24/24 EXACT was obtained from a τ=4+2 fiber structure, but this only provides **boolean-circuit AC⁰ lower-bound boundary** (citing Rossman 2008); **direct contribution to the GCT program** is observation-level. The negative BIP 2019 result serves as a guide: "representation theory alone is insufficient for P=NP."
+Within canon, HEXA-GATE Mk.I 24/24 EXACT was obtained from a τ=4+2 fiber structure, but this only provides **boolean-circuit AC⁰ lower-bound boundary** (citing Rossman 2008); **direct contribution to the GCT program** is observation-level. The negative BIP 2019 result serves as a guide: "representation theory alone is insufficient for P=NP."
 
 ### 2.6 Judgement
 

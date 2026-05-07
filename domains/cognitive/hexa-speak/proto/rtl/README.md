@@ -3,7 +3,7 @@
 - Version: v2.0-frozen (2026-04-14)
 - Upstream spec: `../n6-speak-v2-spec.md` (158-line frozen spec)
 - Upstream design: `../../hexa-speak.md` (§1 to §15)
-- Roadmap: `CHIP-P1-1` (n6-architecture.json)
+- Roadmap: `CHIP-P1-1` (canon.json)
 
 ## Overview
 
@@ -161,7 +161,7 @@ Total 27/27 embedded tests PASS. lint/parse/run round-trip all pass. However, Ve
 ## Top-level run example
 
 ```bash
-cd /Users/ghost/Dev/n6-architecture/domains/cognitive/hexa-speak/proto
+cd /Users/ghost/Dev/canon/domains/cognitive/hexa-speak/proto
 hexa parse rtl/top.hexa   # OK: rtl/top.hexa parses cleanly
 hexa run   rtl/top.hexa   # exit 0 -> 7/7 PASS
 ```

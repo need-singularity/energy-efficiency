@@ -23,7 +23,7 @@ alien_index_target: 10
 
 # HEXA-L10-L15 — sub-nano quantum / nuclear unification paper (N6-130)
 
-> **Author**: Park Minwoo (n6-architecture)
+> **Author**: Park Minwoo (canon)
 > **Category**: quantum-nuclear-unification — P6 Mk.III-β practical evolution seed
 > **Version**: v1 (2026-04-14 P6 extension)
 > **Upstream BT**: BT-23 (CKM), BT-41 (QEC d=5), BT-195 (homeostasis), H-CP-1~2, BT-1852
@@ -728,11 +728,11 @@ Expected: `PASS: sigma=12 tau=4 phi=2 sopfr=5 J2=24 P2=28 | L11 ring=6 stab=12 s
 3. Google Quantum AI. "Willow: 105-Qubit Error Correction Milestone." Nature 614 (2024).
 4. IBM. "Condor: 1,121-Qubit Heavy-Hexagonal Processor." IBM Research Blog (2023).
 5. ParticleDataGroup. "Review of Particle Physics." Prog. Theor. Exp. Phys. (2024).
-6. Park Minwoo. "Standard Model Gauge Couplings from n=6 Arithmetic." n6-architecture, 2026.
-7. Park Minwoo. "n6 Boundary Metatheory." n6-architecture, 2026-04-14.
+6. Park Minwoo. "Standard Model Gauge Couplings from n=6 Arithmetic." canon, 2026.
+7. Park Minwoo. "n6 Boundary Metatheory." canon, 2026-04-14.
 8. `reports/chip_comparison_l1_l10.md` — L1–L10 measurements.
 
-### 13.2 Cross-links (n6-architecture)
+### 13.2 Cross-links (canon)
 
 - **Upstream theory**: `theory/proofs/standard-model-from-n6.md` (SM link), `theory/proofs/theorem-r1-uniqueness.md` (sigma*phi=n*tau draft argument)
 - **Upstream papers**: `papers/n6-arch-quantum-design-paper.md` (sigma=12 QEC precursor), `papers/n6-boundary-metatheory-paper.md` (limit principle)

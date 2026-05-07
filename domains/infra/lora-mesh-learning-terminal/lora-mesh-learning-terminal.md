@@ -1121,7 +1121,7 @@ Test plan:
 | CSIR Pretoria (SA) | local SA assembly + QC | last-mile manufacturing + B-BBEE |
 | DBE (SA) | CAPS curriculum content + certification | regulatory + content |
 | ICASA (SA) | 868 MHz Type 1 unlicensed registration | RF regulatory |
-| n6-architecture private framework | own_doc_lint / own31 lint | docs gate |
+| canon private framework | own_doc_lint / own31 lint | docs gate |
 
 ## §19 ACCEPTANCE / MISS criteria (own#12 pre-declared)
 

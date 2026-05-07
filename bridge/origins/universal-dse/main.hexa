@@ -1,4 +1,4 @@
-// Universal DSE Explorer — n6-architecture (HEXA port)
+// Universal DSE Explorer — canon (HEXA port)
 // Usage: hexa main.hexa <domain.toml> [--top N]
 
 // N6 Constants
@@ -866,7 +866,7 @@ let argv = args()
 let argc = len(argv)
 
 if argc < 3 {
-  println("Universal DSE Explorer -- n6-architecture")
+  println("Universal DSE Explorer -- canon")
   println("")
   println("Usage:")
   println("  hexa main.hexa <domain.toml>                Single domain DSE")

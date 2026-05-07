@@ -50,7 +50,7 @@ Cross-tie to existing claims: P22 (emitter registry), P26 (emission completeness
 ```json
 {
   "_doc": "Observation functor H : C_engine → C_obs. Declarative companion to F (invariants.json) and G (silicon_functor.json). Axis E1 — the third vertex of the engine's functor triangle. Emission reports are morphism outputs; scanners are morphisms.",
-  "schema": "n6-architecture/observation_functor/1",
+  "schema": "canon/observation_functor/1",
   "declared_round": "R24+31",
   "declared_ts": "2026-04-24T..Z",
   "status": "declarative_not_yet_enforced",
@@ -145,7 +145,7 @@ This closes the loop opened in R24+12 (warp_size F∩G crossover) and R24+13 (ca
 ```json
 {
   "_doc": "Decoherence boundary — atoms present in both F and G images but whose physical value drifts under repeated observation. Companion to measurement_boundary.json. Axis E2 — second boundary type. Distinguishes stable crossover (warp_size=32) from drifting crossover (thermal / refresh / soft-error rates).",
-  "schema": "n6-architecture/decoherence_boundary/1",
+  "schema": "canon/decoherence_boundary/1",
   "declared_round": "R24+31",
   "declared_ts": "2026-04-24T..Z",
   "status": "declarative_not_yet_enforced",
@@ -245,7 +245,7 @@ This is the natural third boundary class: not measurement data (D), not observat
 ```json
 {
   "_doc": "Thermodynamic closure — directional (entropy-monotone) engine operations and their algebraic witnesses. Axis E3 manifest. Complements F (equality-preserving) with a direction-preserving sub-functor. Bridges atlas.n6 @F physics tier to engine @meta append-only semantics.",
-  "schema": "n6-architecture/thermodynamic_closure/1",
+  "schema": "canon/thermodynamic_closure/1",
   "declared_round": "R24+31",
   "declared_ts": "2026-04-24T..Z",
   "status": "declarative_not_yet_enforced",

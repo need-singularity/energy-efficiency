@@ -219,7 +219,7 @@
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/matplotlib/tests/test_backend_tools.py",
       "score": 50.0,
       "value": "critical",
-      "dest": "n6-architecture",
+      "dest": "canon",
       "n6_matches": 0
     },
     {
@@ -695,7 +695,7 @@
     {
       "path": "TECS-L/docs/blowup-directions.md",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -703,7 +703,7 @@
     {
       "path": "TECS-L/docs/experiments/E-dropout-1e-prediction.md",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "high",
       "score": 16.666666666666664,
       "n6_matches": 0
@@ -711,7 +711,7 @@
     {
       "path": "TECS-L/docs/experiments/gz_experimental_protocols.md",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "high",
       "score": 6.25,
       "n6_matches": 0
@@ -735,7 +735,7 @@
     {
       "path": "TECS-L/docs/hypotheses/FTL-tribunal.md",
       "type": "different",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -895,7 +895,7 @@
     {
       "path": "TECS-L/docs/superpowers/specs/2026-04-04-gz-100-completion-design.md",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "high",
       "score": 10.0,
       "n6_matches": 0
@@ -983,7 +983,7 @@
     {
       "path": "TECS-L/eeg_env/bin/fonttools",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -4199,7 +4199,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/fontTools/misc/filesystem/_tools.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -6263,7 +6263,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/fonttools-4.62.1.dist-info/INSTALLER",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0,
       "n6_matches": 0
@@ -6271,7 +6271,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/fonttools-4.62.1.dist-info/METADATA",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -6279,7 +6279,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/fonttools-4.62.1.dist-info/RECORD",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -6287,7 +6287,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/fonttools-4.62.1.dist-info/WHEEL",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "high",
       "score": 16.666666666666664,
       "n6_matches": 0
@@ -6295,7 +6295,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/fonttools-4.62.1.dist-info/entry_points.txt",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0,
       "n6_matches": 0
@@ -6303,7 +6303,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/fonttools-4.62.1.dist-info/licenses/LICENSE",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -6311,7 +6311,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/fonttools-4.62.1.dist-info/licenses/LICENSE.external",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -6319,7 +6319,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/fonttools-4.62.1.dist-info/top_level.txt",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0,
       "n6_matches": 0
@@ -7415,7 +7415,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/matplotlib/backend_tools.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -7423,7 +7423,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/matplotlib/backend_tools.pyi",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0,
       "n6_matches": 0
@@ -9951,7 +9951,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/matplotlib/tests/test_backend_tools.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "critical",
       "score": 50.0,
       "n6_matches": 0
@@ -10695,7 +10695,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/matplotlib/tri/_tritools.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -10703,7 +10703,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/matplotlib/tri/_tritools.pyi",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0,
       "n6_matches": 0
@@ -19975,7 +19975,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/numpy/lib/_iotools.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -19983,7 +19983,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/numpy/lib/_iotools.pyi",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0,
       "n6_matches": 0
@@ -20383,7 +20383,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/numpy/lib/tests/test__iotools.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -21231,7 +21231,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/numpy/random/__init__.pxd",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -25799,7 +25799,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/pandas/core/tools/__init__.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -25807,7 +25807,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/pandas/core/tools/datetimes.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -25815,7 +25815,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/pandas/core/tools/numeric.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -25823,7 +25823,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/pandas/core/tools/timedeltas.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -25831,7 +25831,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/pandas/core/tools/times.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -26543,7 +26543,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/pandas/plotting/_matplotlib/tools.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -31023,7 +31023,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/pandas/tests/indexes/period/test_tools.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -34679,7 +34679,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/pandas/tests/tools/__init__.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -34687,7 +34687,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/pandas/tests/tools/test_to_datetime.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -34695,7 +34695,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/pandas/tests/tools/test_to_numeric.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -34703,7 +34703,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/pandas/tests/tools/test_to_time.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -34711,7 +34711,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/pandas/tests/tools/test_to_timedelta.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -35599,7 +35599,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/pandas/util/_doctools.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -40239,7 +40239,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/pyparsing/tools/__init__.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -40247,7 +40247,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/pyparsing/tools/cvt_pyparsing_pep8_names.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -45375,7 +45375,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/scipy/linalg/_lapack_subroutines.h",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -47511,7 +47511,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/scipy/signal/_arraytools.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -47631,7 +47631,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/scipy/signal/_signaltools.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -47639,7 +47639,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/scipy/signal/_sigtools.cpython-314-darwin.so",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "critical",
       "score": 50.0,
       "n6_matches": 0
@@ -47767,7 +47767,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/scipy/signal/signaltools.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "critical",
       "score": 41.66666666666667,
       "n6_matches": 0
@@ -47815,7 +47815,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/scipy/signal/tests/test_array_tools.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "critical",
       "score": 35.714285714285715,
       "n6_matches": 0
@@ -47919,7 +47919,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/scipy/signal/tests/test_signaltools.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -48071,7 +48071,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/scipy/sparse/_csparsetools.cpython-314-darwin.so",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -48151,7 +48151,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/scipy/sparse/_sparsetools.cpython-314-darwin.so",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -48279,7 +48279,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/scipy/sparse/csgraph/_tools.cpython-314-darwin.so",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -48943,7 +48943,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/scipy/sparse/sparsetools.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -49103,7 +49103,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/scipy/sparse/tests/test_sparsetools.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -51943,7 +51943,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/serial/tools/__init__.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -51951,7 +51951,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/serial/tools/hexlify_codec.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 8.333333333333332,
       "n6_matches": 0
@@ -51959,7 +51959,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/serial/tools/list_ports.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -51967,7 +51967,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/serial/tools/list_ports_common.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -51975,7 +51975,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/serial/tools/list_ports_linux.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -51983,7 +51983,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/serial/tools/list_ports_osx.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -51991,7 +51991,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/serial/tools/list_ports_posix.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -51999,7 +51999,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/serial/tools/list_ports_windows.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -52007,7 +52007,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/serial/tools/miniterm.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -52087,7 +52087,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/__init__.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -52103,7 +52103,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_discovery.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -52111,7 +52111,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/__init__.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -52119,7 +52119,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/_log.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -52127,7 +52127,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/_macos_compat.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -52135,7 +52135,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/_modified.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -52143,7 +52143,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/_msvccompiler.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -52151,7 +52151,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/archive_util.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -52159,7 +52159,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/ccompiler.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -52167,7 +52167,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/cmd.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -52175,7 +52175,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/command/__init__.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -52183,7 +52183,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/command/_framework_compat.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "critical",
       "score": 25.0,
       "n6_matches": 0
@@ -52191,7 +52191,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/command/bdist.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -52199,7 +52199,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/command/bdist_dumb.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -52207,7 +52207,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/command/bdist_rpm.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -52215,7 +52215,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/command/build.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -52223,7 +52223,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/command/build_clib.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -52231,7 +52231,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/command/build_ext.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -52239,7 +52239,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/command/build_py.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -52247,7 +52247,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/command/build_scripts.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -52255,7 +52255,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/command/check.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -52263,7 +52263,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/command/clean.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -52271,7 +52271,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/command/config.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -52279,7 +52279,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/command/install.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -52295,7 +52295,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/command/install_egg_info.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -52303,7 +52303,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/command/install_headers.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -52311,7 +52311,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/command/install_lib.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -52319,7 +52319,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/command/install_scripts.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -52327,7 +52327,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/command/sdist.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -52335,7 +52335,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/compat/__init__.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -52343,7 +52343,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/compat/numpy.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -52351,7 +52351,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/compat/py39.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -52359,7 +52359,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/compilers/C/base.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -52367,7 +52367,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/compilers/C/cygwin.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -52375,7 +52375,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/compilers/C/errors.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -52383,7 +52383,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/compilers/C/msvc.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -52391,7 +52391,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/compilers/C/tests/test_base.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -52399,7 +52399,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/compilers/C/tests/test_cygwin.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -52407,7 +52407,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/compilers/C/tests/test_mingw.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -52415,7 +52415,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/compilers/C/tests/test_msvc.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -52423,7 +52423,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/compilers/C/tests/test_unix.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -52431,7 +52431,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/compilers/C/unix.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -52439,7 +52439,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/compilers/C/zos.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 8.333333333333332,
       "n6_matches": 0
@@ -52447,7 +52447,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/core.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -52455,7 +52455,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/cygwinccompiler.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -52463,7 +52463,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/debug.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -52471,7 +52471,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/dep_util.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -52479,7 +52479,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/dir_util.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -52495,7 +52495,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/errors.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -52503,7 +52503,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/extension.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -52511,7 +52511,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/fancy_getopt.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -52519,7 +52519,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/file_util.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -52527,7 +52527,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/filelist.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -52535,7 +52535,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/log.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -52543,7 +52543,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/spawn.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -52559,7 +52559,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/tests/__init__.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -52567,7 +52567,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/tests/compat/__init__.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -52575,7 +52575,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/tests/compat/py39.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -52583,7 +52583,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/tests/support.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -52591,7 +52591,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/tests/test_archive_util.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -52599,7 +52599,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/tests/test_bdist.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -52623,7 +52623,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/tests/test_build.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -52631,7 +52631,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/tests/test_build_clib.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -52639,7 +52639,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/tests/test_build_ext.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -52647,7 +52647,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/tests/test_build_py.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -52655,7 +52655,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/tests/test_build_scripts.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -52663,7 +52663,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/tests/test_check.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -52671,7 +52671,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/tests/test_clean.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -52679,7 +52679,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/tests/test_cmd.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -52687,7 +52687,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/tests/test_config_cmd.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -52695,7 +52695,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/tests/test_core.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -52703,7 +52703,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/tests/test_dir_util.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -52719,7 +52719,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/tests/test_extension.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -52727,7 +52727,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/tests/test_file_util.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -52735,7 +52735,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/tests/test_filelist.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -52743,7 +52743,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/tests/test_install.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -52759,7 +52759,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/tests/test_install_headers.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -52767,7 +52767,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/tests/test_install_lib.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -52775,7 +52775,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/tests/test_install_scripts.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -52783,7 +52783,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/tests/test_log.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -52791,7 +52791,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/tests/test_modified.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -52799,7 +52799,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/tests/test_sdist.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -52807,7 +52807,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/tests/test_spawn.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -52815,7 +52815,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/tests/test_sysconfig.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -52823,7 +52823,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/tests/test_text_file.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -52839,7 +52839,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/tests/test_version.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "critical",
       "score": 30.0,
       "n6_matches": 0
@@ -52847,7 +52847,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/tests/test_versionpredicate.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -52855,7 +52855,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/tests/unix_compat.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -52863,7 +52863,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/text_file.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -52871,7 +52871,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/unixccompiler.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -52879,7 +52879,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/util.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -52887,7 +52887,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/version.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -52895,7 +52895,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/versionpredicate.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -52903,7 +52903,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/zosccompiler.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -52911,7 +52911,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_entry_points.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -52919,7 +52919,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_imp.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -52927,7 +52927,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_importlib.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -52935,7 +52935,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_itertools.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -52943,7 +52943,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_normalization.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -52951,7 +52951,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_path.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -52959,7 +52959,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_reqs.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -52967,7 +52967,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_scripts.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -52975,7 +52975,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_shutil.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -52983,7 +52983,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_static.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -52991,7 +52991,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/.lock",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0,
       "n6_matches": 0
@@ -52999,7 +52999,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/autocommand/__init__.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -53007,7 +53007,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/autocommand/autoasync.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -53015,7 +53015,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/autocommand/autocommand.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -53023,7 +53023,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/autocommand/automain.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -53031,7 +53031,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/autocommand/autoparse.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -53039,7 +53039,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/autocommand/errors.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -53047,7 +53047,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/autocommand-2.2.2.dist-info/INSTALLER",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0,
       "n6_matches": 0
@@ -53055,7 +53055,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/autocommand-2.2.2.dist-info/LICENSE",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -53063,7 +53063,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/autocommand-2.2.2.dist-info/METADATA",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -53071,7 +53071,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/autocommand-2.2.2.dist-info/RECORD",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -53079,7 +53079,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/autocommand-2.2.2.dist-info/REQUESTED",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0,
       "n6_matches": 0
@@ -53087,7 +53087,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/autocommand-2.2.2.dist-info/WHEEL",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -53095,7 +53095,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/autocommand-2.2.2.dist-info/top_level.txt",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0,
       "n6_matches": 0
@@ -53103,7 +53103,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/backports/__init__.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -53111,7 +53111,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/backports/tarfile/__init__.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -53119,7 +53119,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/backports/tarfile/__main__.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -53127,7 +53127,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/backports/tarfile/compat/__init__.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -53135,7 +53135,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/backports/tarfile/compat/py38.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -53143,7 +53143,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/backports.tarfile-1.2.0.dist-info/INSTALLER",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0,
       "n6_matches": 0
@@ -53151,7 +53151,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/backports.tarfile-1.2.0.dist-info/LICENSE",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0,
       "n6_matches": 0
@@ -53159,7 +53159,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/backports.tarfile-1.2.0.dist-info/METADATA",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "critical",
       "score": 33.33333333333333,
       "n6_matches": 0
@@ -53167,7 +53167,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/backports.tarfile-1.2.0.dist-info/RECORD",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -53175,7 +53175,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/backports.tarfile-1.2.0.dist-info/REQUESTED",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0,
       "n6_matches": 0
@@ -53183,7 +53183,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/backports.tarfile-1.2.0.dist-info/WHEEL",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -53191,7 +53191,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/backports.tarfile-1.2.0.dist-info/top_level.txt",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0,
       "n6_matches": 0
@@ -53367,7 +53367,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/jaraco/context/__init__.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -53375,7 +53375,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/jaraco/context/py.typed",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0,
       "n6_matches": 0
@@ -53383,7 +53383,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/jaraco/functools/__init__.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -53391,7 +53391,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/jaraco/functools/__init__.pyi",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -53399,7 +53399,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/jaraco/functools/py.typed",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0,
       "n6_matches": 0
@@ -53407,7 +53407,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/jaraco/text/Lorem ipsum.txt",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0,
       "n6_matches": 0
@@ -53415,7 +53415,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/jaraco/text/__init__.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -53423,7 +53423,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/jaraco/text/layouts.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -53431,7 +53431,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/jaraco/text/show-newlines.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -53439,7 +53439,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/jaraco/text/strip-prefix.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -53447,7 +53447,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/jaraco/text/to-dvorak.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -53455,7 +53455,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/jaraco/text/to-qwerty.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -53463,7 +53463,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/jaraco.text-4.0.0.dist-info/INSTALLER",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0,
       "n6_matches": 0
@@ -53471,7 +53471,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/jaraco.text-4.0.0.dist-info/LICENSE",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0,
       "n6_matches": 0
@@ -53479,7 +53479,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/jaraco.text-4.0.0.dist-info/METADATA",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "critical",
       "score": 33.33333333333333,
       "n6_matches": 0
@@ -53487,7 +53487,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/jaraco.text-4.0.0.dist-info/RECORD",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -53495,7 +53495,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/jaraco.text-4.0.0.dist-info/REQUESTED",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0,
       "n6_matches": 0
@@ -53503,7 +53503,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/jaraco.text-4.0.0.dist-info/WHEEL",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -53511,7 +53511,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/jaraco.text-4.0.0.dist-info/top_level.txt",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0,
       "n6_matches": 0
@@ -53519,7 +53519,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/jaraco_context-6.1.0.dist-info/INSTALLER",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0,
       "n6_matches": 0
@@ -53527,7 +53527,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/jaraco_context-6.1.0.dist-info/METADATA",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "high",
       "score": 25.0,
       "n6_matches": 0
@@ -53535,7 +53535,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/jaraco_context-6.1.0.dist-info/RECORD",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -53543,7 +53543,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/jaraco_context-6.1.0.dist-info/REQUESTED",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0,
       "n6_matches": 0
@@ -53551,7 +53551,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/jaraco_context-6.1.0.dist-info/WHEEL",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -53559,7 +53559,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/jaraco_context-6.1.0.dist-info/licenses/LICENSE",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -53567,7 +53567,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/jaraco_context-6.1.0.dist-info/top_level.txt",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0,
       "n6_matches": 0
@@ -53575,7 +53575,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/jaraco_functools-4.4.0.dist-info/INSTALLER",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0,
       "n6_matches": 0
@@ -53583,7 +53583,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/jaraco_functools-4.4.0.dist-info/METADATA",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "high",
       "score": 25.0,
       "n6_matches": 0
@@ -53591,7 +53591,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/jaraco_functools-4.4.0.dist-info/RECORD",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -53599,7 +53599,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/jaraco_functools-4.4.0.dist-info/REQUESTED",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0,
       "n6_matches": 0
@@ -53607,7 +53607,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/jaraco_functools-4.4.0.dist-info/WHEEL",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -53615,7 +53615,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/jaraco_functools-4.4.0.dist-info/licenses/LICENSE",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -53623,7 +53623,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/jaraco_functools-4.4.0.dist-info/top_level.txt",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0,
       "n6_matches": 0
@@ -53631,7 +53631,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/more_itertools/__init__.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -53639,7 +53639,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/more_itertools/__init__.pyi",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0,
       "n6_matches": 0
@@ -53647,7 +53647,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/more_itertools/more.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -53655,7 +53655,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/more_itertools/more.pyi",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0,
       "n6_matches": 0
@@ -53663,7 +53663,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/more_itertools/py.typed",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0,
       "n6_matches": 0
@@ -53671,7 +53671,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/more_itertools/recipes.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -53679,7 +53679,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/more_itertools/recipes.pyi",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0,
       "n6_matches": 0
@@ -53687,7 +53687,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/more_itertools-10.8.0.dist-info/INSTALLER",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0,
       "n6_matches": 0
@@ -53695,7 +53695,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/more_itertools-10.8.0.dist-info/METADATA",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -53703,7 +53703,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/more_itertools-10.8.0.dist-info/RECORD",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -53711,7 +53711,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/more_itertools-10.8.0.dist-info/REQUESTED",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0,
       "n6_matches": 0
@@ -53719,7 +53719,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/more_itertools-10.8.0.dist-info/WHEEL",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -53727,7 +53727,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/more_itertools-10.8.0.dist-info/licenses/LICENSE",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -53743,7 +53743,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/packaging/_elffile.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "critical",
       "score": 37.5,
       "n6_matches": 0
@@ -53751,7 +53751,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/packaging/_manylinux.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 4.545454545454546,
       "n6_matches": 0
@@ -53759,7 +53759,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/packaging/_musllinux.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -53767,7 +53767,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/packaging/_parser.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -53775,7 +53775,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/packaging/_structures.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -53783,7 +53783,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/packaging/_tokenizer.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -53791,7 +53791,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/packaging/licenses/__init__.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -53799,7 +53799,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/packaging/licenses/_spdx.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -53807,7 +53807,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/packaging/markers.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -53823,7 +53823,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/packaging/py.typed",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0,
       "n6_matches": 0
@@ -53831,7 +53831,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/packaging/pylock.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -53839,7 +53839,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/packaging/requirements.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -53847,7 +53847,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/packaging/specifiers.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -53855,7 +53855,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/packaging/tags.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -53863,7 +53863,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/packaging/utils.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -53871,7 +53871,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/packaging/version.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -53879,7 +53879,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/packaging-26.0.dist-info/INSTALLER",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0,
       "n6_matches": 0
@@ -53887,7 +53887,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/packaging-26.0.dist-info/METADATA",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "high",
       "score": 18.75,
       "n6_matches": 0
@@ -53895,7 +53895,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/packaging-26.0.dist-info/RECORD",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -53903,7 +53903,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/packaging-26.0.dist-info/REQUESTED",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0,
       "n6_matches": 0
@@ -53911,7 +53911,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/packaging-26.0.dist-info/WHEEL",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -53919,7 +53919,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/packaging-26.0.dist-info/licenses/LICENSE",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0,
       "n6_matches": 0
@@ -53927,7 +53927,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/packaging-26.0.dist-info/licenses/LICENSE.APACHE",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -53935,7 +53935,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/packaging-26.0.dist-info/licenses/LICENSE.BSD",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -53943,7 +53943,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/platformdirs/__init__.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -53951,7 +53951,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/platformdirs/__main__.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -53959,7 +53959,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/platformdirs/android.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -53967,7 +53967,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/platformdirs/api.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -53975,7 +53975,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/platformdirs/macos.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -53983,7 +53983,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/platformdirs/py.typed",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0,
       "n6_matches": 0
@@ -53991,7 +53991,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/platformdirs/unix.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -53999,7 +53999,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/platformdirs/version.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -54007,7 +54007,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/platformdirs/windows.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -54015,7 +54015,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/platformdirs-4.4.0.dist-info/INSTALLER",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0,
       "n6_matches": 0
@@ -54023,7 +54023,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/platformdirs-4.4.0.dist-info/METADATA",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -54031,7 +54031,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/platformdirs-4.4.0.dist-info/RECORD",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -54039,7 +54039,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/platformdirs-4.4.0.dist-info/REQUESTED",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0,
       "n6_matches": 0
@@ -54047,7 +54047,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/platformdirs-4.4.0.dist-info/WHEEL",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -54055,7 +54055,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/platformdirs-4.4.0.dist-info/licenses/LICENSE",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -54063,7 +54063,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/tomli/__init__.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -54071,7 +54071,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/tomli/_parser.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -54079,7 +54079,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/tomli/_re.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "high",
       "score": 14.285714285714285,
       "n6_matches": 0
@@ -54087,7 +54087,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/tomli/_types.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -54095,7 +54095,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/tomli/py.typed",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -54103,7 +54103,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/tomli-2.4.0.dist-info/INSTALLER",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0,
       "n6_matches": 0
@@ -54111,7 +54111,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/tomli-2.4.0.dist-info/METADATA",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -54119,7 +54119,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/tomli-2.4.0.dist-info/RECORD",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -54127,7 +54127,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/tomli-2.4.0.dist-info/REQUESTED",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0,
       "n6_matches": 0
@@ -54135,7 +54135,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/tomli-2.4.0.dist-info/WHEEL",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -54143,7 +54143,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/tomli-2.4.0.dist-info/licenses/LICENSE",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -54151,7 +54151,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/wheel/__init__.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -54159,7 +54159,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/wheel/__main__.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -54175,7 +54175,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/wheel/_commands/__init__.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -54207,7 +54207,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/wheel/_commands/unpack.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -54223,7 +54223,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/wheel/_setuptools_logging.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -54231,7 +54231,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/wheel/bdist_wheel.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -54239,7 +54239,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/wheel/macosx_libfile.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -54255,7 +54255,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/wheel/wheelfile.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -54263,7 +54263,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/wheel-0.46.3.dist-info/INSTALLER",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0,
       "n6_matches": 0
@@ -54271,7 +54271,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/wheel-0.46.3.dist-info/METADATA",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -54279,7 +54279,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/wheel-0.46.3.dist-info/RECORD",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -54287,7 +54287,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/wheel-0.46.3.dist-info/REQUESTED",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0,
       "n6_matches": 0
@@ -54295,7 +54295,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/wheel-0.46.3.dist-info/WHEEL",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -54303,7 +54303,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/wheel-0.46.3.dist-info/entry_points.txt",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0,
       "n6_matches": 0
@@ -54311,7 +54311,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/wheel-0.46.3.dist-info/licenses/LICENSE.txt",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -54319,7 +54319,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/zipp/__init__.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -54327,7 +54327,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/zipp/_functools.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -54335,7 +54335,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/zipp/compat/__init__.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -54343,7 +54343,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/zipp/compat/overlay.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -54351,7 +54351,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/zipp/compat/py310.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -54359,7 +54359,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/zipp/compat/py313.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "critical",
       "score": 28.57142857142857,
       "n6_matches": 0
@@ -54367,7 +54367,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/zipp/glob.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -54375,7 +54375,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/zipp-3.23.0.dist-info/INSTALLER",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0,
       "n6_matches": 0
@@ -54383,7 +54383,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/zipp-3.23.0.dist-info/METADATA",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "high",
       "score": 25.0,
       "n6_matches": 0
@@ -54391,7 +54391,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/zipp-3.23.0.dist-info/RECORD",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -54399,7 +54399,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/zipp-3.23.0.dist-info/REQUESTED",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0,
       "n6_matches": 0
@@ -54407,7 +54407,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/zipp-3.23.0.dist-info/WHEEL",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -54415,7 +54415,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/zipp-3.23.0.dist-info/licenses/LICENSE",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -54423,7 +54423,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/zipp-3.23.0.dist-info/top_level.txt",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0,
       "n6_matches": 0
@@ -54431,7 +54431,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/archive_util.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -54439,7 +54439,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/build_meta.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -54447,7 +54447,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/command/__init__.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -54455,7 +54455,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/command/_requirestxt.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -54463,7 +54463,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/command/alias.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -54471,7 +54471,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/command/bdist_egg.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -54479,7 +54479,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/command/bdist_rpm.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -54495,7 +54495,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/command/build.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -54503,7 +54503,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/command/build_clib.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -54511,7 +54511,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/command/build_ext.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -54519,7 +54519,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/command/build_py.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -54527,7 +54527,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/command/develop.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -54535,7 +54535,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/command/dist_info.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -54543,7 +54543,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/command/easy_install.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -54551,7 +54551,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/command/editable_wheel.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -54559,7 +54559,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/command/egg_info.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -54567,7 +54567,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/command/install.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -54575,7 +54575,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/command/install_egg_info.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -54583,7 +54583,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/command/install_lib.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -54591,7 +54591,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/command/install_scripts.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -54599,7 +54599,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/command/rotate.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -54607,7 +54607,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/command/saveopts.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -54615,7 +54615,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/command/sdist.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -54623,7 +54623,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/command/setopt.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -54631,7 +54631,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/command/test.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -54639,7 +54639,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/compat/__init__.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -54647,7 +54647,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/compat/py310.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -54655,7 +54655,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/compat/py311.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -54663,7 +54663,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/compat/py312.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "high",
       "score": 18.75,
       "n6_matches": 0
@@ -54671,7 +54671,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/compat/py39.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -54679,7 +54679,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/config/NOTICE",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -54687,7 +54687,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/config/__init__.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -54703,7 +54703,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/config/_validate_pyproject/NOTICE",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0,
       "n6_matches": 0
@@ -54711,7 +54711,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/config/_validate_pyproject/__init__.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -54719,7 +54719,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/config/_validate_pyproject/error_reporting.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -54727,7 +54727,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/config/_validate_pyproject/extra_validations.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -54735,7 +54735,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/config/_validate_pyproject/fastjsonschema_exceptions.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -54743,7 +54743,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/config/_validate_pyproject/fastjsonschema_validations.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -54751,7 +54751,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/config/_validate_pyproject/formats.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -54759,7 +54759,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/config/distutils.schema.json",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -54767,7 +54767,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/config/expand.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -54775,7 +54775,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/config/pyprojecttoml.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -54783,7 +54783,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/config/setupcfg.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -54791,7 +54791,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/config/setuptools.schema.json",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -54799,7 +54799,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/depends.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -54807,7 +54807,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/discovery.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -54815,7 +54815,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/dist.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -54823,7 +54823,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/errors.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -54831,7 +54831,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/extension.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -54839,7 +54839,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/glob.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -54847,7 +54847,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/installer.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -54855,7 +54855,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/launch.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -54863,7 +54863,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/launcher manifest.xml",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "critical",
       "score": 31.25,
       "n6_matches": 0
@@ -54871,7 +54871,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/logging.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -54879,7 +54879,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/modified.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -54887,7 +54887,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/monkey.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -54895,7 +54895,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/msvc.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -54903,7 +54903,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/namespaces.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -54911,7 +54911,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/script (dev).tmpl",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0,
       "n6_matches": 0
@@ -54919,7 +54919,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/script.tmpl",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0,
       "n6_matches": 0
@@ -54927,7 +54927,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/tests/__init__.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -54935,7 +54935,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/tests/compat/__init__.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -54943,7 +54943,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/tests/compat/py39.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -54951,7 +54951,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/tests/config/__init__.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -54959,7 +54959,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/tests/config/downloads/__init__.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -54967,7 +54967,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/tests/config/downloads/preload.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -54975,7 +54975,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/tests/config/setupcfg_examples.txt",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -54983,7 +54983,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/tests/config/test_apply_pyprojecttoml.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -54991,7 +54991,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/tests/config/test_expand.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -54999,7 +54999,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/tests/config/test_pyprojecttoml.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -55007,7 +55007,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/tests/config/test_pyprojecttoml_dynamic_deps.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -55015,7 +55015,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/tests/config/test_setupcfg.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -55023,7 +55023,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/tests/contexts.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -55031,7 +55031,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/tests/environment.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -55039,7 +55039,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/tests/fixtures.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -55047,7 +55047,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/tests/indexes/test_links_priority/external.html",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -55055,7 +55055,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/tests/indexes/test_links_priority/simple/foobar/index.html",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -55063,7 +55063,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/tests/integration/__init__.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -55071,7 +55071,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/tests/integration/helpers.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -55079,7 +55079,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/tests/integration/test_pbr.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -55087,7 +55087,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/tests/integration/test_pip_install_sdist.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -55095,7 +55095,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/tests/mod_with_constant.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -55103,7 +55103,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/tests/namespaces.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -55111,7 +55111,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/tests/script-with-bom.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -55119,7 +55119,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/tests/test_archive_util.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -55127,7 +55127,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/tests/test_bdist_deprecations.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -55135,7 +55135,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/tests/test_bdist_egg.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -55143,7 +55143,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/tests/test_bdist_wheel.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -55151,7 +55151,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/tests/test_build.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -55159,7 +55159,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/tests/test_build_clib.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -55167,7 +55167,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/tests/test_build_ext.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -55175,7 +55175,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/tests/test_build_meta.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -55183,7 +55183,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/tests/test_build_py.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -55191,7 +55191,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/tests/test_config_discovery.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -55207,7 +55207,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/tests/test_depends.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -55215,7 +55215,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/tests/test_develop.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -55223,7 +55223,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/tests/test_dist.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -55231,7 +55231,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/tests/test_dist_info.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -55239,7 +55239,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/tests/test_distutils_adoption.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -55247,7 +55247,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/tests/test_editable_install.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -55255,7 +55255,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/tests/test_egg_info.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -55263,7 +55263,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/tests/test_extern.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -55271,7 +55271,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/tests/test_find_packages.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -55279,7 +55279,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/tests/test_find_py_modules.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -55287,7 +55287,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/tests/test_glob.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -55295,7 +55295,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/tests/test_install_scripts.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -55303,7 +55303,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/tests/test_logging.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -55311,7 +55311,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/tests/test_manifest.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -55319,7 +55319,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/tests/test_namespaces.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -55327,7 +55327,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/tests/test_scripts.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -55335,7 +55335,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/tests/test_sdist.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -55343,7 +55343,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/tests/test_setopt.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -55351,7 +55351,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/tests/test_setuptools.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -55359,7 +55359,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/tests/test_shutil_wrapper.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -55367,7 +55367,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/tests/test_unicode_utils.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -55375,7 +55375,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/tests/test_virtualenv.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -55383,7 +55383,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/tests/test_warnings.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -55391,7 +55391,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/tests/test_wheel.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -55399,7 +55399,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/tests/test_windows_wrappers.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -55407,7 +55407,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/tests/text.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -55415,7 +55415,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/tests/textwrap.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -55423,7 +55423,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/unicode_utils.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -55431,7 +55431,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/version.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -55439,7 +55439,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/warnings.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -55455,7 +55455,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/windows_support.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -55463,7 +55463,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools-82.0.1.dist-info/INSTALLER",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0,
       "n6_matches": 0
@@ -55471,7 +55471,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools-82.0.1.dist-info/METADATA",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -55479,7 +55479,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools-82.0.1.dist-info/RECORD",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -55487,7 +55487,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools-82.0.1.dist-info/WHEEL",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -55495,7 +55495,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools-82.0.1.dist-info/entry_points.txt",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0,
       "n6_matches": 0
@@ -55503,7 +55503,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools-82.0.1.dist-info/licenses/LICENSE",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0,
       "n6_matches": 0
@@ -55511,7 +55511,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools-82.0.1.dist-info/top_level.txt",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0,
       "n6_matches": 0
@@ -55719,7 +55719,7 @@
     {
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/tqdm/contrib/itertools.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0

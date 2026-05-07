@@ -1,5 +1,5 @@
 {
-  "schema": "n6-architecture.proposal_inventory.v1",
+  "schema": "canon.proposal_inventory.v1",
   "id_prefix": "n6a",
   "updated_ts": "2026-04-25T03:38:30Z",
   "entries": [
@@ -86,7 +86,7 @@
   ],
   "proposals": [],
   "_meta": {
-    "owner_repo": "n6-architecture",
+    "owner_repo": "canon",
     "sister_repos": {
       "anima": {
         "prefix": "anima",
@@ -127,7 +127,7 @@
     },
     "convention_loss_free_roi": "All ROI-category proposals must use 무손실 (loss-free) semantics — no regression, no user-visible break. Category tag: `loss_free_roi`.",
     "cross_repo_links": [],
-    "created_by": "n6-architecture proposal_inbox bootstrap (2026-04-23)",
+    "created_by": "canon proposal_inbox bootstrap (2026-04-23)",
     "convention_cross_repo_blocker": {
       "rule": "다른 repo 의 작업을 blocking 하는 entry 는 priority ≥ 95 (0순위)",
       "sub_categories": {

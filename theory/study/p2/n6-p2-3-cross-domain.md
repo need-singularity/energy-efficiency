@@ -6,7 +6,7 @@
 >  - `reports/breakthroughs/millennium-dfs-complete-2026-04-11.md` (51 DFS tight items)
 >  - `theory/proofs/bernoulli-boundary-2026-04-11.md` (Theorem B + Master Lemma)
 >  - `nexus/shared/n6/atlas.n6` (Millennium zone L13392~L13449, 23 n6-millennium-dfs-* nodes)
->  - `n6shared/config/projects.json` (DSE 335-domain registry)
+>  - `canonshared/config/projects.json` (DSE 335-domain registry)
 > Completion criterion: able to draw the 12-domain cross-dependency graph by hand, and distinguish genuine cross-validation from re-expression of a Master Lemma consequence
 
 ---
@@ -32,7 +32,7 @@ Core Master Lemma quote (`bernoulli-boundary-2026-04-11.md` lines 88~100):
 
 The 12 domains are chosen only when they simultaneously satisfy the three conditions:
 
-1. **A DSE subdirectory exists in n6-architecture** (among the 335 domains actually registered in the file tree).
+1. **A DSE subdirectory exists in canon** (among the 335 domains actually registered in the file tree).
 2. **A constant or structural theorem from the domain's standard references matches M = {1,2,3,4,5,6,7,8,10,12,24} in at least 2 items**.
 3. **The match is shared with at least 1 of the 51 Millennium BT-541 ~ BT-547 DFS items**.
 
@@ -455,6 +455,6 @@ Each question should be answerable within 3 minutes.
 - `theory/study/p2/n6-p2-1-dfs-51-classification.md` (previous in this series)
 - `theory/study/p2/n6-p2-2-theorem-b-reconstruction.md` (Bilateral Theorem B reproduction)
 - `nexus/shared/n6/atlas.n6` L13392~L13449 (23 n6-millennium-dfs-* nodes)
-- `n6shared/config/projects.json` (335 DSE domain registry)
+- `canonshared/config/projects.json` (335 DSE domain registry)
 
 **Honesty maintenance declaration**: this note produces no new mathematical result; only the cross matrix is reconstructed. Millennium 7 draft-candidate-count 0/7 maintained. baseline 61% is a constant and is the reference line for every BASE judgement of this audit.

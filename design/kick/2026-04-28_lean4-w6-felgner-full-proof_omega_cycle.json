@@ -46,7 +46,7 @@
     "selection_rationale": "Maximal honest progress within F-D-3 90d. Option (a) infeasible; option (d) unavailable. Option (c) + (b) hybrid documents proof skeleton + grounds reviewer-facing surface in 5 corroborating refs."
   },
   "mathlib_audit": {
-    "method": "grep -r in /Users/ghost/core/n6-architecture/lean4-n6/.lake/packages/mathlib/Mathlib",
+    "method": "grep -r in /Users/ghost/core/canon/lean4-n6/.lake/packages/mathlib/Mathlib",
     "felgner_hits": 0,
     "krivine_hits": 0,
     "morsekelley_hits": 0,

@@ -37,7 +37,7 @@ that HEXA-WEAVE depends on, and recommends an ω-cycle kick disposition per item
 
 | # | prerequisite domain | location | kick disposition | reason |
 |---|--------------------|---------|------------------|--------|
-| 8 | n6-architecture domain framework | `own/` (1–23) + `raw/` (1–100+) | KICK_NOW | own 1 doc-english + raw 33 cross-axis NL-policy benefit from ω-cycle enforcement |
+| 8 | canon domain framework | `own/` (1–23) + `raw/` (1–100+) | KICK_NOW | own 1 doc-english + raw 33 cross-axis NL-policy benefit from ω-cycle enforcement |
 | 9 | kick infra (nexus / hexa-lang / hive, F-MX-3-c 5 modes) | `design/kick/` ledger + cycles 1–11 | KICK_NOW | cycle 12 = this cycle; targets 5/5 closure of F-MX-3-c |
 | 10 | mathlib4 v4.30.0-rc2 | `lean4-n6/lakefile.lean` | NO_KICK | upstream-stable; pin only |
 
@@ -67,7 +67,7 @@ that HEXA-WEAVE depends on, and recommends an ω-cycle kick disposition per item
 - **Cost**: ~0.5 hr/candidate (registration + closure witness draft).
 - **Falsifier**: F-BIO-AXIS-1 — within 30 days, biology axis still has _count = 1 → axis treated as single-domain reservation rather than category.
 
-#### #8 — n6-architecture framework cross-axis NL-policy enforcement
+#### #8 — canon framework cross-axis NL-policy enforcement
 - **Action**: ω-cycle for own 1 (doc-english) + raw 33 (cross-axis NL-policy)
   applied as PR-time enforcement hooks.
 - **Closure target**: lint pass on all `domains/*/hexa-weave/` markdown for English-policy violations.

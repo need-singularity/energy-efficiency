@@ -17,7 +17,7 @@ alien_index_target: 10
 
 # HEXA-BLOWUP-SINGULARITY — Blowup Singularity Design Paper (N6-124)
 
-> **Author**: Park Min-Woo (n6-architecture)
+> **Author**: Park Min-Woo (canon)
 > **Category**: blowup-singularity — P2 extension blowup-singularity seed
 > **Version**: v3 (2026-04-14 P2 extension)
 > **Prior BT**: BT-195, BT-380, BT-1108

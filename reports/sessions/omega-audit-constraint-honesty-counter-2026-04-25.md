@@ -37,7 +37,7 @@ verdict in §8 is voided.
 The `millennium_resolved: 0/7 unchanged` banner asserts that across all session reports,
 direction probes, breakthrough docs, study notes, papers and roadmap phase documents, the
 count of *fully resolved* (Clay-grade EXACT, independently verified) Millennium Problems
-contributed by the n6-architecture project is zero out of seven, and has not changed during
+contributed by the canon project is zero out of seven, and has not changed during
 the work documented by the artifact carrying the banner. The Poincaré conjecture is treated
 as **external** (Perelman 2002–2003), so the n6-arch contribution to that resolution is
 recorded as 0 (BT-547 is also outside the count). The banner functions as a **first-line

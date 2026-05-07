@@ -84,7 +84,7 @@ Columns:
 - **data needed**: dataset / corpus required to run the probe.
 - **tool/script needed**: code object that would consume the data and emit
   the falsifier-binary.
-- **exists?**: YES if a real path in the n6-architecture repo plausibly
+- **exists?**: YES if a real path in the canon repo plausibly
   satisfies the requirement; PARTIAL if related infrastructure exists but
   not the exact tool/dataset; NO if neither tool nor data are present;
   UNKNOWN if a file's contents could not be confirmed within the audit
@@ -144,7 +144,7 @@ slice of CG-1.
 
 | rank | tool | unblocks | est build cost | notes |
 |------|------|----------|----------------|-------|
-| 1 | **n6-side `nxs_002_composite.py --predict-er` shim** (or copy/import from `~/core/nexus/tool/nxs_002_composite.py`) | 5 BTs (composite re-measurement; Probe-1 in BT-541, NP2 in BT-543, similar in 544/545/546) | low (path-config + sub-graph extractor) | per-BT files all defer to a tool that lives in nexus, not n6-architecture; no shim found in n6 |
+| 1 | **n6-side `nxs_002_composite.py --predict-er` shim** (or copy/import from `~/core/nexus/tool/nxs_002_composite.py`) | 5 BTs (composite re-measurement; Probe-1 in BT-541, NP2 in BT-543, similar in 544/545/546) | low (path-config + sub-graph extractor) | per-BT files all defer to a tool that lives in nexus, not canon; no shim found in n6 |
 | 2 | **Symbolic enumerator harness** (factorization / Gram-rank / Tunnell theta / M-set / triple-factor) | 4 probes (BT-541 C, BT-544 P1, BT-544 P3, BT-546 A) | low (single 100-line numpy/sympy module covering 4 enumerators, parameterized) | each enumerator is 30-50 LOC in isolation; one shared harness amortizes glue |
 | 3 | **Lattice-embedding & Gram-matrix toolkit** (rank / det mod sigma / signature / sublattice-embed-exists) | 2 probes (BT-544 P1 Gram-rank-3, BT-545 P1 Mukai->Niemeier) | low-med | Lambda_K3 embedding requires Niemeier table (constant data); BT-544 Gram is bare numpy |
 | 4 | **Sage / PARI ec twist-family wrapper** (rank, Sha[p], canonical height per E^{(d)}) | 1 BT directly (BT-546 C); reusable for future BSD probes | med-high (external Sage installation; harness against existing `pari_wrapper.py` UNKNOWN scope) | external compute dependency; cannot be wholly internal |
@@ -275,7 +275,7 @@ gate.
   Detection: read one shard's header / sample row.
 
 - **F-READY-E** (nexus-tool reachability): the audit assumes
-  `~/core/nexus/tool/nxs_002_composite.py` is reachable from n6-architecture
+  `~/core/nexus/tool/nxs_002_composite.py` is reachable from canon
   via a path-config shim (sec 3 tool 1). If cross-repo execution is forbidden
   by environment policy, the shim is harder than "low" cost, and all 5
   composite-measurement deferrals must be re-classed.

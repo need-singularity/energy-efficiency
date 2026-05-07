@@ -72,7 +72,7 @@ later versions but the first deposit byline is hard to overwrite cleanly.
 ## Item 4 — keyword set final
 
 - [ ] **(A) mechanical-verification-leaning (default; 8 keywords)**:
-      n6-architecture / formal-verification / Lean4 / Mathlib4 /
+      canon / formal-verification / Lean4 / Mathlib4 /
       mechanical-theorem-proving / Felgner-conservativity /
       Morse-Kelley-class-theory / multiplicative-number-theory
 - [ ] **(B) protein-folding-pivot (mission-suggested; 5 keywords)**:
@@ -88,7 +88,7 @@ later versions but the first deposit byline is hard to overwrite cleanly.
 ## Item 6 — related_identifiers (Lean source linkage)
 
 - [ ] **(a) public-GitHub URL** — paste the URL here:
-      `https://github.com/_____/n6-architecture`
+      `https://github.com/_____/canon`
       (this requires a separate "make repo public" approval; not free)
 - [ ] **(b) tarball-only** — keep the Lean source as a Zenodo
       supplementary upload (`lean4-n6-mechverif-cycle12.tar.gz`,

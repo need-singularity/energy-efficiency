@@ -1,4 +1,4 @@
-# n6-architecture submission format template — shared for the top 48 papers
+# canon submission format template — shared for the top 48 papers
 
 | Field | Value |
 |-------|-------|
@@ -13,7 +13,7 @@ journal / conference submission format. The source papers under
 `papers/n6-*-paper.md` stay untouched; at submission time this template's
 header / abstract / references blocks are overlaid on them. The
 WHY / COMPARE / MAIN / VERIFICATION 4-stage structure is the common spine
-used across every n6-architecture paper.
+used across every canon paper.
 
 ---
 
@@ -39,8 +39,8 @@ disclaimer:      simulated DOI — not registered with CrossRef/DataCite. Replac
 ## 1. Authors and affiliation
 
 ```
-Author: M. Park (n6-architecture owner), NEXUS-6 AI collaborators
-Affiliation: n6-architecture project (AI-native Arithmetic Design Framework)
+Author: M. Park (canon owner), NEXUS-6 AI collaborators
+Affiliation: canon project (AI-native Arithmetic Design Framework)
 Contact: via the repository issue tracker
 ORCID: (not assigned — mirrors the simulated DOI setup)
 ```
@@ -128,10 +128,10 @@ measure <domain> {
 ## 7. References block
 
 ```
-[1] n6-architecture internal reference: atlas.n6 node path + citation line.
+[1] canon internal reference: atlas.n6 node path + citation line.
 [2] BT-NNN (BreakThrough registry `_registry.json` section id).
 [3] External references — 3 to 10 per domain. Require a CrossRef DOI.
-[4] Cross-citations between n6-architecture papers use the simulated DOI
+[4] Cross-citations between canon papers use the simulated DOI
     `10.NEXUS6.n6-arch/2026-NNN` and retain the "simulated" tag.
 ```
 
@@ -156,7 +156,7 @@ measure <domain> {
 | published_sim | Simulated-publication state — not for external distribution |
 
 - Actual journal submission is handled in a separate process. This template
-  is n6-architecture's internal archival standard.
+  is canon's internal archival standard.
 
 ---
 

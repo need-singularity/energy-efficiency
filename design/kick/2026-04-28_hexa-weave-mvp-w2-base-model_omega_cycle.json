@@ -191,9 +191,9 @@
       "5 W2 falsifiers + 5 MISS criteria preregistered + 15 raw 91 C3 NOT-decided items"
     ],
     "evidence_paths": [
-      "/Users/ghost/core/n6-architecture/proposals/hexa_weave_mvp_w2_base_model_integration_2026_04_28.md (W2 prep deliverable)",
-      "/Users/ghost/core/n6-architecture/proposals/hexa_weave_mvp_w1_architecture_decision_2026_04_28.md (W1 predecessor)",
-      "/Users/ghost/core/n6-architecture/proposals/hexa_weave_mvp_2026_04_28.md (parent spec)",
+      "/Users/ghost/core/canon/proposals/hexa_weave_mvp_w2_base_model_integration_2026_04_28.md (W2 prep deliverable)",
+      "/Users/ghost/core/canon/proposals/hexa_weave_mvp_w1_architecture_decision_2026_04_28.md (W1 predecessor)",
+      "/Users/ghost/core/canon/proposals/hexa_weave_mvp_2026_04_28.md (parent spec)",
       "OpenFold upstream: https://github.com/aqlaboratory/openfold",
       "OpenFold weight mirror: https://huggingface.co/aqlaboratory/openfold",
       "RCSB advanced search attributes: https://search.rcsb.org/structure-search-attributes.html",
@@ -233,7 +233,7 @@
     ]
   },
   "raw_47_cross_repo_check": {
-    "n6-architecture": "this repo — parent spec + W1 + W2 prep + this witness",
+    "canon": "this repo — parent spec + W1 + W2 prep + this witness",
     "anima": "/Users/ghost/core/anima/ — sister-repo pattern reference (multi-sub-repo umbrella)",
     "nexus": "/Users/ghost/core/nexus/ — kick infra source (still degraded per closure cycle)",
     "hexa-lang": "/Users/ghost/core/hexa-lang/ — runner image dep for any kick attempt",
@@ -259,8 +259,8 @@
     "raw_53_compliant": true
   },
   "report_summary": {
-    "witness_path": "/Users/ghost/core/n6-architecture/design/kick/2026-04-28_hexa-weave-mvp-w2-base-model_omega_cycle.json",
-    "deliverable_path": "/Users/ghost/core/n6-architecture/proposals/hexa_weave_mvp_w2_base_model_integration_2026_04_28.md",
+    "witness_path": "/Users/ghost/core/canon/design/kick/2026-04-28_hexa-weave-mvp-w2-base-model_omega_cycle.json",
+    "deliverable_path": "/Users/ghost/core/canon/proposals/hexa_weave_mvp_w2_base_model_integration_2026_04_28.md",
     "w2_prep_verdict": "FORWARD-SPEC PASS (document exists; §5 falsifier count = 5 >= 5; §6 NOT-list count = 15 >= 10; §7 hook count = 5; lint pre-flight predicted PASS; no code execution per W2-prep mandate)",
     "openfold_pin_policy": "SHA40 captured at W2 execution via git ls-remote; weight SHA256 collected at download time",
     "vram_procedure": "T1024 / 1UBQ test target; --bf16; nvidia-smi -l 1 monitor; pass < 11.5 GB peak; 5-step fallback chain",

@@ -248,7 +248,7 @@ R19 compliance: all exception blocks in the migration script do stderr output th
 |-----|------|:---:|
 | R5 | SSOT -- README direct-edit forbidden, only products.json edited | yes |
 | R10 | ossified invariant -- `rescore_log_*`, existing section contents not touched | yes |
-| R14 | Rule body is n6shared/config/absolute_rules.json | yes (report is data) |
+| R14 | Rule body is canonshared/config/absolute_rules.json | yes (report is data) |
 | R18 | Minimal -- only 6 specified tasks, no further expansion | yes |
 | R19 | SILENT EXIT forbidden -- all exceptions stderr logged | yes (`die()` function) |
 | R22 | Script interpreter absolute path -- `/usr/bin/python3` | yes |

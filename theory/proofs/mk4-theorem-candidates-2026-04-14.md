@@ -1,6 +1,6 @@
 # Mk.IV next-theorem candidates — 3 candidates × 10-domain cross-check
 
-> Author: 2026-04-14 / DSE-P6-1 / n6-architecture P6 Mk.III-β
+> Author: 2026-04-14 / DSE-P6-1 / canon P6 Mk.III-β
 > Purpose: after σ(n)·φ(n)=n·τ(n) ⟺ n=6, search for the **second arithmetic identity**
 > Method: atlas.n6 (106,806 lines) measurements + SSOT of theorem-r1 / the-number-24, 3 candidates × 10-domain cross-check
 
@@ -86,7 +86,7 @@
   n=6 coordinates:
     8 = σ−τ,  256 = 2^(σ−τ),  96 = σ·(σ−τ)
   Structural meaning:
-    The **residual** of the first perfect number 6: σ=12 expresses "twice-perfectness",
+    The **residual** of the first arithmetic canon: σ=12 expresses "twice-perfectness",
     τ=4 the "divisor DOF", and their difference σ−τ=8 is 2^3 = 8-dim octant / 1 Bott period.
 ```
 
@@ -280,7 +280,7 @@
 - **Follow-ups (P6+)**:
   1. Exhaustive-verification script (.hexa) for the σ−τ=8 uniqueness of candidate B.
   2. Explore a unified route for candidate C via Tracy-Widom / FQHE / Painlevé VI.
-  3. Add formal Mk.IV certification to atlas.n6 `n6-architecture-bt-111` entry.
+  3. Add formal Mk.IV certification to atlas.n6 `canon-bt-111` entry.
 
 ---
 

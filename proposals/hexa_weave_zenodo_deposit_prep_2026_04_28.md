@@ -8,7 +8,7 @@ historical: cycle 8 deposit prep task — archived as record
 # HEXA-WEAVE Formal-Mechanical W2/W3/W5 Paper — Zenodo Deposit (Option-A) Prep Checklist
 
 > **Status**: PREP only. No deposit performed this cycle. Deposit gated on explicit user approval.
-> **Author (proposer)**: cycle-8 fan-out 5/5 sub-agent (n6-architecture private framework).
+> **Author (proposer)**: cycle-8 fan-out 5/5 sub-agent (canon private framework).
 > **Date**: 2026-04-28.
 > **Parent paper**: `papers/hexa-weave-formal-mechanical-w2-2026-04-28.md` (cycle-7 sorry-free, cycle-8 refresh).
 > **Witness JSON**: `design/kick/2026-04-28_zenodo-deposit-prep_omega_cycle.json`.
@@ -27,7 +27,7 @@ Cycle-7 closed the Lean 4 sorry-free milestone (AX-1 + AX-2 + MKBridge), making 
 | 2 | DOI (Zenodo automatic) | AUTOMATIC on deposit | Satisfies raw 76 paper-DOI mandate the moment deposit is submitted. No pre-allocation required. |
 | 3 | Paper title | **PROPOSED** | "HEXA-WEAVE Formal-Mechanical Verification: Sorry-Free Lean 4 Closure of AX-1 (n=6 Master Identity) and AX-2 (MK-Bridge) under Seven Named Axioms" — alternative shorter form: "HEXA-WEAVE: Multi-Strand Protein Weaving with n=6 Master Identity Trace" (mission-suggested; protein-folding framing). User to choose. |
 | 4 | Authors | **USER ACTION REQUIRED** | Primary author: M. Park (independent; arsmoriendi99@proton.me — paper byline) or `ghost / mk55992@proton.me` (memory email). User must reconcile which email is the byline-of-record. Co-author: optional acknowledgement of "Claude (Anthropic)" as AI assistant — Zenodo allows non-human contributors but the user may prefer omission. |
-| 5 | Keywords | **PROPOSED** | `protein-folding`, `multi-strand`, `n6-architecture`, `formal-verification`, `Lean4`, `Mathlib4`, `mechanical-theorem-proving`, `sigma-phi-tau`, `multiplicative-number-theory`, `Robin-1984`, `Hardy-Wright`, `Felgner-1971`, `MK-class-theory`, `AlphaFold`. User may trim to ~6-10 per Zenodo recommendation. |
+| 5 | Keywords | **PROPOSED** | `protein-folding`, `multi-strand`, `canon`, `formal-verification`, `Lean4`, `Mathlib4`, `mechanical-theorem-proving`, `sigma-phi-tau`, `multiplicative-number-theory`, `Robin-1984`, `Hardy-Wright`, `Felgner-1971`, `MK-class-theory`, `AlphaFold`. User may trim to ~6-10 per Zenodo recommendation. |
 | 6 | License | **PROPOSED**: Apache-2.0 | Consistent with W1 architecture decision (`proposals/hexa_weave_mvp_w1_architecture_decision_2026_04_28.md`). Apache-2.0 covers the paper text + Lean 4 source under a single permissive license. Alternative: CC-BY-4.0 for the paper text alone (Zenodo default for academic work). User to choose. |
 | 7 | BibTeX cite-as | **DRAFTED** (see §3 below) | Final form depends on author byline + DOI (item 2 → automatic on deposit). |
 | 8 | Supplementary materials | **DRAFTED** | Link to GitHub `lean4-n6/N6/MechVerif/{AX1,AX2,MKBridge}.lean` plus the embedded Python verify block. GitHub link requires the repo to be public (currently private per raw 71). Two paths: (a) deposit only the paper PDF + verify block, with private-repo-link placeholder pending user public-release approval; (b) tarball the three Lean files + a README.md and upload as Zenodo supplementary, keeping the GitHub repo private. Recommend (b) for this cycle. |
@@ -74,8 +74,8 @@ User to fill: author byline (M. Park vs ghost), DOI (auto on deposit).
 
 ```bash
 # Reproducibility recipe (Mac M2; Lean 4 v4.30.0-rc1; Mathlib4 rev 19c4978)
-git clone <repo-url> n6-architecture
-cd n6-architecture/lean4-n6
+git clone <repo-url> canon
+cd canon/lean4-n6
 lake exe cache get
 lake build N6.MechVerif.AX1
 lake build N6.MechVerif.AX2

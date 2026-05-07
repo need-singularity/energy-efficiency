@@ -81,7 +81,7 @@ interval check".
 ## §2 Existence / tooling check
 
 Repo scan results (under
-`/Users/ghost/core/n6-architecture/`):
+`/Users/ghost/core/canon/`):
 
 - `theory/study/p2/prob-p2-3-yang-mills-barriers.md` L121, L250: explicit
   Morningstar-Peardon 1999 PRD 60 034509 quote
@@ -120,7 +120,7 @@ docstring; principal computation is ~15 lines).
 ## §3 Execution log
 
 ```
-$ time python3 /Users/ghost/core/n6-architecture/experiments/anomaly/bt543_p3_a4_ratio.py
+$ time python3 /Users/ghost/core/canon/experiments/anomaly/bt543_p3_a4_ratio.py
 ```
 
 - Wallclock: 0.07 s total (user 0.03 s, sys 0.01 s) -- well under any

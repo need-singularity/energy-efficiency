@@ -10,7 +10,7 @@ the bipartite heuristic.
 
 ## Input
 
-- Path: `/Users/ghost/Dev/n6-architecture/papers/lint_progress.jsonl`
+- Path: `/Users/ghost/Dev/canon/papers/lint_progress.jsonl`
 - Edge format: `{"tech": ..., "tech_cat": ..., "paper": ..., "fit_score": 0.0~1.0, "evidence_lens": "..."}`
 - fit_score distribution:
   - fit == 1.0: 2 (mamba2/anima-soc, rwkv/anima-soc)
@@ -32,7 +32,7 @@ the bipartite heuristic.
    - MATCH: original form or the space/hyphen variant exists in the body
    - NEAR: only a partial keyword (4 chars or more) exists, without the original form
    - MISS: no variant exists
-3. Paper file: `/Users/ghost/Dev/n6-architecture/papers/n6-anima-soc-paper.md` (698 lines)
+3. Paper file: `/Users/ghost/Dev/canon/papers/n6-anima-soc-paper.md` (698 lines)
 
 ## Results table
 
@@ -110,7 +110,7 @@ Interpreted strictly, the actual MATCH rate converges to **0 / 10 = 0%**.
 
 ## Artifacts
 
-- This document: `/Users/ghost/Dev/n6-architecture/experiments/paper/p4_bipartite_audit_top10.md`
-- Input: `/Users/ghost/Dev/n6-architecture/papers/lint_progress.jsonl`
-- Audit target: `/Users/ghost/Dev/n6-architecture/papers/n6-anima-soc-paper.md`
+- This document: `/Users/ghost/Dev/canon/experiments/paper/p4_bipartite_audit_top10.md`
+- Input: `/Users/ghost/Dev/canon/papers/lint_progress.jsonl`
+- Audit target: `/Users/ghost/Dev/canon/papers/n6-anima-soc-paper.md`
 - Audit date: 2026-04-14

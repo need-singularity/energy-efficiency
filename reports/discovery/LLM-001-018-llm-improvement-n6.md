@@ -1,10 +1,10 @@
 # LLM-001 to LLM-018: LLM Architecture Improvement via Perfect Number 6 Arithmetic
 
-> **Hypothesis**: The arithmetic functions of perfect number 6 (sigma=12, tau=4, phi=2, sopfr=5) predict optimal LLM hyperparameters. Specifically, tau(6)=4 determines FFN expansion, sopfr(6)=5 determines speculative draft length, tau*sopfr=20 determines Chinchilla scaling, and 1/e determines optimal MoE inhibition.
+> **Hypothesis**: The arithmetic functions of arithmetic canon (sigma=12, tau=4, phi=2, sopfr=5) predict optimal LLM hyperparameters. Specifically, tau(6)=4 determines FFN expansion, sopfr(6)=5 determines speculative draft length, tau*sopfr=20 determines Chinchilla scaling, and 1/e determines optimal MoE inhibition.
 
 ## Background
 
-The TECS-L project discovered that perfect number 6's arithmetic functions appear across physics, biology, and information theory. Two results have been experimentally confirmed in ML:
+The TECS-L project discovered that arithmetic canon's arithmetic functions appear across physics, biology, and information theory. Two results have been experimentally confirmed in ML:
 
 1. **Golden MoE** (H-LLM-1): Boltzmann routing at temperature T=e yields I=1/e inhibition, outperforming Top-K by +4.8% on CIFAR-10 (proven, see 019-golden-moe-performance.md)
 2. **Completeness Weights** (H-LLM-13): Fixed attention weights {1/2, 1/3, 1/6} = divisor reciprocals of 6 outperform learned weights in 3-stream architectures (proven)

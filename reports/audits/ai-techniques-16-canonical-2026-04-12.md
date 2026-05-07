@@ -9,11 +9,11 @@
 
 ## 1. Background — SSOT mismatch context
 
-Because 4 sources report different numbers for the AI-techniques count in n6-architecture, this session runs a consistency audit.
+Because 4 sources report different numbers for the AI-techniques count in canon, this session runs a consistency audit.
 
 | Source | Reported count | Citation |
 |------|---------|-----------|
-| convergence ossified | 17 | `n6shared/convergence/n6-architecture.json` -> `ossified.AI_17_TECHNIQUES` ("17 techniques experiment confirmed, 71% FLOPs, 3x FFT, 67% param") |
+| convergence ossified | 17 | `canonshared/convergence/canon.json` -> `ossified.AI_17_TECHNIQUES` ("17 techniques experiment confirmed, 71% FLOPs, 3x FFT, 67% param") |
 | INDEX axes | 66 | `INDEX.json` -> `axes.techniques.purpose` ("AI techniques 66 types — .hexa transition complete") |
 | memory MEMORY header | 23 | `~/.claude-claude2/.../memory/MEMORY.md` line 8 ("23 AI techniques") |
 | memory project_core_theory.md body | 17 | same memory directory description + line 38 ("## 17 AI techniques core outcomes") |
@@ -80,7 +80,7 @@ Section 1 of `techniques/_bench_plan.md` already defines the 16 baselines. This 
 Verification gates (common, bench_plan §3):
 1. `nexus verify <technique>` — n=6 constant match (±0.1%)
 2. `nexus dse bench --technique <id> --repeats 30` — median ± MAD
-3. `n6shared/n6/atlas.n6` [7]->[10*] promotion
+3. `canonshared/n6/atlas.n6` [7]->[10*] promotion
 
 ---
 
@@ -160,7 +160,7 @@ No retirement candidates identified in this audit's scope. All registered techni
 
 ### 6.1 ossified handling (R10)
 
-- The `AI_17_TECHNIQUES` ossification block in `n6shared/convergence/n6-architecture.json` is **not to be modified** (R10 immutability). This audit does not create a new SSOT, and recommends adding the 16 definition as a new entry to the stable block.
+- The `AI_17_TECHNIQUES` ossification block in `canonshared/convergence/canon.json` is **not to be modified** (R10 immutability). This audit does not create a new SSOT, and recommends adding the 16 definition as a new entry to the stable block.
 
 ### 6.2 Stable addition recommendation (not performed, proposal only)
 
@@ -206,7 +206,7 @@ Recommend adding the following new key to the `stable` block (this audit perform
 
 ## 8. Sources
 
-- `n6shared/convergence/n6-architecture.json` lines 20~24 (`AI_17_TECHNIQUES` ossified)
+- `canonshared/convergence/canon.json` lines 20~24 (`AI_17_TECHNIQUES` ossified)
 - `techniques/_registry.json` v1.1.0 _total=66, _sota_total=69
 - `techniques/_bench_plan.md` §1 (16-baseline table) + §3 (measurement protocol)
 - `techniques/_chip_mapping.md` 16 x 6 mapping matrix
@@ -219,7 +219,7 @@ Recommend adding the following new key to the `stable` block (this audit perform
 ## 9. Related links
 
 - Parent: `../CLAUDE.md`
-- Convergence: `../../n6shared/convergence/n6-architecture.json`
+- Convergence: `../../canonshared/convergence/canon.json`
 - Bench plan: `../../techniques/_bench_plan.md`
 - Chip mapping: `../../techniques/_chip_mapping.md`
 - SSOT: `../../techniques/_registry.json`

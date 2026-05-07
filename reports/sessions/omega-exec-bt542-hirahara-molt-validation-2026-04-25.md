@@ -123,7 +123,7 @@ new frame admit a primitive the old frame did not).
 
 ## §2 Existence / tooling check
 
-Repo scan results (under `/Users/ghost/core/n6-architecture/`):
+Repo scan results (under `/Users/ghost/core/canon/`):
 
 - `reports/breakthroughs/v3-t5-hirahara-mcsp-deep-2026-04-15.md`
   (200 lines) — explicit summary of the Hirahara 2017-2023
@@ -536,7 +536,7 @@ candidates (those resting on n=6 number-theoretic identities like
 `sigma/tau = 3`, `det/sigma in Z`) underperform; *non-arithmetic-
 family* candidates (those resting on probability distributions or
 literature-import primitives) overperform. This is consistent with
-the n6-architecture framework's known pattern — n=6 number-matching
+the canon framework's known pattern — n=6 number-matching
 patterns work for some problems (RH-style modular weight, BSD-style
 elliptic structure) and fail for others (P vs NP per
 `bt-542-p-vs-np-4-barriers-survey` §6.1, Yang-Mills mass-gap A4

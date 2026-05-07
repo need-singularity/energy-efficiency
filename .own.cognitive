@@ -4,7 +4,7 @@
 # mk: 2
 # ---
 #
-# # n6-architecture/.own.cognitive (mk2)
+# # canon/.own.cognitive (mk2)
 #
 # Schema authority: hive/spec/schema/own_v1.schema.yaml
 # Format: mk2 frontmatter (#-prefixed YAML) + raw-format body (`own N <status> "name"` blocks).
@@ -55,7 +55,7 @@
 #   우선; design-constant 와 enumeration-count 는 동일 invariant axis = "n=6 false ceiling
 #   금지"). 별도 own#36 신설 검토했으나 합병 결정.
 
-# n6-architecture/.own.cognitive — cross-domain cognitive/framing SSOT
+# canon/.own.cognitive — cross-domain cognitive/framing SSOT
 # 포맷: raw-format (.raw / hive .own 과 동일 파서). 자세한 스펙: self/raw_loader.hexa
 
 
@@ -71,7 +71,7 @@ own 32 live "n6-no-fixation-design-and-count — design constants AND enumeratio
   unified-at 2026-05-07
   why
     (A) 사용자 directive 2026-05-01 (Korean preserved): "own 에 반영 => n=6 집착 할필요없음 / 한계가 있으면 안됨 / n=6 force-fit 제거". 기존 governance 가 모든 도메인을 σ(6)=12 / τ(6)=4 multiple 에 맞추도록 압박 → arbitrary scaling factor 삽입 / underlying physics 와 불일치하는 force-fit 누적. cat-litter (commit 5fd6825e) §7 VERIFY Blocks A-G inaugural counter-example: own#2 separable Block A + 6 physical-limit Blocks B-F + 6-precursor Block G, alien-grade 10. mk1 .own own#32 promoted same date.
-    (B) 사용자 directive 2026-05-07 (Korean preserved): "own 등록 => n=6 집착금지 / 더 나은게 발견될 수 있는데 / 6개를 한계로 두는 케이스가 너무 많아". (A) 의 정신을 design-constant 너머 enumeration count 일반 (슬롯 / 축 / 분류 / top-N / cap) 으로 확장. 프로젝트명 (n6-architecture) anchoring 으로 인한 false ceiling 누적 차단; 6 보다 적합한 자연수가 도메인별로 발견될 여지 보존.
+    (B) 사용자 directive 2026-05-07 (Korean preserved): "own 등록 => n=6 집착금지 / 더 나은게 발견될 수 있는데 / 6개를 한계로 두는 케이스가 너무 많아". (A) 의 정신을 design-constant 너머 enumeration count 일반 (슬롯 / 축 / 분류 / top-N / cap) 으로 확장. 프로젝트명 (canon) anchoring 으로 인한 false ceiling 누적 차단; 6 보다 적합한 자연수가 도메인별로 발견될 여지 보존.
     UNIFIED: 두 directive 는 같은 invariant axis ("n=6 false ceiling 금지") 의 두 표현. 따라서 hive raw.mk2 arch.001 collapsing 패턴 + .own.group_p own#6 (mk1 own#6 + mk1 own#15 collapsing) 선례 따라 single canonical rule 로 합병.
   bans-design-constant force-fit of domain design constants 를 n=6 number-theoretic invariants (σ / φ / τ / sopfr / J₂) 에 — underlying physical-limit model 이 다른 값을 반환하는 경우
   bans-design-constant rejection of a domain design solely because design constants 가 n=6 multiples 가 아님 — own#2 master identity 가 separable mathematical fact 로 verify 되어 있다면 통과

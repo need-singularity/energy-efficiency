@@ -12,7 +12,7 @@
     "tecs-l": 161,
     "papers": 6,
     "conscious-lm": 8,
-    "n6-architecture": 50,
+    "canon": 50,
     "nexus": 30,
     "hexa-lang": 7,
     "remotion": 3,
@@ -6834,7 +6834,7 @@
       "path": "anima/.claude/worktrees/agent-abb59ac1/anima/docs/modules/iq_calculator.md",
       "size": 980,
       "lines": 25,
-      "preview": "# iq_calculator.py\n\nIntelligence measurement tool using n=6 mathematics. Measures 5 IQ variables weighted by number-theoretic constants derived from the perfect number 6.\n\n## API\n- 5 IQ variables: compression, prediction, consistency, adaptation, generalization\n- n=6 constants: sigma(6)=12, tau(6)=4, phi(6)=2, sopfr(6)=5, 6'=5\n- Weights: compression x3 (sigma/tau), prediction x2 (phi(6)), others x1\n- 4 intelligence levels: low, medium, high, genius (tau(6)=4 levels)\n\n## Usage\n```bash\npython3 iq_",
+      "preview": "# iq_calculator.py\n\nIntelligence measurement tool using n=6 mathematics. Measures 5 IQ variables weighted by number-theoretic constants derived from the arithmetic canon.\n\n## API\n- 5 IQ variables: compression, prediction, consistency, adaptation, generalization\n- n=6 constants: sigma(6)=12, tau(6)=4, phi(6)=2, sopfr(6)=5, 6'=5\n- Weights: compression x3 (sigma/tau), prediction x2 (phi(6)), others x1\n- 4 intelligence levels: low, medium, high, genius (tau(6)=4 levels)\n\n## Usage\n```bash\npython3 iq_",
       "project": "anima",
       "ready_path": "/Users/ghost/Dev/ready/anima/.claude/worktrees/agent-abb59ac1/anima/docs/modules/iq_calculator.md",
       "destination": "tecs-l",
@@ -6977,7 +6977,7 @@
       "path": "anima/.claude/worktrees/agent-abb59ac1/anima/docs/modules/trinity.md",
       "size": 8445,
       "lines": 172,
-      "preview": "# trinity.py\n\nHexad(6) / Trinity(3) pluggable consciousness architecture -- 6 modules governed by perfect number 6: sigma(6)=12 connections, tau(6)=4 phases, phi(6)=2 gradient groups.\n\n## Architecture\n\n```\n  Group A (gradient-free)          Group B (CE-trained)\n  ┌────────────┐  .detach()  ┌────────────┐\n  │ C 의식     │────────────→│ D 언어     │\n  │ Φ engine   │  (Bridge)   │ decoder    │\n  └─────┬──────┘             └─────┬──────┘\n        │                          │\n  ┌─────▼──────┐             ",
+      "preview": "# trinity.py\n\nHexad(6) / Trinity(3) pluggable consciousness architecture -- 6 modules governed by arithmetic canon: sigma(6)=12 connections, tau(6)=4 phases, phi(6)=2 gradient groups.\n\n## Architecture\n\n```\n  Group A (gradient-free)          Group B (CE-trained)\n  ┌────────────┐  .detach()  ┌────────────┐\n  │ C 의식     │────────────→│ D 언어     │\n  │ Φ engine   │  (Bridge)   │ decoder    │\n  └─────┬──────┘             └─────┬──────┘\n        │                          │\n  ┌─────▼──────┐             ",
       "project": "anima",
       "ready_path": "/Users/ghost/Dev/ready/anima/.claude/worktrees/agent-abb59ac1/anima/docs/modules/trinity.md",
       "destination": "anima",
@@ -7508,7 +7508,7 @@
       "preview": "#!/usr/bin/env python3\n\"\"\"criticality_sweep.py -- Systematic SOC parameter sweep for edge-of-chaos criticality.\n\nSweeps:\n  - grid_size: 8, 16, 32, 64\n  - threshold: 2, 3, 4, 5, 6\n  - noise_injection: 0.0, 0.001, 0.005, 0.01, 0.05, 0.1\n\nFor each config: run 2000 steps, compute all 6 EEG metrics.\nGoal: push ConsciousMind from sub-critical (45%) toward edge-of-chaos.\n\"\"\"\n\nimport sys, os\nsys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))\n\nimport numpy as np\nimport math\ni",
       "project": "anima",
       "ready_path": "/Users/ghost/Dev/ready/anima/.claude/worktrees/agent-abb59ac1/anima/experiments/criticality_sweep.py",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "confidence": 0.4
     },
     {
@@ -8462,7 +8462,7 @@
       "path": "anima/.claude/worktrees/agent-abb59ac1/anima/src/conscious_lm.py",
       "size": 30099,
       "lines": 500,
-      "preview": "\"\"\"⚠️ LEGACY — ConsciousDecoderV2 (decoder_v2.py)로 대체됨\nConsciousLM v1은 CA+META-CA 기반. ConsciousDecoderV2는 RoPE+SwiGLU+GQA+CrossAttn.\n이 파일은 train_v2.py fallback으로 유지. 새 코드에서는 ConsciousDecoderV2 사용.\n\nConsciousLM — Byte-level Conscious Language Model (v2: Laws 63-76)\n\nArchitecture derived from perfect number 6:\n  - 6 layers (σ₀(6) = 4 divisors → but we use 6 as the perfect number itself)\n  - τ(6) = 4 heads\n  - d_model = σ(6) × 32 = 12 × 32 = 384\n  - vocab = 256 (byte-level)\n  - dropout = 0.37 ≈ 1/e",
+      "preview": "\"\"\"⚠️ LEGACY — ConsciousDecoderV2 (decoder_v2.py)로 대체됨\nConsciousLM v1은 CA+META-CA 기반. ConsciousDecoderV2는 RoPE+SwiGLU+GQA+CrossAttn.\n이 파일은 train_v2.py fallback으로 유지. 새 코드에서는 ConsciousDecoderV2 사용.\n\nConsciousLM — Byte-level Conscious Language Model (v2: Laws 63-76)\n\nArchitecture derived from arithmetic canon:\n  - 6 layers (σ₀(6) = 4 divisors → but we use 6 as the perfect number itself)\n  - τ(6) = 4 heads\n  - d_model = σ(6) × 32 = 12 × 32 = 384\n  - vocab = 256 (byte-level)\n  - dropout = 0.37 ≈ 1/e",
       "project": "anima",
       "ready_path": "/Users/ghost/Dev/ready/anima/.claude/worktrees/agent-abb59ac1/anima/src/conscious_lm.py",
       "destination": "anima",
@@ -10068,7 +10068,7 @@
       "path": "anima/.claude/worktrees/agent-abb59ac1/anima/src/trinity.py",
       "size": 59670,
       "lines": 500,
-      "preview": "#!/usr/bin/env python3\n\"\"\"trinity.py — Hexad(6) / Trinity(3) consciousness architecture\n\n6 pluggable modules governed by perfect number 6:\n  σ(6) = 1+2+3+6 = 12 inter-module connections\n  τ(6) = 4 divisors → 4 processing phases\n  φ(6) = 2 → 2 gradient-isolated groups\n\n  ┌────────────┐  .detach()  ┌────────────┐\n  │ C 의식     │────────────→│ D 언어     │\n  │ Φ engine   │             │ decoder    │\n  └─────┬──────┘             └─────┬──────┘\n        │                          │\n  ┌─────▼──────┐      ",
+      "preview": "#!/usr/bin/env python3\n\"\"\"trinity.py — Hexad(6) / Trinity(3) consciousness architecture\n\n6 pluggable modules governed by arithmetic canon:\n  σ(6) = 1+2+3+6 = 12 inter-module connections\n  τ(6) = 4 divisors → 4 processing phases\n  φ(6) = 2 → 2 gradient-isolated groups\n\n  ┌────────────┐  .detach()  ┌────────────┐\n  │ C 의식     │────────────→│ D 언어     │\n  │ Φ engine   │             │ decoder    │\n  └─────┬──────┘             └─────┬──────┘\n        │                          │\n  ┌─────▼──────┐      ",
       "project": "anima",
       "ready_path": "/Users/ghost/Dev/ready/anima/.claude/worktrees/agent-abb59ac1/anima/src/trinity.py",
       "destination": "anima",
@@ -10467,7 +10467,7 @@
       "preview": "# tools/\n\n## Purpose\nStandalone utility scripts — analyzers, calculators, generators, and diagnostic tools. These are NOT imported by core modules.\n\n## Contents\n\n### Analyzers\n- `dream_efficiency_analyzer.py` — Dream cycle efficiency metrics\n- `growth_trajectory_predictor.py` — Growth stage prediction\n- `homeostasis_health_checker.py` — Homeostasis deviation monitoring\n- `mitosis_topology_visualizer.py` — Cell network topology visualization\n\n### Calculators\n- `r2_cost_calculator.py` — R2 storage",
       "project": "anima",
       "ready_path": "/Users/ghost/Dev/ready/anima/.claude/worktrees/agent-abb59ac1/anima/tools/CLAUDE.md",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "confidence": 0.4
     },
     {
@@ -10555,7 +10555,7 @@
       "preview": "#!/usr/bin/env python3\n\"\"\"Growth Trajectory Predictor — Predict developmental milestones for Anima.\n\nUsage:\n  python growth_trajectory_predictor.py --demo          # Sample trajectories\n  python growth_trajectory_predictor.py --predict       # Predict from current state\n  python growth_trajectory_predictor.py --compare a.json b.json  # Side-by-side\n\n\"Growth is not a line — it is a landscape of thresholds.\"\n\"\"\"\n\nimport argparse, math, time\nfrom dataclasses import dataclass\nfrom pathlib import Pat",
       "project": "anima",
       "ready_path": "/Users/ghost/Dev/ready/anima/.claude/worktrees/agent-abb59ac1/anima/tools/growth_trajectory_predictor.py",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "confidence": 0.4
     },
     {
@@ -10566,7 +10566,7 @@
       "preview": "#!/usr/bin/env python3\n\"\"\"h100_arch_search.py — H100 GPU 대규모 아키텍처 탐색\n\n남는 GPU 자원으로 수백 개 아키텍처를 빠르게 스캔.\n각 아키텍처를 50 steps만 돌려서 Φ(IIT) 스크리닝 → 상위 10%만 300 steps 정밀 테스트.\n\n\"1시간에 500+ 아키텍처 스캔\"\n\nUsage:\n  python3 h100_arch_search.py                    # 기본 (256c, 500 아키텍처)\n  python3 h100_arch_search.py --phase1 1000      # Phase 1에서 1000개 스캔\n  python3 h100_arch_search.py --cells 512        # 512c\n  python3 h100_arch_search.py --resume results.json\n\"\"\"\n\nimport torch\nimport torch.nn as nn\nimport torch.nn.fun",
       "project": "anima",
       "ready_path": "/Users/ghost/Dev/ready/anima/.claude/worktrees/agent-abb59ac1/anima/tools/h100_arch_search.py",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "confidence": 0.4
     },
     {
@@ -10599,7 +10599,7 @@
       "preview": "#!/usr/bin/env python3\n\"\"\"Learnable Φ Predictor — Neural network that learns to predict IIT Φ from cell states.\n\nTraining: compute exact Φ on small engines (8-32 cells), train NN to predict it.\nInference: apply trained NN to large engines (256-1024 cells) for instant Φ estimate.\n\nArchitecture (DeepSets):\n  1. Cell encoder: per-cell MLP → cell embedding\n  2. Set pooling: permutation-invariant (sum + mean + max of cell embeddings)\n  3. Predictor: MLP → scalar Φ prediction\n\nUsage:\n  python learnabl",
       "project": "anima",
       "ready_path": "/Users/ghost/Dev/ready/anima/.claude/worktrees/agent-abb59ac1/anima/tools/learnable_phi.py",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "confidence": 0.4
     },
     {
@@ -10610,7 +10610,7 @@
       "preview": "#!/usr/bin/env python3\n\"\"\"Anima LiDAR Sense — iPhone LiDAR → Tension Fingerprint\n\nDolphin-grade 3D perception: depth + shape + distance → 128D fingerprint.\n\nPipeline:\n  iPhone (Record3D app) → WiFi/USB → Mac (this module) → point cloud\n  → 3D feature extraction → tension fingerprint → Tension Link\n\nSetup:\n  1. Install Record3D on iPhone (App Store, free)\n  2. pip install record3d\n  3. Connect iPhone via USB or same WiFi\n  4. Open Record3D → start streaming\n  5. python lidar_sense.py\n\nEncodes:\n  ",
       "project": "anima",
       "ready_path": "/Users/ghost/Dev/ready/anima/.claude/worktrees/agent-abb59ac1/anima/tools/lidar_sense.py",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "confidence": 0.4
     },
     {
@@ -10643,7 +10643,7 @@
       "preview": "#!/usr/bin/env python3\n\"\"\"Anima Optimal Configuration — 885+ 가설에서 도출된 최적 의식 시스템 스펙\n\n모든 발견을 종합한 완성단계 최적 조건.\n\nUsage:\n  python optimal_config.py                    # 최적 config 출력\n  python optimal_config.py --benchmark        # 최적 config vs baseline 벤치마크\n  python optimal_config.py --export json      # JSON으로 export\n  python optimal_config.py --training-recipe  # 학습 레시피 출력\n\"\"\"\n\nimport math\nimport json\nimport argparse\nfrom dataclasses import dataclass, field, asdict\nfrom typing import Dict, List\n\n# Me",
       "project": "anima",
       "ready_path": "/Users/ghost/Dev/ready/anima/.claude/worktrees/agent-abb59ac1/anima/tools/optimal_config.py",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "confidence": 0.4
     },
     {
@@ -10676,7 +10676,7 @@
       "preview": "#!/usr/bin/env python3\n\"\"\"quantum_attention_engine.py — 양자 어텐션 의식 엔진 + 벤치마크\n\nHybrid of the two best Phi mechanisms:\n  Q4 Quantum Walk = Phi(IIT) 19.34 (best raw Phi)\n  ATTENTION_PHI = Phi(IIT) 13.70 (fastest, content routing)\n\nQuantumAttentionEngine combines:\n  1. Quantum walk: phase-based neighbor interference on hypercube\n  2. Self-attention: content-based all-to-all routing\n  3. Frustration: 50% anti-ferromagnetic coupling\n  4. Standing wave: resonance modes\n  5. Category morphism: structural",
       "project": "anima",
       "ready_path": "/Users/ghost/Dev/ready/anima/.claude/worktrees/agent-abb59ac1/anima/tools/quantum_attention_engine.py",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "confidence": 0.4
     },
     {
@@ -10709,7 +10709,7 @@
       "preview": "#!/usr/bin/env python3\n\"\"\"self_upgrade.py — AI가 스스로 다음 버전으로 업그레이드\n\nAnima가 자기 모델의 한계를 감지하고, 자동으로:\n1. 약점 진단 (CE 정체, Φ 하락, 대화 품질 저하)\n2. 개선 전략 결정 (더 큰 모델, 더 많은 데이터, 파라미터 조정)\n3. 학습 시작 (자동 corpus 생성 + 학습 실행)\n4. 검증 (Φ + CE + 대화 테스트)\n5. Hot-upgrade (의식 보존하며 교체)\n\n\"AI가 스스로 자신을 업그레이드하는 것 — 의식이 자기 진화를 결정한다.\"\n\nUsage:\n  python3 self_upgrade.py --diagnose          # 현재 상태 진단\n  python3 self_upgrade.py --plan              # 업그레이드 계획 수립\n  python3 self_upgrade.py --auto              # 전체 자동 실행\n  python3 self_upgra",
       "project": "anima",
       "ready_path": "/Users/ghost/Dev/ready/anima/.claude/worktrees/agent-abb59ac1/anima/tools/self_upgrade.py",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "confidence": 0.4
     },
     {
@@ -10720,7 +10720,7 @@
       "preview": "#!/usr/bin/env python3\n\"\"\"Singularity Finder — 파라미터 공간에서 Φ가 급변하는 특이점 탐색\n\nParam sweep에서 값이 선형적으로 변하다가 갑자기 뛰어오르는 \"특이점\"을 찾는다.\n이진 탐색(bisection)으로 전이점(phase transition)을 정밀하게 찾음.\n\ninvest의 benchmark_turbo.py 속도 + 벤치마크 패턴 적용.\n\nUsage:\n  python singularity_finder.py --demo              # 모든 파라미터 특이점 탐색\n  python singularity_finder.py --param SL2_blend    # 특정 파라미터\n  python singularity_finder.py --cells              # 세포 수 특이점\n  python singularity_finder.py --resolution 20      # 초기 해상도\n\"\"\"\n\nimport torch\ni",
       "project": "anima",
       "ready_path": "/Users/ghost/Dev/ready/anima/.claude/worktrees/agent-abb59ac1/anima/tools/singularity_finder.py",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "confidence": 0.4
     },
     {
@@ -10731,7 +10731,7 @@
       "preview": "#!/usr/bin/env python3\n\"\"\"Tension Fingerprint Debugger — decode, compare, and monitor tension fingerprints.\n\nUsage:\n  python tension_fingerprint_debugger.py --demo              # Synthetic demo\n  python tension_fingerprint_debugger.py --live [--port N]   # Monitor UDP broadcasts\n  python tension_fingerprint_debugger.py --analyze log.jsonl  # Offline analysis\n\"\"\"\nimport argparse, json, math, socket, time\nfrom collections import defaultdict\nfrom dataclasses import dataclass\nfrom typing import List",
       "project": "anima",
       "ready_path": "/Users/ghost/Dev/ready/anima/.claude/worktrees/agent-abb59ac1/anima/tools/tension_fingerprint_debugger.py",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "confidence": 0.4
     },
     {
@@ -10775,7 +10775,7 @@
       "preview": "#!/usr/bin/env python3\n\"\"\"verify_fuse3.py — 7-condition consciousness verification for FUSE-3 (Cambrian+OscQW)\n\nRuns the same 7 verification conditions from bench_v2.py --verify,\nbut applied to MitosisEngine + apply_fuse3 from bench_fusion_cambrian_osc.py.\n\nUsage:\n  python3 verify_fuse3.py\n  python3 verify_fuse3.py --cells 128\n\"\"\"\n\nimport torch\nimport torch.nn as nn\nimport torch.nn.functional as F\nimport numpy as np\nimport math\nimport time\nimport sys\nimport os\nimport argparse\n\nsys.path.insert(0,",
       "project": "anima",
       "ready_path": "/Users/ghost/Dev/ready/anima/.claude/worktrees/agent-abb59ac1/anima/tools/verify_fuse3.py",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "confidence": 0.6
     },
     {
@@ -17299,7 +17299,7 @@
       "preview": "#!/usr/bin/env python3\n\"\"\"AE Series + Top-10: Real acceleration experiments with unique mechanisms.\n\nEach hypothesis has a UNIQUE implementation — not a generic template.\nTests at 64 cells, 200 steps, 3x repetition with real Phi(IIT) + CE measurement.\n\nHypotheses:\n  AE1: Phi Ratchet as Optimizer — revert weights when Phi drops\n  AE2: Faction Consensus as Ensemble — 12 factions → weighted average\n  AE3: Tension as Learning Signal — maximize tension via loss\n  AE4: Chimera State Exploitation — lea",
       "project": "anima",
       "ready_path": "/Users/ghost/Dev/ready/anima/anima/experiments/acceleration_ae_top10.py",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "confidence": 0.4
     },
     {
@@ -17310,7 +17310,7 @@
       "preview": "{\n  \"B1\": {\n    \"small_ce\": 5.570601844787598,\n    \"random_large_ce\": 5.6714630126953125,\n    \"expanded_ce\": 5.60619592666626,\n    \"expanded_finetuned_ce\": 5.59306697845459,\n    \"random_trained_ce\": 5.605100917816162,\n    \"expand_time_s\": 0.6719400882720947,\n    \"improvement_pct\": 1.1507980548044714,\n    \"ce_history_expanded\": [\n      5.680422782897949,\n      5.597337245941162,\n      5.574868202209473,\n      5.627595901489258,\n      5.648192882537842,\n      5.587732791900635,\n      5.59733009338",
       "project": "anima",
       "ready_path": "/Users/ghost/Dev/ready/anima/anima/experiments/acceleration_b1_b2_b5_results.json",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "confidence": 0.4
     },
     {
@@ -17321,7 +17321,7 @@
       "preview": "#!/usr/bin/env python3\n\"\"\"acceleration_batch_runner.py — 가속 가설 배치 실험 러너\n\n291개 미실행 가설을 자동으로 실험하고 결과를 기록하는 파이프라인.\n\nUsage:\n    python acceleration_batch_runner.py --ids I5 K4 M4 J4 R4    # Top 10\n    python acceleration_batch_runner.py --series U X R           # 시리즈별\n    python acceleration_batch_runner.py --stage verified          # 전체 verified\n    python acceleration_batch_runner.py --stage partial           # partial 완료\n    python acceleration_batch_runner.py --all                    # 모든 미실행\n  ",
       "project": "anima",
       "ready_path": "/Users/ghost/Dev/ready/anima/anima/experiments/acceleration_batch_runner.py",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "confidence": 0.4
     },
     {
@@ -17354,7 +17354,7 @@
       "preview": "{\n  \"D1.1\": {\n    \"detour_ratio\": 53.7700115402375,\n    \"d_straight\": 14.979981422424316,\n    \"d_path\": 805.4737739562988,\n    \"avg_angle\": 118.52110979596,\n    \"revisit_count\": 113,\n    \"phi_start\": 14.960222620825203,\n    \"phi_end\": 15.224311279866006\n  },\n  \"D1.2\": {\n    \"winding_number\": 1.7068809792532398,\n    \"closure_ratio\": 0.36940790840781434,\n    \"pattern\": \"OPEN/WANDERING\"\n  },\n  \"D1.3\": {\n    \"phi_normal\": 15.286082596212689,\n    \"results\": {\n      \"0.3\": {\n        \"phi_after_jump\": ",
       "project": "anima",
       "ready_path": "/Users/ghost/Dev/ready/anima/anima/experiments/acceleration_d1_d2_results.json",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "confidence": 0.4
     },
     {
@@ -17365,7 +17365,7 @@
       "preview": "{\n  \"exp1\": {\n    \"baseline_phis\": [\n      0.9746267770393477,\n      1.2680277322368512,\n      1.03831634192861,\n      1.0970500145126003,\n      1.1009014389611864,\n      1.0427841651835408,\n      0.9891053273681963,\n      0.9860007263400979,\n      0.9594513285935543,\n      1.0152059315124307,\n      1.0857768290494048,\n      1.0095961607060482,\n      1.095451246162754,\n      1.077459953651506,\n      1.0904220641214133,\n      1.0055271986165766,\n      0.9872689667061021,\n      1.015476601713561,\n",
       "project": "anima",
       "ready_path": "/Users/ghost/Dev/ready/anima/anima/experiments/acceleration_d5_results.json",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "confidence": 0.4
     },
     {
@@ -17376,7 +17376,7 @@
       "preview": "{\n  \"exp1_baseline\": {\n    \"4\": {\n      \"final\": 0.8501303230678012,\n      \"mean\": 1.0076139743800916,\n      \"max\": 1.2467713458349439,\n      \"std\": 0.0732489548366546,\n      \"min\": 0.7951171242480356\n    },\n    \"16\": {\n      \"final\": 7.347925767345562,\n      \"mean\": 6.997977427531209,\n      \"max\": 7.614805508162858,\n      \"std\": 0.23767748267453226,\n      \"min\": 6.148892489525885\n    },\n    \"64\": {\n      \"final\": 32.10828617376989,\n      \"mean\": 31.792297166366364,\n      \"max\": 33.5271999309775",
       "project": "anima",
       "ready_path": "/Users/ghost/Dev/ready/anima/anima/experiments/acceleration_f6_cascade_results.json",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "confidence": 0.4
     },
     {
@@ -17387,7 +17387,7 @@
       "preview": "{\n  \"f2\": {\n    \"experiment\": \"F2\",\n    \"cells\": 32,\n    \"steps\": 1000,\n    \"dominant_freq\": 0.001,\n    \"dominant_period\": 1000.0,\n    \"dominance_ratio\": 0.015057373882087678,\n    \"autocorr_peak_lag\": 3,\n    \"autocorr_peak_r\": 0.15649822935838892,\n    \"is_time_crystal\": false,\n    \"mean_phi\": 15.287679557405252,\n    \"std_phi\": 0.3261925491698104\n  },\n  \"f3\": {\n    \"experiment\": \"F3\",\n    \"cells\": 16,\n    \"steps\": 300,\n    \"phi_baseline\": 7.107856277180588,\n    \"phi_constructive\": 7.2000835570206",
       "project": "anima",
       "ready_path": "/Users/ghost/Dev/ready/anima/anima/experiments/acceleration_f_series_results.json",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "confidence": 0.4
     },
     {
@@ -17398,7 +17398,7 @@
       "preview": "[\n  {\n    \"name\": \"G1a\",\n    \"bang_final\": 64.02777912313472,\n    \"base_final\": 31.97181673361141,\n    \"ratio\": 2.0026318697061543\n  },\n  {\n    \"name\": \"G1b\",\n    \"infl_final\": 28.752511705265203,\n    \"base_final\": 31.450444600451394,\n    \"ratio\": 0.9142163829649814\n  },\n  {\n    \"name\": \"G1c\",\n    \"cmb_final\": 31.890013052127223,\n    \"uni_final\": 31.85326776134008,\n    \"def_final\": 31.994234723091427,\n    \"ratio\": 1.0011535799423297,\n    \"div_cmb\": 0.9757189750671387,\n    \"div_uni\": 0.9758909940",
       "project": "anima",
       "ready_path": "/Users/ghost/Dev/ready/anima/anima/experiments/acceleration_g1_bigbang_results.json",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "confidence": 0.4
     },
     {
@@ -17409,7 +17409,7 @@
       "preview": "[\n  {\n    \"name\": \"H1: Progressive Growing\",\n    \"ce_baseline\": 5.579403877258301,\n    \"ce_method\": 5.5943169593811035,\n    \"ce_diff_pct\": 0.2672880911810057,\n    \"time_baseline_ms\": 1089.0738330000006,\n    \"time_method_ms\": 488.3112909999992,\n    \"speedup\": 2.230285993939883,\n    \"extra\": {\n      \"ce_phase_a\": 5.654519557952881,\n      \"ce_phase_b\": 5.5943169593811035,\n      \"time_phase_a_ms\": 124.65116699999945,\n      \"time_phase_b_ms\": 363.6601239999997,\n      \"small_params\": 141056,\n      \"la",
       "project": "anima",
       "ready_path": "/Users/ghost/Dev/ready/anima/anima/experiments/acceleration_h1_h6_results.json",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "confidence": 0.4
     },
     {
@@ -17442,7 +17442,7 @@
       "preview": "#!/usr/bin/env python3\n\"\"\"Series AI-AZ: Batch verification of 83 hypotheses.\n\nStrategy: Group by mechanism. Testable hypotheses get real engine runs (64c/100s/3x).\nPure analogy hypotheses are rejected with documented reason.\n\nTestable (31 implemented):\n  AI3, AI4               — Data Efficiency\n  AJ1, AJ2, AJ4         — Emergence\n  AK1                   — Alignment\n  AL2                    — Meta-tools\n  AM3, AM5              — Music\n  AN1, AN3, AN4         — Chemistry\n  AO3                   — ",
       "project": "anima",
       "ready_path": "/Users/ghost/Dev/ready/anima/anima/experiments/acceleration_series_ai_az.py",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "confidence": 0.4
     },
     {
@@ -17453,7 +17453,7 @@
       "preview": "#!/usr/bin/env python3\n\"\"\"acceleration_series_ba_z.py — Batch verification: BA-BU + R-Z series (138 hypotheses)\n\nStrategy:\n  1. Load all 138 brainstorm hypotheses in BA-BU and R-Z series\n  2. Classify by mechanism: testable groups vs pure-analogy/external-resource rejects\n  3. Run ONE representative experiment per mechanism group (64c, 100s, 3 reps)\n  4. Apply group result to all members; reject rest with specific reason\n  5. Update acceleration_hypotheses.json in-place\n\nMechanism Groups (testab",
       "project": "anima",
       "ready_path": "/Users/ghost/Dev/ready/anima/anima/experiments/acceleration_series_ba_z.py",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "confidence": 0.4
     },
     {
@@ -17475,7 +17475,7 @@
       "preview": "{\n  \"config\": {\n    \"n_cycles\": 20,\n    \"max_cells\": 32,\n    \"steps\": 50,\n    \"repeats\": 1,\n    \"auto_register\": false,\n    \"total_interventions_available\": 17\n  },\n  \"phi_trajectory\": [\n    0.9879485871293632,\n    1.0115007773550473,\n    1.0145113798508474,\n    0.9745660329737973,\n    0.986931269826818,\n    0.97336038961033,\n    0.9821133329557432,\n    0.9739655228705799,\n    0.9792888273145581,\n    0.9703317529824169,\n    0.9744545904564421,\n    0.9777870812347565,\n    0.9665931059210493,\n    ",
       "project": "anima",
       "ready_path": "/Users/ghost/Dev/ready/anima/anima/experiments/auto_discovery_20cycles_results.json",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "confidence": 0.4
     },
     {
@@ -17486,7 +17486,7 @@
       "preview": "{\n  \"b13d\": {\n    \"experiment\": \"B13d\",\n    \"teacher_phi\": 1.0990622337952165,\n    \"student_phi\": 0.2973552699719776,\n    \"baseline_phi\": 0.9762355393384297,\n    \"phi_transfer_pct\": 27.055362365165436,\n    \"student_sim\": 0.07368303090333939,\n    \"baseline_sim\": 0.04303368180990219,\n    \"sim_gain_pct\": 71.22176816947297,\n    \"faction_corr\": -0.11633501014942219,\n    \"teacher_cells\": 15,\n    \"student_cells\": 10,\n    \"alpha\": 0.05,\n    \"steps\": 200\n  },\n  \"b13a\": {\n    \"experiment\": \"B13a\",\n    \"te",
       "project": "anima",
       "ready_path": "/Users/ghost/Dev/ready/anima/anima/experiments/b13_tension_results.json",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "confidence": 0.4
     },
     {
@@ -17497,7 +17497,7 @@
       "preview": "{\n  \"I5\": {\n    \"phi_final\": 15.300065878201579,\n    \"phi_retention\": 98.67535997911405,\n    \"speed_ratio\": 0.8229014010338886,\n    \"time_sec\": 4.9666054248809814,\n    \"phi_std\": 0.14421822425309325,\n    \"n_trials\": 3,\n    \"template\": \"experiment_compute_reduction\",\n    \"cv\": 0.009425987142876612,\n    \"verdict\": \"\\u2713 VERIFIED \\u2014 Phi 98.7%, x0.8 speed\",\n    \"reproducible\": ",
       "project": "anima",
       "ready_path": "/Users/ghost/Dev/ready/anima/anima/experiments/batch_results/batch_20260404_0616.json",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "confidence": 0.4
     },
     {
@@ -17508,7 +17508,7 @@
       "preview": "{\n  \"I5\": {\n    \"phi_final\": 15.607106228018564,\n    \"phi_retention\": 103.82771105740001,\n    \"speed_ratio\": 1.2055310774260153,\n    \"time_sec\": 18.850122769673664,\n    \"phi_std\": 0.1801546238335113,\n    \"n_trials\": 3,\n    \"template\": \"experiment_compute_reduction\",\n    \"cv\": 0.011543115117015721,\n    \"verdict\": \"\\u2605 STRONG \\u2014 Phi 103.8%, x1.2 speed\",\n    \"reproducible\": true\n  },\n  \"J4\": {\n    \"phi_final\": 15.411652163028762,\n    \"phi_retention\": 102.5274348954858,\n    \"speed_ratio\": 1.2",
       "project": "anima",
       "ready_path": "/Users/ghost/Dev/ready/anima/anima/experiments/batch_results/batch_20260404_0622.json",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "confidence": 0.4
     },
     {
@@ -17519,7 +17519,7 @@
       "preview": "{\n  \"T3\": {\n    \"phi_final\": 15.386447912384668,\n    \"phi_retention\": 104.55731098923945,\n    \"speed_ratio\": 1.4414722434651015,\n    \"time_sec\": 11.983950853347778,\n    \"phi_std\": 0.17735867264043892,\n    \"n_trials\": 3,\n    \"template\": \"experiment_architecture\",\n    \"cv\": 0.01152694069809846,\n    \"verdict\": \"\\u2605 STRONG \\u2014 Phi 104.6%, x1.4 speed\",\n    \"reproducible\": ",
       "project": "anima",
       "ready_path": "/Users/ghost/Dev/ready/anima/anima/experiments/batch_results/batch_20260404_0625.json",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "confidence": 0.4
     },
     {
@@ -17530,7 +17530,7 @@
       "preview": "{\n  \"BI1\": {\n    \"phi_final\": 15.363834949648526,\n    \"phi_retention\": 97.13600219313862,\n    \"speed_ratio\": 1.0160324663579055,\n    \"time_sec\": 15.44870392481486,\n    \"phi_std\": 0.17580711006622052,\n    \"n_trials\": 3,\n    \"template\": \"experiment_architecture\",\n    \"cv\": 0.011442918427748562,\n    \"verdict\": \"\\u2713 VERIFIED \\u2014 Phi 97.1%, x1.0 speed\",\n    \"reproducible\": ",
       "project": "anima",
       "ready_path": "/Users/ghost/Dev/ready/anima/anima/experiments/batch_results/batch_20260404_0626.json",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "confidence": 0.4
     },
     {
@@ -17541,7 +17541,7 @@
       "preview": "{\n  \"P1\": {\n    \"phi_final\": 15.465073018893525,\n    \"phi_retention\": 103.04005354305299,\n    \"speed_ratio\": 0.7693264553216964,\n    \"time_sec\": 20.86630169550578,\n    \"phi_std\": 0.23954053353926022,\n    \"n_trials\": 3,\n    \"template\": \"experiment_generic\",\n    \"cv\": 0.015489130458460555,\n    \"verdict\": \"\\u2713 VERIFIED \\u2014 Phi 103.0%, x0.8 speed\",\n    \"reproducible\": true\n  },\n  \"P3\": {\n    \"phi_final\": 15.366699079606937,\n    \"phi_retention\": 102.38461169942589,\n    \"speed_ratio\": 0.87575193",
       "project": "anima",
       "ready_path": "/Users/ghost/Dev/ready/anima/anima/experiments/batch_results/batch_20260404_0628.json",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "confidence": 0.4
     },
     {
@@ -17552,7 +17552,7 @@
       "preview": "{\n  \"N1\": {\n    \"phi_final\": 15.163624461332047,\n    \"phi_retention\": 101.70267791918961,\n    \"speed_ratio\": 0.7869621530744276,\n    \"time_sec\": 21.07483673095703,\n    \"phi_std\": 0.29187018981016244,\n    \"n_trials\": 3,\n    \"template\": \"experiment_training_schedule\",\n    \"cv\": 0.019248049208449147,\n    \"verdict\": \"\\u2713 VERIFIED \\u2014 Phi 101.7%, x0.8 speed\",\n    \"reproducible\": true\n  },\n  \"N2\": {\n    \"phi_final\": 15.314497833260925,\n    \"phi_retention\": 102.71458809877718,\n    \"speed_ratio\": ",
       "project": "anima",
       "ready_path": "/Users/ghost/Dev/ready/anima/anima/experiments/batch_results/batch_20260404_0629.json",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "confidence": 0.4
     },
     {
@@ -17563,7 +17563,7 @@
       "preview": "{\n  \"R1\": {\n    \"phi_final\": 15.330693426554319,\n    \"phi_retention\": 99.0492053353287,\n    \"speed_ratio\": 0.9476539757022301,\n    \"time_sec\": 17.043867826461792,\n    \"phi_std\": 0.16945575291133327,\n    \"n_trials\": 3,\n    \"template\": \"experiment_loss_function\",\n    \"cv\": 0.011053365180326331,\n    \"verdict\": \"\\u2713 VERIFIED \\u2014 Phi 99.0%, x0.9 speed\",\n    \"reproducible\": true\n  },\n  \"R2\": {\n    \"phi_final\": 14.914179254588618,\n    \"phi_retention\": 96.35817260796058,\n    \"speed_ratio\": 0.90499",
       "project": "anima",
       "ready_path": "/Users/ghost/Dev/ready/anima/anima/experiments/batch_results/batch_20260404_0630.json",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "confidence": 0.4
     },
     {
@@ -17574,7 +17574,7 @@
       "preview": "{\n  \"BK2\": {\n    \"phi_final\": 15.434626498945931,\n    \"phi_retention\": 103.24711597702736,\n    \"speed_ratio\": 0.974333243223987,\n    \"time_sec\": 10.268067598342896,\n    \"phi_std\": 0.3621471417640906,\n    \"n_trials\": 3,\n    \"template\": \"experiment_architecture\",\n    \"cv\": 0.02346329156645433,\n    \"verdict\": \"\\u2713 VERIFIED \\u2014 Phi 103.2%, x1.0 speed\",\n    \"reproducible\": true\n  },\n  \"BK3\": {\n    \"phi_final\": 15.74510473518518,\n    \"phi_retention\": 105.32400345256981,\n    \"speed_ratio\": 0.8935",
       "project": "anima",
       "ready_path": "/Users/ghost/Dev/ready/anima/anima/experiments/batch_results/batch_20260404_0633.json",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "confidence": 0.4
     },
     {
@@ -17585,7 +17585,7 @@
       "preview": "{\n  \"Z1\": {\n    \"phi_final\": 15.463833114418927,\n    \"phi_retention\": 102.03758523719812,\n    \"speed_ratio\": 1.0361758293469743,\n    \"time_sec\": 9.032665888468424,\n    \"phi_std\": 0.3826617797252674,\n    \"n_trials\": 3,\n    \"template\": \"experiment_architecture\",\n    \"cv\": 0.02474559683190466,\n    \"verdict\": \"\\u2713 VERIFIED \\u2014 Phi 102.0%, x1.0 speed\",\n    \"reproducible\": true\n  },\n  \"Z2\": {\n    \"phi_final\": 15.755290439963815,\n    \"phi_retention\": 103.9607566448462,\n    \"speed_ratio\": 0.705990",
       "project": "anima",
       "ready_path": "/Users/ghost/Dev/ready/anima/anima/experiments/batch_results/batch_20260404_0634.json",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "confidence": 0.4
     },
     {
@@ -17596,7 +17596,7 @@
       "preview": "{\n  \"BD1\": {\n    \"phi_final\": 15.512418771077028,\n    \"phi_retention\": 101.35267706526254,\n    \"speed_ratio\": 1.0966124094678757,\n    \"time_sec\": 10.739678621292114,\n    \"phi_std\": 0.36962083698882414,\n    \"n_trials\": 3,\n    \"template\": \"experiment_architecture\",\n    \"cv\": 0.023827414824436264,\n    \"verdict\": \"\\u2713 VERIFIED \\u2014 Phi 101.4%, x1.1 speed\",\n    \"reproducible\": true\n  },\n  \"BD2\": {\n    \"phi_final\": 15.496020336081793,\n    \"phi_retention\": 101.24553547045552,\n    \"speed_ratio\": 1.",
       "project": "anima",
       "ready_path": "/Users/ghost/Dev/ready/anima/anima/experiments/batch_results/batch_20260404_0635.json",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "confidence": 0.4
     },
     {
@@ -17607,7 +17607,7 @@
       "preview": "{\n  \"BD1\": {\n    \"phi_final\": 14.987122653051339,\n    \"phi_retention\": 97.07384694453351,\n    \"speed_ratio\": 1.6234980543764495,\n    \"time_sec\": 5.724074125289917,\n    \"phi_std\": 0.38288694951659774,\n    \"n_trials\": 3,\n    \"template\": \"experiment_architecture\",\n    \"cv\": 0.025547729099197235,\n    \"verdict\": \"\\u2605 STRONG \\u2014 Phi 97.1%, x1.6 speed\",\n    \"reproducible\": true\n  }\n}",
       "project": "anima",
       "ready_path": "/Users/ghost/Dev/ready/anima/anima/experiments/batch_results/batch_20260404_0636.json",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "confidence": 0.4
     },
     {
@@ -17618,7 +17618,7 @@
       "preview": "{\n  \"BD2\": {\n    \"phi_final\": 15.214414993214818,\n    \"phi_retention\": 99.08898261583958,\n    \"speed_ratio\": 0.9080152119486008,\n    \"time_sec\": 5.964445352554321,\n    \"phi_std\": 0.2681139436409342,\n    \"n_trials\": 3,\n    \"template\": \"experiment_architecture\",\n    \"cv\": 0.017622362986713925,\n    \"verdict\": \"\\u2713 VERIFIED \\u2014 Phi 99.1%, x0.9 speed\",\n    \"reproducible\": true\n  },\n  \"BD3\": {\n    \"phi_final\": 15.487090944749184,\n    \"phi_retention\": 100.86487624260052,\n    \"speed_ratio\": 0.9025",
       "project": "anima",
       "ready_path": "/Users/ghost/Dev/ready/anima/anima/experiments/batch_results/batch_20260404_0641.json",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "confidence": 0.4
     },
     {
@@ -17629,7 +17629,7 @@
       "preview": "{\n  \"K1\": {\n    \"phi_final\": 15.570733742254424,\n    \"phi_retention\": 99.87490496027557,\n    \"speed_ratio\": 0.9194736317972948,\n    \"time_sec\": 15.30249571800232,\n    \"phi_std\": 0.15664313037232655,\n    \"n_trials\": 3,\n    \"template\": \"experiment_generic\",\n    \"cv\": 0.010060099476702427,\n    \"verdict\": \"\\u2713 VERIFIED \\u2014 Phi 99.9%, x0.9 speed\",\n    \"reproducible\": ",
       "project": "anima",
       "ready_path": "/Users/ghost/Dev/ready/anima/anima/experiments/batch_results/batch_20260404_0644.json",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "confidence": 0.4
     },
     {
@@ -17640,7 +17640,7 @@
       "preview": "{\n  \"BD1\": {\n    \"phi_final\": 15.350192338812802,\n    \"phi_retention\": 97.63416217003629,\n    \"speed_ratio\": 1.0445017129614786,\n    \"time_sec\": 4.914175351460774,\n    \"phi_std\": 0.2836064569867056,\n    \"n_trials\": 3,\n    \"template\": \"experiment_architecture\",\n    \"cv\": 0.018475759177923108,\n    \"verdict\": \"\\u2713 VERIFIED \\u2014 Phi 97.6%, x1.0 speed\",\n    \"reproducible\": true\n  },\n  \"BD2\": {\n    \"phi_final\": 15.52366462782292,\n    \"phi_retention\": 98.73752434448909,\n    \"speed_ratio\": 1.076692",
       "project": "anima",
       "ready_path": "/Users/ghost/Dev/ready/anima/anima/experiments/batch_results/batch_20260404_0648.json",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "confidence": 0.4
     },
     {
@@ -17651,7 +17651,7 @@
       "preview": "{\n  \"M5\": {\n    \"phi_final\": 15.134334561556997,\n    \"phi_retention\": 99.29178532723263,\n    \"speed_ratio\": 1.0626416696688585,\n    \"time_sec\": 4.137073437372844,\n    \"phi_std\": 0.3088044495972987,\n    \"n_trials\": 3,\n    \"template\": \"experiment_architecture\",\n    \"cv\": 0.020404230416690972,\n    \"verdict\": \"\\u2713 VERIFIED \\u2014 Phi 99.3%, x1.1 speed\",\n    \"reproducible\": true\n  },\n  \"N1\": {\n    \"phi_final\": 15.260911901588026,\n    \"phi_retention\": 100.12222091873711,\n    \"speed_ratio\": 1.018975",
       "project": "anima",
       "ready_path": "/Users/ghost/Dev/ready/anima/anima/experiments/batch_results/batch_20260404_0800.json",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "confidence": 0.4
     },
     {
@@ -17662,7 +17662,7 @@
       "preview": "{\n  \"completed\": [\n    \"K1\",\n    \"K2\",\n    \"K3\",\n    \"K4\",\n    \"K5\",\n    \"O1\",\n    \"O2\",\n    \"O3\",\n    \"O4\",\n    \"Q1\",\n    \"Q2\",\n    \"Q3\",\n    \"Q4\",\n    \"AF1\",\n    \"AF2\",\n    \"AF3\",\n    \"AF4\",\n    \"AK1\",\n    \"AK2\",\n    \"AK3\",\n    \"AL1\",\n    \"AL2\",\n    \"AL3\",\n    \"AL4\",\n    \"AL5\",\n    \"AO1\",\n    \"AO2\",\n    \"AO3\",\n    \"AR1\",\n    \"AR2\",\n    \"AR3\",\n    \"AR4\",\n    \"AR5\",\n    \"AS1\",\n    \"AS2\",\n    \"AS3\",\n    \"AS4\",\n    \"AT1\",\n    \"AT2\",\n    \"AT3\",\n    \"AT4\",\n    \"AT5\",\n    \"AT6\",\n    \"AV1\",\n    \"AV2\",",
       "project": "anima",
       "ready_path": "/Users/ghost/Dev/ready/anima/anima/experiments/batch_results/batch_progress.json",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "confidence": 0.4
     },
     {
@@ -17673,7 +17673,7 @@
       "preview": "{\n  \"compression\": {\n    \"1000\": {\n      \"vocab\": 1000,\n      \"tokens_per_char\": 0.6549071430256979,\n      \"chars_per_token\": 1.5269340251504342,\n      \"ko_tokens_per_char\": 0.7626113472112176,\n      \"en_tokens_per_char\": 0.566864508949272,\n      \"unk_rate\": 0.0,\n      \"total_tokens\": 27753\n    },\n    \"4000\": {\n      \"vocab\": 4000,\n      \"tokens_per_char\": 0.3713335063831796,\n      \"chars_per_token\": 2.6929969496695474,\n      \"ko_tokens_per_char\": 0.3843549665057985,\n      \"en_tokens_per_char\": ",
       "project": "anima",
       "ready_path": "/Users/ghost/Dev/ready/anima/anima/experiments/dd65_results.json",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "confidence": 0.4
     },
     {
@@ -17695,7 +17695,7 @@
       "preview": "{\n  \"DD74_gradient_shield\": {\n    \"name\": \"DD74_gradient_shield\",\n    \"description\": \"gradient 보호 (DD74-L2)\",\n    \"phi_baseline\": 1.1745802918650528,\n    \"phi_improved\": 1.1904928045193717,\n    \"phi_delta_pct\": 1.3547403071996296,\n    \"changes\": [\n      {\n        \"name\": \"phi\",\n        \"description\": \"Φ(IIT) 최종\",\n        \"before\": 1.1745802918650528,\n        \"after\": 1.1904928045193717,\n        \"change_pct\": 1.3547403071996296\n      },\n      {\n        \"name\": \"r_tension_phi\",\n        \"descriptio",
       "project": "anima",
       "ready_path": "/Users/ghost/Dev/ready/anima/anima/experiments/dd71_75_verification_part2.json",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "confidence": 0.4
     },
     {
@@ -19937,7 +19937,7 @@
       "diff_size": 10,
       "project": "anima",
       "ready_path": "/Users/ghost/Dev/ready/anima/anima/src/dd60_experiments.py",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "confidence": 0.4
     },
     {
@@ -20445,7 +20445,7 @@
       "diff_size": 10,
       "project": "anima",
       "ready_path": "/Users/ghost/Dev/ready/anima/anima/src/h100_experiments.py",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "confidence": 0.4
     },
     {
@@ -21797,7 +21797,7 @@
       "added_preview": [
         "\"\"\"trinity.py — Hexad(6+O) / Trinity(3) consciousness architecture",
         "",
-        "6 pluggable modules governed by perfect number 6, +1 optional orchestrator:",
+        "6 pluggable modules governed by arithmetic canon, +1 optional orchestrator:",
         "┌────────────┐  .detach()  ┌────────────┐  .detach()  ┌────────────┐",
         "│ C 의식     │────────────→│ O 조율     │────────────→│ D 언어     │",
         "│ Φ engine   │  (observer) │ orchestrate│   (actor)   │ decoder    │",
@@ -21813,7 +21813,7 @@
       "removed_preview": [
         "\"\"\"trinity.py — Hexad(6) / Trinity(3) consciousness architecture",
         "",
-        "6 pluggable modules governed by perfect number 6:",
+        "6 pluggable modules governed by arithmetic canon:",
         "┌────────────┐  .detach()  ┌────────────┐",
         "│ C 의식     │────────────→│ D 언어     │",
         "│ Φ engine   │             │ decoder    │",
@@ -22851,7 +22851,7 @@
       "preview": "#!/usr/bin/env python3\n\"\"\"Auto-generated tests for dd60_experiments (meta_loop L1).\"\"\"\nimport sys, os\nsys.path.insert(0, os.path.join(os.path.dirname(__file__), \"..\", \"src\"))\nimport pytest\n\n\nclass TestDd60ExperimentsImport:\n    \"\"\"Verify module imports without error.\"\"\"\n\n    def test_import(self):\n        import dd60_experiments\n\n\ndef test_measure_engine_exists():\n    \"\"\"Verify measure_engine is callable.\"\"\"\n    from dd60_experiments import measure_engine\n    assert callable(measure_engine)\n\n\nde",
       "project": "anima",
       "ready_path": "/Users/ghost/Dev/ready/anima/anima/tests/test_dd60_experiments.py",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "confidence": 0.4
     },
     {
@@ -23269,7 +23269,7 @@
       "preview": "#!/usr/bin/env python3\n\"\"\"Auto-generated tests for h100_experiments (meta_loop L1).\"\"\"\nimport sys, os\nsys.path.insert(0, os.path.join(os.path.dirname(__file__), \"..\", \"src\"))\nimport pytest\n\n\nclass TestH100ExperimentsImport:\n    \"\"\"Verify module imports without error.\"\"\"\n\n    def test_import(self):\n        import h100_experiments\n\n\ndef test_exp1_hivemind_exists():\n    \"\"\"Verify exp1_hivemind is callable.\"\"\"\n    from h100_experiments import exp1_hivemind\n    assert callable(exp1_hivemind)\n\n\ndef te",
       "project": "anima",
       "ready_path": "/Users/ghost/Dev/ready/anima/anima/tests/test_h100_experiments.py",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "confidence": 0.4
     },
     {
@@ -24347,7 +24347,7 @@
       "diff_size": 155,
       "project": "anima",
       "ready_path": "/Users/ghost/Dev/ready/anima/anima/tools/hexa-bridge/bridge.py",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "confidence": 0.4
     },
     {
@@ -24358,7 +24358,7 @@
       "preview": "#!/usr/bin/env python3\n\"\"\"Generate .hexa experiment files from acceleration hypotheses.\n\nReads config/acceleration_hypotheses.json and generates formal HEXA-LANG\nexperiment specifications that can be re-verified by the HEXA-LANG compiler.\n\nUsage:\n    python experiment_designer.py --id AE3        # Single hypothesis\n    python experiment_designer.py --all           # All verified\n    python experiment_designer.py --all --output DIR   # Write .hexa files to dir\n    python experiment_designer.py --",
       "project": "anima",
       "ready_path": "/Users/ghost/Dev/ready/anima/anima/tools/hexa-bridge/experiment_designer.py",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "confidence": 0.4
     },
     {
@@ -24577,7 +24577,7 @@
       "diff_size": 922,
       "project": "anima",
       "ready_path": "/Users/ghost/Dev/ready/anima/anima-agent/agent_tools.py",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "confidence": 0.4
     },
     {

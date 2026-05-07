@@ -1,6 +1,6 @@
 # P5 protocol bridge design — 20 X->triangle transitions + top 5 circuit designs
 
-- Project: n6-architecture / domains/compute/network-protocol
+- Project: canon / domains/compute/network-protocol
 - Published: 2026-04-14
 - Publishing framework: NEXUS-6 Discovery Engine / CHIP-P5-1
 - Predecessor: certificates/_cross_matrix.md (P4 — sigma=12 cross-certification matrix)

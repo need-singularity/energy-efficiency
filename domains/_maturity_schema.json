@@ -4,7 +4,7 @@
     "version": "1.0.0",
     "created": "2026-04-16",
     "task": "DIS-P1-3",
-    "description": "5-stage domain maturity model for N6 Architecture 318 domains",
+    "description": "5-stage domain maturity model for CANON 318 domains",
     "total_domains": 318,
     "sectors": 10
   },

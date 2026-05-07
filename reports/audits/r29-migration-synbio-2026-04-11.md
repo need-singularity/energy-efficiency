@@ -1,7 +1,7 @@
 # R29 migration audit report — synbio/verify_alien10.hexa
 
 - Date: 2026-04-11
-- Rule: R29 (n6shared/rules/common.json)
+- Rule: R29 (canonshared/rules/common.json)
 - Work: domains/life/synbio/verify_alien10.hexa -> nexus/shared/n6/scripts/verify_synbio_alien10.hexa
 - Owner: session agent (R29 separate migration)
 - Linked report: merge audit report (separate R29 violation item)
@@ -121,7 +121,7 @@ find domains -name "verify_*.hexa" -not -name "verify.hexa" 2>/dev/null | sort
 
 - [x] R1 HEXA-FIRST: migrated file retains .hexa format
 - [x] R5 SSOT: migration to single location complete
-- [x] R14: rule text is single-source-of-truth in n6shared/rules/common.json
+- [x] R14: rule text is single-source-of-truth in canonshared/rules/common.json
 - [x] R18 minimal: only the requested scope (synbio 1 item), other domains only listed
 - [x] R28: migration results will be absorbed into atlas.n6 in a follow-up
 - [x] R29: synbio migration complete, located only under nexus/shared/n6/scripts/

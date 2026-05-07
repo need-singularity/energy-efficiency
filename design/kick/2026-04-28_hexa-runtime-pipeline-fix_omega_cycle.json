@@ -3,7 +3,7 @@
   "ts": "2026-04-28T16:10:00Z",
   "title": "hexa-runtime-pipeline-fix (Task A parallel fan-out 1/5)",
   "task_label": "Task A 1/5",
-  "scope": "Restore canonical hexa run n6shared/sync-readme.hexa pipeline (3 sub-tasks A.1+A.2+A.3)",
+  "scope": "Restore canonical hexa run canonshared/sync-readme.hexa pipeline (3 sub-tasks A.1+A.2+A.3)",
 
   "investigation_summary": {
     "A_1_exec_path_hypothesis": {
@@ -16,8 +16,8 @@
         "docker exec hexa-exec ls /bin/busybox → exists (it's a busybox image with printenv applet not enabled)",
         "/tmp/test.hexa from container: 'ls: /tmp/t1.hexa: No such file or directory' (/tmp not mounted; only /Users/ghost and /tmp/hexa_escalate per docker inspect)"
       ],
-      "fix_applied": "n6shared/sync-readme.hexa: replaced exec(\"printenv HOME\") with try { env_var(\"HOME\") } catch / fallback exec(\"echo \\\"$HOME\\\"\"). env_var goes through hexa_env_var → getenv() at C runtime layer (runtime.c:6320) which is independent of container shell builtin coverage. echo is a POSIX shell builtin available in busybox/dash/bash without external binaries. Same patch applied to sync-products-readme.hexa for parity.",
-      "files_patched": ["n6shared/sync-readme.hexa lines 32-56", "n6shared/sync-products-readme.hexa lines 21-37"]
+      "fix_applied": "canonshared/sync-readme.hexa: replaced exec(\"printenv HOME\") with try { env_var(\"HOME\") } catch / fallback exec(\"echo \\\"$HOME\\\"\"). env_var goes through hexa_env_var → getenv() at C runtime layer (runtime.c:6320) which is independent of container shell builtin coverage. echo is a POSIX shell builtin available in busybox/dash/bash without external binaries. Same patch applied to sync-products-readme.hexa for parity.",
+      "files_patched": ["canonshared/sync-readme.hexa lines 32-56", "canonshared/sync-products-readme.hexa lines 21-37"]
     },
 
     "A_2_json_parse_multibyte_paren": {
@@ -34,15 +34,15 @@
       "verdict": "FIXED",
       "root_cause": "render_summary (line 305) and render_footer (line 390) returned a literal '> (unknown domain: X)' string for domain ids not present in readme-data.json. sync_all (line 535-556) then replaced the AUTO:SUMMARY_X / AUTO:FOOTER_X marker block with that placeholder, corrupting ~17 hand-curated markers covering README sections whose domain entries are intentionally hand-curated (play/aerospace/sf/frontier/civilization/life-culture/tech-industry/computer/marketing/millennium/dimension/music/linguistics/crypto/astronomy/hygiene/fantasy per prior absorption witness 2026-04-28T05:38:19Z).",
       "fix_applied": "render_summary + render_footer return nil when find_domain returns nil. sync_all already has type_of(content) != 'nil' guard (line 544-545) which preserves the existing marker block when content is nil. Defensive default: hand-curated markers always survive; future readme-data.json coverage expansion is opt-in by adding a domain entry. Decision branch (a) per task brief recommendation.",
-      "files_patched": ["n6shared/sync-readme.hexa render_summary unknown-domain branch (line 305-309)", "n6shared/sync-readme.hexa render_footer unknown-domain branch (line 390-394)"]
+      "files_patched": ["canonshared/sync-readme.hexa render_summary unknown-domain branch (line 305-309)", "canonshared/sync-readme.hexa render_footer unknown-domain branch (line 390-394)"]
     }
   },
 
   "tests_run": [
-    {"id": "T-A1-parse", "cmd": "hexa parse n6shared/sync-readme.hexa", "result": "OK: parses cleanly"},
-    {"id": "T-A1-parse-products", "cmd": "hexa parse n6shared/sync-products-readme.hexa", "result": "OK: parses cleanly"},
-    {"id": "T-A1-A3-dry-run", "cmd": "hexa run n6shared/sync-readme.hexa --dry-run", "result": "[OK] README.md is up to date with readme-data.json (64 markers) — HOME resolved correctly, json loaded, 64 markers scanned, no spurious changes proposed"},
-    {"id": "T-A3-check", "cmd": "hexa run n6shared/sync-readme.hexa --check", "result": "[OK] README.md is up to date — drift-free against current SSOT (no unknown-domain corruption)"},
+    {"id": "T-A1-parse", "cmd": "hexa parse canonshared/sync-readme.hexa", "result": "OK: parses cleanly"},
+    {"id": "T-A1-parse-products", "cmd": "hexa parse canonshared/sync-products-readme.hexa", "result": "OK: parses cleanly"},
+    {"id": "T-A1-A3-dry-run", "cmd": "hexa run canonshared/sync-readme.hexa --dry-run", "result": "[OK] README.md is up to date with readme-data.json (64 markers) — HOME resolved correctly, json loaded, 64 markers scanned, no spurious changes proposed"},
+    {"id": "T-A3-check", "cmd": "hexa run canonshared/sync-readme.hexa --check", "result": "[OK] README.md is up to date — drift-free against current SSOT (no unknown-domain corruption)"},
     {"id": "T-A2-synthetic-paren-ascii", "cmd": "json_parse('{\"k\":\"a (b) c\"}')", "result": "PASS — preserves 'a (b) c' byte-exact"},
     {"id": "T-A2-synthetic-paren-mb", "cmd": "json_parse with U+1F6F8 + paren combo", "result": "PASS — preserves multibyte + paren byte-exact"},
     {"id": "T-A2-real-file", "cmd": "json_parse(read_file(readme-data.json)) via sync_all", "result": "PASS — full file (730 lines, 16 multibyte+paren combos) parses successfully"}
@@ -50,14 +50,14 @@
 
   "falsifiers_preregistered": {
     "A_1": [
-      {"id": "F-A1-1", "predicate": "any cwd-specific PATH-leak event observed in hexa exec sandbox at any project (not just n6-architecture)", "expected_count_30d": 0, "observed_at_witness_time": 0, "verifier": "exec output of 'echo \\\"$HOME\\\"' compared to env_var(HOME) across 100 cwd samples"},
+      {"id": "F-A1-1", "predicate": "any cwd-specific PATH-leak event observed in hexa exec sandbox at any project (not just canon)", "expected_count_30d": 0, "observed_at_witness_time": 0, "verifier": "exec output of 'echo \\\"$HOME\\\"' compared to env_var(HOME) across 100 cwd samples"},
       {"id": "F-A1-2", "predicate": "/tmp regression — running hexa script from /tmp cwd no longer resolves HOME", "expected_count_30d": 0, "observed_at_witness_time": 0, "verifier": "cd /tmp && hexa run sync-readme.hexa --dry-run reports 'data = /Users/ghost/...' (correct prefix)"},
       {"id": "F-A1-3", "predicate": "any PATH-empty event in hexa exec output at project-root cwd over 30d", "expected_count_30d": 0, "observed_at_witness_time": 0, "verifier": "30d aggregator of '[sync-readme] data    = /core/' (missing /Users/ghost prefix) sightings in state/markers/"}
     ],
     "A_2": [
       {"id": "F-A2-1", "predicate": "multibyte + paren combo fails on synthetic fuzz corpus (≥100 inputs covering U+1F300..U+1FAFF emoji × parens × nesting depth 1..5)", "expected_count": 0, "observed_at_witness_time": 0, "verifier": "fuzz corpus generator + json_parse round-trip byte-eq check"},
       {"id": "F-A2-2", "predicate": "ASCII regression — ascii-only json_parse parses differ between pre-patch and post-patch", "expected_count": 0, "observed_at_witness_time": 0, "verifier": "diff json_parse output for 100 ASCII-only json corpus vs git baseline (no C-side change → guaranteed identical)"},
-      {"id": "F-A2-3", "predicate": "round-trip json_parse + json_stringify byte-eq breaks on readme-data.json or any *.json in n6shared/", "expected_count": 0, "observed_at_witness_time": 0, "verifier": "for f in *.json; do diff <(cat $f) <(echo $f | json_parse | json_stringify); done"}
+      {"id": "F-A2-3", "predicate": "round-trip json_parse + json_stringify byte-eq breaks on readme-data.json or any *.json in canonshared/", "expected_count": 0, "observed_at_witness_time": 0, "verifier": "for f in *.json; do diff <(cat $f) <(echo $f | json_parse | json_stringify); done"}
     ],
     "A_3": [
       {"id": "F-A3-1", "predicate": "unknown-domain hand-curated marker corruption events (regression: '> (unknown domain: X)' appears in README.md after sync run)", "expected_count_30d": 0, "observed_at_witness_time": 0, "verifier": "grep -c 'unknown domain:' README.md after each sync run"},
@@ -70,7 +70,7 @@
   "raw_91_c3_disclosure": "PARTIAL FIX with workaround disclosure: (1) hexa runtime in this Mac environment is broken at multiple layers — Mach-O hexa_interp.real fails Gatekeeper (spctl: rejected) and exits silently; the docker hexa-exec container missing hexa_v2 transpiler binary makes 'hexa run' inside container error out with 'hexa_v2 transpiler binary not found' on stderr; the dispatcher silently swallows that. End-to-end interpreter path is environmentally dysfunctional. The .hexa source patches landed here ARE correct and tested via parse-check + the dispatcher's main.hexa execution (which worked enough to print [sync-readme] lines) but a true full-runtime e2e test was not possible in this sandbox. (2) A.2 was reported as a json_parse multibyte+paren bug; investigation shows the C runtime _jp_parse_string is structurally incapable of the hypothesized failure mode. The original report was a misattribution — the actual block was A.1's empty-HOME breaking the file-load step before json_parse was ever reached. No A.2 fix was applied because no A.2 bug exists. (3) The original blocker that forced the fallback to /tmp-only Python sync-readme.py (per prior witness 2026-04-28T05:38:19Z) is now fully addressed by A.1 + A.3 .hexa source patches; the canonical pipeline reports [OK] 64 markers in --check mode. (4) Root-cause container/codesign issues are OUT OF SCOPE per raw 9 (hexa-only — fix in .hexa source) — those need separate infra work (rebuild docker image with printenv applet OR add hexa_v2 to container OR fix Mac codesign).",
 
   "constraints_compliance": {
-    "raw_9_hexa_only": "PASS — only .hexa source modified (n6shared/sync-readme.hexa, n6shared/sync-products-readme.hexa). No C runtime patches. No infra patches.",
+    "raw_9_hexa_only": "PASS — only .hexa source modified (canonshared/sync-readme.hexa, canonshared/sync-products-readme.hexa). No C runtime patches. No infra patches.",
     "raw_18_self_host_fixpoint": "PASS — hexa-lang/self/* untouched. Compiler bootstrap unchanged.",
     "raw_13_no_claude_config": "PASS — no .claude/ or settings touched.",
     "raw_91_c3": "PASS — disclosed above (4 honest disclosure points)",
@@ -78,22 +78,22 @@
     "own_7_registry_sync": "N/A — bridge/ not touched"
   },
 
-  "cross_repo_impact": "NONE — hexa-lang repo not touched. n6-architecture .hexa scripts patched in-place. The deeper container fix (add printenv applet to busybox image) is out of scope for raw 9 but is documented as outstanding follow-up. raw 47 propagation: not required.",
+  "cross_repo_impact": "NONE — hexa-lang repo not touched. canon .hexa scripts patched in-place. The deeper container fix (add printenv applet to busybox image) is out of scope for raw 9 but is documented as outstanding follow-up. raw 47 propagation: not required.",
 
   "outstanding_followups": [
     "F-CONTAINER-1: rebuild hexa-exec docker image with printenv applet OR symlink /usr/bin/printenv → /bin/busybox printenv",
     "F-CONTAINER-2: install hexa_v2 transpiler binary into hexa-exec container so 'hexa run' works inside container",
     "F-CODESIGN-1: re-codesign hexa_interp.real so Mac Gatekeeper accepts it (currently spctl: rejected, exits silently with rc=0 on direct invocation)",
-    "F-A1-PATTERN: 12 other hexa scripts use exec(\"printenv X\") pattern — apply same env_var fallback (example/auto_record_test.hexa, example/forge_test.hexa, example/growth_tick_test.hexa ×2, example/check_project_test.hexa, example/config_test.hexa, example/seed_engine_test.hexa, example/bridge_ensure_test.hexa, example/pattern_rules_test.hexa, example/verify_pages_test.hexa, example/guard_test.hexa, self/grammar_autofix.hexa). Per raw 9 only n6-architecture/.hexa was in this task's scope; example/ and self/ are hexa-lang repo and need cross-repo PR."
+    "F-A1-PATTERN: 12 other hexa scripts use exec(\"printenv X\") pattern — apply same env_var fallback (example/auto_record_test.hexa, example/forge_test.hexa, example/growth_tick_test.hexa ×2, example/check_project_test.hexa, example/config_test.hexa, example/seed_engine_test.hexa, example/bridge_ensure_test.hexa, example/pattern_rules_test.hexa, example/verify_pages_test.hexa, example/guard_test.hexa, self/grammar_autofix.hexa). Per raw 9 only canon/.hexa was in this task's scope; example/ and self/ are hexa-lang repo and need cross-repo PR."
   ],
 
   "files_modified": [
-    "n6shared/sync-readme.hexa (A.1 HOME resolution + A.3 unknown-domain nil return; ~30 lines added)",
-    "n6shared/sync-products-readme.hexa (A.1 HOME resolution sibling fix; ~14 lines added)"
+    "canonshared/sync-readme.hexa (A.1 HOME resolution + A.3 unknown-domain nil return; ~30 lines added)",
+    "canonshared/sync-products-readme.hexa (A.1 HOME resolution sibling fix; ~14 lines added)"
   ],
 
   "deliverable_status": {
-    "A_1": "FIXED (1 file patched in n6-architecture; bonus: sync-products-readme.hexa parity patch)",
+    "A_1": "FIXED (1 file patched in canon; bonus: sync-products-readme.hexa parity patch)",
     "A_2": "NO-OP — bug doesn't exist (hypothesis rejected after C-source review + synthetic test); original report was a misattribution of A.1's symptom",
     "A_3": "FIXED (sync-readme.hexa render_summary + render_footer)",
     "canonical_pipeline_dry_run": "PASS — [OK] README.md is up to date with readme-data.json (64 markers)",

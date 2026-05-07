@@ -1,16 +1,16 @@
-# n6-architecture /.own.readme — L1 README.md governance (mk2 reconstruction, 5 rules)
+# canon /.own.readme — L1 README.md governance (mk2 reconstruction, 5 rules)
 #
 # AI-native frontmatter (YAML in comment block; .own DSL parser skips # lines):
 # ---
-# schema: n6-architecture/own/readme/2
+# schema: canon/own/readme/2
 # last_updated: 2026-05-04
 # ssot:
-#   parent_handoff: docs/n6_architecture_own_readme_mk2_reconstruction_2026_05_04.ai.md
+#   parent_handoff: docs/canon_own_readme_mk2_reconstruction_2026_05_04.ai.md
 #   sibling_emit: .own.group_p (paper-md governance, emitted 2026-05-03)
-#   axis_spine: .roadmap.n6_architecture (Tier-A planned, deferred)
-#   absolute_rules_anchor: n6shared/config/absolute_rules.json
+#   axis_spine: .roadmap.canon (Tier-A planned, deferred)
+#   absolute_rules_anchor: canonshared/config/absolute_rules.json
 #   hierarchy_tier: T0 (project-level public-facing surface)
-#   predecessor_handoff: docs/n6_architecture_self_mk2_tuning_landed_2026_05_02.ai.md
+#   predecessor_handoff: docs/canon_self_mk2_tuning_landed_2026_05_02.ai.md
 #   mk1_recovery_blob: /tmp/n6_own_mk1.txt (commit 442afa7b^:.own, 881 LoC, 32 rules)
 # related_raws: []  # README governance is n6-local + cross-repo (hexa-lang sister); hive raw 270/271/272/273 + arch.001 do NOT govern README content
 # related_rules:
@@ -74,7 +74,7 @@ own 14 live "readme-sealed-required — root README.md sealed hash mandatory (HA
 own 17 live "public-readme-english-only — no CJK in public org root READMEs (HARD)"
   slug public-readme-english-only
   decl ~/core/hexa-lang/tool/readme_english_audit.hexa .own.readme
-  scope need-singularity org 5 repos (n6-architecture / nexus / hexa-lang / anima / papers) root README.md MUST contain no Hangul (AC00..D7AF / Jamo / Compat Jamo) / Kana (Hiragana / Katakana) / CJK Unified (4E00..9FFF). Greek (σ φ τ λ μ ρ Ω) / math (J₂ σ² × ≤ ≥ → · ∞ √ ∑) / common punct (✅ ❌ — – ‒ … 「」『』) / units (° ℃ μm Å) PASS.
+  scope need-singularity org 5 repos (canon / nexus / hexa-lang / anima / papers) root README.md MUST contain no Hangul (AC00..D7AF / Jamo / Compat Jamo) / Kana (Hiragana / Katakana) / CJK Unified (4E00..9FFF). Greek (σ φ τ λ μ ρ Ω) / math (J₂ σ² × ≤ ≥ → · ∞ √ ∑) / common punct (✅ ❌ — – ‒ … 「」『』) / units (° ℃ μm Å) PASS.
   status live
   since 2026-05-04
   why Enforcement path for own#1 doc-english-required at the org-public surface. Manual review missed 158+ long-tail fragments at mk1 baseline. arXiv compatibility + international contribution + org landing consistency. Promoted to raw#33 ai-native-english-only (2026-04-21) per mk1 lineage.

@@ -1,6 +1,6 @@
 # Phase Omega -- Y9 HONEST-HARNESS Led Closure + v3 Successor Design
 
-**Roadmap**: 7 Millennium Problems sub-project roadmap v2 (n6-architecture)
+**Roadmap**: 7 Millennium Problems sub-project roadmap v2 (canon)
 **Stage**: Phase Omega / final-closure + v3 design phase
 **Created**: 2026-04-15
 **Main axis**: Y9 HONEST-HARNESS (utility 9.3, meta axis)
@@ -1256,7 +1256,7 @@ The author of this document honestly declares:
 
 1. **BT resolution count 0/6 final confirmation**: None of BT-541 (Riemann), BT-542 (P=NP), BT-543 (Yang-Mills), BT-544 (Navier-Stokes), BT-545 (Hodge), BT-546 (BSD) was resolved in the v2 roadmap.
 
-2. **Perelman resolution acknowledgement**: BT-547 (Poincaré) was resolved by Grigori Perelman in 2002-2003, with n6-architecture project contribution 0.
+2. **Perelman resolution acknowledgement**: BT-547 (Poincaré) was resolved by Grigori Perelman in 2002-2003, with canon project contribution 0.
 
 3. **Self-reference prohibition compliance**: There are 0 cases in all v2 of justifying a mathematical claim in a cycle using only project-internal documents.
 

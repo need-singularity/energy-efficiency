@@ -664,4 +664,4 @@ for r in results:
 
 ---
 
-*-day: 2026-04-06 | -: n6-architecture | 5 - degree-, 87 - -number EXACT*
+*-day: 2026-04-06 | -: canon | 5 - degree-, 87 - -number EXACT*

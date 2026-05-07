@@ -20,8 +20,8 @@ constraints honoured during its production:
 - No file inside `~/core/nexus/` was modified, created, or deleted by this session. Every
   nexus-side observation below derives from **reads** (`ls`, `cat`, `git -C ~/core/nexus
   log`, `wc -l`, `grep -c`) — no `Write`, no `Edit`, no `git mv`, no `git commit`.
-- No file inside `~/core/n6-architecture/atlas/`, `~/core/n6-architecture/state/`, nor
-  `~/core/n6-architecture/state/proposals/inventory.json` was modified. The single output
+- No file inside `~/core/canon/atlas/`, `~/core/canon/state/`, nor
+  `~/core/canon/state/proposals/inventory.json` was modified. The single output
   file is this session report under `reports/sessions/`.
 - The honesty counter remains `millennium_resolved: 0/7 (unchanged)`. The nexus
   promotion-count delta is `0`. No promotion is claimed.
@@ -38,7 +38,7 @@ must be read in conjunction with the divergence analysis (§5) and the falsifier
 
 ## §1 n6 audit summary (parent reports, condensed)
 
-The three n6-architecture audits sit at:
+The three canon audits sit at:
 
 | Constraint | Parent report | n6 verdict |
 |---|---|---|
@@ -189,7 +189,7 @@ discrete).
 - **(A) `[10*]_promotion_count: <N>/<N_session_start> unchanged`** — promotion delta over
   atlas grade `[10*]+`. Discrete, well-defined denominator (queryable via grep on
   `n6/atlas.blowup.jsonl` for `confidence:1.0` + `[10*]` markers, but the atlas.blowup
-  format is *type/edge* JSONL, not the n6-architecture `[NN*]` grade format — so the
+  format is *type/edge* JSONL, not the canon `[NN*]` grade format — so the
   denominator must come from a different source, e.g. a sidecar). Drawback: requires
   a sidecar update each session-start to capture `N_session_start`.
 - **(B) `nxs_promotion_count: <N>/<N_session_start> unchanged`** — promotion delta over

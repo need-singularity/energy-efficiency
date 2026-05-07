@@ -28,7 +28,7 @@ This report is a **cross-BT methodological prediction**. It applies the
   ∩ non-algebrizing ∩ non-GCT-occurrence-class}).
 
 It extrapolates the same lens to the three remaining unresolved
-Millennium-tier BTs in the n6-architecture session register: BT-543
+Millennium-tier BTs in the canon session register: BT-543
 Yang-Mills (mass gap), BT-545 Hodge, BT-546 BSD. It is **not** a
 research result. It:
 

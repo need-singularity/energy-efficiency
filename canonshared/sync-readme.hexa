@@ -1,0 +1,800 @@
+// sync-readme.hexa — readme-data.json SSOT → README.md 자동 동기화
+//
+// 원본: scripts/sync-readme.py (323줄, 27558a65; 94bf0e28에서 .hexa STUB로 교체됨)
+// 본 파일: 그 STUB의 정식 .hexa 포팅 (R1 HEXA-FIRST).
+//
+// SSOT: canonshared/readme-data.json — README.md 마커 영역만 자동 생성
+// 마커 형식: <!-- AUTO:NAME:START --> ... <!-- AUTO:NAME:END -->
+// 마커 종류:
+//   AUTO:BADGE                — DSE / NEXUS 뱃지 (badge bar)
+//   AUTO:STATS                — 통계 코드블록
+//   AUTO:ALIEN_INDEX          — 외계인지수 테이블 (선택)
+//   AUTO:ROADMAP              — 로드맵 테이블 (선택)
+//   AUTO:REFERENCE            — 참조 테이블
+//   AUTO:SUMMARY_<domain_id>  — 도메인 요약 blockquote
+//   AUTO:FOOTER_<domain_id>   — 도메인 풋터 링크
+//
+// 사용법:
+//   hexa run canonshared/sync-readme.hexa            # 실제 갱신
+//   hexa run canonshared/sync-readme.hexa --dry-run  # 변경 영역만 출력 (파일 미수정)
+//   hexa run canonshared/sync-readme.hexa --check    # CI: 동기화 필요 여부만 (drift -> exit 1)
+//
+// 환경변수:
+//   N6_README_DATA — readme-data.json 경로 (미지정 시 기본 경로)
+//   N6_README_MD   — README.md 경로 (미지정 시 기본 경로)
+//
+// R5 SSOT: readme-data.json 이 원본, README.md 는 생성물
+// R19 SILENT EXIT 금지: die() 는 stderr + exit(1)
+// R29 예외: 계산기/검증기 아닌 sync 유틸로 canonshared/ 위치 유지
+//
+// 폴백: --stub 인자가 주어지면 옛 STUB 메시지를 출력하고 종료한다 (회귀 호환).
+
+// ───────── 상수: 기본 경로 ─────────
+// 2026-04-28 hexa-runtime-pipeline-fix (A.1 falsifier preregistered):
+//   was: `exec("printenv HOME")` — silently returns "" inside the
+//   hexa-exec docker container (busybox image without printenv applet),
+//   producing DEFAULT_DATA="/core/canon/..." (no $HOME prefix)
+//   and breaking file_exists() with a `readme-data.json 없음:` die.
+//   fix: env_var("HOME") goes through hexa_env_var → getenv() at the C
+//   runtime layer — independent of container shell builtin coverage.
+//   F-A1-2 ASCII regression: env_var falls back to exec("echo $HOME")
+//   when getenv returns empty (e.g. headless launchd contexts).
+let mut HOME = ""
+try {
+    let h = env_var("HOME")
+    if type_of(h) == "string" {
+        HOME = to_string(h)
+    }
+} catch err {
+    HOME = ""
+}
+if len(HOME) == 0 {
+    // Fallback for environments where env_var fails (codegen mismatch,
+    // or HOME genuinely unset). echo is a POSIX shell builtin so it's
+    // safe across busybox / dash / bash without external binaries.
+    HOME = exec("echo \"$HOME\"").trim()
+}
+let DEFAULT_DATA   = HOME + "/core/canon/canonshared/readme-data.json"
+let DEFAULT_README = HOME + "/core/canon/README.md"
+
+// ───────── 유틸: 에러 출력 + 종료 ─────────
+fn die(msg: string) {
+    exec("printf '%s\\n' '[sync-readme] ERR: " + msg + "' 1>&2")
+    exit(1)
+}
+
+// ───────── 유틸: env -> 경로 해결 ─────────
+fn resolve_path(env_key: string, default_path: string) {
+    let mut v = ""
+    try {
+        let raw = env_var(env_key)
+        if type_of(raw) == "string" {
+            v = raw
+        }
+    } catch err {
+        v = ""
+    }
+    if len(v) > 0 {
+        return v
+    }
+    return default_path
+}
+
+// ───────── 유틸: 안전 필드 접근 ─────────
+// 2026-04-28 cycle 18 hexa-runtime-pipeline-fix (B.2):
+//   hexa runtime classifies JSON null as type_of() == "void" (not "null"
+//   or "nil"). The previous {null,nil} guard let raw void slip through to
+//   to_string() which yields the literal string "void" — corrupting README
+//   with "DSE void", "산업void%", "실험void%" jaywalk text.
+//   fix: also guard "void". Defensive triple-check keeps forward-compat.
+fn get_or(obj, key: string, default_val) {
+    try {
+        let v = obj[key]
+        let t = type_of(v)
+        if t == "null" {
+            return default_val
+        }
+        if t == "nil" {
+            return default_val
+        }
+        if t == "void" {
+            return default_val
+        }
+        return v
+    } catch err {
+        return default_val
+    }
+}
+
+fn has_field(obj, key: string) {
+    try {
+        let v = obj[key]
+        let t = type_of(v)
+        if t == "null" {
+            return false
+        }
+        if t == "nil" {
+            return false
+        }
+        if t == "void" {
+            return false
+        }
+        return true
+    } catch err {
+        return false
+    }
+}
+
+// ───────── 도메인 검색 (id -> dict) ─────────
+fn find_domain(data, domain_id: string) {
+    let domains = get_or(data, "domains", [])
+    let n = len(domains)
+    let mut i = 0
+    while i < n {
+        let d = domains[i]
+        if to_string(get_or(d, "id", "")) == domain_id {
+            return d
+        }
+        i = i + 1
+    }
+    return nil
+}
+
+// ───────── 숫자/문자 퍼센트 포맷 ─────────
+// Python `f"{val:g}%"` 흉내: 정수면 "82%", 소수면 "82.2%". 문자열은 그대로 + "%".
+fn fmt_pct_value(val) {
+    let t = type_of(val)
+    if t == "null" {
+        return ""
+    }
+    if t == "nil" {
+        return ""
+    }
+    if t == "string" {
+        return to_string(val) + "%"
+    }
+    return to_string(val) + "%"
+}
+
+fn fmt_industry(d) {
+    let mut out = ""
+    if has_field(d, "industry_pct") {
+        let pct = d["industry_pct"]
+        out = to_string(pct) + "%"
+    }
+    let detail = get_or(d, "industry_detail", "")
+    if type_of(detail) == "string" {
+        if len(detail) > 0 {
+            if len(out) > 0 {
+                out = out + " (" + detail + ")"
+            } else {
+                out = "(" + detail + ")"
+            }
+        }
+    }
+    if len(out) == 0 {
+        return "—"
+    }
+    return out
+}
+
+fn fmt_experiment(d) {
+    let mut out = ""
+    if has_field(d, "experiment_pct") {
+        let pct = d["experiment_pct"]
+        out = to_string(pct) + "%"
+    }
+    let detail = get_or(d, "experiment_detail", "")
+    if type_of(detail) == "string" {
+        if len(detail) > 0 {
+            if len(out) > 0 {
+                out = out + " " + detail
+            } else {
+                out = detail
+            }
+        }
+    }
+    if len(out) == 0 {
+        return "—"
+    }
+    return out
+}
+
+// ───────── 글로벌: BADGE ─────────
+// 원 Python 은 'nexus6_tests' 키였으나 데이터 SSOT 가 'nexus_tests' 로 리네임됨.
+// 새 키 우선, 없으면 옛 키로 폴백 (4bcab673 nexus6→nexus 리네임 보존).
+fn render_badge(data) {
+    let s = get_or(data, "stats", {})
+    let dse = to_string(get_or(s, "dse_domains", 0))
+    let mut nx = get_or(s, "nexus_tests", "")
+    if type_of(nx) == "string" {
+        if len(to_string(nx)) == 0 {
+            nx = get_or(s, "nexus6_tests", 0)
+        }
+    }
+    let nx_str = to_string(nx)
+    let mut out = "[![DSE](https://img.shields.io/badge/DSE-" + dse + "%20domains-blue.svg)](docs/dse-map.toml)"
+    out = out + "\n[![NEXUS](https://img.shields.io/badge/NEXUS-" + nx_str + "%20tests-green.svg)](tools/nexus/)"
+    return out
+}
+
+// ───────── 글로벌: STATS ─────────
+fn render_stats(data) {
+    let s = get_or(data, "stats", {})
+    let ai_t = to_string(get_or(s, "ai_techniques", 0))
+    let dse_d = to_string(get_or(s, "dse_domains", 0))
+    let dse_p = to_string(get_or(s, "dse_paths", 0))
+    let mut nx = get_or(s, "nexus_tests", "")
+    if type_of(nx) == "string" {
+        if len(to_string(nx)) == 0 {
+            nx = get_or(s, "nexus6_tests", 0)
+        }
+    }
+    // 2026-04-28 cycle 19: NEXUS tests spacing aligned to README hand-curated
+    // existing format (4 spaces, not 6) for idempotent WRITE-mode equality.
+    let mut out = "```"
+    out = out + "\n  AI techniques:    " + ai_t
+    out = out + "\n  DSE domains:      " + dse_d
+    out = out + "\n  DSE paths:        " + dse_p
+    out = out + "\n  NEXUS tests:    " + to_string(nx)
+    out = out + "\n```"
+    return out
+}
+
+// ───────── 글로벌: ALIEN_INDEX ─────────
+fn render_alien_index(data) {
+    let mut out = "| 섹션 | 🛸 구현 | 천장확인 | BT검증 | 산업검증 | 실험검증 | TP | 발견 |\n"
+    out = out + "|------|:------:|:------:|:------:|:-------:|:-------:|:--:|:----:|"
+    let domains = get_or(data, "domains", [])
+    let n = len(domains)
+    let mut i = 0
+    while i < n {
+        let d = domains[i]
+        let anchor = to_string(get_or(d, "anchor", ""))
+        let emoji = to_string(get_or(d, "emoji", ""))
+        let name = to_string(get_or(d, "name", ""))
+        let alien = to_string(get_or(d, "alien", 0))
+        let mut ceil = "❌"
+        if get_or(d, "ceiling", false) == true {
+            ceil = "✅"
+        }
+        let mut bt = "—"
+        if has_field(d, "bt_exact_pct") {
+            let p = fmt_pct_value(d["bt_exact_pct"])
+            if len(p) > 0 {
+                bt = p
+            }
+        }
+        let ind = fmt_industry(d)
+        let exp = fmt_experiment(d)
+        let tp = to_string(get_or(d, "tp", 0))
+        let disc = to_string(get_or(d, "discoveries", 0))
+        let section = "[" + emoji + " " + name + "](#" + anchor + ")"
+        out = out + "\n| " + section + " | 🛸" + alien + " | " + ceil + " | " + bt + " | " + ind + " | " + exp + " | " + tp + " | " + disc + " |"
+        i = i + 1
+    }
+    return out
+}
+
+// ───────── 글로벌: ROADMAP ─────────
+fn impact_stars(n) {
+    let mut s = ""
+    let mut i = 0
+    let nv = to_int(n)
+    while i < nv {
+        s = s + "★"
+        i = i + 1
+    }
+    if nv <= 6 {
+        let mut k = nv
+        while k < 6 {
+            s = s + "☆"
+            k = k + 1
+        }
+    }
+    return s
+}
+
+fn render_roadmap(data) {
+    let mut out = "| 순위 | 실현 | 도메인 | 영향력 | Tier | DSE |\n"
+    out = out + "|:---:|:---:|--------|:---:|:---:|:---:|"
+    let rm = get_or(data, "roadmap", [])
+    let n = len(rm)
+    let mut i = 0
+    while i < n {
+        let r = rm[i]
+        let rank = to_string(get_or(r, "rank", 0))
+        let year = to_string(get_or(r, "year", ""))
+        let name = to_string(get_or(r, "name", ""))
+        let imp = impact_stars(get_or(r, "impact", 0))
+        let tier = to_string(get_or(r, "tier", ""))
+        let dse = to_string(get_or(r, "dse", ""))
+        out = out + "\n| " + rank + " | " + year + " | **" + name + "** | " + imp + " | " + tier + " | " + dse + " |"
+        i = i + 1
+    }
+    return out
+}
+
+// ───────── 글로벌: REFERENCE ─────────
+fn render_reference(data) {
+    let s = get_or(data, "stats", {})
+    let bt_count = to_string(get_or(s, "bt_count", 0))
+    let atlas_c = to_string(get_or(s, "atlas_constants", 0))
+    let tp = to_string(get_or(s, "testable_predictions", 0))
+    let dse_t = to_string(get_or(s, "dse_toml", 0))
+    let calc = to_string(get_or(s, "calculators", 0))
+    let mut out = "| 항목 | 링크 |\n"
+    out = out + "|------|------|\n"
+    out = out + "| **n=6 상수표** | σ=12, τ=4, φ=2, sopfr=5, J₂=24, σ-τ=8, 1/(σ-φ)=0.1 |\n"
+    out = out + "| **" + bt_count + " Breakthrough Theorems** | [docs/breakthrough-theorems.md](docs/breakthrough-theorems.md) |\n"
+    out = out + "| **" + atlas_c + " Atlas Constants** | [docs/atlas-constants.md](docs/atlas-constants.md) |\n"
+    out = out + "| **" + tp + " Testable Predictions** | [docs/testable-predictions.md](docs/testable-predictions.md) |\n"
+    out = out + "| **DSE Map** | [docs/dse-map.toml](docs/dse-map.toml) |\n"
+    out = out + "| **" + dse_t + " DSE Domains** | [docs/dse-domains.md](docs/dse-domains.md) |\n"
+    out = out + "| **Cross-Domain Resonance** | [docs/cross-domain-resonance-2026-03-31.md](docs/cross-domain-resonance-2026-03-31.md) |\n"
+    out = out + "| **Core Theorem Proof** | [docs/theorem-r1-uniqueness.md](docs/theorem-r1-uniqueness.md) |\n"
+    out = out + "| **" + calc + " Calculators** | [docs/calculator-registry.md](docs/calculator-registry.md) |\n"
+    out = out + "| **Universal DSE** | `tools/universal-dse/` — TOML 1개로 즉시 DSE |"
+    return out
+}
+
+// ───────── 도메인: SUMMARY ─────────
+fn render_summary(data, domain_id: string) {
+    let d = find_domain(data, domain_id)
+    if d == nil {
+        // 2026-04-28 hexa-runtime-pipeline-fix (A.3 falsifier preregistered):
+        //   was: `return "> (unknown domain: " + domain_id + ")"`.
+        //   This corrupted ~17 hand-curated AUTO:SUMMARY_* markers in
+        //   README.md whose domain ids weren't enumerated in
+        //   readme-data.json. The "data SSOT" contract for those markers
+        //   is hand-curation — the .json holds the auto-generated subset
+        //   only. Returning nil drops through to sync_all's
+        //   `type_of(content) != "nil"` guard which preserves the
+        //   existing marker block verbatim. Defensive default: hand-
+        //   curated markers always survive; future readme-data.json
+        //   coverage expansion is opt-in by adding the domain entry.
+        return nil
+    }
+    // 2026-04-28 cycle 19 JSON SSOT enrichment:
+    //   summary_literal field allows verbatim block content (raw 91 C3
+    //   honest: README hand-curated content is replicated, not fabricated).
+    //   When present, takes priority over the auto-generated form.
+    //   Backward-compat: existing 13 auto-domains have no summary_literal
+    //   so they keep auto-generation. Newly enriched ~18 domains store
+    //   their hand-curated rich content (extracted from README) verbatim.
+    let lit = get_or(d, "summary_literal", "")
+    if type_of(lit) == "string" {
+        if len(lit) > 0 {
+            return to_string(lit)
+        }
+    }
+    let mut parts = []
+    parts.push("**🛸" + to_string(get_or(d, "alien", 0)) + "**")
+    if get_or(d, "ceiling", false) == true {
+        parts.push("✅")
+    }
+
+    // BT
+    let bt_count = get_or(d, "bt_count", 0)
+    let mut bt_str = ""
+    if bt_count != 0 {
+        bt_str = "BT " + to_string(bt_count) + "개"
+    }
+    if has_field(d, "bt_exact_pct") {
+        let pct = d["bt_exact_pct"]
+        let pct_s = to_string(pct)
+        if len(bt_str) > 0 {
+            bt_str = bt_str + " " + pct_s + "%EXACT"
+        } else {
+            bt_str = "BT " + pct_s + "%EXACT"
+        }
+    }
+    if len(bt_str) > 0 {
+        parts.push(bt_str)
+    }
+
+    // DSE
+    let dsec = get_or(d, "dse_count", "")
+    if type_of(dsec) != "null" {
+        if type_of(dsec) != "nil" {
+            let dsec_s = to_string(dsec)
+            if len(dsec_s) > 0 {
+                parts.push("DSE " + dsec_s)
+            }
+        }
+    }
+
+    // Industry
+    let ind = fmt_industry(d)
+    if ind != "—" {
+        parts.push("산업" + ind)
+    }
+    // Experiment
+    let exp = fmt_experiment(d)
+    if exp != "—" {
+        parts.push("실험" + exp)
+    }
+    // 물리한계
+    let pl = get_or(d, "physical_limits", 0)
+    if type_of(pl) != "null" {
+        if type_of(pl) != "nil" {
+            let pls = to_string(pl)
+            if len(pls) > 0 {
+                if pls != "0" {
+                    parts.push("물리한계" + pls)
+                }
+            }
+        }
+    }
+    // TP
+    parts.push("TP" + to_string(get_or(d, "tp", 0)))
+    // 발견
+    let disc = get_or(d, "discoveries", 0)
+    let disc_s = to_string(disc)
+    if len(disc_s) > 0 {
+        if disc_s != "0" {
+            parts.push("발견" + disc_s)
+        }
+    }
+    // extras
+    let extras = get_or(d, "extras", [])
+    let ne = len(extras)
+    let mut ei = 0
+    while ei < ne {
+        parts.push(to_string(extras[ei]))
+        ei = ei + 1
+    }
+    return "> " + parts.join(" | ")
+}
+
+// ───────── 도메인: FOOTER ─────────
+fn render_footer(data, domain_id: string) {
+    let d = find_domain(data, domain_id)
+    if d == nil {
+        // 2026-04-28 hexa-runtime-pipeline-fix (A.3): mirror render_summary
+        // — return nil so sync_all preserves hand-curated AUTO:FOOTER_*
+        // markers for domains absent from readme-data.json.
+        return nil
+    }
+    // 2026-04-28 cycle 19 JSON SSOT enrichment: footer_literal mirror
+    let lit = get_or(d, "footer_literal", "")
+    if type_of(lit) == "string" {
+        if len(lit) > 0 {
+            return to_string(lit)
+        }
+    }
+    let mut parts = []
+
+    // 도메인 docs
+    let docs = get_or(d, "docs", [])
+    let nd = len(docs)
+    if nd > 0 {
+        let mut line = "도메인: "
+        let mut i = 0
+        while i < nd {
+            if i > 0 {
+                line = line + " · "
+            }
+            let doc = to_string(docs[i])
+            line = line + "[" + doc + "](docs/" + doc + ")"
+            i = i + 1
+        }
+        parts.push(line)
+    }
+
+    // tools
+    let tools = get_or(d, "tools", [])
+    let nt = len(tools)
+    if nt > 0 {
+        let mut tline = "도구: "
+        let mut k = 0
+        while k < nt {
+            if k > 0 {
+                tline = tline + " · "
+            }
+            tline = tline + "`" + to_string(tools[k]) + "`"
+            k = k + 1
+        }
+        parts.push(tline)
+    }
+
+    // footer_extra
+    let extra = get_or(d, "footer_extra", "")
+    if type_of(extra) == "string" {
+        if len(extra) > 0 {
+            parts.push(extra)
+        }
+    }
+
+    return "> " + parts.join(" · ")
+}
+
+// ───────── 디스패처: 섹션 이름 -> 컨텐츠 ─────────
+// 미지원 섹션은 nil 반환 -> 호출측이 marker 보존
+fn resolve_generator(section: string, data) {
+    if section == "BADGE" {
+        return render_badge(data)
+    }
+    if section == "STATS" {
+        return render_stats(data)
+    }
+    if section == "ALIEN_INDEX" {
+        return render_alien_index(data)
+    }
+    if section == "ROADMAP" {
+        return render_roadmap(data)
+    }
+    if section == "REFERENCE" {
+        return render_reference(data)
+    }
+    if section.starts_with("SUMMARY_") {
+        let domain_id = section.substring(8, len(section))
+        return render_summary(data, domain_id)
+    }
+    if section.starts_with("FOOTER_") {
+        let domain_id = section.substring(7, len(section))
+        return render_footer(data, domain_id)
+    }
+    return nil
+}
+
+// ───────── 마커 스캔: README 전체 -> 등장 섹션 이름 리스트 ─────────
+// "<!-- AUTO:NAME:START -->" 패턴을 찾아 NAME 만 모은다 (순서 보존).
+// 중복 NAME 은 1회만 수록 (replace_marker 가 idempotent 이므로 안전).
+//
+// 2026-04-28 cycle 18 hexa-runtime-pipeline-fix (B falsifier preregistered):
+//   was: prefix="<!-- AUTO:" + suffix=":START -->" 를 분리 검색.
+//   `<!-- AUTO:BADGE:END -->` 도 prefix 와 매치되어 after_prefix 가
+//   "BADGE:END -->\n...<!-- SHARED:PROJECTS\n...COMMON_LINKS" 로 시작,
+//   :START -->를 다음 (다른) marker 의 START 에서 잡아 NAME 으로
+//   "BADGE:END -->\n...COMMON_LINKS" 같은 잡음 블록을 만들었다.
+//   결과: 64 markers 중 BADGE/COMMON_LINKS 첫 2개만 "clean" NAME 추출,
+//   나머지 62 개는 잡음 NAME → resolve_generator nil → skip.
+//   증상: dry-run 이 변경 시도 0 건 → "up to date" 거짓 보고.
+//   fix: NAME 후보가 ":" 나 newline 등 허용되지 않는 문자를 포함하면
+//   reject. NAME 은 [A-Za-z0-9_-] 로 제한 — readme-data.json domain id
+//   convention 과 일치 (life-culture / tech-industry 등 hyphen 허용).
+fn is_valid_marker_name(name: string) {
+    let n = len(name)
+    if n == 0 {
+        return false
+    }
+    if n > 64 {
+        return false
+    }
+    let mut i = 0
+    while i < n {
+        let c = name.substring(i, i + 1)
+        let is_az = false
+        let is_az2 = c >= "a"
+        let is_az3 = c <= "z"
+        let mut ok = false
+        if c >= "A" {
+            if c <= "Z" {
+                ok = true
+            }
+        }
+        if c >= "a" {
+            if c <= "z" {
+                ok = true
+            }
+        }
+        if c >= "0" {
+            if c <= "9" {
+                ok = true
+            }
+        }
+        if c == "_" {
+            ok = true
+        }
+        if c == "-" {
+            ok = true
+        }
+        if ok == false {
+            return false
+        }
+        i = i + 1
+    }
+    return true
+}
+
+fn scan_markers(text: string) {
+    let mut out = []
+    let prefix = "<!-- AUTO:"
+    let suffix = ":START -->"
+    let lp = len(prefix)
+    let ls = len(suffix)
+    let mut rest = text
+    while true {
+        let idx = rest.index_of(prefix)
+        if idx < 0 {
+            break
+        }
+        // suffix 는 prefix 뒤에서 검색
+        let after_prefix = rest.substring(idx + lp, len(rest))
+        let end_rel = after_prefix.index_of(suffix)
+        if end_rel < 0 {
+            break
+        }
+        let name = after_prefix.substring(0, end_rel)
+        // 2026-04-28 cycle 18 fix: NAME 검증.
+        // BADGE:END --> 같은 잡음 prefix 매치를 거른다.
+        // 잡음 NAME 인 경우 prefix 다음 1 char 만 advance 해서
+        // 진짜 :START --> 위치를 다시 찾는다.
+        if is_valid_marker_name(name) == false {
+            rest = rest.substring(idx + lp, len(rest))
+            continue
+        }
+        // 중복 제거
+        let mut dup = false
+        let mut di = 0
+        let dn = len(out)
+        while di < dn {
+            if to_string(out[di]) == name {
+                dup = true
+                break
+            }
+            di = di + 1
+        }
+        if dup == false {
+            out.push(name)
+        }
+        // 다음 검색 시작점 = suffix 뒤
+        let absolute_end = idx + lp + end_rel + ls
+        rest = rest.substring(absolute_end, len(rest))
+    }
+    return out
+}
+
+// ───────── 마커 블록 1개 치환 ─────────
+fn replace_marker(text: string, name: string, new_content: string) {
+    let start_tag = "<!-- AUTO:" + name + ":START -->"
+    let end_tag   = "<!-- AUTO:" + name + ":END -->"
+    let s = text.index_of(start_tag)
+    if s < 0 {
+        return text
+    }
+    let e = text.index_of(end_tag)
+    if e < 0 {
+        return text
+    }
+    if e < s {
+        return text
+    }
+    let before = text.substring(0, s + len(start_tag))
+    let after  = text.substring(e, len(text))
+    return before + "\n" + new_content + "\n" + after
+}
+
+// ───────── 동기화: README 전체 + 모든 마커 ─────────
+// 반환: [new_text, changed_sections]
+fn sync_all(readme_text: string, data) {
+    let names = scan_markers(readme_text)
+    let n = len(names)
+    let mut text = readme_text
+    let mut changed = []
+    let mut i = 0
+    while i < n {
+        let name = to_string(names[i])
+        let content = resolve_generator(name, data)
+        if type_of(content) != "null" {
+            if type_of(content) != "nil" {
+                let before = text
+                text = replace_marker(text, name, to_string(content))
+                if text != before {
+                    changed.push(name)
+                }
+            }
+        }
+        i = i + 1
+    }
+    return [text, changed]
+}
+
+// ───────── 원자적 쓰기: temp -> rename ─────────
+fn write_readme(path: string, text: string) {
+    let tmp = path + ".tmp.sync"
+    write_file(tmp, text)
+    exec("mv -f '" + tmp + "' '" + path + "'")
+}
+
+// ───────── MAIN ─────────
+fn main() {
+    // CLI 파싱: --check / --dry-run / --stub
+    let a = args()
+    let mut dry_run = false
+    let mut check_only = false
+    let mut stub_mode = false
+    let mut ai = 0
+    let na = len(a)
+    while ai < na {
+        let arg = to_string(a[ai])
+        if arg == "--dry-run" {
+            dry_run = true
+        }
+        if arg == "--check" {
+            check_only = true
+        }
+        if arg == "--stub" {
+            stub_mode = true
+        }
+        ai = ai + 1
+    }
+
+    if stub_mode == true {
+        println("STUB: sync-readme.py (HEXA 포팅 완료, --stub 호환 모드)")
+        return
+    }
+
+    let data_path   = resolve_path("N6_README_DATA", DEFAULT_DATA)
+    let readme_path = resolve_path("N6_README_MD",   DEFAULT_README)
+
+    println("[sync-readme] data    = " + data_path)
+    println("[sync-readme] readme  = " + readme_path)
+    if check_only == true {
+        println("[sync-readme] mode    = CHECK")
+    } else {
+        if dry_run == true {
+            println("[sync-readme] mode    = DRY-RUN")
+        } else {
+            println("[sync-readme] mode    = WRITE")
+        }
+    }
+
+    if file_exists(data_path) == false {
+        die("readme-data.json 없음: " + data_path)
+    }
+    if file_exists(readme_path) == false {
+        die("README.md 없음: " + readme_path)
+    }
+
+    let raw = read_file(data_path)
+    if len(raw) == 0 {
+        die("readme-data.json 빈 파일: " + data_path)
+    }
+    let data = json_parse(raw)
+    let original = read_file(readme_path)
+
+    let result = sync_all(original, data)
+    let new_text = to_string(result[0])
+    let changed = result[1]
+    let nc = len(changed)
+    let total_markers = len(scan_markers(original))
+
+    if new_text == original {
+        println("[OK] README.md is up to date with readme-data.json (" + to_string(total_markers) + " markers)")
+        return
+    }
+
+    if check_only == true {
+        // CI: drift 감지 -> non-zero
+        exec("printf '%s\\n' '[sync-readme] DRIFT: README.md is out of sync with readme-data.json' 1>&2")
+        exec("printf '%s\\n' '[sync-readme] DRIFT: run hexa run canonshared/sync-readme.hexa' 1>&2")
+        let mut ci = 0
+        while ci < nc {
+            exec("printf '%s\\n' '[sync-readme] DRIFT:   AUTO:" + to_string(changed[ci]) + "' 1>&2")
+            ci = ci + 1
+        }
+        exit(1)
+    }
+
+    if dry_run == true {
+        println("[DRY-RUN] " + to_string(nc) + " marker(s) would change:")
+        let mut di = 0
+        while di < nc {
+            println("  -> AUTO:" + to_string(changed[di]))
+            di = di + 1
+        }
+        return
+    }
+
+    write_readme(readme_path, new_text)
+    println("[DONE] README.md synced (" + to_string(nc) + " marker(s) changed of " + to_string(total_markers) + " total)")
+    let mut wi = 0
+    while wi < nc {
+        println("  ✓ AUTO:" + to_string(changed[wi]))
+        wi = wi + 1
+    }
+}
+
+main()

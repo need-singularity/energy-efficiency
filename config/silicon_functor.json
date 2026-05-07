@@ -1,6 +1,6 @@
 {
   "_doc": "Silicon-side functor G : C_atlas → C_silicon — declarative companion to F (config/invariants.json). Hardware architecture constants from atlas.n6 that project onto silicon implementation. Axis C from R24+27 witness closure roadmap.",
-  "schema": "n6-architecture/silicon_functor/1",
+  "schema": "canon/silicon_functor/1",
   "declared_round": "R24+29",
   "declared_ts": "2026-04-24T10:25:00Z",
   "source_witness_ref": "state/atlas_convergence_witness.jsonl R24+12 (warp_size), R24+17 (measurement boundary)",

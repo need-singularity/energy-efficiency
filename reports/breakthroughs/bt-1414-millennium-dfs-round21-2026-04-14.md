@@ -200,6 +200,6 @@ J2=24       | ...           | 0    | -   | -
 ## 4. Verification environment
 
 - Date: 2026-04-14
-- Project: n6-architecture
+- Project: canon
 - Prior BT: BT-1413@04-14
 - atlas reference: $NEXUS/shared/n6/atlas.n6

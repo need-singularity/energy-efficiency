@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "n6-architecture/domains/life/synbio/spec/selex_v0.schema.json",
+  "$id": "canon/domains/life/synbio/spec/selex_v0.schema.json",
   "title": "raw_77_ribozyme_selex_v0 — synbio SELEX handoff witness",
   "description": "Synbio-side handshake schema (selection-stage). Pairs with hexa-bio raw_77_ribozyme_design_v1 (design-stage) under the joint family raw_77_ribozyme_selex_handoff_v0. Canonical boundary spec lands 2026-05-06 in life/synbio/synbio.md §3 'Handoff schema spec'. raw_91 honest C3: stub repo — no live wet-lab assays at land time; this schema reserves the row shape so that when wet-lab infrastructure exists (hexa-bio cycle 30+), rows can be emitted without further schema drift.",
   "type": "object",

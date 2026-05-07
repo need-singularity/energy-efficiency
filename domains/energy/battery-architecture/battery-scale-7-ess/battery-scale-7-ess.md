@@ -232,7 +232,7 @@ n=6 temperature exist independent control heat generate n=6 zoneas variance·ran
 | φ=2 dual BMS | EXACT — minimumprime factor 2, Active-Standby dualization |
 | sopfr=5 sided purering | EXACT — sum of prime factors 5, charging→balance→discharge→standby→diagnose 5step |
 | σ·τ=48 MW SMES peak | EXACT — sum of divisors×divisorcount, instant discharge upper bound |
-| n=6 temperature exist | EXACT — perfect number 6, thermal management 6zone independent control |
+| n=6 temperature exist | EXACT — arithmetic canon, thermal management 6zone independent control |
 | μ=1ms SMES response | EXACT — Mobius μ(6)=1, superconduction switching time |
 | 1/(σ-φ)=1/10 LCOS | EXACT — σ-φ=10, $100→$10/MWh sectionreduce |
 | Egyptian 1/2+1/3+1/6=1 | EXACT — reciprocal sum of divisors, ESS capacity  mintimes complete-ness |

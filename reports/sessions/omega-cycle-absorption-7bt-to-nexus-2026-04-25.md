@@ -30,7 +30,7 @@ grade: omega-cycle audit on absorption decision, no claim
 - A read-only design audit applying the omega 4-axis lens to the *meta-task* of absorption.
 - An analysis ranking absorption forms (atlas / design / lens / proposal-inbox) by suitability.
 - A verdict expressed as one of four enumerated strings.
-- Zero modifications to nexus or to n6-architecture atlas/state/inventory.
+- Zero modifications to nexus or to canon atlas/state/inventory.
 
 ---
 
@@ -75,9 +75,9 @@ Mapping each finding category onto the abstraction ladder, identifying absorptio
 - BT-544 Λ² vortex-stretching 5-witness numerical signatures.
 - BT-541 zero-spacing computation rows.
 
-**Absorption form**: NOT atlas. NOT design. Either **leave in n6-architecture** as session-internal data, or **proposal-inbox** as cluster-bundled raw findings if a future nexus session requests pull.
+**Absorption form**: NOT atlas. NOT design. Either **leave in canon** as session-internal data, or **proposal-inbox** as cluster-bundled raw findings if a future nexus session requests pull.
 
-**Decision**: SKIP. L1 data is too BT-specific to portable. n6-architecture-internal.
+**Decision**: SKIP. L1 data is too BT-specific to portable. canon-internal.
 
 ### L2 drill — per-BT mechanical findings
 
@@ -133,7 +133,7 @@ Mapping each finding category onto the abstraction ladder, identifying absorptio
 ### L_ω closure — methodology synthesis
 
 **Examples**:
-- Closure-level synthesis: "n6-architecture session methodology converges to a 4-axis omega-cycle audit pattern that consistently gates EXACT-only".
+- Closure-level synthesis: "canon session methodology converges to a 4-axis omega-cycle audit pattern that consistently gates EXACT-only".
 
 **Absorption form**: **Design-layer synthesis doc** OR appended note to existing `~/core/nexus/design/atlas_n6_omega_closure.md`.
 
@@ -211,7 +211,7 @@ Map session findings onto a temporal/dependency chain.
 2. **Backtrace synthesis** (cumulative 7-BT review).
 3. **Generation-pipeline diagnostic** (H1+H2 hypothesis dominance).
 
-These are foundational *for the n6-architecture session*. For nexus absorption, they are too BT-specific (foundational-but-local). **Do not absorb directly**; absorb only their abstracted descendants.
+These are foundational *for the canon session*. For nexus absorption, they are too BT-specific (foundational-but-local). **Do not absorb directly**; absorb only their abstracted descendants.
 
 ### Mid Layer (cross-BT abstractions)
 
@@ -228,7 +228,7 @@ These are the **absorption candidates**. Each is BT-portable: structure survives
 9. **Amendment reports**, **EXT-tier closure reports**.
 10. **Honesty-triad-derived audit reports** (already-absorbed-source).
 
-Do not absorb. n6-architecture-internal session management.
+Do not absorb. canon-internal session management.
 
 ### Dependency Ordering for Absorption
 
@@ -436,7 +436,7 @@ These are **design specifications**, not deployed files. Deployment requires a s
 
 ### File 1: `~/core/nexus/design/method_gap_pattern.md`
 
-- **Source**: `/Users/ghost/core/n6-architecture/reports/sessions/omega-meta-prediction-cross-bt-method-gap-2026-04-25.md`.
+- **Source**: `/Users/ghost/core/canon/reports/sessions/omega-meta-prediction-cross-bt-method-gap-2026-04-25.md`.
 - **Content outline**:
   - 6/6 cross-BT method-gap empirical observation.
   - PATTERN_STRONGLY_GENERAL classification rubric (criteria + caveats).
@@ -447,7 +447,7 @@ These are **design specifications**, not deployed files. Deployment requires a s
 
 ### File 2: `~/core/nexus/design/progressive_deepening_methodology.md`
 
-- **Source**: `/Users/ghost/core/n6-architecture/reports/sessions/omega-meta-cumulative-session-methodology-2026-04-25.md`.
+- **Source**: `/Users/ghost/core/canon/reports/sessions/omega-meta-cumulative-session-methodology-2026-04-25.md`.
 - **Content outline**:
   - 5-pattern progressive deepening (pattern names + activation conditions).
   - 8-step omega-cycle workflow (4-axis lens application sequence).
@@ -458,7 +458,7 @@ These are **design specifications**, not deployed files. Deployment requires a s
 
 ### File 3: `~/core/nexus/design/3pillar_obstruction_localization.md`
 
-- **Source**: `/Users/ghost/core/n6-architecture/reports/sessions/omega-meta-synthesis-3pillar-obstruction-localization-2026-04-25.md`.
+- **Source**: `/Users/ghost/core/canon/reports/sessions/omega-meta-synthesis-3pillar-obstruction-localization-2026-04-25.md`.
 - **Content outline**:
   - 3-pillar obstruction-localization framework (Λ² unification).
   - BT-544 axis-B 5-witness instantiation (PARTIAL example).
@@ -522,7 +522,7 @@ The following observations would falsify the verdict (ABSORB_DESIGN_ONLY) and fo
 - 0/7 Millennium problems unchanged.
 - nxs promotion count unchanged.
 - NO nexus files modified by this audit.
-- NO n6-architecture atlas/state/inventory files modified by this audit.
+- NO canon atlas/state/inventory files modified by this audit.
 - Honesty triad respected: every absorption-form claim references an actual file (verified via Bash listing of `~/core/nexus/design/`, `~/core/nexus/lenses/`, `~/core/nexus/state/proposals/`, `~/core/nexus/reports/`, and `reports/sessions/` parent reports).
 
 **End of audit. Design only, not execution.**

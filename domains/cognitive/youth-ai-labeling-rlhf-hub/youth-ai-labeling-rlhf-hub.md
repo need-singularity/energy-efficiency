@@ -974,7 +974,7 @@ Test plan:
 | University of Cape Town / Stellenbosch / UWC | recruitment partner | multilingual specialist sourcing |
 | SA YES (Youth Employment Service) | tax-break administrator | 18-29 hire tax credit |
 | Surge AI / Scale AI / Anthropic / OpenAI | customer / platform | premium-tier task supplier + reseller |
-| n6-architecture private framework | own_doc_lint / own31 lint | docs gate |
+| canon private framework | own_doc_lint / own31 lint | docs gate |
 
 ## §19 ACCEPTANCE / MISS criteria (own#12 pre-declared)
 

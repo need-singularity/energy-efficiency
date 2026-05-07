@@ -18,7 +18,7 @@ Basis: user directive — experiments/ axis 3rd expansion (150 -> 200, 50 new .h
 - R14 SSOT: append pending rows to single SSOT `_results.jsonl`; no separate JSON emitted
 - R18 minimal: fn main() stub + metadata comment only; real implementation follows
 - Follow existing stub pattern: metadata comment header + 3 println lines
-- Validation via n6shared/config/absolute_rules.json + n6shared/rules/n6-architecture.json
+- Validation via canonshared/config/absolute_rules.json + canonshared/rules/canon.json
 
 ## Distribution of 50 New Experiments
 
@@ -79,7 +79,7 @@ BT-397 urban scaling / BT-398 Fisher / BT-399 game theory / BT-400 10-frontier m
 ### meta (4) — new category (meta ops)
 
 1. `meta_atlas_promotion_automation.hexa` — atlas.n6 [7]->[10*] auto promotion
-2. `meta_convergence_refresh.hexa` — convergence/n6-architecture.json sync
+2. `meta_convergence_refresh.hexa` — convergence/canon.json sync
 3. `meta_dse_v2_regression.hexa` — DSE v2 Pareto regression
 4. `meta_mc_v9_cross_batch.hexa` — MC v9 50-batch confidence estimate
 
@@ -107,7 +107,7 @@ Existing ai-efficiency / anomaly directories receive simple file additions. INDE
 
 1. Port top-priority stubs in order (bt400-new -> chip-design -> sota-bench) to real implementations
 2. On result availability, `status: pending` -> `passed` / `failed` / `inconclusive`
-3. Passed BT-381~400 items become ossification-promotion candidates in `n6shared/convergence/n6-architecture.json` and `atlas.n6` [7]->[10*] edit candidates
+3. Passed BT-381~400 items become ossification-promotion candidates in `canonshared/convergence/canon.json` and `atlas.n6` [7]->[10*] edit candidates
 4. chip-verify passed -> adopt as `nexus rtl` pipeline passing evidence
 5. Fully implement `meta_atlas_promotion_automation.hexa` auto-promotion script to close the loop
 

@@ -2,7 +2,7 @@
 
 ## Summary
 
-- **URL**: https://need-singularity.github.io/n6-architecture/
+- **URL**: https://need-singularity.github.io/canon/
 - **Render success**: yes (WebGL canvas OK, Three.js r175)
 - **Deployed node count**: 247 (EXACT 228 / CLOSE 7 / MISS 12, EXACT 92.3%)
 - **Local HEAD node count**: 276
@@ -16,7 +16,7 @@
 
 ## GitHub Pages state
 
-- Repo: `need-singularity/n6-architecture`
+- Repo: `need-singularity/canon`
 - Page title: "n=6 Reality Map 3D v6.0 -- WebGL"
 - Canvas rendering: normal (L0~L5 spheres, causal edges, X/Y/Z axis labels, HUD all working)
 - Console errors: 1 (likely minor, e.g. favicon; no render impact)

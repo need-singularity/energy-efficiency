@@ -765,7 +765,7 @@ ASCII Pareto frontier (cost vs completion):
 |------|-------|
 | Number | BT-391 |
 | Breakthrough | Softmax-based task-classification router assigns the optimal agent. Best-agent selection accuracy 94% across a 6-agent pool: coding / analysis / dialogue / multimodal / safety / tool-specialist. Multi-agent decomposition speeds up complex tasks (10+ steps) by 40%, with completion rate +25pp over single-agent. |
-| n=6 link | N=6: 6 agent types correspond to the divisor structure of perfect number 6. Divisors {1,2,3,6} -> agent team size combinations. Auto-pick the best combo from C(6,2)=15 agent pairs. phi(6)=2: any task can be solved by at least 2 agents independently (fault tolerance) |
+| n=6 link | N=6: 6 agent types correspond to the divisor structure of arithmetic canon. Divisors {1,2,3,6} -> agent team size combinations. Auto-pick the best combo from C(6,2)=15 agent pairs. phi(6)=2: any task can be solved by at least 2 agents independently (fault tolerance) |
 | Grade | [EXACT] |
 
 ## §V2-3 Impossibility theorems (agent serving)

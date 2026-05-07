@@ -13,9 +13,9 @@ venue_distribution_count: 5
 title:         "<PAPER_TITLE 한글>"
 subtitle:      "n=6 산술 좌표 — AI 시스템 닫힘 분석"
 author:
-  - 박민우 (n6-architecture 주관)
+  - 박민우 (canon 주관)
   - NEXUS-6 AI 협업체
-institute:     "n6-architecture 프로젝트"
+institute:     "canon 프로젝트"
 date:          "2026-04-14"
 lang:          ko
 mainfont:      "Noto Serif CJK KR"
@@ -53,7 +53,7 @@ jair:
   word_limit_main: 15000
   review_model: single_blind
   open_access: true
-  code_data_policy: "오픈 저장소 필수 — n6-architecture papers/ 경로 공개"
+  code_data_policy: "오픈 저장소 필수 — canon papers/ 경로 공개"
   long_review_cycle: true
   editor_note: |
     JAIR 는 긴 본문과 상세 증명 허용. 본 템플릿은 MAIN 5.1~5.4 절을 전부

@@ -24,7 +24,7 @@ Problems:
 ### 0.2 Reference Roadmap Comparison
 
 - **nexus.json (19 axes)**: A1~A19 are by function; phases P1~P18 follow "baseline -> expansion -> depletion" evolution. BT absorbed into single A11 BREAKTHROUGH axis.
-- **n6-architecture.json (4 axes)**: STRUCTURE/ENGINE/SUBSTRATE/META. Phases follow functional-build order.
+- **canon.json (4 axes)**: STRUCTURE/ENGINE/SUBSTRATE/META. Phases follow functional-build order.
 - **v1 millennium-learning.json (3 axes)**: PURE/PROBLEM/N6. Phases follow **prior-depth order** (P0 basic fitness -> P1 problem-deepening -> P2 cross -> P3 research-front).
 
 **Lesson**: v1 was depth-ordered. v2 regressed to BT-ordered.

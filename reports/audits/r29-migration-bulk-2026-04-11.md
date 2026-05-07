@@ -1,7 +1,7 @@
 # R29 Bulk Migration Audit Report — 2026-04-11
 
 - Date: 2026-04-11
-- Rule: R29 (n6shared/rules/common.json)
+- Rule: R29 (canonshared/rules/common.json)
 - Work: domains/**/verify_*.hexa (excluding verify.hexa) -> nexus/shared/n6/scripts/
 - Script: `nexus/scripts/migrate_r29_verify.hexa`
 - Prior report: `reports/audits/r29-migration-synbio-2026-04-11.md` (synbio 1-item migration)
@@ -92,7 +92,7 @@ No failures. All succeeded.
 
 - [x] R1 HEXA-FIRST: all migrated files keep .hexa, script also .hexa
 - [x] R5 SSOT: single location (`nexus/shared/n6/scripts/`) convergence
-- [x] R14: rule body in `n6shared/rules/common.json` single truth (cited only)
+- [x] R14: rule body in `canonshared/rules/common.json` single truth (cited only)
 - [x] R18 Minimal: requested scope only -- no logic modification, just file move
 - [x] R19 SILENT EXIT forbidden: all errors stdout + report logged
 - [x] R21 No blocking: find / md5 / cp called individually, no large blocking

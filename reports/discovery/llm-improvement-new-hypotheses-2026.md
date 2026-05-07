@@ -1,4 +1,4 @@
-# N6 Architecture — New LLM Hypotheses from 2025-2026 Model Survey
+# CANON — New LLM Hypotheses from 2025-2026 Model Survey
 
 > Research date: 2026-03-31
 > Scope: DeepSeek-V3/R1, Llama 3.1/3.2/3.3/4, Qwen 2.5/3, Gemma 2/3, Mistral Large 2, DBRX, Mixtral 8x22B

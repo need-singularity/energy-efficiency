@@ -27,7 +27,7 @@
 +============================================================+
 ```
 
-**Goal**: Establish 7-Millennium retrospective (Hilbert 23 -> Clay 7 transition history), external collaboration paths (arXiv, MathOverflow, Mathlib, Polymath, conferences), and publication strategy (honest-record-centric survey, peer review response, version control + reproducibility attachments). Lay the externalization groundwork for the n6-architecture project.
+**Goal**: Establish 7-Millennium retrospective (Hilbert 23 -> Clay 7 transition history), external collaboration paths (arXiv, MathOverflow, Mathlib, Polymath, conferences), and publication strategy (honest-record-centric survey, peer review response, version control + reproducibility attachments). Lay the externalization groundwork for the canon project.
 
 ---
 

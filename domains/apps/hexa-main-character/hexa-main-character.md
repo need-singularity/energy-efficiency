@@ -919,7 +919,7 @@ Test plan:
 | LAION | CLAP-base model weights (Apache 2.0) | scene→music embedding |
 | Microsoft Research | Phi-3.5-vision distilled (MIT licence) | title-card generation |
 | Music licensing aggregator | curated playlist library (Hans Zimmer / indie / lo-fi / Vangelis / Wong Kar-wai / Carter Burwell) | matched-soundtrack catalog |
-| n6-architecture private framework | own_doc_lint / own31 lint / own33 ai-native pattern | docs gate |
+| canon private framework | own_doc_lint / own31 lint / own33 ai-native pattern | docs gate |
 
 ## §19 ACCEPTANCE / MISS criteria (own#12 pre-declared)
 

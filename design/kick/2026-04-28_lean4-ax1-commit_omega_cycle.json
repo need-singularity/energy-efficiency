@@ -7,8 +7,8 @@
   "mission": "Cycle 4 lean4-n6/N6/MechVerif/AX1.lean (lean4 W2 AX-1 partial PASS) commit + push.",
   "repo_kind": {
     "lean4_n6_kind": "subdirectory_of_parent_repo",
-    "evidence": "git rev-parse --show-toplevel from inside lean4-n6 returns /Users/ghost/core/n6-architecture; not a submodule, not a separate repo",
-    "parent_repo": "/Users/ghost/core/n6-architecture",
+    "evidence": "git rev-parse --show-toplevel from inside lean4-n6 returns /Users/ghost/core/canon; not a submodule, not a separate repo",
+    "parent_repo": "/Users/ghost/core/canon",
     "parent_branch": "main"
   },
   "artifact": {

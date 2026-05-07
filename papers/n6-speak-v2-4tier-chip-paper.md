@@ -14,7 +14,7 @@ alien_index_target: 10
 
 # N6-SPEAK v2 — 4-tier SoC chip design paper (N6-113)
 
-> **Author**: Minwoo Park (n6-architecture)
+> **Author**: Minwoo Park (canon)
 > **Category**: speak-v2-4tier-chip — P2 extension v3 chip design
 > **Version**: v3 (2026-04-14 P2 extension)
 > **Prior BT**: BT-28, BT-90, BT-93, BT-1104
@@ -171,7 +171,7 @@ design extends to **simultaneous multi-language processing**.
 2. papers/n6-exynos-paper.md (N6-exynos SoC)
 3. papers/n6-telecom-linguistics-paper.md (language-model foundations)
 4. papers/n6-acoustics-paper.md (acoustic waves)
-5. speak_v2.hexa engine (n6-architecture/engine/)
+5. speak_v2.hexa engine (canon/engine/)
 
 ## §1 WHY
 

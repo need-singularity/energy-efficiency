@@ -101,7 +101,7 @@ Per work directive, **only `_meta` block and `HEXA-QUANTUM.products[0].ceiling` 
 
 ## 5. Rule Compliance
 
-- R8 (data remote store): under `n6shared/n6/docs/` -- direct edit allowed scope
+- R8 (data remote store): under `canonshared/n6/docs/` -- direct edit allowed scope
 - R14 (shared/ JSON single truth): synchronized to match actuals
 - R25 (shared-config gate): GO mode + prior audit report basis -> approved scope
 - R0-R27 (common): JSON validity / backup / invariant restoration all complied

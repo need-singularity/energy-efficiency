@@ -1,7 +1,7 @@
 {
   "kick_kind": "omega_cycle",
   "kick_id": "2026-04-28_cycle7-commit-push",
-  "kick_title": "Cycle 7 fan-out 1/5 — n6-architecture monolithic commit + push (sorry-free achievement)",
+  "kick_title": "Cycle 7 fan-out 1/5 — canon monolithic commit + push (sorry-free achievement)",
   "kick_date": "2026-04-28",
   "umbrella": "session-governance",
   "cost_center": "cycle7-multi-repo-commit",
@@ -55,7 +55,7 @@
   },
   "safety_gates": {
     "secrets_scan": "PASS (no sk-/ghp_/AKIA/Bearer/private-key literals across cycle-7 staged files; only doc placeholders like `$GHCR_PAT` in registry proposal)",
-    "chflags_uchg": "n/a (.raw not present in n6-architecture; .own not chflag-locked but unmodified this cycle)",
+    "chflags_uchg": "n/a (.raw not present in canon; .own not chflag-locked but unmodified this cycle)",
     "raw_13_hooks": "n/a (no active pre-commit hooks present in .git/hooks; only Git samples). Commit will not invoke gating.",
     "destructive_ops": 0,
     "git_history_modified": false
@@ -69,9 +69,9 @@
   "push_target": {
     "remote": "origin",
     "branch": "main",
-    "url": "https://github.com/need-singularity/n6-architecture.git"
+    "url": "https://github.com/need-singularity/canon.git"
   },
-  "other_repos_note": "Other repos (hive, etc.) inspected post-commit; cycle-7 fan-out 1/5 scope is n6-architecture only.",
+  "other_repos_note": "Other repos (hive, etc.) inspected post-commit; cycle-7 fan-out 1/5 scope is canon only.",
   "ts_kick": "2026-04-28T07:55:00Z",
   "schema": "design/kick/omega_cycle_v1"
 }

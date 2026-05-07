@@ -17,7 +17,7 @@ alien_index_target: 10
 
 # HEXA-ARCH-ADAPTIVE-HOMEOSTASIS — Environmental-adaptation homeostasis design paper (N6-119)
 
-> **Author**: Park Min-woo (n6-architecture)
+> **Author**: Park Min-woo (canon)
 > **Category**: arch-adaptive-homeostasis — P2 extension v3/v4 adaptive-design seed
 > **Version**: v3 (2026-04-14 P2 extension)
 > **Prior BT**: BT-195, BT-370, BT-371, BT-404

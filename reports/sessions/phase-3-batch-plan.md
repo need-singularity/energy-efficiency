@@ -336,9 +336,9 @@ Each block below is a paste-ready prompt for a single agent. Do not edit; copy-p
 ### Prompt for Batch 1: `phase-3-1-infra-a`
 
 ```
-You are a Phase 3 translation agent for the n6-architecture own#1 HARD English-only campaign.
+You are a Phase 3 translation agent for the canon own#1 HARD English-only campaign.
 
-Repo: /Users/ghost/core/n6-architecture
+Repo: /Users/ghost/core/canon
 Branch: main (rebase against origin/main as needed)
 Batch label: phase-3-1-infra-a
 Batch number: 1 of 10
@@ -411,9 +411,9 @@ Batch number: 1 of 10
 ### Prompt for Batch 2: `phase-3-2-infra-b`
 
 ```
-You are a Phase 3 translation agent for the n6-architecture own#1 HARD English-only campaign.
+You are a Phase 3 translation agent for the canon own#1 HARD English-only campaign.
 
-Repo: /Users/ghost/core/n6-architecture
+Repo: /Users/ghost/core/canon
 Branch: main (rebase against origin/main as needed)
 Batch label: phase-3-2-infra-b
 Batch number: 2 of 10
@@ -486,9 +486,9 @@ Batch number: 2 of 10
 ### Prompt for Batch 3: `phase-3-3-infra-c-life-tail`
 
 ```
-You are a Phase 3 translation agent for the n6-architecture own#1 HARD English-only campaign.
+You are a Phase 3 translation agent for the canon own#1 HARD English-only campaign.
 
-Repo: /Users/ghost/core/n6-architecture
+Repo: /Users/ghost/core/canon
 Branch: main (rebase against origin/main as needed)
 Batch label: phase-3-3-infra-c-life-tail
 Batch number: 3 of 10
@@ -561,9 +561,9 @@ Batch number: 3 of 10
 ### Prompt for Batch 4: `phase-3-4-life-a`
 
 ```
-You are a Phase 3 translation agent for the n6-architecture own#1 HARD English-only campaign.
+You are a Phase 3 translation agent for the canon own#1 HARD English-only campaign.
 
-Repo: /Users/ghost/core/n6-architecture
+Repo: /Users/ghost/core/canon
 Branch: main (rebase against origin/main as needed)
 Batch label: phase-3-4-life-a
 Batch number: 4 of 10
@@ -636,9 +636,9 @@ Batch number: 4 of 10
 ### Prompt for Batch 5: `phase-3-5-life-b-culture-a`
 
 ```
-You are a Phase 3 translation agent for the n6-architecture own#1 HARD English-only campaign.
+You are a Phase 3 translation agent for the canon own#1 HARD English-only campaign.
 
-Repo: /Users/ghost/core/n6-architecture
+Repo: /Users/ghost/core/canon
 Branch: main (rebase against origin/main as needed)
 Batch label: phase-3-5-life-b-culture-a
 Batch number: 5 of 10
@@ -711,9 +711,9 @@ Batch number: 5 of 10
 ### Prompt for Batch 6: `phase-3-6-culture-b-physics-top`
 
 ```
-You are a Phase 3 translation agent for the n6-architecture own#1 HARD English-only campaign.
+You are a Phase 3 translation agent for the canon own#1 HARD English-only campaign.
 
-Repo: /Users/ghost/core/n6-architecture
+Repo: /Users/ghost/core/canon
 Branch: main (rebase against origin/main as needed)
 Batch label: phase-3-6-culture-b-physics-top
 Batch number: 6 of 10
@@ -786,9 +786,9 @@ Batch number: 6 of 10
 ### Prompt for Batch 7: `phase-3-7-physics-tail-compute-a`
 
 ```
-You are a Phase 3 translation agent for the n6-architecture own#1 HARD English-only campaign.
+You are a Phase 3 translation agent for the canon own#1 HARD English-only campaign.
 
-Repo: /Users/ghost/core/n6-architecture
+Repo: /Users/ghost/core/canon
 Branch: main (rebase against origin/main as needed)
 Batch label: phase-3-7-physics-tail-compute-a
 Batch number: 7 of 10
@@ -861,9 +861,9 @@ Batch number: 7 of 10
 ### Prompt for Batch 8: `phase-3-8-compute-b`
 
 ```
-You are a Phase 3 translation agent for the n6-architecture own#1 HARD English-only campaign.
+You are a Phase 3 translation agent for the canon own#1 HARD English-only campaign.
 
-Repo: /Users/ghost/core/n6-architecture
+Repo: /Users/ghost/core/canon
 Branch: main (rebase against origin/main as needed)
 Batch label: phase-3-8-compute-b
 Batch number: 8 of 10
@@ -936,9 +936,9 @@ Batch number: 8 of 10
 ### Prompt for Batch 9: `phase-3-9-materials-cognitive-a`
 
 ```
-You are a Phase 3 translation agent for the n6-architecture own#1 HARD English-only campaign.
+You are a Phase 3 translation agent for the canon own#1 HARD English-only campaign.
 
-Repo: /Users/ghost/core/n6-architecture
+Repo: /Users/ghost/core/canon
 Branch: main (rebase against origin/main as needed)
 Batch label: phase-3-9-materials-cognitive-a
 Batch number: 9 of 10
@@ -1011,9 +1011,9 @@ Batch number: 9 of 10
 ### Prompt for Batch 10: `phase-3-10-cognitive-tail-energy-sf-space`
 
 ```
-You are a Phase 3 translation agent for the n6-architecture own#1 HARD English-only campaign.
+You are a Phase 3 translation agent for the canon own#1 HARD English-only campaign.
 
-Repo: /Users/ghost/core/n6-architecture
+Repo: /Users/ghost/core/canon
 Branch: main (rebase against origin/main as needed)
 Batch label: phase-3-10-cognitive-tail-energy-sf-space
 Batch number: 10 of 10

@@ -10,10 +10,10 @@
 // schema walk).
 //
 // @tool(slug="own7_registry_sync_lint", desc="own#7 registry sync HARD — bridge/origins/<name>/ must appear in bridge/_registry.json (raw-text token scan)")
-// @usage(hexa /Users/ghost/core/n6-architecture/tool/own7_registry_sync_lint.hexa [--selftest])
+// @usage(hexa /Users/ghost/core/canon/tool/own7_registry_sync_lint.hexa [--selftest])
 // @exit_codes(0=PASS, 1=violations, 2=internal error)
 
-let REPO_ROOT = "/Users/ghost/core/n6-architecture"
+let REPO_ROOT = "/Users/ghost/core/canon"
 let ORIGINS_DIR = REPO_ROOT + "/bridge/origins"
 let REGISTRY_PATH = REPO_ROOT + "/bridge/_registry.json"
 

@@ -111,8 +111,8 @@ productive budget (4.5%), which matches the observed throughput drop.
   - `tau = 4 :: foundation [11*]`
   - `meta_fp = phi/n = 1/3 :: meta [10*!]`
   - `provenance_bit_overhead = phi/sigma_n = 1/36 :: architecture [10*]`
-    (`atlas/atlas.append.n6-architecture-historical-absorption-2026-04-26.n6:526`)
-- KG nodes (`n6shared/discovery_graph.json`)
+    (`atlas/atlas.append.canon-historical-absorption-2026-04-26.n6:526`)
+- KG nodes (`canonshared/discovery_graph.json`)
   - `silicon:provenance-bit`
   - `silicon:promotion-counter-mmu`
   - `silicon:bt-id-isa`
@@ -120,7 +120,7 @@ productive budget (4.5%), which matches the observed throughput drop.
   - `principle:write-barrier` — realized by `silicon:promotion-counter-mmu`
   - `principle:constraint-honesty` — realized by `silicon:bt-id-isa`
   - `arch:n6-native-accelerator` — requires the three silicon primitives
-- domain (`n6shared/n6/docs/domains.json`)
+- domain (`canonshared/n6/docs/domains.json`)
   - `ai-native-architecture` (axis: compute, mk0 → mk_infinity)
 
 This experiment **does not write** to atlas, KG, or domains.json.

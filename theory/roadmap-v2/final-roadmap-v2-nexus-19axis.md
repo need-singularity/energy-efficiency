@@ -1,7 +1,7 @@
 # final-roadmap-v2-nexus-19axis — NEXUS-6 19-axis × 17-Phase final roadmap
 
 **Roadmap**: nexus v2 (NEXUS-6 central hub)
-**Note**: this document is the final version of the **nexus-only 19-axis** roadmap based on `axis-final.md`. Separate from the existing n6-architecture 4-axis `final-roadmap-v2.md`.
+**Note**: this document is the final version of the **nexus-only 19-axis** roadmap based on `axis-final.md`. Separate from the existing canon 4-axis `final-roadmap-v2.md`.
 **Axes**: 19
 **Effective Phases**: 17 (P1~P17)
 **Saturation Phase**: P18 (formal declaration)

@@ -12,13 +12,13 @@
 // non-trivial; python3 shell-out is bounded transition mode).
 //
 // @tool(slug="own1_doc_english_lint", desc="own#1 doc-english-required HARD — .md under decl scope must be English-only; CJK count via python3 sidecar; FROZEN allowlist of legacy CJK files")
-// @usage(hexa /Users/ghost/core/n6-architecture/tool/own1_doc_english_lint.hexa [--selftest])
+// @usage(hexa /Users/ghost/core/canon/tool/own1_doc_english_lint.hexa [--selftest])
 // @exit_codes(0=PASS, 1=violations, 2=internal error)
 
-let REPO_ROOT = "/Users/ghost/core/n6-architecture"
+let REPO_ROOT = "/Users/ghost/core/canon"
 let ALLOWLIST_PATH = REPO_ROOT + "/tool/own1_legacy_allowlist.json"
 
-let SCOPE_DIRS = ["domains", "theory", "reports", "experiments", "papers", "bridge", "n6shared", "proposals"]
+let SCOPE_DIRS = ["domains", "theory", "reports", "experiments", "papers", "bridge", "canonshared", "proposals"]
 let ROOT_DOCS = ["CONTRIBUTING.md"]
 
 fn _file_exists(path: string) -> bool {

@@ -192,8 +192,8 @@
       "domain registration upgraded YES_CONDITIONAL → YES (still gated on F-TP5-b 90d MVP)"
     ],
     "evidence_paths": [
-      "/Users/ghost/core/n6-architecture/design/kick/2026-04-28_hexa-weave-closure_omega_cycle.json (this file)",
-      "/Users/ghost/core/n6-architecture/design/kick/2026-04-28_hexa-weave-abstraction-to-limits_omega_cycle.json (predecessor)",
+      "/Users/ghost/core/canon/design/kick/2026-04-28_hexa-weave-closure_omega_cycle.json (this file)",
+      "/Users/ghost/core/canon/design/kick/2026-04-28_hexa-weave-abstraction-to-limits_omega_cycle.json (predecessor)",
       "nexus stderr: NEXUS_ENGINE_CRASH rc=76 + slot-saturated DEFER (kick infra cause-chain)",
       "literature citations: Rathjen 1991, Schütte 1977, Friedman 1975, Simpson 1999, Berger-Leighton 1998, Hart-Istrail 1996, Garey-Johnson 1979, Landauer 1961, Bennett 1982, Brown 2009, Wang 2019, Solomonoff 1964, Turing 1936, Bekenstein 1981"
     ],
@@ -226,7 +226,7 @@
   },
   "trawl_witness": {
     "raw_47_cross_repo_check": {
-      "n6-architecture": "this repo — predecessor witness + closure witness",
+      "canon": "this repo — predecessor witness + closure witness",
       "nexus": "/Users/ghost/core/nexus/ — kick infra source (failed run logs + slot gate)",
       "anima": "/Users/ghost/core/anima/ — 6-phase reflection + bootstrap absorption registry sentinel",
       "hexa-lang": "/Users/ghost/core/hexa-lang/ — runner image (hexa-runner:latest no-node fault)",
@@ -253,7 +253,7 @@
     "raw_53_compliant": true
   },
   "report_summary": {
-    "witness_path": "/Users/ghost/core/n6-architecture/design/kick/2026-04-28_hexa-weave-closure_omega_cycle.json",
+    "witness_path": "/Users/ghost/core/canon/design/kick/2026-04-28_hexa-weave-closure_omega_cycle.json",
     "tri_axis_joint_verdict": "PASS",
     "closure_construction_chosen": "(d) augmented — NP-hardness × Landauer × Π^1_1-CA_0 totality at whole-proteome scale",
     "tier_1_promotions_count": 5,

@@ -16,17 +16,17 @@
 
   "deliverables": {
     "files_created": [
-      "/Users/ghost/core/n6-architecture/proposals/hexa_weave_mvp_w7_axiom_step_down_2026_04_28.md",
-      "/Users/ghost/core/n6-architecture/design/kick/2026-04-28_lean4-w7-axiom-step-down_omega_cycle.json"
+      "/Users/ghost/core/canon/proposals/hexa_weave_mvp_w7_axiom_step_down_2026_04_28.md",
+      "/Users/ghost/core/canon/design/kick/2026-04-28_lean4-w7-axiom-step-down_omega_cycle.json"
     ],
     "files_modified": [
-      "/Users/ghost/core/n6-architecture/lean4-n6/N6/MechVerif/Foundation/Axioms.lean"
+      "/Users/ghost/core/canon/lean4-n6/N6/MechVerif/Foundation/Axioms.lean"
     ],
     "files_unchanged_verified": [
-      "/Users/ghost/core/n6-architecture/lean4-n6/N6/MechVerif/Foundation/Strand.lean",
-      "/Users/ghost/core/n6-architecture/lean4-n6/N6/MechVerif/AX1.lean",
-      "/Users/ghost/core/n6-architecture/lean4-n6/N6/MechVerif/AX2.lean",
-      "/Users/ghost/core/n6-architecture/lean4-n6/N6/MechVerif/MKBridge.lean"
+      "/Users/ghost/core/canon/lean4-n6/N6/MechVerif/Foundation/Strand.lean",
+      "/Users/ghost/core/canon/lean4-n6/N6/MechVerif/AX1.lean",
+      "/Users/ghost/core/canon/lean4-n6/N6/MechVerif/AX2.lean",
+      "/Users/ghost/core/canon/lean4-n6/N6/MechVerif/MKBridge.lean"
     ],
     "destructive_ops_executed": 0,
     "sorry_count_pre": 0,

@@ -762,7 +762,7 @@
     {
       "timestamp": "2026-04-04T17:07:35.471346",
       "source_project": "nexus",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "path": "nexus/src/telescope/mod.rs",
       "type": "different",
       "value_grade": "high",

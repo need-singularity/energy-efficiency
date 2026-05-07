@@ -361,7 +361,7 @@ Exit → Phase 2 (P2 = Y1-led BT-541 Riemann attack)
 
 ## §8 Completion Report
 
-**File path**: `/Users/ghost/Dev/n6-architecture/theory/roadmap-v2/phase-01-foundation-Y-axes.md`
+**File path**: `/Users/ghost/Dev/canon/theory/roadmap-v2/phase-01-foundation-Y-axes.md`
 **Line count**: this document (§0~§8 inclusive)
 **Y-axis activation**: 9/9 axis cards + evidence-path re-verify checklist
 **BT seeds**: 6/6 BT main seeds seeded (★ markers in §2 matrix)

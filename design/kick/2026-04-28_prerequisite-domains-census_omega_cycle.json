@@ -24,7 +24,7 @@
       {"n": 7, "name": "PDB-multimer dataset (RCSB Query B 1965 entries)", "location": "external RCSB", "disposition": "HOLD", "reason": "cycle 11 cached; F-W5-3 monitors endpoint drift"}
     ],
     "tier_2_meta_governance": [
-      {"n": 8, "name": "n6-architecture domain framework", "location": "own/ (1-23) + raw/ (1-100+)", "disposition": "KICK_NOW", "reason": "own 1 doc-english + raw 33 cross-axis NL-policy benefit from PR-time enforcement hook"},
+      {"n": 8, "name": "canon domain framework", "location": "own/ (1-23) + raw/ (1-100+)", "disposition": "KICK_NOW", "reason": "own 1 doc-english + raw 33 cross-axis NL-policy benefit from PR-time enforcement hook"},
       {"n": 9, "name": "kick infra (nexus/hexa-lang/hive, F-MX-3-c 5 modes)", "location": "design/kick/ ledger + cycles 1-11", "disposition": "KICK_NOW", "reason": "cycle 12 = this cycle; F-MX-3-c 5/5 closure is the parent goal"},
       {"n": 10, "name": "mathlib4 v4.30.0-rc2", "location": "lean4-n6/lakefile.lean", "disposition": "NO_KICK", "reason": "upstream-stable; pin only"}
     ],
@@ -60,7 +60,7 @@
       "blocker": "none — internal registration only"
     },
     {
-      "ref": "#8 n6-architecture framework cross-axis NL-policy hook",
+      "ref": "#8 canon framework cross-axis NL-policy hook",
       "scope": "own 1 doc-english + raw 33 cross-axis NL-policy",
       "closure_target": "PR-time lint pass on all domains/*/hexa-weave/ markdown",
       "cost_hr": 1,
@@ -94,8 +94,8 @@
 
   "deliverables": {
     "files_created": [
-      "/Users/ghost/core/n6-architecture/proposals/hexa_weave_prerequisite_domains_census_2026_04_28.md",
-      "/Users/ghost/core/n6-architecture/design/kick/2026-04-28_prerequisite-domains-census_omega_cycle.json"
+      "/Users/ghost/core/canon/proposals/hexa_weave_prerequisite_domains_census_2026_04_28.md",
+      "/Users/ghost/core/canon/design/kick/2026-04-28_prerequisite-domains-census_omega_cycle.json"
     ],
     "files_modified": [],
     "destructive_ops_executed": 0,

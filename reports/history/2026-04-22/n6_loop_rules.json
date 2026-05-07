@@ -1,5 +1,5 @@
 {
-  "schema": "n6-architecture/n6_loop_rules/1",
+  "schema": "canon/n6_loop_rules/1",
   "ts": "2026-04-22T16:00:16Z",
   "rules_total": 2,
   "pass": 2,

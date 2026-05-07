@@ -40,7 +40,7 @@
     {"id": "F-CYCLE25-TOOLKIT-2", "condition": "Molecular Toolkit (HEXA family) 라는 명명이 다른 toolkit (e.g. Bioconductor toolkit) 과 trademark 충돌", "deadline": "2026-10-29", "status": "preregistered"},
     {"id": "F-CYCLE25-TOOLKIT-3", "condition": "tetrahedron closure 주장이 4번째 sister 추가 시 무너짐 (5-sister 도입 → tetrahedron 깨짐)", "deadline": "open-ended", "status": "preregistered"}
   ],
-  "raw_47_cross_repo": "n6-architecture README.md 만 수정; nexus / hexa-lang / anima / airgenome / hive / papers 무수정",
+  "raw_47_cross_repo": "canon README.md 만 수정; nexus / hexa-lang / anima / airgenome / hive / papers 무수정",
   "raw_9_hexa_only": "markdown + python (own_doc_lint, sealed_check) — raw 9 호환",
   "raw_53_deterministic": "own_doc_lint + sealed_check 둘 다 deterministic verifier-type",
   "raw_77_append_only": true,

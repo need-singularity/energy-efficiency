@@ -1,6 +1,6 @@
 # PCIe — PCI Express Protocol n=6 Mapping
 
-- Project: n6-architecture / domains/compute/network-protocol
+- Project: canon / domains/compute/network-protocol
 - Document version: v1.0 (new)
 - Date: 2026-04-14
 - Parent document: ./network-protocol.md

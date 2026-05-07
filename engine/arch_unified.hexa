@@ -18,7 +18,7 @@
 //   - 자기참조 금지, 모드별 편향 없음
 //   - stage0 인터프리터 실전 실행 결과 rc=0 (main 은 total 반환, println 미사용)
 //
-// 실행: hexa_stage0 /Users/ghost/Dev/n6-architecture/engine/arch_unified.hexa
+// 실행: hexa_stage0 /Users/ghost/Dev/canon/engine/arch_unified.hexa
 // 규칙: R1 HEXA-FIRST, R18 미니멀, N61 한글
 
 // ── n=6 산술 (정의에서 도출) ───────────────────────────────

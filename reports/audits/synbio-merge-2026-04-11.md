@@ -1,6 +1,6 @@
 # Audit Report — synbio / synthetic-biology merge (2026-04-11)
 
-> Axis: **reports/audits** · n6-architecture · merge audit
+> Axis: **reports/audits** · canon · merge audit
 > Rules basis: R10 (ossified immutable) / R14 (JSON single-rule) / R18 (minimal) / R25 (shared-settings gate) / R28 (atlas SSOT) / N61 (ASCII tri-view) / N62 (py embed)
 
 ---
@@ -120,7 +120,7 @@ Same reference `docs/paper/n6-synthetic-biology-paper.md` (around line 3146). Mi
 - Include `papers/n6-synthetic-biology-paper.md` as a new creation target in the papers-agent (#8) 11-paper expansion (high priority)
 - Fix _registry.json path to `papers/n6-synthetic-biology-paper.md` (delegated to agent)
 
-### 3-3. `n6shared/convergence/n6-architecture.json`
+### 3-3. `canonshared/convergence/canon.json`
 
 `PRODUCTS_118` = "118/125 products UFO-10" ossified. Actual products measurement = 164/173 (see recent products.json audit report).
 

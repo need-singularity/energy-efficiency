@@ -1,5 +1,5 @@
 {
-  "schema": "n6-architecture/n6_measurement_boundary_manifest/1",
+  "schema": "canon/n6_measurement_boundary_manifest/1",
   "ts": "2026-04-24T08:02:19Z",
   "engine_version": "0.44.0",
   "manifest_path": "config/measurement_boundary.json",

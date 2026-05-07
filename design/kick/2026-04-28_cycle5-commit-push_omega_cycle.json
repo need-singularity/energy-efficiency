@@ -2,9 +2,9 @@
   "schema": "anima/kick/omega_cycle/v1",
   "kick_id": "cycle5-commit-push-2026-04-28",
   "ts": "2026-04-28T07:29:34Z",
-  "mission": "cycle 6 / fan-out 1/5 — n6-architecture cycle 5 산출물 monolithic commit + push origin/main",
+  "mission": "cycle 6 / fan-out 1/5 — canon cycle 5 산출물 monolithic commit + push origin/main",
   "parent_kick": "cycle 5 fan-out 1-5 (lean4-ax1-commit / lean4-w3-ax2 / mvp-w3 / readme-fix2 / falsifier-measurement)",
-  "scope": "n6-architecture only — multi-repo fan-out 1/5 of 5",
+  "scope": "canon only — multi-repo fan-out 1/5 of 5",
   "predecessor_commit": "75d753b5da82f8c1ce879a3d93df92987214c781",
   "files_staged_cycle5": [
     "lean4-n6/N6/MechVerif/AX2.lean",
@@ -23,7 +23,7 @@
   ],
   "kick_brief_vs_actual_state_drift": {
     "brief_claim": "AX2.lean 신규 353 lines + README.md FIX-2 + README.md.sealed.hash + state/falsifier_monitor/audit.jsonl +31 row",
-    "actual_state": "README.md / README.md.sealed.hash / state/falsifier_monitor/audit.jsonl already absorbed in predecessor commit 75d753b5 (chore: bulk-commit n6-architecture background process accumulation, 2026-04-28 16:20 KST). AX2.lean was initial 332 lines in 75d753b5; cycle-5 delta is +45 lines (opaque IsMKProperClass/ClosedUnderHEXAComp predicates + 2 explicit object-level sorry).",
+    "actual_state": "README.md / README.md.sealed.hash / state/falsifier_monitor/audit.jsonl already absorbed in predecessor commit 75d753b5 (chore: bulk-commit canon background process accumulation, 2026-04-28 16:20 KST). AX2.lean was initial 332 lines in 75d753b5; cycle-5 delta is +45 lines (opaque IsMKProperClass/ClosedUnderHEXAComp predicates + 2 explicit object-level sorry).",
     "raw_91_c3_honest": "brief over-counted scope; actual cycle-5 commit is incremental opaque-bridge sorry refactor + 4 new kick witnesses + 2 new W3 proposals + 1 registry row. README/falsifier work was in predecessor bulk-commit."
   },
   "secrets_scan": {

@@ -52,25 +52,25 @@
 
   "edits": [
     {
-      "file": "/Users/ghost/core/n6-architecture/README.md",
+      "file": "/Users/ghost/core/canon/README.md",
       "line": 375,
       "section": "Biology — HEXA-WEAVE row",
       "appended_to_core_cell": "Cross-link: see also [HEXA-NANOBOT](#-frontier-discoveries-next-gen-rt-sc-tech) (molecular nano-agent peer) · [Synthetic Biology](#-tech--industry) (Cas/codon write-side peer) · [AI/ML](#-ai--ml) (AlphaFold 3 read-side counterpart)."
     },
     {
-      "file": "/Users/ghost/core/n6-architecture/README.md",
+      "file": "/Users/ghost/core/canon/README.md",
       "line": 491,
       "section": "Frontier — HEXA-NANOBOT row",
       "appended_to_core_cell": "Cross-link: see also [HEXA-WEAVE](#-biology) (Biology — molecular design write-side peer)."
     },
     {
-      "file": "/Users/ghost/core/n6-architecture/README.md",
+      "file": "/Users/ghost/core/canon/README.md",
       "line": 554,
       "section": "Tech & Industry — Synthetic Biology row",
       "appended_to_core_cell": "Cross-link: see also [HEXA-WEAVE](#-biology) (Biology — multi-strand molecular composition peer)."
     },
     {
-      "file": "/Users/ghost/core/n6-architecture/README.md",
+      "file": "/Users/ghost/core/canon/README.md",
       "line": 182,
       "section": "AI/ML — Next-Gen AI 8-Paradigm Blowup row",
       "appended_to_core_cell": "Cross-link: medical paradigm — see also [HEXA-WEAVE](#-biology) (Biology — n6 write-side counterpart to AlphaFold 3 / IsoDDE read-side AI)."
@@ -120,8 +120,8 @@
   ],
 
   "deliverables": {
-    "files_modified": ["/Users/ghost/core/n6-architecture/README.md"],
-    "files_updated_by_tool": ["/Users/ghost/core/n6-architecture/README.md.sealed.hash"],
+    "files_modified": ["/Users/ghost/core/canon/README.md"],
+    "files_updated_by_tool": ["/Users/ghost/core/canon/README.md.sealed.hash"],
     "cross_links_added": 4,
     "cross_link_directions": "1 outgoing from Biology HEXA-WEAVE (3 targets in single cell) + 3 incoming back-links from HEXA-NANOBOT/Synbio/AI-8paradigm to Biology",
     "bidirectional_pairs": 3,

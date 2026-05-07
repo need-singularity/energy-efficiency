@@ -130,7 +130,7 @@ rung_template_cmd: |
   WALL=$((T1 - T0))
   kill $POLLER_PID 2>/dev/null || true
   # Verdict
-  python ~/core/n6-architecture/scripts/w5_verdict.py \
+  python ~/core/canon/scripts/w5_verdict.py \
     --pred $RUNG_DIR/predictions/$(basename $RUNG_DIR/predictions/*.pdb | head -1) \
     --ref $RUNG_DIR/ref.pdb \
     --fasta $RUNG_DIR/input.fasta \
@@ -138,7 +138,7 @@ rung_template_cmd: |
     --rmsd-max ${RMSD_MAX} --tm-min ${TM_MIN} --vram-max-mb ${VRAM_MAX_MB} \
     --inference-rc $RC --wall-seconds $WALL --wall-max-seconds ${WALL_MAX_S} \
     --out $RUNG_DIR/verdict.json \
-    --audit-jsonl ~/core/n6-architecture/state/audit/vram_ladder_events.jsonl
+    --audit-jsonl ~/core/canon/state/audit/vram_ladder_events.jsonl
   VERDICT_RC=$?
   if [ $VERDICT_RC -eq 0 ]; then
     echo "__VRAM_LADDER_RUNG_${RUNG_ID}_RESULT__ PASS"

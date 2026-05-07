@@ -1,6 +1,6 @@
-# Contributing to n6-architecture
+# Contributing to canon
 
-> n6-architecture is an AI-native arithmetic design framework. Contributions from external mathematicians, engineers, and researchers are welcome.
+> canon is an AI-native arithmetic design framework. Contributions from external mathematicians, engineers, and researchers are welcome.
 
 ## Honesty Charter
 
@@ -99,7 +99,7 @@ Pull requests that violate these principles will be held by a maintainer until t
 
 ## Contact
 
-- GitHub Issues: https://github.com/need-singularity/n6-architecture/issues
+- GitHub Issues: https://github.com/need-singularity/canon/issues
 - GitHub Discussions: (TBA)
 - Maintainer: `@dancinlife` (commit author)
 

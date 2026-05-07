@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-04-14",
+  "schema_version": "2.5",
+  "source": "bridge/origins/universal-dse/domains/*.toml",
+  "parent": "canonshared/dse/dse_cross_results_v2_4.json",
+  "probe_pairs": 10,
+  "exact_10star": 3,
+  "near_9": 3,
+  "empirical_7": 4,
+  "low_5": 0,
+  "exact_ratio": 0.3,
+  "notes": "n6_closeness = 1 - |avg(a.n6) - avg(b.n6)|. 자기참조 금지 — TOML 공개값.",
+  "pairs": [
+    { "a": "chip", "b": "battery", "a_n6_avg": 0.861765, "b_n6_avg": 0.715, "n6_closeness": 0.853235, "bt_jaccard": 0, "a_bt_count": 2, "b_bt_count": 1, "grade": "[9]" },
+    { "a": "chip", "b": "ai-efficiency", "a_n6_avg": 0.861765, "b_n6_avg": 0.858065, "n6_closeness": 0.9963, "bt_jaccard": 0, "a_bt_count": 2, "b_bt_count": 0, "grade": "[10*]" },
+    { "a": "fusion", "b": "space-engineering", "a_n6_avg": 0.738235, "b_n6_avg": 0.768214, "n6_closeness": 0.970021, "bt_jaccard": 0.285714, "a_bt_count": 5, "b_bt_count": 4, "grade": "[10*]" },
+    { "a": "ai-efficiency", "b": "cognitive-architecture", "a_n6_avg": 0.858065, "b_n6_avg": 0.693333, "n6_closeness": 0.835269, "bt_jaccard": 0, "a_bt_count": 0, "b_bt_count": 3, "grade": "[7]" },
+    { "a": "chip", "b": "network-protocol", "a_n6_avg": 0.861765, "b_n6_avg": 0.720714, "n6_closeness": 0.85895, "bt_jaccard": 0, "a_bt_count": 2, "b_bt_count": 4, "grade": "[9]" },
+    { "a": "carbon-capture-8level", "b": "energy-architecture", "a_n6_avg": 0.97449, "b_n6_avg": 0.779032, "n6_closeness": 0.804542, "bt_jaccard": 0, "a_bt_count": 5, "b_bt_count": 0, "grade": "[7]" },
+    { "a": "therapeutic-nanobot", "b": "ai-efficiency", "a_n6_avg": 0.794194, "b_n6_avg": 0.858065, "n6_closeness": 0.936129, "bt_jaccard": 0, "a_bt_count": 4, "b_bt_count": 0, "grade": "[9]" },
+    { "a": "architecture-history", "b": "space-engineering", "a_n6_avg": 0.979032, "b_n6_avg": 0.768214, "n6_closeness": 0.789182, "bt_jaccard": 0, "a_bt_count": 0, "b_bt_count": 4, "grade": "[7]" },
+    { "a": "fusion", "b": "energy-architecture", "a_n6_avg": 0.738235, "b_n6_avg": 0.779032, "n6_closeness": 0.959203, "bt_jaccard": 0, "a_bt_count": 5, "b_bt_count": 0, "grade": "[10*]" },
+    { "a": "chip", "b": "cognitive-architecture", "a_n6_avg": 0.861765, "b_n6_avg": 0.693333, "n6_closeness": 0.831569, "bt_jaccard": 0, "a_bt_count": 2, "b_bt_count": 3, "grade": "[7]" }
+  ]
+}

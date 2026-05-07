@@ -122,11 +122,11 @@
 
   "deliverables": {
     "files_created": [
-      "/Users/ghost/core/n6-architecture/proposals/hexa_weave_mvp_w5_alt_paths_executed_2026_04_28.md",
-      "/Users/ghost/core/n6-architecture/design/kick/2026-04-28_hexa-weave-mvp-w5-alt-paths_omega_cycle.json"
+      "/Users/ghost/core/canon/proposals/hexa_weave_mvp_w5_alt_paths_executed_2026_04_28.md",
+      "/Users/ghost/core/canon/design/kick/2026-04-28_hexa-weave-mvp-w5-alt-paths_omega_cycle.json"
     ],
     "files_modified": [
-      "/Users/ghost/core/n6-architecture/lean4-n6/N6/MechVerif/AX2.lean (§8 docstring block append; comment-only)"
+      "/Users/ghost/core/canon/lean4-n6/N6/MechVerif/AX2.lean (§8 docstring block append; comment-only)"
     ],
     "destructive_ops_executed": 0,
     "http_calls_executed": 2,

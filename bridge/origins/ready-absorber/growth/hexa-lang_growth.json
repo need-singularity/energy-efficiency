@@ -34,7 +34,7 @@
     {
       "timestamp": "2026-04-04T17:07:32.637875",
       "source_project": "hexa-lang",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "path": "docs/book/ch04-hardware.md",
       "type": "only_in_ready",
       "value_grade": "critical",
@@ -48,7 +48,7 @@
     {
       "timestamp": "2026-04-04T17:07:32.638367",
       "source_project": "hexa-lang",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "path": "docs/book/ch05-stdlib.md",
       "type": "only_in_ready",
       "value_grade": "critical",
@@ -76,7 +76,7 @@
     {
       "timestamp": "2026-04-04T17:07:32.639653",
       "source_project": "hexa-lang",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "path": "docs/hexa-ir-dse-recheck.md",
       "type": "only_in_ready",
       "value_grade": "critical",
@@ -90,7 +90,7 @@
     {
       "timestamp": "2026-04-04T17:07:32.640383",
       "source_project": "hexa-lang",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "path": "docs/nexus-scan-report.md",
       "type": "only_in_ready",
       "value_grade": "high",
@@ -104,7 +104,7 @@
     {
       "timestamp": "2026-04-04T17:07:32.640974",
       "source_project": "hexa-lang",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "path": "docs/reference.md",
       "type": "only_in_ready",
       "value_grade": "critical",

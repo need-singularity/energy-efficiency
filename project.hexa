@@ -15,7 +15,7 @@ struct ProjectMeta {
 
 fn project_meta() -> ProjectMeta {
     return ProjectMeta {
-        name: "n6-architecture",
+        name: "canon",
         hexa_lang: "/Users/ghost/Dev/hexa-lang",
         ssot_attrs: [
             "dispatch",

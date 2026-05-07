@@ -57,14 +57,14 @@
 
   "user_w5_dispatch_readiness": {
     "before_cycle_15": "Step 6 and Step 8 cmd referenced 2 scripts that did NOT exist on disk -> first invocation of `hexa run tool/hexa_weave_w5_setup.hexa` would fail at Step 6 (rcsb script not found) or Step 8 (verdict script not found)",
-    "after_cycle_15": "All scripts present in n6-architecture/scripts/ and n6-architecture/tool/. Step 6 cmd path is ~/core/hexa-weave/scripts/rcsb_cluster_split_fetch.py (per cycle 14 .hexa) — user must symlink or copy from n6-architecture/scripts/ during Step 1 mkdir; or update Step 6 to reference ~/core/n6-architecture/scripts/ directly",
+    "after_cycle_15": "All scripts present in canon/scripts/ and canon/tool/. Step 6 cmd path is ~/core/hexa-weave/scripts/rcsb_cluster_split_fetch.py (per cycle 14 .hexa) — user must symlink or copy from canon/scripts/ during Step 1 mkdir; or update Step 6 to reference ~/core/canon/scripts/ directly",
     "one_command_dispatch_blocked_by": [
-      "Step 6 path mismatch: cycle 14 .hexa references ~/core/hexa-weave/scripts/rcsb_cluster_split_fetch.py but cycle 15 authors at ~/core/n6-architecture/scripts/. Resolution: either (a) Step 1 includes `cp ~/core/n6-architecture/scripts/{rcsb_cluster_split_fetch,w5_verdict}.py ~/core/hexa-weave/scripts/`, or (b) cycle 16 patches tool/hexa_weave_w5_setup.hexa Step 6+8 cmd to reference n6-architecture path",
+      "Step 6 path mismatch: cycle 14 .hexa references ~/core/hexa-weave/scripts/rcsb_cluster_split_fetch.py but cycle 15 authors at ~/core/canon/scripts/. Resolution: either (a) Step 1 includes `cp ~/core/canon/scripts/{rcsb_cluster_split_fetch,w5_verdict}.py ~/core/hexa-weave/scripts/`, or (b) cycle 16 patches tool/hexa_weave_w5_setup.hexa Step 6+8 cmd to reference canon path",
       "TMalign binary install (apt install / source compile) — outside cycle 15 script scope",
       "biopython install — bundled in Step 3 11-pkg list",
       "user must dispatch on ubu1 (no SSH for agent)"
     ],
-    "verdict": "after-cycle-15 single-command dispatch is **conditionally** ready: requires either Step 1 cp-from-n6-architecture (recommended) OR cycle 16 .hexa path patch. raw 91 C3 honest: agent did not edit cycle-14 .hexa to repoint paths because raw 142 D2 — minimal scope this cycle"
+    "verdict": "after-cycle-15 single-command dispatch is **conditionally** ready: requires either Step 1 cp-from-canon (recommended) OR cycle 16 .hexa path patch. raw 91 C3 honest: agent did not edit cycle-14 .hexa to repoint paths because raw 142 D2 — minimal scope this cycle"
   },
 
   "compliance": {
@@ -84,7 +84,7 @@
   },
 
   "concerns_raised": [
-    "Step 6/8 path mismatch between cycle-14 .hexa (~/core/hexa-weave/scripts/) and cycle-15 actual location (~/core/n6-architecture/scripts/) — user must resolve via cp at Step 1 or cycle 16 .hexa edit",
+    "Step 6/8 path mismatch between cycle-14 .hexa (~/core/hexa-weave/scripts/) and cycle-15 actual location (~/core/canon/scripts/) — user must resolve via cp at Step 1 or cycle 16 .hexa edit",
     "TMalign binary not installed by W5 setup; w5_verdict.py emits tm-binary-missing on absence (TM gate fails) — user must `apt install tmalign` or source-build",
     "RCSB cluster split list is the cycle-10 alt-2 emulation; may need re-validation against current RCSB (PDB IDs typically stable)",
     "L4 350aa rung FASTA is TBD until cycle 16+ post-W6 fold-target selection",
@@ -93,7 +93,7 @@
 
   "next_cycle_suggested_actions": [
     "cycle 16 author requirements.lock spec (25-pkg deterministic pin) per cycle-14 §5",
-    "cycle 16 patch tool/hexa_weave_w5_setup.hexa Step 6/8 cmd to reference n6-architecture path OR add Step 1.5 cp scripts (raw 142 D2 path resolution)",
+    "cycle 16 patch tool/hexa_weave_w5_setup.hexa Step 6/8 cmd to reference canon path OR add Step 1.5 cp scripts (raw 142 D2 path resolution)",
     "cycle 16 author L4 350aa target FASTA selection (cycle 15+1 dependency)",
     "after user dispatch + Step 8 PASS: empirical absorption per cycle-14 §next_cycle_suggested_actions"
   ],

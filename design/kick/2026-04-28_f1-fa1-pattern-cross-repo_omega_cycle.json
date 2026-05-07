@@ -3,7 +3,7 @@
   "ts": "2026-04-28T17:30:00Z",
   "title": "F-A1-PATTERN cross-repo printenv→env_var sweep (Task A follow-up)",
   "task_label": "F1-A-followup F-A1-PATTERN",
-  "scope": "Apply the n6shared/sync-readme A.1 fix pattern (env_var(HOME) primary + exec(\"echo $HOME\") fallback) to 12 sites in hexa-lang/example/ + hexa-lang/self/grammar_autofix.hexa that still call exec(\"printenv HOME\") — busybox container without printenv applet returned empty path silently.",
+  "scope": "Apply the canonshared/sync-readme A.1 fix pattern (env_var(HOME) primary + exec(\"echo $HOME\") fallback) to 12 sites in hexa-lang/example/ + hexa-lang/self/grammar_autofix.hexa that still call exec(\"printenv HOME\") — busybox container without printenv applet returned empty path silently.",
 
   "parent_witness": {
     "id": "design/kick/2026-04-28_hexa-runtime-pipeline-fix_omega_cycle.json",
@@ -15,7 +15,7 @@
     "command": "grep -rn 'exec(\"printenv' ~/core/hexa-lang/",
     "user_brief_count": 13,
     "actually_found": 12,
-    "discrepancy_note": "Brief said 12+1=13; grep finds 12 (11 in example/ + 1 in self/grammar_autofix.hexa). The 13th may have been preemptively counted including the parent A.1 patch already done in n6-architecture, OR a stale count from prior enumeration. No additional sites discovered under wider grep ('printenv' with no exec prefix).",
+    "discrepancy_note": "Brief said 12+1=13; grep finds 12 (11 in example/ + 1 in self/grammar_autofix.hexa). The 13th may have been preemptively counted including the parent A.1 patch already done in canon, OR a stale count from prior enumeration. No additional sites discovered under wider grep ('printenv' with no exec prefix).",
     "sites": [
       {"file": "example/auto_record_test.hexa", "line": 15, "context": "let log_path = exec(\"printenv HOME\") + \"/Dev/nexus/discovery_log.jsonl\""},
       {"file": "example/growth_tick_test.hexa", "line": 8, "context": "fn preflight_check: let home = exec(\"printenv HOME\")"},
@@ -34,7 +34,7 @@
   },
 
   "patch_pattern": {
-    "rationale": "Use the proven n6shared/sync-readme.hexa block-statement pattern. Initial attempt with try-as-expression (try { env_var(...) } catch _ { ... }) failed parse — hexa parser rejects try as RHS expression with the catch _ pattern (Parse error at column 77 'unexpected token RBrace'). Block-statement pattern parses cleanly across all 11 files.",
+    "rationale": "Use the proven canonshared/sync-readme.hexa block-statement pattern. Initial attempt with try-as-expression (try { env_var(...) } catch _ { ... }) failed parse — hexa parser rejects try as RHS expression with the catch _ pattern (Parse error at column 77 'unexpected token RBrace'). Block-statement pattern parses cleanly across all 11 files.",
     "template": "let mut H = \"\"\ntry {\n    let h = env_var(\"HOME\")\n    if type_of(h) == \"string\" { H = to_string(h) }\n} catch err { H = \"\" }\nif len(H) == 0 { H = exec(\"echo \\\"$HOME\\\"\").trim() }",
     "semantics": "(1) env_var goes through hexa_env_var → getenv() at C runtime, container-independent. (2) echo \"$HOME\" fallback uses POSIX shell builtin, available in busybox/dash/bash without external binaries. (3) type_of guard handles env_var returning non-string (nil) gracefully. (4) catch err preserves stack-clean state on hexa runtime exception."
   },

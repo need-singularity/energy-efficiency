@@ -5,7 +5,7 @@ requires: []
 ---
 # [CANONICAL v2] Ultimate Quantum Error Correction (HEXA-QUANTUM-ERROR-CO) — n=6 Arithmetic Coordinate Mapping
 
-> **Author**: Park Minwoo (n6-architecture)
+> **Author**: Park Minwoo (canon)
 > **Category**: quantum-error-correction — n=6 arithmetic seed paper
 > **Version**: v2 (2026-04-14 canonical)
 > **Prior BT**: BT-195, BT-91, BT-92, BT-114
@@ -36,7 +36,7 @@ sopfr(6)=5 as a number-theoretic constant cluster, which is structurally consist
 | Design-search space | Months of manual search | **n·1 minute** (DSE automatic) | Search time shortened by σ·τ=48× |
 | Design parameter count | Tens~hundreds of free vars | **σ=12 fixed axes** | Decision τ=4× finer |
 | Verifiability | Case-based heuristics | **10-subsection automated verification-draft** | Reproducibility 100% |
-| Derived design drafts | 1~2 drafts | **Pareto n=6 top 6** | Choices n=6× |
+| Derived design drafts | 1~2 drafts | **Pareto top-K (data-driven)** | Choices Pareto-natural× |
 | Cross-domain capability | Separate projects | **atlas.n6 integrated node** | Reuse σ·τ=48× |
 | Honesty | Only success cases recorded | **MISS/FALSIFIER explicit** | Falsifiable |
 
@@ -129,10 +129,10 @@ Only the core number-theoretic functions σ(n), τ(n), φ(n), sopfr(n) are assum
 
 | Basic element | Role | Reference |
 |-----------|------|------|
-| σ(n) sum of divisors | OEIS A000203, σ(6)=12 | n6shared/rules/common.json |
-| τ(n) count of divisors | OEIS A000005, τ(6)=4 | n6shared/rules/common.json |
-| φ(n) smallest prime factor | φ(6)=2 | n6shared/rules/common.json |
-| sopfr(n) sum of prime factors | OEIS A001414, sopfr(6)=5 | n6shared/rules/common.json |
+| σ(n) sum of divisors | OEIS A000203, σ(6)=12 | canonshared/rules/common.json |
+| τ(n) count of divisors | OEIS A000005, τ(6)=4 | canonshared/rules/common.json |
+| φ(n) smallest prime factor | φ(6)=2 | canonshared/rules/common.json |
+| sopfr(n) sum of prime factors | OEIS A001414, sopfr(6)=5 | canonshared/rules/common.json |
 
 ## §4 STRUCT (system structure) — n=6 Architecture
 
@@ -345,7 +345,7 @@ Prerequisites: §3 REQUIRES all domains reach level-10. χ²(49df) < 30, p > 0.9
 <summary>Mk.IV — 2040~2045 cross-verification</summary>
 
 Achieves σ·τ=48 cross-predicted matches with other domains (architecture/chemistry/medicine etc.).
-Explicit falsification conditions + 0 FALSIFIER experiments found. Pareto top-6 configurations demonstrated.
+Explicit falsification conditions + 0 FALSIFIER experiments found. Pareto top-K (data-driven) configurations demonstrated.
 
 </details>
 

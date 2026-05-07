@@ -64,7 +64,7 @@ Cumulative Bernoulli-independent theorems: **16 -> 18 confirmed** (+2, +1 condit
 
 ## Rejected-candidate details
 
-### Candidate 2. Egyptian (2,3,6) -> rearrangement of perfect number 6 (disguised independence)
+### Candidate 2. Egyptian (2,3,6) -> rearrangement of arithmetic canon (disguised independence)
 
 - 1/2 + 1/3 + 1/6 = (3+2+1)/6 = 6/6 = 1. Numerators {1,2,3} = proper divisors of 6.
 - **Equivalent transformations**: sigma(6) - 6 = 6 (perfect number) <=> sum(proper divisors)/6 = 1 <=> sum(1/proper divisor reciprocal) = 1.

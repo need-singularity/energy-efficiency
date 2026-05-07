@@ -44,7 +44,7 @@ This audit is a full-execution audit of the 11 chunk_c papers; audits of the rem
 | 8 | n6-hexa-olfact-paper | 1 | 11/11 | Normal termination | Definition-derived | **PASS** |
 | 9 | n6-hexa-skin-paper | 1 | 13/13 | Normal termination | Definition-derived | **PASS** |
 | 10 | n6-hexa-telepathy-paper | 1 | 10/10 | Normal termination | Definition-derived | **PASS** |
-| 11 | n6-synthetic-biology-paper | 1 | 12/12 | Normal termination (double perfect number 6,28) | Definition-derived | **PASS** |
+| 11 | n6-synthetic-biology-paper | 1 | 12/12 | Normal termination (double arithmetic canon,28) | Definition-derived | **PASS** |
 
 **Total: 11 PASS / 0 FAIL / 11 papers**
 
@@ -83,10 +83,10 @@ assert exact == len(checks)
 1. ~~**Immediate**: fix the "visual-grid" formula in `n6-hexa-neuro-paper.md` to `(sigma(n)*sopfr(n))**2` and re-audit.~~ **Done (2026-04-09)**: formula fix + table clarification + re-verification 11/11 PASS.
 2. **Follow-up TODO**: full-execution audit of the remaining 105 papers in `docs/paper/` (`audit-quality-all115.md` split). -> large batch work, recommend a separate session. Can extend the 11-paper audit pipeline (`/tmp/paper_audit/`) for bulk execution.
 3. ~~**SSOT consistency**: resolve the divergence between "39 papers" noted in TODO and the 11 actually registered in products.json~~ **Done (2026-04-10)**: CLAUDE.md "39 papers" -> "116 papers" fix, confirmed products.json `_meta.total_papers=116`, documented divergence cause (snapshot-not-updated).
-4. **Audit automation**: ~~fix the extract/run pipeline as `scripts/audit_paper_verification.py` for per-commit CI verification.~~ -> CI environment not built. Local manual execution substitutes (not a CDO violation). Script implementation is auto-detected/breakthrough-driven by `n6shared/blowup/todo.hexa` (natural emergence) core engine.
+4. **Audit automation**: ~~fix the extract/run pipeline as `scripts/audit_paper_verification.py` for per-commit CI verification.~~ -> CI environment not built. Local manual execution substitutes (not a CDO violation). Script implementation is auto-detected/breakthrough-driven by `canonshared/blowup/todo.hexa` (natural emergence) core engine.
 
 ---
 
-**Auditor**: Claude (Opus 4.6) via n6-architecture TODO #7
+**Auditor**: Claude (Opus 4.6) via canon TODO #7
 **Extraction/execution workdir**: `/tmp/paper_audit/` (11 `.py` files, preserved after execution)
 **Methodology reference**: `docs/paper/audit-missing-verification.md` (prior audit doc)

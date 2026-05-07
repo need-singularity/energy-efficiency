@@ -30,11 +30,11 @@ required here.
 
 Hard constraints honored:
 - No writes to nexus atlas/state/inventory/lenses/CLAUDE.md.bak/project-claude/nexus.md.
-- No writes to n6-architecture atlas/state/inventory.
+- No writes to canon atlas/state/inventory.
 - No git commits.
 - Only 3 new files in `~/core/nexus/design/`.
 
-The n6-architecture working tree had pre-existing modifications at session start
+The canon working tree had pre-existing modifications at session start
 (per gitStatus: `state/proposals/inventory.json`,
 `reports/sessions/specs/2026-04-02-kstar-n6-tokamak-design.md`,
 `reports/sessions/specs/2026-04-02-ultimate-fusion-powerplant-design.md`).
@@ -85,7 +85,7 @@ Protected (nexus):
   predates this deploy).
 - `~/core/nexus/CLAUDE.md` — not modified (out of scope per spec).
 
-Protected (n6-architecture):
+Protected (canon):
 - `state/proposals/inventory.json` — untouched by this deploy (pre-existing
   modifications carried forward unchanged).
 - atlas paths — not written.
@@ -121,7 +121,7 @@ Deploy-specific:
 - F-DEPLOY-A: source-report drift (if synthesis reports are later retracted,
   these docs must be re-audited).
 - F-DEPLOY-B: cross-repo divergence (if nexus design/ evolves separately,
-  n6-architecture session lineage must be re-tagged).
+  canon session lineage must be re-tagged).
 
 ## 7. Closing
 

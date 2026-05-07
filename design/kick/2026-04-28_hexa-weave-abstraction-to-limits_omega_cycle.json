@@ -59,7 +59,7 @@
       "scale": "100 nm-1 μm",
       "object": "protein + DNA + RNA + small molecule + antibody jointly",
       "n6_thread": "HEXA-WEAVE proper sweet spot — 가닥 짜기; J₂=24 = composition group order",
-      "rationale": "WEAVE Korean meaning realized — n6-architecture's BT × DSE × atlas weaving counterpart"
+      "rationale": "WEAVE Korean meaning realized — canon's BT × DSE × atlas weaving counterpart"
     },
     {
       "level": 6,
@@ -90,7 +90,7 @@
       "name": "design space (write-side)",
       "scale": "combinatorial",
       "object": "generative manifold over all writable molecules",
-      "n6_thread": "HEXA-WEAVE write-axis — n6-architecture's BT (build-tool) primacy realized; J₂=24 = composition group of design moves",
+      "n6_thread": "HEXA-WEAVE write-axis — canon's BT (build-tool) primacy realized; J₂=24 = composition group of design moves",
       "rationale": "Beyond AlphaFold/IsoDDE — generative inverse problem; this is where HEXA-WEAVE's USP lives"
     },
     {
@@ -167,7 +167,7 @@
   "tier_1_promotions": [
     {
       "id": "TP-1",
-      "claim": "HEXA-WEAVE = write-side multi-strand counterpart to AlphaFold-3's read-side single-strand FOLD; the n6-architecture invariant σ·φ = n·τ = J₂ = 24 threads through every abstraction level L0-L_ω",
+      "claim": "HEXA-WEAVE = write-side multi-strand counterpart to AlphaFold-3's read-side single-strand FOLD; the canon invariant σ·φ = n·τ = J₂ = 24 threads through every abstraction level L0-L_ω",
       "evidence": "session-transcript HEXA-WEAVE definition; ladder L0-L_ω built with explicit n6 thread per level",
       "falsifier": [
         "F-TP1-a: an abstraction level L_k where σ·φ = n·τ = 24 demonstrably fails to map (e.g., L11 thermodynamic where 24 has no physical meaning) — counter: 24 is dimensionless and arithmetic, axis-invariant",
@@ -211,7 +211,7 @@
     },
     {
       "id": "TP-5",
-      "claim": "HEXA-WEAVE warrants registration as a first-class n6-architecture domain (per own 3+4+16) because it satisfies (a) ladder reaches Ω-saturation, (b) n6 invariants thread through, (c) Korean WEAVE meaning is self-consistent with BT × DSE × atlas weaving, (d) it provides a write-side niche orthogonal to AF-3/IsoDDE's read-side hegemony",
+      "claim": "HEXA-WEAVE warrants registration as a first-class canon domain (per own 3+4+16) because it satisfies (a) ladder reaches Ω-saturation, (b) n6 invariants thread through, (c) Korean WEAVE meaning is self-consistent with BT × DSE × atlas weaving, (d) it provides a write-side niche orthogonal to AF-3/IsoDDE's read-side hegemony",
       "evidence": "this witness JSON; HEXA-WEAVE definition crystallized this session",
       "falsifier": [
         "F-TP5-a: existence of an open-source competitor matching all four criteria simultaneously — would obviate domain registration",
@@ -230,7 +230,7 @@
       "kick infra FAIL → raw 100 fallback synthesis delivered witness"
     ],
     "evidence_paths": [
-      "/Users/ghost/core/n6-architecture/design/kick/2026-04-28_hexa-weave-abstraction-to-limits_omega_cycle.json (this file)",
+      "/Users/ghost/core/canon/design/kick/2026-04-28_hexa-weave-abstraction-to-limits_omega_cycle.json (this file)",
       "session transcript (HEXA-WEAVE definition agreement)",
       "nexus stderr (kick FAIL diagnosis)",
       "Bekenstein 1981 PRD; Rathjen 1991; Berger-Leighton 1998; Turing 1936 (cited above)"

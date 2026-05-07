@@ -132,10 +132,10 @@
       "biology/_index.json bumped 1.1.0 -> 1.2.0; top-level domains/_index.json bumped 1.0.6 -> 1.0.8 (absorbs the cycle 13 fan-out 2/5 hexa-nanobot SSOT updates that had not yet been written to disk plus this cycle 15 fan-out 3/3 hexa-ribozyme update)"
     ],
     "evidence_paths": [
-      "/Users/ghost/core/n6-architecture/design/kick/2026-04-28_hexa-ribozyme-registration-cycle15_omega_cycle.json (this file)",
-      "/Users/ghost/core/n6-architecture/domains/biology/hexa-ribozyme/hexa-ribozyme.md (15-section body)",
-      "/Users/ghost/core/n6-architecture/domains/biology/_index.json (sub-SSOT updated 1.0.0 -> 1.2.0; absorbs both hexa-nanobot cycle 13/2-of-5 and hexa-ribozyme cycle 15/3-of-3)",
-      "/Users/ghost/core/n6-architecture/domains/_index.json (top-level SSOT updated 1.0.6 -> 1.0.8)"
+      "/Users/ghost/core/canon/design/kick/2026-04-28_hexa-ribozyme-registration-cycle15_omega_cycle.json (this file)",
+      "/Users/ghost/core/canon/domains/biology/hexa-ribozyme/hexa-ribozyme.md (15-section body)",
+      "/Users/ghost/core/canon/domains/biology/_index.json (sub-SSOT updated 1.0.0 -> 1.2.0; absorbs both hexa-nanobot cycle 13/2-of-5 and hexa-ribozyme cycle 15/3-of-3)",
+      "/Users/ghost/core/canon/domains/_index.json (top-level SSOT updated 1.0.6 -> 1.0.8)"
     ],
     "limits": [
       "registration verdict is THEORETICAL-ANALYTICAL: derived from genus-classification analysis of Cech 1982 / Symons 1981 / Wu-Lai 1989 / Steitz 1993 plus n6 invariant projection; NO empirical ribozyme MVP executed in this cycle",
@@ -200,7 +200,7 @@
     "honest_disclaimer": "estimate only; actual alien-grade reassessment deferred to next cycle metric-aggregator pass; raw 91 C3 not fabricated"
   },
   "report_summary": {
-    "witness_path": "/Users/ghost/core/n6-architecture/design/kick/2026-04-28_hexa-ribozyme-registration-cycle15_omega_cycle.json",
+    "witness_path": "/Users/ghost/core/canon/design/kick/2026-04-28_hexa-ribozyme-registration-cycle15_omega_cycle.json",
     "domain_registered": "biology/hexa-ribozyme",
     "sister_of": ["biology/hexa-weave", "biology/hexa-nanobot"],
     "verdict_tier": "APPROACH",

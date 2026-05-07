@@ -34,7 +34,7 @@ This is **navigation, not re-judgment**.
 ## sec 1 -- Session overview
 
 The 2026-04-25 omega-cycle session is the largest single-day omega-cycle
-expansion to date in `n6-architecture`. It runs the full omega-cycle
+expansion to date in `canon`. It runs the full omega-cycle
 4-axis audit (ladder L1..L_ω / Ω-saturation / atlas chain / closure
 ceiling) on each of the 7 Millennium BTs (541-547), generates a backward-
 chain synthesis, and then dispatches **F-MOLT-A** frame-shift molt

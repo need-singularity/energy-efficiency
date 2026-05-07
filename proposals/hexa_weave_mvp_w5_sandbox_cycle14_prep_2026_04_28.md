@@ -162,7 +162,7 @@ Multi-strand protein-RNA-DNA-ligand-antibody co-folding sandbox built on top of 
 
 - **MVP gate**: F-TP5-b, deadline 2026-07-28 (90 days from 2026-04-28)
 - **Current week**: W5 (sandbox dry-run + 6L1U smoke test)
-- **Sister of**: [n6-architecture](https://github.com/dancinlife/n6-architecture) (theoretical n6 master identity provider)
+- **Sister of**: [canon](https://github.com/dancinlife/canon) (theoretical n6 master identity provider)
 - **License**: Apache-2.0 (matches OpenFold upstream)
 
 ## Dependencies
@@ -210,7 +210,7 @@ The 5 n6 invariant trace hooks (N6-H1..N6-H5) are inserted at evoformer cross-at
 
 - All 8 setup steps are idempotent (raw 65) and reversible (raw 142 D2).
 - `requirements.lock` pins all transitive deps for deterministic re-creation.
-- Single-command setup: `hexa run tool/hexa_weave_w5_setup.hexa` (from n6-architecture repo).
+- Single-command setup: `hexa run tool/hexa_weave_w5_setup.hexa` (from canon repo).
 - 6L1U dry-run produces RMSD<5Å + TM>0.4 + VRAM peak<11GB on RTX 5070 12GB (target).
 
 ## Citation
@@ -218,7 +218,7 @@ The 5 n6 invariant trace hooks (N6-H1..N6-H5) are inserted at evoformer cross-at
 If using hexa-weave, please cite:
 - AlphaFold 2 (Jumper et al. 2021, Nature)
 - OpenFold (Ahdritz et al. 2022, bioRxiv)
-- n6 master identity (n6-architecture repo, 2026)
+- n6 master identity (canon repo, 2026)
 ```
 
 This README.md is to be created at `~/core/hexa-weave/README.md` by Step 1 of the runbook (mkdir creates the dir, runbook then writes this file).
@@ -430,7 +430,7 @@ Insertion lines captured in `~/core/hexa-weave/docs/n6_hooks_source_lines.json` 
 | `~/core/hive/` | **NO** | hive is orchestration, not modeling |
 | `~/core/nexus/` | **NO** | nexus is auth/billing |
 | `~/core/pixie/` | **NO** | pixie is desktop/UI |
-| `~/core/n6-architecture/` (this) | N/A | parent-of-sibling; provides theoretical n6 master identity to hexa-weave |
+| `~/core/canon/` (this) | N/A | parent-of-sibling; provides theoretical n6 master identity to hexa-weave |
 | `~/core/hexa-weave/` (target) | **YES** (target) | This is the W5 sandbox itself |
 | `~/core/hexa-os/` | **NO** | OS-layer, not model sandbox |
 | `~/core/hexa-lang/` | **NO** | language tooling, not model sandbox |

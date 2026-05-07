@@ -1,5 +1,5 @@
 {
-  "schema": "n6-architecture/n6_claim_purity/1",
+  "schema": "canon/n6_claim_purity/1",
   "ts": "2026-04-24T08:02:14Z",
   "engine_version": "0.44.0",
   "total_claims": 54,

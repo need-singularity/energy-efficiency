@@ -324,7 +324,7 @@ PASS 6 / PARTIAL 3 / FAIL 2 / total 11 (1 duplicate excluded)
 ## 6. Limitations of the audit itself
 
 - **Auditor independence**: this audit is also internal output of the
-  n6-architecture project. Not fully-external audit. Like the Red Team paper,
+  canon project. Not fully-external audit. Like the Red Team paper,
   **external reproduction** required.
 - **Additional literature coverage**: beyond the 5 (Albantakis IIT 4.0, Hohwy,
   Rosenthal, Graziano, England), Lamme recurrent processing, Baars-Franklin

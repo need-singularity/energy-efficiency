@@ -5,7 +5,7 @@ requires: []
 ---
 # [CANONICAL v2] Ultimate therapeutic nanobot (HEXA-THERAPEUTIC-NANO) — n=6 arithmetic coordinate mapping
 
-> **Author**: Minwoo Park (n6-architecture)
+> **Author**: Minwoo Park (canon)
 > **Category**: therapeutic-nanobot — n=6 arithmetic seed paper
 > **Version**: v2 (2026-04-14 canonical)
 > **Prior BT**: BT-404~413, BT-404, BT-413, BT-404, BT-85
@@ -39,7 +39,7 @@ n=6 arithmetic coordinate system onto the existing knowledge of therapeutic nano
 | Design search space | Manual search for months | **n·1 minute** (DSE automated) | Search time shortened by σ·τ=48× |
 | Design parameter count | Tens~hundreds of free variables | **σ=12 axes fixed** | Decision making τ=4× more precise |
 | Verifiability | Case-based heuristics | **10 sub-section auto-derivation** | Reproducibility 100% |
-| Derivative designs | 1~2 candidates | **Pareto n=6 top-6** | n=6× option count |
+| Derivative designs | 1~2 candidates | **Pareto top-K (data-driven)** | Pareto-natural option count |
 | Cross-domain reach | Separate project silos | **atlas.n6 unified node** | Reuse σ·τ=48× |
 | Honesty | Success cases only recorded | **MISS/FALSIFIER stated** | Refutation possible |
 
@@ -135,10 +135,10 @@ dependencies (`requires: []`). It only presumes the core number-theoretic functi
 
 | Foundation | Role | Reference |
 |-----------|------|-----------|
-| σ(n) divisor sum | OEIS A000203, σ(6)=12 | n6shared/rules/common.json |
-| τ(n) divisor count | OEIS A000005, τ(6)=4 | n6shared/rules/common.json |
-| φ(n) min prime factor | φ(6)=2 | n6shared/rules/common.json |
-| sopfr(n) sum of prime factors | OEIS A001414, sopfr(6)=5 | n6shared/rules/common.json |
+| σ(n) divisor sum | OEIS A000203, σ(6)=12 | canonshared/rules/common.json |
+| τ(n) divisor count | OEIS A000005, τ(6)=4 | canonshared/rules/common.json |
+| φ(n) min prime factor | φ(6)=2 | canonshared/rules/common.json |
+| sopfr(n) sum of prime factors | OEIS A001414, sopfr(6)=5 | canonshared/rules/common.json |
 
 ## §4 STRUCT (system structure) — n=6 Architecture
 
@@ -352,7 +352,7 @@ domains, full enrolment into atlas.n6. Precondition: all §3 REQUIRES domains re
 <summary>Mk.IV — 2040~2045 cross-validation</summary>
 
 σ·τ=48 matching cross-predictions with other domains (architecture / chemistry / medicine, etc.).
-Refutation conditions stated; 0 FALSIFIER experiments observed. Pareto top-6 realised.
+Refutation conditions stated; 0 FALSIFIER experiments observed. Pareto top-K (data-driven) realised.
 
 </details>
 

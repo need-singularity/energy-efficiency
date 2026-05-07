@@ -1,6 +1,6 @@
 > FORMAL P11-2 — Check of Hodge-conjecture K3·Calabi-Yau structure vs n=6 invariants / 2026-04-15
 >
-> Author: DSE-P11-2 / n6-architecture P11 (FORMAL axis)
+> Author: DSE-P11-2 / canon P11 (FORMAL axis)
 > Purpose: honestly adjudicate 4 candidate correspondences between the Mk.IV main theorem A (σ(6)·φ(6) = 6·τ(6) = 24) and numerical invariants around the Hodge conjecture
 > Rules: no self-reference, use only standard-textbook numerics from Griffiths-Harris / Voisin, English, EXACT/NEAR/PARTIAL/MISS distinction required
 > Context: breakout from FORMAL-axis P10 exhaustion (1 MISS + 1 PARTIAL, 0 EXACT) — K3 χ=24 is the EXACT candidate

@@ -23,7 +23,7 @@
 //     new rows added after 2026-04-28 cutover; lint is the enforcement).
 //
 // @tool(slug="atlas_metadata_lint", desc="lint atlas.n6 + atlas.append.* shards for raw 91 C3 metadata invariants — meta-closure ENUMERATION GAP audit (declared-vs-enumerated count vs ellipsis) + axis-K introduced_at sentinel/ISO validation (pre-axis-K | YYYY-MM-DD | YYYY-MM-DDTHH:MM:SS{Z|±HH:MM}) + leap-day calendar check + meta-closure quote-variant tolerance (B3/B4/B5 closed in v2)")
-// @usage(hexa /Users/ghost/core/n6-architecture/tool/atlas_metadata_lint.hexa [<file-or-dir>] [--all] [--severity warn|block] [--selftest])
+// @usage(hexa /Users/ghost/core/canon/tool/atlas_metadata_lint.hexa [<file-or-dir>] [--all] [--severity warn|block] [--selftest])
 // @omega-saturation-exempt("structural lint over a finite SSOT set; converges in O(N) per push; complementary to atlas_self_arch_axis_lint axis-I/J syntax lint — this tool covers content semantics")
 // @exit_codes(0=PASS or warn-only, 1=usage/io error, 2=block mode with violations or any FAIL fixture)
 //
@@ -110,7 +110,7 @@
 // EMISSIONS
 //   - stdout summary lines per scan
 //   - audit ledger JSONL append per raw 77 to
-//       /Users/ghost/core/n6-architecture/state/atlas_metadata_audit/audit.jsonl
+//       /Users/ghost/core/canon/state/atlas_metadata_audit/audit.jsonl
 //     each row:
 //       {"ts":"<ISO-8601>","agent_id":"atlas_metadata_lint",
 //        "atlas_path":"<path>","verdict":"PASS|WARN|FAIL",
@@ -649,7 +649,7 @@ fn _lint_corpus(paths: array) -> array {
 // ─── audit + emission ─────────────────────────────────────────────────
 
 fn _audit_dir() -> string {
-    return "/Users/ghost/core/n6-architecture/state/atlas_metadata_audit"
+    return "/Users/ghost/core/canon/state/atlas_metadata_audit"
 }
 
 fn _esc_json(s: string) -> string {
@@ -726,16 +726,16 @@ fn _emit_trailer(verdict: string, atlas_path: string, violations: array, infos: 
 // ─── target resolution ────────────────────────────────────────────────
 
 fn _list_atlas_default() -> array {
-    let listing = to_string(exec("ls /Users/ghost/core/n6-architecture/atlas/atlas.n6 2>/dev/null")).trim()
+    let listing = to_string(exec("ls /Users/ghost/core/canon/atlas/atlas.n6 2>/dev/null")).trim()
     if len(listing) == 0 { return [] }
     return [listing]
 }
 
 fn _list_atlas_all() -> array {
     let mut paths = []
-    let main = to_string(exec("ls /Users/ghost/core/n6-architecture/atlas/atlas.n6 2>/dev/null")).trim()
+    let main = to_string(exec("ls /Users/ghost/core/canon/atlas/atlas.n6 2>/dev/null")).trim()
     if len(main) > 0 { paths.push(main) }
-    let shards = to_string(exec("ls /Users/ghost/core/n6-architecture/atlas/_absorbed/*/atlas.append.*.n6 2>/dev/null")).trim()
+    let shards = to_string(exec("ls /Users/ghost/core/canon/atlas/_absorbed/*/atlas.append.*.n6 2>/dev/null")).trim()
     if len(shards) > 0 {
         let arr = split(shards, "\n")
         for s in arr { paths.push(s) }

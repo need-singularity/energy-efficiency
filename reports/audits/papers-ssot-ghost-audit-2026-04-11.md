@@ -5,7 +5,7 @@
 - Target SSOTs
   - `$N6_ARCH/papers/_registry.json` (declared `_meta.total_papers` = 139)
   - `$N6_ARCH/papers/` directory
-  - `$PAPERS/` external repos (tecs-l, n6-architecture, root)
+  - `$PAPERS/` external repos (tecs-l, canon, root)
   - `$NEXUS/shared/n6/docs/products.json` (40 sections / 204 products; some products' `links[].path` reference `docs/paper/n6-*-paper.md`)
 - Reference: `reports/audits/products-link-remap-2026-04-11.md` (prior Agent 4 paper MISS 116 items report)
 
@@ -19,7 +19,7 @@
 |---|---:|
 | `$N6_ARCH/papers/` | 13 |
 | `$PAPERS/tecs-l/` | 23 |
-| `$PAPERS/n6-architecture/` | 1 (`n6-millennium-problems-paper.md`) |
+| `$PAPERS/canon/` | 1 (`n6-millennium-problems-paper.md`) |
 | `$PAPERS/` root | 1 (`n6-hexa-neuro-bci-paper.md`) |
 | Union (de-duplicated by basename) | **38** |
 
@@ -103,7 +103,7 @@ All declared paths follow the `docs/paper/n6-*.md` pattern, but the actual files
 | `docs/paper/n6-unified-soc-paper.md` | `$PAPERS/tecs-l/n6-unified-soc-paper.md` | chip |
 | `papers/n6-synthetic-biology-paper.md` | `$N6_ARCH/papers/n6-synthetic-biology-paper.md` | tech-industry |
 
-Recommended action: a single migration script that updates `products.json` `links[].path` to the actual paths (or physically moves files to `n6-architecture/papers/` for unified paths).
+Recommended action: a single migration script that updates `products.json` `links[].path` to the actual paths (or physically moves files to `canon/papers/` for unified paths).
 
 ---
 
@@ -242,7 +242,7 @@ Recommended action: register a corresponding product in products.json for each p
 | File | Path |
 |---|---|
 | `n6-hexa-neuro-bci-paper.md` | `$PAPERS/n6-hexa-neuro-bci-paper.md` |
-| `n6-millennium-problems-paper.md` | `$PAPERS/n6-architecture/n6-millennium-problems-paper.md` |
+| `n6-millennium-problems-paper.md` | `$PAPERS/canon/n6-millennium-problems-paper.md` |
 | `n6-sota-ssm-paper.md` | `$N6_ARCH/papers/n6-sota-ssm-paper.md` |
 
 These 3 have no official references in `_registry.json` or `products.json`, so SSOT registration is required.
@@ -253,7 +253,7 @@ These 3 have no official references in `_registry.json` or `products.json`, so S
 
 | Category | Count | Action | Priority |
 |---|---:|---|:---:|
-| FOUND_ALT | 24 | Update products.json `links[].path` to actual paths (or migrate to n6-architecture/papers/) | **P0** |
+| FOUND_ALT | 24 | Update products.json `links[].path` to actual paths (or migrate to canon/papers/) | **P0** |
 | GHOST_CEIL (frontier) | 31 | Author new papers — maximum impact at bt=264 | **P1** |
 | GHOST_CEIL (chip) | 7 | Author new papers | P2 |
 | GHOST_CEIL (civilization) | 7 | Author new papers | P2 |
@@ -323,6 +323,6 @@ Paths to update: 24
 
 ---
 
-Auditor: Claude (n6-architecture session)
+Auditor: Claude (canon session)
 Date: 2026-04-11
 Audit mode: read-only (no SSOT modification)

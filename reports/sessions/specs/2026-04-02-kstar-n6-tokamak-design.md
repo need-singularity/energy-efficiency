@@ -1028,7 +1028,7 @@ In solutions of the GS equation the on-axis (magnetic axis) safety factor q_0 is
     3. Steady-state operation: the q_0 = 1 surface is the natural boundary of energy redistribution
 
   BT-5 connection:
-    q = 1 = 1/2 + 1/3 + 1/6  (sum of reciprocals of proper divisors of perfect number 6)
+    q = 1 = 1/2 + 1/3 + 1/6  (sum of reciprocals of proper divisors of arithmetic canon)
 
     Is this number-theoretic coincidence or physical necessity?
     -> Honest assessment: q=1 is a physical necessity (kink stability boundary)
@@ -2330,7 +2330,7 @@ P/Cost:   25    80    125   140   140   133
 - This is equivalent to n=6 being perfect: sigma(6)/6 = 12/6 = 2 <-> Sum(1/d) = 1 + 1/2 + 1/3 + 1/6 = 2
 - Proper divisors only: 1/1 + 1/2 + 1/3 + 1/6 = 2, or 1/2 + 1/3 + 1/6 = 1
 
-**n=6 assessment:** q=1 is a fundamental MHD constraint. Its match with the Egyptian fraction of the perfect number 6 is mathematically deep (BT-99). **EXACT - the physics-law-enforced value equals the perfect-number property. One of the strongest connections.**
+**n=6 assessment:** q=1 is a fundamental MHD constraint. Its match with the Egyptian fraction of the arithmetic canon is mathematically deep (BT-99). **EXACT - the physics-law-enforced value equals the perfect-number property. One of the strongest connections.**
 
 ---
 

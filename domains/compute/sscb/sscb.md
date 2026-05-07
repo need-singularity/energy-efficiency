@@ -1097,8 +1097,8 @@ TIPS ₩200 M + KIAT ₩150 M + NanoFab MPW discount ₩50 M = ₩400 M sourced.
 
 | Version | Date | Change | Author |
 |---|---|---|---|
-| 0.1 | 2026-04-17 | initial engineering package (brief-based expansion) | n6-architecture |
-| 0.2 | 2026-04-18 | brief + engineering + impact unified .md (canonical) | n6-architecture |
+| 0.1 | 2026-04-17 | initial engineering package (brief-based expansion) | canon |
+| 0.2 | 2026-04-18 | brief + engineering + impact unified .md (canonical) | canon |
 
 ### §20.6 Recipient sign-off
 
@@ -1126,10 +1126,10 @@ TIPS ₩200 M + KIAT ₩150 M + NanoFab MPW discount ₩50 M = ₩400 M sourced.
 ### §21.mk5 — Mk.V GaN complement + AI (v1.0, 2030-06-01, PLANNED)
 
 <details open>
-<summary>📎 <a href="https://github.com/n6-arch/n6-architecture/compare/sscb-mk4-v1.0...sscb-mk5-v1.0">mk4 → mk5 diff</a> · <a href="https://github.com/n6-arch/n6-architecture/blob/sscb-mk4-v1.0/domains/compute/sscb/sscb.md">prev mk4 blob</a> · PLANNED · 2030-06-01</summary>
+<summary>📎 <a href="https://github.com/n6-arch/canon/compare/sscb-mk4-v1.0...sscb-mk5-v1.0">mk4 → mk5 diff</a> · <a href="https://github.com/n6-arch/canon/blob/sscb-mk4-v1.0/domains/compute/sscb/sscb.md">prev mk4 blob</a> · PLANNED · 2030-06-01</summary>
 
-📎 **Previous version**: [mk4 (sscb-mk4-v1.0)](https://github.com/n6-arch/n6-architecture/blob/sscb-mk4-v1.0/domains/compute/sscb/sscb.md)
-📎 **git diff**: [mk4 → mk5](https://github.com/n6-arch/n6-architecture/compare/sscb-mk4-v1.0...sscb-mk5-v1.0)
+📎 **Previous version**: [mk4 (sscb-mk4-v1.0)](https://github.com/n6-arch/canon/blob/sscb-mk4-v1.0/domains/compute/sscb/sscb.md)
+📎 **git diff**: [mk4 → mk5](https://github.com/n6-arch/canon/compare/sscb-mk4-v1.0...sscb-mk5-v1.0)
 📎 **status**: PLANNED
 
 #### ① What changes immediately (vs mk4, planned)
@@ -1160,10 +1160,10 @@ mk5 GaN complement + AI -> domestic HVDC long-distance transmission breaker
 ### §21.mk4 — Mk.IV 100 % domestic sourcing (v1.0, 2029-06-01, PLANNED)
 
 <details>
-<summary>📎 <a href="https://github.com/n6-arch/n6-architecture/compare/sscb-mk3-v1.0...sscb-mk4-v1.0">mk3 → mk4 diff</a> · <a href="https://github.com/n6-arch/n6-architecture/blob/sscb-mk3-v1.0/domains/compute/sscb/sscb.md">prev mk3 blob</a> · PLANNED · 2029-06-01</summary>
+<summary>📎 <a href="https://github.com/n6-arch/canon/compare/sscb-mk3-v1.0...sscb-mk4-v1.0">mk3 → mk4 diff</a> · <a href="https://github.com/n6-arch/canon/blob/sscb-mk3-v1.0/domains/compute/sscb/sscb.md">prev mk3 blob</a> · PLANNED · 2029-06-01</summary>
 
-📎 **Previous version**: [mk3 (sscb-mk3-v1.0)](https://github.com/n6-arch/n6-architecture/blob/sscb-mk3-v1.0/domains/compute/sscb/sscb.md)
-📎 **git diff**: [mk3 → mk4](https://github.com/n6-arch/n6-architecture/compare/sscb-mk3-v1.0...sscb-mk4-v1.0)
+📎 **Previous version**: [mk3 (sscb-mk3-v1.0)](https://github.com/n6-arch/canon/blob/sscb-mk3-v1.0/domains/compute/sscb/sscb.md)
+📎 **git diff**: [mk3 → mk4](https://github.com/n6-arch/canon/compare/sscb-mk3-v1.0...sscb-mk4-v1.0)
 📎 **status**: PLANNED
 
 #### ① What changes immediately (vs mk3, planned)
@@ -1194,10 +1194,10 @@ mk4 1500 V -> KEPCO transmission-distribution pilot
 ### §21.mk3 — Mk.III HVDC data center (v1.0, 2028-06-01, PLANNED)
 
 <details>
-<summary>📎 <a href="https://github.com/n6-arch/n6-architecture/compare/sscb-mk2-v1.0...sscb-mk3-v1.0">mk2 → mk3 diff</a> · <a href="https://github.com/n6-arch/n6-architecture/blob/sscb-mk2-v1.0/domains/compute/sscb/sscb.md">prev mk2 blob</a> · PLANNED · 2028-06-01</summary>
+<summary>📎 <a href="https://github.com/n6-arch/canon/compare/sscb-mk2-v1.0...sscb-mk3-v1.0">mk2 → mk3 diff</a> · <a href="https://github.com/n6-arch/canon/blob/sscb-mk2-v1.0/domains/compute/sscb/sscb.md">prev mk2 blob</a> · PLANNED · 2028-06-01</summary>
 
-📎 **Previous version**: [mk2 (sscb-mk2-v1.0)](https://github.com/n6-arch/n6-architecture/blob/sscb-mk2-v1.0/domains/compute/sscb/sscb.md)
-📎 **git diff**: [mk2 → mk3](https://github.com/n6-arch/n6-architecture/compare/sscb-mk2-v1.0...sscb-mk3-v1.0)
+📎 **Previous version**: [mk2 (sscb-mk2-v1.0)](https://github.com/n6-arch/canon/blob/sscb-mk2-v1.0/domains/compute/sscb/sscb.md)
+📎 **git diff**: [mk2 → mk3](https://github.com/n6-arch/canon/compare/sscb-mk2-v1.0...sscb-mk3-v1.0)
 📎 **status**: PLANNED
 
 #### ① What changes immediately (vs mk2, planned)
@@ -1228,10 +1228,10 @@ mk3 800 V -> AI-server-rack direct HVDC market entry
 ### §21.mk2 — Mk.II (v1.0, 2027-06-01, PLANNED)
 
 <details>
-<summary>📎 <a href="https://github.com/n6-arch/n6-architecture/compare/sscb-mk1-v1.0...sscb-mk2-v1.0">mk1 → mk2 diff</a> · <a href="https://github.com/n6-arch/n6-architecture/blob/sscb-mk1-v1.0/domains/compute/sscb/sscb.md">prev mk1 blob</a> · PLANNED · 2027-06-01</summary>
+<summary>📎 <a href="https://github.com/n6-arch/canon/compare/sscb-mk1-v1.0...sscb-mk2-v1.0">mk1 → mk2 diff</a> · <a href="https://github.com/n6-arch/canon/blob/sscb-mk1-v1.0/domains/compute/sscb/sscb.md">prev mk1 blob</a> · PLANNED · 2027-06-01</summary>
 
-📎 **Previous version**: [mk1 (sscb-mk1-v1.0)](https://github.com/n6-arch/n6-architecture/blob/sscb-mk1-v1.0/domains/compute/sscb/sscb.md)
-📎 **git diff**: [mk1 → mk2](https://github.com/n6-arch/n6-architecture/compare/sscb-mk1-v1.0...sscb-mk2-v1.0)
+📎 **Previous version**: [mk1 (sscb-mk1-v1.0)](https://github.com/n6-arch/canon/blob/sscb-mk1-v1.0/domains/compute/sscb/sscb.md)
+📎 **git diff**: [mk1 → mk2](https://github.com/n6-arch/canon/compare/sscb-mk1-v1.0...sscb-mk2-v1.0)
 📎 **status**: PLANNED (tag unreleased)
 
 #### ① What changes immediately (vs mk1, planned)
@@ -1262,10 +1262,10 @@ mk2 bidirectional -> enters data-center 48 V -> 400 V HVDC transition
 ### §21.mk1 — what changes (v1.0, 2026-04-18)
 
 <details>
-<summary>📎 <a href="https://github.com/n6-arch/n6-architecture/releases/tag/sscb-mk1-v1.0">sscb-mk1-v1.0 release</a> · <a href="https://github.com/n6-arch/n6-architecture/blob/sscb-mk1-v1.0/domains/compute/sscb/sscb.md">mk1 blob</a> · RELEASED · 2026-04-18</summary>
+<summary>📎 <a href="https://github.com/n6-arch/canon/releases/tag/sscb-mk1-v1.0">sscb-mk1-v1.0 release</a> · <a href="https://github.com/n6-arch/canon/blob/sscb-mk1-v1.0/domains/compute/sscb/sscb.md">mk1 blob</a> · RELEASED · 2026-04-18</summary>
 
 📎 **git tag**: `sscb-mk1-v1.0`
-📎 **release**: [sscb-mk1-v1.0 release](https://github.com/n6-arch/n6-architecture/releases/tag/sscb-mk1-v1.0)
+📎 **release**: [sscb-mk1-v1.0 release](https://github.com/n6-arch/canon/releases/tag/sscb-mk1-v1.0)
 📎 **First version** — no prior version (prev_link not required).
 
 #### ① What changes immediately (demonstration, vs existing market)

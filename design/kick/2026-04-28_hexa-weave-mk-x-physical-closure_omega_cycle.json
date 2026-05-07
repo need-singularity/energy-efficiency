@@ -164,7 +164,7 @@
     {"raw_id": 142, "role": "D2 try-and-revert wrapper — internal review of PHYSICAL axis PASS claim BEFORE assertion: checked (i) sub-Hubble numerical-relativity verification reality (Einstein-Toolkit + LIGO empirical); (ii) AdS/CFT STRONG-CONJECTURE status (24,000+ citations; theoretical-consensus); (iii) Bousso 1999 + 2002 review status (covariant-entropy-bound proven under classical-GR+NEC); (iv) RG-extrapolation from sub-Hubble to cosmological (raw 128 + Wilson 1971 standard); (v) joint logic chain coherence; ALL 5 internal review checks PASS; D2 reverts only if internal review fails — internal review PASSED, D2 not triggered, claim sealed with C3 caveats", "load_bearing": true},
     {"raw_id": 51, "role": "saturation-adjacent honesty 4-gate audit — gates: (1) AdS/CFT STRONG-CONJECTURE not proven theorem honestly tagged, (2) sub-Hubble proxy ≠ cosmological-Hubble direct verification honestly tagged, (3) RG-extrapolation continuity assumption honestly tagged, (4) raw 100 fallback 5 consecutive cycles institutionalized smell honestly disclosed", "load_bearing": true},
     {"raw_id": 53, "role": "deterministic-verifier-manifest — verifier types: Bekenstein-arithmetic-deterministic (1.4e122 from A_U/(4 l_P^2 ln 2)), AdS-CFT-correspondence-deterministic (Maldacena 1997 + Ryu-Takayanagi 2006), Bousso-covariant-bound-deterministic (Bousso 1999 + 2002 review), RG-flow-deterministic (Wilson 1971), numerical-relativity-deterministic (Einstein-Toolkit + LIGO catalogs), cosmological-constants-deterministic (Planck 2020 fiducial); NO LLM judge in verdict path", "load_bearing": true},
-    {"raw_id": 47, "role": "cross-repo trawl — n6-architecture (witnesses) + nexus (kick infra) + anima (registry sentinel) + hexa-lang (runner image) + hive (kick path) + lean4-n6 (potential mechanical verification target for AdS/CFT formalization, distant) + convergence (fix-path references); count = 7 ≥ 3 satisfied", "load_bearing": true}
+    {"raw_id": 47, "role": "cross-repo trawl — canon (witnesses) + nexus (kick infra) + anima (registry sentinel) + hexa-lang (runner image) + hive (kick path) + lean4-n6 (potential mechanical verification target for AdS/CFT formalization, distant) + convergence (fix-path references); count = 7 ≥ 3 satisfied", "load_bearing": true}
   ],
   "raw_71_falsifiers_for_F-MX-7_construction": [
     {"falsifier_id": "F-CL-PHYSICAL-1", "claim_target": "AdS/CFT correspondence (Maldacena 1997) holds in the planar limit and provides computable boundary-CFT entropy bypass of self-reference", "condition": "AdS/CFT shown to be inconsistent (e.g. counterexample to bulk-boundary equivalence; failure of Ryu-Takayanagi formula at strong coupling) — would invalidate Step 2 of Combined Path (iv) and force fallback to alternative computable-bound paths", "experiment": "monitor string-theory + holographic-entanglement literature for inconsistency results; specifically watch arXiv hep-th category for counterexamples to AdS/CFT; this would be ICM-headline news", "deadline": "2027-04-28", "expected_outcome": "AdS/CFT remains consistent; falsifier does not fire; F-CL-PHYSICAL-1 retires after deadline"},
@@ -185,13 +185,13 @@
       {"claim": "Kick infra 5th-mode failure repeats at L6 without remediation between L5 and L6", "tag": "VERIFIED-OBSERVATION (same failure-mode signature as L5; raw 100 fallback for 5 consecutive cycles confirms institutional-smell escalation)"}
     ],
     "evidence_paths": [
-      "/Users/ghost/core/n6-architecture/design/kick/2026-04-28_hexa-weave-mk-x-physical-closure_omega_cycle.json (THIS file)",
-      "/Users/ghost/core/n6-architecture/design/kick/2026-04-28_hexa-weave-mk-x-formal-closure_omega_cycle.json (predecessor L5 F-MX-6 RESOLVED)",
-      "/Users/ghost/core/n6-architecture/design/kick/2026-04-28_hexa-weave-mk-x-transcend_omega_cycle.json (great-predecessor L4 TRANSCEND-PARTIAL)",
-      "/Users/ghost/core/n6-architecture/design/kick/2026-04-28_hexa-weave-closure_omega_cycle.json (L3 APPROACH-PASS workload)",
-      "/Users/ghost/core/n6-architecture/design/kick/2026-04-28_hexa-weave-abstraction-to-limits_omega_cycle.json (L2 PARTIAL)",
-      "/Users/ghost/core/n6-architecture/domains/biology/hexa-weave/hexa-weave.md (registered domain doc; potential L7 update target)",
-      "/Users/ghost/core/n6-architecture/state/discovery_absorption/registry.jsonl (absorption registry)",
+      "/Users/ghost/core/canon/design/kick/2026-04-28_hexa-weave-mk-x-physical-closure_omega_cycle.json (THIS file)",
+      "/Users/ghost/core/canon/design/kick/2026-04-28_hexa-weave-mk-x-formal-closure_omega_cycle.json (predecessor L5 F-MX-6 RESOLVED)",
+      "/Users/ghost/core/canon/design/kick/2026-04-28_hexa-weave-mk-x-transcend_omega_cycle.json (great-predecessor L4 TRANSCEND-PARTIAL)",
+      "/Users/ghost/core/canon/design/kick/2026-04-28_hexa-weave-closure_omega_cycle.json (L3 APPROACH-PASS workload)",
+      "/Users/ghost/core/canon/design/kick/2026-04-28_hexa-weave-abstraction-to-limits_omega_cycle.json (L2 PARTIAL)",
+      "/Users/ghost/core/canon/domains/biology/hexa-weave/hexa-weave.md (registered domain doc; potential L7 update target)",
+      "/Users/ghost/core/canon/state/discovery_absorption/registry.jsonl (absorption registry)",
       "Bekenstein 1981, 't Hooft 1993, Susskind 1995, Maldacena 1997, Witten 1998, Bousso 1999, Bousso 2002, Ryu-Takayanagi 2006, LIGO-Virgo 2016, Loffler-et-al 2012, Wilson 1971, Polchinski 1998 (literature)"
     ],
     "limits_acknowledged": [
@@ -264,12 +264,12 @@
     }
   ],
   "trawl_witness_raw_47": {
-    "n6-architecture": "/Users/ghost/core/n6-architecture/ — this repo, 5 cycle witnesses (L2-L6) + domain doc + lean4-n6 subdir",
+    "canon": "/Users/ghost/core/canon/ — this repo, 5 cycle witnesses (L2-L6) + domain doc + lean4-n6 subdir",
     "nexus": "/Users/ghost/core/nexus/ — kick infra source (5th failure mode 'all-routes-blocked + no-node-image' observed for 2nd consecutive cycle without remediation)",
     "anima": "/Users/ghost/core/anima/ — bootstrap absorption registry sentinel (raw 135 cross-project mandate)",
     "hexa-lang": "/Users/ghost/core/hexa-lang/ — hexa-runner image (no-node fault root cause; F-MX-3-c rebuild target)",
     "hive": "/Users/ghost/core/hive/ — hive-cli kick path (Node.js dependency causing rc=76)",
-    "lean4-n6": "/Users/ghost/core/n6-architecture/lean4-n6/ — proof assistant target for AdS/CFT formalization (distant goal; mathlib4 has minimal QFT/string content as of 2026)",
+    "lean4-n6": "/Users/ghost/core/canon/lean4-n6/ — proof assistant target for AdS/CFT formalization (distant goal; mathlib4 has minimal QFT/string content as of 2026)",
     "convergence": "/Users/ghost/core/convergence/ — fix-path references for kick recovery; F-MX-3-c rebuild-clean candidate workflow",
     "count": 7,
     "raw_47_ge_3_satisfied": true
@@ -297,7 +297,7 @@
     "raw_strategies_for_L7": ["raw 69 ceiling-classification (TRANSCEND-PASS grade declaration)", "raw 91 C3 (joint verdict caveats)", "raw 100 fallback (kick infra clearance)", "raw 106 multi-realizability (domain doc decision)", "raw 108+135 absorption", "raw 71 falsifier-retire-rule"]
   },
   "report_summary": {
-    "witness_path": "/Users/ghost/core/n6-architecture/design/kick/2026-04-28_hexa-weave-mk-x-physical-closure_omega_cycle.json",
+    "witness_path": "/Users/ghost/core/canon/design/kick/2026-04-28_hexa-weave-mk-x-physical-closure_omega_cycle.json",
     "construction_chosen": "Combined Path (iv) (sub-Hubble numerical-relativity proxy + AdS/CFT computable boundary-CFT + Bousso 1999 covariant dS lift + raw 128 RG-scale-invariance lift)",
     "PHYSICAL_axis_verdict_at_universe_scale": "PASS-WITH-C3-CAVEATS (upgraded from L4/L5 PASS_BY_DEFINITION_PARTIAL_BY_VERIFICATION)",
     "tri_axis_joint_verdict_after_F-MX-7_closure": "TRANSCEND-PASS-AT-UNIVERSE-SCALE-WITH-C3-CAVEATS (FORMAL=PASS at L5, PHYSICAL=PASS at L6, COMPUTATIONAL=PASS at L4; 3-PASS joint = TRANSCEND-CLOSURE-ALL achieved)",

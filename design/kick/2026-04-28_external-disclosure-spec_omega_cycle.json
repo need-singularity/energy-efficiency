@@ -128,7 +128,7 @@
       "id": "F-EXT-DISCL-5",
       "claim": "the cycle-6 fan-out 5/5 framing of this disclosure deliverable conflicts with raw 47 (cross-repo trawl) when applied to anima/nexus/hexa-lang sister repos",
       "condition": "Option-D phased application produces different paper canonical-section requirements per repo (e.g. anima own#15 spec drifts from n6 own#15)",
-      "experiment": "compare anima/.own own#15 vs n6-architecture/.own own#15 every cycle",
+      "experiment": "compare anima/.own own#15 vs canon/.own own#15 every cycle",
       "expected_outcome": "MAY FIRE at LOW severity — cross-repo own drift is a known raw 47 risk",
       "severity_if_fires": "LOW (resolve by raw 47 cross-repo mirror cycle)"
     }

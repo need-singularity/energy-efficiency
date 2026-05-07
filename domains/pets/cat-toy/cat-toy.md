@@ -926,7 +926,7 @@ Test plan:
 | Coats (USA) | polyester sewing thread | seam thread |
 | TÜV Süd / Intertek | EN 71-1 third-party audit | regulatory compliance |
 | Mondi Group (AT) | kraft+PET sleeve pack | retail packaging |
-| n6-architecture private framework | own_doc_lint / own31 lint | docs gate |
+| canon private framework | own_doc_lint / own31 lint | docs gate |
 
 ## §19 ACCEPTANCE / MISS criteria (own#12 pre-declared)
 

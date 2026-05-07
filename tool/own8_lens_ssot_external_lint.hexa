@@ -9,10 +9,10 @@
 // Migrated from tool/own_doc_lint_legacy.py:728-778 + 723-725 per raw 9.
 //
 // @tool(slug="own8_lens_ssot_external_lint", desc="own#8 lens external-SSOT HARD — flag legacy Rust-lens refs + relative lens links bypassing $NEXUS/shared/lenses/")
-// @usage(hexa /Users/ghost/core/n6-architecture/tool/own8_lens_ssot_external_lint.hexa [--selftest])
+// @usage(hexa /Users/ghost/core/canon/tool/own8_lens_ssot_external_lint.hexa [--selftest])
 // @exit_codes(0=PASS, 1=violations, 2=internal error)
 
-let REPO_ROOT = "/Users/ghost/core/n6-architecture"
+let REPO_ROOT = "/Users/ghost/core/canon"
 
 let SCAN_ROOTS = [
   REPO_ROOT,

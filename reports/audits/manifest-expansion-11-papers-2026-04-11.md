@@ -81,7 +81,7 @@ Follows the pattern of the existing N6-054 (chunk_d flagship) entry verbatim. Us
 {
   "id": "N6-0XX",
   "title": "Perfect Number n=6 ... (English)",
-  "repo": "n6-architecture",
+  "repo": "canon",
   "file": "papers/n6-xxx-paper.md",
   "status": "Draft",
   "doi": "",
@@ -262,7 +262,7 @@ After this audit completes, **all** 11 chunk_d papers are registered in the mani
 
 - [x] **R14**: directly edit `$PAPERS/manifest.json` SSOT (no duplicate new file created)
 - [x] **R18**: minimal scope — only the 9-paper manifest registration, no body edits / hexa creation / incidental work
-- [x] **R25**: shared-settings gate — this work is within GO mode, proceeded after reviewing `n6shared/rules/common.json`
+- [x] **R25**: shared-settings gate — this work is within GO mode, proceeded after reviewing `canonshared/rules/common.json`
 - [x] **English required**: this report body is English, English is confined to the Zenodo API payload `title` field
 - [x] **HEXA-FIRST**: no new .py/.hexa created. Temporary verification helpers (`/tmp/n62-verify/*.py`) are outside the repo
 - [x] **PP1 (CC-BY 4.0)**: all 9 papers explicitly note (confirmed in prior audit)

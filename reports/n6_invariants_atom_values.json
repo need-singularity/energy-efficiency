@@ -1,5 +1,5 @@
 {
-  "schema": "n6-architecture/n6_invariants_atom_values/1",
+  "schema": "canon/n6_invariants_atom_values/1",
   "ts": "2026-04-24T08:02:19Z",
   "engine_version": "0.44.0",
   "atoms_verified_count": 1,

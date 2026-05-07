@@ -39,7 +39,7 @@ Analyzes macro historical structure via a Toynbee-civilization-challenge **n=6**
 
 ### 3. aerobic_energy_systems
 
-ATP pathways = n/phi = **3**, VO2max = n = 6 L/min threshold, lactate threshold = tau = 4, substrate switching = phi = 2, mitochondria = sigma = 12 enzyme complexes. From C6H12O6 (glucose) catabolism to the TCA cycle n=6 carbon intermediates and oxidative phosphorylation sigma = 12 proton gradient, the perfect number 6 is deeply coupled across energy metabolism.
+ATP pathways = n/phi = **3**, VO2max = n = 6 L/min threshold, lactate threshold = tau = 4, substrate switching = phi = 2, mitochondria = sigma = 12 enzyme complexes. From C6H12O6 (glucose) catabolism to the TCA cycle n=6 carbon intermediates and oxidative phosphorylation sigma = 12 proton gradient, the arithmetic canon is deeply coupled across energy metabolism.
 
 ---
 
@@ -61,7 +61,7 @@ Seven names colliding with the prior 1136-entry registry are resolved via a `_v4
 - `nexus/src/telescope/frontier_lenses.rs` — added `expansion_100_v4_lens_entries()` function (100 lenses + 4 tests)
 - `nexus/src/telescope/registry.rs` — register v4 function call, update doc comments
 - `nexus/tests/telescope_test.rs` — registry count 1136 -> 1236, Extended 1113 -> 1213
-- `n6shared/config/lens_registry.json` — meta update, register 100 v4 lenses
+- `canonshared/config/lens_registry.json` — meta update, register 100 v4 lenses
 
 ---
 

@@ -22,7 +22,7 @@ requires:
 ---
 # [CANONICAL v1] Ultimate Superconductor (HEXA-ULTIMATE-SC) — n=6 Arithmetic Coordinate 14-in-1 Integrated Paper
 
-> **Author**: Park Min-woo (n6-architecture)
+> **Author**: Park Min-woo (canon)
 > **Product ID**: P-039 "Ultimate Superconductor"
 > **Category**: ultimate-superconductor-integrated — 14 seed paper sealed canonical
 > **Version**: v1 (2026-04-18 integrated, 21 sections full spec)
@@ -94,7 +94,7 @@ BCS specific-heat jump coefficient σ=12 / flux quantum Φ₀=h/(2e) denominator
 | Theory/physics/measurement axes | 14 separate domains | **σ·τ=48 common axis** | τ=4 layer unification |
 | Design exploration time | 2,400 combos × 14 papers = 33,600 | **σ·τ=48 axis single DSE** | σ·τ=48× shorter |
 | Verification depth | 10 subsections × 14 papers scattered | **§7.0~§7.10 single integrated** | reproduction σ·τ=48× |
-| Derived design candidates | Pareto 6 × 14 papers = 84 | **Pareto n=6 global top 6** | n=6× more options |
+| Derived design candidates | Pareto 6 × 14 papers = 84 | **Pareto top-K (data-driven)** | Pareto-natural more options |
 | Transmission loss | 6% | **0% (R=0 room temp)** | Lossless |
 | Maglev train | 100 B/km | **20 B/km** | 1/sopfr=5× cheaper |
 | MRI magnet | LHe cooling required | **Room-temp operation** | Cooling system removed |
@@ -261,10 +261,10 @@ This integrated paper is built atop 14 prior domains. Each prior domain correspo
 
 | Basic element | Role | Reference |
 |-----------|------|------|
-| σ(n) divisor sum | OEIS A000203, σ(6)=12 | n6shared/rules/common.json |
-| τ(n) divisor count | OEIS A000005, τ(6)=4 | n6shared/rules/common.json |
-| φ(n) least prime factor | φ(6)=2 | n6shared/rules/common.json |
-| sopfr(n) sum of prime factors | OEIS A001414, sopfr(6)=5 | n6shared/rules/common.json |
+| σ(n) divisor sum | OEIS A000203, σ(6)=12 | canonshared/rules/common.json |
+| τ(n) divisor count | OEIS A000005, τ(6)=4 | canonshared/rules/common.json |
+| φ(n) least prime factor | φ(6)=2 | canonshared/rules/common.json |
+| sopfr(n) sum of prime factors | OEIS A001414, sopfr(6)=5 | canonshared/rules/common.json |
 | Euler totient | OEIS A000010, totient(6)=2 | — |
 
 ## §4 STRUCT (System structure) — Multi-layer n=6 Architecture
@@ -1572,7 +1572,7 @@ const int QUENCH_REDUN = N / PHI;          // 3
 - `papers/_registry.json` — paper SSOT
 - `papers/_dag.json` — domain dependencies
 - `papers/_products.json` — P-039 product registry (pending → integrated change candidate)
-- `n6shared/config/projects.json` — 7 project registry
+- `canonshared/config/projects.json` — 7 project registry
 - `reports/` — test/verification snapshot reports
 
 ### E. Mk.I vs Mk.II material detail table
@@ -1609,7 +1609,7 @@ Total relaxation factor σ·τ·σ/φ = 12·4·6 = 288× = J₂·σ (requirement
 
 1. **Paper integration**: 14 papers tidied into 1 product line (P-039) → maintenance reduced σ·τ=48×.
 2. **atlas reinforcement**: 325/325 EXACT integrated nodes registered, [10*] grade held continuously.
-3. **DSE adoption**: 2,000-combo Pareto top 6 shared with practitioners.
+3. **DSE adoption**: 2,000-combo Pareto top-K (data-driven) shared with practitioners.
 4. **Education/transfer**: theory 5 + physics 5 + measurement 2 + product 2 × n=6 mapping table propagated.
 5. **Mk.I P-T path exploration**: among 6 candidates, (La,Ce,Y,Sc)H₂₄ promoted as Mk.II seed.
 

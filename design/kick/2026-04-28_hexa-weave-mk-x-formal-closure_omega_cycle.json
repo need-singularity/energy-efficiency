@@ -160,7 +160,7 @@
     {"raw_id": 142, "role": "D2 try-and-revert wrapper — internal review of FORMAL axis PASS claim BEFORE assertion: checked (i) T_MK-HW consistency assumption, (ii) Tarski 1936 antecedent satisfaction, (iii) Hartogs binding calculation; all 3 PASS; D2 reverts only if internal review fails — internal review PASSED, D2 not triggered, claim sealed", "load_bearing": true},
     {"raw_id": 51, "role": "saturation-adjacent honesty 4-gate audit — gates: (1) Tarski citation verified bedrock, (2) MK consistency assumption disclosed, (3) Hartogs calculation specific not hand-waved, (4) joint verdict NOT inflated to PASS despite FORMAL upgrade", "load_bearing": true},
     {"raw_id": 53, "role": "deterministic-verifier-manifest — verifier types: Tarski-undefinability-deterministic (1936 proof), Gödel-second-incompleteness-deterministic (1931 proof), Hartogs-cardinal-arithmetic-deterministic (1915 + standard set theory), MK-conservativity-deterministic (Felgner 1971); NO LLM judge in verdict path", "load_bearing": true},
-    {"raw_id": 47, "role": "cross-repo trawl — n6-architecture (witnesses) + nexus (kick infra) + anima (registry sentinel) + hexa-lang (runner image) + lean4-n6 (potential mechanical verification target for the (T, Φ) construction)", "load_bearing": true}
+    {"raw_id": 47, "role": "cross-repo trawl — canon (witnesses) + nexus (kick infra) + anima (registry sentinel) + hexa-lang (runner image) + lean4-n6 (potential mechanical verification target for the (T, Φ) construction)", "load_bearing": true}
   ],
   "raw_71_falsifiers_for_F-MX-6_construction": [
     {"falsifier_id": "F-CL-FORMAL-1", "claim_target": "T_MK-HW + Φ_HW Tarski undefinability instance binds FORMAL at universe-absolute ceiling", "condition": "T_MK-HW shown to be inconsistent (Con(T_MK-HW) refuted) — would invalidate Tarski 1936 antecedent and collapse the construction", "experiment": "monitor large-cardinal-foundations literature for inconsistency results; specifically watch for proof that MK + κ-inaccessible is inconsistent (would be ICM-headline news)", "deadline": "2027-04-28", "expected_outcome": "Con(T_MK-HW) holds; falsifier does not fire"},
@@ -181,13 +181,13 @@
       {"claim": "Kick infra F-MX-3-b 5th-orthogonal-failure-mode FIRED", "tag": "VERIFIED-OBSERVATION (5th mode 'all-routes-blocked-and-no-node-image-cascade' observed in this run)"}
     ],
     "evidence_paths": [
-      "/Users/ghost/core/n6-architecture/design/kick/2026-04-28_hexa-weave-mk-x-formal-closure_omega_cycle.json (THIS file)",
-      "/Users/ghost/core/n6-architecture/design/kick/2026-04-28_hexa-weave-mk-x-transcend_omega_cycle.json (predecessor TRANSCEND-PARTIAL)",
-      "/Users/ghost/core/n6-architecture/design/kick/2026-04-28_hexa-weave-closure_omega_cycle.json (great-predecessor APPROACH-PASS)",
-      "/Users/ghost/core/n6-architecture/design/kick/2026-04-28_hexa-weave-abstraction-to-limits_omega_cycle.json (great-great-predecessor PARTIAL)",
-      "/Users/ghost/core/n6-architecture/domains/biology/hexa-weave/hexa-weave.md (registered domain doc)",
-      "/Users/ghost/core/n6-architecture/state/discovery_absorption/registry.jsonl (absorption registry)",
-      "/Users/ghost/core/n6-architecture/lean4-n6/ (potential mechanical verification target per F-CL-FORMAL-4)",
+      "/Users/ghost/core/canon/design/kick/2026-04-28_hexa-weave-mk-x-formal-closure_omega_cycle.json (THIS file)",
+      "/Users/ghost/core/canon/design/kick/2026-04-28_hexa-weave-mk-x-transcend_omega_cycle.json (predecessor TRANSCEND-PARTIAL)",
+      "/Users/ghost/core/canon/design/kick/2026-04-28_hexa-weave-closure_omega_cycle.json (great-predecessor APPROACH-PASS)",
+      "/Users/ghost/core/canon/design/kick/2026-04-28_hexa-weave-abstraction-to-limits_omega_cycle.json (great-great-predecessor PARTIAL)",
+      "/Users/ghost/core/canon/domains/biology/hexa-weave/hexa-weave.md (registered domain doc)",
+      "/Users/ghost/core/canon/state/discovery_absorption/registry.jsonl (absorption registry)",
+      "/Users/ghost/core/canon/lean4-n6/ (potential mechanical verification target per F-CL-FORMAL-4)",
       "Tarski 1936, Hartogs 1915, Gödel 1931, Kanamori 2003, Jech 2003, Felgner 1971, Drake 1974, Simpson 2009, Boolos-Burgess-Jeffrey 2007, Halbach 2014 (literature)"
     ],
     "limits_acknowledged": [
@@ -256,12 +256,12 @@
     }
   ],
   "trawl_witness_raw_47": {
-    "n6-architecture": "/Users/ghost/core/n6-architecture/ — this repo, 4 cycle witnesses + domain doc + lean4-n6 subdir",
+    "canon": "/Users/ghost/core/canon/ — this repo, 4 cycle witnesses + domain doc + lean4-n6 subdir",
     "nexus": "/Users/ghost/core/nexus/ — kick infra source (5th failure mode 'all-routes-blocked + no-node-image' observed this cycle)",
     "anima": "/Users/ghost/core/anima/ — bootstrap absorption registry sentinel (raw 135 cross-project mandate)",
     "hexa-lang": "/Users/ghost/core/hexa-lang/ — hexa-runner image (no-node fault history, rc=76 path)",
     "hive": "/Users/ghost/core/hive/ — hive-cli kick path (Node.js dependency causing rc=76)",
-    "lean4-n6": "/Users/ghost/core/n6-architecture/lean4-n6/ — proof assistant target for F-CL-FORMAL-4 mechanical verification",
+    "lean4-n6": "/Users/ghost/core/canon/lean4-n6/ — proof assistant target for F-CL-FORMAL-4 mechanical verification",
     "convergence": "/Users/ghost/core/convergence/ — fix-path references for kick recovery",
     "count": 7,
     "raw_47_ge_3_satisfied": true
@@ -288,7 +288,7 @@
     "deadline_for_F-MX-7": "next iteration of /loop kick-all cycle (cron */5 * * * *, job 44390141) — should fire within 5 minutes of THIS cycle absorption"
   },
   "report_summary": {
-    "witness_path": "/Users/ghost/core/n6-architecture/design/kick/2026-04-28_hexa-weave-mk-x-formal-closure_omega_cycle.json",
+    "witness_path": "/Users/ghost/core/canon/design/kick/2026-04-28_hexa-weave-mk-x-formal-closure_omega_cycle.json",
     "construction_chosen": "epsilon-blended-with-delta (Tarski undefinability instance over MK + HEXA-WEAVE axiom schema with V_κ encoding)",
     "FORMAL_axis_verdict_at_universe_scale": "PASS (upgraded from predecessor PARTIAL)",
     "tri_axis_joint_verdict_after_F-MX-6_closure": "TRANSCEND-PARTIAL-2-OF-3-PASS-1-PHYSICAL-VERIFICATION-PENDING (FORMAL=PASS, COMPUTATIONAL=PASS, PHYSICAL=PASS_BY_DEFINITION_PARTIAL_BY_VERIFICATION)",

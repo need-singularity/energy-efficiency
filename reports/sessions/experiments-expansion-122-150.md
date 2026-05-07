@@ -83,7 +83,7 @@
 
 1. (nexus verify --hexa )
 2. `status: "pending"` → `"passed"` / `"failed"` / `"inconclusive"` 
-3. passed `n6shared/convergence/n6-architecture.json` ossified 
+3. passed `canonshared/convergence/canon.json` ossified 
 4. BT-372~380 `atlas.n6` [7] → [10*] 
 
 ## 

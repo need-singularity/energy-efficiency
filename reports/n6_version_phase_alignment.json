@@ -1,5 +1,5 @@
 {
-  "schema": "n6-architecture/n6_version_phase_alignment/1",
+  "schema": "canon/n6_version_phase_alignment/1",
   "ts": "2026-04-24T08:02:16Z",
   "engine_version": "0.44.0",
   "manifest_version": "0.44.0",

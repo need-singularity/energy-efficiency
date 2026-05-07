@@ -3,7 +3,7 @@
   "ts": "2026-05-06T18:00:00Z",
   "declared_at": "2026-05-06T18:00:00Z",
   "domain": "life/therapeutic-nanobot",
-  "canonical_repo": "n6-architecture",
+  "canonical_repo": "canon",
   "consumer_repo": "hexa-bio",
   "boundary_id": "2026-05-28_hexa-nanobot-therapeutic-nanobot-boundary",
   "hexa_bio_l6_layer_consumer": true,
@@ -16,7 +16,7 @@
       "layer": "L7",
       "name": "drug_load",
       "responsibility": "payload encapsulation + release kinetics (lipid-shell or polymer-cage drug compartmentalisation, k_release_s_inv, payload_mass_amu)",
-      "owner": "n6-architecture/domains/life/therapeutic-nanobot",
+      "owner": "canon/domains/life/therapeutic-nanobot",
       "witness_schema": "raw_77_therapeutic_nanobot_l7_drug_load_v1",
       "consumes_from_l6": ["work_per_cycle_kT_units", "vertex_decorations"],
       "primitives": [
@@ -28,7 +28,7 @@
       "layer": "L8",
       "name": "immune_evasion",
       "responsibility": "complement-cascade evasion + opsonization shielding (peg-corona density, c3b-deposition rate, macrophage_clearance_t_half_h)",
-      "owner": "n6-architecture/domains/life/therapeutic-nanobot",
+      "owner": "canon/domains/life/therapeutic-nanobot",
       "witness_schema": "raw_77_therapeutic_nanobot_l8_immune_evasion_v1",
       "consumes_from_l6": ["pose_canonical_form"],
       "primitives": [
@@ -40,7 +40,7 @@
       "layer": "L9",
       "name": "biodistribution",
       "responsibility": "tissue-targeting kinetics + clearance pathway selection (organ_uptake_percent_id_per_g, renal_vs_hepatic_clearance_ratio, target_tissue_residence_time_h)",
-      "owner": "n6-architecture/domains/life/therapeutic-nanobot",
+      "owner": "canon/domains/life/therapeutic-nanobot",
       "witness_schema": "raw_77_therapeutic_nanobot_l9_biodistribution_v1",
       "consumes_from_l6": ["actuator_id"],
       "primitives": [

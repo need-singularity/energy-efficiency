@@ -73,4 +73,4 @@ P1 roadmap item CHIP-P1-4. Integrates 6 calculator/DSE tools into `bridge/_regis
 - 6/6 tools registered in the SSOT (`bridge/_registry.json` `p1_chip_p1_4.tools`)
 - 6/6 origin paths exist on disk (5 main.hexa + 1 programming-language.toml)
 - No emoji. Document is in English. No binary or compiled artifacts were modified.
-- Roadmap linkage: `$NEXUS/shared/roadmaps/n6-architecture.json` CHIP-P1-4 status done + result_2026_04_14.
+- Roadmap linkage: `$NEXUS/shared/roadmaps/canon.json` CHIP-P1-4 status done + result_2026_04_14.

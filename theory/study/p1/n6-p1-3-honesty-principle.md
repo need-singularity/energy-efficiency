@@ -1,19 +1,19 @@
 # N6-P1-3 — n=6 Honesty Principles (No Self-referential Verification / Source·Measurement·Error / MISS Honest Recording / Bayesian Prior)
 
 > Track: P1-N6 / Task 3
-> Completion criterion: Defining the **7 honesty rules** — the core operating principles of this project (n6-architecture) —
+> Completion criterion: Defining the **7 honesty rules** — the core operating principles of this project (canon) —
 > and describing with examples the concrete prohibition on self-referential verification, the mandatory
 > recording of source/measurement/error three fields, honest MISS recording,
 > and the method of comparison against Bayesian-prior bias.
-> Source basis: n6shared/rules/common.json (R0–R27),
-> n6shared/rules/n6-architecture.json (N61–N65),
+> Source basis: canonshared/rules/common.json (R0–R27),
+> canonshared/rules/canon.json (N61–N65),
 > feedback_honest_verification.md (user memo),
 > feedback_proof_approach.md (user memo: reversing the proof approach),
 > Popper "The Logic of Scientific Discovery" (Hutchinson, 1959) ch. 1, 2,
 > Jaynes "Probability Theory: The Logic of Science" (Cambridge, 2003) ch. 1–5,
 > Ioannidis "Why Most Published Research Findings Are False" (PLoS Med. 2005).
 > **Honesty**: This file is a summary of the project's internal operational meta-rules. No new mathematical results.
-> Every principle is taken directly from the R/N rules in n6shared/rules and the user-feedback memos.
+> Every principle is taken directly from the R/N rules in canonshared/rules and the user-feedback memos.
 
 ---
 
@@ -190,7 +190,7 @@ Interpreting numerical agreements (e.g., 6 = 2·3, 12 = 2·6, 24 = 2·12, …) a
 ### 5.2 Violation Examples
 
 - "24 = σ(6) and SU(5) GUT has a 24-representation, so n=6 connects directly to nature's unified theory."
-- "2·6=12 appears in the Jacobi symbol → doubling of the perfect number 6."
+- "2·6=12 appears in the Jacobi symbol → doubling of the arithmetic canon."
 - "2-dim, 3-dim, 6-dim all have n=6 = lcm(2,3)."
 
 All of these rely only on numerical agreements and lack a causal mathematical path.
@@ -292,9 +292,9 @@ Whether n=2–50 suffices or the range must be extended to n=2–10^6 depends on
 - R22: Ban on pattern-matching
 - R27: Prime comparison required
 
-(See n6shared/rules/common.json for exact numbering.)
+(See canonshared/rules/common.json for exact numbering.)
 
-### 8.2 N (n6-architecture.json) Rule Family
+### 8.2 N (canon.json) Rule Family
 
 - N61: n=6 hypothesis is a conclusion, not a starting point
 - N62: Single-file atlas.n6 principle (ban on fragmentation)
@@ -394,9 +394,9 @@ At P2 the honesty principles are applied in practical verification:
 
 ### 12.1 Project Internal Rules
 
-- n6shared/rules/common.json (R0–R27)
-- n6shared/rules/n6-architecture.json (N61–N65)
-- n6shared/rules/lockdown.json (L0/L1/L2)
+- canonshared/rules/common.json (R0–R27)
+- canonshared/rules/canon.json (N61–N65)
+- canonshared/rules/lockdown.json (L0/L1/L2)
 
 ### 12.2 User Feedback Memos
 

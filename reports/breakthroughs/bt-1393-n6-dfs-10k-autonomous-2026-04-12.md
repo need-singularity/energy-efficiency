@@ -485,7 +485,7 @@ this BT - - compose.hexa - cause- re-article-lower- above- 2time retry:
 **result**: **hexa - check -**
 ```
 error[Type]: unsupported binary operation: Str("t") Ge Str("a")
-   --> n6shared/blowup/compose.hexa:134:1
+   --> canonshared/blowup/compose.hexa:134:1
 ```
 **cause**: compose.hexa - all- name sanitization - (line ~147) -book `_ch >= "a"` same String Ge String year-. hexa - characterten - ratio- year- -original. i.e., **compose.hexa - unsolved type -the** -re-.
 

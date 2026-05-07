@@ -85,7 +85,7 @@
     "patched_full_file": "/tmp/hexa_remote_patch_test/hexa_remote.patched",
     "synth_test_harness": "/tmp/hexa_remote_patch_test/synth_test.sh",
     "synth_ledger_artifact": "/tmp/hexa_remote_patch_test/audit_synth/cascade_blocked_events.jsonl",
-    "witness_json": "/Users/ghost/core/n6-architecture/design/kick/2026-04-28_f-raw77-cascade-ledger_omega_cycle.json"
+    "witness_json": "/Users/ghost/core/canon/design/kick/2026-04-28_f-raw77-cascade-ledger_omega_cycle.json"
   },
   "verdict": "PATCH_READY — synthetic test green, schema validated, raw 71 falsifiers specified. Sandbox prevents nexus mutation; operator must apply patch + commit + push."
 }

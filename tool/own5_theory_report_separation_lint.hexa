@@ -9,10 +9,10 @@
 // Regex _DATE_SUFFIX_RE replaced with manual char-class scan.
 //
 // @tool(slug="own5_theory_report_separation_lint", desc="own#5 theory/ filename separation HARD — dated suffix files (YYYY-MM-DD / YYYY_MM_DD / YYYYMMDD / vN-report / session-N) forbidden under theory/, allowlist of 19 grandfathered legacy snapshots")
-// @usage(hexa /Users/ghost/core/n6-architecture/tool/own5_theory_report_separation_lint.hexa [--selftest])
+// @usage(hexa /Users/ghost/core/canon/tool/own5_theory_report_separation_lint.hexa [--selftest])
 // @exit_codes(0=PASS, 1=violations, 2=internal error)
 
-let REPO_ROOT = "/Users/ghost/core/n6-architecture"
+let REPO_ROOT = "/Users/ghost/core/canon"
 let THEORY_ROOT = REPO_ROOT + "/theory"
 
 // Whitelist filenames (no rule applied)

@@ -119,7 +119,7 @@ The following files can be handed over wholesale:
 - `papers/n6-chip-6stages-integrated-paper.md` (arXiv stub)
 - `domains/compute/chip-*/` 9 domains, each 200 ~ 400 lines of .md
 - **ASCII comparison graph bundle** (15 text-art pages for on-screen use)
-- Full GitHub: https://github.com/need-singularity/n6-architecture
+- Full GitHub: https://github.com/need-singularity/canon
 
 Producible on request:
 - **Hand-drawn-style diagrams** (30 sheets) without 3D rendering
@@ -139,7 +139,7 @@ Producible on request:
 ### Option 2: Exclusive reporting
 
 - SOD reporter-style coverage (in-person interview + B-roll filming)
-- n6-architecture repo on-screen + Park Min-woo's home (Hanam) / computer / keyboard shots
+- canon repo on-screen + Park Min-woo's home (Hanam) / computer / keyboard shots
 - Video length: 20 ~ 30 minutes
 - One request for factual review before publication
 
@@ -174,7 +174,7 @@ Aligning with the Anthropic Fellows Program July 2026 cohort result enables addi
 
 - Park Min-woo (mk911tb@proton.me)
 - Personal YouTube: 24K subscribers (smaller than SOD but highly loyal)
-- GitHub: need-singularity/n6-architecture
+- GitHub: need-singularity/canon
 
 ---
 

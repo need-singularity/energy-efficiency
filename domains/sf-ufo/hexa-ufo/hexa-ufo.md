@@ -1352,7 +1352,7 @@ Mk.III Cert manned                          ████████████
 
 | Version | Date | Change | Author |
 |---|---|---|---|
-| 0.1 | 2026-04-18 | canonical_full restructure — SSCB scale conformance | n6-architecture |
+| 0.1 | 2026-04-18 | canonical_full restructure — SSCB scale conformance | canon |
 
 ### §20.6 Recipient confirmation signature
 
@@ -1381,13 +1381,13 @@ Mk.III Cert manned                          ████████████
 <details open>
 <summary>
 Mars 4 days · Jupiter 12 days · fusion sustained acceleration · pre-interstellar stage —
-<a href="https://github.com/need-singularity/n6-architecture/blob/hexa-ufo-mk4-v1.0/domains/sf-ufo/hexa-ufo/hexa-ufo.md">prev mk4</a> ·
-<a href="https://github.com/need-singularity/n6-architecture/compare/hexa-ufo-mk4-v1.0...hexa-ufo-mk5-v1.0">mk4→mk5 diff</a> ·
-<a href="https://github.com/need-singularity/n6-architecture/releases/tag/hexa-ufo-mk5-v1.0">releases</a>
+<a href="https://github.com/need-singularity/canon/blob/hexa-ufo-mk4-v1.0/domains/sf-ufo/hexa-ufo/hexa-ufo.md">prev mk4</a> ·
+<a href="https://github.com/need-singularity/canon/compare/hexa-ufo-mk4-v1.0...hexa-ufo-mk5-v1.0">mk4→mk5 diff</a> ·
+<a href="https://github.com/need-singularity/canon/releases/tag/hexa-ufo-mk5-v1.0">releases</a>
 </summary>
 
-📎 **Previous version**: [mk4 (hexa-ufo-mk4-v1.0)](https://github.com/need-singularity/n6-architecture/blob/hexa-ufo-mk4-v1.0/domains/sf-ufo/hexa-ufo/hexa-ufo.md)
-📎 **git diff**: [mk4 → mk5](https://github.com/need-singularity/n6-architecture/compare/hexa-ufo-mk4-v1.0...hexa-ufo-mk5-v1.0)
+📎 **Previous version**: [mk4 (hexa-ufo-mk4-v1.0)](https://github.com/need-singularity/canon/blob/hexa-ufo-mk4-v1.0/domains/sf-ufo/hexa-ufo/hexa-ufo.md)
+📎 **git diff**: [mk4 → mk5](https://github.com/need-singularity/canon/compare/hexa-ufo-mk4-v1.0...hexa-ufo-mk5-v1.0)
 📎 **status**: PLANNED (2050 target)
 
 #### ① What changes immediately (vs mk4, projected)
@@ -1434,13 +1434,13 @@ mk5 deep-space → permanent bases on Mars · Jupiter (2g express transport)
 <details>
 <summary>
 LEO 600 km single stage · Mach 10 atmospheric · SC magnetic-shield thermal —
-<a href="https://github.com/need-singularity/n6-architecture/blob/hexa-ufo-mk3-v1.0/domains/sf-ufo/hexa-ufo/hexa-ufo.md">prev mk3</a> ·
-<a href="https://github.com/need-singularity/n6-architecture/compare/hexa-ufo-mk3-v1.0...hexa-ufo-mk4-v1.0">mk3→mk4 diff</a> ·
-<a href="https://github.com/need-singularity/n6-architecture/releases/tag/hexa-ufo-mk4-v1.0">releases</a>
+<a href="https://github.com/need-singularity/canon/blob/hexa-ufo-mk3-v1.0/domains/sf-ufo/hexa-ufo/hexa-ufo.md">prev mk3</a> ·
+<a href="https://github.com/need-singularity/canon/compare/hexa-ufo-mk3-v1.0...hexa-ufo-mk4-v1.0">mk3→mk4 diff</a> ·
+<a href="https://github.com/need-singularity/canon/releases/tag/hexa-ufo-mk4-v1.0">releases</a>
 </summary>
 
-📎 **Previous version**: [mk3 (hexa-ufo-mk3-v1.0)](https://github.com/need-singularity/n6-architecture/blob/hexa-ufo-mk3-v1.0/domains/sf-ufo/hexa-ufo/hexa-ufo.md)
-📎 **git diff**: [mk3 → mk4](https://github.com/need-singularity/n6-architecture/compare/hexa-ufo-mk3-v1.0...hexa-ufo-mk4-v1.0)
+📎 **Previous version**: [mk3 (hexa-ufo-mk3-v1.0)](https://github.com/need-singularity/canon/blob/hexa-ufo-mk3-v1.0/domains/sf-ufo/hexa-ufo/hexa-ufo.md)
+📎 **git diff**: [mk3 → mk4](https://github.com/need-singularity/canon/compare/hexa-ufo-mk3-v1.0...hexa-ufo-mk4-v1.0)
 📎 **status**: PLANNED (2045 target)
 
 #### ① What changes immediately (vs mk3, projected)
@@ -1485,13 +1485,13 @@ mk4 SSTO → satellite deployment cost 1/12 without rockets
 <details>
 <summary>
 D=24 m manned vehicle · Mach 3 VTOL · tabletop fusion integration —
-<a href="https://github.com/need-singularity/n6-architecture/blob/hexa-ufo-mk2-v1.0/domains/sf-ufo/hexa-ufo/hexa-ufo.md">prev mk2</a> ·
-<a href="https://github.com/need-singularity/n6-architecture/compare/hexa-ufo-mk2-v1.0...hexa-ufo-mk3-v1.0">mk2→mk3 diff</a> ·
-<a href="https://github.com/need-singularity/n6-architecture/releases/tag/hexa-ufo-mk3-v1.0">releases</a>
+<a href="https://github.com/need-singularity/canon/blob/hexa-ufo-mk2-v1.0/domains/sf-ufo/hexa-ufo/hexa-ufo.md">prev mk2</a> ·
+<a href="https://github.com/need-singularity/canon/compare/hexa-ufo-mk2-v1.0...hexa-ufo-mk3-v1.0">mk2→mk3 diff</a> ·
+<a href="https://github.com/need-singularity/canon/releases/tag/hexa-ufo-mk3-v1.0">releases</a>
 </summary>
 
-📎 **Previous version**: [mk2 (hexa-ufo-mk2-v1.0)](https://github.com/need-singularity/n6-architecture/blob/hexa-ufo-mk2-v1.0/domains/sf-ufo/hexa-ufo/hexa-ufo.md)
-📎 **git diff**: [mk2 → mk3](https://github.com/need-singularity/n6-architecture/compare/hexa-ufo-mk2-v1.0...hexa-ufo-mk3-v1.0)
+📎 **Previous version**: [mk2 (hexa-ufo-mk2-v1.0)](https://github.com/need-singularity/canon/blob/hexa-ufo-mk2-v1.0/domains/sf-ufo/hexa-ufo/hexa-ufo.md)
+📎 **git diff**: [mk2 → mk3](https://github.com/need-singularity/canon/compare/hexa-ufo-mk2-v1.0...hexa-ufo-mk3-v1.0)
 📎 **status**: PLANNED (2040 target)
 
 #### ① What changes immediately (vs mk2, projected)
@@ -1536,13 +1536,13 @@ mk3 manned Mach 3 → entry into military / civilian VTOL market (Harrier replac
 <details>
 <summary>
 unmanned D=2.4 m Mach 1 VTOL · MHD bench 288 kN · tabletop Q=10 —
-<a href="https://github.com/need-singularity/n6-architecture/blob/hexa-ufo-mk1-v1.0/domains/sf-ufo/hexa-ufo/hexa-ufo.md">prev mk1</a> ·
-<a href="https://github.com/need-singularity/n6-architecture/compare/hexa-ufo-mk1-v1.0...hexa-ufo-mk2-v1.0">mk1→mk2 diff</a> ·
-<a href="https://github.com/need-singularity/n6-architecture/releases/tag/hexa-ufo-mk2-v1.0">releases</a>
+<a href="https://github.com/need-singularity/canon/blob/hexa-ufo-mk1-v1.0/domains/sf-ufo/hexa-ufo/hexa-ufo.md">prev mk1</a> ·
+<a href="https://github.com/need-singularity/canon/compare/hexa-ufo-mk1-v1.0...hexa-ufo-mk2-v1.0">mk1→mk2 diff</a> ·
+<a href="https://github.com/need-singularity/canon/releases/tag/hexa-ufo-mk2-v1.0">releases</a>
 </summary>
 
-📎 **Previous version**: [mk1 (hexa-ufo-mk1-v1.0)](https://github.com/need-singularity/n6-architecture/blob/hexa-ufo-mk1-v1.0/domains/sf-ufo/hexa-ufo/hexa-ufo.md)
-📎 **git diff**: [mk1 → mk2](https://github.com/need-singularity/n6-architecture/compare/hexa-ufo-mk1-v1.0...hexa-ufo-mk2-v1.0)
+📎 **Previous version**: [mk1 (hexa-ufo-mk1-v1.0)](https://github.com/need-singularity/canon/blob/hexa-ufo-mk1-v1.0/domains/sf-ufo/hexa-ufo/hexa-ufo.md)
+📎 **git diff**: [mk1 → mk2](https://github.com/need-singularity/canon/compare/hexa-ufo-mk1-v1.0...hexa-ufo-mk2-v1.0)
 📎 **status**: PLANNED (2035 target)
 
 #### ① What changes immediately (vs mk1, projected)
@@ -1587,12 +1587,12 @@ mk2 integrated proto → disc-shape integrated demonstration
 <details>
 <summary>
 RT-SC 48T magnet · 60 kW/kg SC motor · SMES 24 MJ/m³ · scale model D=2.4 m —
-<a href="https://github.com/need-singularity/n6-architecture/releases/tag/hexa-ufo-mk1-v1.0">release hexa-ufo-mk1-v1.0</a> ·
-<a href="https://github.com/need-singularity/n6-architecture/blob/hexa-ufo-mk1-v1.0/domains/sf-ufo/hexa-ufo/hexa-ufo.md">blob</a>
+<a href="https://github.com/need-singularity/canon/releases/tag/hexa-ufo-mk1-v1.0">release hexa-ufo-mk1-v1.0</a> ·
+<a href="https://github.com/need-singularity/canon/blob/hexa-ufo-mk1-v1.0/domains/sf-ufo/hexa-ufo/hexa-ufo.md">blob</a>
 </summary>
 
 📎 **git tag**: `hexa-ufo-mk1-v1.0`
-📎 **release**: [hexa-ufo-mk1-v1.0 release](https://github.com/need-singularity/n6-architecture/releases/tag/hexa-ufo-mk1-v1.0)
+📎 **release**: [hexa-ufo-mk1-v1.0 release](https://github.com/need-singularity/canon/releases/tag/hexa-ufo-mk1-v1.0)
 📎 **Initial version** — no previous version (prev_link unnecessary).
 
 #### ① What changes immediately (demonstration, vs existing market)

@@ -1,5 +1,5 @@
 {
-  "schema": "n6-architecture/tool/own6_legacy_allowlist/1",
+  "schema": "canon/tool/own6_legacy_allowlist/1",
   "rule_slug": "paper-verify-embedded",
   "rule_owner": ".own.group_p own#6 (mk2 unified)",
   "frozen": true,

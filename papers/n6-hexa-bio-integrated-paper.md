@@ -18,7 +18,7 @@ alien_index_target: 10
 ---
 # [INTEGRATED v1] Ultimate HEXA-BIO n=6 Life Architecture (P-146) — 4-Domain Integrated Paper
 
-> **Author**: Park Min-woo (n6-architecture)
+> **Author**: Park Min-woo (canon)
 > **Category**: hexa-bio-integrated — n=6 life / earth system integrated seed paper
 > **Version**: v1 (2026-04-18 integrated)
 > **Integration targets**: ecology / agriculture / food + geology / PREM + meteorology + synthetic biology (+ biology axis)
@@ -157,7 +157,7 @@ HEXA-BIO integration takes the 4 n=6 seed papers plus the biology root domain as
 | meteorology | papers/n6-meteorology-paper.md | 31/31 EXACT [10*] | 9 |
 | synthetic-biology | papers/n6-synthetic-biology-paper.md | 0/24 (Mk.I seed) | 7 |
 | biology (root) | domains/life/biology/biology.md | HEXA-BIO seed | 7 |
-| σ(n), τ(n), φ(n), sopfr(n) | n6shared/rules/common.json | OEIS A000203 / 5 / 10 / 1414 | - |
+| σ(n), τ(n), φ(n), sopfr(n) | canonshared/rules/common.json | OEIS A000203 / 5 / 10 / 1414 | - |
 
 ---
 
@@ -788,7 +788,7 @@ Basis: minimum perfect number n=6 + σ·φ=n·τ uniqueness + OEIS triple regist
 
 HEXA-BIO is an **integrated seed paper that aligns the 4 tiers (crust / atmosphere / ecology / cell)
 onto a single n=6 arithmetic lattice**. Sharing the 4 domains' σ=12, τ=4, φ=2, sopfr=5, J_2=24
-compresses the design space by σ·τ=48×, converges 9,600 DSE combinations to Pareto top-6,
+compresses the design space by σ·τ=48×, converges 9,600 DSE combinations to Pareto top-K (data-driven),
 and quadruples scientific efficiency by sharing falsification conditions across the 4 tiers.
 
 Current status: **Mk.I (2026-04-18) — integrated number-theoretic mapping stage**.

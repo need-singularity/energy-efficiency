@@ -235,12 +235,12 @@
       "5 W4 TRANSCEND-tier falsifiers (F-W4-1..F-W4-5) + 5 MISS criteria + 21 raw 91 C3 NOT-decided items"
     ],
     "evidence_paths": [
-      "/Users/ghost/core/n6-architecture/proposals/hexa_weave_mvp_w4_openfold_dryrun_2026_04_28.md (W4 prep deliverable)",
-      "/Users/ghost/core/n6-architecture/proposals/hexa_weave_mvp_w3_clone_vram_spec_2026_04_28.md (W3 predecessor)",
-      "/Users/ghost/core/n6-architecture/proposals/hexa_weave_mvp_w2_base_model_integration_2026_04_28.md (W2 predecessor)",
-      "/Users/ghost/core/n6-architecture/proposals/hexa_weave_mvp_w1_architecture_decision_2026_04_28.md (W1 predecessor)",
-      "/Users/ghost/core/n6-architecture/proposals/hexa_weave_mvp_2026_04_28.md (parent spec)",
-      "/Users/ghost/core/n6-architecture/proposals/hexa_weave_mvp_w4_lean4_mk_decision_2026_04_28.md (parallel W4 Lean4 doc)",
+      "/Users/ghost/core/canon/proposals/hexa_weave_mvp_w4_openfold_dryrun_2026_04_28.md (W4 prep deliverable)",
+      "/Users/ghost/core/canon/proposals/hexa_weave_mvp_w3_clone_vram_spec_2026_04_28.md (W3 predecessor)",
+      "/Users/ghost/core/canon/proposals/hexa_weave_mvp_w2_base_model_integration_2026_04_28.md (W2 predecessor)",
+      "/Users/ghost/core/canon/proposals/hexa_weave_mvp_w1_architecture_decision_2026_04_28.md (W1 predecessor)",
+      "/Users/ghost/core/canon/proposals/hexa_weave_mvp_2026_04_28.md (parent spec)",
+      "/Users/ghost/core/canon/proposals/hexa_weave_mvp_w4_lean4_mk_decision_2026_04_28.md (parallel W4 Lean4 doc)",
       "OpenFold upstream: https://github.com/aqlaboratory/openfold",
       "OpenFold v2.2.0: https://github.com/aqlaboratory/openfold/tree/v2.2.0",
       "PyTorch CUDA 12.4 wheel: https://download.pytorch.org/whl/cu124",
@@ -279,7 +279,7 @@
     "phi_6_eq_2": "φ(6)=2 maps to: APPROVE/REJECT user verdict on W4 prep (sandbox / dryrun); v2.2.0/main pin choice (binary); FIT/NO-FIT VRAM verdict (F-W3-3 / F-W4-3); CONFLICT/NO-CONFLICT dep verdict (F-W3-4 / F-W4-4); RC0/NON-ZERO sandbox build verdict (F-W4-1)"
   },
   "raw_47_cross_repo_check": {
-    "n6-architecture": "this repo — parent + W1 + W2 + W3 + W4 prep + this witness",
+    "canon": "this repo — parent + W1 + W2 + W3 + W4 prep + this witness",
     "anima": "/Users/ghost/core/anima/ — sister-repo pattern reference",
     "nexus": "/Users/ghost/core/nexus/ — kick infra source (degraded; F-CL3-a)",
     "hexa-lang": "/Users/ghost/core/hexa-lang/ — runner image dep",
@@ -302,8 +302,8 @@
     "raw_53_compliant": true
   },
   "report_summary": {
-    "witness_path": "/Users/ghost/core/n6-architecture/design/kick/2026-04-28_hexa-weave-mvp-w4-openfold-dryrun_omega_cycle.json",
-    "deliverable_path": "/Users/ghost/core/n6-architecture/proposals/hexa_weave_mvp_w4_openfold_dryrun_2026_04_28.md",
+    "witness_path": "/Users/ghost/core/canon/design/kick/2026-04-28_hexa-weave-mvp-w4-openfold-dryrun_omega_cycle.json",
+    "deliverable_path": "/Users/ghost/core/canon/proposals/hexa_weave_mvp_w4_openfold_dryrun_2026_04_28.md",
     "w4_prep_verdict": "FORWARD-SPEC PASS (document exists; §7 falsifier count = 5 (5/5 TRANSCEND-tier); §8 NOT-list = 21 >= 10; §2.2 sandbox steps = 6 >= 5; §3.1 dry-run steps = 3 >= 3; §5.4 pitfall matrix = 5 rows >= 3; §7.1 MISS criteria = 5 >= 5; lint pre-flight predicted PASS; no code execution)",
     "openfold_pin_recommended_carry_w3": {"tag": "v2.2.0", "sha40": "e938c184a291bf053af3b14c1e3e8bb29aee57e2"},
     "openfold_pin_alternate_carry_w3":   {"tag": "main",   "sha40": "be2ec1841f16c966c65ae0e7599ebbadc725757d"},

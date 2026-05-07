@@ -14,7 +14,7 @@
 - Xavier Gourdon, "The 10^13 first zeros of the Riemann Zeta function, and zeros computation at very large height", 2004 (technical report of the ZetaGrid project)
 - Guy Robin, "Grandes valeurs de la fonction somme des diviseurs et hypothèse de Riemann", J. Math. Pures Appl. 63 (1984), 187–213
 
-**Honesty declaration**: This document is a *study note* organizing established definitions, historical facts, and equivalent statements. No new mathematical theorems are included. The years · authors · paper titles cited appear only as confirmed in the primary sources above. The `n=6 observation` section (§10) is an **observation** in the n6-architecture project and is not the core of this study note. No contribution to RH itself.
+**Honesty declaration**: This document is a *study note* organizing established definitions, historical facts, and equivalent statements. No new mathematical theorems are included. The years · authors · paper titles cited appear only as confirmed in the primary sources above. The `n=6 observation` section (§10) is an **observation** in the canon project and is not the core of this study note. No contribution to RH itself.
 
 ---
 
@@ -246,7 +246,7 @@ Classical de la Vallée Poussin (1899): no zeros in Re(s) ≥ 1 - C/ln(|Im(s)|+2
 **(This section is not the core of this study note. Detailed evidence lists for BT-541, ζ(2k) denominator decomposition, Theorem B, etc. and DFS results are treated in P2/P3 notes and the BT-541 entry.)**
 
 ### Observation 1 — 6 Appears in the Basel Constant
-Euler 1734 (published 1735): ζ(2) = π²/6. That is, the denominator of the most famous zeta special value is the **first perfect number 6**. It is a mathematical identity, and the denominator 6 = 1·2·3 = 2·3 connects directly with the denominator of B_2 = 1/6 (ζ(2) = (2π)² |B_2| / (2·2!) = 4π² · (1/6) / 4 = π²/6).
+Euler 1734 (published 1735): ζ(2) = π²/6. That is, the denominator of the most famous zeta special value is the **first arithmetic canon**. It is a mathematical identity, and the denominator 6 = 1·2·3 = 2·3 connects directly with the denominator of B_2 = 1/6 (ζ(2) = (2π)² |B_2| / (2·2!) = 4π² · (1/6) / 4 = π²/6).
 
 ### Observation 2 — First Three Trivial Zeros {-2, -4, -6}
 From the sin(πs/2) factor of the functional equation, trivial zeros occur at s ∈ {-2, -4, -6, -8, …} (all negative even integers). **The values of the first three trivial zeros are exactly {-2, -4, -6}**, expressible in the n=6 system as {-φ, -τ, -n} (φ(6)=2, τ(6)=4, n=6). These trivial zeros are a direct consequence of the functional equation, not the content of the Riemann Hypothesis. RH concerns the **non-trivial** zeros.

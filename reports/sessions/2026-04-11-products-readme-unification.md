@@ -19,7 +19,7 @@ sed -n '86,87p' $N6_ARCH/README.md
 # Output: <!-- AUTO:ALIEN_INDEX:START -->\n<!-- AUTO:ALIEN_INDEX:END -->
 
 # Symptom 2: sync tool STUB
-sed -n '1,12p' $N6_ARCH/n6shared/sync_products_readme.hexa
+sed -n '1,12p' $N6_ARCH/canonshared/sync_products_readme.hexa
 # Output: println("STUB: sync_products_readme.py (awaiting HEXA port)")
 
 # Symptom 3: link drift
@@ -29,7 +29,7 @@ python3 -c "import json; p=json.load(open('$NEXUS/shared/n6/docs/products.json')
 
 ## Baseline
 
-- `pytest tests/ -x` / `python tools/optimizer_constants_n6_deep.py --check` — neither tool exists in n6-architecture (alternative check: AUTO marker integrity via grep).
+- `pytest tests/ -x` / `python tools/optimizer_constants_n6_deep.py --check` — neither tool exists in canon (alternative check: AUTO marker integrity via grep).
 - products.json measured: 34 sections, 173 products, 172 ceiling confirmed, 164 AI-index=10, BT EXACT average 98%+
 - README markers measured: total 122 AUTO markers, only the AUTO:ALIEN_INDEX block is empty
 - Link audit: 416 entries, PASS 3, MISS 413, completion 0.7%
@@ -60,14 +60,14 @@ python3 -c "import json; p=json.load(open('$NEXUS/shared/n6/docs/products.json')
 - `AI techniques: 16` -> `Products: 173 (34 sections, ceiling 172, AI-index=10 164)` new + `AI techniques: 66` (reflects 66 Techniques)
 - DSE domains/paths/NEXUS-6 tests fields are managed by another pipeline, values preserved
 
-### 3) `n6shared/sync_products_readme.hexa` STUB removed (Agent 3)
+### 3) `canonshared/sync_products_readme.hexa` STUB removed (Agent 3)
 
 - 10 lines -> 601 lines (+591 lines)
 - 16 fn: die, resolve_path, load_products, get_or, has_field, format_links, bt_pct_str, render_summary_block, render_footer_block, render_products_table, render_alien_index, render_stats, replace_marker, replace_products_table, write_readme, main
 - Handles 6 marker types: ALIEN_INDEX, STATS, SUMMARY_<id>, FOOTER_<id>, product table
 - `--dry-run` support, atomic write (temp + mv -f)
 - Env vars: `N6_PRODUCTS_JSON`, `N6_README_MD`
-- R2 (minimal hardcoding), R19 (no silent exit), R29 (exception: sync utility, kept in n6-architecture/shared/)
+- R2 (minimal hardcoding), R19 (no silent exit), R29 (exception: sync utility, kept in canon/shared/)
 
 ## Agent 1/2 detailed findings
 
@@ -135,7 +135,7 @@ natural-science, marketing, digital-medical, mobility, tattoo-removal, keyboard,
 
 | Class | Count | Cause |
 |------|---:|------|
-| `docs/paper/n6-*-paper.md` ghost | **116** | papers/_registry.json declares 158 vs n6-architecture/papers disk 13 — **papers SSOT 145-paper hole** |
+| `docs/paper/n6-*-paper.md` ghost | **116** | papers/_registry.json declares 158 vs canon/papers disk 13 — **papers SSOT 145-paper hole** |
 | `calc/kolon_n6_*.py` missing | **10** | File itself does not exist |
 | `docs/<dom>/<nested>.md` un-migrated | **48** | Pre-migration design MDs remain, 9-axis migration incomplete |
 
@@ -144,7 +144,7 @@ natural-science, marketing, digital-medical, mobility, tattoo-removal, keyboard,
 ### New finding — papers SSOT 145-paper hole
 
 - `papers/_registry.json` declares 158
-- Measured: 13 in `n6-architecture/papers/`, 1 in `$PAPERS/n6-architecture/`
+- Measured: 13 in `canon/papers/`, 1 in `$PAPERS/canon/`
 - Diff: **145 ghost papers** (massive drift inside the papers SSOT)
 - Out of scope for this session — separate papers-reinforcement session needed
 
@@ -216,7 +216,7 @@ natural-science, marketing, digital-medical, mobility, tattoo-removal, keyboard,
 
 - Declared 139 vs measured 38 (gap 101) — coverage 27.3%
 - products.json paper 116 classification:
-  - **FOUND_ALT 24**: `$PAPERS/tecs-l/` 23 + `n6-architecture/papers/` 1
+  - **FOUND_ALT 24**: `$PAPERS/tecs-l/` 23 + `canon/papers/` 1
   - **GHOST_CEIL 92**: nowhere on disk, all ceiling=true sections
   - ORPHAN_DECLARED 11 / ORPHAN_DISK 14
 - frontier alone 31 ghost (33.7%)
@@ -226,10 +226,10 @@ natural-science, marketing, digital-medical, mobility, tattoo-removal, keyboard,
 ### Main body — Agent C FOUND_ALT 24 cp + path update
 
 User option (A) selected — cp executed in this session:
-- 23 cp `$PAPERS/tecs-l/n6-*-paper.md` -> `n6-architecture/papers/`
+- 23 cp `$PAPERS/tecs-l/n6-*-paper.md` -> `canon/papers/`
 - 1 (n6-synthetic-biology-paper.md) already exists, skipped
 - products.json path updated for 25: `docs/paper/...` -> `papers/...`
-- n6-architecture/papers/ 13 -> **36** (+23)
+- canon/papers/ 13 -> **36** (+23)
 - Backup: `reports/audits/products-backup-2026-04-11-pre24papers.json`
 
 ### Final completion progression
@@ -280,7 +280,7 @@ Existing PRODUCTS_118 / other-session PRODUCTS_164_173_RECOUNT all invariant.
 | R19 no silent exit | sync.hexa die() implemented | O |
 | R21 background | Agent 4 dry-run included, all background | O |
 | R28 auto-absorb | This report + atlas.n6 follow-up | partial (atlas.n6 follow-up if needed) |
-| R29 .hexa location | sync utility exception (n6-architecture/shared/) | O |
+| R29 .hexa location | sync utility exception (canon/shared/) | O |
 | N61 ASCII 3 kinds | Integrated table + 2 bar charts | O |
 | feedback_ascii_report | Bar chart on completion | O |
 | feedback_no_emoji_ceiling | Ceiling-expression text ("reached"/"not reached") | O |

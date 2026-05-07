@@ -16,7 +16,7 @@ idempotent runbook) referencing `~/core/hexa-weave/scripts/...` for Step 6
 
 Cycle 15 authored `scripts/rcsb_cluster_split_fetch.py` and
 `scripts/w5_verdict.py` (+ `tool/hexa_weave_vram_ladder.hexa` and the
-sister-repo README spec) — but in **n6-architecture** (this repo), not in
+sister-repo README spec) — but in **canon** (this repo), not in
 the sister `hexa-weave/` repo.
 
 Net effect: Step 6 and Step 8 dispatch on the user's machine would emit
@@ -33,7 +33,7 @@ Three options were on the table:
 | Option | Description | Trade-off |
 |---|---|---|
 | A | User runs `mkdir ~/core/hexa-weave/scripts/ && cp ...` before W5 dispatch | Two-source-of-truth; user has to remember to re-cp on each script update |
-| B | Patch Step 6/8 to call `~/core/n6-architecture/scripts/...` directly via `HW_SCRIPTS_DIR` env override | Single-source-of-truth; cross-repo dependency made explicit |
+| B | Patch Step 6/8 to call `~/core/canon/scripts/...` directly via `HW_SCRIPTS_DIR` env override | Single-source-of-truth; cross-repo dependency made explicit |
 | C | Auto-detect via relative-path resolver | Adds runtime probe complexity for marginal benefit |
 
 **Selected: Option B** — minimal-scope, single-source-of-truth preserved,
@@ -48,8 +48,8 @@ checkout`.
 ```diff
 -# Cycle 14 / 2026-04-28
 +# Cycle 14 / 2026-04-28 (initial 1.0.0)
-+# Cycle 16 / 2026-04-28 (1.0.1: Step 6/8 path mismatch fix — HW_SCRIPTS_DIR from ~/core/n6-architecture/scripts/)
-+# raw 47 cross-repo: n6-architecture (scripts) -> hexa-weave (data/weights/outputs)
++# Cycle 16 / 2026-04-28 (1.0.1: Step 6/8 path mismatch fix — HW_SCRIPTS_DIR from ~/core/canon/scripts/)
++# raw 47 cross-repo: canon (scripts) -> hexa-weave (data/weights/outputs)
 -version: 1.0.0
 +version: 1.0.1
 ```
@@ -68,10 +68,10 @@ python ~/core/hexa-weave/scripts/rcsb_cluster_split_fetch.py \
 After:
 
 ```yaml
-HW_SCRIPTS_DIR="${HW_SCRIPTS_DIR:-$HOME/core/n6-architecture/scripts}"
+HW_SCRIPTS_DIR="${HW_SCRIPTS_DIR:-$HOME/core/canon/scripts}"
 test -f "$HW_SCRIPTS_DIR/rcsb_cluster_split_fetch.py" || {
   echo "ERROR: rcsb_cluster_split_fetch.py not found at $HW_SCRIPTS_DIR" >&2
-  echo "       set HW_SCRIPTS_DIR or run from /Users/ghost/core/n6-architecture/" >&2
+  echo "       set HW_SCRIPTS_DIR or run from /Users/ghost/core/canon/" >&2
   exit 127
 }
 python "$HW_SCRIPTS_DIR/rcsb_cluster_split_fetch.py" \
@@ -86,7 +86,7 @@ Two enhancements bundled:
 1. `--resume` added: idempotent re-dispatch on partial failure (raw 65
    idempotent + raw 142 D2 single-retry friendly).
 2. `test -f` guard with explicit error message: fail-fast with actionable
-   "set HW_SCRIPTS_DIR or run from /Users/ghost/core/n6-architecture/"
+   "set HW_SCRIPTS_DIR or run from /Users/ghost/core/canon/"
    guidance (raw 66 ai-native trailer-friendly because exit 127 → step 6
    failed → trailer.suggested_fallback can prompt user to clone).
 
@@ -104,10 +104,10 @@ python ~/core/hexa-weave/scripts/w5_verdict.py \
 After:
 
 ```yaml
-HW_SCRIPTS_DIR="${HW_SCRIPTS_DIR:-$HOME/core/n6-architecture/scripts}"
+HW_SCRIPTS_DIR="${HW_SCRIPTS_DIR:-$HOME/core/canon/scripts}"
 test -f "$HW_SCRIPTS_DIR/w5_verdict.py" || {
   echo "ERROR: w5_verdict.py not found at $HW_SCRIPTS_DIR" >&2
-  echo "       set HW_SCRIPTS_DIR or run from /Users/ghost/core/n6-architecture/" >&2
+  echo "       set HW_SCRIPTS_DIR or run from /Users/ghost/core/canon/" >&2
   exit 127
 }
 python "$HW_SCRIPTS_DIR/w5_verdict.py" \
@@ -126,15 +126,15 @@ Cycle 14's caveat #2 ("scripts/* are referenced but NOT YET created")
 was replaced with the cycle 16 path-resolution caveat:
 
 > scripts/rcsb_cluster_split_fetch.py + scripts/w5_verdict.py LIVE in
-> n6-architecture (this repo) per cycle 15; sister-repo hexa-weave/ is
+> canon (this repo) per cycle 15; sister-repo hexa-weave/ is
 > data + weights + outputs only. Step 6/8 use HW_SCRIPTS_DIR (default
-> $HOME/core/n6-architecture/scripts) — cycle 16 path mismatch fix.
+> $HOME/core/canon/scripts) — cycle 16 path mismatch fix.
 
 A new caveat #6 (raw 47 cross-repo edge declaration) was added:
 
-> raw 47 cross-repo edge: HW_SCRIPTS_DIR sources n6-architecture/scripts;
+> raw 47 cross-repo edge: HW_SCRIPTS_DIR sources canon/scripts;
 > hexa-weave/ sister repo receives writes only (data/, weights/,
-> outputs/, logs/). User MUST git clone n6-architecture before dispatch
+> outputs/, logs/). User MUST git clone canon before dispatch
 > OR override HW_SCRIPTS_DIR.
 
 ## 4. Selftest evidence
@@ -160,9 +160,9 @@ rc=0   # syntax PASS
 ### 4.3 Live probe
 
 ```
-$ HW_SCRIPTS_DIR="${HW_SCRIPTS_DIR:-$HOME/core/n6-architecture/scripts}"
+$ HW_SCRIPTS_DIR="${HW_SCRIPTS_DIR:-$HOME/core/canon/scripts}"
 $ echo "Resolved HW_SCRIPTS_DIR=$HW_SCRIPTS_DIR"
-Resolved HW_SCRIPTS_DIR=/Users/ghost/core/n6-architecture/scripts
+Resolved HW_SCRIPTS_DIR=/Users/ghost/core/canon/scripts
 $ test -f "$HW_SCRIPTS_DIR/rcsb_cluster_split_fetch.py" && echo PASS
 PASS
 $ test -f "$HW_SCRIPTS_DIR/w5_verdict.py" && echo PASS
@@ -215,7 +215,7 @@ into `~/core/hexa-weave/scripts/`).
 Explicit edge declaration:
 
 ```
-n6-architecture/                   <-- THIS repo (source of truth)
+canon/                   <-- THIS repo (source of truth)
 ├── tool/hexa_weave_w5_setup.hexa  <-- runbook
 └── scripts/
     ├── rcsb_cluster_split_fetch.py  <-- Step 6 invokes
@@ -243,7 +243,7 @@ contract is preserved.
 - **Cycle 14 prep mistake acknowledged**: cycle 14 wrote the runbook
   before cycle 15 wrote the scripts; the implicit assumption was
   scripts would be authored under `hexa-weave/scripts/`. Cycle 15
-  decided n6-architecture/scripts was the better single-source-of-truth
+  decided canon/scripts was the better single-source-of-truth
   location (Lean/atlas/proposals/scripts all colocate). Neither cycle
   was wrong individually; the mismatch is a cross-cycle handoff bug
   closed cycle 16.
@@ -253,7 +253,7 @@ contract is preserved.
 - **Sister-repo `hexa-weave/` is still required**: cycle 16 does NOT
   collapse repos. The sister repo holds large data (~3 GB weights, ~100
   PDB FASTAs, ~50 MB inference outputs) which is not appropriate for the
-  n6-architecture source repo.
+  canon source repo.
 - **`hexa parse` parser noise is pre-existing** and not caused by the
   cycle 16 patch — see §4.5.
 - **Option C deferred**: a full relative-path resolver would require
@@ -264,13 +264,13 @@ contract is preserved.
 ## 9. Falsifiers preregistered
 
 - **F-W5-PATH-1** (deadline 2026-04-30): User runs `hexa run --dry-run
-  tool/hexa_weave_w5_setup.hexa --only 6,8` from `/Users/ghost/core/n6-architecture/`
-  and Step 6/8 cmd echoes resolve `HW_SCRIPTS_DIR=/Users/ghost/core/n6-architecture/scripts`
+  tool/hexa_weave_w5_setup.hexa --only 6,8` from `/Users/ghost/core/canon/`
+  and Step 6/8 cmd echoes resolve `HW_SCRIPTS_DIR=/Users/ghost/core/canon/scripts`
   and pass the `test -f` probe. **Falsified if** `HW_SCRIPTS_DIR`
   resolves to wrong path or `test -f` fails.
 
 - **F-W5-PATH-2** (deadline 2026-05-05): User dispatches full W5 1-command
-  on ubu1 with HW_SCRIPTS_DIR=$HOME/core/n6-architecture/scripts, and
+  on ubu1 with HW_SCRIPTS_DIR=$HOME/core/canon/scripts, and
   Step 6 produces `~/core/hexa-weave/data/manifest.json` with 100 entries
   AND Step 8 produces `~/core/hexa-weave/outputs/verdict.json` with
   `__W5_SETUP_RESULT__ PASS`. **Falsified if** Step 6 or Step 8 emits
@@ -287,7 +287,7 @@ contract is preserved.
 
 - **F-W5-PATH-5** (deadline 2026-05-15): Sister-repo hexa-weave/
   README is updated by cycle 17+ to declare `HW_SCRIPTS_DIR` setup
-  prerequisite ("clone n6-architecture before W5 dispatch"). **Falsified
+  prerequisite ("clone canon before W5 dispatch"). **Falsified
   if** README still implies sister-repo-self-contained dispatch.
 
 ## 10. Next-cycle handoff

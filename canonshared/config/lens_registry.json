@@ -1,0 +1,417 @@
+{
+  "meta": {
+    "description": "NEXUS-6 Telescope Lens Registry (⚠️ 레거시 Rust 카운트, 진짜 SSOT 아님)",
+    "_warning": "이 레지스트리는 canon 내부 Rust 레거시 렌즈 카운트. 진짜 SSOT 아님.",
+    "_real_ssot": "$NEXUS/shared/lenses/ (HEXA 네이티브 84 + blowup/lens 15 번들)",
+    "_legacy_path": "canon/nexus/src/telescope/lenses/ (Rust .rs 파생본, 폐기 중)",
+    "_transition_status": "HEAD 0c23ad27 refactor(telescope) — Rust→HEXA 전환 진행, 56 렌즈 등록 해제 완료",
+    "_next_session_plan": "Rust→HEXA 포팅 후 레거시 삭제 + 본 레지스트리 재구축",
+    "previous_count": 603,
+    "current_count": 605,
+    "registry_total": 1238,
+    "extended_count": 1213,
+    "core_count": 25,
+    "last_updated": "2026-04-14",
+    "expansion_session": "500→600 (+100 신규 렌즈 — 4차 확장, ⚠️ 레거시 경로, 다음 세션 HEXA 포팅 대상)",
+    "expansion_p1_4": "DSE P1-4 — SEDI 시그널 서치 + brainwire EEG n=6 매핑 HEXA 네이티브 직접 등록 (nexus/shared/lenses/ SSOT)"
+  },
+  "categories": {
+    "cross_domain_bridge": {
+      "count": 12,
+      "lenses": [
+        "CrossDomainBridgeLens", "AgentCoordinationLens", "KnowledgeGraphLens",
+        "DistributedConsensusLens", "OptimalTransportLens", "StructuralEquationLens",
+        "CommunityDetectionLens", "LinkPredictionLens", "SpectralGraphLens",
+        "NetworkFlowLens", "TopologicalSortLens", "ProbabilisticGraphicalLens"
+      ]
+    },
+    "timeseries_causal_complexity": {
+      "count": 14,
+      "lenses": [
+        "CausalDiscoveryLens", "TimeSeriesDecompLens", "MarkovChainLens",
+        "AttractorBasinLens", "ComplexityNetworkLens", "FourierAnalysisLens",
+        "WaveletTransformLens", "KalmanFilterLens", "ParticleFilterLens",
+        "SamplingTheoryLens", "SignalReconstructionLens", "SensitivityAnalysisLens",
+        "TopologicalDataLens", "PersistenceHomologyLens"
+      ]
+    },
+    "uncertainty_bayesian": {
+      "count": 10,
+      "lenses": [
+        "BayesianInferenceLens", "UncertaintyQuantificationLens", "InformationBottleneckLens",
+        "RenyiEntropyLens", "MonteCarloLens", "VariationalInferenceLens",
+        "ManifoldLearningLens", "CrossValidationLens", "HyperparameterTuningLens",
+        "AttractorBasinLens"
+      ]
+    },
+    "ml_advanced": {
+      "count": 20,
+      "lenses": [
+        "TransferLearningLens", "ContrastiveLearningLens", "SelfSupervisedLens",
+        "MetaLearningLens", "GraphNeuralLens", "AttentionMechanismLens",
+        "ReinforcementRewardLens", "MultiTaskLens", "AdversarialRobustnessLens",
+        "ContinualLearningLens", "FederatedLearningLens", "NeuralArchitectureLens",
+        "ActiveLearningLens", "FairnessBiasLens", "ExplainabilityLens",
+        "DimensionalityBottleneckLens", "SpikingNeuralLens", "ReservoirComputingLens",
+        "PlasticityConsolidationLens", "CognitiveLoadLens"
+      ]
+    },
+    "other": {
+      "count": 1,
+      "lenses": ["DecisionBoundaryLens"]
+    },
+    "signal_brainwire_dse": {
+      "count": 2,
+      "_ssot": "$NEXUS/shared/lenses/ (HEXA 네이티브)",
+      "_origin": "DSE P1-4 — SEDI 시그널 서치 + brainwire EEG n=6 매핑",
+      "_origin_files": [
+        "bridge/origins/ready-absorber/findings/sedi.json",
+        "bridge/origins/ready-absorber/findings/brainwire.json",
+        "bridge/origins/ready-absorber/growth/sedi_growth.json",
+        "bridge/origins/ready-absorber/growth/brainwire_growth.json"
+      ],
+      "_hardware": "OpenBCI Cyton+Daisy 16ch, 6-DoF IMU (reference_openbci_16ch — 읽기 전용)",
+      "lenses": [
+        "SediSignalSearchDseLens",
+        "BrainwireEegN6DseLens"
+      ]
+    },
+    "physics_quantum_relativistic_v3": {
+      "count": 8,
+      "lenses": [
+        "QuantumEntanglementLens", "QuantumDecoherenceLens", "RelativisticKinematicsLens",
+        "GeneralRelativityCurvatureLens", "RenormalizationGroupLens", "CriticalPhenomenaLens",
+        "TopologicalInsulatorLens", "FieldTheorySymmetryLens"
+      ]
+    },
+    "biology_development_evolution_v3": {
+      "count": 10,
+      "lenses": [
+        "DevelopmentalBiologyLens", "PhylogeneticsLens", "PopulationGeneticsLens",
+        "EpigeneticsLens", "NeurodevelopmentLens", "IslandBiogeographyEquilibriumLens",
+        "CircadianRhythmLens", "CoevolutionArmsRaceLens", "MorphogenesisTuringLens", "MetagenomicsLens"
+      ]
+    },
+    "math_topology_algebra_analysis_v3": {
+      "count": 10,
+      "lenses": [
+        "AlgebraicTopologyLens", "NumberTheoryLens", "FunctionalAnalysisLens",
+        "DifferentialGeometryLens", "AbstractAlgebraLens", "MeasureTheoryLens",
+        "CombinatoricsLens", "OptimizationTheoryLens", "StochasticProcessesLens",
+        "CategoryTheoryLens"
+      ]
+    },
+    "social_network_economics_culture_v3": {
+      "count": 10,
+      "lenses": [
+        "CulturalEvolutionLens", "SocialCapitalLens", "PoliticalEconomyLens",
+        "UrbanDynamicsLens", "MigrationPatternsLens", "CollectiveIntelligenceLens",
+        "MediaInfluenceLens", "TrustDynamicsLens", "InstitutionalChangeLens",
+        "DigitalSociologyLens"
+      ]
+    },
+    "signal_processing_advanced_v3": {
+      "count": 12,
+      "lenses": [
+        "NoiseSpectrumLens", "CompressedSensingAdvancedLens", "SpectralEstimationLens",
+        "AdaptiveFilteringLens", "TimeFrequencyAnalysisLens", "IndependentComponentAnalysisLens",
+        "BlindSourceSeparationLens", "SparseSignalLens", "DigitalModulationLens",
+        "ArraySignalProcessingLens", "SourceCodingEntropyLens", "ChannelCodingLens"
+      ]
+    }
+  },
+  "implementation_files": {
+    "cross_domain_bridge_lens.rs": "CrossDomainBridgeLens",
+    "bayesian_inference_lens.rs": "BayesianInferenceLens",
+    "markov_chain_lens.rs": "MarkovChainLens",
+    "information_bottleneck_lens.rs": "InformationBottleneckLens",
+    "time_series_decomp_lens.rs": "TimeSeriesDecompLens",
+    "complexity_network_lens.rs": "ComplexityNetworkLens",
+    "uncertainty_quantification_lens.rs": "UncertaintyQuantificationLens",
+    "optimal_transport_lens.rs": "OptimalTransportLens",
+    "attractor_basin_lens.rs": "AttractorBasinLens",
+    "renyi_entropy_lens.rs": "RenyiEntropyLens",
+    "manifold_learning_lens.rs": "ManifoldLearningLens",
+    "persistence_homology_lens.rs": "PersistenceHomologyLens",
+    "agent_coordination_lens.rs": "AgentCoordinationLens",
+    "network_flow_lens.rs": "NetworkFlowLens",
+    "topological_sort_lens.rs": "TopologicalSortLens",
+    "sensitivity_analysis_lens.rs": "SensitivityAnalysisLens",
+    "transfer_learning_lens.rs": "TransferLearningLens",
+    "contrastive_learning_lens.rs": "ContrastiveLearningLens",
+    "self_supervised_lens.rs": "SelfSupervisedLens",
+    "meta_learning_lens.rs": "MetaLearningLens",
+    "causal_discovery_lens.rs": "CausalDiscoveryLens",
+    "structural_equation_lens.rs": "StructuralEquationLens",
+    "multi_task_lens.rs": "MultiTaskLens",
+    "adversarial_robustness_lens.rs": "AdversarialRobustnessLens",
+    "graph_neural_lens.rs": "GraphNeuralLens",
+    "attention_mechanism_lens.rs": "AttentionMechanismLens",
+    "reinforcement_reward_lens.rs": "ReinforcementRewardLens",
+    "probabilistic_graphical_lens.rs": "ProbabilisticGraphicalLens",
+    "spectral_graph_lens.rs": "SpectralGraphLens",
+    "community_detection_lens.rs": "CommunityDetectionLens",
+    "link_prediction_lens.rs": "LinkPredictionLens",
+    "knowledge_graph_lens.rs": "KnowledgeGraphLens",
+    "neural_architecture_lens.rs": "NeuralArchitectureLens",
+    "distributed_consensus_lens.rs": "DistributedConsensusLens",
+    "sampling_theory_lens.rs": "SamplingTheoryLens",
+    "signal_reconstruction_lens.rs": "SignalReconstructionLens",
+    "fourier_analysis_lens.rs": "FourierAnalysisLens",
+    "wavelet_transform_lens.rs": "WaveletTransformLens",
+    "kalman_filter_lens.rs": "KalmanFilterLens",
+    "particle_filter_lens.rs": "ParticleFilterLens",
+    "monte_carlo_lens.rs": "MonteCarloLens",
+    "variational_inference_lens.rs": "VariationalInferenceLens",
+    "topological_data_lens.rs": "TopologicalDataLens",
+    "reservoir_computing_lens.rs": "ReservoirComputingLens",
+    "spiking_neural_lens.rs": "SpikingNeuralLens",
+    "plasticity_consolidation_lens.rs": "PlasticityConsolidationLens",
+    "cognitive_load_lens.rs": "CognitiveLoadLens",
+    "decision_boundary_lens.rs": "DecisionBoundaryLens",
+    "active_learning_lens.rs": "ActiveLearningLens",
+    "fairness_bias_lens.rs": "FairnessBiasLens",
+    "explainability_lens.rs": "ExplainabilityLens",
+    "continual_learning_lens.rs": "ContinualLearningLens",
+    "federated_learning_lens.rs": "FederatedLearningLens",
+    "hyperparameter_tuning_lens.rs": "HyperparameterTuningLens",
+    "dimensionality_bottleneck_lens.rs": "DimensionalityBottleneckLens",
+    "cross_validation_lens.rs": "CrossValidationLens",
+    "quantum_entanglement_lens.rs": "QuantumEntanglementLens",
+    "quantum_decoherence_lens.rs": "QuantumDecoherenceLens",
+    "relativistic_kinematics_lens.rs": "RelativisticKinematicsLens",
+    "general_relativity_curvature_lens.rs": "GeneralRelativityCurvatureLens",
+    "renormalization_group_lens.rs": "RenormalizationGroupLens",
+    "critical_phenomena_lens.rs": "CriticalPhenomenaLens",
+    "topological_insulator_lens.rs": "TopologicalInsulatorLens",
+    "field_theory_symmetry_lens.rs": "FieldTheorySymmetryLens",
+    "developmental_biology_lens.rs": "DevelopmentalBiologyLens",
+    "phylogenetics_lens.rs": "PhylogeneticsLens",
+    "population_genetics_lens.rs": "PopulationGeneticsLens",
+    "epigenetics_lens.rs": "EpigeneticsLens",
+    "neurodevelopment_lens.rs": "NeurodevelopmentLens",
+    "island_biogeography_equilibrium_lens.rs": "IslandBiogeographyEquilibriumLens",
+    "circadian_rhythm_lens.rs": "CircadianRhythmLens",
+    "coevolution_arms_race_lens.rs": "CoevolutionArmsRaceLens",
+    "morphogenesis_turing_lens.rs": "MorphogenesisTuringLens",
+    "metagenomics_lens.rs": "MetagenomicsLens",
+    "algebraic_topology_lens.rs": "AlgebraicTopologyLens",
+    "number_theory_lens.rs": "NumberTheoryLens",
+    "functional_analysis_lens.rs": "FunctionalAnalysisLens",
+    "differential_geometry_lens.rs": "DifferentialGeometryLens",
+    "abstract_algebra_lens.rs": "AbstractAlgebraLens",
+    "measure_theory_lens.rs": "MeasureTheoryLens",
+    "combinatorics_lens.rs": "CombinatoricsLens",
+    "optimization_theory_lens.rs": "OptimizationTheoryLens",
+    "stochastic_processes_lens.rs": "StochasticProcessesLens",
+    "category_theory_lens.rs": "CategoryTheoryLens",
+    "cultural_evolution_lens.rs": "CulturalEvolutionLens",
+    "social_capital_lens.rs": "SocialCapitalLens",
+    "political_economy_lens.rs": "PoliticalEconomyLens",
+    "urban_dynamics_lens.rs": "UrbanDynamicsLens",
+    "migration_patterns_lens.rs": "MigrationPatternsLens",
+    "collective_intelligence_lens.rs": "CollectiveIntelligenceLens",
+    "media_influence_lens.rs": "MediaInfluenceLens",
+    "trust_dynamics_lens.rs": "TrustDynamicsLens",
+    "institutional_change_lens.rs": "InstitutionalChangeLens",
+    "digital_sociology_lens.rs": "DigitalSociologyLens",
+    "noise_spectrum_lens.rs": "NoiseSpectrumLens",
+    "compressed_sensing_advanced_lens.rs": "CompressedSensingAdvancedLens",
+    "spectral_estimation_lens.rs": "SpectralEstimationLens",
+    "adaptive_filtering_lens.rs": "AdaptiveFilteringLens",
+    "time_frequency_analysis_lens.rs": "TimeFrequencyAnalysisLens",
+    "independent_component_analysis_lens.rs": "IndependentComponentAnalysisLens",
+    "blind_source_separation_lens.rs": "BlindSourceSeparationLens",
+    "sparse_signal_lens.rs": "SparseSignalLens",
+    "digital_modulation_lens.rs": "DigitalModulationLens",
+    "array_signal_processing_lens.rs": "ArraySignalProcessingLens",
+    "source_coding_entropy_lens.rs": "SourceCodingEntropyLens",
+    "channel_coding_lens.rs": "ChannelCodingLens",
+    "reaction_kinetics_chem_lens.rs": "ReactionKineticsChemLens",
+    "catalyst_design_lens.rs": "CatalystDesignLens",
+    "crystal_growth_dynamics_lens.rs": "CrystalGrowthDynamicsLens",
+    "electrochemistry_lens.rs": "ElectrochemistryLens",
+    "supramolecular_chemistry_lens.rs": "SupramolecularChemistryLens",
+    "photochemistry_lens.rs": "PhotochemistryLens",
+    "green_chemistry_lens.rs": "GreenChemistryLens",
+    "coordination_chemistry_lens.rs": "CoordinationChemistryLens",
+    "polymer_synthesis_lens.rs": "PolymerSynthesisLens",
+    "thermochemistry_lens.rs": "ThermochemistryLens",
+    "analytical_chemistry_lens.rs": "AnalyticalChemistryLens",
+    "colloid_surface_chemistry_lens.rs": "ColloidSurfaceChemistryLens",
+    "market_microstructure_v4_lens.rs": "MarketMicrostructureV4Lens",
+    "monetary_theory_lens.rs": "MonetaryTheoryLens",
+    "international_trade_lens.rs": "InternationalTradeLens",
+    "auction_theory_v4_lens.rs": "AuctionTheoryV4Lens",
+    "financial_derivatives_lens.rs": "FinancialDerivativesLens",
+    "development_economics_lens.rs": "DevelopmentEconomicsLens",
+    "behavioral_finance_lens.rs": "BehavioralFinanceLens",
+    "platform_economics_lens.rs": "PlatformEconomicsLens",
+    "environmental_economics_lens.rs": "EnvironmentalEconomicsLens",
+    "supply_demand_equilibrium_lens.rs": "SupplyDemandEquilibriumLens",
+    "fintech_blockchain_lens.rs": "FintechBlockchainLens",
+    "insurance_actuarial_lens.rs": "InsuranceActuarialLens",
+    "syntax_parsing_lens.rs": "SyntaxParsingLens",
+    "semantic_role_labeling_lens.rs": "SemanticRoleLabelingLens",
+    "discourse_coherence_lens.rs": "DiscourseCoherenceLens",
+    "translation_equivalence_lens.rs": "TranslationEquivalenceLens",
+    "sociolinguistics_lens.rs": "SociolinguisticsLens",
+    "pragmatics_speech_act_lens.rs": "PragmaticsSpeechActLens",
+    "language_acquisition_lens.rs": "LanguageAcquisitionLens",
+    "computational_linguistics_parsing_lens.rs": "ComputationalLinguisticsParsingLens",
+    "language_typology_lens.rs": "LanguageTypologyLens",
+    "historical_linguistics_lens.rs": "HistoricalLinguisticsLens",
+    "musical_form_analysis_lens.rs": "MusicalFormAnalysisLens",
+    "color_theory_painting_lens.rs": "ColorTheoryPaintingLens",
+    "visual_composition_lens.rs": "VisualCompositionLens",
+    "architectural_proportion_lens.rs": "ArchitecturalProportionLens",
+    "narrative_structure_lens.rs": "NarrativeStructureLens",
+    "dance_choreography_lens.rs": "DanceChoreographyLens",
+    "film_montage_lens.rs": "FilmMontageLens",
+    "typography_readability_lens.rs": "TypographyReadabilityLens",
+    "music_rhythm_complexity_lens.rs": "MusicRhythmComplexityLens",
+    "art_style_transfer_lens.rs": "ArtStyleTransferLens",
+    "civilization_cycle_lens.rs": "CivilizationCycleLens",
+    "historical_demography_lens.rs": "HistoricalDemographyLens",
+    "technology_diffusion_history_lens.rs": "TechnologyDiffusionHistoryLens",
+    "empire_collapse_dynamics_lens.rs": "EmpireCollapseDynamicsLens",
+    "scientific_revolution_lens.rs": "ScientificRevolutionLens",
+    "trade_route_history_lens.rs": "TradeRouteHistoryLens",
+    "war_peace_cycles_lens.rs": "WarPeaceCyclesLens",
+    "memory_history_transmission_lens.rs": "MemoryHistoryTransmissionLens",
+    "mutualism_symbiosis_lens.rs": "MutualismSymbiosisLens",
+    "competitive_exclusion_lens.rs": "CompetitiveExclusionLens",
+    "ecosystem_resilience_v4_lens.rs": "EcosystemResilienceV4Lens",
+    "pollination_network_lens.rs": "PollinationNetworkLens",
+    "biogeochemical_cycle_lens.rs": "BiogeochemicalCycleLens",
+    "habitat_fragmentation_lens.rs": "HabitatFragmentationLens",
+    "trophic_cascade_v4_lens.rs": "TrophicCascadeV4Lens",
+    "seed_dispersal_ecology_lens.rs": "SeedDispersalEcologyLens",
+    "microbiome_ecology_lens.rs": "MicrobiomeEcologyLens",
+    "invasive_species_dynamics_lens.rs": "InvasiveSpeciesDynamicsLens",
+    "diagnostic_imaging_lens.rs": "DiagnosticImagingLens",
+    "pharmacokinetics_v4_lens.rs": "PharmacokineticsV4Lens",
+    "pharmacogenomics_lens.rs": "PharmacogenomicsLens",
+    "inflammation_pathways_lens.rs": "InflammationPathwaysLens",
+    "cardiovascular_hemodynamics_lens.rs": "CardiovascularHemodynamicsLens",
+    "oncology_tumor_growth_lens.rs": "OncologyTumorGrowthLens",
+    "neuropharmacology_lens.rs": "NeuropharmacologyLens",
+    "surgical_robotics_lens.rs": "SurgicalRoboticsLens",
+    "pathogen_virulence_lens.rs": "PathogenVirulenceLens",
+    "clinical_trial_design_lens.rs": "ClinicalTrialDesignLens",
+    "regenerative_medicine_lens.rs": "RegenerativeMedicineLens",
+    "medical_imaging_ai_lens.rs": "MedicalImagingAiLens",
+    "structural_mechanics_lens.rs": "StructuralMechanicsLens",
+    "heat_transfer_engineering_lens.rs": "HeatTransferEngineeringLens",
+    "electric_motor_drive_lens.rs": "ElectricMotorDriveLens",
+    "signal_integrity_lens.rs": "SignalIntegrityLens",
+    "additive_manufacturing_lens.rs": "AdditiveManufacturingLens",
+    "control_systems_pid_lens.rs": "ControlSystemsPidLens",
+    "process_chemical_engineering_lens.rs": "ProcessChemicalEngineeringLens",
+    "robotics_kinematics_lens.rs": "RoboticsKinematicsLens",
+    "power_electronics_lens.rs": "PowerElectronicsLens",
+    "geotechnical_engineering_lens.rs": "GeotechnicalEngineeringLens",
+    "acoustic_engineering_lens.rs": "AcousticEngineeringLens",
+    "water_treatment_engineering_lens.rs": "WaterTreatmentEngineeringLens",
+    "aerospace_propulsion_lens.rs": "AerospacePropulsionLens",
+    "semiconductor_fabrication_lens.rs": "SemiconductorFabricationLens",
+    "mechatronics_sensor_fusion_lens.rs": "MechatronicsSensorFusionLens",
+    "reliability_engineering_v4_lens.rs": "ReliabilityEngineeringV4Lens",
+    "sport_performance_analysis_lens.rs": "SportPerformanceAnalysisLens",
+    "strength_conditioning_lens.rs": "StrengthConditioningLens",
+    "nutritional_biochemistry_lens.rs": "NutritionalBiochemistryLens",
+    "sports_psychology_lens.rs": "SportsPsychologyLens",
+    "hydration_electrolyte_lens.rs": "HydrationElectrolyteLens",
+    "aerobic_energy_systems_lens.rs": "AerobicEnergySystemsLens",
+    "recovery_science_lens.rs": "RecoveryScienceLens",
+    "injury_prevention_biomechanics_lens.rs": "InjuryPreventionBiomechanicsLens",
+    "gut_microbiome_nutrition_lens.rs": "GutMicrobiomeNutritionLens",
+    "sports_tactics_game_model_lens.rs": "SportsTacticsGameModelLens",
+    "sedi_signal_search_dse.hexa": "SediSignalSearchDseLens",
+    "brainwire_eeg_n6_dse.hexa": "BrainwireEegN6DseLens"
+  },
+  "expansion_v4": {
+    "chemistry": {
+      "count": 12,
+      "lenses": [
+        "ReactionKineticsLens", "CatalystDesignLens", "CrystalGrowthDynamicsLens",
+        "ElectrochemistryLens", "SupramolecularChemistryLens", "PhotochemistryLens",
+        "GreenChemistryLens", "CoordinationChemistryLens", "PolymerSynthesisLens",
+        "ThermochemistryLens", "AnalyticalChemistryLens", "ColloidSurfaceChemistryLens"
+      ]
+    },
+    "economics_finance": {
+      "count": 12,
+      "lenses": [
+        "MarketMicrostructureLens", "MonetaryTheoryLens", "InternationalTradeLens",
+        "AuctionTheoryLens", "FinancialDerivativesLens", "DevelopmentEconomicsLens",
+        "BehavioralFinanceLens", "PlatformEconomicsLens", "EnvironmentalEconomicsLens",
+        "SupplyDemandEquilibriumLens", "FintechBlockchainLens", "InsuranceActuarialLens"
+      ]
+    },
+    "linguistics": {
+      "count": 10,
+      "lenses": [
+        "SyntaxParsingLens", "SemanticRoleLabelingLens", "DiscourseCoherenceLens",
+        "TranslationEquivalenceLens", "SociolinguisticsLens", "PragmaticsSpeechActLens",
+        "LanguageAcquisitionLens", "ComputationalLinguisticsParsingLens",
+        "LanguageTypologyLens", "HistoricalLinguisticsLens"
+      ]
+    },
+    "arts": {
+      "count": 10,
+      "lenses": [
+        "MusicalFormAnalysisLens", "ColorTheoryPaintingLens", "VisualCompositionLens",
+        "ArchitecturalProportionLens", "NarrativeStructureLens", "DanceChoreographyLens",
+        "FilmMontageLens", "TypographyReadabilityLens", "MusicRhythmComplexityLens",
+        "ArtStyleTransferLens"
+      ]
+    },
+    "history": {
+      "count": 8,
+      "lenses": [
+        "CivilizationCycleLens", "HistoricalDemographyLens", "TechnologyDiffusionHistoryLens",
+        "EmpireCollapseDynamicsLens", "ScientificRevolutionLens", "TradeRouteHistoryLens",
+        "WarPeaceCyclesLens", "MemoryHistoryTransmissionLens"
+      ]
+    },
+    "ecology": {
+      "count": 10,
+      "lenses": [
+        "MutualismSymbiosisLens", "CompetitiveExclusionLens", "EcosystemResilienceLens",
+        "PollinationNetworkLens", "BiogeochemicalCycleLens", "HabitatFragmentationLens",
+        "TrophicCascadeLens", "SeedDispersalEcologyLens", "MicrobiomeEcologyLens",
+        "InvasiveSpeciesDynamicsLens"
+      ]
+    },
+    "medicine": {
+      "count": 12,
+      "lenses": [
+        "DiagnosticImagingLens", "PharmacokineticLens", "PharmacogenomicsLens",
+        "InflammationPathwaysLens", "CardiovascularHemodynamicsLens", "OncologyTumorGrowthLens",
+        "NeuropharmacologyLens", "SurgicalRoboticsLens", "PathogenVirulenceLens",
+        "ClinicalTrialDesignLens", "RegenerativeMedicineLens", "MedicalImagingAiLens"
+      ]
+    },
+    "engineering": {
+      "count": 16,
+      "lenses": [
+        "StructuralMechanicsLens", "HeatTransferEngineeringLens", "ElectricMotorDriveLens",
+        "SignalIntegrityLens", "AdditiveManufacturingLens", "ControlSystemsPidLens",
+        "ProcessChemicalEngineeringLens", "RoboticsKinematicsLens", "PowerElectronicsLens",
+        "GeotechnicalEngineeringLens", "AcousticEngineeringLens", "WaterTreatmentEngineeringLens",
+        "AerospacePropulsionLens", "SemiconductorFabricationLens",
+        "MechatronicsSensorFusionLens", "ReliabilityEngineeringLens"
+      ]
+    },
+    "sports_nutrition": {
+      "count": 10,
+      "lenses": [
+        "SportPerformanceAnalysisLens", "StrengthConditioningLens", "NutritionalBiochemistryLens",
+        "SportsPsychologyLens", "HydrationElectrolyteLens", "AerobicEnergySystemsLens",
+        "RecoveryScienceLens", "InjuryPreventionBiomechanicsLens",
+        "GutMicrobiomeNutritionLens", "SportsTacticsGameModelLens"
+      ]
+    }
+  }
+}

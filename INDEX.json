@@ -1,5 +1,5 @@
 {
-  "_doc": "n6-architecture 리포 9축 매니페스트 SSOT — 모든 에이전트 진입점",
+  "_doc": "canon 리포 9축 매니페스트 SSOT — 모든 에이전트 진입점",
   "_version": "1.0.0",
   "_generated": "2026-04-10",
   "_root": "$N6_ARCH",
@@ -54,8 +54,8 @@
       "purpose": "시점 리포트 — 감사·세션·발견·체인지로그 (이론 오염 금지)",
       "subs": ["audits", "sessions", "discovery", "changelogs"]
     },
-    "n6shared": {
-      "path": "n6shared/",
+    "canonshared": {
+      "path": "canonshared/",
       "purpose": "SSOT 설정·규칙·컨버전스·루프 (R14 단일진실)",
       "subs": ["config", "convergence", "loop", "logs"]
     }
@@ -72,7 +72,7 @@
     "korean_only": ".md·print·주석·커밋 메시지 한글, 영어 혼용 금지",
     "single_domain_doc": "도메인당 1개 .md + 1개 verify.hexa + 1개 CLAUDE.md",
     "folder_claude_md": "모든 탐색 노드 CLAUDE.md 필수 (AI 진입점)",
-    "ssot_json": "규칙 본문은 n6shared/config/absolute_rules.json만, 그 외는 참조",
+    "ssot_json": "규칙 본문은 canonshared/config/absolute_rules.json만, 그 외는 참조",
     "no_hardcode": "상수/도메인/키워드 → shared/*.jsonl 동적로드",
     "data_remote": ".jsonl/constants/discovery_log → $NEXUS/shared/ (R8)"
   },

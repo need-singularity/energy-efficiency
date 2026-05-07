@@ -1,4 +1,4 @@
-# N6 Architecture — Rust Benchmark Results
+# CANON — Rust Benchmark Results
 
 **Date:** 2026-04-02 08:58:05
 **Tools:** 32 | **Pass:** 30 | **Fail/Timeout:** 2

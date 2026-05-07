@@ -225,7 +225,7 @@ photon→electron→spin→signal and the active/passive dual mode. Real-time �
 reduction). 6-milestone 4-year plan 2027→2030. SPDC yield, Rydberg T₂ and atmospheric attenuation
 are three prerequisites.
 
-**File**: `/Users/ghost/Dev/n6-architecture/papers/embody-p12-2-quantum-sensor-design-2026-04-15.md`
+**File**: `/Users/ghost/Dev/canon/papers/embody-p12-2-quantum-sensor-design-2026-04-15.md`
 **Selected candidate**: **Quantum Radar (entangled illumination, SNR 6→36 dB, 4000×)**
 **3-line summary**:
 1. Among the three axes (magnetometer / gravimeter / radar), **Quantum Radar** — with the largest dimensional jump of 4000× — is selected for deep design.

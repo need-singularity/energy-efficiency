@@ -8,10 +8,10 @@
 // Migrated from tool/own_doc_lint_legacy.py:282-315 per raw 9 hexa-only.
 //
 // @tool(slug="own3_one_doc_per_domain_lint", desc="own#3 one-doc-per-domain HARD lint — domains/<axis>/<name>/ must have exactly <name>.md + optional CLAUDE.md, no other top-level .md")
-// @usage(hexa /Users/ghost/core/n6-architecture/tool/own3_one_doc_per_domain_lint.hexa [--selftest])
+// @usage(hexa /Users/ghost/core/canon/tool/own3_one_doc_per_domain_lint.hexa [--selftest])
 // @exit_codes(0=PASS, 1=violations, 2=internal error)
 
-let REPO_ROOT = "/Users/ghost/core/n6-architecture"
+let REPO_ROOT = "/Users/ghost/core/canon"
 let DOMAINS_ROOT = REPO_ROOT + "/domains"
 
 fn _file_exists(path: string) -> bool {

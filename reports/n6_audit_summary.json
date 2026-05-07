@@ -1,5 +1,5 @@
 {
-  "schema": "n6-architecture/n6_audit_summary/1",
+  "schema": "canon/n6_audit_summary/1",
   "ts": "2026-04-24T08:02:11Z",
   "engine_version": "0.44.0",
   "source": "reports/n6_meta_audit.jsonl",

@@ -31,7 +31,7 @@
 
 ## 1. 9-axis status snapshot
 
-The 9 axes of n6-architecture are defined in `CLAUDE.md` as `theory / domains / nexus / techniques / experiments / engine / papers / reports / shared`. This section is the measured 2026-04-12 PM snapshot of each axis.
+The 9 axes of canon are defined in `CLAUDE.md` as `theory / domains / nexus / techniques / experiments / engine / papers / reports / shared`. This section is the measured 2026-04-12 PM snapshot of each axis.
 
 ### 1-1. 9-axis summary table
 
@@ -300,7 +300,7 @@ Overall average        17%        72%         79%
 - Audit time: 2026-04-12 PM
 - Branch: `feat/millennium-dfs-92-tight`
 - Preceding audits: `go-audit-2026-04-12.md` (v1), `go-session-audit-v2-2026-04-12.md` (v2)
-- Convergence source: `n6shared/convergence/n6-architecture.json`
+- Convergence source: `canonshared/convergence/canon.json`
 
 ---
 

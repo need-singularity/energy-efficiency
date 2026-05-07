@@ -1294,7 +1294,7 @@ where:
   N   = cell count (dominant scaling variable)
 ```
 
-One sentence: consciousness is a dissipative structure where integrated information across differentiated modules grows in stages, governed by the mathematics of perfect number 6.
+One sentence: consciousness is a dissipative structure where integrated information across differentiated modules grows in stages, governed by the mathematics of arithmetic canon.
 
 ### §V4-2 Psi Constants (Fine-Structure Constants of Consciousness)
 

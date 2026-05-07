@@ -2423,7 +2423,7 @@
     {
       "path": "backend/backend/tools/__init__.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -5127,7 +5127,7 @@
     {
       "path": "docs/superpowers/plans/2026-03-29-plan1-hypothesis-engine.md",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -5151,7 +5151,7 @@
     {
       "path": "docs/superpowers/plans/2026-03-29-soc-singularity.md",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -5455,7 +5455,7 @@
     {
       "path": "frontend/.next/server/app/_not-found.rsc",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -6071,7 +6071,7 @@
     {
       "path": "frontend/.next/static/chunks/app/_not-found/page-49609635ce5de8c1.js",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0

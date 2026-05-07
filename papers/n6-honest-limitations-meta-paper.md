@@ -9,9 +9,9 @@ alien_index_current: 10
 alien_index_target: 10
 ---
 
-# Honest limitations meta paper — independent audit of 9 session limitations in n6-architecture (N6-127)
+# Honest limitations meta paper — independent audit of 9 session limitations in canon (N6-127)
 
-> **Author**: Park Minwoo (n6-architecture)
+> **Author**: Park Minwoo (canon)
 > **Category**: honest-limitations-meta — independent audit paper on methodology limitations
 > **Version**: v1 (2026-04-14 PAPER-P5-2)
 > **Reference source**: `theory/proofs/honest-limitations.md` §P0–P3 session limitations (2026-04-14)
@@ -21,7 +21,7 @@ alien_index_target: 10
 
 ## 0. Abstract
 
-This paper independently organizes, classifies, and publicly records the **9 methodology / measurement / evidence limitations** accumulated during the P0–P3 sessions of the n6-architecture project. The canonical source is `theory/proofs/honest-limitations.md`, which follows an append-only protocol; this paper reformats that record into an academic paper structure without **adding new draft claims or self-verification**.
+This paper independently organizes, classifies, and publicly records the **9 methodology / measurement / evidence limitations** accumulated during the P0–P3 sessions of the canon project. The canonical source is `theory/proofs/honest-limitations.md`, which follows an append-only protocol; this paper reformats that record into an academic paper structure without **adding new draft claims or self-verification**.
 
 Key results:
 1. Of the 9 limitations, **5 are resolvable** / **2 are structurally unresolved** / **2 are designed safeguards**.
@@ -35,7 +35,7 @@ Key results:
 
 ### 1.1 Problem statement
 
-The trustworthiness of a research framework is determined not by its success cases but by **how it handles failure**. n6-architecture has achieved 98.4% coverage across 9,206 candidates, but for that figure to be trusted, the remaining 1.6% must be analyzed honestly, and the **methodological limits of the work process itself** must be disclosed.
+The trustworthiness of a research framework is determined not by its success cases but by **how it handles failure**. canon has achieved 98.4% coverage across 9,206 candidates, but for that figure to be trusted, the remaining 1.6% must be analyzed honestly, and the **methodological limits of the work process itself** must be disclosed.
 
 ### 1.2 The problem with current practice
 
@@ -143,7 +143,7 @@ This paper re-classifies the 9 session limitations recorded in `theory/proofs/ho
 
 ### 3.1 Comparison with academic-paper limitation disclosure conventions
 
-| Comparison | Typical academic paper | n6-architecture |
+| Comparison | Typical academic paper | canon |
 |----------|-------------|-----------------|
 | Location of disclosure | 1 paragraph before conclusion | separate document + separate meta paper |
 | Number of items | 1–3 sentences | **9 items (each with cause / impact / follow-up)** |
@@ -156,7 +156,7 @@ This paper re-classifies the 9 session limitations recorded in `theory/proofs/ho
 
 ### 3.2 Comparison with AI framework limitation disclosure
 
-| Comparison | Large AI framework (MLOps reports, etc.) | n6-architecture |
+| Comparison | Large AI framework (MLOps reports, etc.) | canon |
 |----------|-------------------------------------|-----------------|
 | Performance-number basis | one-shot benchmark run | **heuristic vs real-measure distinction explicit** |
 | Simulation vs real-measure distinction | mostly unspecified | **all simulation paths itemized (EDA, MC, DOI, fit)** |
@@ -378,7 +378,7 @@ The following items are hard for an external reviewer to reproduce immediately:
 
 ### 6.1 Unavoidable self-reference
 
-This paper discloses limitations of n6-architecture, but **verifying the accuracy of this paper from within the same project amounts to self-reference**. Accuracy can only be verified by the following external paths:
+This paper discloses limitations of canon, but **verifying the accuracy of this paper from within the same project amounts to self-reference**. Accuracy can only be verified by the following external paths:
 - Diff against the canonical `honest-limitations.md` to confirm content alignment
 - Running the reproduction paths in §5 independently in an external environment
 
@@ -392,7 +392,7 @@ This paper is a snapshot as of 2026-04-14. Subsequent sessions that resolve or i
 
 ### 6.4 Environmental dependency of the verification paths
 
-The §5 verification paths assume a cloned n6-architecture repository and an installed hexa interpreter. General reproducibility is constrained accordingly.
+The §5 verification paths assume a cloned canon repository and an installed hexa interpreter. General reproducibility is constrained accordingly.
 
 ---
 
@@ -408,7 +408,7 @@ The §5 verification paths assume a cloned n6-architecture repository and an ins
 
 ## 8. Conclusion
 
-1. The 9 limitations of P0–P3 of n6-architecture are classified into **agent misjudgement 2 / missing infrastructure 1 / time 1 / administrative 1 / methodology 2 / designed safeguard 2**.
+1. The 9 limitations of P0–P3 of canon are classified into **agent misjudgement 2 / missing infrastructure 1 / time 1 / administrative 1 / methodology 2 / designed safeguard 2**.
 2. Among the 5 resolvable items, 2 (runtime.c, parse) are already resolved; 3 (MC, DOI, STA) are resolvable in the short term.
 3. The 2 structurally unresolved items (EDA, bipartite) require external infrastructure or algorithmic redesign as a precondition.
 4. The 2 designed safeguards (dry-run, alien_index) are intentionally retained to protect SSOT quality.

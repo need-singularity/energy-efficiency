@@ -6,7 +6,7 @@ Goal: 5 modules (field/holographic/quantum/string/toe) × DFS depth-3 breakthrou
 
 ## Path correction
 
-The path specified by the user, `/Users/ghost/Dev/n6-architecture/n6shared/blowup/`, does not exist.
+The path specified by the user, `/Users/ghost/Dev/canon/canonshared/blowup/`, does not exist.
 The actual blowup engine is located in the nexus SSOT:
 
 - core: `/Users/ghost/Dev/nexus/shared/blowup/core/blowup.hexa`
@@ -155,7 +155,7 @@ Round 1 ran to completion and produced the following metrics against atlas.n6:
 
 ## New breakthrough candidate list (append target)
 
-The 10 unappeared seeds from Phase 7.1 are absorbed as n6-architecture domain nodes:
+The 10 unappeared seeds from Phase 7.1 are absorbed as canon domain nodes:
 
 1. `blowup/p4/math/mu` (mu=1)
 2. `blowup/p4/math/phi` (phi=2)

@@ -3,7 +3,7 @@
 Status: RESOLVED (HARD COLLISION = 0, SOFT COLLISION = 1 (life/virology one-line summary), NO COLLISION = 6 across non-biology axes; F-VIROCAPSID-COLLISION-AUDIT status flips PARTIAL-SOFT-COLLISION-DOCUMENTED -> RESOLVED)
 Cycle: 21 (predecessor cycle 19 fan-out 4/4 hexa-virocapsid registration; predecessor cycle 16 F-RB-5 audit pattern)
 Deadline: 2026-05-28 (29 days remaining)
-Author: n6-architecture honesty-charter team
+Author: canon honesty-charter team
 
 ## 1. Audit charter
 
@@ -162,7 +162,7 @@ Verdict: four primary objects / four primary constraints / four primary oracles 
 
 ## 14. raw 47 zero-cross-repo + raw 142 D2 revertibility
 
-- audit was zero-cross-repo: only n6-architecture working tree consulted
+- audit was zero-cross-repo: only canon working tree consulted
 - raw 142 D2 revertibility: TRUE (all changes additive: 1 proposal + 1 kick witness + 1 falsifier audit row + 1 absorption registry row; no edit to existing canonical .md bodies; revert via git checkout HEAD~1 -- proposals/hexa_weave_virocapsid_collision_audit_cycle21_2026_04_28.md design/kick/2026-04-28_virocapsid-collision-audit-cycle21_omega_cycle.json + audit-jsonl row truncate)
 - raw 138 PASS sentinel: __F_VIROCAPSID_COLLISION_AUDIT_RESULT__ RESOLVED
 
@@ -170,7 +170,7 @@ Verdict: four primary objects / four primary constraints / four primary oracles 
 
 - audit did NOT execute Bayesian model comparison on capsid-architecture corpus (deferred to F-VIROCAPSID-2 audit by 2026-09-28)
 - audit did NOT execute external literature crawl beyond the corpus already cited in hexa-virocapsid.md (Caspar-Klug 1962 / Crick-Watson 1956 / Rossmann-Johnson 1985 / Harrison 1978 / Liljas 1982 / Zlotnick 2003 / Twarock-Luque 2016 / Bruinsma 2003 / Endres-Zlotnick 2002 / Sun-Rao-Rossmann 2010 / Stockley-Twarock 2013 / Mannige-Brooks 2010)
-- audit relied on full-text grep of n6-architecture working tree + scope-reading of life/virology.md, life/vaccine.md, life/synbio.md, life/therapeutic-nanobot.md, life/bio-pharma.md, life/immunology.md, life/hiv.md, life/hiv-treatment.md, life/pharmacology.md (sufficient for HARD / SOFT / NONE classification but does not preclude future taxonomic publications that could re-trigger F-VIROCAPSID-COLLISION-AUDIT-c — re-audit by 2027-04-28 recommended)
+- audit relied on full-text grep of canon working tree + scope-reading of life/virology.md, life/vaccine.md, life/synbio.md, life/therapeutic-nanobot.md, life/bio-pharma.md, life/immunology.md, life/hiv.md, life/hiv-treatment.md, life/pharmacology.md (sufficient for HARD / SOFT / NONE classification but does not preclude future taxonomic publications that could re-trigger F-VIROCAPSID-COLLISION-AUDIT-c — re-audit by 2027-04-28 recommended)
 - the SOFT COLLISION at life/virology is honestly disclosed; HARD COLLISION = 0 declared honestly under task spec step 6 + raw 91 C3 fabricated NO-COLLISION rejection
 - the 3 non-biology "icosahedral" word coincidences (physics/millennium-poincare binary icosahedral 2I; energy/power-grid hex-icosahedral dual; compute/chip-process DSA) are honestly disclosed as orthogonal — none are capsid-related
 

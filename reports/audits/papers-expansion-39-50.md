@@ -2,15 +2,15 @@
 
 **Date**: 2026-04-11
 **Type**: Audit report (reports/audits)
-**Scope**: n6-architecture/papers/ axis expansion
+**Scope**: canon/papers/ axis expansion
 **Operator**: Claude (Opus 4.6, 1M context)
 
 ---
 
 ## 1. Background
 
-- PAPERS_39 demonstration-candidate state (`n6shared/convergence/n6-architecture.json`): 39 papers Zenodo DOI issued, ossified 2026-04-10.
-- Existing file base: `$PAPERS/` (tecs-l + anima + SEDI + n6-architecture + others). Per manifest.json total 117 papers, of which N6-030 to N6-044 + N6-NANOBOT + N6-MILLENNIUM, etc. are on the n6-architecture axis.
+- PAPERS_39 demonstration-candidate state (`canonshared/convergence/canon.json`): 39 papers Zenodo DOI issued, ossified 2026-04-10.
+- Existing file base: `$PAPERS/` (tecs-l + anima + SEDI + canon + others). Per manifest.json total 117 papers, of which N6-030 to N6-044 + N6-NANOBOT + N6-MILLENNIUM, etc. are on the canon axis.
 - Audit target: `papers/_registry.json` sections (fusion, chip, ai, energy, etc.) 110+ paper links total. Per one-paper-per-domain rule, core 39 papers are PAPERS_39 demonstration target.
 - Expansion goal: **rise to 50 (+11 new)**.
 

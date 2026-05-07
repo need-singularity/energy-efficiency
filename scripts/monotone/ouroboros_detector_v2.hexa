@@ -62,7 +62,7 @@ def find_repo_root() -> Path:
 def resolve_atlas(repo_root: Path):
     \"\"\"repo_root 기준 atlas 후보를 순회하여 존재하는 첫 번째 경로 반환.\"\"\"
     candidates = [
-        repo_root / 'n6shared' / 'atlas.n6',
+        repo_root / 'canonshared' / 'atlas.n6',
         repo_root / 'atlas' / 'atlas.n6',
     ]
     for c in candidates:
@@ -196,7 +196,7 @@ def main():
     # CI job. The OUROBOROS detection algorithm itself is unchanged — only the
     # missing-input path is made graceful.
     if atlas_path is None or not atlas_path.exists():
-        where = str(atlas_path) if atlas_path is not None else f'{repo_root}/{{n6shared,atlas}}/atlas.n6'
+        where = str(atlas_path) if atlas_path is not None else f'{repo_root}/{{canonshared,atlas}}/atlas.n6'
         print(
             f'[OUROBOROS v2] WARN_NO_ATLAS: atlas.n6 not found at {where}. '
             f'Skipping cycle detection (SOFT skip, exit 0).',

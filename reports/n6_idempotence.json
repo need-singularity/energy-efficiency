@@ -1,5 +1,5 @@
 {
-  "schema": "n6-architecture/n6_idempotence/1",
+  "schema": "canon/n6_idempotence/1",
   "ts": "2026-04-23T03:46:41Z",
   "total": 11,
   "pass": 11,

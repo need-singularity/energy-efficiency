@@ -1,4 +1,4 @@
-# N6 Architecture — New Breakthrough Hypotheses (2026-03-31)
+# CANON — New Breakthrough Hypotheses (2026-03-31)
 
 > Breakthrough hypothesis exploration across 4 domains: AI chip design, energy strategy, AI algorithms, LLM improvement
 > New findings after prior BT-1~60 (290+ EXACT). Each hypothesis includes n=6 expression, measured value, error, grade.

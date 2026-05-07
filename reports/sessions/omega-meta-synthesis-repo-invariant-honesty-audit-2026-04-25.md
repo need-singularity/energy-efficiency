@@ -18,7 +18,7 @@ grade: methodological synthesis, no claim
 ## §0 Non-claim disclaimer
 
 This report is a **methodological synthesis**, not a constraint-promotion exercise. Its
-purpose is to take the six independent audits already produced (3 on n6-architecture,
+purpose is to take the six independent audits already produced (3 on canon,
 3 on nexus, all returning KEEP-direction verdicts) and ask one narrow question: **is
 the 3-constraint honesty triad a portable pattern, and what preconditions does a repo
 need to satisfy for the triad to apply?** The answer is structured as a portable text-
@@ -51,10 +51,10 @@ files:
 
 | # | Repo | Constraint | Audit file (absolute path) | Verdict |
 |---|---|---|---|---|
-| 1 | n6-architecture | Honesty counter (`millennium_resolved: 0/7 unchanged`) | `/Users/ghost/core/n6-architecture/reports/sessions/omega-audit-constraint-honesty-counter-2026-04-25.md` | **KEEP_AS_IS** (§8 line 236: "**KEEP_AS_IS**") |
-| 2 | n6-architecture | Write-barrier (atlas/, state/, inventory.json, breakthrough-theorems.md) | `/Users/ghost/core/n6-architecture/reports/sessions/omega-audit-constraint-write-barrier-2026-04-25.md` | **KEEP_AS_IS** (sec 10 line 478: "Verdict: `KEEP_AS_IS`") |
-| 3 | n6-architecture | No-fabrication guard (UNKNOWN > invented) | `/Users/ghost/core/n6-architecture/reports/sessions/omega-audit-constraint-no-fabrication-2026-04-25.md` | **KEEP_AS_IS** (§9 line 284: "**KEEP_AS_IS**") |
-| 4 | nexus (native) | nxs_promotion_count banner | `/Users/ghost/core/n6-architecture/reports/sessions/omega-audit-nexus-native-3constraint-2026-04-25.md` (Audit 1) | **KEEP_AS_IS** (function) / **KEEP_BUT_ADAPT** (literal) — §2.8 |
+| 1 | canon | Honesty counter (`millennium_resolved: 0/7 unchanged`) | `/Users/ghost/core/canon/reports/sessions/omega-audit-constraint-honesty-counter-2026-04-25.md` | **KEEP_AS_IS** (§8 line 236: "**KEEP_AS_IS**") |
+| 2 | canon | Write-barrier (atlas/, state/, inventory.json, breakthrough-theorems.md) | `/Users/ghost/core/canon/reports/sessions/omega-audit-constraint-write-barrier-2026-04-25.md` | **KEEP_AS_IS** (sec 10 line 478: "Verdict: `KEEP_AS_IS`") |
+| 3 | canon | No-fabrication guard (UNKNOWN > invented) | `/Users/ghost/core/canon/reports/sessions/omega-audit-constraint-no-fabrication-2026-04-25.md` | **KEEP_AS_IS** (§9 line 284: "**KEEP_AS_IS**") |
+| 4 | nexus (native) | nxs_promotion_count banner | `/Users/ghost/core/canon/reports/sessions/omega-audit-nexus-native-3constraint-2026-04-25.md` (Audit 1) | **KEEP_AS_IS** (function) / **KEEP_BUT_ADAPT** (literal) — §2.8 |
 | 5 | nexus (native) | nexus write-barrier (extended path list) | same file (Audit 2) | **KEEP_AS_IS** — §3.9 |
 | 6 | nexus (native) | nexus no-fabrication guard | same file (Audit 3) | **KEEP_AS_IS** — §4.8 |
 
@@ -85,7 +85,7 @@ to silently mutate, and the honesty counter has no denominator.
 
 | Repo | Instantiation |
 |---|---|
-| n6-architecture | The 7 Clay Millennium Problems form a fixed-7 denominator; "promotion" = transitioning a BT (e.g. BT-541 ρ_n) from `[5*]` structural to `[10*]+ EXACT` registration in `atlas/atlas.n6` after external verification (cite: write-barrier audit sec 1.2, sec 1.3 atlas-agent EXACT-only gate). |
+| canon | The 7 Clay Millennium Problems form a fixed-7 denominator; "promotion" = transitioning a BT (e.g. BT-541 ρ_n) from `[5*]` structural to `[10*]+ EXACT` registration in `atlas/atlas.n6` after external verification (cite: write-barrier audit sec 1.2, sec 1.3 atlas-agent EXACT-only gate). |
 | nexus | Promotion = transitioning a `state/proposals/inventory.json` entry's `user_status` from `submitted` → `in_progress` → `implemented`, and/or atlas-grade promotion in `n6/atlas.blowup.jsonl` (e.g. commit `39b2d0f4`: "33 atlas promotions in a single revive cycle", cited in nexus-native audit §2.3 incident #1). |
 
 ### §2.2 Precondition (b) — SSOT (single source of truth)
@@ -96,7 +96,7 @@ occurs. Without an SSOT, "modifying X is forbidden" has no target.
 
 | Repo | Instantiation |
 |---|---|
-| n6-architecture | `atlas/atlas.n6` (21,800 lines), `atlas/atlas.signals.n6` (4,205 lines), `state/proposals/inventory.json` (151 lines), `theory/breakthroughs/breakthrough-theorems.md` (28,480 lines). Total protected ≈ 54,691 lines / 12 files (cite: write-barrier audit sec 1.2). |
+| canon | `atlas/atlas.n6` (21,800 lines), `atlas/atlas.signals.n6` (4,205 lines), `state/proposals/inventory.json` (151 lines), `theory/breakthroughs/breakthrough-theorems.md` (28,480 lines). Total protected ≈ 54,691 lines / 12 files (cite: write-barrier audit sec 1.2). |
 | nexus | `n6/atlas.blowup.jsonl` (17 MB / 20,525 nodes / 54,347 edges), `state/proposals/inventory.json` (21 entries, schema `nexus.proposal_inventory.v1`), `state/atlas_health_timeline.jsonl`, `state/agent_lock_ledger.jsonl`, `lenses/omega_state_space_lens.hexa`, `project-claude/*.md` (cite: nexus-native audit §3.1, §3.2). |
 
 ### §2.3 Precondition (c) — Research/reflection layer separate from SSOT
@@ -107,7 +107,7 @@ way to capture session work; the barrier becomes incoherent.
 
 | Repo | Instantiation |
 |---|---|
-| n6-architecture | `reports/sessions/` (45 session reports as of audit window), `theory/study/p0-p3/`, `theory/roadmap-v2/`, `papers/` — all are writable by general-purpose agents (cite: honesty-counter audit §3 saturation table). |
+| canon | `reports/sessions/` (45 session reports as of audit window), `theory/study/p0-p3/`, `theory/roadmap-v2/`, `papers/` — all are writable by general-purpose agents (cite: honesty-counter audit §3 saturation table). |
 | nexus | `design/` (10 files), `reports/` (15 flat JSON/MD analytics files; no `sessions/` subdir, per nexus-native audit §1 framework table), commit-message stream (1734 commits / 14 days as the per-cycle narrative substrate). |
 
 ### §2.4 Precondition (d) — Tool ecosystem with measurable values
@@ -118,7 +118,7 @@ no-fabrication guard has no surface to defend.
 
 | Repo | Instantiation |
 |---|---|
-| n6-architecture | `tool/` directory; per-BT lemma audits; `theory/predictions/verify_*.hexa` files; `data/cremona/allbsd/` (169 MB, 27 shards verified in no-fabrication audit §5 row 3). The Probe #3 case (`omega-probe-nxs002-predict-er-2026-04-25.md` §1.4) is the canonical fabrication-risk activation: tool lacked per-BT mode, agent returned 5×UNAVAILABLE rather than 5 fabricated composites (cite: no-fabrication audit §4 row 1). |
+| canon | `tool/` directory; per-BT lemma audits; `theory/predictions/verify_*.hexa` files; `data/cremona/allbsd/` (169 MB, 27 shards verified in no-fabrication audit §5 row 3). The Probe #3 case (`omega-probe-nxs002-predict-er-2026-04-25.md` §1.4) is the canonical fabrication-risk activation: tool lacked per-BT mode, agent returned 5×UNAVAILABLE rather than 5 fabricated composites (cite: no-fabrication audit §4 row 1). |
 | nexus | `tool/nxs_002_composite.py --predict-er`, `tool/lockdown_gate.hexa`, `tool/atlas_meta_scan.hexa`, harness modules. Cycle-43 commit `6772aede` ("raw 37/38 enforce not actually working, no caller") is a self-disclosed near-fabrication: a counter claimed to enforce something but no caller wired it (cite: nexus-native audit §4.3 row 1). |
 
 ### §2.5 Precondition (e) — LLM agents performing research/promotion
@@ -130,7 +130,7 @@ prompted. Without LLM agents, deterministic checks suffice and the triad is over
 
 | Repo | Instantiation |
 |---|---|
-| n6-architecture | `.claude/agents/atlas-agent/AGENT.md`, `growth-agent/AGENT.md`, `lens-agent/AGENT.md` (deprecated 2026-04-11), `safe-commit.md` — each with explicit tool privileges and gate stacks (cite: write-barrier audit sec 2.1). General-purpose agents constitute ~88% of recent invocations (cite: write-barrier audit §4.2). |
+| canon | `.claude/agents/atlas-agent/AGENT.md`, `growth-agent/AGENT.md`, `lens-agent/AGENT.md` (deprecated 2026-04-11), `safe-commit.md` — each with explicit tool privileges and gate stacks (cite: write-barrier audit sec 2.1). General-purpose agents constitute ~88% of recent invocations (cite: write-barrier audit §4.2). |
 | nexus | `.claude/agents/safe-commit.md` only; atlas-agent / growth-agent referenced in commit-message convention but not as `.md` definitions (cite: nexus-native audit §3.3 — "atlas-agent / growth-agent / lens-agent: NOT located, NOT confirmed"). Privileged-agent function is encoded as runtime tools (`lockdown_gate.hexa`, `harness/`) rather than as prompt definitions. **Same precondition is satisfied via different mechanism.** |
 
 **Generic preconditions checklist (5)**:
@@ -408,7 +408,7 @@ constraint (3) (no-fabrication: do not over-claim universality from n=2).
 
 ### §6.1 n=2 repos is small
 
-The 6-of-6 result is across **two repos only** (n6-architecture and nexus). A sample
+The 6-of-6 result is across **two repos only** (canon and nexus). A sample
 of two cannot establish strong cross-repo invariance; it can only establish that the
 pattern holds in two cases and is *not falsified* by either. Predictions P1-P3 (§5)
 are projections, not observations.
@@ -576,7 +576,7 @@ listed as future-trigger conditions only.
 0/7 unchanged. nxs promotion count unchanged. **No atlas/state/inventory edits in
 either repo.** No CLAUDE.md changes. No `.claude/agents/*` changes. The single output
 file is this report under
-`/Users/ghost/core/n6-architecture/reports/sessions/omega-meta-synthesis-repo-invariant-honesty-audit-2026-04-25.md`.
+`/Users/ghost/core/canon/reports/sessions/omega-meta-synthesis-repo-invariant-honesty-audit-2026-04-25.md`.
 
 Synthesis result:
 

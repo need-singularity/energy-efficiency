@@ -1,5 +1,5 @@
 {
-  "schema": "n6-architecture/n6_gate_alignment/1",
+  "schema": "canon/n6_gate_alignment/1",
   "ts": "2026-04-24T08:02:10Z",
   "engine_version": "0.44.0",
   "hook_path": "hooks/pre-commit-n6-integrity",

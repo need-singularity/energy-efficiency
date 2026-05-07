@@ -2,7 +2,7 @@
   "baseline": "2026-04-25",
   "analyzer_version": "v3-fixpoint",
   "analyzer_path": "/tmp/atlas_analysis/promote_v3.py",
-  "atlas_path": "/Users/ghost/core/n6-architecture/atlas/atlas.n6",
+  "atlas_path": "/Users/ghost/core/canon/atlas/atlas.n6",
   "fixpoint_rounds": 2,
   "total_entries": 9615,
   "grade10_total": 1954,

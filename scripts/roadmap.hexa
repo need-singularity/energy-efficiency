@@ -1,9 +1,9 @@
-// roadmap.hexa — n6-architecture 로드맵 어댑터
+// roadmap.hexa — canon 로드맵 어댑터
 //
-// 위임: $NEXUS/shared/harness/roadmap_guard.hexa (--project n6-architecture 고정)
+// 위임: $NEXUS/shared/harness/roadmap_guard.hexa (--project canon 고정)
 // 사용: $HEXA scripts/roadmap.hexa [verify|artifacts|status|all]
 //
-// SSOT: $NEXUS/shared/roadmaps/n6-architecture.json (nexus 리포 내 SSOT)
+// SSOT: $NEXUS/shared/roadmaps/canon.json (nexus 리포 내 SSOT)
 
 fn main() {
     let a = args()
@@ -13,7 +13,7 @@ fn main() {
     let g = env("HOME") + "/shared/harness/roadmap_guard.hexa"
     let h = env("HEXA_BIN") || (env("HOME") + "/core/hexa-lang/hexa")
 
-    let call = h + " " + g + " " + cmd + " --project n6-architecture"
+    let call = h + " " + g + " " + cmd + " --project canon"
     let rc = to_string(exec(call))
     print(rc)
 }

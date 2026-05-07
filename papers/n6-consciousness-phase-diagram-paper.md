@@ -20,7 +20,7 @@ alien_index_target: 11
 
 # Consciousness phase diagram — (entropy S, free energy F, computational complexity C) 3-axis phase-space mapping
 
-> **Author**: Park Min-woo (n6-architecture)
+> **Author**: Park Min-woo (canon)
 > **Category**: consciousness-phase-diagram — cognitive-state 3-axis phase-diagram seed paper
 > **Version**: v1 (2026-04-15 PAPER-P7-1 Mk.III-γ)
 > **Prior papers**: `n6-boundary-metatheory-paper.md`, `n6-consciousness-chip-paper.md`
@@ -419,7 +419,7 @@ All measurements must be reproducible via `hexa run verify_consciousness_phase_n
 
 ### 8.1 OUROBOROS coupling constant
 
-In the attractor-meta-extended result of n6-architecture, the self-referential coupling constant
+In the attractor-meta-extended result of canon, the self-referential coupling constant
 
 $$\alpha_{\mathrm{OUROBOROS}} = 1/n = 1/6$$
 
@@ -665,16 +665,16 @@ or `papers/pandoc_templates/n6_common.bib`).
   theory of conscious states informed by neuroimaging research with psychedelic
   drugs**. *Frontiers in Human Neuroscience*, 8, 20.
 
-### 12.4 n6-architecture prior papers
+### 12.4 canon prior papers
 
 - Park Min-woo & NEXUS-6 collaborator (2026). **σ(n)·φ(n) = n·τ(n) iff n=6 — 3 independent
-  draft arguments and the n6 arithmetic coordinate system**. n6-architecture. `theorem-r1-uniqueness.md`.
-- Park Min-woo (2026). **n=6 boundary metatheory — a theory that knows its own limits**. n6-architecture,
+  draft arguments and the n6 arithmetic coordinate system**. canon. `theorem-r1-uniqueness.md`.
+- Park Min-woo (2026). **n=6 boundary metatheory — a theory that knows its own limits**. canon,
   `n6-boundary-metatheory-paper.md`.
 - Park Min-woo (2026). **HEXA-CONSCIOUSNESS-CHIP — consciousness chip n=6 coordinate mapping**.
-  n6-architecture, `n6-consciousness-chip-paper.md`.
+  canon, `n6-consciousness-chip-paper.md`.
 - Park Min-woo (2026). **Attractor Meta-Theorem Extended — OUROBOROS α=1/n fixed point**.
-  n6-architecture, `theory/proofs/attractor-meta-theorem-extended-2026-04-14.md`.
+  canon, `theory/proofs/attractor-meta-theorem-extended-2026-04-14.md`.
 
 ### 12.5 Information-geometry references
 

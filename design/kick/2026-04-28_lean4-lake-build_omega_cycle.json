@@ -95,9 +95,9 @@
   },
   "artifacts": {
     "manifest_backup": "/tmp/lake-manifest.backup.json",
-    "build_log_full": "/Users/ghost/.claude-claude10/projects/-Users-ghost-core-n6-architecture/3d03016c-ae71-429e-9ea5-09f87ff17a08/tool-results/brtkkusod.txt",
+    "build_log_full": "/Users/ghost/.claude-claude10/projects/-Users-ghost-core-canon/3d03016c-ae71-429e-9ea5-09f87ff17a08/tool-results/brtkkusod.txt",
     "check_lean_file": "/tmp/n6_check.lean",
-    "manifest_modified": "/Users/ghost/core/n6-architecture/lean4-n6/lake-manifest.json",
-    "toolchain_modified": "/Users/ghost/core/n6-architecture/lean4-n6/lean-toolchain"
+    "manifest_modified": "/Users/ghost/core/canon/lean4-n6/lake-manifest.json",
+    "toolchain_modified": "/Users/ghost/core/canon/lean4-n6/lean-toolchain"
   }
 }

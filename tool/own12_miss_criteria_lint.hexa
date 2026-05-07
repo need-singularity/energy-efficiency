@@ -11,10 +11,10 @@
 // failure criteria/## MISS/### MISS/MISS: ).
 //
 // @tool(slug="own12_miss_criteria_lint", desc="own#12 MISS criteria HARD — experiments .md files must declare MISS/실패 조건/failure-criteria section; 26-entry legacy allowlist")
-// @usage(hexa /Users/ghost/core/n6-architecture/tool/own12_miss_criteria_lint.hexa [--selftest])
+// @usage(hexa /Users/ghost/core/canon/tool/own12_miss_criteria_lint.hexa [--selftest])
 // @exit_codes(0=PASS, 1=violations, 2=internal error)
 
-let REPO_ROOT = "/Users/ghost/core/n6-architecture"
+let REPO_ROOT = "/Users/ghost/core/canon"
 
 let SCAN_ROOTS = [
   REPO_ROOT + "/experiments",

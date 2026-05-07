@@ -24,7 +24,7 @@ The amendment is **append-only** -- existing section text, conclusions,
 verdicts, numbers, and structural ordering are preserved verbatim. The
 amendment makes a **precision-of-claim correction**, not a falsification:
 the per-BT audit composites/ER-ROI estimates were correctly computed for the
-n6-architecture-side graph but were implicitly compared to a nexus-canonical
+canon-side graph but were implicitly compared to a nexus-canonical
 ceiling (0.835) that measures a **different graph** (the nexus
 `atlas.blowup.jsonl`). This document records the scope clarification.
 
@@ -56,7 +56,7 @@ From `reports/sessions/omega-exec-nxs002-perbt-patch-2026-04-25.md` §7
 The structural finding from §1 of that report (the actual reason the
 amendment is required): the audit-cited atlas-promotion IDs (RH-01..07,
 MILL-PX-A8, MILL-GALO-PX2-sha-all-squares-332k) exist only in
-n6-architecture-side files and were never absorbed into the nexus atlas
+canon-side files and were never absorbed into the nexus atlas
 that nxs-002 measures. The per-BT audit composites and the nexus-canonical
 composite (0.83221) measure **different graphs**.
 
@@ -73,7 +73,7 @@ section (after the last narrative paragraph, before the `---` separator
 preceding the next `## §4` header). Character count includes the leading
 "> " blockquote marker but excludes the trailing newline.
 
-| # | File path (absolute under `/Users/ghost/core/n6-architecture/`) | Target section | Insertion line | Char count |
+| # | File path (absolute under `/Users/ghost/core/canon/`) | Target section | Insertion line | Char count |
 |---|----------------------------------------------------------------|----------------|----------------|------------|
 | 1 | `reports/sessions/omega-cycle-bt541-riemann-2026-04-25.md` | §3 Axis B -- Omega-saturation estimate | line 128 | 794 |
 | 2 | `reports/sessions/omega-cycle-bt543-ym-2026-04-25.md`      | §3 Ω-saturation estimate (composite vs 0.835) | line 111 | 794 |
@@ -186,7 +186,7 @@ Scope limits:
   exposing the n6 atlas to a parallel pipeline or injecting BT
   markers into the nexus atlas; both are out of scope.
 - This amendment does **not** retract any audit's existing composite
-  estimate. The estimates remain valid *within n6-architecture
+  estimate. The estimates remain valid *within canon
   scope*; only cross-graph comparison to 0.835 is now flagged invalid.
 - This amendment does **not** alter the cross-BT EMPTY rung histogram
   in the backtrace synthesis -- that histogram is structural (rung
@@ -206,7 +206,7 @@ Scope limits:
 
 The five active per-BT audits (BT-541, 543, 544, 545, 546) and the
 backtrace synthesis report now carry an explicit scope caveat noting that
-their composite/ER-ROI estimates measure the n6-architecture-side graph,
+their composite/ER-ROI estimates measure the canon-side graph,
 not the nexus-canonical atlas measured by `nxs_002_composite.py`. Direct
 comparison against the 0.835 nexus simulation ceiling is now flagged as
 invalid until either per-BT slicing is added to `nxs_002_composite.py` or

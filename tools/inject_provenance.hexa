@@ -3,14 +3,14 @@
 // to every seed copy listed in standalone_registry.toml.
 //
 // Header format (HTML comment for .md, // comment for .hexa):
-//   .md   →  <!-- @canonical: n6-architecture@<sha>:<canonical> -->
+//   .md   →  <!-- @canonical: canon@<sha>:<canonical> -->
 //             <!-- @extracted: 2026-05-06 -->
 //             <!-- @md5_at_extraction: <md5_canon> -->
-//   .hexa →  // @canonical: n6-architecture@<sha>:<canonical>
+//   .hexa →  // @canonical: canon@<sha>:<canonical>
 //             // @extracted: 2026-05-06
 //             // @md5_at_extraction: <md5_canon>
 //
-// Idempotent: skips files that already contain `@canonical: n6-architecture@`.
+// Idempotent: skips files that already contain `@canonical: canon@`.
 //
 // Usage:
 //   HEXA_FORK_CAP=0 hexa run tools/inject_provenance.hexa
@@ -19,7 +19,7 @@
 // source-of-truth).
 
 let REGISTRY = "standalone_registry.toml"
-let MARKER = "@canonical: n6-architecture@"
+let MARKER = "@canonical: canon@"
 
 fn shq(s: str) -> str {
     return "'" + s.replace("'", "'\\''") + "'"
@@ -54,13 +54,13 @@ fn ends_with_md(p: str) -> bool { return p.ends_with(".md") }
 fn ends_with_hexa(p: str) -> bool { return p.ends_with(".hexa") }
 
 fn build_header_md(sha: str, canonical: str, md5: str) -> str {
-    return "<!-- @canonical: n6-architecture@" + sha + ":" + canonical + " -->\n"
+    return "<!-- @canonical: canon@" + sha + ":" + canonical + " -->\n"
         + "<!-- @extracted: 2026-05-06 -->\n"
         + "<!-- @md5_at_extraction: " + md5 + " -->\n"
 }
 
 fn build_header_hexa(sha: str, canonical: str, md5: str) -> str {
-    return "// @canonical: n6-architecture@" + sha + ":" + canonical + "\n"
+    return "// @canonical: canon@" + sha + ":" + canonical + "\n"
         + "// @extracted: 2026-05-06\n"
         + "// @md5_at_extraction: " + md5 + "\n"
 }

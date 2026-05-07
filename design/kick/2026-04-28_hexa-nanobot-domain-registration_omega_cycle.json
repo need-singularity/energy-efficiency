@@ -90,10 +90,10 @@
       "domain registration adds 1 to biology axis _domains_count (1 -> 2)"
     ],
     "evidence_paths": [
-      "/Users/ghost/core/n6-architecture/design/kick/2026-04-28_hexa-nanobot-domain-registration_omega_cycle.json (this file)",
-      "/Users/ghost/core/n6-architecture/domains/biology/hexa-nanobot/hexa-nanobot.md (15-section body)",
-      "/Users/ghost/core/n6-architecture/domains/biology/_index.json (sub-SSOT updated)",
-      "/Users/ghost/core/n6-architecture/domains/_index.json (top-level SSOT updated)"
+      "/Users/ghost/core/canon/design/kick/2026-04-28_hexa-nanobot-domain-registration_omega_cycle.json (this file)",
+      "/Users/ghost/core/canon/domains/biology/hexa-nanobot/hexa-nanobot.md (15-section body)",
+      "/Users/ghost/core/canon/domains/biology/_index.json (sub-SSOT updated)",
+      "/Users/ghost/core/canon/domains/_index.json (top-level SSOT updated)"
     ],
     "limits": [
       "registration verdict is THEORETICAL-ANALYTICAL: derived from genus-classification analysis of Drexler 1986 / Seeman 1982 / Rothemund 2006 plus n6 invariant projection; NO empirical nano-machine MVP executed in this cycle",
@@ -143,7 +143,7 @@
     "rationale": "genus-level distinction from HEXA-WEAVE is clear (single nano-machine vs multi-strand composition); n6 invariant projection has structural basis in Drexler / Rothemund literature; falsifiers preregistered with concrete deadlines. raw 91 C3 honest: registration proceeds at APPROACH grade pending the three audits above."
   },
   "report_summary": {
-    "witness_path": "/Users/ghost/core/n6-architecture/design/kick/2026-04-28_hexa-nanobot-domain-registration_omega_cycle.json",
+    "witness_path": "/Users/ghost/core/canon/design/kick/2026-04-28_hexa-nanobot-domain-registration_omega_cycle.json",
     "domain_registered": "biology/hexa-nanobot",
     "sister_of": "biology/hexa-weave",
     "verdict_tier": "APPROACH",

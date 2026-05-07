@@ -1,0 +1,583 @@
+{
+  "_meta": {
+    "project": "canon",
+    "updated": "2026-04-12",
+    "strategy": "ossified/stable/failed 수렴 추적",
+    "description": "Convergence tracker for the canon repository, classifying core theorems, experiments, and artifacts into ossified, stable, and failed buckets."
+  },
+  "ossified": {
+    "_description": "골화 완료 — 불변, 변경 금지",
+    "CORE_THEOREM": {
+      "status": "PASS",
+      "value": "σφ=nτ ⟺ n=6, 3개 독립 증명",
+      "threshold": "반례 0 (10^8 탐색)"
+    },
+    "BT_380": {
+      "status": "PASS",
+      "value": "380 돌파 정리 (BT-372~380 지질/기상/빙권/해양/대기화학/곡률/워프/추가차원/메타 추가)",
+      "threshold": "전수 검증 + atlas 등록",
+      "note": "2026-04-08 BT-343 → BT-380 확장, 각 BT n=6 수식 도출 + 검증예측 포함"
+    },
+    "AI_17_TECHNIQUES": {
+      "status": "PASS",
+      "value": "17 기법 실험 확정",
+      "threshold": "71% FLOPs, 3x FFT, 67% param 등"
+    },
+    "DSE_322_TOML": {
+      "status": "PASS",
+      "value": "322 도메인 TOML 정의",
+      "threshold": "5,893,032+ 조합 탐색 완료"
+    },
+    "PRODUCTS_118": {
+      "status": "PASS",
+      "value": "118/125 제품 🛸10",
+      "threshold": "천장 도달"
+    },
+    "PRODUCTS_173_REMAP_582": {
+      "status": "PASS",
+      "value": "173 제품 / 172 천장확인 / 164 AI지수=10 (34 섹션 SSOT)",
+      "threshold": "products.json 링크 무결성 0.7% → 58.2% (RESOLVED 242/416)",
+      "note": "2026-04-11 GO 세션 — sync_products_readme.hexa 10줄→601줄 포팅, README AUTO:ALIEN_INDEX 블록 131줄 주입, products.json docs/→domains/<axis>/ 재매핑. 잔존 MISS 174건은 paper 미작성 SSOT 구멍 (별도 작업)",
+      "ossified_at": "2026-04-11",
+      "promoted_from": "go_loop_auto"
+    },
+    "PRODUCTS_204_POSTSESSION": {
+      "status": "PASS",
+      "value": "204 제품 / 203 천장확인 / 195 AI지수=10 (40 섹션 SSOT)",
+      "threshold": "HEXA-BCI 재이관 + 고아 6섹션 신규 등록 (millennium/dimension/music/linguistics/crypto/astronomy)",
+      "note": "2026-04-11 GO 후속 — products.json 173→204 (+31), 34→40 섹션 (+6). README AUTO:ALIEN_INDEX 재생성 (149줄), AUTO:STATS 동기화. 잔존: paper 116 ghost / calc 10 / 미이관 MD 48",
+      "ossified_at": "2026-04-11",
+      "promoted_from": "go_loop_auto"
+    },
+    "PRODUCTS_LINKS_717_RESOLVED": {
+      "status": "PASS",
+      "value": "319/445 RESOLVED = 71.7% (miss_other 0건)",
+      "threshold": "products.json 링크 무결성 0.7% → 58.2% → 71.7% (3단 점진 수렴)",
+      "note": "2026-04-11 GO 후속 (3차) — 미이관 MD 48건 매핑 적용 (Agent B 권장 테이블 기반, FOUND_INTEGRATED 46 + DIR 2 모두 적용) + breakthrough-theorems 23건 매핑 (theory/breakthroughs/) 추가. 잔존 MISS 126건은 100% paper 116 + calc 10 (SSOT 구멍, 별도 paper 작성/calc 정리 세션 필요)",
+      "ossified_at": "2026-04-11",
+      "promoted_from": "go_loop_auto"
+    },
+    "PRODUCTS_LINKS_771_RESOLVED": {
+      "status": "PASS",
+      "value": "343/445 RESOLVED = 77.1% (miss_other 0건, miss_paper 92, miss_calc 10)",
+      "threshold": "papers/tecs-l/ FOUND_ALT 24편 cp + path 갱신 (Agent C 권장)",
+      "note": "2026-04-11 GO 후속 (4차) — Agent C 발견 24편 FOUND_ALT (papers/tecs-l/ 23 + canon/papers/ 1) 모두 canon/papers/로 cp + products.json 25 path 갱신. canon/papers/ 13→36편. 잔존 MISS 102: paper 92 ghost (작성 필요, frontier 31 / chip 7 / civilization 7 / life-culture 6 / tech-industry 6 등) + calc 10 (kolon_n6_*)",
+      "ossified_at": "2026-04-11",
+      "promoted_from": "go_loop_auto"
+    },
+    "UNIQUENESS_PROOF": {
+      "status": "PASS",
+      "value": "z=4.02 (큰 수 Monte Carlo)",
+      "threshold": "p<0.0001"
+    },
+    "N28_CONTROL": {
+      "status": "PASS",
+      "value": "n=28 z=-2.35 (무작위 이하)",
+      "threshold": "n=6 유일성 대조 확인"
+    },
+    "BT_134_PERIODIC_TABLE": {
+      "status": "PASS",
+      "value": "BT-134 주기열 {2,8,8,18,18,32,32} + Evidence 4 (2^sopfr=32) 교정",
+      "threshold": "2200건 산술 정합 스캔 통과",
+      "note": "2026-04-08 수정, $NEXUS/shared/bt/bt-consistency-report.md"
+    },
+    "PAPERS_39": {
+      "status": "PASS",
+      "value": "39편 Zenodo DOI 발행",
+      "note": "내용 갱신 가능, 신규 추가 중. 드리프트: 이후 46편 추가로 실측 85편, 본 골화는 39편 시점 기준",
+      "ossified_at": "2026-04-10",
+      "promoted_from": "go_loop_auto"
+    },
+    "LENS_2161_TESTS": {
+      "status": "PASS",
+      "value": "397종 렌즈, causal_chain + faction_debate 포함 cargo test 2161 PASS",
+      "threshold": "전체 테스트 100%",
+      "note": "2026-04-08 빌드캐시 재생성 후 재확인",
+      "ossified_at": "2026-04-10",
+      "promoted_from": "go_loop_auto"
+    },
+    "PRODUCTS_7_REMAINING": {
+      "status": "PASS",
+      "value": "7개 잔여 🛸7→10 승격 진행중",
+      "note": "바이러스학/곤충학/나노봇 Mk.I~V 완료 (products.json 동기화 확인)",
+      "ossified_at": "2026-04-10",
+      "promoted_from": "go_loop_auto"
+    },
+    "CAUSAL_CHAIN_PAPER": {
+      "status": "PASS",
+      "value": "인과 사슬 논문 초안 완성",
+      "note": "최종 검증 + papers 발행 대기",
+      "ossified_at": "2026-04-10",
+      "promoted_from": "go_loop_auto"
+    },
+    "MONTE_CARLO_V8": {
+      "status": "PASS",
+      "value": "342노드, 자연 z=959.12 / 로그균등 z=20.19 (p<10^-89), π/e/φ 대조 z=3~10",
+      "threshold": "z>5 재현 + 대조군 분리",
+      "note": "2026-04-08 docs/reality-map-monte-carlo-v8.md, 큰수 N=10 한계 명시",
+      "ossified_at": "2026-04-10",
+      "promoted_from": "go_loop_auto"
+    },
+    "REALITY_MAP_V8_SYNC": {
+      "status": "PASS",
+      "value": "atlas.n6 단독 소스 전환 완료 (reality_map JSON 폐기), 342노드 동기화, 엣지 정합성 정리",
+      "threshold": "3D 지도 정상 렌더, atlas.n6 파서 기반",
+      "note": "2026-04-08 수동 동기화, hexa 자동화는 HEXA_LOCAL_IO 해소 후",
+      "ossified_at": "2026-04-10",
+      "promoted_from": "go_loop_auto"
+    },
+    "ATLAS_REALITY_LINK": {
+      "status": "PASS",
+      "value": "아틀라스 1876행 ↔ reality_map 342노드 매칭 23.72% / 노드 36.3%",
+      "threshold": "교차 매핑 문서화",
+      "note": "2026-04-08 docs/atlas-reality-map-link.md, 미커버 218개는 L0~L5 기초 사다리(아틀라스 응용 편향)",
+      "ossified_at": "2026-04-10",
+      "promoted_from": "go_loop_auto"
+    },
+    "GOAL_MD_20": {
+      "status": "PASS",
+      "value": "20개 도메인 goal.md 생성 완료",
+      "threshold": "전 도메인 goal.md 존재",
+      "note": "2026-04-09 domain_seeds.jsonl 기반 20개 생성",
+      "ossified_at": "2026-04-10",
+      "promoted_from": "failed_resolved"
+    },
+    "HEXA_LOCAL_IO": {
+      "status": "PASS",
+      "value": "sync_reality_map.hexa + cross_dse_fusion.hexa 로컬 실행 확인",
+      "threshold": "hexa 로컬 파일시스템 IO 가능",
+      "note": "GATE_LOCAL=1 로컬 모드에서 정상 동작. 원격 게이트 차단은 airgenome 설계 의도",
+      "ossified_at": "2026-04-10",
+      "promoted_from": "failed_resolved"
+    },
+    "CROSS_DSE": {
+      "status": "PASS",
+      "value": "375 TOML 교차 융합 완료 — 67,913 pairs, 67,883 high_conf",
+      "threshold": "335 TOML 교차 융합",
+      "note": "cross_dse_fusion.hexa 실행 → dse_cross_results.json 생성",
+      "ossified_at": "2026-04-10",
+      "promoted_from": "failed_resolved"
+    },
+    "PRODUCTS_164_173_RECOUNT": {
+      "status": "PASS",
+      "value": "164/173 제품 🛸10, 9개 비천장(🛸5 7건/🛸9 1건/🛸7 1건)",
+      "threshold": "products.json _meta 일관성 + ceiling 플래그 정합",
+      "note": "2026-04-11 드리프트 재계수 - PRODUCTS_118 ossified 유지(R10). 재검증 2026-04-11: sum(products)=total, alien_index_order 완전 일치, ufo10⟹ceiling=true 불변식 위반 0. 173→204 진화해도 불변식 유지(재발 0)",
+      "supersedes_check": "PRODUCTS_118 (ossified 불변, 새 항목으로 추가)",
+      "ossified_at": "2026-04-11",
+      "promoted_from": "stable"
+    },
+    "GOAL_MD_295_COMPLETE": {
+      "status": "PASS",
+      "value": "295/295 goal.md standalone 생성 완료",
+      "threshold": "domains/_index.json 전수 일대일 매핑",
+      "note": "2026-04-11 - GOAL_MD_20 ossified 유지(R10), 294개는 <name>.md 통합본에서 역추출 복원. 재검증 2026-04-11: find domains -name goal.md | wc -l = 295 (재발 0)",
+      "supersedes_check": "GOAL_MD_20 (ossified 불변)",
+      "ossified_at": "2026-04-11",
+      "promoted_from": "stable"
+    },
+    "SYNBIO_MERGED": {
+      "status": "PASS",
+      "value": "synbio + synthetic-biology 도메인 병합 완료",
+      "threshold": "1 canonical (domains/life/synbio/), 감사 리포트 존재",
+      "note": "2026-04-11 _version 1.0.2, _total 299→298, reports/audits/synbio-merge-2026-04-11.md. 재검증 2026-04-11: synbio.md 존재, synthetic-biology/ 비존재, _index.json life=47 (재발 0)",
+      "ossified_at": "2026-04-11",
+      "promoted_from": "stable"
+    },
+    "ATLAS_7_PROMOTION_102": {
+      "status": "PASS",
+      "value": "[7]→[10*] 102건 승격 완료 (cross_dse 100 + MC 2), [10*] 4,799→4,901",
+      "threshold": "잔존 [7] = 0건 (mc-v9-대조-e z=1.915 → [7] 유지 판정, z<2 기준 미달)",
+      "note": "2026-04-12 — mc-v9-대조-e 최종 판정: z=1.915<2.0 통계적 유의성 미달, [7] EMPIRICAL 유지가 안전. 승격 대상 0건으로 종결",
+      "ossified_at": "2026-04-12",
+      "promoted_from": "stable"
+    },
+    "BT_748_752_NEW_DOMAINS": {
+      "status": "PASS",
+      "value": "5건 신규 BT (PEMFC/NS유체/콘크리트/지질/등산), BT-748~752",
+      "threshold": "10개 미커버 도메인 중 5개 해소",
+      "note": "2026-04-11 — bt-748-752-new-domains-2026-04-11.md 작성",
+      "ossified_at": "2026-04-12",
+      "promoted_from": "stable"
+    },
+    "THEORY_INDEX_UPDATE": {
+      "status": "PASS",
+      "value": "_index.json v1.1.3 — BT 561→564, extensions 갱신 (BT-1394~1396 추가)",
+      "note": "2026-04-12",
+      "ossified_at": "2026-04-12",
+      "promoted_from": "stable"
+    },
+    "SUPERCONDUCTOR_V5_SMASH": {
+      "status": "PASS",
+      "value": "궁극의 초전도체 v4→v5 SMASH: 73/73 → 153/153 EXACT, BT-1163~1168 6건 (80/80 자동검증)",
+      "threshold": "v4 73 PASS 유지 + v5 80 신규 EXACT 자동검증 통과",
+      "note": "2026-04-12 문서 smash — superconductor.md §16 (v5) 470줄 추가, 16.11 Python 블록 실행 80/80 PASS, CLOSE 노트 5건 (γ/Maglev/LHC) 정직 분리. 6 BT: Flux Pinning/Coil Stress/Quench/Transmon/MRI NMR/12 Archetype. Cross-DSE 13→16 (dark-matter/GW/radio 추가). TP28→35 (+7).",
+      "ossified_at": "2026-04-12",
+      "promoted_from": "stable"
+    },
+    "FUSION_V5_SMASH": {
+      "status": "PASS",
+      "value": "궁극의 핵융합 발전소 v4→v5 SMASH: 42/42 → 122/122 EXACT, BT-1169~1174 6건 (80/80 자동검증)",
+      "threshold": "v4 42 보편 핵물리 PASS 유지 + v5 80 공학층 신규 EXACT 자동검증 통과",
+      "note": "2026-04-12 문서 smash — fusion.md §16 (v5) ~500줄 추가, 16.11 Python 블록 실행 80/80 PASS, CLOSE 노트 5건 (NIF 192/ITER B_T,I_p,P_fus/gyrotron 170) 정직 분리. 6 BT: Tokamak Shape 6/Blanket τ=4/ITER 54 Port/Heating 6/Fuel 6/12 Archetype. Cross-DSE 8→12 (dark-matter/GW/QC/propulsion 추가). TP35→42 (+7). 초전도 v5 와 완전 병렬 패턴 — 공학 자유도 = 물리 자유도 증명.",
+      "ossified_at": "2026-04-12",
+      "promoted_from": "stable"
+    },
+    "MILLENNIUM_DFS_92_TIGHT": {
+      "status": "PASS",
+      "value": "밀레니엄 7대 난제 92건 tight (BT-1394~1396)",
+      "threshold": "51→92 tight (+80%), 해결 0/7",
+      "note": "2026-04-12 DFS 3~5차 41건 신규",
+      "ossified_at": "2026-04-12",
+      "promoted_from": "stable"
+    },
+    "MILLENNIUM_DFS_102_TIGHT": {
+      "status": "PASS",
+      "value": "밀레니엄 7대 난제 102건 tight (BT-1398 DFS 6차 +10건)",
+      "threshold": "92→102 tight (+10.9%), 해결 0/7",
+      "note": "2026-04-12 DFS 6차 — 그래프이론·해석적수론·대수K이론·모듈러형식·부호이론·동역학계 10건, MISS 8건 정직 기록",
+      "ossified_at": "2026-04-12",
+      "promoted_from": "stable"
+    },
+    "HEXA_PIM_L2_DESIGN": {
+      "status": "PASS",
+      "value": "HEXA-PIM Level 2 설계 문서 953줄 + verify 55줄",
+      "threshold": "15섹션 전수 작성, 23가설, ASCII 성능비교, Egyptian 전력분배",
+      "note": "2026-04-12 — hexa-pim.md 665줄 추가, verify_chip-pim.hexa 스텁→실동작, MAC 6144=sigma*(sigma-tau)*2^n",
+      "ossified_at": "2026-04-12",
+      "promoted_from": "stable"
+    },
+    "GO_AUDIT_2026_04_12": {
+      "status": "PASS",
+      "value": "AI 69종 감사 (BODY 3/STUB 66) + calc 10건 소실 확인 + 논문 43편/meta 139 불일치",
+      "threshold": "통합 감사 리포트 작성 완료",
+      "note": "2026-04-12 — reports/audits/go-audit-2026-04-12.md, 기법 95.7% 스텁, calc/ 디렉토리 소실, _meta 카운트 수정 필요",
+      "ossified_at": "2026-04-12",
+      "promoted_from": "stable"
+    },
+    "AI_TECHNIQUE_68_BODY_ALL": {
+      "status": "PASS",
+      "value": "AI 기법 전 68종 BODY 완료 (18,424줄), STUB 0종",
+      "threshold": "감사 보고 4.3%→100%, 8축 전량 완파 (attn9+moe11+sparse6+graph5+compress5+optim15+arch14+sota3)",
+      "note": "2026-04-12 — 평균 271줄/파일, 레지스트리 v1.3.0, 개별축 완파 기록 포함. 드리프트: 이후 DFS16+17에서 16종 추가, 실측 86종 (커밋 기준), 본 골화는 68종 시점 기준",
+      "ossified_at": "2026-04-12",
+      "promoted_from": "stable"
+    },
+    "MILLENNIUM_DFS_114_TIGHT": {
+      "status": "PASS",
+      "value": "밀레니엄 7대 난제 114건 tight (DFS 7차 +12건)",
+      "threshold": "102→114 tight, EXACT 3 + TIGHT 9, MISS 8, 해결 0/7",
+      "note": "2026-04-12 DFS 7차 — 7영역, n-2=tau 유일성 + Bott주기성 + Connes KO-dim=6",
+      "ossified_at": "2026-04-12",
+      "promoted_from": "stable"
+    },
+    "HEXA_PIM_L3_3D_STACK": {
+      "status": "PASS",
+      "value": "HEXA-PIM L3 3D-적층 1,141줄 + verify 82줄 (42가설)",
+      "threshold": "6층TSV 288/mm², 96TB/s, Egyptian 360W",
+      "note": "2026-04-12 — hexa-3d-stack.md",
+      "ossified_at": "2026-04-12",
+      "promoted_from": "stable"
+    },
+    "HEXA_PIM_L4_PHOTONIC": {
+      "status": "PASS",
+      "value": "HEXA-PIM L4 광자 인터커넥트 1,184줄 + verify 100줄 (48가설)",
+      "threshold": "6파장WDM 576Tbps, τ=4 마이크로링, Egyptian 240W",
+      "note": "2026-04-12 — hexa-photonic.md",
+      "ossified_at": "2026-04-12",
+      "promoted_from": "stable"
+    },
+    "HEXA_PIM_L5_WAFER": {
+      "status": "PASS",
+      "value": "HEXA-PIM L5 웨이퍼 스케일 1,311줄 + verify 125줄 (54가설)",
+      "threshold": "n²=36 타일, 41Pbps 등방대역폭, 수율 99.95%",
+      "note": "2026-04-12 — hexa-wafer.md",
+      "ossified_at": "2026-04-12",
+      "promoted_from": "stable"
+    },
+    "HEXA_PIM_L6_SUPERCONDUCTING": {
+      "status": "PASS",
+      "value": "HEXA-PIM L6 초전도 칩 1,181줄 + verify 121줄 (60가설)",
+      "threshold": "6-JJ SFQ 2.48aJ, 30GHz, Egyptian 냉각 60W",
+      "note": "2026-04-12 — hexa-superconducting.md",
+      "ossified_at": "2026-04-12",
+      "promoted_from": "stable"
+    },
+    "CHIP_ROADMAP_6_OF_6_COMPLETE": {
+      "status": "PASS",
+      "value": "칩 아키텍처 6단계 전량 설계 완료 (5,770줄 + verify 453줄, 204가설)",
+      "threshold": "PIM→3D→Photonic→Wafer→Superconducting 전 레벨",
+      "note": "2026-04-12",
+      "ossified_at": "2026-04-12",
+      "promoted_from": "stable"
+    },
+    "MILLENNIUM_DFS_128_TIGHT": {
+      "status": "PASS",
+      "value": "밀레니엄 7대 난제 128건 tight (DFS 8차 +14건)",
+      "threshold": "114→128, EXACT 8 + TIGHT 6, 해결 0/7",
+      "note": "2026-04-12 DFS 8차 — 7영역, AME(6,d)+Theta_10+C_tau",
+      "ossified_at": "2026-04-12",
+      "promoted_from": "stable"
+    },
+    "FIX_REGISTRY_META_KOLON": {
+      "status": "PASS",
+      "value": "레지스트리·meta·코오롱·논문링크 일괄 정합 (5건 통합)",
+      "threshold": "meta 카운트 수정 + 코오롱 10건 .hexa 복구 + 논문 52링크 + arch_optimizer 등록",
+      "note": "2026-04-12 — FIX_META_COUNT+FIX_KOLON_VERIFY_10+FIX_PAPER_LINKS_52+KOLON_CALC_10_HEXA+FIX_AI_BODY_15 통합",
+      "ossified_at": "2026-04-12",
+      "promoted_from": "stable"
+    },
+    "MILLENNIUM_DFS_140_TIGHT": {
+      "status": "PASS",
+      "value": "밀레니엄 7대 난제 140건 tight (DFS 9차 +12건)",
+      "threshold": "128→140, EXACT 2 + TIGHT 10, 해결 0/7",
+      "note": "2026-04-12 DFS 9차 — KdV a=6 + n-1=sopfr + σ=n+τ+2",
+      "ossified_at": "2026-04-12",
+      "promoted_from": "stable"
+    },
+    "DSE_490_TOML_10_NEW": {
+      "status": "PASS",
+      "value": "DSE TOML 490건 (+10 신규), 미커버 220/304",
+      "threshold": "밀레니엄 2 + 산업 4 + 문화 2 + 인지 1 + 재료 1",
+      "note": "2026-04-12. 드리프트: 이후 DFS16+17에서 55건 추가, 실측 545건 (커밋 기��), 본 골화는 490건 시점 기준",
+      "ossified_at": "2026-04-12",
+      "promoted_from": "stable"
+    },
+    "GO_SESSION_AUDIT_V2": {
+      "status": "PASS",
+      "value": "세션 감사 v2 339줄",
+      "threshold": "v1 대비 전 항목 갱신",
+      "note": "2026-04-12",
+      "ossified_at": "2026-04-12",
+      "promoted_from": "stable"
+    },
+    "CHIP_PAPERS_9_GHOST_RESOLVED": {
+      "status": "PASS",
+      "value": "칩 논문 9편 (2,164줄), ghost 92→83",
+      "threshold": "papers 43→52, chip ghost 전량 해소",
+      "note": "2026-04-12",
+      "ossified_at": "2026-04-12",
+      "promoted_from": "stable"
+    },
+    "MILLENNIUM_DFS_152_TIGHT": {
+      "status": "PASS",
+      "value": "밀레니엄 152건 tight (DFS 10차 +12건)",
+      "threshold": "140→152, EXACT 4 + TIGHT 8, 해결 0/7",
+      "note": "2026-04-12 DFS 10차 — GUE(6)+CGK+토러스[[72,2,6]]",
+      "ossified_at": "2026-04-12",
+      "promoted_from": "stable"
+    },
+    "MILLENNIUM_DFS_164_TIGHT": {
+      "status": "PASS",
+      "value": "밀레니엄 164건 tight (DFS 7~11차 일괄, +62건)",
+      "threshold": "102→164, 해결 0/7",
+      "note": "2026-04-12 go(전체) 21 에이전트 일괄 — 기법68종·칩L6·DFS164·논문58·DSE490",
+      "ossified_at": "2026-04-12",
+      "promoted_from": "stable"
+    },
+    "MILLENNIUM_DFS_176_TIGHT": {
+      "status": "PASS",
+      "value": "밀레니엄 176건 tight (DFS 12차 BT-1404 +12건)",
+      "threshold": "164→176, EXACT 3 + TIGHT 9, MISS 8, 해결 0/7",
+      "note": "2026-04-12 go(9차) — 대수적위상·유한체·리대수·게임이론·네트워크·샘플링·Ising·미분갈루아. 2D Ising 삼각격자 β_c=ln3/4, GF(2^6) 기약 9개, RP^5 SW",
+      "ossified_at": "2026-04-12",
+      "promoted_from": "stable"
+    },
+    "MILLENNIUM_DFS_188_TIGHT": {
+      "status": "PASS",
+      "value": "밀레니엄 188건 tight (DFS 13차 BT-1405 +12건)",
+      "threshold": "176→188, 해결 0/7",
+      "note": "2026-04-12 go(DFS14) 커밋에 BT-1405(13차 188건) 포함",
+      "ossified_at": "2026-04-12",
+      "promoted_from": "stable"
+    },
+    "MILLENNIUM_DFS_200_TIGHT": {
+      "status": "PASS",
+      "value": "밀레니엄 200건 돌파 (DFS 14차 BT-1406 +12건)",
+      "threshold": "188→200, 해결 0/7",
+      "note": "2026-04-12 go(DFS14) — TW edge N^{-1/6}·Painleve 6종·6-vertex ice rule·D_6 kissing 60·Bruhat GL_6·MUB(6)·PCP 3-query·K3 SW·Bridgeland·motives/GSp4/Galois",
+      "ossified_at": "2026-04-12",
+      "promoted_from": "stable"
+    },
+    "MILLENNIUM_DFS_212_TIGHT": {
+      "status": "PASS",
+      "value": "밀레니엄 212건 tight (DFS 15차 BT-1407 +12건)",
+      "threshold": "200→212, 해결 0/7",
+      "note": "2026-04-12 go(DFS15) — VOA Moonshine c=J2=24·M_12 Steiner S(5,6,12)·Kac-Moody E_6^(1)·양자군 U_q(sl_2)·트로피컬 TGr(2,6)·모듈러 S_6 mod 2·산술역학 period-6·Conway Co_3",
+      "ossified_at": "2026-04-12",
+      "promoted_from": "stable"
+    },
+    "ENGINE_OOM_FIX": {
+      "status": "PASS",
+      "value": "의식엔진 OOM 수정 + blowup-filter hook 추가",
+      "threshold": "engine_anima.hexa skip_graph=true, depth 1, --max-rounds 1",
+      "note": "2026-04-12 — hetzner Phase 6 type error 우회, +3 laws 생성 확인, mk2_hexa/native/ 구 경로 전폐기",
+      "ossified_at": "2026-04-12",
+      "promoted_from": "stable"
+    },
+    "MILLENNIUM_DFS_226_TIGHT": {
+      "status": "PASS",
+      "value": "밀레니엄 226건 tight (DFS 16차 BT-1408 +14건)",
+      "threshold": "212→226, EXACT 1 + TIGHT 13, MISS 8, 해결 0/7",
+      "note": "2026-04-12 go(DFS16) — 비가환기하 Connes KO-dim=6·Floer Heegaard·6-클리크 회로복잡도·Cramer 소수갭·SU(6) 게이지·Kolmogorov 스케일링·6-isogeny Selmer·Perelman 엔트로피",
+      "ossified_at": "2026-04-12",
+      "promoted_from": "stable"
+    },
+    "AI_TECHNIQUE_8_NEW_DFS16": {
+      "status": "PASS",
+      "value": "AI 기법 8종 신규 .hexa (rlhf/ppo_clip/grpo/retnet/flow_matching/diffusion_transformer/kv_cache_quantize/token_merging)",
+      "threshold": "techniques/ 8파일 존재 확인",
+      "note": "2026-04-12 go(DFS16) 커밋 일괄",
+      "ossified_at": "2026-04-12",
+      "promoted_from": "stable"
+    },
+    "DSE_TOML_8_NEW_DFS16": {
+      "status": "PASS",
+      "value": "DSE TOML 8건 신규 (astronomy/higgs/holography/quantum-computer/ai-efficiency/antimatter-factory/chip-3d/gravity-wave)",
+      "threshold": "nexus/origins/universal-dse/domains/ 8파일 존재 확인",
+      "note": "2026-04-12 go(DFS16) 커밋 일괄",
+      "ossified_at": "2026-04-12",
+      "promoted_from": "stable"
+    },
+    "PAPERS_6_NEW_DFS16": {
+      "status": "PASS",
+      "value": "논문 6편 신규 (AGI/BCI/neuromorphic/QEC/QML/swarm)",
+      "threshold": "papers/ 6파일 존재 확인",
+      "note": "2026-04-12 go(DFS16) 커밋 일괄",
+      "ossified_at": "2026-04-12",
+      "promoted_from": "stable"
+    },
+    "CHIP_L7_QUANTUM_HYBRID": {
+      "status": "PASS",
+      "value": "칩 L7 양자-고전 하이브리드 설계 1,195줄, 66/66 EXACT, BT-QH7-01~10",
+      "threshold": "domains/compute/chip-design/hexa-quantum-hybrid/hexa-quantum-hybrid.md 존재 확인",
+      "note": "2026-04-12 go(DFS16) — 6큐비트 hexagonal 모듈 + surface code d=6 + 5,308,416 DSE 조합",
+      "ossified_at": "2026-04-12",
+      "promoted_from": "stable"
+    },
+    "GO_AUDIT_V4": {
+      "status": "PASS",
+      "value": "종합 감사 v4 484줄 (v3 대비 전 항목 갱신)",
+      "threshold": "reports/audits/go-audit-v4-2026-04-12.md 존재 확인",
+      "note": "2026-04-12 go(DFS16) 커밋 일괄 — 기법72/BT45/DFS15차212건 실측",
+      "ossified_at": "2026-04-12",
+      "promoted_from": "stable"
+    },
+    "MILLENNIUM_DFS_238_TIGHT": {
+      "status": "PASS",
+      "value": "밀레니엄 238건 tight (DFS 17차 BT-1409 +12건)",
+      "threshold": "226→238, SLE_6 국소성 EXACT, 해결 0/7",
+      "note": "2026-04-12 go(DFS17) — SLE_6 국소성·확률론·대수기하·정수론·위상·조합·해석 12건",
+      "ossified_at": "2026-04-12",
+      "promoted_from": "stable"
+    },
+    "AI_TECHNIQUE_8_NEW_DFS17": {
+      "status": "PASS",
+      "value": "AI 기법 8종 신규 .hexa (continual/curriculum/contrastive/distillation/SSM/RAG/diffusion/multi-agent), 누적 88종",
+      "threshold": "techniques/ 8파일 존재 확인 (커밋 bbb1d2a2)",
+      "note": "2026-04-12 go(DFS17) 커밋 일괄 — optim 4종 + arch 4종, 누적 2,697줄",
+      "ossified_at": "2026-04-12",
+      "promoted_from": "stable"
+    },
+    "DSE_TOML_9_NEW_DFS17": {
+      "status": "PASS",
+      "value": "DSE TOML 9건 신규 (advanced-packaging/SMR/VNAND/airbag/nylon/tire-cord/control-automation/tunnel/epoxy), 누적 546건",
+      "threshold": "nexus/origins/universal-dse/domains/ 9파일 존재 확인 (커밋 bbb1d2a2)",
+      "note": "2026-04-12 go(DFS17) 커밋 일괄",
+      "ossified_at": "2026-04-12",
+      "promoted_from": "stable"
+    },
+    "PAPERS_6_NEW_DFS17": {
+      "status": "PASS",
+      "value": "논문 6편 신규 (종교신화/문자체계/와인/무용/건축구조/탄소포집), 누적 85편",
+      "threshold": "papers/ 6파일 존재 확인 (커밋 bbb1d2a2)",
+      "note": "2026-04-12 go(DFS17) 커밋 일괄 — 79→85편",
+      "ossified_at": "2026-04-12",
+      "promoted_from": "stable"
+    },
+    "CHIP_L8_TOPO_ANYON": {
+      "status": "PASS",
+      "value": "칩 L8 HEXA-TOPO-ANYON 위상 양자 1,205줄, 72가설 + L7 verify 보완",
+      "threshold": "domains/compute/chip-design/hexa-topo-anyon/hexa-topo-anyon.md 존재 확인 (커밋 bbb1d2a2)",
+      "note": "2026-04-12 go(DFS17) — 래더 8/13단, 비아벨 에니온 브레이딩 + Fibonacci 게이트",
+      "ossified_at": "2026-04-12",
+      "promoted_from": "stable"
+    },
+    "GO_AUDIT_V5": {
+      "status": "PASS",
+      "value": "종합 감사 v5 459줄 (v4 대비 전 항목 갱신, 드리프트 4건 식별)",
+      "threshold": "reports/audits/go-audit-v5-2026-04-12.md 존재 확인 (커밋 bbb1d2a2)",
+      "note": "2026-04-12 go(DFS17) 커밋 일괄 — 기법80/BT45/DFS16차226건/논문79/DSE537 실측",
+      "ossified_at": "2026-04-12",
+      "promoted_from": "stable"
+    },
+    "SOC_BENCH_56_PASS": {
+      "status": "PASS",
+      "value": "N6-SPEAK SoC 통합 벤치 56/56 PASS (6섹션 전수)",
+      "threshold": "산술 6/6 + selforg 10/10 + top 7/7 + tapeout 15/15 + HW타이밍 6/6 + 크로스 12/12",
+      "note": "2026-04-14 CHIP-P5-2 — n6_speak_integration_bench.hexa 실행 결과, atlas.n6 [10*] 14항목 등록, sign-off hash=133616",
+      "ossified_at": "2026-04-14",
+      "promoted_from": "stable"
+    }
+  },
+  "stable": {
+    "_description": "안정 — 통과했지만 아직 골화 전",
+    "MILLENNIUM_DFS_250_TIGHT": {
+      "status": "PASS",
+      "value": "밀레니엄 250건 tight (DFS 18차 BT-1410 +12건)",
+      "threshold": "238→250, 해결 0/7",
+      "note": "2026-04-12 DFS 18차 — 에르고드이론/파생범주/conformal bootstrap/위상조합론/클러스터대수/불변량/모형이론/조화해석/이산기하/자유확률론"
+    },
+    "MILLENNIUM_DFS_262_TIGHT": {
+      "status": "PASS",
+      "value": "밀레니엄 262건 tight (DFS 19차 BT-1411 +12건)",
+      "threshold": "250→262, 해결 0/7",
+      "note": "2026-04-12 DFS 19차 — 열방정식/spectral sequence/가적분계/수론적동역학/QEC/곡률흐름/초월수론/대수적조합론/열핵커널/무한Lie대수"
+    },
+    "MILLENNIUM_DFS_274_TIGHT": {
+      "status": "PASS",
+      "value": "밀레니엄 274건 tight (DFS 20차 BT-1412 +12건)",
+      "threshold": "262→274, EXACT 3 (Kervaire-Milnor/Ramanujan/K_6), 해결 0/7",
+      "note": "2026-04-12 DFS 20차 — exotic sphere Theta_6=1/Thurston부피/자유확률/분할합동/역정수론/대수동역학/볼록기하/확률조합론/Painleve/측도론/분할Rademacher/준결정"
+    },
+    "MILLENNIUM_DFS_286_TIGHT": {
+      "status": "PASS",
+      "value": "밀레니엄 286건 tight (DFS 21차 BT-1413 +12건)",
+      "threshold": "274→286, EXACT 3 (Atiyah-Singer J2=24/K3 chi=24/M_12 sopfr=5), 해결 0/7",
+      "note": "2026-04-12 DFS 21차 — Atiyah-Singer지표/Connes spectral/Monster-Mathieu/MZV/Erdos-Kac/Harper/K3/TQFT/Dirichlet L/Tutte/Weil/Langlands"
+    },
+    "AI_TECHNIQUE_152_DFS21": {
+      "status": "PASS",
+      "value": "AI 기법 152종 .hexa (DFS 20차 16종 + DFS 21차 10종 신규)",
+      "threshold": "techniques/ 152파일 존재, 142 tracked + 10 신규 커밋",
+      "note": "2026-04-12 — DFS20: GAN/NormFlow/PointNet/ToT/UNet/ViMamba 등 16종, DFS21: MoD-v2/SWA/NeuralCodec/CutMix 등 10종"
+    },
+    "DSE_TOML_600_COMPLETE": {
+      "status": "PASS",
+      "value": "DSE TOML 600건 돌파 (+13 신규: 매사냥/보석학/지열/화폐학/수어/동굴학/조력/균학/민족음악학/양봉학/화분학/동물행동학/발효학)",
+      "threshold": "587→600, 목표 달성",
+      "note": "2026-04-12 DFS 21차 7건 + 추가 6건으로 600 돌파"
+    },
+    "CHIP_L9_NEUROMORPHIC": {
+      "status": "PASS",
+      "value": "칩 L9 뉴로모픽 HEXA-NEURO 1,623줄 + verify 273줄",
+      "threshold": "domains/compute/chip-design/hexa-neuromorphic/hexa-neuromorphic.md 존재 확인",
+      "note": "2026-04-12 — 6-멤리스터 시냅스 타일, Egyptian 전력분배, BT-N9-01~10"
+    },
+    "CHIP_L10_DNA_MOLECULAR": {
+      "status": "PASS",
+      "value": "칩 L10 DNA/분자 컴퓨팅 HEXA-DNA 1,670줄 + verify 292줄",
+      "threshold": "domains/compute/chip-design/hexa-dna-molecular/hexa-dna-molecular.md 존재 확인",
+      "note": "2026-04-12 — 6-뉴클레오타이드 논리게이트, 분자 자기조립, 칩 아키텍처 10단계 완성"
+    },
+    "CHIP_ROADMAP_10_OF_10_COMPLETE": {
+      "status": "PASS",
+      "value": "칩 아키텍처 10단계 전량 설계 완료 (L1-HEXA1→L10-DNA, ~12,000줄+verify)",
+      "threshold": "HEXA1→PIM→3D→Photonic→Wafer→Superconducting→QuantumHybrid→TopoAnyon→Neuromorphic→DNA",
+      "note": "2026-04-12 — L7~L8(DFS16-17) + L9~L10(DFS21), 모든 단계 n=6 산술 매핑"
+    }
+  },
+  "failed": {
+    "_description": "실패 — 전부 해소됨"
+  }
+}

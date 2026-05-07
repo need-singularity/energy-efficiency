@@ -10,11 +10,11 @@
 ## 1. Scope and posture
 
 Read corpus:
-- `/Users/ghost/core/n6-architecture/domains/physics/millennium-navier-stokes/millennium-navier-stokes.md` (§X BLOWUP — 5 bottleneck n=6 parametrization: Cauchy Sym² = n, Leray ν·τ, BKM d = n/φ, Onsager α=φ/n, CKN μ(6)=1; Π_NS = σ³·sopfr = 8640).
-- `/Users/ghost/core/n6-architecture/theory/breakthroughs/breakthrough-theorems.md` §BT-544 (29/29 EXACT observational; triple resonance Sym²(ℝ³)=n, Λ²(ℝ³)=n/φ, α_c=1/(n/φ); d=7 open prediction via Sym²(ℝ⁷)=28, second perfect number).
-- `/Users/ghost/core/n6-architecture/reports/breakthroughs/millennium-7-closure-2026-04-11.md` §BT-544 (explicit "PROVEN: none; 3D smoothness untouched").
-- `/Users/ghost/core/n6-architecture/reports/breakthroughs/bt-1409-millennium-dfs-round17-2026-04-12.md` §BT-1409-02 (KPZ: χ=1/3=1/(n/φ), z=2/3=φ/(n/φ), χ+z=1=μ; TW tail s^{3/2}=s^{n/τ}; Hairer α=-1/2).
-- `/Users/ghost/core/n6-architecture/reports/breakthroughs/bt-1411-millennium-dfs-round19-2026-04-12.md` §BT-1411-03 (KdV: N=6 soliton phase-shift count C(6,2)=15=sopfr·(n/φ); Hirota τ-function; n conservation laws fix n-soliton; KdV_{n/φ} Lax order σ-sopfr=7).
+- `/Users/ghost/core/canon/domains/physics/millennium-navier-stokes/millennium-navier-stokes.md` (§X BLOWUP — 5 bottleneck n=6 parametrization: Cauchy Sym² = n, Leray ν·τ, BKM d = n/φ, Onsager α=φ/n, CKN μ(6)=1; Π_NS = σ³·sopfr = 8640).
+- `/Users/ghost/core/canon/theory/breakthroughs/breakthrough-theorems.md` §BT-544 (29/29 EXACT observational; triple resonance Sym²(ℝ³)=n, Λ²(ℝ³)=n/φ, α_c=1/(n/φ); d=7 open prediction via Sym²(ℝ⁷)=28, second perfect number).
+- `/Users/ghost/core/canon/reports/breakthroughs/millennium-7-closure-2026-04-11.md` §BT-544 (explicit "PROVEN: none; 3D smoothness untouched").
+- `/Users/ghost/core/canon/reports/breakthroughs/bt-1409-millennium-dfs-round17-2026-04-12.md` §BT-1409-02 (KPZ: χ=1/3=1/(n/φ), z=2/3=φ/(n/φ), χ+z=1=μ; TW tail s^{3/2}=s^{n/τ}; Hairer α=-1/2).
+- `/Users/ghost/core/canon/reports/breakthroughs/bt-1411-millennium-dfs-round19-2026-04-12.md` §BT-1411-03 (KdV: N=6 soliton phase-shift count C(6,2)=15=sopfr·(n/φ); Hirota τ-function; n conservation laws fix n-soliton; KdV_{n/φ} Lax order σ-sopfr=7).
 
 Tight-finding inventory on BT-544 axis across these files: 16 (core BT-544 table) + 13 (2020s loop 81) + 5 (§X BLOWUP SMASH) + 1 (Π_NS invariant) ≈ **19 independent tight matches**, all **observational**. Clay problem remains **0/1 untouched** (confirmed by closure doc, line 95: "triple resonance is observation not proof").
 

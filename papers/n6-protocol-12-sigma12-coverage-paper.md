@@ -14,7 +14,7 @@ alien_index_target: 10
 
 # HEXA-PROTOCOL-12 — σ=12 protocol 12-set coverage paper (N6-114)
 
-> **Author**: Minwoo Park (n6-architecture)
+> **Author**: Minwoo Park (canon)
 > **Category**: protocol-12-sigma12-coverage — P2 expansion v3 communication meta
 > **Version**: v3 (2026-04-14 P2 expansion)
 > **Upstream BT**: BT-73, BT-197, BT-227, BT-380

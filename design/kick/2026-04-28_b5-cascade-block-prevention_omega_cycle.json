@@ -15,11 +15,11 @@
 
   "investigation": {
     "step_1_dispatcher_location": {
-      "finding": "dispatcher lives in sister nexus repo, not n6-architecture",
+      "finding": "dispatcher lives in sister nexus repo, not canon",
       "path": "/Users/ghost/core/nexus/scripts/bin/hexa_remote",
       "size_lines": 1983,
-      "guard_script_in_n6_arch": "/Users/ghost/core/n6-architecture/bin/check_remote_dispatch.sh",
-      "cross_repo_contract": "n6-architecture invokes hexa_remote via PATH; check_remote_dispatch.sh enforces ≥3 'core/n6-architecture' refs in hexa_remote (cwd-mapping recurrence guard, 2026-04-24)"
+      "guard_script_in_n6_arch": "/Users/ghost/core/canon/bin/check_remote_dispatch.sh",
+      "cross_repo_contract": "canon invokes hexa_remote via PATH; check_remote_dispatch.sh enforces ≥3 'core/canon' refs in hexa_remote (cwd-mapping recurrence guard, 2026-04-24)"
     },
 
     "step_2_error_path_analysis": {
@@ -54,10 +54,10 @@
       "adjacent_ledgers_observed": [
         "/Users/ghost/.hx/state/oauth_blacklisted_hosts.jsonl (oauth blacklist, line 862)",
         "/tmp/hexa_resolver.connectivity (docker neg-cache, line 726)",
-        "n6-architecture/state/falsifier_monitor/audit.jsonl (raw 77 falsifier monitoring, separate domain)"
+        "canon/state/falsifier_monitor/audit.jsonl (raw 77 falsifier monitoring, separate domain)"
       ],
       "patch_proposal_not_applied": "append a single JSONL line to a new ~/.hx/state/all_routes_blocked.jsonl on each emit — schema {ts, reason, hosts_tried[], slot_pool, docker_neg_cache, fix_ref}",
-      "blocker": "patch lives in nexus repo (out of n6-architecture working tree). Cross-repo write requires user-driven PR or explicit cross-repo delegation, not in scope of this sandbox kick"
+      "blocker": "patch lives in nexus repo (out of canon working tree). Cross-repo write requires user-driven PR or explicit cross-repo delegation, not in scope of this sandbox kick"
     }
   },
 
@@ -86,7 +86,7 @@
       "condition": "any cascade event in next 24h exits with rc=64 WITHOUT 'err hexa_remote/all-routes-blocked' line on stderr",
       "deadline": "2026-04-29",
       "auto_check": "partial (grep stderr capture of dispatcher invocations)",
-      "evidence_path_if_fired": "n6-architecture/state/discovery_absorption/ + nexus invocation logs"
+      "evidence_path_if_fired": "canon/state/discovery_absorption/ + nexus invocation logs"
     },
     {
       "id": "F-B5-2",
@@ -113,7 +113,7 @@
   },
 
   "deliverables": {
-    "patch": "no n6-architecture-side patch needed — dispatcher already emits raw 66 trailer (2026-04-27)",
+    "patch": "no canon-side patch needed — dispatcher already emits raw 66 trailer (2026-04-27)",
     "patch_deferred_to_nexus": "raw 77 audit-ledger append on cascade (cross-repo, requires user delegation)",
     "test": "static analysis only; runtime simulation deferred (raw 91 C3 honest)",
     "witness_json": "this file",

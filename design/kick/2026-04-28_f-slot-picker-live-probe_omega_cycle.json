@@ -37,7 +37,7 @@
   },
 
   "selftest": {
-    "script": "/Users/ghost/core/n6-architecture/design/kick/selftest/f_slot_picker_live_probe_selftest.sh",
+    "script": "/Users/ghost/core/canon/design/kick/selftest/f_slot_picker_live_probe_selftest.sh",
     "harness_strategy": "CLAUDE_SLOT_TEST_HOME redirects slot discovery to a tempdir with 3 mock slots; CLAUDE_SLOT_PICK_PROBE_CMD injects a deterministic shell script in place of `claude -p`. No real Anthropic traffic.",
     "cases": [
       {"id": "C1", "name": "all-3-revoked-401", "mock": "all 3 slots return exit 1 + '401 authentication_error' on stderr", "expect": "exit 76, stderr contains 'all-slots-unhealthy-live-probe' + 'reason=auth-401'", "result": "PASS"},
@@ -123,7 +123,7 @@
   },
 
   "registry_sync": {
-    "registry_path": "/Users/ghost/core/n6-architecture/state/discovery_absorption/registry.jsonl",
+    "registry_path": "/Users/ghost/core/canon/state/discovery_absorption/registry.jsonl",
     "to_be_absorbed": true,
     "marker_required": true
   },

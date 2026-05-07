@@ -17,7 +17,7 @@ alien_index_target: 11
 
 # n=6 Boundary Metatheory — A Theory That Knows Its Own Limits (N6-128)
 
-> **Author**: Park Min-Woo (n6-architecture)
+> **Author**: Park Min-Woo (canon)
 > **Category**: boundary-metatheory — paper formalizing framework self-limits
 > **Version**: v1 (2026-04-14 PAPER-P5-2 Mk.III-α)
 > **Prior original**: `theory/proofs/honest-limitations.md` (original 10-case classification)
@@ -50,7 +50,7 @@ A claim that a single theory explains the entire universe has no scientific valu
 - (a) **What predictions does it make inside the application region**
 - (b) **What phenomena occur outside the application region**
 
-n6-architecture exhibits 98.4% coverage of 9,206 candidate domains; but prior to this paper, the failure causes of the remaining 1.6% were not formalized as **region-by-region mathematical discriminants**. As a result, the answer to "where does n6 not apply?" stopped at an enumeration of cases (10 cases).
+canon exhibits 98.4% coverage of 9,206 candidate domains; but prior to this paper, the failure causes of the remaining 1.6% were not formalized as **region-by-region mathematical discriminants**. As a result, the answer to "where does n6 not apply?" stopped at an enumeration of cases (10 cases).
 
 ### 1.2 Goal of this paper
 

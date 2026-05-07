@@ -1,6 +1,6 @@
 # Phase 2 — Y9 PREREQ + Y11 FORMAL deepening (gap resolution +3)
 
-**Roadmap**: 7-millennium-targets subproject v2.3 (n6-architecture × roadmap-v2)
+**Roadmap**: 7-millennium-targets subproject v2.3 (canon × roadmap-v2)
 **Stage**: Phase 2 / L2 specialist-math study
 **Created**: 2026-04-15
 **SSOT**: `shared/roadmaps/millennium.json` P2 parallel[Y9_PREREQ_BASIS] + parallel[Y11_FORMAL_VERIFY]

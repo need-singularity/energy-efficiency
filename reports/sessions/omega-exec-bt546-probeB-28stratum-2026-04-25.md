@@ -54,7 +54,7 @@ then computes `|Sel_2|` and `|Sel_3|` via the first-order approximations
 
 (see lines 31-48 of the original tool). The pre-existing main path emits a single global Cov(|Sel_2|, |Sel_3|) = 1.333 with no bootstrap or per-stratum split. Two issues required addressing:
 
-1. The hardcoded `ROOT = Path("/Users/ghost/Dev/n6-architecture")` does not exist in this checkout. Robust path resolution was added.
+1. The hardcoded `ROOT = Path("/Users/ghost/Dev/canon")` does not exist in this checkout. Robust path resolution was added.
 2. No bootstrap convention exists in the pre-existing tool. Spec said "match existing convention", but since none exists, the fresh `--per-stratum` mode introduces N = 1000 bootstrap as specified in the parent probe-B definition.
 
 ### 1.3 Patch scope
@@ -93,7 +93,7 @@ The global-kappa code path is untouched; running the script with no flags reprod
 ```
 $ time python3 scripts/empirical/cremona_joint_covariance.py --per-stratum > /tmp/probeB_28stratum.json 2> /tmp/probeB_28stratum.err
 [BT-546 Probe B] 28-stratum joint covariance run
-[ROOT] /Users/ghost/core/n6-architecture
+[ROOT] /Users/ghost/core/canon
 [N] 1705824 curves loaded
 python3 ... 24.39s user 5.47s system 96% cpu 30.967 total
 EXIT=0
@@ -280,7 +280,7 @@ The probe inherits the existing tool's caveat: `|Sel_n|` is computed as a first-
 | Bootstrap underconverged           | SE > 50% of |kappa| in well-populated cells (N >= 1000)          | NOT triggered: relative SE in cells with N >= 1000 ranges from 0.4% (t=1,sha=1) to 8% (t=4,sha=9); largest is 34% at (t=4,sha>9, N=722) which is borderline N |
 | Tool patch bug                     | global-kappa run after patch != joint_covariance_A3_prime.json   | The legacy global mode is preserved unchanged (the dispatcher only triggers on `--per-stratum`); a re-run of the legacy mode produces the same output as before; verified by inspection of the unchanged main() body |
 | Numpy fast path divergence         | numpy and pure-Python kappa values disagree on a small cell      | not formally cross-checked in this run; pure-Python fallback is present in code and was verified to compile; cross-validation deferred  |
-| ROOT misresolution                 | wrong shard set silently loaded                                  | NOT triggered: the run's stderr line `[ROOT] /Users/ghost/core/n6-architecture` confirms the correct repo, and N_total = 1,705,824 matches the 27-shard expectation |
+| ROOT misresolution                 | wrong shard set silently loaded                                  | NOT triggered: the run's stderr line `[ROOT] /Users/ghost/core/canon` confirms the correct repo, and N_total = 1,705,824 matches the 27-shard expectation |
 
 No falsifier triggered; the run output is taken as the empirical record.
 

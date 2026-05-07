@@ -266,7 +266,7 @@ for r in results:
 
 ### - 28day = τ·(σ-sopfr) - year-
 
-- positive- - 28day- hour- number- approximately 80% - hour-. 28 = 4·7 = τ·(σ-sopfr)-, perfect number 6- divisor-number τ=4- (σ-sopfr)=7- product-. -one 28 = 2time- perfect number-, σ(28)=56=2·28- perfect number itself-degree lower-.
+- positive- - 28day- hour- number- approximately 80% - hour-. 28 = 4·7 = τ·(σ-sopfr)-, arithmetic canon- divisor-number τ=4- (σ-sopfr)=7- product-. -one 28 = 2time- perfect number-, σ(28)=56=2·28- perfect number itself-degree lower-.
 
 ### verification-
 
@@ -569,7 +569,7 @@ for r in results:
 
 2. **24K = J₂**: - -degree -degree- σ·φ = n·τ = J₂ = 24- - - - hour- -two- - 24- system-book -. 24- divisor({1,2,3,4,6,8,12,24})- - sum- ratio- partition- -or less- one-.
 
-two uppernumber all **"divisor- -one number(highly composite)"** - sharedlower-, this is perfect number 6- -number- -lower- -divisor countten- day-.
+two uppernumber all **"divisor- -one number(highly composite)"** - sharedlower-, this is arithmetic canon- -number- -lower- -divisor countten- day-.
 
 ---
 

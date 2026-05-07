@@ -14,7 +14,7 @@ alien_index_target: 10
 
 # HEXA-HYPOTHESES-MC — Monte Carlo verification paper for 975 hypotheses (N6-115)
 
-> **Author**: Park Minwoo (n6-architecture)
+> **Author**: Park Minwoo (canon)
 > **Category**: hypotheses-678-mc-verification — P2 extension v3 verification meta
 > **Version**: v3 (2026-04-14 P2 extension)
 > **Upstream BT**: BT-380 meta
@@ -24,7 +24,7 @@ alien_index_target: 10
 
 ## 0. Abstract
 
-This paper reports the results of a Monte Carlo (MC) statistical pattern check over the **975 hypotheses** accumulated by n6-architecture. Each hypothesis asks "is n=6 the unique configuration that explains a particular numerical value in a given domain?" and is evaluated under a null-hypothesis framing (H0: any n gives an equivalent explanation). Under 1,000,000 MC simulations, the **overall z-score = 9.97 sigma** (p < 10^-22), i.e., a concentration around n=6 that is difficult to attribute to chance.
+This paper reports the results of a Monte Carlo (MC) statistical pattern check over the **975 hypotheses** accumulated by canon. Each hypothesis asks "is n=6 the unique configuration that explains a particular numerical value in a given domain?" and is evaluated under a null-hypothesis framing (H0: any n gives an equivalent explanation). Under 1,000,000 MC simulations, the **overall z-score = 9.97 sigma** (p < 10^-22), i.e., a concentration around n=6 that is difficult to attribute to chance.
 
 ---
 
@@ -147,7 +147,7 @@ The Monte Carlo pattern check over 975 hypotheses shows that n=6 wins across the
 2. papers/n6-reality-map-paper.md (atlas.n6 store)
 3. papers/n6-pure-mathematics-paper.md (number-theoretic foundations)
 4. Jaynes, E. T. *Probability Theory: The Logic of Science*. Cambridge, 2003.
-5. hypotheses_mc.hexa engine (n6-architecture/engine/)
+5. hypotheses_mc.hexa engine (canon/engine/)
 
 ## §1 WHY
 

@@ -33,7 +33,7 @@
   ],
   "related_identifiers": [
     {
-      "identifier": "https://github.com/need-singularity/n6-architecture",
+      "identifier": "https://github.com/need-singularity/canon",
       "relation": "isSupplementTo",
       "resource_type": "software",
       "scheme": "url"

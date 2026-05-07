@@ -10,10 +10,10 @@
 // prefix-12-char composite-guard check + tail arithmetic-continuation reject.
 //
 // @tool(slug="own2_master_identity_lint", desc="own#2 n6-master-identity HARD — σ(6)=12, φ(6)=2, τ(6)=4, J₂=24 contradictions in chip-* + theory/proofs/theorem-r* docs")
-// @usage(hexa /Users/ghost/core/n6-architecture/tool/own2_master_identity_lint.hexa [--selftest])
+// @usage(hexa /Users/ghost/core/canon/tool/own2_master_identity_lint.hexa [--selftest])
 // @exit_codes(0=PASS, 1=violations, 2=internal error)
 
-let REPO_ROOT = "/Users/ghost/core/n6-architecture"
+let REPO_ROOT = "/Users/ghost/core/canon"
 
 // Identity name → canonical value
 // Tokens (UTF-8 byte literals): σ=2 bytes, φ=2 bytes, τ=2 bytes, ₂=3 bytes

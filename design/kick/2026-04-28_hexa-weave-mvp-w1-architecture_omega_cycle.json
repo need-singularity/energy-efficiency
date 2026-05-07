@@ -40,7 +40,7 @@
     "repo_location": {
       "decision": "Option A — ~/core/hexa-weave/ (new sister repo)",
       "rejected": [
-        {"option": "B (n6-architecture/experiments/hexa-weave/)", "reason": "violates own 5 theory-report-separation — experiments/ is for time-stamped artifacts not live ML pipeline"},
+        {"option": "B (canon/experiments/hexa-weave/)", "reason": "violates own 5 theory-report-separation — experiments/ is for time-stamped artifacts not live ML pipeline"},
         {"option": "C (~/core/anima/<sub>/)", "reason": "thematic mismatch — anima is consciousness/physics-focused; existing sub-repos (anima-physics, anima-cpgd-research, anima-eeg, anima-hexad) form a coherent umbrella that biology/ML would break"},
         {"option": "D (~/core/nexus/labs/hexa-weave/)", "reason": "~/core/nexus/labs/ does not exist (verified by ls); creating it would extend nexus's footprint into lab incubation, outside its current engine/dispatch scope"}
       ],
@@ -49,7 +49,7 @@
         "own 5 disqualifies Option B",
         "Option D path verified non-existent",
         "Option C breaks anima umbrella coherence",
-        "sister-repo isolation prevents 50 GB dataset weight + PyTorch dependency from polluting n6-architecture"
+        "sister-repo isolation prevents 50 GB dataset weight + PyTorch dependency from polluting canon"
       ],
       "init_status": "NOT_EXECUTED — mock-up only; user approval gates W2 mkdir"
     },
@@ -104,9 +104,9 @@
       "5 W1 falsifiers (F-W1-1..F-W1-5) preregistered + 5 MISS criteria (WM1..WM5)"
     ],
     "evidence_paths": [
-      "/Users/ghost/core/n6-architecture/proposals/hexa_weave_mvp_w1_architecture_decision_2026_04_28.md (W1 deliverable doc)",
-      "/Users/ghost/core/n6-architecture/proposals/hexa_weave_mvp_2026_04_28.md (parent spec)",
-      "/Users/ghost/core/n6-architecture/design/kick/2026-04-28_hexa-weave-closure_omega_cycle.json (predecessor closure witness)",
+      "/Users/ghost/core/canon/proposals/hexa_weave_mvp_w1_architecture_decision_2026_04_28.md (W1 deliverable doc)",
+      "/Users/ghost/core/canon/proposals/hexa_weave_mvp_2026_04_28.md (parent spec)",
+      "/Users/ghost/core/canon/design/kick/2026-04-28_hexa-weave-closure_omega_cycle.json (predecessor closure witness)",
       "OpenFold upstream LICENSE: https://github.com/aqlaboratory/openfold/blob/main/LICENSE",
       "RoseTTAFold All-Atom upstream: https://github.com/baker-laboratory/RoseTTAFold-All-Atom",
       "ESM3 license reference: https://github.com/evolutionaryscale/esm"
@@ -140,7 +140,7 @@
     ]
   },
   "raw_47_cross_repo_check": {
-    "n6-architecture": "this repo — parent spec + W1 deliverable + this witness",
+    "canon": "this repo — parent spec + W1 deliverable + this witness",
     "anima": "/Users/ghost/core/anima/ — Option C candidate (rejected, thematic mismatch)",
     "nexus": "/Users/ghost/core/nexus/ — Option D candidate (rejected, labs/ path nonexistent)",
     "hexa-lang": "/Users/ghost/core/hexa-lang/ — runner image dependency for any future kick attempt",
@@ -165,8 +165,8 @@
     "raw_53_compliant": true
   },
   "report_summary": {
-    "witness_path": "/Users/ghost/core/n6-architecture/design/kick/2026-04-28_hexa-weave-mvp-w1-architecture_omega_cycle.json",
-    "deliverable_path": "/Users/ghost/core/n6-architecture/proposals/hexa_weave_mvp_w1_architecture_decision_2026_04_28.md",
+    "witness_path": "/Users/ghost/core/canon/design/kick/2026-04-28_hexa-weave-mvp-w1-architecture_omega_cycle.json",
+    "deliverable_path": "/Users/ghost/core/canon/proposals/hexa_weave_mvp_w1_architecture_decision_2026_04_28.md",
     "w1_verdict": "FORWARD-SPEC PASS (document exists; §5 falsifier count = 5 >= 5; §6 NOT-list count = 12 >= 10; lint pre-flight predicted PASS; no code execution per W1 mandate)",
     "base_model": "OpenFold (Apache-2.0)",
     "repo_location": "~/core/hexa-weave/ (Option A new sister)",

@@ -612,7 +612,7 @@ the same arithmetic dimension n/φ = 3). Verdict robust:
 - It does **not** flip BT-545 main-claim from MISS to anything.
 - It does **not** claim that integral Hodge conjecture is proved or
   refuted; it imports the published literature's existing
-  proves-and-refutes pattern as a primitive into the n6-architecture
+  proves-and-refutes pattern as a primitive into the canon
   frame.
 - It does **not** force a re-tagging of HODGE-01..07.
 - It does **not** alter the millennium-resolved counter (0/7

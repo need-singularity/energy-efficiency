@@ -8,7 +8,7 @@ requires:
 ---
 # [CANONICAL v2] Ultimate AI ethics and governance (HEXA-AI-ETHICS-GOVERN) — n=6 arithmetic coordinate mapping
 
-> **Author**: Park Min-woo (n6-architecture)
+> **Author**: Park Min-woo (canon)
 > **Category**: ai-ethics-governance — n=6 arithmetic seed paper
 > **Version**: v2 (2026-04-14 canonical)
 > **Prior BT**: BT-001~005
@@ -35,7 +35,7 @@ AI ethics and governance(ai-ethics-governance) is re-read within the n=6 arithme
 | Design search space | months of manual search | **n·1 minute** (auto DSE) | search time reduced σ·τ=48× |
 | Design parameter count | tens to hundreds of free variables | **σ=12 fixed axes** | decisions τ=4× more precise |
 | Verifiability | case-based heuristics | **10-subsection auto-demonstration** | 100% reproducibility |
-| Derived design options | 1~2 drafts | **Pareto n=6 top 6** | n=6× more options |
+| Derived design options | 1~2 drafts | **Pareto top-K (data-driven)** | Pareto-natural more options |
 | Cross-domain applicability | separate project silos | **atlas.n6 unified node** | reuse σ·τ=48× |
 | Honesty | success cases only | **MISS/FALSIFIER declared** | falsifiable |
 
@@ -342,7 +342,7 @@ Prerequisite: all §3 REQUIRES domains reach 🛸10. χ²(49df) < 30, p > 0.9.
 <summary>Mk.IV — 2040~2045 cross verification</summary>
 
 Achieve σ·τ=48 cross-domain prediction matches with other domains (architecture/chemistry/medicine etc.).
-Falsification conditions declared + 0 FALSIFIER experiments found. Pareto top-6 composition empirically demonstrated.
+Falsification conditions declared + 0 FALSIFIER experiments found. Pareto top-K (data-driven) composition empirically demonstrated.
 
 </details>
 

@@ -2,7 +2,7 @@
 
 **Date**: 2026-04-28
 **Cycle**: 8 / fan-out 4/5
-**Author**: cycle-8 sub-agent (n6-architecture)
+**Author**: cycle-8 sub-agent (canon)
 **Status**: AWAITING USER APPROVAL — no destructive ops executed
 
 ---
@@ -159,7 +159,7 @@ The user is asked to approve or defer each item. Approval form: please reply wit
 - No item executes without explicit approval token in user reply.
 - Each item is individually reversible (uninstall / rm / git delete).
 - No system-level changes (no sudo, no root, no PATH edits, no shell rc edits).
-- All work confined to `~/core/hexa-weave/` (Mac) and `~/core/hexa-weave/` (ubu1) — does not touch `~/core/n6-architecture/` artifacts.
+- All work confined to `~/core/hexa-weave/` (Mac) and `~/core/hexa-weave/` (ubu1) — does not touch `~/core/canon/` artifacts.
 - Failure of any item halts the chain; no retry without explicit user permission.
 
 ---

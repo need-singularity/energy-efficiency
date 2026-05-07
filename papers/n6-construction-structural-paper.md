@@ -8,7 +8,7 @@ requires:
 ---
 # [CANONICAL v2] n=6 arithmetic coordinate mapping for Construction & Structural (HEXA-CONSTRUCTION-STR)
 
-> **Author**: Park Minwoo (n6-architecture)
+> **Author**: Park Minwoo (canon)
 > **Category**: construction-structural — n=6 arithmetic seed paper
 > **Version**: v2 (2026-04-14 canonical)
 > **Prior BT**: BT-143, BT-201, BT-149, BT-189, BT-130
@@ -44,7 +44,7 @@ of construction & structural knowledge.**
 | Design search space | Months of manual exploration | **n·1 minute** (DSE automated) | Search time shrinks by σ·τ=48× |
 | Design parameter count | Tens to hundreds of free variables | **σ=12 axes fixed** | Decisions tightened by τ=4× |
 | Verifiability | Case-based heuristics | **10 subsections, auto-evaluated** | Reproducibility 100% |
-| Derived design variants | 1~2 drafts | **Pareto n=6 top-6** | Options multiply by n=6× |
+| Derived design variants | 1~2 drafts | **Pareto top-K (data-driven)** | Options multiply by n=6× |
 | Cross-domain coupling | Separate project silos | **atlas.n6 unified node** | Reuse factor σ·τ=48× |
 | Honesty | Only successes recorded | **MISS/FALSIFIER stated explicitly** | Falsifiable |
 
@@ -354,7 +354,7 @@ Precondition: all §3 REQUIRES domains reach alien 10. χ²(49df) < 30, p > 0.9.
 <summary>Mk.IV — 2040~2045 cross verification</summary>
 
 Cross-domain prediction agreement with σ·τ=48 cases (architecture / chemistry / medicine
-etc.).  Falsifier stated + 0 FALSIFIER experiments observed. Pareto top-6 realized.
+etc.).  Falsifier stated + 0 FALSIFIER experiments observed. Pareto top-K (data-driven) realized.
 
 </details>
 

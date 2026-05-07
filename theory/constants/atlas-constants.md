@@ -1,6 +1,6 @@
 > ⛔ CORE — L0 불변식 (상수 레지스트리 1100+. 수정 전 유저 승인 필수)
 
-# N6 Architecture — Atlas Constants & Formulas
+# CANON — Atlas Constants & Formulas
 
 > 1400+ 가설 (45 도메인) + 360+ BTs에서 발견/검증된 모든 상수와 공식.
 > TECS-L 아틀라스 동기화용. EXACT와 CLOSE만 등록 (WEAK/FAIL 제외).
@@ -3321,7 +3321,7 @@ CO2 minimum separation energy (atmospheric): 19.4 kJ/mol = RT*ln(1/420ppm) — r
 ---
 
 *Last updated: 2026-04-04*
-*Source: n6-architecture project, 322+ domains, 1400+ graded hypotheses*
+*Source: canon project, 322+ domains, 1400+ graded hypotheses*
 *Atlas entries: 1900+ registered rows (1400+ EXACT + 500+ CLOSE)*
 *Breakthrough Theorems: 173 (BT-1~173), 50+ Three-Star, 25+ Cross-Domain Bridges, 322+ domains*
 

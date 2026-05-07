@@ -1,7 +1,7 @@
 # chip_isa_n6
 
 Xn6 24-instruction ISA: encode / decode / round-trip. Productized port of
-`~/core/n6-architecture/domains/compute/chip-isa-n6/` (305-line
+`~/core/canon/domains/compute/chip-isa-n6/` (305-line
 `xn6_asm_examples.hexa`, 24 mnemonics over 6 op families × 4 variants).
 
 ## Anchors

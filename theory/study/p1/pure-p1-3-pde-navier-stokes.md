@@ -434,7 +434,7 @@ strong-solution blow-up.
 ## 10. Link to the Project Constants (memo only)
 
 The NS dimension 3D is not directly connected to the project constant n = 6. Some auxiliary drafts in the
-n6-architecture BT-1-200 series (near BT-51, BT-543, BT-544) have attempted a triple-resonance or
+canon BT-1-200 series (near BT-51, BT-543, BT-544) have attempted a triple-resonance or
 characteristic-inequality route for NS. These remain at a verification-only partial-result stage; this P1
 note contains only the pure textbook summary.
 

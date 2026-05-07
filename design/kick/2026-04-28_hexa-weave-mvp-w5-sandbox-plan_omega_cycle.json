@@ -78,9 +78,9 @@
 
   "deliverables": {
     "files_created": [
-      "/Users/ghost/core/n6-architecture/proposals/hexa_weave_mvp_w5_user_approval_request_2026_04_28.md",
-      "/Users/ghost/core/n6-architecture/proposals/hexa_weave_mvp_w5_sandbox_attempt_2026_04_28.md",
-      "/Users/ghost/core/n6-architecture/design/kick/2026-04-28_hexa-weave-mvp-w5-sandbox-plan_omega_cycle.json"
+      "/Users/ghost/core/canon/proposals/hexa_weave_mvp_w5_user_approval_request_2026_04_28.md",
+      "/Users/ghost/core/canon/proposals/hexa_weave_mvp_w5_sandbox_attempt_2026_04_28.md",
+      "/Users/ghost/core/canon/design/kick/2026-04-28_hexa-weave-mvp-w5-sandbox-plan_omega_cycle.json"
     ],
     "files_modified": [],
     "destructive_ops_executed": 0,

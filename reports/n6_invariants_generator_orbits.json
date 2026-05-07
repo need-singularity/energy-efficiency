@@ -1,5 +1,5 @@
 {
-  "schema": "n6-architecture/n6_invariants_generator_orbits/1",
+  "schema": "canon/n6_invariants_generator_orbits/1",
   "ts": "2026-04-24T08:02:19Z",
   "engine_version": "0.44.0",
   "orbits_total": 4,

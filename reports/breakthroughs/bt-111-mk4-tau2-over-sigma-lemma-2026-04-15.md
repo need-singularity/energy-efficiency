@@ -2,7 +2,7 @@
 
 ## Scope (English)
 
-Stub for BT-111 Mk4 τ²/σ Lemma breakthrough record, referenced across the n6-architecture repository but not yet authored.
+Stub for BT-111 Mk4 τ²/σ Lemma breakthrough record, referenced across the canon repository but not yet authored.
 Date: 2026-04-15.
 
 ## Status

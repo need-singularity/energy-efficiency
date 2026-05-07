@@ -20,9 +20,9 @@
       "last_exit_code": 0,
       "calendar_trigger": {"Hour": 9, "Minute": 57},
       "RunAtLoad": false,
-      "working_directory": "/Users/ghost/core/n6-architecture",
+      "working_directory": "/Users/ghost/core/canon",
       "program": "/Users/ghost/.hx/bin/hexa",
-      "arguments": ["run", "/Users/ghost/core/n6-architecture/tool/falsifier_monitor.hexa", "--check"]
+      "arguments": ["run", "/Users/ghost/core/canon/tool/falsifier_monitor.hexa", "--check"]
     },
     "stdout_log": "/tmp/falsifier_monitor_stdout.log (empty 2 bytes)",
     "stderr_log": "/tmp/falsifier_monitor_stderr.log (2086 bytes — single execution Apr 28 15:53)"
@@ -42,7 +42,7 @@
   },
   "raw_13_sbpl_check": {
     "ai_config_ban_lint_path": "not_found_in_repo",
-    "search_paths": ["/Users/ghost/core/n6-architecture/tool/", "tool/ai_config_ban*", "tool/*ban_lint*"],
+    "search_paths": ["/Users/ghost/core/canon/tool/", "tool/ai_config_ban*", "tool/*ban_lint*"],
     "result": "ai_config_ban_lint 도구 파일이 repo 내 위치 미확인. ~/Library/LaunchAgents/ 쓰기는 SBPL 차단되지 않음 (실제 plist 작성 + launchctl bootstrap 둘 다 정상 수행됨이 raw 71 empirical witness).",
     "honest_note": "sandbox profile 명시 점검은 미완. 그러나 행동 결과로 차단 부재 입증."
   },

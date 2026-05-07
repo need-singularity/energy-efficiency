@@ -314,7 +314,7 @@ Policy 3: reproducibility attachment
 Title: A Saturated Cross-BT Atlas of the Millennium Problems:
        14 Partial Results, 24 Honest MISS, and the Failure of Self-Reference
 
-Authors: Minwoo Park (n6-architecture)
+Authors: Minwoo Park (canon)
 Date:    2026-Q3 draft
 
 §1 Introduction

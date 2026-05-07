@@ -17,7 +17,7 @@ Source roadmap: `proposals/own1-hard-english-only-translation-roadmap-2026-04-24
 
 Completed phases (merged on origin/main at `dc999770` post-stash-hygiene tip):
 
-- Phase 0: bridge/ plus n6shared/ (10 files)
+- Phase 0: bridge/ plus canonshared/ (10 files)
 - Phase 1: proposals/ (9 files)
 - Phase 2: experiments/ (25 files)
 - Phase 3: domains/ priority (200 files) — allowlist 1015 -> 815
@@ -468,7 +468,7 @@ Each block below is a standalone prompt ready to copy-paste into an Agent call. 
 ### 7.1 Batch 1: `phase-5-1-papers-n6-domain-a` (20 files, 60236 CJK)
 
 ```
-You are the Phase 5 batch agent for n6-architecture, batch **1** (`phase-5-1-papers-n6-domain-a`).
+You are the Phase 5 batch agent for canon, batch **1** (`phase-5-1-papers-n6-domain-a`).
 
 **Goal**: translate the 20 Korean `.md` files listed below into English, remove their entries from `tool/own1_legacy_allowlist.json`, and land two commits on `origin/main`.
 
@@ -565,7 +565,7 @@ You are the Phase 5 batch agent for n6-architecture, batch **1** (`phase-5-1-pap
 ### 7.2 Batch 2: `phase-5-2-papers-n6-domain-b` (19 files, 51569 CJK)
 
 ```
-You are the Phase 5 batch agent for n6-architecture, batch **2** (`phase-5-2-papers-n6-domain-b`).
+You are the Phase 5 batch agent for canon, batch **2** (`phase-5-2-papers-n6-domain-b`).
 
 **Goal**: translate the 19 Korean `.md` files listed below into English, remove their entries from `tool/own1_legacy_allowlist.json`, and land two commits on `origin/main`.
 
@@ -660,7 +660,7 @@ You are the Phase 5 batch agent for n6-architecture, batch **2** (`phase-5-2-pap
 ### 7.3 Batch 3: `phase-5-3-papers-n6-domain-c` (19 files, 54213 CJK)
 
 ```
-You are the Phase 5 batch agent for n6-architecture, batch **3** (`phase-5-3-papers-n6-domain-c`).
+You are the Phase 5 batch agent for canon, batch **3** (`phase-5-3-papers-n6-domain-c`).
 
 **Goal**: translate the 19 Korean `.md` files listed below into English, remove their entries from `tool/own1_legacy_allowlist.json`, and land two commits on `origin/main`.
 
@@ -755,7 +755,7 @@ You are the Phase 5 batch agent for n6-architecture, batch **3** (`phase-5-3-pap
 ### 7.4 Batch 4: `phase-5-4-papers-n6-domain-d` (19 files, 59258 CJK)
 
 ```
-You are the Phase 5 batch agent for n6-architecture, batch **4** (`phase-5-4-papers-n6-domain-d`).
+You are the Phase 5 batch agent for canon, batch **4** (`phase-5-4-papers-n6-domain-d`).
 
 **Goal**: translate the 19 Korean `.md` files listed below into English, remove their entries from `tool/own1_legacy_allowlist.json`, and land two commits on `origin/main`.
 
@@ -850,7 +850,7 @@ You are the Phase 5 batch agent for n6-architecture, batch **4** (`phase-5-4-pap
 ### 7.5 Batch 5: `phase-5-5-papers-n6-domain-tail-embody` (26 files, 65887 CJK)
 
 ```
-You are the Phase 5 batch agent for n6-architecture, batch **5** (`phase-5-5-papers-n6-domain-tail-embody`).
+You are the Phase 5 batch agent for canon, batch **5** (`phase-5-5-papers-n6-domain-tail-embody`).
 
 **Goal**: translate the 26 Korean `.md` files listed below into English, remove their entries from `tool/own1_legacy_allowlist.json`, and land two commits on `origin/main`.
 
@@ -959,7 +959,7 @@ You are the Phase 5 batch agent for n6-architecture, batch **5** (`phase-5-5-pap
 ### 7.6 Batch 6: `phase-5-6-papers-n6-hexa` (21 files, 72403 CJK)
 
 ```
-You are the Phase 5 batch agent for n6-architecture, batch **6** (`phase-5-6-papers-n6-hexa`).
+You are the Phase 5 batch agent for canon, batch **6** (`phase-5-6-papers-n6-hexa`).
 
 **Goal**: translate the 21 Korean `.md` files listed below into English, remove their entries from `tool/own1_legacy_allowlist.json`, and land two commits on `origin/main`.
 
@@ -1058,7 +1058,7 @@ You are the Phase 5 batch agent for n6-architecture, batch **6** (`phase-5-6-pap
 ### 7.7 Batch 7: `phase-5-7-papers-arch-ai-chip-atlas-consc` (20 files, 44235 CJK)
 
 ```
-You are the Phase 5 batch agent for n6-architecture, batch **7** (`phase-5-7-papers-arch-ai-chip-atlas-consc`).
+You are the Phase 5 batch agent for canon, batch **7** (`phase-5-7-papers-arch-ai-chip-atlas-consc`).
 
 **Goal**: translate the 20 Korean `.md` files listed below into English, remove their entries from `tool/own1_legacy_allowlist.json`, and land two commits on `origin/main`.
 
@@ -1155,7 +1155,7 @@ You are the Phase 5 batch agent for n6-architecture, batch **7** (`phase-5-7-pap
 ### 7.8 Batch 8: `phase-5-8-papers-quantum-super-groupP-pandoc-other` (21 files, 50389 CJK)
 
 ```
-You are the Phase 5 batch agent for n6-architecture, batch **8** (`phase-5-8-papers-quantum-super-groupP-pandoc-other`).
+You are the Phase 5 batch agent for canon, batch **8** (`phase-5-8-papers-quantum-super-groupP-pandoc-other`).
 
 **Goal**: translate the 21 Korean `.md` files listed below into English, remove their entries from `tool/own1_legacy_allowlist.json`, and land two commits on `origin/main`.
 
@@ -1254,7 +1254,7 @@ You are the Phase 5 batch agent for n6-architecture, batch **8** (`phase-5-8-pap
 ### 7.9 Batch 9: `phase-5-9-theory-proofs` (21 files, 41000 CJK)
 
 ```
-You are the Phase 5 batch agent for n6-architecture, batch **9** (`phase-5-9-theory-proofs`).
+You are the Phase 5 batch agent for canon, batch **9** (`phase-5-9-theory-proofs`).
 
 **Goal**: translate the 21 Korean `.md` files listed below into English, remove their entries from `tool/own1_legacy_allowlist.json`, and land two commits on `origin/main`.
 
@@ -1353,7 +1353,7 @@ You are the Phase 5 batch agent for n6-architecture, batch **9** (`phase-5-9-the
 ### 7.10 Batch 10: `phase-5-10-theory-roadmap-v2-phase-a` (21 files, 61115 CJK)
 
 ```
-You are the Phase 5 batch agent for n6-architecture, batch **10** (`phase-5-10-theory-roadmap-v2-phase-a`).
+You are the Phase 5 batch agent for canon, batch **10** (`phase-5-10-theory-roadmap-v2-phase-a`).
 
 **Goal**: translate the 21 Korean `.md` files listed below into English, remove their entries from `tool/own1_legacy_allowlist.json`, and land two commits on `origin/main`.
 
@@ -1452,7 +1452,7 @@ You are the Phase 5 batch agent for n6-architecture, batch **10** (`phase-5-10-t
 ### 7.11 Batch 11: `phase-5-11-theory-roadmap-v2-phase-b` (20 files, 23368 CJK)
 
 ```
-You are the Phase 5 batch agent for n6-architecture, batch **11** (`phase-5-11-theory-roadmap-v2-phase-b`).
+You are the Phase 5 batch agent for canon, batch **11** (`phase-5-11-theory-roadmap-v2-phase-b`).
 
 **Goal**: translate the 20 Korean `.md` files listed below into English, remove their entries from `tool/own1_legacy_allowlist.json`, and land two commits on `origin/main`.
 
@@ -1549,7 +1549,7 @@ You are the Phase 5 batch agent for n6-architecture, batch **11** (`phase-5-11-t
 ### 7.12 Batch 12: `phase-5-12-theory-roadmap-v2-axes-round-other` (24 files, 65179 CJK)
 
 ```
-You are the Phase 5 batch agent for n6-architecture, batch **12** (`phase-5-12-theory-roadmap-v2-axes-round-other`).
+You are the Phase 5 batch agent for canon, batch **12** (`phase-5-12-theory-roadmap-v2-axes-round-other`).
 
 **Goal**: translate the 24 Korean `.md` files listed below into English, remove their entries from `tool/own1_legacy_allowlist.json`, and land two commits on `origin/main`.
 
@@ -1654,7 +1654,7 @@ You are the Phase 5 batch agent for n6-architecture, batch **12** (`phase-5-12-t
 ### 7.13 Batch 13: `phase-5-13-theory-study-p0-p1` (26 files, 65993 CJK)
 
 ```
-You are the Phase 5 batch agent for n6-architecture, batch **13** (`phase-5-13-theory-study-p0-p1`).
+You are the Phase 5 batch agent for canon, batch **13** (`phase-5-13-theory-study-p0-p1`).
 
 **Goal**: translate the 26 Korean `.md` files listed below into English, remove their entries from `tool/own1_legacy_allowlist.json`, and land two commits on `origin/main`.
 
@@ -1763,7 +1763,7 @@ You are the Phase 5 batch agent for n6-architecture, batch **13** (`phase-5-13-t
 ### 7.14 Batch 14: `phase-5-14-theory-study-p2-p3` (24 files, 66106 CJK)
 
 ```
-You are the Phase 5 batch agent for n6-architecture, batch **14** (`phase-5-14-theory-study-p2-p3`).
+You are the Phase 5 batch agent for canon, batch **14** (`phase-5-14-theory-study-p2-p3`).
 
 **Goal**: translate the 24 Korean `.md` files listed below into English, remove their entries from `tool/own1_legacy_allowlist.json`, and land two commits on `origin/main`.
 
@@ -1868,7 +1868,7 @@ You are the Phase 5 batch agent for n6-architecture, batch **14** (`phase-5-14-t
 ### 7.15 Batch 15: `phase-5-15-theory-breakthroughs-defer-fusion-kstar` (4 files, 168558 CJK)
 
 ```
-You are the Phase 5 batch agent for n6-architecture, batch **15** (`phase-5-15-theory-breakthroughs-defer-fusion-kstar`).
+You are the Phase 5 batch agent for canon, batch **15** (`phase-5-15-theory-breakthroughs-defer-fusion-kstar`).
 
 **Goal**: translate the 4 Korean `.md` files listed below into English, remove their entries from `tool/own1_legacy_allowlist.json`, and land two commits on `origin/main`.
 
@@ -1933,7 +1933,7 @@ You are the Phase 5 batch agent for n6-architecture, batch **15** (`phase-5-15-t
 ### 7.16 Batch 16: `phase-5-16-theory-constants-flow-predictions-preprints-roadmap-v3` (12 files, 31806 CJK)
 
 ```
-You are the Phase 5 batch agent for n6-architecture, batch **16** (`phase-5-16-theory-constants-flow-predictions-preprints-roadmap-v3`).
+You are the Phase 5 batch agent for canon, batch **16** (`phase-5-16-theory-constants-flow-predictions-preprints-roadmap-v3`).
 
 **Goal**: translate the 12 Korean `.md` files listed below into English, remove their entries from `tool/own1_legacy_allowlist.json`, and land two commits on `origin/main`.
 

@@ -4,7 +4,7 @@
   "kick_title": "Cycle-19 priority-1 — README.md sync-readme JSON SSOT enrichment — 18 hand-curated domains literally registered for WRITE-mode unblock",
   "kick_date": "2026-04-28",
   "umbrella": "infra-readme-pipeline",
-  "cost_center": "n6shared-sync-readme-hexa",
+  "cost_center": "canonshared-sync-readme-hexa",
   "predecessor_witness": "design/kick/2026-04-28_kick-infra-5-of-5-closure_omega_cycle.json",
   "parent_brief": "user mission cycle-19 priority 1 (sync-readme JSON SSOT enrichment; raw 91 C3 honest replicate; raw 65/68 idempotent dry-run 0 changes; raw 142 D2 backup; raw 47 cross-repo)",
   "scope": {
@@ -13,8 +13,8 @@
       "design/kick/2026-04-28_json-ssot-enrichment-cycle19_omega_cycle.json"
     ],
     "files_modified": [
-      "n6shared/readme-data.json (+18 hand-curated domain entries with summary_literal/footer_literal; 18,628 -> 36,510 bytes; 13 -> 30 domains)",
-      "n6shared/sync-readme.hexa (+19 LoC: summary_literal / footer_literal field support + STATS NEXUS-tests spacing alignment; backward-compatible extension)"
+      "canonshared/readme-data.json (+18 hand-curated domain entries with summary_literal/footer_literal; 18,628 -> 36,510 bytes; 13 -> 30 domains)",
+      "canonshared/sync-readme.hexa (+19 LoC: summary_literal / footer_literal field support + STATS NEXUS-tests spacing alignment; backward-compatible extension)"
     ],
     "summary": {
       "domains_enriched": 18,
@@ -31,7 +31,7 @@
       "loc_added_to_sync_readme_hexa": 19,
       "write_mode_unblock_status": "READY (cycle 20+) — dry-run zero; --check passes; sealed-hash CI safeguard recommended next",
       "raw_91_c3_replicated_not_fabricated": true,
-      "raw_142_d2_backup_preserved": "git tracked — pre-enrichment readme-data.json recoverable via `git show HEAD:n6shared/readme-data.json`",
+      "raw_142_d2_backup_preserved": "git tracked — pre-enrichment readme-data.json recoverable via `git show HEAD:canonshared/readme-data.json`",
       "raw_47_cross_repo_impact": "sister repo n6-nexus may reference readme-data.json schema; backward-compat preserved (new fields optional; existing 13 entries untouched)"
     }
   },
@@ -106,7 +106,7 @@
   "safety_gates": {
     "write_mode_executed": false,
     "readme_md_modified": false,
-    "json_backup_via_git": "tracked (revertible via `git checkout HEAD -- n6shared/readme-data.json`)",
+    "json_backup_via_git": "tracked (revertible via `git checkout HEAD -- canonshared/readme-data.json`)",
     "sync_readme_hexa_backup_via_git": "tracked (cycle 18 fix retained; cycle 19 adds non-destructive guard)",
     "raw_91_c3_honest_disclosure": "18 enriched domain literals replicated from README; 0 fabricated content; 17 footer + 18 summary line numbers cited",
     "raw_65_68_idempotent": "ACHIEVED (dry-run 0 changes; --check exit 0)",
@@ -120,7 +120,7 @@
   "next_cycle_handoff": {
     "cycle_20_priority_1_recommended": [
       "add own#14 sealed-hash CI safeguard hook (.git/hooks/pre-commit verifying README.md hash matches sync-readme dry-run output)",
-      "add --allow-overwrite flag to n6shared/sync-readme.hexa (currently WRITE always overwrites; flag is optional explicit confirmation)",
+      "add --allow-overwrite flag to canonshared/sync-readme.hexa (currently WRITE always overwrites; flag is optional explicit confirmation)",
       "extend dry-run to emit unified diff (not just marker names) for review before WRITE",
       "re-run sync-readme.hexa in WRITE mode after sealed-hash CI is in place; expected: 0 byte changes (idempotent)",
       "register F-INFRA-SSOT-19-1..5 falsifiers in state/falsifier_monitor/audit.jsonl"

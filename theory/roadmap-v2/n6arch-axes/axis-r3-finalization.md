@@ -714,7 +714,7 @@ Each card structure:
 
 ### 4.1 Confirming Phase count N=8 from README
 
-`/Users/ghost/Dev/n6-architecture/theory/roadmap-v2/README.md` §Phase progression:
+`/Users/ghost/Dev/canon/theory/roadmap-v2/README.md` §Phase progression:
 - P0 — axis-final.md (domain-track 4 axes confirmed + saturation declaration)
 - P1 — foundation-emergence (complete)
 - P2 — BT-541 Riemann
@@ -871,7 +871,7 @@ R3 formula: `saturation = 1 - (new-axis ratio + new-seed ratio + merger issue)`
 
 ### 6.1 File path
 
-`/Users/ghost/Dev/n6-architecture/theory/predictions/verify_millennium_axes.hexa`
+`/Users/ghost/Dev/canon/theory/predictions/verify_millennium_axes.hexa`
 
 ### 6.2 Input spec
 
@@ -1086,7 +1086,7 @@ print("=== Verification complete: PASS (6/6) ===")
 
 ## §8. axis-final-millennium.md migration preparation checklist
 
-Prepare to migrate §3 contents to the **final axis confirmation document** `/Users/ghost/Dev/n6-architecture/theory/roadmap-v2/n6arch-axes/axis-final-millennium.md`.
+Prepare to migrate §3 contents to the **final axis confirmation document** `/Users/ghost/Dev/canon/theory/roadmap-v2/n6arch-axes/axis-final-millennium.md`.
 
 ### 8.1 Sections to migrate
 

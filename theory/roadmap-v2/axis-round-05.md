@@ -73,7 +73,7 @@ Evaluate all R4-proposed candidate regions ("internal subdivisions"). If new eme
 
 **Assets**: shared/config/projects.json (7 projects + bundles + verifications), shared/project-claude/ (CLAUDE.md master SSOT).
 
-**Independence argument**: the nexus hub manages 8~9 projects (nexus/anima/n6-architecture/papers/hexa-lang/void/airgenome/cl/shared). Project-registry axis.
+**Independence argument**: the nexus hub manages 8~9 projects (nexus/anima/canon/papers/hexa-lang/void/airgenome/cl/shared). Project-registry axis.
 
 **Overlap**: GOVERNANCE 50% + HARNESS 20%.
 

@@ -11,7 +11,7 @@
 
 | Item | Value |
 |---|---|
-| Paper path | `/Users/ghost/Dev/n6-architecture/papers/n6-mk3-synthesis-paper.md` |
+| Paper path | `/Users/ghost/Dev/canon/papers/n6-mk3-synthesis-paper.md` |
 | Line count (wc -l) | **1,198** |
 | Top-level sections (##) | **22** |
 | Sub-sections (###) | **79** |
@@ -29,14 +29,14 @@
 | # | Section | Purpose | Honesty |
 |---|---|---|---|
 | 0 | Abstract | Mk.III total 3 generations / 8 phases summary + final (b-plus) preview | balanced |
-| 1 | Introduction — n6-architecture journey | 2025 origin + 3 generations + purpose of this paper | neutral |
+| 1 | Introduction — canon journey | 2025 origin + 3 generations + purpose of this paper | neutral |
 | 2 | Core theorem sigma*phi=n*tau, 3 independent demonstrations | algebraic/analytic/constructive 3 re-statements | success |
 | 3 | Mk.I achievements (P0) | foundation lock, 3 demonstrations, 295 domains | success + 2 limits |
 | 4 | Mk.II achievements (P1~P4) | scale-up / integration / convergence / evolution | success + P4 bipartite MISS |
 | 5 | Mk.III-alpha (P5) | BT-18 5-link, boundary 4-region, 24 promotions | success 3 + BARRIER 1 |
 | 6 | Mk.III-beta (P6) | 3 next-theorem candidates, L13 quark 6=n, L15 CONJECTURE | success 2 + conflict 1 + SPEC 1 |
 | 7 | Mk.III-gamma (P7) | consciousness fusion, OUROBOROS alpha=1/6, this paper | CONJECTURE 1 + MISS 1 + success 1 |
-| 8 | 9-axis navigation | theory/domains/bridge/techniques/experiments/engine/papers/reports/n6shared | descriptive |
+| 8 | 9-axis navigation | theory/domains/bridge/techniques/experiments/engine/papers/reports/canonshared | descriptive |
 | 9 | 295-domain completeness | 10-category distribution + closure_grade + cross-DSE | descriptive |
 | 10 | 129-paper ecosystem analysis | per-category distribution, DAG, DOI status | descriptive + DOI simulation limit |
 | 11 | **Critique I — re-examination of theorem strength** | 3-proof independence, BT-18 L5, next-theorem conflict, OUROBOROS MISS, 225-technique genuineness | **failure/limits** |
@@ -206,7 +206,7 @@ perl -e 'alarm 45; exec @ARGV' pandoc \
 
 ## 7. Roadmap update proposal
 
-`$NEXUS/shared/roadmaps/n6-architecture.json` P7 PAPER-P7-2 update to:
+`$NEXUS/shared/roadmaps/canon.json` P7 PAPER-P7-2 update to:
 
 ```json
 {

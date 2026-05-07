@@ -3,7 +3,7 @@
 // 포팅 상태: STUB (원본 ~250줄)
 // 원본 요약: 전 프로젝트 공통 성장 루프 인프라
 //   - 프로젝트 자동 감지 (PROJECT_ROOT, GROWTH_NAME)
-//   - 루프 정의 JSON 로드 (n6shared/config/loop/{project}.json)
+//   - 루프 정의 JSON 로드 (canonshared/config/loop/{project}.json)
 //   - 로깅 (log_info/log_warn/log_error)
 //   - 성장 버스 기록 (growth_bus.jsonl)
 //   - 리소스 체크 (CPU/메모리/디스크)

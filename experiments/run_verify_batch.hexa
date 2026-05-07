@@ -3,7 +3,7 @@
 // 모드: (기본)batch | --dry | --full | --status
 // 규칙: HEXA-FIRST, 한글 주석, atlas.n6 직접 편집 금지
 
-let REPO = env("HOME") + "/Dev/n6-architecture"
+let REPO = env("HOME") + "/Dev/canon"
 let NEXUS = env("HOME") + "/Dev/nexus"
 let EXPER = REPO + "/experiments"
 let CACHE_DIR = EXPER + "/.cache"

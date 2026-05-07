@@ -13,7 +13,7 @@ requires:
 ---
 # [CANONICAL v1] Ultimate 66 AI Techniques Integration (HEXA-66-TECHNIQUES) — n=6 Arithmetic Coordinate Integrated Paper
 
-> **Author**: Minwoo Park (n6-architecture)
+> **Author**: Minwoo Park (canon)
 > **Product ID**: P-011 "66 Techniques"
 > **Category**: 66-techniques-integrated — n=6 arithmetic seed paper (3-in-1 canonical integration)
 > **Version**: v1 (2026-04-18 integrated canonical, 21-section full spec)
@@ -54,7 +54,7 @@ layer counts, gate widths, and stage counts of the AI technique families.
 | Technique classification axis | 17 / 51 / 24 domains separated | **σ=12 common axis + τ=4 layers** | Comparison τ=4× simpler |
 | Design exploration time | 2,400 combos/paper × 3 = 7,200 | **σ·τ=48 axis single DSE** | Search time J₂=24× faster |
 | Verification depth | 10 subsections/paper × 3 dispersed | **§7.0~§7.10 single combined** | Reproduction σ·τ=48× easier |
-| Derived design candidates | Pareto 6/paper × 3 = 18 | **Pareto n=6 global top 6** | Choices n=6× |
+| Derived design candidates | Pareto 6/paper × 3 = 18 | **Pareto top-K (data-driven)** | Choices Pareto-natural× |
 | Domain crossover | 3 papers each 295 domain links | **atlas.n6 single integrated node** | Reuse σ·τ=48× |
 | Honesty | 4 FALSIFIERs/paper × 3 | **Integrated FALSIFIER 8 + counter-examples 6** | Falsifiability doubled |
 
@@ -88,7 +88,7 @@ simultaneously meshes with the basic numerical values of the entire 66-technique
 │ 2. Fuzzy boundaries   │ "17" vs "68" vs "cross"     │ Strict containment 17⊂49⊂66│
 │                       │ undefined -> double-count    │ -> 3 explicit counter-ex │
 ├───────────────────────┼─────────────────────────────┼──────────────────────────┤
-│ 3. No Pareto consist. │ Per-paper top-6 differ axes │ Single Pareto K1~K5 axes │
+│ 3. No Pareto consist. │ Per-paper top-K differ axes │ Single Pareto K1~K5 axes │
 │                       │ -> incomparable              │ -> global 2,400 exhaustive│
 ├───────────────────────┼─────────────────────────────┼──────────────────────────┤
 │ 4. Eng sections       │ Only brief(§1~§7)            │ full(§8~§21) added       │
@@ -368,7 +368,7 @@ Predecessors: Mk.VI drafted, χ²(49df) < 20, p > 0.99, ≥ 3 new OEIS sequences
 
 After agi-architecture 10 + chip-design-ladder 10 reached, AGI reads this paper
 self-referentially and proposes new techniques. Human verification ≥ 10 cycles, 0 FALSIFIER violations.
-Pareto top-6 configurations empirically demonstrated in real deployment.
+Pareto top-K (data-driven) configurations empirically demonstrated in real deployment.
 
 </details>
 
@@ -384,7 +384,7 @@ Predecessor: all §3 REQUIRES domains reach 10. χ²(49df) < 30, p > 0.9.
 <summary>Mk.IV — 2040~2045 cross-validation</summary>
 
 Cross-prediction agreement σ·τ=48 cases reached with other domains (architecture/chemistry/medicine, etc.).
-Falsification conditions explicit + 0 FALSIFIER experiments observed. Pareto top-6 configurations empirically demonstrated.
+Falsification conditions explicit + 0 FALSIFIER experiments observed. Pareto top-K (data-driven) configurations empirically demonstrated.
 
 </details>
 
@@ -646,7 +646,7 @@ FALSIFIERS = [
     "If 17 ⊂ 49 containment violated by empirical measurement, repartition §4 L1/L2",
     "If SSM new 24-domain induction empirical measurement fails, remove SSM section of this integrated paper",
     "If integrated chi^2(49df) p-value < 0.05 fails, discard §7.6",
-    "If Pareto global top 6 does not contain n=6, redo §4 DSE search",
+    "If Pareto top-K (data-driven) does not contain n=6, redo §4 DSE search",
 ]
 
 # --- main ---------------------------------------------------------------------
@@ -1054,7 +1054,7 @@ source (3 papers) ──► combine (this paper) ──► lint (markdown) ─�
 |---|---|---|---|---|
 | Main .md file | 1 | `papers/n6-66-techniques-integrated-paper.md` | 0 | this paper |
 | §7 verify code | 1 | embedded in this .md | 0 | stdlib only |
-| atlas.n6 node | 1 | `n6shared/n6/atlas.n6` | 0 | SSOT induction |
+| atlas.n6 node | 1 | `canonshared/n6/atlas.n6` | 0 | SSOT induction |
 | _dag.json node | 1 | `papers/_dag.json` | 0 | auto-updated |
 | _registry.json entry | 1 | `papers/_registry.json` | 0 | manual edit |
 | OEIS reference 3 | 3 | A000203 / A000005 / A001414 | 0 | online DB |
@@ -1069,7 +1069,7 @@ source (3 papers) ──► combine (this paper) ──► lint (markdown) ─�
 
 | Month | Task | Owner | Deliverable |
 |---|---|---|---|
-| 2026-04 | Author this integrated paper (Mk.I) | n6-architecture | this .md |
+| 2026-04 | Author this integrated paper (Mk.I) | canon | this .md |
 | 2026-05 | §7 verify automation CI induction | nexus harness | `nexus verify` hook |
 | 2026-06 | atlas.n6 SSM 24 induction empirical | atlas owner | 0→24 EXACT |
 | 2026-07 | Mk.II independent re-derivation (§7.2 3 paths) | external review | path-agreement report |

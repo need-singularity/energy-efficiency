@@ -2,7 +2,7 @@
   "_doc": "CONVENTION lang_gap — hexa-lang 으로 집중 이관. 자기 repo 에 쌓지 말 것.",
   "_source": "proposal n6a-20260422-003 (from hexa-lang, acked 2026-04-23)",
   "target_repo": "hexa-lang",
-  "submit_cmd": "hexa /Users/ghost/core/hexa-lang/bin/proposal_inbox submit --to hexa-lang --category lang_gap --kind cluster --title '...' --from n6-architecture",
+  "submit_cmd": "hexa /Users/ghost/core/hexa-lang/bin/proposal_inbox submit --to hexa-lang --category lang_gap --kind cluster --title '...' --from canon",
   "triggers": [
     "미구현 method (rfind, index_of legacy, etc.)",
     "reserved keyword 충돌 (guard, generate, parse → hops/do_generate/do_parse)",

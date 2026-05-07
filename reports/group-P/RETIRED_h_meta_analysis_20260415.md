@@ -33,7 +33,7 @@ Group-P meta-analysis (H1~H5) over `atlas.signals.n6` + signal staging:
   committed verbatim to git.
 - Hard-coded paths point to `/Users/ghost/Dev/nexus/shared/n6/atlas.signals.n6`
   and `/Users/ghost/Dev/nexus/shared/n6/staging/...`, which are *external*
-  to this repo (`Dev/nexus/...`, not `core/n6-architecture/`). The script
+  to this repo (`Dev/nexus/...`, not `core/canon/`). The script
   is therefore not portable to a fresh checkout in any case.
 - No `.own` decl, CI hook, or downstream tool invokes this file.
 - Algorithms are pure-stdlib (defaultdict / Counter / regex / iterative

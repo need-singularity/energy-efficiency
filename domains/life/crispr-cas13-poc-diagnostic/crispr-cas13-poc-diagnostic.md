@@ -966,7 +966,7 @@ amortized).
 | Local SA injection moulder | HDPE cassette | local manufacturing |
 | Local SA OEM (Cape Town / Pretoria) | 37-42 °C reader | electronics + heater integration |
 | SAHPRA (Pretoria) | regulatory authority | Class C IVD registration |
-| n6-architecture private framework | own_doc_lint / own31 lint | docs gate |
+| canon private framework | own_doc_lint / own31 lint | docs gate |
 
 ## §19 ACCEPTANCE / MISS criteria (own#12 pre-declared)
 

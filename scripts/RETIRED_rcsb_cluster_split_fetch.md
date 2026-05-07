@@ -36,7 +36,7 @@ LMFDB pattern).
 
 ## Cross-reference
 
-- raw 9 hexa-only mandate (n6-architecture /.raw)
+- raw 9 hexa-only mandate (canon /.raw)
 - raw 91 honest C3 disclosure
 - raw 102 ADD-new path (RETIRE option: one-shot artifact, output
   committed)

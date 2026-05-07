@@ -10,17 +10,17 @@ status: PREP + JSON SSOT enrichment complete. dry-run 0 changed markers (raw 65/
 # README.md sync-readme JSON SSOT enrichment (cycle 19 priority 1)
 
 raw 91 C3 honest disclosure: this cycle replicates 18 hand-curated
-README.md domain blocks into `n6shared/readme-data.json` verbatim
+README.md domain blocks into `canonshared/readme-data.json` verbatim
 (byte-exact extraction via Python regex; line numbers cited in §3).
 NO new content is fabricated. NO README.md modification is performed.
 The goal is to restore the SSOT (single source of truth) contract that
-`n6shared/sync-readme.hexa` enforces, so future cycles can WRITE-mode
+`canonshared/sync-readme.hexa` enforces, so future cycles can WRITE-mode
 the README from JSON without losing curated content.
 
 ## §0 WHY this cycle, why now
 
 Cycle 18 hexa-runtime-pipeline-fix diagnosed two bugs in
-`n6shared/sync-readme.hexa`:
+`canonshared/sync-readme.hexa`:
 
 - **B.1** `scan_markers` prefix-confusion: `<!-- AUTO:BADGE:END -->`
   matched the `<!-- AUTO:` prefix and produced noise NAMEs like
@@ -45,7 +45,7 @@ Result: **ACHIEVED** ([OK] up to date with 63 markers).
 
 ## §1 schema extension (`summary_literal` / `footer_literal`)
 
-`n6shared/sync-readme.hexa` is extended (+19 LoC, backward-compatible)
+`canonshared/sync-readme.hexa` is extended (+19 LoC, backward-compatible)
 to recognize two new optional string fields per domain:
 
 ```hexa
@@ -115,13 +115,13 @@ not fabricated novelty)".
 ## §4 verification
 
 ```bash
-$ hexa run n6shared/sync-readme.hexa --dry-run
+$ hexa run canonshared/sync-readme.hexa --dry-run
 [sync-readme] data    = .../readme-data.json
 [sync-readme] readme  = .../README.md
 [sync-readme] mode    = DRY-RUN
 [OK] README.md is up to date with readme-data.json (63 markers)
 
-$ hexa run n6shared/sync-readme.hexa --check
+$ hexa run canonshared/sync-readme.hexa --check
 [OK] README.md is up to date with readme-data.json (63 markers)
 $ echo $?
 0
@@ -170,7 +170,7 @@ fire.**
 ## §7 cross-repo impact (raw 47)
 
 The sister repo `n6-nexus` (and any other consumer of
-`n6shared/readme-data.json`) sees:
+`canonshared/readme-data.json`) sees:
 - 17 new entries in `domains[]` array
 - 2 new optional string fields per entry: `summary_literal`,
   `footer_literal`
@@ -202,6 +202,6 @@ If user approves cycle 20 WRITE-mode unblock path:
 If user defers: cycle 19 enrichment remains in JSON; --check continues
 to pass; no WRITE attempted. Safe steady-state.
 
-If user rejects: revert via `git checkout HEAD -- n6shared/readme-data.json
-n6shared/sync-readme.hexa`. WRITE-mode stays gated; raw 91 C3 honest
+If user rejects: revert via `git checkout HEAD -- canonshared/readme-data.json
+canonshared/sync-readme.hexa`. WRITE-mode stays gated; raw 91 C3 honest
 disclosure of attempt logged.

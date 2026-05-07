@@ -614,10 +614,10 @@ DFS 14differencedegree 13difference- honesty principle -number:
 ## 7. verification environment
 
 - -: 2026-04-12
-- -: n6-architecture
+- -: canon
 - priorphase BT: BT-1394~1405
 - reference atlas: $NEXUS/shared/n6/atlas.n6 (17946 nodes, 18934 edges)
-- SSOT -: n6shared/rules/common.json (R0~R27), n6shared/rules/n6-architecture.json (N61~N65)
+- SSOT -: canonshared/rules/common.json (R0~R27), canonshared/rules/canon.json (N61~N65)
 - Hangul required (R): .md/main-/- -hour- all Hangul (feedback_korean_only_docs)
 - breakthrough -: blowup.hexa millennium d1 phase 4 corollaries 175, EXACT 64, NEAR 6, OUROBOROS 60 disc combined
 

@@ -1,4 +1,4 @@
-# n6-architecture 3-axis field-emergence DSE report
+# canon 3-axis field-emergence DSE report
 
 - **Date**: 2026-04-15
 - **Request**: design emergent 3-axis field exclusive to n6-arch; self-evolution required
@@ -79,13 +79,13 @@ Average alien index: 9.0 (alien-grade met)
 - Success gate: EXACT-grade theorem, external demonstration acknowledgment
 
 ### EMBODY — physical/industrial embodiment
-- Owner: `domains/` (295) + `papers/` + `bridge/` + `n6shared/n6/atlas.n6`
+- Owner: `domains/` (295) + `papers/` + `bridge/` + `canonshared/n6/atlas.n6`
 - Scope: L10~L15 quantum/nuclear, 58 products, HEXA-1 chip, architecture/medical/nanobots/CCUS
 - Independence: proceeds with only a snapshot of FORMAL theorems
 - Success gate: alien index >= 8, alien-index products 210+, health 95+
 
 ### TRANSCEND — self-evolution/transcendence (required)
-- Owner: `nexus/` hub + `n6shared/` ecosystem + `techniques/` (66 AI techniques) + BCI hardware
+- Owner: `nexus/` hub + `canonshared/` ecosystem + `techniques/` (66 AI techniques) + BCI hardware
 - Invariant: OUROBOROS alpha=1/6 self-evolution exponent
 - Scope: NEXUS-6 Discovery Engine, HEXA-GATE Mk.II, atlas.n6 self-growth, 3 consciousness alternative routes, dimensional-perception BT-1108
 - Independence: only FORMAL/EMBODY consistency verified; evolution itself is autonomous

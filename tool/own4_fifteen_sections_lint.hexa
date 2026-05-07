@@ -9,10 +9,10 @@
 // with '#' (1-6 hashes) + whitespace + '§' + digits + word-boundary.
 //
 // @tool(slug="own4_fifteen_sections_lint", desc="own#4 domain 15-section HARD — domains/<axis>/<name>/<name>.md must contain §1..§15 headers; 13-entry legacy allowlist")
-// @usage(hexa /Users/ghost/core/n6-architecture/tool/own4_fifteen_sections_lint.hexa [--selftest])
+// @usage(hexa /Users/ghost/core/canon/tool/own4_fifteen_sections_lint.hexa [--selftest])
 // @exit_codes(0=PASS, 1=violations, 2=internal error)
 
-let REPO_ROOT = "/Users/ghost/core/n6-architecture"
+let REPO_ROOT = "/Users/ghost/core/canon"
 let DOMAINS_ROOT = REPO_ROOT + "/domains"
 
 // Frozen 13-entry legacy allowlist

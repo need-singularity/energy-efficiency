@@ -4,7 +4,7 @@
 
 **상태**: 23 sub-case + capstone Lean4 formal, 총 3,456 줄 증명, sorry 없음.
 **Coverage**: ≈ 99.99% (거의 완전한 검증).
-**n6-architecture 수학적 기반의 machine-verified 상태 달성.**
+**canon 수학적 기반의 machine-verified 상태 달성.**
 
 ## 파일 인벤토리 (24개, 모두 sorry-free)
 
@@ -151,9 +151,9 @@ lake build N6.TheoremB_Case4c_SixPrimes  # 가장 복잡한 squarefree
 
 모든 파일 **sorry 없음** — Lean4 kernel 전수 검증.
 
-## n6-architecture 연결
+## canon 연결
 
-본 Lean4 증명은 n6-architecture 의 수학적 기반 **machine-verified certification**:
+본 Lean4 증명은 canon 의 수학적 기반 **machine-verified certification**:
 
 - **atlas.n6 MILL-SPF** 핵심 상수들이 Lean4 kernel 인증됨
 - **39 편 논문** 중 n=6 유일성을 기반으로 하는 것들에 Lean4 인증서 첨부 가능

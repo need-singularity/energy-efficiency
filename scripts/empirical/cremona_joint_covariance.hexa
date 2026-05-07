@@ -34,13 +34,13 @@ from pathlib import Path
 from collections import Counter, defaultdict
 import math
 
-# Resolve ROOT robustly: prefer current repo (n6-architecture) over the
-# legacy hardcoded /Users/ghost/Dev/n6-architecture path.
+# Resolve ROOT robustly: prefer current repo (canon) over the
+# legacy hardcoded /Users/ghost/Dev/canon path.
 _HERE = Path(__file__).resolve()
 _CANDIDATES = [
     _HERE.parents[2],                          # repo containing scripts/
-    Path(\"/Users/ghost/core/n6-architecture\"),
-    Path(\"/Users/ghost/Dev/n6-architecture\"),
+    Path(\"/Users/ghost/core/canon\"),
+    Path(\"/Users/ghost/Dev/canon\"),
 ]
 ROOT = next(
     (p for p in _CANDIDATES if (p / \"data\" / \"cremona\" / \"allbsd\").is_dir()),

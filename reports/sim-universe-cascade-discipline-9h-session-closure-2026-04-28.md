@@ -1,7 +1,7 @@
 # Sim Universe Cascade Discipline — 9-hour Session Closure Report
 **Date**: 2026-04-28
 **Session ID**: ee1b27a8-4ded-42a6-b354-018a4d9ca9c3
-**Project**: n6-architecture (with nexus/.roadmap mirror)
+**Project**: canon (with nexus/.roadmap mirror)
 **Duration**: ~9 hours autonomous /loop cron-driven
 **Closure cascade**: s24 (TRULY FINAL — saturation ABSOLUTE)
 
@@ -168,7 +168,7 @@ research targets.
 
 ## SSOT artifacts
 
-### n6-architecture
+### canon
 - atlas.n6: 36128 lines (chflags uchg locked)
 - atlas/_absorbed/cascade-s2-tick1-* through cascade-s24-tick1-*: per-cascade
   shards archived
@@ -222,4 +222,4 @@ Best possible outcome for prolonged rigorous probing: framework that
 ---
 
 **Co-authored**: Claude Opus 4.7 (1M context) under cascade discipline
-governance (raw 71 + raw 91 C3 + own 11 strict, n6-architecture project).
+governance (raw 71 + raw 91 C3 + own 11 strict, canon project).

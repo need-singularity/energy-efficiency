@@ -25,7 +25,7 @@ w1_completed_at: 2026-04-28
 | `elan` | INSTALLED | 4.2.1 | `/opt/homebrew/bin/elan` |
 | `lean` | INSTALLED | 4.30.0-rc1 (arm64-apple-darwin24.6.0) | `/opt/homebrew/bin/lean` |
 | toolchain match | YES | matches Task D Spec §2 | `lean4-n6/lean-toolchain` declares `leanprover/lean4:v4.30.0-rc1` |
-| `lean4-n6` sister repo | EXISTS | `/Users/ghost/core/n6-architecture/lean4-n6/` | NOT at `~/core/lean4-n6/` (Spec §2 wording is technically correct: relative `../lean4-n6/` from `proposals/`) |
+| `lean4-n6` sister repo | EXISTS | `/Users/ghost/core/canon/lean4-n6/` | NOT at `~/core/lean4-n6/` (Spec §2 wording is technically correct: relative `../lean4-n6/` from `proposals/`) |
 | mathlib4 source | PRESENT | rev `19c497800a418208f973be74c9f5c5901aac2f54` | `lean4-n6/.lake/packages/mathlib/Mathlib/` |
 | supporting packages | PRESENT | plausible, LeanSearchClient, importGraph, ProofWidgets4, aesop, batteries, Cli, Qq | `lean4-n6/.lake/packages/` |
 

@@ -1,9 +1,9 @@
 {
   "_meta": {
-    "project": "n6-architecture",
+    "project": "canon",
     "version": 1,
     "inherit": false,
-    "description": "n6-architecture README 양식 — 295 도메인 카탈로그 + Rust 엔진 독립 규약"
+    "description": "canon README 양식 — 295 도메인 카탈로그 + Rust 엔진 독립 규약"
   },
   "scopes": {
     "root": {

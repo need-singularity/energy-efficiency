@@ -1,12 +1,12 @@
 #!/usr/bin/env hexa
 # hexa_weave_w5_setup.hexa — HEXA-WEAVE MVP W5 sandbox 1-command runbook
 # Cycle 14 / 2026-04-28 (initial 1.0.0)
-# Cycle 16 / 2026-04-28 (1.0.1: Step 6/8 path mismatch fix — HW_SCRIPTS_DIR from ~/core/n6-architecture/scripts/)
+# Cycle 16 / 2026-04-28 (1.0.1: Step 6/8 path mismatch fix — HW_SCRIPTS_DIR from ~/core/canon/scripts/)
 # raw 9 hexa-only: shell ops wrapped via "hexa run" envelope
 # raw 65 idempotent: every step probes existence + skips if PASS
 # raw 142 D2 rollback: --rollback reverses steps 8 -> 1
 # raw 66 ai-native: failure trailer YAML to stdout
-# raw 47 cross-repo: n6-architecture (scripts) -> hexa-weave (data/weights/outputs)
+# raw 47 cross-repo: canon (scripts) -> hexa-weave (data/weights/outputs)
 
 name: hexa_weave_w5_setup
 version: 1.0.1
@@ -136,13 +136,13 @@ steps:
     skip_if_probe_passes: true
     cmd: |
       # Generates manifest.json + downloads 78+13+9 = 100 PDB FASTAs per cycle 10 alt2 cdhit clustering.
-      # Implementation lives in n6-architecture (this repo) — sister-repo hexa-weave is data/weights only.
-      # Override via HW_SCRIPTS_DIR env var if scripts move (default: $HOME/core/n6-architecture/scripts).
-      # raw 47 cross-repo: explicit n6-architecture -> hexa-weave path edge declared.
-      HW_SCRIPTS_DIR="${HW_SCRIPTS_DIR:-$HOME/core/n6-architecture/scripts}"
+      # Implementation lives in canon (this repo) — sister-repo hexa-weave is data/weights only.
+      # Override via HW_SCRIPTS_DIR env var if scripts move (default: $HOME/core/canon/scripts).
+      # raw 47 cross-repo: explicit canon -> hexa-weave path edge declared.
+      HW_SCRIPTS_DIR="${HW_SCRIPTS_DIR:-$HOME/core/canon/scripts}"
       test -f "$HW_SCRIPTS_DIR/rcsb_cluster_split_fetch.py" || {
         echo "ERROR: rcsb_cluster_split_fetch.py not found at $HW_SCRIPTS_DIR" >&2
-        echo "       set HW_SCRIPTS_DIR or run from /Users/ghost/core/n6-architecture/" >&2
+        echo "       set HW_SCRIPTS_DIR or run from /Users/ghost/core/canon/" >&2
         exit 127
       }
       python "$HW_SCRIPTS_DIR/rcsb_cluster_split_fetch.py" \
@@ -233,10 +233,10 @@ steps:
       awk -F',' 'NR>0 {if ($1+0 > max) max=$1+0} END {print \"vram_peak_mb=\"max}' \
         ~/core/hexa-weave/logs/vram_poller_*.csv | tail -1
       # Verifier verdict — see Step 6 for HW_SCRIPTS_DIR rationale (raw 47 cross-repo)
-      HW_SCRIPTS_DIR="${HW_SCRIPTS_DIR:-$HOME/core/n6-architecture/scripts}"
+      HW_SCRIPTS_DIR="${HW_SCRIPTS_DIR:-$HOME/core/canon/scripts}"
       test -f "$HW_SCRIPTS_DIR/w5_verdict.py" || {
         echo "ERROR: w5_verdict.py not found at $HW_SCRIPTS_DIR" >&2
-        echo "       set HW_SCRIPTS_DIR or run from /Users/ghost/core/n6-architecture/" >&2
+        echo "       set HW_SCRIPTS_DIR or run from /Users/ghost/core/canon/" >&2
         exit 127
       }
       python "$HW_SCRIPTS_DIR/w5_verdict.py" \
@@ -315,8 +315,8 @@ main: |
 # === raw 91 C3 honest ===
 caveats:
   - "This .hexa file is the spec; the actual hexa runner must implement step dispatch + probe + rollback + failure trailer per main pseudocode."
-  - "scripts/rcsb_cluster_split_fetch.py + scripts/w5_verdict.py LIVE in n6-architecture (this repo) per cycle 15; sister-repo hexa-weave/ is data + weights + outputs only. Step 6/8 use HW_SCRIPTS_DIR (default $HOME/core/n6-architecture/scripts) — cycle 16 path mismatch fix."
+  - "scripts/rcsb_cluster_split_fetch.py + scripts/w5_verdict.py LIVE in canon (this repo) per cycle 15; sister-repo hexa-weave/ is data + weights + outputs only. Step 6/8 use HW_SCRIPTS_DIR (default $HOME/core/canon/scripts) — cycle 16 path mismatch fix."
   - "Step 7 sm_120 source compile is bleeding-edge; failure forces fallbacks (PTX JIT or prebuilt sm_90)."
   - "Step 8 inference verdict pass criteria are deterministic (Bio.PDB.Superimposer + nvidia-smi awk) — no LLM judge."
   - "User must dispatch on ubu1 with appropriate sudo for python3.10 install if not present (Step 2 prerequisite)."
-  - "raw 47 cross-repo edge: HW_SCRIPTS_DIR sources n6-architecture/scripts; hexa-weave/ sister repo receives writes only (data/, weights/, outputs/, logs/). User MUST git clone n6-architecture before dispatch OR override HW_SCRIPTS_DIR."
+  - "raw 47 cross-repo edge: HW_SCRIPTS_DIR sources canon/scripts; hexa-weave/ sister repo receives writes only (data/, weights/, outputs/, logs/). User MUST git clone canon before dispatch OR override HW_SCRIPTS_DIR."

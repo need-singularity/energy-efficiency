@@ -24,7 +24,7 @@ requires:
 ---
 # [EMBODY P11-1] HEXA-PROPULSION · D-³He fusion Q>1 path formalisation
 
-> **Author**: Minwoo Park (n6-architecture)
+> **Author**: Minwoo Park (canon)
 > **Category**: hexa-propulsion — EMBODY P11-1 emergent DSE
 > **Version**: v1 (2026-04-15 initial)
 > **Prior**: P10-2 HEXA-PROPULSION τ=4+2 (papers/embody-p10-2-new-domain-design-2026-04-15.md)
@@ -483,7 +483,7 @@ onward the design moves to the propellant-flow / magnetic-nozzle integration sta
 5. ITER Organization, "ITER Research Plan within the Staged Approach", 2018.
 6. Schmitt, H., "Return to the Moon", Springer, 2006. (lunar ³He ISRU)
 7. ENDF/B-VIII.0 Nuclear Data Library, BNL, 2018. (D-³He σv)
-8. n6-architecture, "HEXA-PROPULSION P10-2", papers/embody-p10-2-*, 2026-04-15.
+8. canon, "HEXA-PROPULSION P10-2", papers/embody-p10-2-*, 2026-04-15.
 9. atlas.n6, σ·φ=n·τ L0 lock, $NEXUS/shared/n6/atlas.n6, 2026-04-15.
 
 ---

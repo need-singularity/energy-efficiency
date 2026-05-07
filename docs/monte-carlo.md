@@ -1,7 +1,7 @@
 # Reality Map Monte Carlo v9 — 설계서
 
 > 작성: 2026-04-11
-> 저자: n6-architecture 수렴팀
+> 저자: canon 수렴팀
 > 목표: v8 한계(큰수 N=10) 돌파, 대조군 5종 확장, atlas.n6 단일소스 전환
 > SSOT: `$NEXUS/shared/n6/atlas.n6`
 > 규칙: common.R1(HEXA-FIRST) / R8(데이터 원격) / R14(shared SSOT) / R28(atlas 흡수) / N62(검증코드 임베드) 준수
@@ -196,7 +196,7 @@ null distributions
    │
    │ [7] 결과 → atlas.n6 흡수 (R28)
    ▼
-n6shared/n6/atlas.n6 MC_V9 섹션
+canonshared/n6/atlas.n6 MC_V9 섹션
 ```
 
 ### 4.2 산출 파일
@@ -354,4 +354,4 @@ awk '/^# ══ MC_V9_RESULTS/,/^# ══ [^M]/' $ATLAS
 - v9.3 도메인 강도: `reports/discovery/mc-v93-domain-breakdown.md`
 - 이론 기반: `docs/theorem-r1-uniqueness.md` (σ·φ=n·τ ⟺ n=6, 3개 독립 증명)
 - 규칙: `$NEXUS/shared/rules/common.json` (R1/R8/R14/R16/R28)
-- 프로젝트 규칙: `$NEXUS/shared/rules/n6-architecture.json` (N61~N65)
+- 프로젝트 규칙: `$NEXUS/shared/rules/canon.json` (N61~N65)

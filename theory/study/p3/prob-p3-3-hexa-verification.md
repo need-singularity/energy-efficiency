@@ -29,7 +29,7 @@
 ### Use of hexa-lang characteristics
 
 - HEXA-FIRST principle (CLAUDE.md): `.py` forbidden, `.hexa` as the formal runtime.
-- Already 25+ hexa scripts exist in `n6-architecture/scripts/` (`millennium_scanner.hexa`, `selmer_bklpr.hexa`, `jordan_totient.hexa`, `riemann_explicit.hexa`, etc.).
+- Already 25+ hexa scripts exist in `canon/scripts/` (`millennium_scanner.hexa`, `selmer_bklpr.hexa`, `jordan_totient.hexa`, `riemann_explicit.hexa`, etc.).
 - The hexa interpreter's Rust implementation (stable since the 2026-04 FIX-NESTED-IF + FIX-CAPTURE-CLONE patches) resolved the O(N³) blowup.
 - Hence it is natural to designate hexa as the **shared runtime of the verification pipeline**.
 
@@ -308,7 +308,7 @@ fn verify_h_cobordism() {
 ### 4.1 Directory structure (proposal)
 
 ```
-n6-architecture/scripts/verify/
+canon/scripts/verify/
 ├── _lib/
 │   ├── atlas_parser.hexa      # Layer 0
 │   ├── expr_eval.hexa         # Layer 1
@@ -575,7 +575,7 @@ fn verify_uniqueness_theorem() {
 
 ## Primary-source annotation
 
-- HEXA-FIRST principle: `/Users/ghost/Dev/n6-architecture/CLAUDE.md`.
+- HEXA-FIRST principle: `/Users/ghost/Dev/canon/CLAUDE.md`.
 - atlas.n6 SSOT: `/Users/ghost/Dev/nexus/shared/n6/atlas.n6`, 60K+ lines.
 - millennium_scanner.hexa: `/Users/ghost/Dev/nexus/shared/n6/scripts/millennium_scanner.hexa`, 224 lines.
 - BKLPR axioms and Sel_n mean formula: Bhargava-Kane-Lenstra-Poonen-Rains, Cambridge J. Math. 3 (2015), 275–321.

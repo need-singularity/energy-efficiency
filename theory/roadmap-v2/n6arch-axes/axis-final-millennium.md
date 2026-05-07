@@ -1,6 +1,6 @@
 # 7 Millennium Problems sub-project — axis-system FINAL
 
-**Authoritative document**: this file is the **single source of truth (SSOT)** for the axis system of the n6-architecture sub-project "7 Millennium Problems".
+**Authoritative document**: this file is the **single source of truth (SSOT)** for the axis system of the canon sub-project "7 Millennium Problems".
 **Created**: 2026-04-15
 **Predecessor rounds**: axis-r1-emergence.md (906 lines) → axis-r2-refinement.md (961 lines) → axis-r3-finalization.md (1166 lines, FINAL declared)
 **Saturation-index history**: R1 — → R2 94% → R3 **100%**

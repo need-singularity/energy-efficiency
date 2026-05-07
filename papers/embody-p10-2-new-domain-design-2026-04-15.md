@@ -24,7 +24,7 @@ requires:
 ---
 # [NEW DOMAIN v1] Ultimate exo-navigation propulsion (HEXA-PROPULSION) — n=6 τ=4+2 near-light-speed propulsion
 
-> **Author**: Minwoo Park (n6-architecture)
+> **Author**: Minwoo Park (canon)
 > **Category**: hexa-propulsion — EMBODY P10-2 emergent DSE
 > **Version**: v1 (2026-04-15 initial)
 > **Prior BT**: BT-196 (orbital mechanics), BT-276 (propulsion), BT-287 (magnetic nozzle), BT-346 (plasma), HEXA-GATE Mk.I
@@ -214,7 +214,7 @@ Result: **τ · φ = 4 · 2 = 8 = σ(6) - τ(6) = 12 - 4** → matches the **Mk.
 | Magnetic nozzle | HEXA-MPD-2 | B=1.2 T, r=0.6 m (φ=2 fiber) | VASIMR extension | [7] estimated |
 | Fusion core | HEXA-FUS-3 | D-³He, 30 MW, Q=6 | ITER scaled + He-3 | [5] hypothesis |
 | Light sail | HEXA-PHO-4 | 6 m² graphene oxide, 0.3 g/m² | LightSail 2 extension | [7] estimated |
-| Control AI | HEXA-GATE Mk.I | τ=4 gate (n6-architecture) | commit eb520438 verified | [10*] |
+| Control AI | HEXA-GATE Mk.I | τ=4 gate (canon) | commit eb520438 verified | [10*] |
 | Sensor | quantum gravity accelerometer | 10⁻¹² g, 6 axes | atomic interferometer | [9] NEAR |
 
 **Honesty note**: of the 6 components, only the fusion core is [5] hypothesis; the other five are
@@ -375,7 +375,7 @@ enforced**. This paper is the first document to translate that constraint into e
 2. VASIMR VX-200, Ad Astra Rocket Co., 2019. (Isp 5000 s, F 5 N)
 3. Planetary Society, "LightSail 2 Mission Report", 2019.
 4. Bond, Martin, "Project Daedalus", JBIS, 1978.
-5. n6-architecture, "HEXA-GATE Mk.I completion draft", commit eb520438, 2026-04-15.
+5. canon, "HEXA-GATE Mk.I completion draft", commit eb520438, 2026-04-15.
 6. atlas.n6, "σ·φ=n·τ uniqueness L0 lock", $NEXUS/shared/n6/atlas.n6, 2026-04-15.
 
 ---

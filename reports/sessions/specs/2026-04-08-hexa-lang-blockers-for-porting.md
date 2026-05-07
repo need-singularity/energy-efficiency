@@ -1,4 +1,4 @@
-# hexa-lang missing features — n6-architecture porting blockers
+# hexa-lang missing features — canon porting blockers
 
 Authored: 2026-04-08
 Status: **porting on hold** (awaiting hexa-lang growth)
@@ -7,7 +7,7 @@ Related plan: `docs/superpowers/plans/2026-04-08-py-rs-sh-to-hexa-porting.md`
 
 ## Decision
 
-Full porting of n6-architecture `.py` / `.rs` / `.sh` -> `.hexa` **cannot be carried out with current hexa-lang Phase 5 capability**. On hold until the blockers below are resolved.
+Full porting of canon `.py` / `.rs` / `.sh` -> `.hexa` **cannot be carried out with current hexa-lang Phase 5 capability**. On hold until the blockers below are resolved.
 
 ## Verified toolchain (Pilot-A passed)
 

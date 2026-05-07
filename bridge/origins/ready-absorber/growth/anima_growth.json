@@ -3800,7 +3800,7 @@
     {
       "timestamp": "2026-04-04T17:07:32.428161",
       "source_project": "anima",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "path": "anima/.claude/worktrees/agent-abb59ac1/anima/tools/learnable_phi.py",
       "type": "only_in_ready",
       "value_grade": "critical",
@@ -3856,7 +3856,7 @@
     {
       "timestamp": "2026-04-04T17:07:32.430311",
       "source_project": "anima",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "path": "anima/.claude/worktrees/agent-abb59ac1/anima/tools/quantum_attention_engine.py",
       "type": "only_in_ready",
       "value_grade": "critical",
@@ -3884,7 +3884,7 @@
     {
       "timestamp": "2026-04-04T17:07:32.431393",
       "source_project": "anima",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "path": "anima/.claude/worktrees/agent-abb59ac1/anima/tools/self_upgrade.py",
       "type": "only_in_ready",
       "value_grade": "critical",
@@ -5368,7 +5368,7 @@
     {
       "timestamp": "2026-04-04T17:07:32.517608",
       "source_project": "anima",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "path": "anima/anima/experiments/acceleration_ae_top10.py",
       "type": "only_in_ready",
       "value_grade": "critical",
@@ -5382,7 +5382,7 @@
     {
       "timestamp": "2026-04-04T17:07:32.518347",
       "source_project": "anima",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "path": "anima/anima/experiments/acceleration_batch_runner.py",
       "type": "only_in_ready",
       "value_grade": "critical",
@@ -5396,7 +5396,7 @@
     {
       "timestamp": "2026-04-04T17:07:32.519419",
       "source_project": "anima",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "path": "anima/anima/experiments/acceleration_series_ba_z.py",
       "type": "only_in_ready",
       "value_grade": "critical",
@@ -5942,7 +5942,7 @@
     {
       "timestamp": "2026-04-04T17:07:32.551274",
       "source_project": "anima",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "path": "anima/anima/tests/test_dd60_experiments.py",
       "type": "only_in_ready",
       "value_grade": "high",
@@ -6040,7 +6040,7 @@
     {
       "timestamp": "2026-04-04T17:07:32.556295",
       "source_project": "anima",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "path": "anima/anima/tests/test_h100_experiments.py",
       "type": "only_in_ready",
       "value_grade": "critical",

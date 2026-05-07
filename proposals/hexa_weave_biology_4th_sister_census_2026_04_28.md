@@ -254,7 +254,7 @@ HEXA-VIROCAPSID  registration   on  impact:
 | repo | impact | change required? |
 |------|------|------------|
 | ~/core/hexa-weave (sister repo, uncreation) | lockre--tic cross-link to virocapsid | NO (creation  on  README spec  at  addition) |
-| ~/core/n6-architecture | _index.json + biology/_index.json + README | YES (sister tier addition) |
+| ~/core/canon | _index.json + biology/_index.json + README | YES (sister tier addition) |
 | domains/life/* | crispr-gene-editing (AAV-vector cross-link) | YES (collision audit row 1 addition) |
 | domains/biology/* | hexa-weave/hexa-nanobot/hexa-ribozyme markdown | YES (sister/sisters frontmatter extension) |
 

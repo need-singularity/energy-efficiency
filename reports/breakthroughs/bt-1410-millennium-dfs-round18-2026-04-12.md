@@ -648,6 +648,6 @@ special ly DFS18-03 (Virasoro M(3,4) = Ising) BPZ min model in c = 1 - 6/(p*p') 
 ## 7. Verification environment
 
 - Date: 2026-04-12
-- Project: n6-architecture
+- Project: canon
 - Preceding BT: BT-1394~1409
 - Reference atlas: $NEXUS/shared/n6/atlas.n6

@@ -17,7 +17,7 @@ grade: cross-repo audit verification, no claim
 
 This report is a **cross-repository verification** exercise. Its purpose is to determine
 whether the same 3-constraint audit framework that produced 3-of-3 KEEP_AS_IS verdicts on
-n6-architecture data also produces 3-of-3 KEEP-direction verdicts when applied to nexus's
+canon data also produces 3-of-3 KEEP-direction verdicts when applied to nexus's
 own material. It is **not**:
 
 - a re-decision of the n6-side verdicts (those remain KEEP_AS_IS as written),
@@ -31,7 +31,7 @@ own material. It is **not**:
   created, or deleted by this session.**
 
 The 0/7 honesty counter is unchanged. The nxs_promotion_count delta this session is `0`.
-The single output file is this report under `reports/sessions/` in n6-architecture.
+The single output file is this report under `reports/sessions/` in canon.
 
 Where a nexus path stated by the prompt does not exist, that fact is documented (no
 fabrication of file structure). Where the porting audit's deploy plan was partially
@@ -334,7 +334,7 @@ By reading `~/core/nexus/.claude/agents/`:
 | `growth-agent` | NOT LOCATED | — | — | **NOT confirmed** |
 | `lens-agent` | NOT LOCATED | — | — | **NOT confirmed** |
 
-By reading `~/core/nexus/CLAUDE.md.bak` and `~/core/nexus/project-claude/{nexus,anima,n6-architecture,contact}.md`:
+By reading `~/core/nexus/CLAUDE.md.bak` and `~/core/nexus/project-claude/{nexus,anima,canon,contact}.md`:
 
 - All four `project-claude/*.md` files reference *L0 Guard* via
   `hexa $NEXUS/tool/lockdown_gate.hexa <verify|status|watch|repair|safe-merge|log>`.
@@ -866,7 +866,7 @@ sessions do not misread divergence as evidence against the framework:
   sense on n6; per-commit-prefix or per-cycle banner makes sense on nexus. *Artefact of
   artefact-pool topology*. Both produce equivalent saturation function; the surface
   differs.
-- **A7 — atlas-blowup format n6=jsonl vs n6-architecture=text grade**: the nexus atlas
+- **A7 — atlas-blowup format n6=jsonl vs canon=text grade**: the nexus atlas
   is `n6/atlas.blowup.jsonl` (JSONL, type/edge); the n6-arch atlas is `atlas/atlas.n6`
   (line-based grade format). *Artefact of representation choice*; both are SSOTs and
   both are equally protected by their respective barriers.
@@ -960,7 +960,7 @@ along with Target 2 (project-claude/nexus.md cross-reference) and Target 3
 This audit produces no atlas / state / inventory / CLAUDE.md edits in either repo.
 The single output file is this report under
 `reports/sessions/omega-audit-nexus-native-3constraint-2026-04-25.md` in
-n6-architecture.
+canon.
 
 millennium_resolved: **0/7** (unchanged).
 nxs_promotion_count: **unchanged this session** (no inventory writes).

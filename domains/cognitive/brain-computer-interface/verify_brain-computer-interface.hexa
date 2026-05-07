@@ -3,7 +3,7 @@
 # 출처: brain-computer-interface.md (EXACT 36/40, 90%)
 # SSOT 이관 예정: nexus/shared/n6/scripts/verify_bci_n6.hexa
 # Stage A: bin/n6_verify_run <file> (proposals/dup_derivation_consolidation_phase2_2026_04_24.md)
-use "n6shared/_shared_constants"
+use "canonshared/_shared_constants"
 fn main() {
     println("[BCI] HEXA-BCI n=6 뇌-컴퓨터 인터페이스 검증 시작")
 

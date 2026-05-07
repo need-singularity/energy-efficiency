@@ -71,7 +71,7 @@ The reason **n=6 uniquely has a "small" r value**: the ratio of the smallest Mer
 
 ### 4.2 Conclusion
 
-- **All r = 2/3 solutions**: {5, 6} (prime 5, perfect number 6)
+- **All r = 2/3 solutions**: {5, 6} (prime 5, arithmetic canon)
 - **Under perfect-number constraint, r=2/3 unique solution**: n = 6 *
 - **Under composite-number constraint, r=2/3 unique solution**: n = 6 *
 

@@ -1,6 +1,6 @@
 # ═══════════════════════════════════════════════════════════════
 # CDO Troubleshooting:
-#   .shared/ 심링크는 폐기됨 (TECS-L 흡수 완료, n6-architecture 단일 통합).
+#   .shared/ 심링크는 폐기됨 (TECS-L 흡수 완료, canon 단일 통합).
 #   CI 에서 .shared/ 내용에 의존하지 말 것.
 #   CDO JSON 검증은 인라인 Python 사용.
 # ═══════════════════════════════════════════════════════════════
@@ -48,18 +48,18 @@ jobs:
   # ── Job 2: Rust cargo check + test — REMOVED 2026-04-24 ─────
   # Rationale: tools/nexus/Cargo.toml path was stale (removed long ago).
   # No Cargo.toml exists anywhere in this repo; .own rule #10 bans .rs files
-  # in n6-architecture. Rust testing belongs to the nexus/ sister repo's own CI.
+  # in canon. Rust testing belongs to the nexus/ sister repo's own CI.
 
   # ── Job 3b: Stage A preflight — shared constants generator-clean + flatten ──
   # Stage A consolidation (proposals/dup_derivation_consolidation_phase2_2026_04_24.md).
-  # Fails if n6shared/_shared_constants.hexa drifts from atlas/n6_core_constants.hexa,
+  # Fails if canonshared/_shared_constants.hexa drifts from atlas/n6_core_constants.hexa,
   # or if any of the Stage-A-migrated verify files fail `flatten_imports` preflight.
   n6-shared-constants:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      - name: Generator-clean check (atlas SSOT vs n6shared/_shared_constants.hexa)
+      - name: Generator-clean check (atlas SSOT vs canonshared/_shared_constants.hexa)
         run: |
           bash scripts/gen_shared_constants.sh --check
 
@@ -100,7 +100,7 @@ jobs:
           CDO_REQUIRED = {"_meta"}  # minimum CDO field
 
           errors = []
-          json_files = glob.glob("n6shared/**/*.json", recursive=True) + \
+          json_files = glob.glob("canonshared/**/*.json", recursive=True) + \
                        glob.glob("experiments/**/*.json", recursive=True)
 
           if not json_files:
@@ -141,7 +141,7 @@ jobs:
   # ── Job 4: own#17 — Public README English-only audit (HARD block) ──
   # Enforces .own rule #17 (doc-english-required) across the 5-repo org.
   # Tool: hexa-lang/tool/readme_english_audit.hexa (sister repo).
-  # Strategy: checkout hexa-lang alongside n6-architecture into a
+  # Strategy: checkout hexa-lang alongside canon into a
   # layout that mirrors $HOME/core/{repo}/ — the audit tool reads
   # README.md from that fixed prefix (see tool header TARGETS block).
   # hexa CLI is bootstrapped from hexa-lang source (same chain as
@@ -150,10 +150,10 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - name: Checkout n6-architecture
+      - name: Checkout canon
         uses: actions/checkout@v4
         with:
-          path: n6-architecture
+          path: canon
 
       - name: Checkout hexa-lang (sister repo, tool source)
         id: checkout-hexa
@@ -239,7 +239,7 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p "$HOME/core"
-          ln -sfn "$GITHUB_WORKSPACE/n6-architecture" "$HOME/core/n6-architecture"
+          ln -sfn "$GITHUB_WORKSPACE/canon" "$HOME/core/canon"
           ln -sfn "$GITHUB_WORKSPACE/hexa-lang"       "$HOME/core/hexa-lang"
           [ -d "$GITHUB_WORKSPACE/nexus"  ] && ln -sfn "$GITHUB_WORKSPACE/nexus"  "$HOME/core/nexus"  || true
           [ -d "$GITHUB_WORKSPACE/anima"  ] && ln -sfn "$GITHUB_WORKSPACE/anima"  "$HOME/core/anima"  || true
@@ -268,10 +268,10 @@ jobs:
     timeout-minutes: 15
     continue-on-error: true
     steps:
-      - name: Checkout n6-architecture
+      - name: Checkout canon
         uses: actions/checkout@v4
         with:
-          path: n6-architecture
+          path: canon
 
       - name: Checkout hexa-lang (tool source)
         id: checkout-hexa
@@ -333,15 +333,15 @@ jobs:
       - name: Drift detection — techniques + tests count (own#20)
         if: env.HEXA_LANG_AVAILABLE == '1'
         shell: bash
-        working-directory: n6-architecture
+        working-directory: canon
         # own_runner.hexa lives in hexa-lang; invoked by absolute path.
-        # Runs from n6-architecture PWD so raw_loader picks up the local .own.
+        # Runs from canon PWD so raw_loader picks up the local .own.
         run: hexa "$GITHUB_WORKSPACE/hexa-lang/tool/own_runner.hexa" drift-all
 
       - name: README nexus6 tests count drift (own#21)
         if: always()
         shell: bash
-        working-directory: n6-architecture
+        working-directory: canon
         continue-on-error: true  # SOFT — .own own#21 on_fail=warn
         # Hexa comparator (raw 9 hexa-only): authoritative count from
         # reports/n6_selftest.json#total vs README.md 'tests: N' tokens.
@@ -462,7 +462,7 @@ jobs:
 
   # ── Job 8: own#1 — doc-english-required HARD block ──
   # Hexa-native (raw 9): tool/own1_doc_english_lint.hexa via dispatcher --rule 1.
-  # Scope: domains/, theory/, reports/, experiments/, papers/, bridge/, n6shared/
+  # Scope: domains/, theory/, reports/, experiments/, papers/, bridge/, canonshared/
   # .md files. Legacy CJK files grandfathered via tool/own1_legacy_allowlist.json
   # (frozen sidecar, 1050+ entries). New CJK content in any .md under decl scope
   # fails the check and blocks merge.

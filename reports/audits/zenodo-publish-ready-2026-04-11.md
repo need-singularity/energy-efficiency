@@ -80,7 +80,7 @@ Result of running the `python` block in Appendix A of the paper verbatim under `
       {"term": "Number Theory", "identifier": "http://id.loc.gov/authorities/subjects/sh85093221"}
     ],
     "communities": [
-      {"identifier": "n6-architecture"}
+      {"identifier": "canon"}
     ],
     "related_identifiers": [
       {"identifier": "10.5281/zenodo.19245037", "relation": "isSupplementedBy", "resource_type": "publication-article"},
@@ -134,9 +134,9 @@ Result of running the `python` block in Appendix A of the paper verbatim under `
 @techreport{park2026crossparadigm,
   author       = {Park, Min Woo},
   title        = {Cross-Paradigm Resonance in {AI}: $\sigma - \tau = 8$ as a Universal {AI} Constant},
-  institution  = {n6-architecture},
+  institution  = {canon},
   year         = {2026},
-  note         = {n6-architecture/docs/ai-efficiency/cross-paradigm-resonance-2026-04.md}
+  note         = {canon/docs/ai-efficiency/cross-paradigm-resonance-2026-04.md}
 }
 ```
 
@@ -174,7 +174,7 @@ Result of running the `python` block in Appendix A of the paper under `python3`.
     "title": "Experimental Full Verification of 17 AI Efficiency Techniques under Perfect Number n=6 after the hexa Migration",
     "upload_type": "publication",
     "publication_type": "preprint",
-    "description": "After migrating the 17 core n6-architecture AI efficiency techniques to the .hexa runtime, we re-verify in full the original results (71% FLOPs reduction, 3x speedup, 67% parameter reduction). The paper covers 32+ techniques: BitNet (2^n=64 states), Alpha Attack, Boltzmann Gate, AdamW beta2 (BT-54), regularization universality (BT-64), Carmichael LR, Constant-Time Stride, Dedekind Head, DeepSeek MLA, Egyptian Attention/Linear/MoE, FFT Mix, Fibonacci Stride, Griffin RG-LRU, GShard/Switch, HCN Dimensions, Jamba Hybrid, Leech-24 NAS, LoRA R=8, Mamba 2, Medusa Heads, Mertens Dropout, Mixture-of-Depths, Partition Routing, Phi Bottleneck, Phi MoE, Predictive Early Stop, Ring Attention, Speculative Decoding, YaRN RoPE, Zeta-ln2 Activation, and the h_ee_11 combined architecture. Every technique matches at least one n=6 arithmetic constant from {n, sigma, tau, phi, sopfr, J2, sigma-tau, sigma-phi} with EXACT equality. The embedded verification code (Appendix A) registers 40 claims and all pass on the first ossification iteration (N62). The .hexa transition preserves the original Python results byte-for-byte on both Ubuntu RTX 5070 12 GB and Mac local reproduction targets.",
+    "description": "After migrating the 17 core canon AI efficiency techniques to the .hexa runtime, we re-verify in full the original results (71% FLOPs reduction, 3x speedup, 67% parameter reduction). The paper covers 32+ techniques: BitNet (2^n=64 states), Alpha Attack, Boltzmann Gate, AdamW beta2 (BT-54), regularization universality (BT-64), Carmichael LR, Constant-Time Stride, Dedekind Head, DeepSeek MLA, Egyptian Attention/Linear/MoE, FFT Mix, Fibonacci Stride, Griffin RG-LRU, GShard/Switch, HCN Dimensions, Jamba Hybrid, Leech-24 NAS, LoRA R=8, Mamba 2, Medusa Heads, Mertens Dropout, Mixture-of-Depths, Partition Routing, Phi Bottleneck, Phi MoE, Predictive Early Stop, Ring Attention, Speculative Decoding, YaRN RoPE, Zeta-ln2 Activation, and the h_ee_11 combined architecture. Every technique matches at least one n=6 arithmetic constant from {n, sigma, tau, phi, sopfr, J2, sigma-tau, sigma-phi} with EXACT equality. The embedded verification code (Appendix A) registers 40 claims and all pass on the first ossification iteration (N62). The .hexa transition preserves the original Python results byte-for-byte on both Ubuntu RTX 5070 12 GB and Mac local reproduction targets.",
     "creators": [
       {
         "name": "Park, Min Woo",
@@ -198,7 +198,7 @@ Result of running the `python` block in Appendix A of the paper under `python3`.
       {"term": "Number Theory", "identifier": "http://id.loc.gov/authorities/subjects/sh85093221"}
     ],
     "communities": [
-      {"identifier": "n6-architecture"}
+      {"identifier": "canon"}
     ],
     "related_identifiers": [
       {"identifier": "10.5281/zenodo.19245043", "relation": "isSupplementedBy", "resource_type": "publication-article"},
@@ -251,7 +251,7 @@ Result of running the `python` block in Appendix A of the paper under `python3`.
 @techreport{park2026aienergy,
   author       = {Park, Min Woo},
   title        = {{AI} Energy Savings Guide: 31/31 {PASS}},
-  institution  = {n6-architecture},
+  institution  = {canon},
   year         = {2026},
   note         = {docs/ai-energy-savings-guide.md}
 }
@@ -281,7 +281,7 @@ The two papers are complementary, so `related_identifiers` should be cross-regis
 | `manifest.json` registration | **unregistered — requires adding N6-054, N6-057 entries before publishing** (PP3 rule) |
 | Korean->English title bilingual | payload `title` English, body h1 Korean, body abstract Korean (CC-BY 4.0 permits) |
 | ORCID | field empty (`0000-0000-0000-0000`) — replace with the user's actual ORCID |
-| communities invitation | presumes the `n6-architecture` Zenodo community is pre-created/approved |
+| communities invitation | presumes the `canon` Zenodo community is pre-created/approved |
 | R14 SSOT | `papers/_registry.json` must be synced to "Published"+DOI (after publishing) |
 
 ---

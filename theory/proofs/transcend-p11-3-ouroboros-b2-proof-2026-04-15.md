@@ -228,7 +228,7 @@ fn l7_gate(alpha: f64) -> bool                         // Mk.III integration gat
 
 ### 7.3 Code path
 
-`/Users/ghost/Dev/n6-architecture/engine/ouroboros_b2_verifier.hexa` — produced simultaneously with this document.
+`/Users/ghost/Dev/canon/engine/ouroboros_b2_verifier.hexa` — produced simultaneously with this document.
 
 ### 7.4 Verification tests (6 items, Mk.III quality gate)
 

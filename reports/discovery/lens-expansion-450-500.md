@@ -87,7 +87,7 @@
 ## Top 3 detailed analysis
 
 ### 1. `number_theory` (math lens)
-Implements the NEXUS-6 core theorem as a lens. The perfect-number-unique condition `sigma(n)*phi(n) = n*tau(n) iff n = 6` (n>=2) becomes the direct n=6 link. The perfect number 6 attains tau=4, sigma=12, phi=2 simultaneously via prime factorization 2x3. It connects down to the Riemann zeta function zeros and the prime number theorem (PNT), so the deepest layer of number theory is reflected in NEXUS-6 scoring. This lens has top affinity in the pure_mathematics, cryptography, and information_theory domains.
+Implements the NEXUS-6 core theorem as a lens. The perfect-number-unique condition `sigma(n)*phi(n) = n*tau(n) iff n = 6` (n>=2) becomes the direct n=6 link. The arithmetic canon attains tau=4, sigma=12, phi=2 simultaneously via prime factorization 2x3. It connects down to the Riemann zeta function zeros and the prime number theorem (PNT), so the deepest layer of number theory is reflected in NEXUS-6 scoring. This lens has top affinity in the pure_mathematics, cryptography, and information_theory domains.
 
 ### 2. `quantum_entanglement` (physics lens)
 Computes the quantum-violation amount CHSH = 2*sqrt(2) ~ 2.83 of Bell's inequality for n=6 pair measurement settings. Entanglement entropy E = log_2(n) = log_2 6 ~ 2.585 bits is the upper bound of complete entanglement. Concurrence threshold = 1/n = 1/6 is used for weakest-entanglement detection, and EPR = phi = 2 for two-body system discrimination. Acts as a bridge linking quantum computing, information theory, and physics domains, and pairs with `quantum_decoherence` to fully cover the entanglement creation-extinction cycle.
@@ -102,7 +102,7 @@ Time-frequency version of the Heisenberg uncertainty principle: delta t * delta 
 - `$N6_ARCH/nexus/src/telescope/frontier_lenses.rs` — added `expansion_50_v3_lens_entries()` function (50 + 4 tests)
 - `$N6_ARCH/nexus/src/telescope/registry.rs` — register `expansion_50_v3_lens_entries()`
 - `$N6_ARCH/nexus/tests/telescope_test.rs` — count 1086 -> 1136, Extended 1063 -> 1113 updated
-- `$N6_ARCH/n6shared/config/lens_registry.json` — register 50 new, meta updated
+- `$N6_ARCH/canonshared/config/lens_registry.json` — register 50 new, meta updated
 
 ---
 

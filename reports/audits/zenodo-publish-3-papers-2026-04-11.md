@@ -122,7 +122,7 @@ The paper's appendix A embedded Python block was directly extracted and executed
     "creators": [{"name": "Park, Min Woo", "affiliation": "Independent Research", "orcid": "0000-0000-0000-0000"}],
     "keywords": ["perfect number", "n=6", "synthetic biology", "CRISPR-Cas9", "genetic code", "codon", "BioBrick", "BT-372"],
     "license": "cc-by-4.0",
-    "communities": [{"identifier": "n6-architecture"}]
+    "communities": [{"identifier": "canon"}]
   }
 }
 ```
@@ -142,7 +142,7 @@ The paper's appendix A embedded Python block was directly extracted and executed
 @article{watson1953dna, author={Watson, J. D. and Crick, F. H. C.}, title={Molecular Structure of Nucleic Acids}, journal={Nature}, volume={171}, pages={737--738}, year={1953}}
 @article{jinek2012cas9, author={Jinek, M. and others}, title={A Programmable Dual-{RNA}-Guided {DNA} Endonuclease}, journal={Science}, volume={337}, pages={816--821}, year={2012}}
 @article{gibson2009assembly, author={Gibson, D. G. and others}, title={Enzymatic Assembly of {DNA} Molecules}, journal={Nature Methods}, volume={6}, pages={343--345}, year={2009}}
-@techreport{park2026bt372, author={Park, Min Woo}, title={{BT-372}: Dual Perfect Number Code of Life}, institution={n6-architecture}, year={2026}}
+@techreport{park2026bt372, author={Park, Min Woo}, title={{BT-372}: Dual Perfect Number Code of Life}, institution={canon}, year={2026}}
 ```
 
 ---

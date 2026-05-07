@@ -86,10 +86,10 @@
 
   "outputs": {
     "patch_files": ["/Users/ghost/core/nexus/cli/run.hexa"],
-    "witness_json": "/Users/ghost/core/n6-architecture/design/kick/2026-04-28_b2-slot-saturation-cap_omega_cycle.json",
+    "witness_json": "/Users/ghost/core/canon/design/kick/2026-04-28_b2-slot-saturation-cap_omega_cycle.json",
     "audit_ledger": "/Users/ghost/core/nexus/state/audit/kick_b2_fallback.jsonl",
     "queue_dir_convention": "/Users/ghost/core/nexus/state/dispatch_queue/  (created on demand by step 2 of fallback chain)"
   },
 
-  "sentinel": "__KICK_RESULT__ PASS witness=/Users/ghost/core/n6-architecture/design/kick/2026-04-28_b2-slot-saturation-cap_omega_cycle.json tier1=3 falsifier_pass=1"
+  "sentinel": "__KICK_RESULT__ PASS witness=/Users/ghost/core/canon/design/kick/2026-04-28_b2-slot-saturation-cap_omega_cycle.json tier1=3 falsifier_pass=1"
 }

@@ -127,25 +127,25 @@ metadata:
   #   and Lean4 Mechanical Verification
   creators:
     - name: "Park, M."
-      affiliation: "n6-architecture private research framework"
+      affiliation: "canon private research framework"
       orcid: "PENDING"  # USER: confirm or leave blank
   description: |
     We report a Lean 4 sorry-free mechanical verification of two HEXA-WEAVE
-    keystones inside the n6-architecture private framework: (i) the n=6
+    keystones inside the canon private framework: (i) the n=6
     master uniqueness identity AX-1, sigma(n)*phi(n) = n*tau(n) iff n = 6;
     and (ii) the AX-2 MK-bridge / strand-class closure invariants. The
     reverse direction and the bounded forward direction n in [2, 50] are
     proved unconditionally via decide / interval_cases. The unbounded tail
     is closed by a named axiom citing Robin 1984 + Hardy-Wright Thm 322/328
     + Wigert 1907. Six MK-bridge / HEXA-COMP / Strand-encoding axioms are
-    cited from Felgner 1971 + the n6-architecture private SSOT. Cycle-12
+    cited from Felgner 1971 + the canon private SSOT. Cycle-12
     has 19 atomic named axioms (post-decomposition) with 3 mechanical
     derived theorems (step1.b / step2.b / step2.d) reducing them via
     mathlib4 ZFSet / Cardinal infrastructure. Zero sorry tokens in proof
     terms; all named axioms surfaced via `#print axioms`. NO Riemann
     Hypothesis claim, NO Clay Millennium claim, ZERO empirical claims.
   keywords:
-    - "n6-architecture"
+    - "canon"
     - "formal-verification"
     - "Lean4"
     - "Mathlib4"
@@ -181,7 +181,7 @@ metadata:
     for unconditional sigma asymptotic, NOT for RH-equivalent sharp bound.
   related_identifiers:
     - relation: "isSupplementTo"
-      identifier: "https://github.com/<USER-ORG>/n6-architecture"
+      identifier: "https://github.com/<USER-ORG>/canon"
       # USER: confirm public-github URL OR keep tarball-supplementary path
       # (option (b) of cycle-8 §2 item 8 — Lean source as Zenodo upload).
       resource_type: "software"

@@ -11,7 +11,7 @@ parent: bt-1423-ai-quality-scale-mk5-2026-04-20
 
 ## Scope (English)
 
-This file is part of the n6-architecture repository.
+This file is part of the canon repository.
 See `README.md` and `domains/_index.json` for overall context.
 
 

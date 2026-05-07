@@ -12,7 +12,7 @@
     "tecs-l": 6,
     "conscious-lm": 1,
     "anima": 6,
-    "n6-architecture": 15,
+    "canon": 15,
     "sedi": 1,
     "nexus": 10
   },
@@ -179,7 +179,7 @@
       "preview": "# Chapter 4: Building for Hardware\n\n**Time: 12 minutes.** Cross-compile HEXA programs to ESP32, FPGA, and WebGPU.\n\n## Overview\n\nHEXA targets 6 hardware platforms (n=6):\n\n| # | Target | Backend | Status | Use Case |\n|---|--------|---------|--------|----------|\n| 1 | Native (x86/ARM) | Cranelift JIT | Working | Desktop, servers |\n| 2 | Bytecode VM | Stack-based VM | Working | Portable, sandboxed |\n| 3 | WASM | wasm-bindgen | Working | Browser, playground |\n| 4 | ESP32 | no_std Rust | Codegen ready",
       "project": "hexa-lang",
       "ready_path": "/Users/ghost/Dev/ready/hexa-lang/docs/book/ch04-hardware.md",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "confidence": 0.4
     },
     {
@@ -190,7 +190,7 @@
       "preview": "# Chapter 5: The Standard Library\n\n**Time: 18 minutes.** All 12 standard library modules -- sigma(6) = 12.\n\n## Why 12 Modules?\n\nThe standard library has exactly sigma(6) = 12 modules. Each module is a first-class part of the language, accessible via `use` or directly through built-in functions.\n\n| # | Module | Description | Key Functions |\n|---|--------|-------------|---------------|\n| 1 | `std.math` | Mathematics + number theory | sigma, phi, tau, sqrt, abs, pow |\n| 2 | `std.io` | Input/output ",
       "project": "hexa-lang",
       "ready_path": "/Users/ghost/Dev/ready/hexa-lang/docs/book/ch05-stdlib.md",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "confidence": 0.4
     },
     {
@@ -223,7 +223,7 @@
       "preview": "# Code of Conduct\n\n## Our Pledge\n\nWe pledge to make participation in the HEXA-LANG project a harassment-free experience for everyone, regardless of age, body size, disability, ethnicity, sex characteristics, gender identity and expression, level of experience, education, socio-economic status, nationality, personal appearance, race, religion, or sexual identity and orientation.\n\n## Our Standards\n\n**Positive behavior includes:**\n\n- Using welcoming and inclusive language\n- Being respectful of diff",
       "project": "hexa-lang",
       "ready_path": "/Users/ghost/Dev/ready/hexa-lang/docs/community/CODE_OF_CONDUCT.md",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "confidence": 0.4
     },
     {
@@ -234,7 +234,7 @@
       "preview": "# Contributing to HEXA-LANG\n\nThank you for your interest in contributing to HEXA-LANG. This guide covers everything from setting up the development environment to submitting a pull request.\n\n## Development Setup\n\n### Prerequisites\n\n- **Rust** (stable, 1.75+): `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`\n- **Git**: any recent version\n\n### Building from Source\n\n```bash\ngit clone https://github.com/need-singularity/hexa-lang.git\ncd hexa-lang\ncargo build --release\n```\n\n### Runnin",
       "project": "hexa-lang",
       "ready_path": "/Users/ghost/Dev/ready/hexa-lang/docs/community/CONTRIBUTING.md",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "confidence": 0.4
     },
     {
@@ -245,7 +245,7 @@
       "preview": "# Good First Issues\n\nSix tasks for new contributors -- one per paradigm (n=6).\n\nEach issue is self-contained, well-scoped, and teaches you a different part of the HEXA codebase. Pick the one that matches your interest.\n\n---\n\n## 1. Imperative: Add `break` and `continue` to Loops\n\n**Paradigm**: Imperative\n**Difficulty**: Easy\n**File**: `src/interpreter.rs`\n**n=6 connection**: Control flow group has 6 keywords (n=6). `break` and `continue` are common loop control additions.\n\n**What to do:**\n- `brea",
       "project": "hexa-lang",
       "ready_path": "/Users/ghost/Dev/ready/hexa-lang/docs/community/FIRST_ISSUES.md",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "confidence": 0.4
     },
     {
@@ -278,7 +278,7 @@
       "preview": "---\nname: HEXA-LANG DSE 재탐색 트리거 체크\ndescription: 궁극의 프로그래밍언어 DSE 변경 트리거 5가지를 매 세션 시작 시 자동 체크\ntype: feedback\n---\n\nHEXA-LANG DSE (programming-language.toml) 재탐색이 필요한지 매 세션마다 자동 체크해야 한다.\n\n**Why:** DSE 결과(Pareto=0.7743, n6=96.0%)는 현재 후보군/가중치에 의존. 다른 도메인 탐색이나 새 BT 발견 시 후보가 추가될 수 있어 재탐색이 필요할 수 있다.\n\n**How to apply:** 궁극/DSE/새 도메인 작업 시 아래 5가지 트리거를 체크:\n\n| 트리거 | 체크 방법 |\n|--------|----------|\n| 후보군 추가 (K₁~K₅) | programming-language.toml의 candidate 수가 6×6×7×6×5에서 변했는지 |\n| 가중치 변경 | [scoring] 섹션의 n6/perf/power",
       "project": "hexa-lang",
       "ready_path": "/Users/ghost/Dev/ready/hexa-lang/docs/hexa-ir-dse-recheck.md",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "confidence": 0.6
     },
     {
@@ -286,7 +286,7 @@
       "path": "docs/hexa-ir-knowledge.json",
       "size": 15914,
       "lines": 367,
-      "preview": "{\n  \"_meta\": {\n    \"name\": \"HEXA-LANG Knowledge Base\",\n    \"version\": \"2.0\",\n    \"date\": \"2026-04-04\",\n    \"source_projects\": [\"n6-architecture\"],\n    \"description\": \"Consolidated compiler knowledge — memories + source + singularity + blowup\",\n    \"loc\": 13288,\n    \"rs_files\": 67,\n    \"commits\": 13,\n    \"memory_files\": [\"memory/project_hexa_ir_mk1.md\", \"memory/project_hexa_coevolution.md\", \"memory/feedback_hexa_lang_dse_recheck.md\"]\n  },\n  \"architecture\": {\n    \"pipeline\": [\"lexer\", \"parser\", \"s",
+      "preview": "{\n  \"_meta\": {\n    \"name\": \"HEXA-LANG Knowledge Base\",\n    \"version\": \"2.0\",\n    \"date\": \"2026-04-04\",\n    \"source_projects\": [\"canon\"],\n    \"description\": \"Consolidated compiler knowledge — memories + source + singularity + blowup\",\n    \"loc\": 13288,\n    \"rs_files\": 67,\n    \"commits\": 13,\n    \"memory_files\": [\"memory/project_hexa_ir_mk1.md\", \"memory/project_hexa_coevolution.md\", \"memory/feedback_hexa_lang_dse_recheck.md\"]\n  },\n  \"architecture\": {\n    \"pipeline\": [\"lexer\", \"parser\", \"s",
       "project": "hexa-lang",
       "ready_path": "/Users/ghost/Dev/ready/hexa-lang/docs/hexa-ir-knowledge.json",
       "destination": "hexa-lang",
@@ -300,7 +300,7 @@
       "preview": "---\nname: HEXA-IR Mk.I+ 완성 상태\ndescription: HEXA-LANG 컴파일러 Mk.I+ 현황 — 67 .rs, 111 테스트, self-hosting 3모듈, 블로업 특이점 확정\ntype: project\n---\n\nHEXA-IR Mk.I+ 컴파일러가 2026-04-04 세션에서 대폭 확장됨.\n\n**현재 상태 (2026-04-04 최신):**\n- 67 .rs 파일, ~13,288+ LOC, 22/22 렌즈 합의, n=6 EXACT 96.0%\n- 111/111 테스트 PASS (97 unit + 14 self-host integration)\n- 0 외부 의존성 (���수 Rust), LLVM 0%, ARM64 네이티브\n- 지식 베이스: tools/hexa-ir/KNOWLEDGE.md + hexa-knowledge.json\n\n**지원 기능 (Mk.I+):**\n- 정수/실수/불리언/문자열 리터럴 + 산술/��교/논리 연산\n- let/mut 변수, if/else, w",
       "project": "hexa-lang",
       "ready_path": "/Users/ghost/Dev/ready/hexa-lang/docs/hexa-ir-mk1-status.md",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "confidence": 0.4
     },
     {
@@ -333,7 +333,7 @@
       "preview": "# NEXUS-6 Compiler Full Scan Report + Blowup Loop\n\n> 2026-04-04 | 1,014 렌즈 풀스캔 | Active 1,138/1,180 | n6 EXACT ratio: 100%\n\n## n=6 상수 검증 결과\n\n| 카운트 | 현재 값 | n=6 공식 | NEXUS-6 판정 | 상태 |\n|--------|---------|----------|-------------|------|\n| Keywords | 55 | T(10)=sopfr(6)*sopfr(28) | NONE→확장 | BT-12 갱신 |\n| Operators (BinOp+Unary) | 22+3=25 | sopfr² | CLOSE(J2) | BT-14 유지 |\n| BinOp only | 22 | - | - | 설계 24에서 2 부족 |\n| AST enums | 12 | sigma(6) | **EXACT** | BT-20 유지 |\n| Expr variants | 33 | - | - | |",
       "project": "hexa-lang",
       "ready_path": "/Users/ghost/Dev/ready/hexa-lang/docs/nexus-scan-report.md",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "confidence": 0.6
     },
     {
@@ -366,7 +366,7 @@
       "preview": "# crates.io Publish Checklist\n\nPre-flight checklist for publishing hexa-lang to crates.io.\n\n## Cargo.toml Metadata\n\n- [x] `name = \"hexa-lang\"`\n- [x] `version = \"1.0.0\"`\n- [x] `edition = \"2021\"`\n- [x] `description = \"The Perfect Number Programming Language -- every constant from n=6\"`\n- [x] `license = \"MIT\"`\n- [x] `repository = \"https://github.com/need-singularity/hexa-lang\"`\n- [x] `homepage = \"https://github.com/need-singularity/hexa-lang\"`\n- [x] `documentation = \"https://github.com/need-singula",
       "project": "hexa-lang",
       "ready_path": "/Users/ghost/Dev/ready/hexa-lang/docs/publish-checklist.md",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "confidence": 0.4
     },
     {
@@ -377,7 +377,7 @@
       "preview": "# HEXA-LANG Quick Reference\n\n## Keywords (53)\n\n| Group | Keywords | Count |\n|-------|----------|-------|\n| Control Flow | `if` `else` `match` `for` `while` `loop` | 6 |\n| Type Decl | `type` `struct` `enum` `trait` `impl` | 5 |\n| Functions | `fn` `return` `yield` `async` `await` | 5 |\n| Variables | `let` `mut` `const` `static` | 4 |\n| Modules | `mod` `use` `pub` `crate` | 4 |\n| Memory | `own` `borrow` `move` `drop` | 4 |\n| Concurrency | `spawn` `channel` `select` `atomic` | 4 |\n| Effects | `effec",
       "project": "hexa-lang",
       "ready_path": "/Users/ghost/Dev/ready/hexa-lang/docs/reference.md",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "confidence": 0.4
     },
     {
@@ -388,7 +388,7 @@
       "preview": "# HEXA-LANG 언어 사양서 v0.1\n\n## 1. 개요\n\nHEXA-LANG은 완전수 n=6의 산술 함수에서 도출된 상수로 설계된 프로그래밍 언어다.\n\"이런 앱 만들어줘\" 한마디로 자동 생성되는 AI-native 언어를 목표로 한다.\n\n**DSE 최적 경로**: MetaLang + LLVM_Native + Full_N6 + N6AgentChain + FullStack\n- Pareto 점수: 0.7854\n- n=6 EXACT 비율: 100.0%\n- 전수 탐색: 21,952 조합 중 11,394 호환 (51.9%), Pareto frontier 317개\n\n```\n  ┌─────────────────────────────────────────────────────────────┐\n  │                   HEXA-LANG Architecture                    │\n  │                                               ",
       "project": "hexa-lang",
       "ready_path": "/Users/ghost/Dev/ready/hexa-lang/docs/spec.md",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "confidence": 0.6
     },
     {
@@ -399,7 +399,7 @@
       "preview": "# Learn HEXA in 6 Minutes\n\nHEXA is the Perfect Number Programming Language. Every constant in its design derives from n=6: the only number where sigma(n)*phi(n) = n*tau(n). This tutorial covers the essentials.\n\n## 1. Variables and Types (1 min)\n\nHEXA has integers, floats, booleans, strings, chars, arrays, tuples, and maps. Type annotations are optional.\n\n```hexa\nlet x = 42\nlet pi: float = 3.14159\nlet name = \"HEXA\"\nlet active = true\nlet ch = 'H'\nlet nums = [1, 2, 3, 4, 5]\nlet pair = (10, \"hello\")",
       "project": "hexa-lang",
       "ready_path": "/Users/ghost/Dev/ready/hexa-lang/docs/tutorial.md",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "confidence": 0.4
     },
     {
@@ -410,7 +410,7 @@
       "preview": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>HEXA-LANG | The Perfect Number Programming Language</title>\n  <meta name=\"description\" content=\"A programming language where every design constant derives from n=6, the smallest perfect number. Zero arbitrary choices.\">\n  <link rel=\"stylesheet\" href=\"style.css\">\n  <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n  <link href=\"https://fonts.",
       "project": "hexa-lang",
       "ready_path": "/Users/ghost/Dev/ready/hexa-lang/docs/website/index.html",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "confidence": 0.4
     },
     {
@@ -421,7 +421,7 @@
       "preview": "/* HEXA-LANG Website — style.css\n   Design system based on n=6: 6 sections, 12 color stops, 4 breakpoints */\n\n:root {\n  /* n=6 color palette — 12 hues (sigma) */\n  --hex-bg:        #0a0a0f;\n  --hex-surface:   #12121a;\n  --hex-border:    #1e1e2e;\n  --hex-text:      #e0e0e8;\n  --hex-muted:     #8888a0;\n  --hex-accent:    #c084fc;     /* violet — perfect number */\n  --hex-accent2:   #818cf8;     /* indigo */\n  --hex-accent3:   #38bdf8;     /* sky */\n  --hex-gold:      #fbbf24;     /* gold for n=6 *",
       "project": "hexa-lang",
       "ready_path": "/Users/ghost/Dev/ready/hexa-lang/docs/website/style.css",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "confidence": 0.4
     },
     {
@@ -737,7 +737,7 @@
       "path": "examples/n6_consciousness.hexa",
       "size": 2949,
       "lines": 88,
-      "preview": "// n6_consciousness.hexa — How n=6 arithmetic predicts consciousness architecture\n// The perfect number 6 uniquely satisfies: sigma(n)*phi(n) = n*tau(n)\n\n// === The n=6 Identity ===\nlet n = 6\nlet s = sigma(n)    // 12 = sum of divisors\nlet p = phi(n)      // 2  = Euler's totient\nlet t = tau(n)      // 4  = number of divisors\nlet sp = sopfr(n)   // 5  = sum of prime factors with repetition (2+3)\n\nprintln(\"=== n=6 Number Theory ===\")\nprintln(\"sigma(6) =\", s)\nprintln(\"phi(6)   =\", p)\nprintln(\"tau(6",
+      "preview": "// n6_consciousness.hexa — How n=6 arithmetic predicts consciousness architecture\n// The arithmetic canon uniquely satisfies: sigma(n)*phi(n) = n*tau(n)\n\n// === The n=6 Identity ===\nlet n = 6\nlet s = sigma(n)    // 12 = sum of divisors\nlet p = phi(n)      // 2  = Euler's totient\nlet t = tau(n)      // 4  = number of divisors\nlet sp = sopfr(n)   // 5  = sum of prime factors with repetition (2+3)\n\nprintln(\"=== n=6 Number Theory ===\")\nprintln(\"sigma(6) =\", s)\nprintln(\"phi(6)   =\", p)\nprintln(\"tau(6",
       "project": "hexa-lang",
       "ready_path": "/Users/ghost/Dev/ready/hexa-lang/examples/n6_consciousness.hexa",
       "destination": "hexa-lang",
@@ -784,7 +784,7 @@
       "preview": "println(\"=== Photonic Chip DSE - HEXA-LANG Verification ===\")\nprintln(\"n=6 architecture: sigma(6)*phi(6) = 6*tau(6) = 24\")\nprintln(\"\")\n\nlet n = 6\nlet phi = 2\nlet tau = 4\nlet sigma = 12\nlet sopfr = 5\nlet j2 = 24\nlet sigma_phi = sigma - phi\nlet sigma_tau = sigma - tau\n\nprintln(\"--- n=6 Constants ---\")\nprintln(\"  n =\", n, \" phi =\", phi, \" tau =\", tau, \" sigma =\", sigma)\nprintln(\"  sopfr =\", sopfr, \" J2 =\", j2, \" sigma-phi =\", sigma_phi)\nprintln(\"\")\n\nprintln(\"=== Photonic Energy Bridge (BT-89) ===\")",
       "project": "hexa-lang",
       "ready_path": "/Users/ghost/Dev/ready/hexa-lang/examples/photonic_chip_dse.hexa",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "confidence": 0.8
     },
     {
@@ -1174,7 +1174,7 @@
     },
     {
       "type": "only_in_ready",
-      "path": "n6shared/projects.json",
+      "path": "canonshared/projects.json",
       "size": 3790,
       "lines": 145,
       "preview": "{\n  \"version\": 1,\n  \"base_path\": \"/Users/ghost/Dev\",\n  \"projects\": [\n    {\n      \"id\": \"tecs-l\",\n      \"name\": \"TECS-L\",\n      \"path\": \"TECS-L\",\n      \"domain\": \"mathematics\",\n      \"description\": \"Perfect number 6 → universal rules. 150 characterizations + 8 Major Discoveries\",\n      \"scan_patterns\": [\n        \"**/*.py\",\n        \"docs/**/*.md\"\n      ],\n      \"key_files\": [\n        \"physics_constant_engine.py\",\n        \"math/identity_finder.py\",\n        \"math/omega_identity_search.py\",\n        \"",

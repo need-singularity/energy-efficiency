@@ -3,7 +3,7 @@ slug defect-zero-closed-loop
 status active
 fire-cmd nexus kick "defect-zero-loop-$(date +%Y%m%d-%H%M%S)" 2>&1 | tail -50
 fire-host local
-fire-cwd /Users/ghost/core/n6-architecture
+fire-cwd /Users/ghost/core/canon
 interval 300
 attempts-log state/blockers/defect_zero_closed_loop.fires/
 resolution-metric kick_pass

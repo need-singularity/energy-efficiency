@@ -965,7 +965,7 @@ Test plan:
 | DEHN (DE) / Furse (UK) | lightning protection | IEC 62305 surge + earthing |
 | Rittal (DE) | outdoor cabinet | IP65 enclosure |
 | Local SA installer (SAREM-certified) | installation + commissioning | NRS-097-2 / NERSA SSEG |
-| n6-architecture private framework | own_doc_lint / own31 lint | docs gate |
+| canon private framework | own_doc_lint / own31 lint | docs gate |
 
 ## §19 ACCEPTANCE / MISS criteria (own#12 pre-declared)
 

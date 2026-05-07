@@ -22,7 +22,7 @@ requires:
 ---
 # [CANONICAL v1] P-006 HEXA Chip 7-Tier Ladder (HEXA-CHIP-7DAN-INT) — Mammoth Integrated Paper
 
-> **Author**: Park Min-woo (n6-architecture)
+> **Author**: Park Min-woo (canon)
 > **Category**: hexa-chip-7dan-integrated — n=6 arithmetic 7-tier ladder chip mammoth integrated seed paper
 > **Version**: v1 (2026-04-18 integrated, mammoth)
 > **Predecessor BTs**: BT-28 (n=6 arithmetic seed), BT-33/36/37/45/55/58/59/69/75/76/77/86/90/93/112/170~175/215/260~266/354/1104 (14 domain branch sum)
@@ -546,7 +546,7 @@ HEXA-CHIP-7DAN stage-by-stage maturity roadmap — verification density + tier y
 
 L1~L7 all-tier silicon demonstration + consciousness SoC clinical use. Cross-referenced with 295 domains,
 all 170 atlas.n6 full-node entries EXACT. Predecessor condition: §3 REQUIRES 15 domains 🛸10 attained.
-χ²(169df) < 140, p > 0.9, Pareto top 6 fully demonstrated.
+χ²(169df) < 140, p > 0.9, Pareto top-K (data-driven) fully demonstrated.
 
 - L7 quantum+consciousness resonance frequency 12 GHz measured, BCI clinical σ·τ=48 subjects passed
 - L5 photonics commercial shipping σ·J₂=288 Gbps/λ
@@ -1550,7 +1550,7 @@ Each FALSIFIER verifies the rejection condition stated in §7.10 by measurement.
 ## §22 References and links
 
 ### 22.1 Top-level project documents
-- root CLAUDE.md: /Users/ghost/Dev/n6-architecture/CLAUDE.md
+- root CLAUDE.md: /Users/ghost/Dev/canon/CLAUDE.md
 - chip-architecture domain: domains/compute/chip-architecture/chip-architecture.md
 - atlas.n6 SSOT: $NEXUS/shared/n6/atlas.n6
 

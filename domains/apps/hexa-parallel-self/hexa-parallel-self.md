@@ -894,8 +894,8 @@ Test plan:
 | InstaX-Research | InstantID weights (Apache 2.0) | identity preservation |
 | Google LLC | TensorFlow Lite + NNAPI + Android 14 | Android runtime |
 | C2PA / Adobe Inc. | Content Credentials SDK + watermark tooling | provenance |
-| n6-architecture private framework | own_doc_lint / own31 lint | docs gate |
-| n6-architecture sibling | apps/camera-filter-app/ | ISP + filter pipeline |
+| canon private framework | own_doc_lint / own31 lint | docs gate |
+| canon sibling | apps/camera-filter-app/ | ISP + filter pipeline |
 
 ## §19 ACCEPTANCE / MISS criteria (own#12 pre-declared)
 

@@ -122,7 +122,7 @@ Common across all three models: **d_state / order / n_block = n = 6**. Mamba-2 a
 1. **Bench remeasurement** (add S1/S2/S3 rows to _bench_plan.md): FLOPs / latency / VRAM / param 4-axis x 3 HW
 2. **atlas.n6 absorption** (R28): 3 items like `@R n6-sota-mamba2-d_state6 = 6 :: [7]` -> add [10*] promotion gate
 3. **3 individual papers split** (R18 follow-up): currently integrated 1 paper (N6-059); later if needed, split into N6-060/061/062
-4. **convergence/n6-architecture.json** block add: `SOTA_3_SSM` domain
+4. **convergence/canon.json** block add: `SOTA_3_SSM` domain
 
 ## 7. File Absolute Paths
 

@@ -1,6 +1,6 @@
 # PURE P3-1 — BKLPR Selmer Model Deep Dive
 
-This study note is the 1st output of the P3 PURE track in the n6-architecture millennium-learning roadmap. It organizes, from primary sources, the BKLPR Selmer model — the theoretical backbone of the σ(n)·φ(n)=n·τ(n) iff n=6 theorem and the BT-546 BSD conditional Corollary.
+This study note is the 1st output of the P3 PURE track in the canon millennium-learning roadmap. It organizes, from primary sources, the BKLPR Selmer model — the theoretical backbone of the σ(n)·φ(n)=n·τ(n) iff n=6 theorem and the BT-546 BSD conditional Corollary.
 
 ## Honesty declaration
 

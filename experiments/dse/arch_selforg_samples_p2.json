@@ -103,6 +103,6 @@
   "링크": {
     "엔진": "engine/arch_selforg.hexa",
     "P1_대응": "experiments/dse/arch_quantum_samples_p1.json",
-    "로드맵": "$NEXUS/shared/roadmaps/n6-architecture.json DSE-P2-1"
+    "로드맵": "$NEXUS/shared/roadmaps/canon.json DSE-P2-1"
   }
 }

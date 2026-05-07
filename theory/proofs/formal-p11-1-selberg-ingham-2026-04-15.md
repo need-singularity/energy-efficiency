@@ -1,6 +1,6 @@
 > FORMAL P11-1 — Selberg zeta + Ingham 4th-moment route to an n=6 link / 2026-04-15
 >
-> Author: DSE-P11-1 / n6-architecture P11 (FORMAL axis, emergent DSE)
+> Author: DSE-P11-1 / canon P11 (FORMAL axis, emergent DSE)
 > Purpose: following the P10-1 MISS on Riemann zero spacings, honestly re-explore three follow-up routes — Selberg zeta / Ingham 4th moment / Δ(τ) weight 24
 > Rules: no self-reference, grounded in Ingham 1926 / Selberg 1956 / Ramanujan 1916 primary sources, English, numerical cross-checks
 
@@ -118,7 +118,7 @@ difference   = 0 (machine precision)
 - Product σ(6)·ζ(2) = 12·π²/6 = 2π²
 - Reciprocal 1/(σ(6)·ζ(2)) = 1/(2π²) = Ingham leading
 
-**Reading**: the leading coefficient of the Ingham 4th moment is **exactly** the reciprocal of the product of the perfect number 6's sum-of-divisors σ(6) and Euler's constant ζ(2). While the P10-1 direct `σ−τ=8` route failed, the **indirect (Euler × σ) route** holds EXACT.
+**Reading**: the leading coefficient of the Ingham 4th moment is **exactly** the reciprocal of the product of the arithmetic canon's sum-of-divisors σ(6) and Euler's constant ζ(2). While the P10-1 direct `σ−τ=8` route failed, the **indirect (Euler × σ) route** holds EXACT.
 
 ### 3.5 Analytical significance
 
@@ -205,7 +205,7 @@ Improvement: ∞ (approximation → exact identity)
      = 1 / (σ(6) · ζ(2))      ← σ(6) = 12 substitution ★
      = 0.05066059182...
 
-[Signature of perfect number 6]: σ(6)=12 appears exactly in the denominator of the Ingham main coefficient
+[Signature of arithmetic canon]: σ(6)=12 appears exactly in the denominator of the Ingham main coefficient
 [Degree match]:                  τ(6)=4 = 2k, k=2 (4th moment) — notable match
 ```
 

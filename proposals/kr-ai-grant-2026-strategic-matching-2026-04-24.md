@@ -1,4 +1,4 @@
-# 2026 Korea AI government grant — strategic matching: n6-architecture x nexus asset mapping
+# 2026 Korea AI government grant — strategic matching: canon x nexus asset mapping
 
 **Date**: 2026-04-24
 **Author**: strategy scoping (auto proposal, no code/config changes)
@@ -12,7 +12,7 @@
 
 ## 1. Executive Summary
 
-Korea's 2026 government R&D budget is KRW 35.3 trillion (+19.9%), of which AI alone is KRW 9.9 trillion — triple the prior year — and the AI Basic Act, effective 2026-01-22, forcibly creates a verification / trust SaaS market. The n6-architecture x nexus x anima x hexa-lang asset stack maps directly onto three axes: (a) quantum-algorithm hubs, (b) AI safety / trust source technology, (c) K-Moon Shot "AI Scientist" mission. This proposal organises the immediate-execution cards for those three axes, and pre-excludes the general AI Voucher, smart-manufacturing AI, and TIPS on fit/ROI grounds. No action-level commit arises from this document; it is a decision-making baseline for the formal application decision in the next round.
+Korea's 2026 government R&D budget is KRW 35.3 trillion (+19.9%), of which AI alone is KRW 9.9 trillion — triple the prior year — and the AI Basic Act, effective 2026-01-22, forcibly creates a verification / trust SaaS market. The canon x nexus x anima x hexa-lang asset stack maps directly onto three axes: (a) quantum-algorithm hubs, (b) AI safety / trust source technology, (c) K-Moon Shot "AI Scientist" mission. This proposal organises the immediate-execution cards for those three axes, and pre-excludes the general AI Voucher, smart-manufacturing AI, and TIPS on fit/ROI grounds. No action-level commit arises from this document; it is a decision-making baseline for the formal application decision in the next round.
 
 ## 2. Macro environment — structure of the 2026 Korean AI government budget
 
@@ -31,8 +31,8 @@ Key observation: 70%+ of ICT R&D is concentrated on AI, and the four elite Korea
 
 | Asset | Location | Role |
 |---|---|---|
-| `atlas/atlas.n6` | `/Users/ghost/core/n6-architecture/atlas/` | math & physics reality map, 21,800 lines, 5928 @R / 326 @P / 357 @C / 255 @L |
-| breakthroughs index | `/Users/ghost/core/n6-architecture/theory/breakthroughs/` | `_hypotheses_index.json`, `breakthrough-theorems.md`, BT-361~408 family |
+| `atlas/atlas.n6` | `/Users/ghost/core/canon/atlas/` | math & physics reality map, 21,800 lines, 5928 @R / 326 @P / 357 @C / 255 @L |
+| breakthroughs index | `/Users/ghost/core/canon/theory/breakthroughs/` | `_hypotheses_index.json`, `breakthrough-theorems.md`, BT-361~408 family |
 | nexus blowup 9-phase | `/Users/ghost/core/nexus/cli/blowup/` (sibling repo) | ouroboros convergence loop + 9-stage phase control |
 | sim_bridge / godel_q | `/Users/ghost/core/nexus/sim_bridge/godel_q/` | ANU-QRNG-based quantum-random bridge, 64-tick falsification data |
 | Stochastic Resonance evidence | nexus monte carlo | σ≈0.1 PEAK 25% — first-order evidence of noise-band optimisation |

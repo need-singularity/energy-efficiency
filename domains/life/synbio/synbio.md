@@ -705,7 +705,7 @@ what this repo IS and IS NOT.
 
 - **IS**: a canonical-side **boundary spec stub**. Defines the wet-lab /
   in-silico boundary, formalises the handshake schema pair, registers
-  the `life/synbio/` slug in the n6-architecture life axis (`_index.json`
+  the `life/synbio/` slug in the canon life axis (`_index.json`
   entry pre-existed; this canonical block lands 2026-05-06).
 - **IS NOT**: a live wet-lab SELEX repository. There are **no in-vitro
   selection rounds, no enriched libraries, no catalytic-activity

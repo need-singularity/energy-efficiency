@@ -1,4 +1,4 @@
-# N6 Architecture — Detailed Visuals & Results
+# CANON — Detailed Visuals & Results
 
 > Detailed visualizations and experimental results separated from README.md.
 

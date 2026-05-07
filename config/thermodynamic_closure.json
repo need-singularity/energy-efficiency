@@ -1,6 +1,6 @@
 {
   "_doc": "Thermodynamic closure — directional (entropy-monotone) engine operations and their algebraic witnesses. Axis E3 manifest. Complements F (equality-preserving) with a direction-preserving sub-functor. Bridges atlas.n6 @F physics tier to engine @meta append-only semantics.",
-  "schema": "n6-architecture/thermodynamic_closure/1",
+  "schema": "canon/thermodynamic_closure/1",
   "declared_round": "R24+31",
   "declared_ts": "2026-04-24T..Z",
   "status": "declarative_not_yet_enforced",

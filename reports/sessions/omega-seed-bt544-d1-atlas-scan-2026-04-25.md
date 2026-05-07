@@ -18,7 +18,7 @@ grade: seed-design, no claim
 
 This document executes BT-544 **seed-design D1** (open task per
 `omega-exec-bt544-fallback-molt-validation-2026-04-25.md` §8.3) by
-scanning n6-architecture-side and nexus-side atlas material for
+scanning canon-side and nexus-side atlas material for
 NS-adjacent primitives **not yet** used in the existing L9 BT-544
 catalogue (Q1 KdV-Gram, Q5 Sobolev/Besov, KPZ d=7), all three of
 which FAILED on 2026-04-25 (F-MOLT-D fired in strongest form).
@@ -79,7 +79,7 @@ prompt. Below: top entries by NS-adjacency, with file/line
 references. None of the entries below has been used in the failed
 Q1/Q5/KPZ catalogue.
 
-### §2.1 n6-architecture-side
+### §2.1 canon-side
 
 **A1.** `domains/physics/millennium-navier-stokes/millennium-navier-stokes.md`
 §X.2 FREE — line 776-780. **Vorticity-MHD duality**: vorticity
@@ -162,7 +162,7 @@ status: round1_open; FT-1 falsifiability test specified
 numerical receipts already exist in
 `~/core/nexus/bt/attacks/bt544_results.jsonl` (Taylor-Green 2D PASS,
 Lamb-Oseen UNBOUNDED-as-expected). **Crucially, HVC is documented
-nexus-side but has not been imported into the n6-architecture L9
+nexus-side but has not been imported into the canon L9
 catalogue**. This is the strongest single atlas-grounded candidate
 discovered in the scan.
 
@@ -500,7 +500,7 @@ spec granularity below, ready for next-session dispatch.
   total session cost ~half day.
 
 - **Why dispatch-ready**: every input quantity is repo-grounded
-  and computable from inside the n6-architecture session via
+  and computable from inside the canon session via
   cross-repo grep into `~/core/nexus`; no fabrication risk.
 
 ### §5.2 Top-2: D1.4 She-Leveque residual enumeration (cheapest)

@@ -9,7 +9,7 @@
 
 ## 0. Purpose of This Note
 
-This note systematically organizes **foundations of number theory** at P0 stage of the n6-architecture project's millennium-learning roadmap. It covers five topics in a self-contained manner and, in its final section, independently writes out the project's core theorem `σ(n)·φ(n) = n·τ(n) ⟺ n = 6` (Proof 1: multiplicative decomposition + local case analysis).
+This note systematically organizes **foundations of number theory** at P0 stage of the canon project's millennium-learning roadmap. It covers five topics in a self-contained manner and, in its final section, independently writes out the project's core theorem `σ(n)·φ(n) = n·τ(n) ⟺ n = 6` (Proof 1: multiplicative decomposition + local case analysis).
 
 1. Prime number theorem π(x) ~ x/ln x, Chebyshev θ/ψ, Mertens' theorem
 2. Divisor functions σ, τ, φ, J_k: definitions and multiplicativity, local formulas
@@ -622,4 +622,4 @@ Once this note is mastered, the goal is to be able to rewrite Proof 1 of `theory
 
 ## Honesty Declaration
 
-This note is a **study summary**. It does not contain new theorems or Millennium-problem targets. The status of the seven Millennium problems in the n6-architecture project is **0/7**, and this note does not change that number. Cited theorems · authors · textbook chapter numbers are all real; anything uncertain was not included when written. Adhering to the no-self-referential-verification rule, the result n = 6 is recorded only as an **a posteriori consequence** of general number-theoretic logic.
+This note is a **study summary**. It does not contain new theorems or Millennium-problem targets. The status of the seven Millennium problems in the canon project is **0/7**, and this note does not change that number. Cited theorems · authors · textbook chapter numbers are all real; anything uncertain was not included when written. Adhering to the no-self-referential-verification rule, the result n = 6 is recorded only as an **a posteriori consequence** of general number-theoretic logic.

@@ -85,7 +85,7 @@ leanprover/lean4:v4.29.1 installed
 ### 2.2 Project structure
 
 ```
-/Users/ghost/Dev/n6-architecture/lean4-n6/
+/Users/ghost/Dev/canon/lean4-n6/
 |-- lakefile.lean         # Lake build spec
 |-- lean-toolchain        # pinned v4.29.1
 |-- Main.lean             # exe entry point

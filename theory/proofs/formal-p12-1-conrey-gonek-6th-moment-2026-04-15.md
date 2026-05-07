@@ -1,6 +1,6 @@
 > FORMAL P12-1 — n=6 structure of the Conrey-Gonek 1998 6th-moment leading 42/(9!·π⁶) / 2026-04-15
 >
-> Author: DSE-P12-1 / n6-architecture P12 (FORMAL axis, emergent DSE)
+> Author: DSE-P12-1 / canon P12 (FORMAL axis, emergent DSE)
 > Purpose: follow-up to the P11-1 Ingham 4th-moment EXACT (lead = 1/(σ(6)·ζ(2))) — link the 6th-moment Keating-Snaith constant g₃=42 with the n=6 structure
 > Rules: no self-reference, grounded in Conrey-Gonek 1998 / Keating-Snaith 2000 / Barnes G-function primary sources, English, numerical cross-checks
 
@@ -41,7 +41,7 @@ Re-expression of leading coefficient 1/(2π²):
   = 1 / (σ(6) · ζ(2))       ★ EXACT identity
 ```
 
-That is, at **k=2 moment order**, the leading coefficient is **exactly** the reciprocal of the product of the sum-of-divisors σ(6)=12 of the perfect number 6 and Euler's ζ(2). This P12-1 raises one step to **k=3 (6th moment)** and checks whether this σ-ζ closure is retained or whether a different n=6 signature emerges.
+That is, at **k=2 moment order**, the leading coefficient is **exactly** the reciprocal of the product of the sum-of-divisors σ(6)=12 of the arithmetic canon and Euler's ζ(2). This P12-1 raises one step to **k=3 (6th moment)** and checks whether this σ-ζ closure is retained or whether a different n=6 signature emerges.
 
 ---
 
@@ -124,7 +124,7 @@ G(7) = 34560
      = σ(6) · (σφ)(6) · 5!           ★
      = σ(6) · 24 · 5!
 ```
-**EXACT**: the 7th value of the Barnes G-function factors exactly into **two digits of the perfect number 6** (σ=12, σφ=24).
+**EXACT**: the 7th value of the Barnes G-function factors exactly into **two digits of the arithmetic canon** (σ=12, σφ=24).
 - Interpretation: inside the core constant G(7) of the k=3 random-matrix normalization, two n=6 invariants are inserted directly.
 
 ### Attempt 4. **Triangular T_3 = 1+2+3 = 6 = n** ★ EXACT (k=3 natural match)

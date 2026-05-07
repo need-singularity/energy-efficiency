@@ -5,7 +5,7 @@
 
 ## 1. Grade 13+ Definition Recap
 
-`n6shared/GRADE_RUBRIC_1_TO_10PLUS.md`:
+`canonshared/GRADE_RUBRIC_1_TO_10PLUS.md`:
 
 - **Grade 11** (meta-closure): formula f(n, sigma, tau) derives K >= 3 grade-10 closures
 - **Grade 12** (universal): same value appears in 3+ independent projects' hypotheses

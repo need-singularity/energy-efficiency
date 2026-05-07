@@ -10,7 +10,7 @@
 
 This is the cycle-14 1-click deposit-prep bundle for the
 HEXA-WEAVE Formal-Mechanical Verification paper (W2 milestone), authored
-inside the n6-architecture private research framework. The bundle is
+inside the canon private research framework. The bundle is
 re-spun at cycle-18 to reflect the §19 ACCEPTANCE / §20 APPENDIX / §21
 IMPACT precision updates and the cycle-18 axiom-keyword count.
 
@@ -54,8 +54,8 @@ PARTIAL-RESOLVED accordingly).
 
 ```bash
 # 1. clone repo at the recorded SHA (see manifest.sha256)
-git clone <repo-url> n6-architecture
-cd n6-architecture/lean4-n6
+git clone <repo-url> canon
+cd canon/lean4-n6
 
 # 2. fetch the matching Lean / Mathlib pin
 #    Lean 4: leanprover/lean4:v4.30.0-rc1 (lean-toolchain file)
@@ -115,7 +115,7 @@ AX-1 verify-embedded PASS:
 - **11 named axioms (cycle-18).** All axioms are explicitly named (not
   silent `sorry`), surfaced via `#print axioms`, cited from published
   literature (Felgner 1971 + Drake 1974 + Jech 2003 + Williams 1976 +
-  Robin 1984 + Hardy-Wright + Wigert 1907) and the n6-architecture
+  Robin 1984 + Hardy-Wright + Wigert 1907) and the canon
   private SSOT (HEXA-COMP). All 11 Felgner Hauptsatz §3 atomics now
   have a `vkappa_*_mechanical` mathlib4-derived companion theorem at
   the semantic-kernel level; 4 of those companions
@@ -133,7 +133,7 @@ post-publish.
 
 ## Author / contact
 
-- **M. Park** — independent (n6-architecture private framework).
+- **M. Park** — independent (canon private framework).
 - Email: PENDING — to be reconciled with ORCID before deposit
   (proposal §4 item 2; two emails coexist in the repo,
   `arsmoriendi99@proton.me` and `mk55992@proton.me`; user picks one).

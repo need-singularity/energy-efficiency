@@ -137,7 +137,7 @@
 - Of the 453 TOML, only one (`hexa-ios.toml`) directly contains the `bt_refs` field. The other 452 extract `BT-NNN` tokens from comment headers as a proxy (actually detected in 151 TOML).
 - `n6_formula` / `cross_seeds` are substituted by matching constant symbols on line bodies (`sigma=12`, `phi=2`, `n=6`, `tau=4`, `sopfr=5`, `j2=24`, `sigma-phi`, `n/phi`, etc.).
 - `pareto_frontier_400.json` absent -> pareto_pts substituted with mean 5-vector of TOML candidate scoring (n6/perf/power/cost/energy_proxy).
-- `n6shared/config/bt_weights.json` absent -> BT weights replaced by overlap counts instead of hardcoded values.
+- `canonshared/config/bt_weights.json` absent -> BT weights replaced by overlap counts instead of hardcoded values.
 - Prior scan had 380 TOML at that time; at runtime here, 453 TOML (73 of 78 new domains already incorporated). v1 baseline 75-domain expansion (~+20%).
 
 ## v1 -> v2 improvements, 3 points (numerical)
@@ -186,7 +186,7 @@ Internal metric improvements:
 
 | File | Path | Status |
 |------|------|--------|
-| JSON result | `n6shared/dse/dse_cross_results_v2.json` | written (80,627 bytes) |
+| JSON result | `canonshared/dse/dse_cross_results_v2.json` | written (80,627 bytes) |
 | Report | `reports/discovery/dse-v2-results-2026-04-11.md` | written (this document) |
 | atlas.n6 append | `$NEXUS/shared/n6/atlas.n6` | +100 pair [7] append |
 | Executable source | `experiments/dse/cross_dse_fusion_v2_run.hexa` | saved |

@@ -48,7 +48,7 @@
     {"id": "F-CYCLE23-DOCKER-2", "condition": "hexa-runner:latest local digest changes within 7d (Mac local image rebuild)", "deadline": "2026-05-05", "status": "preregistered"},
     {"id": "F-CYCLE23-DOCKER-3", "condition": "alt-path docker save+rsync transfer fails on ubu1 (e.g. /tmp full or ssh deny)", "deadline": "2026-05-12", "status": "preregistered"}
   ],
-  "raw_47_cross_repo": "hexa-runner image is shared infrastructure across n6-architecture / nexus / hexa-lang sister repos; preflight digest result cross-applicable",
+  "raw_47_cross_repo": "hexa-runner image is shared infrastructure across canon / nexus / hexa-lang sister repos; preflight digest result cross-applicable",
   "raw_9_hexa_only": "tool/ghcr_push.hexa is bash; cycle 30+ rewrite pending",
   "raw_53_deterministic": "docker inspect digest = deterministic; --plan output deterministic",
   "raw_77_append_only": true,

@@ -6,13 +6,13 @@
   },
   "routes": {
     "_TECS-L_DEPRECATED": {
-      "_note": "TECS-L 폐기 완료 (2026-04). 수학/가설/상수는 n6-architecture/theory/ 에 흡수됨.",
+      "_note": "TECS-L 폐기 완료 (2026-04). 수학/가설/상수는 canon/theory/ 에 흡수됨.",
       "dest": "$N6_ARCH/theory",
       "keywords": ["characterization", "proof", "theorem", "hypothesis", "math", "atlas", "constant", "formula"],
       "file_patterns": ["theory/**"],
       "priority": "disabled"
     },
-    "n6-architecture": {
+    "canon": {
       "dest": "$N6_ARCH",
       "keywords": ["BT-", "technique", "chip", "energy", "DSE", "semiconductor", "battery", "solar", "fusion", "robot"],
       "file_patterns": ["docs/**", "techniques/**", "experiments/**", "tools/**"],

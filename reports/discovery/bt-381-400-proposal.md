@@ -47,4 +47,4 @@ Core identity target: sigma(6) * phi(6) = n * tau(6) = 24 (uniquely solved at n=
 
 Total nodes: 417 (+30), Total edges: 1507 (+109). 20 new BTs, 10 new domains.
 
-*Prepared: 2026-04-11 | n6-architecture NEXUS-6 agent*
+*Prepared: 2026-04-11 | canon NEXUS-6 agent*

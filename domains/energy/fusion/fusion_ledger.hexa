@@ -6,7 +6,7 @@
 // @usage(hexa run modules/fusion_ledger/fusion_ledger.hexa --verify [--json])
 // @sentinel(__FUSION_LEDGER__ <PASS|FAIL> [reason=<slug>])
 // @origin(rewrite of lost 425-LOC Python module via .hexa, sourced from
-//         ~/core/n6-architecture/domains/energy/fusion/ + verify_fusion.hexa
+//         ~/core/canon/domains/energy/fusion/ + verify_fusion.hexa
 //         + data/iter_constants.json (already on disk).
 //         HONESTY: previous Python build verified 26/27 (96.3%); the
 //         lawson_triple_keV_s_per_m3 entry is falsified by one decade

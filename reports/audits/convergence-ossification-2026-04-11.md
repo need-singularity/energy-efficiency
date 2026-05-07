@@ -1,6 +1,6 @@
 # Convergence ossification promotion audit — 2026-04-11
 
-> **Axis**: reports/audits · n6-architecture · convergence operations
+> **Axis**: reports/audits · canon · convergence operations
 > **Rules basis**: R9 (ossification conditions) / R10 (ossified immutable) / R11 (one-way promotion) / R14 (shared SSOT) / R18 (minimal)
 > **Target**: review promotion of 3 stable entries -> ossified
 > **Backup**: `reports/audits/convergence-backup-2026-04-11-ossification.json`
@@ -9,7 +9,7 @@
 
 ## 1. Background
 
-Previous agent #21 added the following 3 entries to the `stable` block of `n6shared/convergence/n6-architecture.json`:
+Previous agent #21 added the following 3 entries to the `stable` block of `canonshared/convergence/canon.json`:
 
 1. `PRODUCTS_164_173_RECOUNT` — products.json drift recount
 2. `GOAL_MD_295_COMPLETE` — 295-domain standalone goal.md generation
@@ -169,7 +169,7 @@ Conclusion: **the existing 21 ossified items are byte-level identical** — R10 
 | R9 | ossification triple condition (verify PASS + 0 recurrence + explicit threshold) | OK — all 3 satisfied |
 | R10 | ossified immutability (no edit/delete of existing items) | OK — 21 existing bytes preserved |
 | R11 | no ossification demotion (forbid ossified -> stable reverse) | OK — one-way promotion only |
-| R14 | shared JSON single-source-of-truth | OK — only `n6shared/convergence/n6-architecture.json` edited |
+| R14 | shared JSON single-source-of-truth | OK — only `canonshared/convergence/canon.json` edited |
 | R18 | minimal (only requested scope) | OK — no work beyond promoting the 3 stable items |
 | R28 | atlas SSOT | OK — atlas.n6 not edited (convergence ops use a separate SSOT) |
 | JSON valid | passes `python3 -m json.tool` | OK — JSON_TOOL_VALID |

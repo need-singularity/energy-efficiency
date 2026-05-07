@@ -30,7 +30,7 @@ Investigation of `/Users/ghost/core/hexa-lang/self/` on 2026-04-24 shows:
 | `self/test_module_import.hexa`, `self/test_deep_import_chain.hexa` | Regression tests — deep chain (ROI #149) was the silent-exit bug; fixed. | Green. |
 | `self/modules/` (boot_lexer, boot_parser, boot_compiler, boot_structs, boot_typecheck) | Live callers of the directive form. | In production. |
 
-**What this means for n6-architecture:**
+**What this means for canon:**
 
 - The "stable `import` in the hexa compiler itself" is still not there — the
   compiler/interpreter proper **does not resolve `use` directives at run time**.
@@ -61,7 +61,7 @@ hand-edit divergence risk, without waiting for lang landing.
 
 2. Add a new generator script: `scripts/gen_shared_constants.sh` (bash, no hexa
    dependency — intentional, so pre-commit works on a clean checkout). It emits
-   `n6shared/_shared_constants.hexa` by reading the SSOT and stripping the
+   `canonshared/_shared_constants.hexa` by reading the SSOT and stripping the
    function wrapper, leaving just the six `let` decls + identity `assert`s, with
    a header banner:
 
@@ -74,7 +74,7 @@ hand-edit divergence risk, without waiting for lang landing.
    single directive:
 
    ```hexa
-   use "n6shared/_shared_constants"
+   use "canonshared/_shared_constants"
    ```
 
    Comment-style note: `use "..."` is parsed by `module_loader` regardless of
@@ -95,7 +95,7 @@ hand-edit divergence risk, without waiting for lang landing.
    because flatten_imports is deterministic and has no network/side-effects.
 
 5. CI preflight. Add a job to `.github/workflows/ci.yml` that:
-   - regenerates `n6shared/_shared_constants.hexa` from the SSOT;
+   - regenerates `canonshared/_shared_constants.hexa` from the SSOT;
    - fails if the regenerated content differs from the committed content
      (classic "generator clean" check — same pattern as
      `cdo-validate` already does for JSON);
@@ -174,7 +174,7 @@ submit --to hexa-lang --category lang_gap --kind cluster ...`):
 **Forwarding.** Per `config/lang_gap_forward_convention.json`, file this as a
 `cluster` kind lang_gap through `hexa /Users/ghost/core/hexa-lang/bin/proposal_inbox
 submit --to hexa-lang --category lang_gap --kind cluster --title 'typed const
-import across translation units' --from n6-architecture`. Attach this proposal
+import across translation units' --from canon`. Attach this proposal
 and the upstream `module_loader.hexa` reference so the reviewer sees the
 implementation already exists as a preprocessor.
 
@@ -183,7 +183,7 @@ implementation already exists as a preprocessor.
 One PR per domain-family (cognitive / compute / physics / energy / infra) that:
 
 - removes `scripts/gen_shared_constants.sh`;
-- removes `n6shared/_shared_constants.hexa`;
+- removes `canonshared/_shared_constants.hexa`;
 - rewrites the `verify_*.hexa` head to the typed form
   `use "atlas/n6_core_constants"; use atlas::n6_core_constants::{SIGMA, TAU,
   PHI, N, SOPFR, J2};`
@@ -246,6 +246,6 @@ natively (lang gap confirmed), but `hexa-lang`'s own `self/module_loader.hexa`
 + `tool/flatten_imports.hexa` already implement the text-inline preprocessor
 pattern. We adopt that preprocessor as a CI preflight today (Stage A), reducing
 the 18 hand-maintained copies of `sigma=12, tau=4, phi=2` to one
-`atlas/n6_core_constants.hexa` + one generated `n6shared/_shared_constants.hexa`,
+`atlas/n6_core_constants.hexa` + one generated `canonshared/_shared_constants.hexa`,
 and file the narrower "typed `const` import in the compiler proper" request
 upstream as Stage B. Stage C deletes the preflight once Stage B ships.

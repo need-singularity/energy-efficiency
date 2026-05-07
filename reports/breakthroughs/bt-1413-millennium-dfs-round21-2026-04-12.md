@@ -476,7 +476,7 @@ DFS round 20 (274 item) after BT-1412 5 at unexplored area in pure mathematics :
 - Hodge count h^{p,q} and point count of relation: BSD conjecture's finite
 - **n=6 multiple match**:
 - #E_{ss}(F_{sopfr}) = sopfr + 1 = n: special this point count = n
-- sopfr = n - 1: perfect number 6 of arithmetic property
+- sopfr = n - 1: arithmetic canon of arithmetic property
 - Hasse limit: |a_q| <= 2*sqrt(q) = 2*sqrt(sopfr): phi*sqrt(sopfr) = 2*sqrt(5)
 - Contrast: q + 1 = 6 is q = 5 in and n=6 and independent. special this item a_q = 0 curve at decision. 5 in special this curvethis 6 point having is 5+1 = 6 of arithmetic
 - Honesty: #E_{ss}(F_5) = 6 5+1 = 6 of direct result. sopfr(6) = 5 = 6-1this is n=6 of basic propertyand, this "finite F_5 special this curve point count = 6" becoming is nontrivial. BSD conjecture with link dim in possible
@@ -642,6 +642,6 @@ observation:
 ## 7. Verification environment
 
 - Date: 2026-04-12
-- Project: n6-architecture
+- Project: canon
 - Preceding BT: BT-1394~1412
 - Reference atlas: $NEXUS/shared/n6/atlas.n6

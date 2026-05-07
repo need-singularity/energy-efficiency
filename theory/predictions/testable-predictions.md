@@ -1,4 +1,4 @@
-# N6 Architecture — Testable Predictions Roadmap
+# CANON — Testable Predictions Roadmap
 
 > Falsifiable predictions derived from n=6 arithmetic (BT-26~343).
 > Each prediction includes: what to measure, expected value, falsification criterion, and required resources.
@@ -921,5 +921,5 @@ savings vs mining = σ-φ=10×.
 **Most decisive new test**: P-64 (MoD+MoE floor) — a hard quantitative limit falsifiable by a single counterexample.
 **Most commercially relevant**: P-65 (MLA KV rank) — directly applicable to production inference optimization.
 
-*All predictions derived from BT-1~343 of the N6 Architecture project.*
+*All predictions derived from BT-1~343 of the CANON project.*
 *Total BTs: 343. Total EXACT: ~1400+. Predictions: 75.*

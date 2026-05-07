@@ -8,7 +8,7 @@ assignees: ""
 
 ## Scope (English)
 
-This file is part of the n6-architecture repository.
+This file is part of the canon repository.
 See `README.md` and `domains/_index.json` for overall context.
 
 

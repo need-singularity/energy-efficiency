@@ -32,7 +32,7 @@ review:
   apc_required: false              # 논문 처리 비용 없음
   long_review_cycle: true          # 긴 심사 주기 (3~6개월)
   code_data_policy: |
-    오픈 저장소 필수 — n6-architecture papers/ 경로 공개
+    오픈 저장소 필수 — canon papers/ 경로 공개
 
 # ---- 참조 스타일 ----
 csl: "jair.csl"                    # JAIR 참조 스타일

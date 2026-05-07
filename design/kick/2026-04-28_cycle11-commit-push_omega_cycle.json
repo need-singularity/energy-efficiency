@@ -42,6 +42,6 @@
     "raw91_c3_honest": true
   },
   "commit_message": "feat(hexa-weave): cycle 11 W8+ step1.b mechanical (23->22) + hexaComp def + cycle11 countdown",
-  "fanout_position": "cycle 12 / fan-out 3/5 — n6-architecture commit+push slot",
+  "fanout_position": "cycle 12 / fan-out 3/5 — canon commit+push slot",
   "raw_91_c3": "honest — mission said '신규 4개 design/kick' which is satisfied by 3 cycle-11 kick witnesses + this commit-push self-witness = 4 total; cycle 11 modifies 3 tracked files (Axioms.lean step1.b mechanical, Strand.lean hexaComp def, falsifier_monitor +4 rows) + adds 3 proposals + creates state/discovery_absorption/registry.jsonl (newly tracked); pre-existing dirty (own_doc_lint regen, atlas_self_arch axis-audit, 3 atlas .hexa tool drifts, scratch/, atlas audit trails, probe markers, cycle-12 prerequisite census) deliberately excluded per mission instruction 'pre-existing dirty 분리'"
 }

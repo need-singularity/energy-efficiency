@@ -333,7 +333,7 @@ Paper links               [                  ] 0.0%    [                   ] 0.0
 - Branch: `feat/millennium-dfs-92-tight`
 - Prior audit: `reports/audits/go-audit-2026-04-12.md` (v1)
 - Registry: `techniques/_registry.json` v1.3.0
-- Convergence source: `n6shared/convergence/n6-architecture.json`
+- Convergence source: `canonshared/convergence/canon.json`
 - Chip design: `domains/compute/chip-design/` + `domains/compute/chip-*/` + `domains/compute/hexa-pim/`
 - Millennium: `theory/breakthroughs/bt-139*` + `bt-1400*`
 - Kolon: `calc/kolon_n6_verify.hexa` + `nexus/src/calc/kolon_*.hexa`

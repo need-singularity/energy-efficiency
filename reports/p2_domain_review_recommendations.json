@@ -1,5 +1,5 @@
 {
-  "schema": "n6-architecture/p2_domain_review_recommendations/1",
+  "schema": "canon/p2_domain_review_recommendations/1",
   "source": "reports/p2_domain_expansion_proposal.json",
   "ts": "2026-04-23T04:22:51Z",
   "task_ref": "DIS-P2-1 / n6-roi-010",

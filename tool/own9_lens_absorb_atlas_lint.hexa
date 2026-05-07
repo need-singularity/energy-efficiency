@@ -10,13 +10,13 @@
 // case-insensitive substring scan over canonical token set.
 //
 // @tool(slug="own9_lens_absorb_atlas_lint", desc="own#9 lens-absorb-atlas HARD — atlas.n6 must contain lens markers when lens commits exist (30d window) or lens_registry declares lenses")
-// @usage(hexa /Users/ghost/core/n6-architecture/tool/own9_lens_absorb_atlas_lint.hexa [--selftest])
+// @usage(hexa /Users/ghost/core/canon/tool/own9_lens_absorb_atlas_lint.hexa [--selftest])
 // @exit_codes(0=PASS, 1=violations, 2=internal error)
 
-let REPO_ROOT = "/Users/ghost/core/n6-architecture"
+let REPO_ROOT = "/Users/ghost/core/canon"
 let ATLAS_PATH = REPO_ROOT + "/atlas/atlas.n6"
-let ATLAS_ALT = REPO_ROOT + "/n6shared/atlas.n6"
-let LENS_REGISTRY = REPO_ROOT + "/n6shared/config/lens_registry.json"
+let ATLAS_ALT = REPO_ROOT + "/canonshared/atlas.n6"
+let LENS_REGISTRY = REPO_ROOT + "/canonshared/config/lens_registry.json"
 
 fn _file_exists(path: string) -> bool {
   let r = to_string(exec("test -f '" + path + "' && echo y || echo n")).trim()

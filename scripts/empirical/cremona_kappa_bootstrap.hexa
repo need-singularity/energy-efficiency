@@ -33,7 +33,7 @@ import math
 import random
 from pathlib import Path
 
-ROOT = Path(\"/Users/ghost/Dev/n6-architecture\")
+ROOT = Path(\"/Users/ghost/Dev/canon\")
 DATA = ROOT / \"data/cremona/kappa_10bin_results.json\"
 REPORT = ROOT / \"reports/v3/kappa_bootstrap_2026-04-16.json\"
 

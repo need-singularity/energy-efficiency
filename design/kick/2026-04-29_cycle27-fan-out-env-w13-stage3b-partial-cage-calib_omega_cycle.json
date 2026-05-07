@@ -87,7 +87,7 @@
     "windows_total": 78,
     "cage_preset_3_implementations": "added (HBV / CCMV / STNV literature-cited)"
   },
-  "raw_47_cross_repo": "n6-architecture local + nexus sim_bridge/weave/ (cycle 24 migration canonical empirical SSOT)",
+  "raw_47_cross_repo": "canon local + nexus sim_bridge/weave/ (cycle 24 migration canonical empirical SSOT)",
   "raw_9_hexa_only": "lean4 + python stdlib + n6 atlas DSL — raw 9 호환",
   "raw_53_deterministic": "lake build PASS + own_doc_lint exit code + cage simulation 6-axis verifier deterministic",
   "raw_77_append_only": true,

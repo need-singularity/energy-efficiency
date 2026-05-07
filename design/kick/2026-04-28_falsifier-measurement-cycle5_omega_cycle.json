@@ -88,7 +88,7 @@
       "metric": "own_doc_lint regression count cycle1-4",
       "falsifier": "F-CL-JOINT-7",
       "value": 0,
-      "evidence": "state/format_witness_2026-04-28_migration_phase7_n6-architecture_sweep.jsonl"
+      "evidence": "state/format_witness_2026-04-28_migration_phase7_canon_sweep.jsonl"
     },
     {
       "metric": "raw 106 scope-creep HIGH flag count",

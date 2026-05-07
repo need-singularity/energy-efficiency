@@ -117,7 +117,7 @@ the script is sharded into batches. Aggregate mode (`--quiet`) is
 
 ## 4. Implementation summary
 
-- **File**: `/Users/ghost/core/n6-architecture/scripts/quality/honesty_triad_linter.hexa`
+- **File**: `/Users/ghost/core/canon/scripts/quality/honesty_triad_linter.hexa`
 - **Lines**: 666 LOC (vs Python 196 LOC; the 3.4x expansion is driven
   by the regex emulation -- explicit verb/path/banner/journal/verdict
   enumerations + manual char-class loops).
@@ -212,7 +212,7 @@ inbox link is reachable, replay these submits literally.
 ```
 hexa $HEXA_LANG/bin/proposal_inbox submit \
   --to hexa-lang \
-  --from n6-architecture \
+  --from canon \
   --category lang_gap \
   --kind cluster \
   --priority 90 \
@@ -235,7 +235,7 @@ plus `re_findall(pattern, text, flags) -> array<[start, end, str]>`.
 ```
 hexa $HEXA_LANG/bin/proposal_inbox submit \
   --to hexa-lang \
-  --from n6-architecture \
+  --from canon \
   --category lang_gap \
   --kind fix \
   --priority 80 \
@@ -252,7 +252,7 @@ never appends to a flag array) runs cleanly. Either short-lived
 objects need GC, or the runtime needs an explicit
 `array.clear()` / `gc_now()` builtin.
 
-Both proposals are non-blocking for n6-architecture *if* the Python
+Both proposals are non-blocking for canon *if* the Python
 linter remains the canonical implementation; they are blocking for
 any future "hexa is the n6 standard scripting language" migration.
 

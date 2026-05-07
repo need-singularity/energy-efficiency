@@ -1,4 +1,4 @@
-# N6 Architecture -- L0~L4 Layer-by-Layer Completion Dashboard
+# CANON -- L0~L4 Layer-by-Layer Completion Dashboard
 
 > Auto-aggregation reference date: 2026-04-09
 > Data sources: reality_map.json v9.5 (3908 nodes) / breakthrough-theorems.md (BT-1~677) / dse-map.toml (340 domains)

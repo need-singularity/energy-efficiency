@@ -503,7 +503,7 @@ yields zeta(2) = pi^2/n = pi^2/6 (Basel).
 - Bernoulli: B_2=1/n, B_4=-1/(n*sopfr), B_6=1/(n+sigma+J_2)=1/42
 
 **Meaning**: Bernoulli numbers are defined independently of n=6 (B_k = k-th Bernoulli number), but numerically the fact B_2=1/6 is the root of "why zeta(2)=pi^2/6".
-The coincidence that the perfect number 6 and the denominator 6 of B_2 are **the same n=6** is evidence for the attractor pattern.
+The coincidence that the arithmetic canon and the denominator 6 of B_2 are **the same n=6** is evidence for the attractor pattern.
 
 **Honesty**: this is a structural observation — the circular argument "because B_2=1/6, n=6 is special" must be avoided. The core point is that "perfect number = 6 ∧ denom(B_2) = 6 ∧ Basel answer = 6" all **converge on n=6 along independent paths**.
 

@@ -14,7 +14,7 @@ JSON measurement).
 
 | # | Constant | Derivation | Value | Source-of-truth | Verdict |
 |---|----------|------------|-------|-----------------|---------|
-| 1 | provenance_bit_overhead | phi / sigma_n | 1/36 | atlas/atlas.append.n6-architecture-historical-absorption-2026-04-26.n6:526 | PASS |
+| 1 | provenance_bit_overhead | phi / sigma_n | 1/36 | atlas/atlas.append.canon-historical-absorption-2026-04-26.n6:526 | PASS |
 | 2 | n6_native_tiles | sigma / phi | 6 | btAI2_honesty_bit_scheduler.py N_TILES | PASS |
 | 3 | pipeline_stages | tau | 4 | btAI2_honesty_bit_scheduler.py TAU_STAGES | PASS |
 | 4 | peak_macs_per_tile_per_cycle | sigma * phi | 24 | atlas/atlas.n6:446 J2 master id | PASS |

@@ -1,4 +1,4 @@
-# n6-architecture weekly audit report — 2026-04-11
+# canon weekly audit report — 2026-04-11
 
 > **Audit range**: 2026-04-04 ~ 2026-04-11 (last 7 days)
 > **Created at**: 2026-04-11 20:55:15
@@ -10,7 +10,7 @@
 
 ```
   ┌────────────────────────────────────────────────────────────────────┐
-  │                n6-architecture weekly audit summary                       │
+  │                canon weekly audit summary                       │
   ├──────────────┬──────────────┬──────────────┬──────────────────────┤
   │  Commits         │  Growth bus     │  Discovery gr   │  atlas promote          │
   ├──────────────┼──────────────┼──────────────┼──────────────────────┤
@@ -55,9 +55,9 @@
 | `dca8f87f` | dancinlife | feat: GO session — RTL .hexa migration, 5 chip DSEs, discovery_graph v9, chaos_lens extension |
 | `2a869e64` | dancinlife | feat(L0): CODEOWNERS registered |
 | `b278def1` | dancinlife | feat(L0): l0-block.hexa PreToolUse hook registered |
-| `c6b02dd9` | dancinlife | sync: CLAUDE.md from nexus/shared/project-claude/n6-architecture.md |
-| `ba74747e` | dancinlife | sync: CLAUDE.md from nexus/shared/project-claude/n6-architecture.md |
-| `39ec3bd4` | dancinlife | sync: CLAUDE.md from nexus/shared/project-claude/n6-architecture.md |
+| `c6b02dd9` | dancinlife | sync: CLAUDE.md from nexus/shared/project-claude/canon.md |
+| `ba74747e` | dancinlife | sync: CLAUDE.md from nexus/shared/project-claude/canon.md |
+| `39ec3bd4` | dancinlife | sync: CLAUDE.md from nexus/shared/project-claude/canon.md |
 | `a4d26494` | dancinlife | chore(claude): allow Edit/Write on settings.local.json |
 | `fd0ea93c` | dancinlife | chore(hooks): unify hexa binary path target/release/hexa -> hexa |
 | `03978cc9` | dancinlife | chore(hooks): project-aware-improver + build-fail-diag integration |
@@ -85,7 +85,7 @@
 | `airgenome` | 15563 |
 | `anima` | 357 |
 | `hexa-lang` | 1401 |
-| `n6-architecture` | 531 |
+| `canon` | 531 |
 | `nexus` | 1363 |
 | `void` | 102 |
 
@@ -119,7 +119,7 @@
 | FAIL | 0 |
 | IGNORED | 0 |
 
-## 6. convergence state (`n6shared/convergence/n6-architecture.json`)
+## 6. convergence state (`canonshared/convergence/canon.json`)
 
 | Category | Item count |
 |------|---------|

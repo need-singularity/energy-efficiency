@@ -16,10 +16,10 @@
 // fixpoint compatible — shasum is POSIX-standard, no external lib).
 //
 // @tool(slug="readme_sealed_check", desc="own#14 README.md SHA-256 sealed-hash enforcement; matches stored README.md.sealed.hash + syncs .readme-rules.json scopes.root.sealed_hash field")
-// @usage(hexa /Users/ghost/core/n6-architecture/tool/readme_sealed_check.hexa [--update])
+// @usage(hexa /Users/ghost/core/canon/tool/readme_sealed_check.hexa [--update])
 // @exit_codes(0=match-or-init, 1=mismatch, 2=internal error)
 
-let REPO_ROOT   = "/Users/ghost/core/n6-architecture"
+let REPO_ROOT   = "/Users/ghost/core/canon"
 let README_PATH = REPO_ROOT + "/README.md"
 let SEALED_PATH = REPO_ROOT + "/README.md.sealed.hash"
 let RULES_PATH  = REPO_ROOT + "/.readme-rules.json"

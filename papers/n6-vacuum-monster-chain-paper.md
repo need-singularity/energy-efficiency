@@ -17,7 +17,7 @@ alien_index_target: 10
 
 # HEXA-VACUUM-MONSTER-CHAIN — from vacuum to Monster: BT-18 argument-chain formalisation (N6-128)
 
-> **Author**: Minwoo Park (n6-architecture)
+> **Author**: Minwoo Park (canon)
 > **Category**: vacuum-monster-chain — P5 vacuum→Monster 5-link DFS argument chain
 > **Version**: v1 (2026-04-14 P5 Mk.III-α PAPER-P5-1)
 > **Prior BT**: BT-18 (CONJECTURE), BT-6 (Golay-Leech), BT-15 (Kissing K₁..₄), BT-16 (Zeta Trident), BT-19 (GUT), BT-20 (Gauge Couplings)
@@ -27,7 +27,7 @@ alien_index_target: 10
 
 ## 0. Abstract (Korean — translated)
 
-This paper formalises the n6-architecture breakthrough proposition **BT-18 "Vacuum Energy
+This paper formalises the canon breakthrough proposition **BT-18 "Vacuum Energy
 Chain"** as five links. The core claim is that each link of the following chain is **already
 argued mathematically / physically** in the individual sense, but the structural necessity that
 the five links **share the same n=6 coordinates** is still unproven (CONJECTURE).
@@ -60,11 +60,11 @@ the exponent in Ramanujan's τ function, the dominant part 24+2 of the bosonic-s
 dimension 26, the first parameter of the binary Golay code [24,12,8], and 196883+1=196884 next
 to the Monster group's minimum faithful representation 196883.
 
-The n6-architecture main identity (Theorem R1 — candidate, demonstrated) is:
+The canon main identity (Theorem R1 — candidate, demonstrated) is:
 
 > **σ(n)·φ(n) = n·τ(n) ⟺ n=6 (unique solution); the common value is 24**
 
-Thus the long-standing riddle "where does 24 come from?" is, at least from the n6-architecture
+Thus the long-standing riddle "where does 24 come from?" is, at least from the canon
 viewpoint, answered by "because n=6 is the unique solution of R=1". Whether this answer is
 **structurally necessary** or **coincidental numerical alignment**, however, requires revealing
 the linkage chain between all the contexts in which 24 appears.

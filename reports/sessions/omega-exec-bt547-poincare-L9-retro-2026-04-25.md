@@ -691,8 +691,8 @@ falsifiers.
   set §5 is identical either way. **Partially active**: the
   verdict could be re-graded to MISSES under a stricter reading.
 
-- **F-RETRO-G** (n6-architecture-perspective-confound): the L9
-  catalogue is sourced from n6-architecture's dfs-24 direction
+- **F-RETRO-G** (canon-perspective-confound): the L9
+  catalogue is sourced from canon's dfs-24 direction
   probes, which by construction emphasize n=6 arithmetic. Perelman
   worked on n=3 (3-manifolds) in a non-n6 frame. Critics may argue
   the §2 catalogue-coverage miss is **expected** because n6 is the

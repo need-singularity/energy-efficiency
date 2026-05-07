@@ -5,7 +5,7 @@ Full repository list of calculators, engines, experiments, and techniques. Auto-
 <!-- SHARED:CALCULATORS:START -->
 | Repo | Tools | Categories |
 |------|-------|------------|
-| **n6-architecture** | 357 | Calculator, Engine, experiment, technique (legacy TECS-L 213 + n6 144 absorbed) |
+| **canon** | 357 | Calculator, Engine, experiment, technique (legacy TECS-L 213 + n6 144 absorbed) |
 | **anima** | 0 |  |
 | **SEDI** | 91 | Core, Data Source |
 | **Total** | **448** | |

@@ -886,7 +886,7 @@
     {
       "path": "awesome-neuromorphic/README.md",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0

@@ -61,7 +61,7 @@
     "nexus/sim_bridge/weave/cage_assembly_simulation.py (step_backward_euler + --secondary-method + --t-number + 8 literal migrations 60.0→N_CP_PER_CAGE + n6_invariant_check generalized)"
   ],
   "files_created": [
-    "n6-architecture/design/kick/2026-04-29_cycle29-implicit-backward-euler-t-number-generalization_omega_cycle.json (this witness)"
+    "canon/design/kick/2026-04-29_cycle29-implicit-backward-euler-t-number-generalization_omega_cycle.json (this witness)"
   ],
   "verification_summary": {
     "stnv_t1_backward_euler": "5/6 PASS (cycle 27 was 4/6)",
@@ -81,7 +81,7 @@
     "cycle_28": "energy + robotics + physics_math mandatory promotion + W13 stage-3c FINAL (4000→5040 Robin unconditional)",
     "cycle_29": "F-CYCLE27-CAGE-CALIB-2 closed (implicit Backward Euler + fixed-point) + F-CYCLE27-CAGE-CALIB-3 partial (--t-number 1/3/4 + Caspar-Klug generalization, T>1 calibration deferred)"
   },
-  "raw_47_cross_repo": "nexus sim_bridge/weave (file modified) + n6-architecture design/kick witness (this file)",
+  "raw_47_cross_repo": "nexus sim_bridge/weave (file modified) + canon design/kick witness (this file)",
   "raw_9_hexa_only": "python ODE solver — runtime-execution scope, raw 9 호환",
   "raw_53_deterministic": "PASS evaluation 6-axis raw 53 deterministic",
   "raw_77_append_only": true,

@@ -2,9 +2,9 @@
 
 ## 개요
 
-n6-architecture 프로젝트 DSE-P3-1 단계 산출물. 기존 v1(산업실증), v2(양자중첩), v3(자기조직), v4(진화적응) 4개 아키텍처 엔진을 단일 오케스트레이터에서 선택/전환/혼합 가능하도록 통합한 파이프라인 엔진이다.
+canon 프로젝트 DSE-P3-1 단계 산출물. 기존 v1(산업실증), v2(양자중첩), v3(자기조직), v4(진화적응) 4개 아키텍처 엔진을 단일 오케스트레이터에서 선택/전환/혼합 가능하도록 통합한 파이프라인 엔진이다.
 
-- 경로: `/Users/ghost/Dev/n6-architecture/engine/arch_unified.hexa`
+- 경로: `/Users/ghost/Dev/canon/engine/arch_unified.hexa`
 - 포팅 상태: BODY (외부 import 없음, 순수 정수 연산)
 - 검증: stage0 실전 실행 결과 rc=0 (2026-04-14 재검증, main 은 total 반환, println 미사용)
 - 규칙: R1 HEXA-FIRST, R18 미니멀, N61 한글
@@ -73,8 +73,8 @@ hybrid = (score_a * weight_a + score_b * (10 - weight_a)) / 10
 ## hexa parse 결과
 
 ```
-$ hexa parse /Users/ghost/Dev/n6-architecture/engine/arch_unified.hexa
-OK: /Users/ghost/Dev/n6-architecture/engine/arch_unified.hexa parses cleanly
+$ hexa parse /Users/ghost/Dev/canon/engine/arch_unified.hexa
+OK: /Users/ghost/Dev/canon/engine/arch_unified.hexa parses cleanly
 ```
 
 구문 검증 완료. 런타임 검증은 runtime.c 복구 후 후속 단계에서 `hexa run` 으로 수행한다.

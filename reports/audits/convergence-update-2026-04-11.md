@@ -1,8 +1,8 @@
 # Convergence manifest update audit — 2026-04-11
 
-> Axis: **reports/audits** · n6-architecture · R11 one-way convergence compliance audit
+> Axis: **reports/audits** · canon · R11 one-way convergence compliance audit
 > Rules basis: **R10** (ossified immutable) / **R11** (no ossification demotion; re-verification adds a new stable entry) / **R25** (shared-settings gate) / **R14** (rules = JSON SSOT)
-> Target file: `$N6_ARCH/n6shared/convergence/n6-architecture.json`
+> Target file: `$N6_ARCH/canonshared/convergence/canon.json`
 
 ---
 
@@ -19,8 +19,8 @@ Additionally, the synbio / synthetic-biology domain merge (agent #15) updated `d
 
 ### 1-1. R10/R11 rule interpretation
 
-- **R10** (`n6shared/rules/common.json` rules[11]): *ossified items immutable — no modification/deletion/rollback of ossified blocks. Add a new entry if change is needed.*
-- **R11** (`n6shared/rules/common.json` rules[12]): *no ossification demotion — ossified -> stable/failed reverse transitions are forbidden. One-way only. Re-verification adds new stable entries.*
+- **R10** (`canonshared/rules/common.json` rules[11]): *ossified items immutable — no modification/deletion/rollback of ossified blocks. Add a new entry if change is needed.*
+- **R11** (`canonshared/rules/common.json` rules[12]): *no ossification demotion — ossified -> stable/failed reverse transitions are forbidden. One-way only. Re-verification adds new stable entries.*
 
 -> Handling drift via body-replacement of `PRODUCTS_118`/`GOAL_MD_20` would violate both R10 and R11. The only legal path is to **add 3 new stable entries** and **preserve the original ossified entries unchanged**.
 
@@ -88,13 +88,13 @@ Regions **never touched** during this update:
 
 | Rule | Content | Compliance of this update |
 |---|---|---|
-| **R5** SSOT | Single-source-of-truth `n6shared/convergence/n6-architecture.json` | OK — only this file edited |
+| **R5** SSOT | Single-source-of-truth `canonshared/convergence/canon.json` | OK — only this file edited |
 | **R9** ossification 3 fields | status/value/threshold required | OK — ossified preserved; all 3 new stable entries have status/value/threshold |
 | **R10** ossified immutable | No modify/delete/move | OK — ossified block byte-level unchanged (key order / fields / values all preserved) |
 | **R11** no demotion | Forbid ossified -> stable/failed reverse | OK — no ossified entry demoted to stable. Only **added** 3 new stable entries |
 | **R14** rules = JSON SSOT | No rule text in CLAUDE.md | OK — this report is a reports/audits point-in-time record; rule text references common.json |
 | **R18** minimal | Only requested scope | OK — only added 3 entries + sync of `_meta.updated` date, no extra expansion |
-| **R25** shared-settings gate | Forbid direct modification | Note — `convergence/n6-architecture.json` is not in R25 scope (R25 covers hooks-config/absolute_rules/core-lockdown). This file is the project convergence manifest and allows editing |
+| **R25** shared-settings gate | Forbid direct modification | Note — `convergence/canon.json` is not in R25 scope (R25 covers hooks-config/absolute_rules/core-lockdown). This file is the project convergence manifest and allows editing |
 | **R28** atlas SSOT | Discoveries recorded in atlas.n6 | OK — this is a convergence meta record, not a new discovery -> atlas not edited |
 
 ---

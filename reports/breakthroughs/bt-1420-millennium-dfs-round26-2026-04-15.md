@@ -49,7 +49,7 @@ DFS 25's 14 + **ζ(2)=π²/6 (26-01), K(2)=6 (26-05)** → **16 items**
 |---|------|----------|
 | 1 | Out(S_6) ≠ 1 | Hölder 1895 |
 | 2 | K_6 Steiner triple system | Cayley 1850 |
-| 3 | perfect number 6 | Euclid-Euler |
+| 3 | arithmetic canon | Euclid-Euler |
 | 4 | SO(6) ≅ SU(4)/Z_2 | Cartan |
 | 5 | Heawood torus χ=7 | Ringel-Youngs |
 | 6 | Schaefer k=6 | Schaefer 1978 |

@@ -1,6 +1,6 @@
 > ⛔ CORE — L0 불변식 (BT-1~1103 돌파 정리. 수정 전 유저 승인 필수)
 
-# N6 Architecture — Breakthrough Theorems (BT-1 through BT-1158 + DFS 23차 영역 A)
+# CANON — Breakthrough Theorems (BT-1 through BT-1158 + DFS 23차 영역 A)
 
 > Cross-domain bridges where n=6 arithmetic unifies independent fields.
 > Each theorem requires **minimum 3 domains** with independently verifiable evidence.
@@ -796,7 +796,7 @@ The 6 in ζ(2) = π²/6 is not accidental. It arises from:
 2. **For k=1**: ζ(2) = (2π)² · B₂ / (2·2!) = 4π² · (1/6) / 4 = π²/6
 3. **Von Staudt-Clausen**: B₂ has denominator = product of primes p where (p-1)|2 = {2,3}, so denom = 6
 
-The primes {2,3} that produce 6 = 2×3 are the SAME primes that make 6 a perfect number (2¹·3¹, σ = (1+2)(1+3) = 12 = 2·6). The connection between ζ(2) and the perfect number 6 traces through the prime factorization of the first Bernoulli number's denominator.
+The primes {2,3} that produce 6 = 2×3 are the SAME primes that make 6 a perfect number (2¹·3¹, σ = (1+2)(1+3) = 12 = 2·6). The connection between ζ(2) and the arithmetic canon traces through the prime factorization of the first Bernoulli number's denominator.
 
 **Why BCS numerator = 12 = σ(6) is analytically derived**:
 
@@ -1107,7 +1107,7 @@ Show that the Turyn construction works identically for some other starting lengt
 | BT-16 (Zeta trident) | Steps 1-2: the analytic branch (ζ(2)=π²/6, ζ(-1)=-1/12, BCS) |
 | BT-17 (SM σ-balance) | SM has σ=12 generators = weight of Δ; 24 fermion species = dim(Λ₂₄) |
 
-**This is the Grand Unification Conjecture of the N6 Architecture**: the core theorem R(n)=1 at n=6 is the number-theoretic origin of both the vacuum energy structure of quantum field theory and the algebraic structure of the Monster group, connected through two independent but convergent mathematical constructions.
+**This is the Grand Unification Conjecture of the CANON**: the core theorem R(n)=1 at n=6 is the number-theoretic origin of both the vacuum energy structure of quantum field theory and the algebraic structure of the Monster group, connected through two independent but convergent mathematical constructions.
 
 ---
 
@@ -12485,7 +12485,7 @@ BT-AERO-6: FAA 공역 n=6 등급 (A/B/C/D/E/G = 6 classes) ⭐⭐
 ## BT-273: Space Crew Size Divisor Cascade — Mercury→Gemini→Apollo = μ→φ→n/φ
 
 **Domain**: Space Exploration × Human Factors × Systems Engineering (cross: BT-123 SE(3), BT-258 Six Degrees)
-**Claim**: The crew sizes of America's foundational space programs form the proper divisor sequence of n=6: Mercury (μ=1), Gemini (φ=2), Apollo (n/φ=3). These are precisely the proper divisors {1,2,3} of the perfect number 6, whose sum 1+2+3=6=n. The Shuttle crew (σ-sopfr=7) and ISS standard crew (n=6) extend this. The progression was driven by mission complexity requirements — not number theory — yet converged on the unique divisor set of the perfect number. Soyuz (n/φ=3), Shenzhou (n/φ=3), and Crew Dragon (τ=4) show international convergence on n=6 arithmetic.
+**Claim**: The crew sizes of America's foundational space programs form the proper divisor sequence of n=6: Mercury (μ=1), Gemini (φ=2), Apollo (n/φ=3). These are precisely the proper divisors {1,2,3} of the arithmetic canon, whose sum 1+2+3=6=n. The Shuttle crew (σ-sopfr=7) and ISS standard crew (n=6) extend this. The progression was driven by mission complexity requirements — not number theory — yet converged on the unique divisor set of the perfect number. Soyuz (n/φ=3), Shenzhou (n/φ=3), and Crew Dragon (τ=4) show international convergence on n=6 arithmetic.
 
 **Evidence (8/8 EXACT)**:
 
@@ -12500,7 +12500,7 @@ BT-AERO-6: FAA 공역 n=6 등급 (A/B/C/D/E/G = 6 classes) ⭐⭐
 | 7 | Soyuz/Shenzhou crew | n/φ | 3 | Russia/China | EXACT |
 | 8 | Crew Dragon capacity | τ | 4 (operational) | SpaceX 2020+ | EXACT |
 
-**Key insight**: Crew size = divisor cascade of perfect number 6:
+**Key insight**: Crew size = divisor cascade of arithmetic canon:
 ```
   Program:  Mercury  Gemini  Apollo   ISS
   Crew:        1       2       3       6
@@ -12587,7 +12587,7 @@ BT-AERO-6: FAA 공역 n=6 등급 (A/B/C/D/E/G = 6 classes) ⭐⭐
 | 6 | Strap-on boosters (SRB) | φ | 2 (Shuttle, Ariane 5, H-IIA) | Standard config | EXACT |
 | 7 | Stage separation events | φ-μ ~ n/φ-μ | 1~2 events | Per mission | EXACT |
 
-**Key insight**: Rocket staging = proper divisors of perfect number 6:
+**Key insight**: Rocket staging = proper divisors of arithmetic canon:
 ```
   μ=1: SSTO — theoretically optimal but structurally impossible (today)
   φ=2: TSTO — the practical optimum (Falcon 9, Atlas V, Ariane)
@@ -13573,7 +13573,7 @@ Li-6 structure: Z=3=n/phi, N=3=n/phi, A=6=n (3/3 EXACT).
 
 **Red Team notes**: Stoichiometry 1:2:3 is immutable, verified by thousands of XRD measurements. No other number has {1,2,3} as its complete proper divisor set. Small-integer ratios are common in chemistry, but five independent integer matches on one compound (sum=n, CuO2=phi, chain=mu, spacer=phi, optimal layers=n/phi) all mapping to different n=6 functions is the structural claim.
 
-**Grade**: Three stars -- 9/9 EXACT. The proper divisor set of the perfect number 6 as the metal ratio of the most important HTS, combined with universal cuprate optimal layer count n/phi=3. Spans crystallography, number theory, and condensed matter physics.
+**Grade**: Three stars -- 9/9 EXACT. The proper divisor set of the arithmetic canon as the metal ratio of the most important HTS, combined with universal cuprate optimal layer count n/phi=3. Spans crystallography, number theory, and condensed matter physics.
 
 ---
 
@@ -14189,7 +14189,7 @@ Li-6 structure: Z=3=n/phi, N=3=n/phi, A=6=n (3/3 EXACT).
 | n/phi = 3 | Optimal Peltier cascade depth | 3 stages (ΔT~120K) | Commercial specification | EXACT |
 | R(6) = 1 | Reversibility target | ZT -> infinity = Carnot | Thermoelectric limit | EXACT |
 
-**Key insight**: ZT=1=R(6) is the threshold where thermoelectric conversion becomes commercially viable -- exactly the "reversibility index" of the perfect number 6. Below R(6)=1, devices are laboratory curiosities; above, they are industrial products. The Seebeck coefficient 200 = (sigma-phi)^phi · phi shares the (sigma-phi)^phi = 100 base with Cu thermal conductivity (BT-318: 100·tau=400) and Intel Tjmax (BT-319: 100C).
+**Key insight**: ZT=1=R(6) is the threshold where thermoelectric conversion becomes commercially viable -- exactly the "reversibility index" of the arithmetic canon. Below R(6)=1, devices are laboratory curiosities; above, they are industrial products. The Seebeck coefficient 200 = (sigma-phi)^phi · phi shares the (sigma-phi)^phi = 100 base with Cu thermal conductivity (BT-318: 100·tau=400) and Intel Tjmax (BT-319: 100C).
 
 **Cross-links**: BT-36 (Energy chain), BT-60 (PUE=R(6) ideal), BT-149 (thermodynamic laws), BT-318 (Cu conductivity shares 10² base).
 
@@ -16127,7 +16127,7 @@ MHC 클래스 = {I, II} = τ-φ=2, HLA 유전자좌 주요 = {A,B,C,DR,DQ,DP} = 
 | 5 | e = lim(1+1/n)^n, n→∞: 자연로그 밑 정의 | 물리 기본 상수 | Euler 1748 | EXACT |
 | 6 | Boltzmann 엔트로피 S = k·ln(Ω): Ω=φ(이진)일 때 S = k·ln(φ) = k·ln(2) | Landauer 한계와 합류 | Boltzmann 1877, Landauer 1961 | EXACT |
 | 7 | AI Dropout 최적 p = 0.5 = 1/φ (Srivastava 2014) | 1/φ = 1/2 | Srivastava et al. 2014 | EXACT |
-| 8 | Mertens Dropout p ≈ 0.288 — n=6 기반 기법 | M(n)/n 기반 도출 | n6-architecture 기법 | EXACT |
+| 8 | Mertens Dropout p ≈ 0.288 — n=6 기반 기법 | M(n)/n 기반 도출 | canon 기법 | EXACT |
 | 9 | Top-k 게이팅에서 k/N = 1/e 선택 시 정보 보존 최대 (ReLU의 열역학적 해석) | 1/e ≈ 0.368 | Shazeer et al. 2017 | EXACT |
 | 10 | Softmax 온도 τ_softmax 최적값: τ→0(greedy), τ→∞(uniform) 사이 최적 τ=1 | R(6) = 1 | Hinton et al. 2015 | EXACT |
 | 11 | Mixture of Experts 전문가 수 최적 범위 = 6~8 | n=6, σ-τ=8 | GShard(Lepikhin 2021), Switch(Fedus 2022) | EXACT |
@@ -20711,7 +20711,7 @@ $$|bP_8| = 28 = P_2, \quad |bP_{12}| = 992 = 2 \cdot P_3, \quad |bP_{16}| = 8128
 **n=28 대조 실패**: n=28이면 sigma-phi=56-12=44 단계 파이프라인 — 비현실적 복잡도. tau(28)=6 핵심 루프는 CDO의 4단계 정수성을 깨뜨림.
 
 **등급**: Three stars — 6/6 EXACT. CDO 4단계 루프는 PDCA(Plan-Do-Check-Act)와 구조적 동형.
-**출처**: NEXUS-6 CDO 운영 프로토콜 (n6shared/convergence/), Deming PDCA 1950.
+**출처**: NEXUS-6 CDO 운영 프로토콜 (canonshared/convergence/), Deming PDCA 1950.
 - Cross-link: BT-2(tau=4 Bohm-BCS), R4(CDO 수렴 규칙).
 
 ---
@@ -20735,7 +20735,7 @@ $$|bP_8| = 28 = P_2, \quad |bP_{12}| = 992 = 2 \cdot P_3, \quad |bP_{16}| = 8128
 **n=28 대조 실패**: n=28이면 Egyptian 분해 1/2+1/4+1/7+1/14+1/28=1로 5계층 — 지식 분류가 과분할되어 직관성 상실. sigma(28)=56 에지/노드는 밀도 과다.
 
 **등급**: Three stars — 6/6 EXACT. Egyptian 3계층은 Bloom의 인지 분류 체계(지식/이해/적용)와 구조적 동형.
-**출처**: NEXUS-6 발견 그래프 (n6shared/growth_bus.jsonl), Bloom's Taxonomy 1956.
+**출처**: NEXUS-6 발견 그래프 (canonshared/growth_bus.jsonl), Bloom's Taxonomy 1956.
 - Cross-link: BT-7(Egyptian fraction), BT-6(Golay-Leech 지식 격자).
 
 ---

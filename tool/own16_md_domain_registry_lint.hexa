@@ -8,10 +8,10 @@
 // Migrated from tool/own_doc_lint_legacy.py:496-548 per raw 9.
 //
 // @tool(slug="own16_md_domain_registry_lint", desc="own#16 domain registry sync HARD — every domains/<axis>/<name>/ must appear as quoted token in domains/<axis>/_index.json sub-SSOT")
-// @usage(hexa /Users/ghost/core/n6-architecture/tool/own16_md_domain_registry_lint.hexa [--selftest])
+// @usage(hexa /Users/ghost/core/canon/tool/own16_md_domain_registry_lint.hexa [--selftest])
 // @exit_codes(0=PASS, 1=violations, 2=internal error)
 
-let REPO_ROOT = "/Users/ghost/core/n6-architecture"
+let REPO_ROOT = "/Users/ghost/core/canon"
 let DOMAINS_ROOT = REPO_ROOT + "/domains"
 let CANONICAL_INDEX = DOMAINS_ROOT + "/_index.json"
 

@@ -9,7 +9,7 @@
 
 ## 0. Purpose of This Note
 
-This note is the second study note at P0 stage of the n6-architecture millennium-learning roadmap. The goal is to organize **foundations of group theory** in a self-contained manner, and, in the final section, show that **Out(S_6) ≅ ℤ/2ℤ** is the sole outer-automorphism exception among finite symmetric groups (Hölder 1895).
+This note is the second study note at P0 stage of the canon millennium-learning roadmap. The goal is to organize **foundations of group theory** in a self-contained manner, and, in the final section, show that **Out(S_6) ≅ ℤ/2ℤ** is the sole outer-automorphism exception among finite symmetric groups (Hölder 1895).
 
 Five topics are covered:
 

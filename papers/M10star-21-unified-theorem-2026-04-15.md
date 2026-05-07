@@ -1,7 +1,7 @@
 # M10* 21-signal Unified Theorem (candidate) — 2026-04-15
 
 > Paper draft (preprint stub). Not submitted to arxiv. Format document.
-> Author: Claude Opus 4.6 (1M) — internal consolidation for n6-architecture
+> Author: Claude Opus 4.6 (1M) — internal consolidation for canon
 > Correspondence: arsmoriendi99@proton.me (Park Minwoo)
 > Seven Millennium Problems addressed: 0/7 (honesty maintained). This summary is an independent arithmetic signature consolidation layer.
 
@@ -216,7 +216,7 @@ Theorem B itself is orthogonal to the 7 problems (a simple arithmetic identity).
 - Post, E. (1941). The Two-Valued Iterative Systems of Mathematical Logic. Ann. Math. Studies.
 - Rosenberg, I. G. (1970). Über die funktionale Vollständigkeit. Acta Sci. Math.
 - BKLPR (2015). Bhargava-Kane-Lenstra-Poonen-Rains random matrix model.
-- atlas.n6 (`/Users/ghost/Dev/nexus/shared/n6/atlas.n6`) — n6-architecture SSOT.
+- atlas.n6 (`/Users/ghost/Dev/nexus/shared/n6/atlas.n6`) — canon SSOT.
 - atlas.signals.n6 (`/Users/ghost/Dev/nexus/shared/n6/atlas.signals.n6`) — 385 signals.
 
 ## 8. Appendix — UT-21 reduction matrix (precise)

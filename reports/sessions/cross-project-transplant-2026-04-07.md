@@ -1,8 +1,8 @@
-# TECS-L + Anima → N6 Architecture cross-transplant report
+# TECS-L + Anima → CANON cross-transplant report
 
 > Date: 2026-04-07
 > Source: TECS-L (pure mathematics), Anima (consciousness framework)
-> Target: N6 Architecture (industrial validation)
+> Target: CANON (industrial validation)
 > Transplant candidates: 12 (TECS-L: 7, Anima: 5)
 > Existing bridge doc: docs/anima-law-bridges.md (baseline bridge, targeting 79 laws)
 
@@ -11,7 +11,7 @@
 ## Transplant criteria
 
 1. Verified in the source project (EXACT or PROVEN)
-2. Law not yet covered by an existing BT (1~343) in n6-architecture
+2. Law not yet covered by an existing BT (1~343) in canon
 3. Concrete mapping possible to an industrial domain (chip / energy / AI / robotics, etc.)
 4. New connection not duplicating docs/anima-law-bridges.md
 

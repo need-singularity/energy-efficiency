@@ -1,6 +1,6 @@
 // ecosystem_9projects.hexa — NEXUS-6 Discovery Engine 9프로젝트 자율 성장 생태계 연동
 // 출처: /Users/ghost/Dev/nexus/config/projects.json (schema v4, 2026-04-14)
-// 목적: n6-architecture 입장에서 9프로젝트 성장 데몬과 발견을 교환하는 인터페이스 정의
+// 목적: canon 입장에서 9프로젝트 성장 데몬과 발견을 교환하는 인터페이스 정의
 // 규칙: 외부 데몬은 건드리지 않는다. 본 파일은 "링크 핸들"만 발급/수집한다.
 // 호출: hexa run bridge/ecosystem_9projects.hexa [--list | --broadcast <msg> | --metrics]
 
@@ -37,7 +37,7 @@ let NEXUS_SHARED = NEXUS_ROOT
 let REGISTRY_JSON = NEXUS_SHARED + "/config/projects.json"
 let ROADMAPS_DIR = NEXUS_SHARED + "/roadmaps"
 let GROWTH_BUS = HOME + "/.nexus/growth_bus.jsonl"
-let N6_BRIDGE = DEV_DIR + "/n6-architecture/bridge"
+let N6_BRIDGE = DEV_DIR + "/canon/bridge"
 
 // ─── 9 프로젝트 레지스트리 상수 테이블 ─────────────────────────────
 // core 7 + auxiliary 2 = 9 (projects.json schema v4)
@@ -50,7 +50,7 @@ let N6_BRIDGE = DEV_DIR + "/n6-architecture/bridge"
 let PROJECTS_9 = [
     ["nexus",           "nexus",                "discovery-engine",    "telescope",  "roadmaps/nexus.json",           "core"],
     ["anima",           "anima/anima",          "consciousness-engine","brain",      "roadmaps/anima.json",           "core"],
-    ["n6-architecture", "n6-architecture",      "system-design",       "hex",        "roadmaps/n6-architecture.json", "core"],
+    ["canon", "canon",      "system-design",       "hex",        "roadmaps/canon.json", "core"],
     ["papers",          "papers",               "paper-distribution",  "paper",      "roadmaps/papers.json",          "core"],
     ["hexa-lang",       "hexa-lang",            "language",            "lang",       "roadmaps/hexa-lang.json",       "core"],
     ["void",            "void",                 "terminal",            "void",       "roadmaps/void.json",            "core"],
@@ -59,19 +59,19 @@ let PROJECTS_9 = [
     ["openclaw",        "openclaw",             "singularity-feed",    "claw",       "",                               "auxiliary"]
 ]
 
-// n6-architecture 기준 제공/흡수 매핑
+// canon 기준 제공/흡수 매핑
 //   col0 = proj_id
 //   col1 = n6 제공 (outgoing)
 //   col2 = n6 흡수 (incoming)
 let N6_FLOW = [
     ["nexus",           "295 도메인 스캔타겟 + 77 SEDI 소스 + 343 BT",    "telescope 1028 렌즈 + discovery graph + OUROBOROS"],
     ["anima",           "n6-SPEAK 384d 인텐트 + 6emo + τ prosody",        "2509 법칙 + 의식 Φ 측정 + 12-faction 합의"],
-    ["n6-architecture", "atlas.n6 SSOT + 112 AI기법 + alien_index 제품",  "self (루프백 0)"],
+    ["canon", "atlas.n6 SSOT + 112 AI기법 + alien_index 제품",  "self (루프백 0)"],
     ["papers",          "alien_index=10 논문 스켈레톤 + verify.py",        "Zenodo/OSF DOI 체인 + PP1~PP3 검증"],
     ["hexa-lang",       "domains/**/*.hexa 포팅 피드백 + R29 verify",     "컴파일러 개선 + self-host 빌드 + 33+ Rust test"],
     ["void",            "AI-native 터미널 사용 프로파일 + 로그",            "hexa-only 터미널 런타임 (Terminal.app 대체)"],
     ["airgenome",       "OS 게놈 벤치마크 요청 + HW 4-tier 매트릭스",      "OS 게놈 스캔 결과 + core self-contained"],
-    ["contribution",    "n6-architecture 수학돌파/실험 성과 집약",          "외부 제출 허브 (paper-submission)"],
+    ["contribution",    "canon 수학돌파/실험 성과 집약",          "외부 제출 허브 (paper-submission)"],
     ["openclaw",        "돌파/발견/실험 피드 emit",                         "nexus 특이점 사이클 consume"]
 ]
 
@@ -197,7 +197,7 @@ while ai < argc {
 // ─── main ─────────────────────────────────────────────────────────
 fn main_list() {
     println("")
-    println("NEXUS-6 Discovery Engine — 9 프로젝트 생태계 (n6-architecture 관점)")
+    println("NEXUS-6 Discovery Engine — 9 프로젝트 생태계 (canon 관점)")
     println("-----------------------------------------------------------------")
     let mut i: i64 = 0
     let n = len(PROJECTS_9)
@@ -237,7 +237,7 @@ fn main_metrics() {
 
 fn main_flow() {
     println("")
-    println("n6-architecture 제공/흡수 매트릭스")
+    println("canon 제공/흡수 매트릭스")
     println("===================================================================")
     let mut i: i64 = 0
     let n = len(N6_FLOW)
@@ -253,7 +253,7 @@ fn main_flow() {
 }
 
 fn main_broadcast(msg: string) {
-    let finding = ["n6-architecture", "test", "DSE-P3-3", msg]
+    let finding = ["canon", "test", "DSE-P3-3", msg]
     let ok = broadcast_finding(finding)
     if ok == 1 {
         println("broadcast ok -> " + GROWTH_BUS)
@@ -269,7 +269,7 @@ fn main_help() {
     println("Options:")
     println("  --list              9 프로젝트 링크 상태 나열 (기본)")
     println("  --metrics           각 프로젝트 로드맵 phases 지표 집계")
-    println("  --flow              n6-architecture 제공/흡수 매트릭스 출력")
+    println("  --flow              canon 제공/흡수 매트릭스 출력")
     println("  --broadcast <msg>   finding 을 growth_bus.jsonl 로 브로드캐스트")
     println("  -h, --help          도움말")
     println("")

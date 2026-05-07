@@ -1,4 +1,4 @@
-# N6 Architecture -- Cross-Domain Bridges
+# CANON -- Cross-Domain Bridges
 
 > Connections spanning 3+ independent domains where the SAME n=6 expression
 > appears without shared derivation. Each bridge is a pattern that emerges

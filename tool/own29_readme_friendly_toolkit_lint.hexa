@@ -14,11 +14,11 @@
 // own 29 declarative-spec contract.
 //
 // @tool(slug="own29_readme_friendly_toolkit_lint", desc="own 29 HARD lint on README.md — biology mandatory friendly Molecular Toolkit (HEXA family) 7-column table (cycle 29 strengthening 2026-04-29): H2 heading present + 7-column header (🛸 / Tool / One-liner / Everyday analogy / What it does / <Mainstream> contrast / Doc) + >=4 data rows + first cell integer 0-999 alien-grade reach + each row's [doc](domains/biology/<slug>/<slug>.md) link resolves to existing file")
-// @usage(hexa /Users/ghost/core/n6-architecture/tool/own29_readme_friendly_toolkit_lint.hexa [--selftest])
+// @usage(hexa /Users/ghost/core/canon/tool/own29_readme_friendly_toolkit_lint.hexa [--selftest])
 // @omega-saturation-exempt("README is single-file SSOT; lint is O(file-size) line-walk + N=4 file-existence checks; converges trivially")
 // @exit_codes(0=PASS, 1=violation found and HARD block, 2=internal/usage error)
 
-let REPO_ROOT = "/Users/ghost/core/n6-architecture"
+let REPO_ROOT = "/Users/ghost/core/canon"
 let README_PATH = REPO_ROOT + "/README.md"
 // MANDATORY section: biology (others are optional per .own own 29 spec, checked by python lint)
 let HEADING_LINE = "## 🧬 Molecular Toolkit (HEXA family)"

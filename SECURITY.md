@@ -1,4 +1,4 @@
-# SECURITY — n6-architecture defense surface
+# SECURITY — canon defense surface
 
 > Honesty triad mode-6 precondition (f) declaration
 > User authorization 2026-04-26 (cross-repo write from nexus session)
@@ -6,8 +6,8 @@
 
 ## Threat model
 
-n6-architecture is a knowledge corpus + theory repo. Unlike nexus (registry +
-defense tools) or anima (ALM substrate runtime), n6-architecture's threat surface
+canon is a knowledge corpus + theory repo. Unlike nexus (registry +
+defense tools) or anima (ALM substrate runtime), canon's threat surface
 is primarily about **theorem integrity** + **atlas SSOT immutability**:
 
 - atlas/atlas.n6: canonical SSOT for n=6 framework derivations (12000+ lines)
@@ -33,7 +33,7 @@ is primarily about **theorem integrity** + **atlas SSOT immutability**:
 2. **No SECURITY_AUDIT.md detail** — this doc is a declaration, not an audit;
    audit lives in nexus's `design/hexa_sim/SECURITY_AUDIT.md` covering the full
    5-layer defense system.
-3. **No CVE / disclosure process** — n6-architecture is a research repo; security
+3. **No CVE / disclosure process** — canon is a research repo; security
    issues go through proposal/issues channel.
 
 ## Honesty triad position
@@ -49,7 +49,7 @@ Together with nexus 6/6, anima 6/6, hexa-lang 5/6 (ceiling at (d)):
 - Audit decision: `~/core/nexus/design/hexa_sim/2026-04-26_honesty_triad_refresh_omega_cycle.json`
 - Defense system audit (full): `~/core/nexus/design/hexa_sim/SECURITY_AUDIT.md`
 - Cross-repo dashboard: `~/core/nexus/design/hexa_sim/cross_repo_dashboard.md`
-- atlas SSOT mirror: `~/core/nexus/n6/atlas.n6` → `~/core/n6-architecture/atlas/atlas.n6`
+- atlas SSOT mirror: `~/core/nexus/n6/atlas.n6` → `~/core/canon/atlas/atlas.n6`
 
 ## Authorization
 

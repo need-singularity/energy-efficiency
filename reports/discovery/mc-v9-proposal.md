@@ -140,7 +140,7 @@ v9's structural signature `structure_hit(v)` hits if any of the following holds:
 
 ### Promotion
 
-- [ ] Add new `MONTE_CARLO_V9` stable entry to convergence/n6-architecture.json
+- [ ] Add new `MONTE_CARLO_V9` stable entry to convergence/canon.json
 - [ ] Verify 7 days with no recurrence -> stable -> promote to ossified (R9/R11)
 
 ## 6. Risks

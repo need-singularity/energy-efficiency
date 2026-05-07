@@ -1,13 +1,13 @@
 # TECS-L Reference Cleanup Audit Report
 
 **Date**: 2026-04-11
-**Work**: Full audit and cleanup of residual TECS-L references in n6-architecture after TECS-L retirement
+**Work**: Full audit and cleanup of residual TECS-L references in canon after TECS-L retirement
 
 ---
 
 ## Background
 
-The TECS-L repo was retired, with its math + industrial functions fully absorbed into n6-architecture.
+The TECS-L repo was retired, with its math + industrial functions fully absorbed into canon.
 This cleanup scanned the entire project to remove active references and preserve historical records.
 
 ---
@@ -21,7 +21,7 @@ This cleanup scanned the entire project to remove active references and preserve
 | **Domain docs (goal.md, .md)** | 14 | Path/reference updated |
 | **CLAUDE.md (guides)** | 2 | Updated |
 | **Experiments (.hexa)** | 1 | Updated |
-| **Historical records (reports/, n6shared/logs/)** | preserved | Unmodified |
+| **Historical records (reports/, canonshared/logs/)** | preserved | Unmodified |
 | **Papers (papers/)** | preserved | Unmodified (academic citation) |
 | **Absorption logs (.growth/absorbed/)** | preserved | Unmodified |
 
@@ -35,11 +35,11 @@ This cleanup scanned the entire project to remove active references and preserve
 |------|------|
 | `nexus/src/gate/source.rs` | Removed TECS-L from allowlist |
 | `nexus/src/ingest/crawler.rs` | Removed TECS-L ProjectSource |
-| `nexus/src/cross_intel/project_bridge.rs` | Comments/tests tecs-l -> n6-architecture |
+| `nexus/src/cross_intel/project_bridge.rs` | Comments/tests tecs-l -> canon |
 | `nexus/src/growth/lens_grower.rs` | tecs_lenses entry commented out |
 | `nexus/src/growth/module_grower.rs` | TECS-L family -> n6 family |
 | `nexus/src/graph/knowledge_nodes.rs` | TECS-L/n6 -> n6 |
-| `nexus/src/telescope/cross_lenses.rs` | TECS-L -> n6-architecture |
+| `nexus/src/telescope/cross_lenses.rs` | TECS-L -> canon |
 | `nexus/src/telescope/registry.rs` | TECS-L math -> math (formerly TECS-L) |
 | `nexus/src/telescope/quantum_lenses.rs` | Removed TECS-L from descriptions |
 | `nexus/src/telescope/lenses/golden_zone_lens.rs` | TECS-L -> n=6 |
@@ -51,9 +51,9 @@ This cleanup scanned the entire project to remove active references and preserve
 |------|------|
 | `.github/workflows/ci.yml` | Updated .shared symlink comment |
 | `.gitignore` | TECS-L comment -> legacy symlink |
-| `nexus/scripts/claude_hook_config.json` | TECS-L/.shared/ -> n6-architecture/nexus/scripts/ |
+| `nexus/scripts/claude_hook_config.json` | TECS-L/.shared/ -> canon/nexus/scripts/ |
 | `nexus/origins/ready-absorber/routes.json` | TECS-L routes deactivated, papers tecs-l pattern removed |
-| `nexus/calculator-registry.md` | TECS-L row -> n6-architecture absorbed |
+| `nexus/calculator-registry.md` | TECS-L row -> canon absorbed |
 
 ### 3. Domain Documents
 
@@ -80,7 +80,7 @@ This cleanup scanned the entire project to remove active references and preserve
 |------|------|
 | `theory/flow/CLAUDE.md` | TECS-L bridge -> design flow, legacy markers |
 | `theory/_index.json` | tecs_bridge -> tecs_bridge_legacy + retirement note |
-| `experiments/anomaly/unified_verify.hexa` | TECS-L -> n6-architecture integrated verification |
+| `experiments/anomaly/unified_verify.hexa` | TECS-L -> canon integrated verification |
 
 ---
 
@@ -88,7 +88,7 @@ This cleanup scanned the entire project to remove active references and preserve
 
 - `reports/` all: session records, discovery records, audit records
 - `papers/` all: academic paper citations (author TECS-L Research Group, etc.)
-- `n6shared/logs/absorbed/`: absorption log JSON
+- `canonshared/logs/absorbed/`: absorption log JSON
 - `domains/*/.growth/absorbed/`: per-domain absorption records
 - `nexus/origins/ready-absorber/findings/`: absorber exploration results
 - `nexus/origins/ready-absorber/state.json`: absorption-complete state

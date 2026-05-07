@@ -394,7 +394,7 @@ If the bridge program is completed and k = 9 (or more) are classified as σφ=n�
 16. Park, M. (2026-03-31). σ(n)·φ(n) = n·τ(n) ⟺ n = 6: 3 independent draft patterns. theory/proofs/theorem-r1-uniqueness.md.
 17. Park, M. (2026-04-15). Rigorous verification of 6 Bernoulli 17 candidates. reports/bernoulli-17-validation-20260415.md.
 18. Park, M. (2026-04-04). The Number 24: cosmic occurrences of 24. theory/proofs/the-number-24.md.
-19. Park, M. (2026-04). N6 Architecture Atlas (atlas.n6, 60K+ lines, 3,952 signals).
+19. Park, M. (2026-04). CANON Atlas (atlas.n6, 60K+ lines, 3,952 signals).
 
 ### Supplementary (meta)
 
@@ -460,7 +460,7 @@ This paper may later be submitted as a **separate revised edition** after (i) br
 > **Author**: Park Minwoo, arsmoriendi99@proton.me, Hanam, Republic of Korea.
 > **MSC2020**: 11A25 (Arithmetic functions), 11B68 (Bernoulli numbers), 14J28 (K3 surfaces), 11G05 (Elliptic curves), 03D10 (Computability).
 > **License**: CC BY 4.0 (intent), pre-publication draft only.
-> **Source**: n6-architecture/papers/group-P/F1-arxiv-bernoulli-independent-via-n6-2026-04-15.md.
+> **Source**: canon/papers/group-P/F1-arxiv-bernoulli-independent-via-n6-2026-04-15.md.
 
 ## §1 WHY
 

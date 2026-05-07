@@ -76,7 +76,7 @@
       v
   reports/discovery/energy_pareto_sweep_<date>.md  (R6 auto-log)
       v
-  n6shared/n6/atlas.n6  evidence_grade auto-promotion (R28)
+  canonshared/n6/atlas.n6  evidence_grade auto-promotion (R28)
 ```
 
 ---
@@ -99,8 +99,8 @@
 ### 5.1 Input
 
 - 400 TOML (`nexus/origins/universal-dse/domains/*.toml`) — Δ1~Δ5 schema applied
-- `n6shared/config/bt_weights.json` — per-BT weights (roughly 0.01~0.05)
-- `n6shared/config/pareto_params.json` — knee detection parameters (default: angle_threshold=150°)
+- `canonshared/config/bt_weights.json` — per-BT weights (roughly 0.01~0.05)
+- `canonshared/config/pareto_params.json` — knee detection parameters (default: angle_threshold=150°)
 
 ### 5.2 Algorithm (AI-native)
 
@@ -142,13 +142,13 @@ dominates(pt', pt) := (pt'.n6 ≥ pt.n6 ∧ pt'.perf ≥ pt.perf
 
 - Append `[[frontier]]` section to each TOML (does not touch existing candidate blocks)
 - Global report: `reports/discovery/energy_pareto_sweep_<date>.md`
-- Result JSON: `n6shared/dse/pareto_frontier_400.json`
+- Result JSON: `canonshared/dse/pareto_frontier_400.json`
 - atlas.n6: frontier 5 candidates × 400 domains = 2000 `@R` entries registered at [7]
 
 ### 5.6 Result Schema
 
 ```jsonc
-// n6shared/dse/pareto_frontier_400.json
+// canonshared/dse/pareto_frontier_400.json
 {
   "generated_at": "2026-04-11T...",
   "n_domains": 400,
@@ -210,7 +210,7 @@ That is, the minimum among the 25 distances between domain a's 5 frontier points
 - 400 domains × 5 frontier = 2000 candidates verification PASS
 - `pareto_frontier_400.json` generated, schema PASS
 - After cross_dse_fusion_v2 integration, pair_count ≥ 100K sustained
-- Add new stable entry `ENERGY_PARETO_SWEEP_400` in convergence/n6-architecture.json → promote to ossified when conditions met
+- Add new stable entry `ENERGY_PARETO_SWEEP_400` in convergence/canon.json → promote to ossified when conditions met
 
 ## 10. Linked Documents
 

@@ -14,7 +14,7 @@ alien_index_target: 10
 
 # HEXA-ARCH-QUANTUM — Quantum-superposition design paper (N6-108)
 
-> **Author**: Park Min-woo (n6-architecture)
+> **Author**: Park Min-woo (canon)
 > **Category**: arch-quantum-design — P2 extension v3 evolution seed
 > **Version**: v3 (2026-04-14 P2 extension)
 > **Prior BT**: BT-91, BT-92, BT-114, BT-195
@@ -147,10 +147,10 @@ verification on **noisy NISQ hardware**.
 ## 6. References
 
 1. Grover, L. K. "A fast quantum mechanical algorithm for database search." STOC 1996.
-2. Park Min-woo. "NEXUS-6 HEXA-GATE Mk.I completion report." n6-architecture, 2026.
+2. Park Min-woo. "NEXUS-6 HEXA-GATE Mk.I completion report." canon, 2026.
 3. Nielsen, M. A., Chuang, I. L. *Quantum Computation and Quantum Information*. Cambridge, 2010.
 4. papers/n6-quantum-computing-paper.md (N6-quantum baseline)
-5. arch_quantum.hexa engine (n6-architecture/engine/)
+5. arch_quantum.hexa engine (canon/engine/)
 
 ## §1 WHY
 

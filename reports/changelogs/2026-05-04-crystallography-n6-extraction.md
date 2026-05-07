@@ -1,4 +1,4 @@
-# crystallography_n6 — extracted from nexus → n6-architecture
+# crystallography_n6 — extracted from nexus → canon
 
 **Date**: 2026-05-04
 **Source**: `nexus/modules/crystallography_n6/` (rank-1 candidate, score 9)
@@ -41,7 +41,7 @@ __CRYSTALLOGRAPHY_N6__ PASS
 
 ## Consumer impact
 
-Pre-extraction grep across nexus + anima + hive + n6-architecture: **0 functional
+Pre-extraction grep across nexus + anima + hive + canon: **0 functional
 consumers** of `nexus/modules/crystallography_n6/` (only audit-doc references).
 No nexus-side refactor needed beyond directory removal.
 

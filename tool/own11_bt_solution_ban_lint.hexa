@@ -11,10 +11,10 @@
 // 120 chars after on same line.
 //
 // @tool(slug="own11_bt_solution_ban_lint", desc="own#11 Clay Millennium solve-claim ban — BT-541..547 + 'solved/solution/resolved/해결' within 120 chars FORBIDDEN in README.md / CONTRIBUTING.md / papers/*.md")
-// @usage(hexa /Users/ghost/core/n6-architecture/tool/own11_bt_solution_ban_lint.hexa [--selftest])
+// @usage(hexa /Users/ghost/core/canon/tool/own11_bt_solution_ban_lint.hexa [--selftest])
 // @exit_codes(0=PASS, 1=violations, 2=internal error)
 
-let REPO_ROOT = "/Users/ghost/core/n6-architecture"
+let REPO_ROOT = "/Users/ghost/core/canon"
 
 fn _file_exists(path: string) -> bool {
   let r = to_string(exec("test -f '" + path + "' && echo y || echo n")).trim()

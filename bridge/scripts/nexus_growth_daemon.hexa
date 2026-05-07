@@ -110,7 +110,7 @@ let GROWTH_LOG = NEXUS_STATE + "/growth_log.jsonl"
 let mut NEXUS_ROOT = env("NEXUS")
 if len(NEXUS_ROOT) == 0 { NEXUS_ROOT = HOME + "/Dev/nexus" }
 let ATLAS_N6 = NEXUS_ROOT + "/n6/atlas.n6"
-let N6_ARCH = HOME + "/Dev/n6-architecture"
+let N6_ARCH = HOME + "/Dev/canon"
 let SCRIPT_DIR = N6_ARCH + "/bridge/scripts"
 let CARGO_BIN = HOME + "/.cargo/bin/cargo"
 

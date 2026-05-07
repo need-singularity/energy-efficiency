@@ -594,7 +594,7 @@ special ly DFS17-01 (SLE_6 ) probability in kappa=6this unique having Lawler-Sch
 ## 7. Verification environment
 
 - Date: 2026-04-12
-- Project: n6-architecture
+- Project: canon
 - Preceding BT: BT-1394~1408
 - Reference atlas: $NEXUS/shared/n6/atlas.n6
-- SSOT rules: n6shared/rules/common.json (R0~R27), n6shared/rules/n6-architecture.json (N61~N65)
+- SSOT rules: canonshared/rules/common.json (R0~R27), canonshared/rules/canon.json (N61~N65)

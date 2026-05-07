@@ -10,7 +10,7 @@
 ## 1. Background
 
 Since the cycle-11 README curation episode (Korean directive `README in exposure`),
-the hexa-runtime sync pipeline `n6shared/sync-readme.hexa` has been emitting
+the hexa-runtime sync pipeline `canonshared/sync-readme.hexa` has been emitting
 the false `[OK] README.md is up to date with readme-data.json (64 markers)`
 status while only 0–2 of 64 markers were actually being processed. The
 cycle-11 workaround restored `scripts/sync-readme.py` as a `/tmp` fallback;
@@ -66,9 +66,9 @@ raw void slip through. `to_string(void) == "void"` then injected literal
 `void` text into rendered markers (`DSE void`, `industryvoid%`, `experimentvoid%`,
 `physical-limitvoid`).
 
-## 3. Cycle-18 fix (option A — n6shared/sync-readme.hexa upstream)
+## 3. Cycle-18 fix (option A — canonshared/sync-readme.hexa upstream)
 
-Two atomic changes in `n6shared/sync-readme.hexa`:
+Two atomic changes in `canonshared/sync-readme.hexa`:
 
 ### 3.1. `scan_markers` NAME validation
 Added `is_valid_marker_name(name)` checking `name` is non-empty (≤ 64 chars)
@@ -246,5 +246,5 @@ Cycle 19 tasks (rank ordered):
 - proposals/hexa_weave_sync_readme_bug_fix_2026_04_28.md (this file)
 - design/kick/2026-04-28_sync-readme-bug-fix-cycle18_omega_cycle.json
 - state/discovery_absorption/registry.jsonl (one row)
-- n6shared/sync-readme.hexa (modified — Option A fix; +56 LoC; reversible
+- canonshared/sync-readme.hexa (modified — Option A fix; +56 LoC; reversible
   via git revert if regression)

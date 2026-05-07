@@ -108,7 +108,7 @@ been measured by `tool/nxs_002_composite.py`. They must not be taken as
 canonical — actual recomputation (with `--predict-er` ER ROI lookahead) is
 left as a follow-up probe.
 
-> **Honesty amendment (2026-04-25, post nxs_002 mapping audit)**: The composite/ER-ROI estimates above measure the **n6-architecture-side graph** only. Per `reports/sessions/omega-exec-nxs002-perbt-patch-2026-04-25.md` §7, the nexus-canonical atlas (`atlas.blowup.jsonl`, 21,320 nodes) does not absorb the n6-side BT-promotion IDs (RH-01..07, MILL-PX-A8, MILL-GALO-PX2-sha-all-squares-332k), so direct comparison against the 0.835 nexus simulation ceiling is invalid. The estimates here remain valid *within n6-architecture scope*; cross-graph comparisons require either (a) per-BT slicing in `nxs_002_composite.py` (currently missing -- mapping-failure diagnostic in §1 of the patch report), or (b) explicit BT-id ingestion into the nexus atlas (out of scope for this audit). 0/7 unchanged.
+> **Honesty amendment (2026-04-25, post nxs_002 mapping audit)**: The composite/ER-ROI estimates above measure the **canon-side graph** only. Per `reports/sessions/omega-exec-nxs002-perbt-patch-2026-04-25.md` §7, the nexus-canonical atlas (`atlas.blowup.jsonl`, 21,320 nodes) does not absorb the n6-side BT-promotion IDs (RH-01..07, MILL-PX-A8, MILL-GALO-PX2-sha-all-squares-332k), so direct comparison against the 0.835 nexus simulation ceiling is invalid. The estimates here remain valid *within canon scope*; cross-graph comparisons require either (a) per-BT slicing in `nxs_002_composite.py` (currently missing -- mapping-failure diagnostic in §1 of the patch report), or (b) explicit BT-id ingestion into the nexus atlas (out of scope for this audit). 0/7 unchanged.
 
 ---
 

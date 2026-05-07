@@ -1,6 +1,6 @@
 ## Quantum re-verification of the sigma-phi-tau identity
 
-The n6-architecture core identity
+The canon core identity
 ```
     sigma(n) * phi(n) == n * tau(n)    iff    n == 6
 ```

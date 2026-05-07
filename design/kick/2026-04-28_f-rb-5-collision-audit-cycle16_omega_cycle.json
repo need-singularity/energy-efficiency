@@ -12,7 +12,7 @@
   ],
   "falsifier_id": "F-RB-5",
   "falsifier_clauses": ["F-RB-5-sister-axis-collision", "F-RB-5-b", "F-RB-5-c"],
-  "claim_under_audit": "HEXA-RIBOZYME has no HARD collision with any pre-existing axis or domain in n6-architecture (own 16 single-canonical compliance) and only soft / no overlap with life/crispr-gene-editing AND life/synbio at the architectural-primitive layer.",
+  "claim_under_audit": "HEXA-RIBOZYME has no HARD collision with any pre-existing axis or domain in canon (own 16 single-canonical compliance) and only soft / no overlap with life/crispr-gene-editing AND life/synbio at the architectural-primitive layer.",
   "deadline": "2026-05-28",
   "audit_scope": {
     "axes_swept": ["physics", "life", "energy", "compute", "materials", "space", "infra", "cognitive", "culture", "sf-ufo", "biology"],
@@ -194,8 +194,8 @@
     ],
     "discovery_absorption_registry_row_appended": "this F-RB-5 disposition registry row"
   },
-  "raw_47_zero_cross_repo": "audit was zero-cross-repo; only n6-architecture working tree consulted.",
+  "raw_47_zero_cross_repo": "audit was zero-cross-repo; only canon working tree consulted.",
   "raw_138_pass_sentinel": "__F_RB_5_AUDIT_RESULT__ RESOLVED",
   "raw_142_d2_revertible": true,
-  "raw_91_c3_self_disclosure": "audit did NOT execute Bayesian model comparison (deferred to F-RB-2 audit by 2026-09-28); audit did NOT execute external literature crawl beyond the corpus already cited in hexa-ribozyme.md (Cech 1982 / Guerrier-Takada 1983 / Symons 1981 / Wu-Lai 1989 / Buzayan 1986 / Steitz 1993 / Nissen-Steitz 2000); audit relied on full-text grep of n6-architecture working tree + scope-reading of life/crispr-gene-editing.md and life/synbio.md (sufficient for HARD/SOFT/NONE classification but does not preclude future taxonomic publications that could re-trigger F-RB-5-c — re-audit by 2027-04-28 recommended). HARD COLLISION = 0 declared honestly under task spec step 6 + raw 91 C3 fabricated NO-COLLISION rejection."
+  "raw_91_c3_self_disclosure": "audit did NOT execute Bayesian model comparison (deferred to F-RB-2 audit by 2026-09-28); audit did NOT execute external literature crawl beyond the corpus already cited in hexa-ribozyme.md (Cech 1982 / Guerrier-Takada 1983 / Symons 1981 / Wu-Lai 1989 / Buzayan 1986 / Steitz 1993 / Nissen-Steitz 2000); audit relied on full-text grep of canon working tree + scope-reading of life/crispr-gene-editing.md and life/synbio.md (sufficient for HARD/SOFT/NONE classification but does not preclude future taxonomic publications that could re-trigger F-RB-5-c — re-audit by 2027-04-28 recommended). HARD COLLISION = 0 declared honestly under task spec step 6 + raw 91 C3 fabricated NO-COLLISION rejection."
 }

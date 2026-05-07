@@ -1,6 +1,6 @@
 > Mk.IV Trident final re-check — P8-4 / 2026-04-15
 >
-> Author: DSE-P8-4 / n6-architecture P8
+> Author: DSE-P8-4 / canon P8
 > Original: theory/proofs/mk4-theorem-candidates-2026-04-14.md (P6 Mk.III-β)
 > Purpose: candidate A (τ²/σ=4/3) vs candidate B (σ-τ=8) — re-apply independent adjudication criteria and unify
 > Rules: no self-reference, based on exhaustive verification, English

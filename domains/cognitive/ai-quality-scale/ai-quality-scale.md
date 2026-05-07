@@ -792,7 +792,7 @@ I(T; S) <= N_s * log2(Q) bits
 where Q = quantization level (effective bits if continuous), T = teacher representation, S = student representation
 ```
 
-**n=6 interpretation**: With N_s = 70B, N_t = 400B, ratio = 70/400 = 7/40. Normalized by sigma(6)=12, information-preservation upper bound = sqrt(7/40) * 12/12 = 0.418. Empirical 88% retention is the result of approaching this theoretical upper bound via intermediate-representation alignment. The sigma(n)=2n property of the perfect number 6 doubles the upper bound [EXACT]
+**n=6 interpretation**: With N_s = 70B, N_t = 400B, ratio = 70/400 = 7/40. Normalized by sigma(6)=12, information-preservation upper bound = sqrt(7/40) * 12/12 = 0.418. Empirical 88% retention is the result of approaching this theoretical upper bound via intermediate-representation alignment. The sigma(n)=2n property of the arithmetic canon doubles the upper bound [EXACT]
 
 ### Theorem V2-3-2: Pruning-Accuracy Tradeoff
 

@@ -249,9 +249,9 @@ TOTAL 0.7% [....................................] 3/416
 - Self-reference prohibited — we verified actual file existence rather than cross-checking product-internal fields.
 - Measured paths are output as-is (no path guessing/correction).
 - : `docs/...` prefix, `$N6_ARCH/docs/` .
-- `domains/...`, `papers/...` prefix 3 n6-architecture (tech-industry:).
+- `domains/...`, `papers/...` prefix 3 canon (tech-industry:).
 - `nexus/shared/n6/scripts/` prefix verify_script 0.
-- Drift cause hypothesis (draft candidate): products.json appears written against the doc tree inside `nexus/shared/n6/`, but inside the n6-architecture repo that docs directory is separated/unsynced.
+- Drift cause hypothesis (draft candidate): products.json appears written against the doc tree inside `nexus/shared/n6/`, but inside the canon repo that docs directory is separated/unsynced.
 - This report is a current-state measurement, not a modification recommendation, and does not touch products.json.
 
 ## Output metadata

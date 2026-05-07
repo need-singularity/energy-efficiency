@@ -14,7 +14,7 @@ license: CC-BY-SA-4.0
 
 ## §1 Purpose — HONEST-PX-2
 
-R14 rule (n6-architecture common rules): "no self-reference verification (only external data/theory allowed)". The OUROBOROS detector is the CLI that systematically monitors this. "OUROBOROS" = snake eating its own tail = circular self-reference.
+R14 rule (canon common rules): "no self-reference verification (only external data/theory allowed)". The OUROBOROS detector is the CLI that systematically monitors this. "OUROBOROS" = snake eating its own tail = circular self-reference.
 
 **Scope**: all `@R` / `@X` entries in `/Users/ghost/Dev/nexus/shared/n6/atlas.n6`.
 
@@ -184,7 +184,7 @@ Out of current-session scope — future extension of `scripts/monotone/ouroboros
 - `scripts/monotone/ouroboros_detector.py` — OUROBOROS-detection CLI (~200 lines)
 - `reports/ouroboros_report.json` — detailed JSON report
 - `scripts/monotone/atlas_drift_monitor.py` — loop3 drift monitor (grade monotonicity)
-- `n6shared/rules/common.json` R14 — original rule ("no self-reference verification")
+- `canonshared/rules/common.json` R14 — original rule ("no self-reference verification")
 
 ---
 

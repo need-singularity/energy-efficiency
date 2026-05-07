@@ -7,7 +7,7 @@
 // @usage(hexa run modules/chip_isa_n6/chip_isa_n6.hexa --self-test)
 // @sentinel(__CHIP_ISA_N6__ <PASS|FAIL> [reason=<slug>])
 // @origin(rewrite of lost 502-LOC Python module via .hexa, sourced from
-//         ~/core/n6-architecture/domains/compute/chip-isa-n6/xn6-opcode-table/
+//         ~/core/canon/domains/compute/chip-isa-n6/xn6-opcode-table/
 //         and ../xn6_asm_examples.hexa — funct3 × variant = 6×4 = J₂=24)
 //
 // Encoding (24-bit instruction word, σ-τ=8-bit opcode byte at top):

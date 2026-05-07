@@ -93,7 +93,7 @@ and machine-checkable by the verify script.
 
 ### Atlas
 
-- atlas/atlas.append.n6-architecture-historical-absorption-2026-04-26.n6:526
+- atlas/atlas.append.canon-historical-absorption-2026-04-26.n6:526
   -- provenance_bit_overhead = phi/sigma_n = 1/36
 - atlas/atlas.n6:446 -- J2 = sigma*phi = n*tau = 24 (peak MAC per tile)
 - atlas/atlas.n6:56 -- sigma_sq = sigma^2 = 144 (SM array size)
@@ -208,7 +208,7 @@ from pathlib import Path
 THIS_FILE = Path(__file__).resolve()
 REPO_ROOT = THIS_FILE.parents[3]  # domains/compute/ai-native-architecture/<file>
 
-ATLAS_APPEND = REPO_ROOT / "atlas" / "atlas.append.n6-architecture-historical-absorption-2026-04-26.n6"
+ATLAS_APPEND = REPO_ROOT / "atlas" / "atlas.append.canon-historical-absorption-2026-04-26.n6"
 ATLAS_MAIN = REPO_ROOT / "atlas" / "atlas.n6"
 SIM_FILE = REPO_ROOT / "experiments" / "anomaly" / "btAI2_honesty_bit_scheduler.py"
 H1_RESULTS = REPO_ROOT / "reports" / "anomaly" / "btAI2c_h1_results.json"
@@ -1404,14 +1404,14 @@ if __name__ == "__main__":
 
 ## §14 TEAM
 
-- Domain owner: n6-architecture maintainer cohort (single-owner repo).
+- Domain owner: canon maintainer cohort (single-owner repo).
 - Cross-repo: nexus (atlas absorption read-only); hive (cross-host orchestration).
 - External collaboration: none currently; design is open under repo licence.
 
 ## §15 REFERENCES
 
 See §5 above for the canonical reference set:
-- Atlas: `n6shared/atlas.n6` (anchor constants).
+- Atlas: `canonshared/atlas.n6` (anchor constants).
 - Knowledge graph nodes: BT-AI1 / BT-AI2 / BT-AI2c.
 - Simulators: `reports/anomaly/btAI*` harness output.
 - Reports: parent session `reports/sessions/omega-cycle-ai-native-arch-beyond-gpu-2026-04-26.md`; F-AI2c-A H1 summary `reports/anomaly/btAI2c_h1_summary.md`.

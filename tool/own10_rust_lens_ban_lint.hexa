@@ -9,10 +9,10 @@
 // Migrated from tool/own_doc_lint_legacy.py:898-926 + 873-895 per raw 9.
 //
 // @tool(slug="own10_rust_lens_ban_lint", desc="own#10 rust-lens-ban HARD — any .rs under bridge/src/telescope/ or top-level lenses/ flagged + 90d git-log addition scan")
-// @usage(hexa /Users/ghost/core/n6-architecture/tool/own10_rust_lens_ban_lint.hexa [--selftest])
+// @usage(hexa /Users/ghost/core/canon/tool/own10_rust_lens_ban_lint.hexa [--selftest])
 // @exit_codes(0=PASS, 1=violations, 2=internal error)
 
-let REPO_ROOT = "/Users/ghost/core/n6-architecture"
+let REPO_ROOT = "/Users/ghost/core/canon"
 let TELE_DIR = REPO_ROOT + "/bridge/src/telescope"
 let LENSES_DIR = REPO_ROOT + "/lenses"
 

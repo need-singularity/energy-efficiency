@@ -272,7 +272,7 @@ The R5 closure declared in §3 is **silent on R1**:
 
 R1 Lemma 1 (BV-2019 viscous adaptation for the strict viscous gain
 δ > 0 on the α*_NS ≤ 1/3 bound) is **mid-iteration** in the
-n6-architecture corpus per the user-supplied context (retry-3
+canon corpus per the user-supplied context (retry-3
 BCV-2021 in-flight). R1 is **not** closed; its open piece remains
 the Hölder-threshold strict-gain question.
 

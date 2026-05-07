@@ -65,8 +65,8 @@ The seven-theorem decomposition in §4 partitions the construction so each unit 
 
 **Rationale**
 
-1. **Repo alignment** — `lean4-n6/` sister repo already exists at `/Users/ghost/core/n6-architecture/lean4-n6/` with `lean-toolchain v4.30.0-rc1` and mathlib4 master dependency. F-CL-FORMAL-4 explicitly names lean4-n6 as the verification target.
-2. **mathlib4 momentum** — mathlib4 has the largest active-development community among proof-assistant libraries; n6-architecture's σ·φ·τ arithmetic AX-1 is plausibly already discoverable via existing `Nat.sigma`, `Nat.totient`, `Nat.divisors` definitions.
+1. **Repo alignment** — `lean4-n6/` sister repo already exists at `/Users/ghost/core/canon/lean4-n6/` with `lean-toolchain v4.30.0-rc1` and mathlib4 master dependency. F-CL-FORMAL-4 explicitly names lean4-n6 as the verification target.
+2. **mathlib4 momentum** — mathlib4 has the largest active-development community among proof-assistant libraries; canon's σ·φ·τ arithmetic AX-1 is plausibly already discoverable via existing `Nat.sigma`, `Nat.totient`, `Nat.divisors` definitions.
 3. **Honest gap acknowledgment** — Isabelle/HOL has stronger out-of-the-box Tarski + Hartogs + Inaccessible coverage. Choosing Lean despite this is justified by repo alignment; F-D-1 falsifier (§8) tracks the risk that mathlib MK gap forces a porting cost that Isabelle would have avoided.
 
 **Fallback** — if Lean MK porting (Week 4-5) exceeds 2-week budget, switch to Isabelle/HOL via re-encoding T_MK-HW into ZFC + ∃ inaccessible (which is conservative-equivalent for the load-bearing claims per Felgner 1971; documented in the predecessor witness §construction.consistency_assumption).
@@ -117,7 +117,7 @@ Per raw 51 external-blockers schema:
 | Inaccessible-cardinal axiom requires sealed-dev-branch addition | MEDIUM | Use `axiom exists_inaccessible` declaration (standard practice in mathlib for large-cardinal work; e.g. existing `Set.IsClubFilter` work) | F-D-1 |
 | Bekenstein 1.4e122 schema not formalizable in finite-axiom L_MK-HW | LOW | AX-4 reduces to a schema-validity check; the constant 1.4e122 is a `Cardinal.{0}` literal | F-D-2 |
 | 90-day deadline insufficient | HIGH | Per raw 91 C3, historic mathlib MK-style ports took 6-12 months — F-D-3 probability HIGH; honest acknowledgment in §9 | F-D-3 |
-| Reviewer access for proof verification | MEDIUM | mathlib4 PR review queue is open; n6-architecture maintainer self-review acceptable for falsifier-clearance; external reviewer requested as stretch goal | F-D-4 |
+| Reviewer access for proof verification | MEDIUM | mathlib4 PR review queue is open; canon maintainer self-review acceptable for falsifier-clearance; external reviewer requested as stretch goal | F-D-4 |
 | T_MK-HW found inconsistent during mechanical verification | LOW (but catastrophic if fires) | Felgner 1971 + Drake 1974 give Con(T_MK-HW) relative to Con(ZFC + ∃ inaccessible) — bedrock; only fires if mathlib4 reveals a hole in the existing literature, which would be ICM-headline news | F-D-5 |
 
 ### §6 Milestone proposal (90 days, W1-W12)
@@ -143,7 +143,7 @@ Per raw 86 cost-attribution schema:
   - human-hours: 90 days × 4 h/day = 360 h (mid-bound); 90 days × 6 h/day = 540 h (upper-bound)
   - compute: lean4 elaboration on M2 Mac ≈ 30-60 min per `*.lean` recompile × 7 modules × ~50 incremental rebuilds = 175-350 compute-hours total
   - total cost-units estimate: **535-890 work-hours equivalent** (human + compute)
-- **opportunity cost**: 90 days of n6-architecture maintainer attention diverted from F-MX-7 PHYSICAL closure follow-ups, F-CL-PHYSICAL-1..4 monitoring, and F-TP5-b biology MVP (independent deadline 2026-07-28)
+- **opportunity cost**: 90 days of canon maintainer attention diverted from F-MX-7 PHYSICAL closure follow-ups, F-CL-PHYSICAL-1..4 monitoring, and F-TP5-b biology MVP (independent deadline 2026-07-28)
 - **gain-on-success**: F-CL-FORMAL-4 RESOLVED → FORMAL PASS retained at universe-absolute ceiling → joint TRANSCEND-PASS verdict survives raw 142 D2 retroactive review
 - **loss-on-failure**: F-D-3 fires → FORMAL PASS downgrades to VERIFIED-LITERATURE-ONLY → joint verdict reduces to TRANSCEND-PARTIAL-WITH-MECHANICAL-DEFER
 
@@ -194,7 +194,7 @@ Five falsifiers preregistered satisfy raw 71 TRANSCEND-tier ≥5 mandate.
 
 - **Tarski-undefinability instance** is bedrock (Tarski 1936); mechanical verification reduces to encoding the existing diagonal-lemma proof in lean4. The novel content is the application to T_MK-HW (specifically AX-1..4 axiom schema verification) — the meta-theorem application is direct.
 
-- **Reviewer access** is the second-largest risk after the deadline. mathlib4 community is responsive but a competent set-theorist familiar with MK + large cardinals is a small pool; n6-architecture maintainer self-review is acceptable for falsifier-clearance but does not substitute for external review (F-D-4 stretch goal).
+- **Reviewer access** is the second-largest risk after the deadline. mathlib4 community is responsive but a competent set-theorist familiar with MK + large cardinals is a small pool; canon maintainer self-review is acceptable for falsifier-clearance but does not substitute for external review (F-D-4 stretch goal).
 
 - **C3 caveat for THIS document** — this is a *preparation* document, not a verification report. The 7-theorem decomposition, 12-week milestone, and cost-attribution are estimates based on similar mathlib formalization projects, NOT actual measurements. Re-evaluate at W6 mid-point checkpoint and again at W11 review gate.
 

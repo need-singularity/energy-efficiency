@@ -2,7 +2,7 @@
 domain: theory/breakthroughs
 date: 2026-04-15
 bt_id: BT-19-ALT-C (P12-1)
-task: DSE-P12-1 TRANSCEND — BT-19 candidate C perfect number 6=1+2+3 self-reduction - DSE
+task: DSE-P12-1 TRANSCEND — BT-19 candidate C arithmetic canon=1+2+3 self-reduction - DSE
 title: BT-19 perfect number path — Strange Loop + RAF + consciousness 3-layer divisor mapping
 status: CONJECTURE (P12-1 - -, P10-2/P11-2 upper- - path)
 method: Euclid IX.36 minimum perfect number uniqueness + Hofstadter Strange Loop + Kauffman RAF + consciousness 3-layer mapping
@@ -61,7 +61,7 @@ candidate C: 6=1+2+3 perfect number      verification difficulty - / n=6 uniquen
 
 ---
 
-## 2. perfect number 6=1+2+3 - -
+## 2. arithmetic canon=1+2+3 - -
 
 ### 2.1 perfect number definition (Euclid IX.36 / Euler 1849)
 

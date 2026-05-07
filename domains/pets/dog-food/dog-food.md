@@ -985,7 +985,7 @@ Test plan:
 | Chr. Hansen (DK) | B. animalis lactis Bb12 | canine probiotic strain |
 | Diamond V (USA) | yeast culture | digestibility adjunct |
 | Mondi Group (AT) / Amcor (AU) | kraft+PE pouch | retail SKU packaging |
-| n6-architecture private framework | own_doc_lint / own31 lint | docs gate |
+| canon private framework | own_doc_lint / own31 lint | docs gate |
 
 ## §19 ACCEPTANCE / MISS criteria (own#12 pre-declared)
 

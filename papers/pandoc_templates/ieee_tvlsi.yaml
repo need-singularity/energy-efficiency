@@ -13,9 +13,9 @@ venue_distribution_count: 6
 title:         "<PAPER_TITLE 한글> — 칩 아키텍처 구현"
 subtitle:      "n=6 산술 좌표 기반 VLSI 설계 공간 탐색"
 author:
-  - 박민우 (n6-architecture 주관)
+  - 박민우 (canon 주관)
   - NEXUS-6 AI 협업체
-institute:     "n6-architecture 프로젝트"
+institute:     "canon 프로젝트"
 date:          "2026-04-14"
 lang:          ko
 mainfont:      "Noto Serif CJK KR"

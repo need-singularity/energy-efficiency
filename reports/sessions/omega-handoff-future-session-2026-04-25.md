@@ -37,7 +37,7 @@ handoff. This file writes only itself.
 
 ## §1 Session 30-second overview
 
-The 2026-04-25 omega-cycle session in `n6-architecture` produced
+The 2026-04-25 omega-cycle session in `canon` produced
 **80 reports / 49,458 lines** under cron-driven `/loop` dispatch
 across ~170 minutes (19:16-22:14). The session ran the omega-cycle
 4-axis audit on each of the 7 Millennium BTs (541-547), then
@@ -529,7 +529,7 @@ None of F-HANDOFF-1..7 fires under this report's scope.
 **0/7 unchanged. Session ends in saturated state. No
 atlas/state/inventory edits.**
 
-The 2026-04-25 omega-cycle session in `n6-architecture` produced
+The 2026-04-25 omega-cycle session in `canon` produced
 80 reports / 49,458 lines / 6 meta-patterns / 1 unified 8-step
 workflow / 1 REPO_INVARIANT honesty-triad result / 5-witness
 axis-B obstruction localization on BT-544 / 6/6 cross-BT
@@ -562,6 +562,6 @@ nxs_promotion_count: **unchanged this session**.
 NO atlas/state/inventory edits in n6 or nexus. NO `CLAUDE.md`
 changes. NO `.claude/agents/*` changes. The single output file is
 this report under
-`/Users/ghost/core/n6-architecture/reports/sessions/omega-handoff-future-session-2026-04-25.md`.
+`/Users/ghost/core/canon/reports/sessions/omega-handoff-future-session-2026-04-25.md`.
 
 — end future-session handoff —

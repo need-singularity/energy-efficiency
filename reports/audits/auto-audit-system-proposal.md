@@ -1,6 +1,6 @@
 # Weekly Audit Automation System Design Proposal
 
-> **Target project**: n6-architecture
+> **Target project**: canon
 > **Authored**: 2026-04-11
 > **Owning axis**: `reports/sessions` + `reports/changelogs`
 > **Design scope**: full-spectrum audit over the last 7 days -> auto report + changelog + snapshot
@@ -34,15 +34,15 @@ Currently, the four axes `reports/sessions`, `reports/audits`, `reports/changelo
 | # | Data source | Path | Aggregation |
 |---|------------|------|----------|
 | 1 | **git log** | Local `.git` | `git log --since='7 days ago'` — commits/authors/files/9-axis distribution |
-| 2 | **growth_bus.jsonl** | `n6shared/growth_bus.jsonl` | awk on `ts` field cutoff, line count + type/domain TOP |
-| 3 | **discovery_graph.json** | `n6shared/discovery_graph.json` | Approximate nodes/edges via `"id":` / `"from":` frequency -> snapshot delta |
+| 2 | **growth_bus.jsonl** | `canonshared/growth_bus.jsonl` | awk on `ts` field cutoff, line count + type/domain TOP |
+| 3 | **discovery_graph.json** | `canonshared/discovery_graph.json` | Approximate nodes/edges via `"id":` / `"from":` frequency -> snapshot delta |
 | 4 | **atlas.n6** | `$NEXUS/shared/n6/atlas.n6` | grep `[10*]`, `[10]`, `[9]`, `[7]`, `[N?]`, `[N!]` grade aggregation |
 | 5 | **cargo test** | `nexus/` workspace | `timeout 180 cargo test --quiet --offline` then parse `test result: ok. X passed` |
-| 6 | **convergence** | `n6shared/convergence/n6-architecture.json` | awk to count keys in `ossified`/`stable`/`failed` blocks |
+| 6 | **convergence** | `canonshared/convergence/canon.json` | awk to count keys in `ossified`/`stable`/`failed` blocks |
 
 ### 2.1 Snapshot-based delta
 
-- `n6shared/logs/weekly_audit_state.json` — metrics stored from previous run
+- `canonshared/logs/weekly_audit_state.json` — metrics stored from previous run
 - Fields: `dg_nodes`, `dg_edges`, `atlas_exact`, `atlas_empirical`, `gb_total`, `updated`
 - Updated every run -> baseline for next weekly delta
 
@@ -56,7 +56,7 @@ Currently, the four axes `reports/sessions`, `reports/audits`, `reports/changelo
 
 **Format summary**:
 ```
-# n6-architecture Weekly Audit Report — 2026-04-11
+# canon Weekly Audit Report — 2026-04-11
 
 ## Summary snapshot (box-drawing)
 ## 1. Git activity (commits/authors/files/9-axis distribution/recent 12 commits)
@@ -77,7 +77,7 @@ Currently, the four axes `reports/sessions`, `reports/audits`, `reports/changelo
 
 ### 3.3 Snapshot JSON
 
-**Path**: `n6shared/logs/weekly_audit_state.json`
+**Path**: `canonshared/logs/weekly_audit_state.json`
 
 ```json
 {
@@ -152,7 +152,7 @@ hexa nexus/scripts/weekly_audit.hexa --no-cargo        # skip cargo test
 
 ```sh
 # ~/.crontab or crontab -e
-0 9 * * 1 cd $N6_ARCH && $HEXA_LANG/hexa nexus/scripts/weekly_audit.hexa >> n6shared/logs/weekly_audit_cron.log 2>&1
+0 9 * * 1 cd $N6_ARCH && $HEXA_LANG/hexa nexus/scripts/weekly_audit.hexa >> canonshared/logs/weekly_audit_cron.log 2>&1
 ```
 
 ### 6.3 macOS launchd (recommended — cron alternative)
@@ -182,9 +182,9 @@ hexa nexus/scripts/weekly_audit.hexa --no-cargo        # skip cargo test
         <integer>0</integer>
     </dict>
     <key>StandardOutPath</key>
-    <string>$N6_ARCH/n6shared/logs/weekly_audit_launchd.log</string>
+    <string>$N6_ARCH/canonshared/logs/weekly_audit_launchd.log</string>
     <key>StandardErrorPath</key>
-    <string>$N6_ARCH/n6shared/logs/weekly_audit_launchd.err</string>
+    <string>$N6_ARCH/canonshared/logs/weekly_audit_launchd.err</string>
 </dict>
 </plist>
 ```
@@ -220,8 +220,8 @@ Add to `.claude/settings.json` (in parallel with the existing `UserPromptSubmit`
 
 **Note**: `.claude/settings.json` may be an L0 protected target — verify `core-lockdown.json` and obtain user approval before direct edit (R25 compliance).
 
-**Alternative**: Register at project-local `n6shared/config/` level (L2 free to modify)
-- Create `n6shared/config/weekly_audit_schedule.json`
+**Alternative**: Register at project-local `canonshared/config/` level (L2 free to modify)
+- Create `canonshared/config/weekly_audit_schedule.json`
 - Have the `nexus` daemon read that config and execute periodically (extend nexus_growth_daemon.hexa)
 
 ---
@@ -233,14 +233,14 @@ Add to `.claude/settings.json` (in parallel with the existing `UserPromptSubmit`
 | R1 HEXA-FIRST | OK | Only `.hexa` newly created |
 | R2 no hardcoding | OK | Paths relative, constants as variables |
 | R5 SSOT | OK | References `shared/` originals, no duplicates created |
-| R6 auto-recording | OK | Aggregation results persisted to `n6shared/logs/weekly_audit_state.json` |
-| R8 no local data | OK | `n6shared/logs/` is in the allowed range (integrated inside nexus) |
+| R6 auto-recording | OK | Aggregation results persisted to `canonshared/logs/weekly_audit_state.json` |
+| R8 no local data | OK | `canonshared/logs/` is in the allowed range (integrated inside nexus) |
 | R14 common JSON | OK | Rules only reference existing `absolute_rules.json` |
 | R18 minimal | OK | Focused on audit aggregation only, no feature additions |
 | R19 no SILENT EXIT | OK | All errors printed via `log()` to stderr |
 | R21 no blocking | OK | `cargo test` timeout 180s |
 | R22 interpreter path | OK | `bash` only, no python/node invocation |
-| R24 no new .sh/.py in n6shared/hooks | OK | This script is created in `nexus/scripts/` |
+| R24 no new .sh/.py in canonshared/hooks | OK | This script is created in `nexus/scripts/` |
 | English required | OK | All output/comments in English |
 
 ---
@@ -264,7 +264,7 @@ Add to `.claude/settings.json` (in parallel with the existing `UserPromptSubmit`
 - [ ] Add monthly audit (`monthly_audit.hexa`)
 
 ### Phase 4 (long-term)
-- [ ] Auto-update `n6shared/convergence/n6-architecture.json` based on audit results (detect stable->ossified transitions)
+- [ ] Auto-update `canonshared/convergence/canon.json` based on audit results (detect stable->ossified transitions)
 - [ ] Cross-project audit (TECS-L, anima, sedi, papers) via the nexus hub
 
 ---
@@ -277,13 +277,13 @@ Add to `.claude/settings.json` (in parallel with the existing `UserPromptSubmit`
 | `cargo test` exceeds 180s | Audit stalls | `--no-cargo` option + timeout wrapping |
 | `discovery_graph.json` structure change | Node count inaccurate | Replace with proper JSON parser in Phase 3 |
 | First-run delta = current absolute | Initial noise | Document explicitly + normalize from 2nd run |
-| `n6shared/logs/weekly_audit_state.json` corruption | Delta = 0 | Document `--force` re-run + manual recovery |
+| `canonshared/logs/weekly_audit_state.json` corruption | Delta = 0 | Document `--force` re-run + manual recovery |
 
 ---
 
 ## 10. Conclusion
 
-This proposal automates the weekly audit of the n6-architecture project with a **single HEXA script** called `nexus/scripts/weekly_audit.hexa`. It aggregates 6 data sources (git/growth_bus/discovery_graph/atlas.n6/cargo/convergence) **idempotently and safely** to produce three outputs: English report + changelog template + snapshot JSON.
+This proposal automates the weekly audit of the canon project with a **single HEXA script** called `nexus/scripts/weekly_audit.hexa`. It aggregates 6 data sources (git/growth_bus/discovery_graph/atlas.n6/cargo/convergence) **idempotently and safely** to produce three outputs: English report + changelog template + snapshot JSON.
 
 The execution mode can be adopted incrementally in the order **manual > cron > launchd > Claude hook**, and all stages can be safely validated with `--dry-run`.
 

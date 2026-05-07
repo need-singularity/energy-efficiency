@@ -118,7 +118,7 @@
     {
       "timestamp": "2026-04-04T17:07:38.126104",
       "source_project": "TECS-L",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "path": "TECS-L/docs/experiments/E-dropout-1e-prediction.md",
       "type": "only_in_ready",
       "value_grade": "high",
@@ -132,7 +132,7 @@
     {
       "timestamp": "2026-04-04T17:07:38.126601",
       "source_project": "TECS-L",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "path": "TECS-L/docs/experiments/gz_experimental_protocols.md",
       "type": "only_in_ready",
       "value_grade": "high",
@@ -258,7 +258,7 @@
     {
       "timestamp": "2026-04-04T17:07:38.132742",
       "source_project": "TECS-L",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "path": "TECS-L/docs/superpowers/specs/2026-04-04-gz-100-completion-design.md",
       "type": "only_in_ready",
       "value_grade": "high",
@@ -454,7 +454,7 @@
     {
       "timestamp": "2026-04-04T17:07:38.180916",
       "source_project": "TECS-L",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/fonttools-4.62.1.dist-info/WHEEL",
       "type": "only_in_ready",
       "value_grade": "high",
@@ -594,7 +594,7 @@
     {
       "timestamp": "2026-04-04T17:07:38.209684",
       "source_project": "TECS-L",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/matplotlib/tests/test_backend_tools.py",
       "type": "only_in_ready",
       "value_grade": "critical",
@@ -2456,7 +2456,7 @@
     {
       "timestamp": "2026-04-04T17:07:38.567198",
       "source_project": "TECS-L",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/scipy/signal/_sigtools.cpython-314-darwin.so",
       "type": "only_in_ready",
       "value_grade": "critical",
@@ -2470,7 +2470,7 @@
     {
       "timestamp": "2026-04-04T17:07:38.569833",
       "source_project": "TECS-L",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/scipy/signal/signaltools.py",
       "type": "only_in_ready",
       "value_grade": "critical",
@@ -2484,7 +2484,7 @@
     {
       "timestamp": "2026-04-04T17:07:38.570649",
       "source_project": "TECS-L",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/scipy/signal/tests/test_array_tools.py",
       "type": "only_in_ready",
       "value_grade": "critical",
@@ -2778,7 +2778,7 @@
     {
       "timestamp": "2026-04-04T17:07:38.621269",
       "source_project": "TECS-L",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/command/_framework_compat.py",
       "type": "only_in_ready",
       "value_grade": "critical",
@@ -2792,7 +2792,7 @@
     {
       "timestamp": "2026-04-04T17:07:38.625274",
       "source_project": "TECS-L",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_distutils/tests/test_version.py",
       "type": "only_in_ready",
       "value_grade": "critical",
@@ -2806,7 +2806,7 @@
     {
       "timestamp": "2026-04-04T17:07:38.627125",
       "source_project": "TECS-L",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/backports.tarfile-1.2.0.dist-info/METADATA",
       "type": "only_in_ready",
       "value_grade": "critical",
@@ -2834,7 +2834,7 @@
     {
       "timestamp": "2026-04-04T17:07:38.629147",
       "source_project": "TECS-L",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/jaraco.text-4.0.0.dist-info/METADATA",
       "type": "only_in_ready",
       "value_grade": "critical",
@@ -2848,7 +2848,7 @@
     {
       "timestamp": "2026-04-04T17:07:38.629753",
       "source_project": "TECS-L",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/jaraco_context-6.1.0.dist-info/METADATA",
       "type": "only_in_ready",
       "value_grade": "high",
@@ -2862,7 +2862,7 @@
     {
       "timestamp": "2026-04-04T17:07:38.630838",
       "source_project": "TECS-L",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/jaraco_functools-4.4.0.dist-info/METADATA",
       "type": "only_in_ready",
       "value_grade": "high",
@@ -2876,7 +2876,7 @@
     {
       "timestamp": "2026-04-04T17:07:38.631890",
       "source_project": "TECS-L",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/packaging/_elffile.py",
       "type": "only_in_ready",
       "value_grade": "critical",
@@ -2890,7 +2890,7 @@
     {
       "timestamp": "2026-04-04T17:07:38.633411",
       "source_project": "TECS-L",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/packaging-26.0.dist-info/METADATA",
       "type": "only_in_ready",
       "value_grade": "high",
@@ -2904,7 +2904,7 @@
     {
       "timestamp": "2026-04-04T17:07:38.634558",
       "source_project": "TECS-L",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/tomli/_re.py",
       "type": "only_in_ready",
       "value_grade": "high",
@@ -2918,7 +2918,7 @@
     {
       "timestamp": "2026-04-04T17:07:38.635990",
       "source_project": "TECS-L",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/zipp/compat/py313.py",
       "type": "only_in_ready",
       "value_grade": "critical",
@@ -2932,7 +2932,7 @@
     {
       "timestamp": "2026-04-04T17:07:38.636723",
       "source_project": "TECS-L",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/_vendor/zipp-3.23.0.dist-info/METADATA",
       "type": "only_in_ready",
       "value_grade": "high",
@@ -2946,7 +2946,7 @@
     {
       "timestamp": "2026-04-04T17:07:38.638248",
       "source_project": "TECS-L",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/compat/py312.py",
       "type": "only_in_ready",
       "value_grade": "high",
@@ -2960,7 +2960,7 @@
     {
       "timestamp": "2026-04-04T17:07:38.639779",
       "source_project": "TECS-L",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "path": "TECS-L/eeg_env/lib/python3.14/site-packages/setuptools/launcher manifest.xml",
       "type": "only_in_ready",
       "value_grade": "critical",

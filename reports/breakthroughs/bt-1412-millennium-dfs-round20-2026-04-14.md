@@ -222,7 +222,7 @@ dimension d | - -?  | - optimal | theta - (1/phi * d)
 ## 5. verification environment
 
 - -: 2026-04-14
-- -: n6-architecture
+- -: canon
 - priorphase BT: BT-1394~BT-1413@04-12
 - - BT- 2026-04-12 round 20(BT-1412@04-12) after - - re-exploration -
 - atlas truearticle: $NEXUS/shared/n6/atlas.n6

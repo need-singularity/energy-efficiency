@@ -102,7 +102,7 @@ effective core  322                  effective core  400  (+78 new)
      |--  Reserve BT-381~400 indices in theory/breakthroughs/
      v
   [step5] Absorption
-     |--  Record each domain seed in n6shared/n6/atlas.n6 at evidence grade [7]
+     |--  Record each domain seed in canonshared/n6/atlas.n6 at evidence grade [7]
      |--  Run cross_dse_fusion_v2.hexa → target 100K+ pairs
      |--  Auto-accumulate discovery reports under reports/discovery/ (R6/R28)
 ```
@@ -264,7 +264,7 @@ evidence_grade = 7
 | 4 | Add 78 axes to _index.json | updated file | domains/_index.json |
 | 5 | Reserve BT-381~400 indices | 20 BT stubs | theory/breakthroughs/ |
 | 6 | atlas.n6 seed absorption | 78 @R entries [7] | $NEXUS/shared/n6/atlas.n6 |
-| 7 | Run cross_dse_fusion_v2 | 100K+ pairs | n6shared/dse/dse_cross_results.json |
+| 7 | Run cross_dse_fusion_v2 | 100K+ pairs | canonshared/dse/dse_cross_results.json |
 | 8 | Re-measure energy-perf pareto | re-measurement report | reports/discovery/ |
 
 ## 8. Risks and Defenses
@@ -281,7 +281,7 @@ evidence_grade = 7
 - All 400 TOML apply schema Δ1~Δ5
 - cross_dse_fusion_v2 achieves 100K pairs + 99% high_conf
 - Energy-perf pareto sweep re-measurement completed at 400 domains × 5 candidates
-- Add `CROSS_DSE` → `CROSS_DSE_V2_400` stable entry in convergence/n6-architecture.json, then promote to ossified
+- Add `CROSS_DSE` → `CROSS_DSE_V2_400` stable entry in convergence/canon.json, then promote to ossified
 
 ## 10. Linked Documents
 

@@ -1,6 +1,6 @@
 # PCIe n=6 Certificate
 
-- Project: n6-architecture / domains/compute/network-protocol
+- Project: canon / domains/compute/network-protocol
 - Issue date: 2026-04-14
 - Issuing system: NEXUS-6 Discovery Engine / CHIP-P3-2
 - Parent document: ../network-protocol.md

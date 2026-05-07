@@ -1,6 +1,6 @@
 > FORMAL P12-2 — Re-exploration of Calabi-Yau 3-fold Hodge numbers (P11-2 follow-up) / 2026-04-15
 >
-> Author: DSE-P12-2 / n6-architecture P12 (FORMAL axis emergent DSE)
+> Author: DSE-P12-2 / canon P12 (FORMAL axis emergent DSE)
 > Purpose: after the P11-2 Quintic MISS, search other CY3 families for candidates directly matching χ=±24 or σ(6)·φ(6)=24
 > Rules: no self-reference, use published Kreuzer-Skarke and CICY list values, Hübsch *Calabi-Yau Manifolds* / Candelas 1988 standard numerics only, English, EXACT/NEAR/PARTIAL/MISS distinction required
 > Context: after securing P11-2 K3 χ=24 EXACT(numeric) + NEAR(structural), search additional EXACT n=6 links in the CY3 body domain

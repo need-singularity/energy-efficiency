@@ -1,6 +1,6 @@
 # Audit Report — sedi / brainwire CLAUDE.md legacy lens reference update (2026-04-11)
 
-> Axis: **reports/audits** · n6-architecture
+> Axis: **reports/audits** · canon
 > Purpose: Update the **9 residual legacy references** flagged in the previous audit `lens-ssot-cleanup-2026-04-11.md`
 > Scope: Only lens references modified (strictly forbid editing other body sections)
 
@@ -21,7 +21,7 @@ This session performs precise in-place substitutions on only those lines, in com
 |---|---|---|
 | `$NEXUS/shared/lenses/` | HEXA native (per domain) | **1659** (target 1575+) |
 | `$NEXUS/shared/blowup/lens/` | HEXA category bundle | **15** |
-| `n6-architecture/nexus/src/telescope/` | Rust legacy | **retirement complete** |
+| `canon/nexus/src/telescope/` | Rust legacy | **retirement complete** |
 
 ## 3. Pre-backup
 
@@ -37,16 +37,16 @@ Timestamped backups of both files under `reports/audits/` before modification:
 | # | Line | Old | New |
 |---|---|---|---|
 | S1 | 101 | `* NEXUS-6 integrated telescope (181 lens files, 1022 types registry) *` | `* NEXUS-6 integrated telescope (HEXA native 1575+ lens SSOT) *` |
-| S2 | 103 | `Warning: telescope-rs (legacy 22 types) retired. All discovery uses NEXUS-6.` | `Warning: n6-architecture/nexus/src/telescope/ Rust legacy retired (2026-04-11, 1575 HEXA porting). Real SSOT: $NEXUS/shared/lenses/` |
+| S2 | 103 | `Warning: telescope-rs (legacy 22 types) retired. All discovery uses NEXUS-6.` | `Warning: canon/nexus/src/telescope/ Rust legacy retired (2026-04-11, 1575 HEXA porting). Real SSOT: $NEXUS/shared/lenses/` |
 | S3 | 110 | `Lens configuration (181 .rs files, 1022-type registry):` | `Lens configuration ($NEXUS/shared/lenses/ 1575+ .hexa native):` |
 | S4 | 117 | `Files: tools/nexus/src/telescope/lenses/ (181 .rs files)` | `Files: $NEXUS/shared/lenses/ (1575+ .hexa native)` |
-| S5 | 189 | `src/telescope/    <- 130+ lenses` | `n6shared/lenses/    <- 1575+ HEXA lenses (real SSOT)` + `n6shared/blowup/lens/ <- category bundle 15 .hexa` |
-| S6 | 434 | `"scan" -> nexus telescope 223-type lens scan` | `"scan" -> nexus n6shared/lenses/ 1575+ HEXA lens scan` |
+| S5 | 189 | `src/telescope/    <- 130+ lenses` | `canonshared/lenses/    <- 1575+ HEXA lenses (real SSOT)` + `canonshared/blowup/lens/ <- category bundle 15 .hexa` |
+| S6 | 434 | `"scan" -> nexus telescope 223-type lens scan` | `"scan" -> nexus canonshared/lenses/ 1575+ HEXA lens scan` |
 | S7 | 446 | `# 223-type lens scan` | `# 1575+ HEXA lens scan (real SSOT)` |
 | S8 | 447 | `$HEXA $N6/telescope.hexa full <values...>` | `$HEXA $NEXUS/shared/blowup/lens/telescope.hexa full <values...>` |
-| S9 | 459 | `re-scan the 77-source analysis results with nexus telescope` | `re-scan the 77-source analysis results with nexus n6shared/lenses/ 1575+ HEXA lenses` |
+| S9 | 459 | `re-scan the 77-source analysis results with nexus telescope` | `re-scan the 77-source analysis results with nexus canonshared/lenses/ 1575+ HEXA lenses` |
 
-> Note: confirmed via `ls -la` that `$N6/telescope.hexa` does not actually exist under `$NEXUS/mk2_hexa/native/telescope.hexa`. So per the task instruction, substitute with the actually-existing `n6shared/blowup/lens/telescope.hexa` (21,396 byte present).
+> Note: confirmed via `ls -la` that `$N6/telescope.hexa` does not actually exist under `$NEXUS/mk2_hexa/native/telescope.hexa`. So per the task instruction, substitute with the actually-existing `canonshared/blowup/lens/telescope.hexa` (21,396 byte present).
 
 Actual lines modified: **8 lines** (`S1/S2` merged into one Edit covering two contiguous warning-header lines, `S6+S7` merged into one Edit covering bash comment + command, etc. — logical substitutions 6, actual Edit calls 6, text lines changed 9).
 
@@ -55,10 +55,10 @@ Actual lines modified: **8 lines** (`S1/S2` merged into one Edit covering two co
 | # | Line | Old | New |
 |---|---|---|---|
 | B1 | 101 | `* NEXUS-6 integrated telescope (181 lens files, 1022 types registry) *` | `* NEXUS-6 integrated telescope (HEXA native 1575+ lens SSOT) *` |
-| B2 | 103 | `Warning: telescope-rs (legacy 22 types) retired. All discovery uses NEXUS-6.` | `Warning: n6-architecture/nexus/src/telescope/ Rust legacy retired (2026-04-11, 1575 HEXA porting). Real SSOT: $NEXUS/shared/lenses/` |
+| B2 | 103 | `Warning: telescope-rs (legacy 22 types) retired. All discovery uses NEXUS-6.` | `Warning: canon/nexus/src/telescope/ Rust legacy retired (2026-04-11, 1575 HEXA porting). Real SSOT: $NEXUS/shared/lenses/` |
 | B3 | 110 | `Lens configuration (181 .rs files, 1022-type registry):` | `Lens configuration ($NEXUS/shared/lenses/ 1575+ .hexa native):` |
 | B4 | 117 | `Files: tools/nexus/src/telescope/lenses/ (181 .rs files)` | `Files: $NEXUS/shared/lenses/ (1575+ .hexa native)` |
-| B5 | 189 | `src/telescope/    <- 130+ lenses` | `n6shared/lenses/    <- 1575+ HEXA lenses (real SSOT)` + `n6shared/blowup/lens/ <- category bundle 15 .hexa` |
+| B5 | 189 | `src/telescope/    <- 130+ lenses` | `canonshared/lenses/    <- 1575+ HEXA lenses (real SSOT)` + `canonshared/blowup/lens/ <- category bundle 15 .hexa` |
 
 Logical substitutions 3 (`B1/B2` merged, `B3/B4` separate, `B5` separate) — Edit calls 4. The task text said "3 items" but decomposing by line-100 warning header + line-111 configuration block + line-117 file path + line-189 path tree yields **5 line changes**.
 
@@ -81,16 +81,16 @@ domains/brainwire/CLAUDE.md  -> No matches found
 
 ### 6-2. Broad pattern `telescope / lenses / 130\+ / 181 / 223 types`
 
-`telescope` / `lenses` match because the new SSOT paths themselves reference `nexus/shared/lenses/` and `n6shared/blowup/lens/telescope.hexa`. We visually inspected each line to confirm **all are references to the new SSOT paths**:
+`telescope` / `lenses` match because the new SSOT paths themselves reference `nexus/shared/lenses/` and `canonshared/blowup/lens/telescope.hexa`. We visually inspected each line to confirm **all are references to the new SSOT paths**:
 
 `domains/sedi/CLAUDE.md`:
-- 103: retirement warning + real SSOT (n6shared/lenses/)
-- 110: lens configuration (n6shared/lenses/ 1575+ .hexa)
-- 117: files: n6shared/lenses/ (1575+ .hexa)
-- 189: n6shared/lenses/ 1575+ HEXA lenses (real SSOT)
-- 435: n6shared/lenses/ 1575+ HEXA lens scan
+- 103: retirement warning + real SSOT (canonshared/lenses/)
+- 110: lens configuration (canonshared/lenses/ 1575+ .hexa)
+- 117: files: canonshared/lenses/ (1575+ .hexa)
+- 189: canonshared/lenses/ 1575+ HEXA lenses (real SSOT)
+- 435: canonshared/lenses/ 1575+ HEXA lens scan
 - 448: $NEXUS/shared/blowup/lens/telescope.hexa (actual file)
-- 460: re-scan with n6shared/lenses/ 1575+ HEXA lenses
+- 460: re-scan with canonshared/lenses/ 1575+ HEXA lenses
 
 `domains/brainwire/CLAUDE.md`:
 - 103, 110, 117, 189: same patterns as sedi
@@ -114,7 +114,7 @@ domains/brainwire/CLAUDE.md  -> No matches found
 - **Forbid editing other body sections** -> CDO block, hexa-native-only rules, project goals, directory structure, TODO format, external verification scripts, Paper Management, `.shared/` infrastructure, BrainWire Identity/Products/Stack, Work Rules — all unchanged.
 - Actual deletion of the `nexus/src/telescope/` Rust legacy files -> separate session (this work is limited to reference updates)
 - `lens_registry.json` reconstruction -> kept as a follow-up to `lens-ssot-cleanup-2026-04-11.md` section 4
-- Addition of a new R-clause to `n6shared/rules/common.json` -> R14 SSOT already sufficient, no new rule required
+- Addition of a new R-clause to `canonshared/rules/common.json` -> R14 SSOT already sufficient, no new rule required
 
 ## 9. File-path summary
 

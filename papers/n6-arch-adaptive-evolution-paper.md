@@ -14,7 +14,7 @@ alien_index_target: 10
 
 # HEXA-ARCH-EVOLUTION — Evolutionary adaptive design paper (N6-110)
 
-> **Author**: Park Min-woo (n6-architecture)
+> **Author**: Park Min-woo (canon)
 > **Category**: arch-adaptive-evolution — P2 extension v3 evolution seed
 > **Version**: v3 (2026-04-14 P2 extension)
 > **Prior BT**: BT-195, BT-370, BT-371
@@ -162,7 +162,7 @@ The v4 track plans to extend this to **multi-objective evolution** with Pareto f
 2. Goldberg, D. E. *Genetic Algorithms in Search, Optimization, and Machine Learning*. Addison-Wesley, 1989.
 3. papers/n6-genetics-paper.md (N6-101 genetics basics)
 4. NEXUS-6 autonomous-growth daemon (15-dimensional growth system)
-5. arch_evolution.hexa engine (n6-architecture/engine/)
+5. arch_evolution.hexa engine (canon/engine/)
 
 ## §1 WHY
 

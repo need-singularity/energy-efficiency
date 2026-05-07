@@ -174,10 +174,10 @@
       "biology-axis tetrahedron closed at 4 sisters: composition (hexa-weave) + actuation (hexa-nanobot) + catalysis (hexa-ribozyme) + assembly (hexa-virocapsid)"
     ],
     "evidence_paths": [
-      "/Users/ghost/core/n6-architecture/design/kick/2026-04-28_hexa-virocapsid-registration-cycle19_omega_cycle.json (this file)",
-      "/Users/ghost/core/n6-architecture/domains/biology/hexa-virocapsid/hexa-virocapsid.md (15-section body)",
-      "/Users/ghost/core/n6-architecture/domains/biology/_index.json (sub-SSOT updated 1.2.0 -> 1.3.0)",
-      "/Users/ghost/core/n6-architecture/domains/_index.json (top-level SSOT updated 1.0.8 -> 1.0.9)"
+      "/Users/ghost/core/canon/design/kick/2026-04-28_hexa-virocapsid-registration-cycle19_omega_cycle.json (this file)",
+      "/Users/ghost/core/canon/domains/biology/hexa-virocapsid/hexa-virocapsid.md (15-section body)",
+      "/Users/ghost/core/canon/domains/biology/_index.json (sub-SSOT updated 1.2.0 -> 1.3.0)",
+      "/Users/ghost/core/canon/domains/_index.json (top-level SSOT updated 1.0.8 -> 1.0.9)"
     ],
     "limits": [
       "registration verdict is THEORETICAL-ANALYTICAL: derived from genus-classification analysis of Caspar-Klug 1962 / Rossmann 1985 / Zlotnick 2003 plus n6 invariant projection; NO empirical capsid MVP executed in this cycle",
@@ -290,7 +290,7 @@
     "honest_disclaimer": "estimate only; actual alien-grade reassessment deferred to next cycle metric-aggregator pass via tool/alien_grade_audit.hexa --measure; raw 91 C3 not fabricated"
   },
   "report_summary": {
-    "witness_path": "/Users/ghost/core/n6-architecture/design/kick/2026-04-28_hexa-virocapsid-registration-cycle19_omega_cycle.json",
+    "witness_path": "/Users/ghost/core/canon/design/kick/2026-04-28_hexa-virocapsid-registration-cycle19_omega_cycle.json",
     "domain_registered": "biology/hexa-virocapsid",
     "sister_of": ["biology/hexa-weave", "biology/hexa-nanobot", "biology/hexa-ribozyme"],
     "verdict_tier": "APPROACH",

@@ -14,14 +14,14 @@
 //                    n6_close >= 0.70 → [7] EMPIRICAL
 //                    else            → [5] LOW
 // 입력   : bridge/origins/universal-dse/domains/*.toml
-// 출력   : n6shared/dse/dse_cross_results_v2_5.json
+// 출력   : canonshared/dse/dse_cross_results_v2_5.json
 // 전제   : 자기참조 금지. n6_avg 는 TOML 공개값 → 외부 근거.
 // ───────────────────────────────────────────────────────────
 
 let mut N6_ARCH = env("N6_ARCH")
-if len(N6_ARCH) == 0 { N6_ARCH = env("HOME") + "/Dev/n6-architecture" }
+if len(N6_ARCH) == 0 { N6_ARCH = env("HOME") + "/Dev/canon" }
 let DOMAIN_DIR = N6_ARCH + "/bridge/origins/universal-dse/domains"
-let OUT_PATH   = N6_ARCH + "/n6shared/dse/dse_cross_results_v2_5.json"
+let OUT_PATH   = N6_ARCH + "/canonshared/dse/dse_cross_results_v2_5.json"
 
 // 타겟 페어 (10 카테고리 — 외계지수 7+ 도메인 우선)
 let PAIRS = [
@@ -230,7 +230,7 @@ let mut body = "{\n"
 body = body + "  \"generated_at\": \"2026-04-14\",\n"
 body = body + "  \"schema_version\": \"2.5\",\n"
 body = body + "  \"source\": \"bridge/origins/universal-dse/domains/*.toml\",\n"
-body = body + "  \"parent\": \"n6shared/dse/dse_cross_results_v2_4.json\",\n"
+body = body + "  \"parent\": \"canonshared/dse/dse_cross_results_v2_4.json\",\n"
 body = body + "  \"probe_pairs\": " + npairs + ",\n"
 body = body + "  \"exact_10star\": " + exact_cnt + ",\n"
 body = body + "  \"near_9\": " + near_cnt + ",\n"

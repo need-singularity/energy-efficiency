@@ -17,7 +17,7 @@ Source roadmap: `proposals/own1-hard-english-only-translation-roadmap-2026-04-24
 
 Completed phases (merged on origin/main = `ef246bc6`):
 
-- Phase 0: bridge/ + +n6shared/ (10 files)
+- Phase 0: bridge/ + +canonshared/ (10 files)
 - Phase 1: proposals/ (9 files)
 - Phase 2: experiments/ (25 files)
 - Phase 3: domains/ priority (200 files) — allowlist 1015 -> 815
@@ -453,9 +453,9 @@ Each block below is a paste-ready prompt for a single agent. Do not edit; copy-p
 ### Prompt for Batch 1: `phase-4-1-breakthroughs-a`
 
 ```
-You are a Phase 4 translation agent for the n6-architecture own#1 HARD English-only campaign.
+You are a Phase 4 translation agent for the canon own#1 HARD English-only campaign.
 
-Repo: /Users/ghost/core/n6-architecture
+Repo: /Users/ghost/core/canon
 Branch: main (rebase against origin/main as needed)
 Batch label: phase-4-1-breakthroughs-a
 Batch number: 1 of 14
@@ -529,9 +529,9 @@ Batch number: 1 of 14
 ### Prompt for Batch 2: `phase-4-2-breakthroughs-b`
 
 ```
-You are a Phase 4 translation agent for the n6-architecture own#1 HARD English-only campaign.
+You are a Phase 4 translation agent for the canon own#1 HARD English-only campaign.
 
-Repo: /Users/ghost/core/n6-architecture
+Repo: /Users/ghost/core/canon
 Branch: main (rebase against origin/main as needed)
 Batch label: phase-4-2-breakthroughs-b
 Batch number: 2 of 14
@@ -605,9 +605,9 @@ Batch number: 2 of 14
 ### Prompt for Batch 3: `phase-4-3-breakthroughs-c`
 
 ```
-You are a Phase 4 translation agent for the n6-architecture own#1 HARD English-only campaign.
+You are a Phase 4 translation agent for the canon own#1 HARD English-only campaign.
 
-Repo: /Users/ghost/core/n6-architecture
+Repo: /Users/ghost/core/canon
 Branch: main (rebase against origin/main as needed)
 Batch label: phase-4-3-breakthroughs-c
 Batch number: 3 of 14
@@ -681,9 +681,9 @@ Batch number: 3 of 14
 ### Prompt for Batch 4: `phase-4-4-breakthroughs-d`
 
 ```
-You are a Phase 4 translation agent for the n6-architecture own#1 HARD English-only campaign.
+You are a Phase 4 translation agent for the canon own#1 HARD English-only campaign.
 
-Repo: /Users/ghost/core/n6-architecture
+Repo: /Users/ghost/core/canon
 Branch: main (rebase against origin/main as needed)
 Batch label: phase-4-4-breakthroughs-d
 Batch number: 4 of 14
@@ -757,9 +757,9 @@ Batch number: 4 of 14
 ### Prompt for Batch 5: `phase-4-5-breakthroughs-e`
 
 ```
-You are a Phase 4 translation agent for the n6-architecture own#1 HARD English-only campaign.
+You are a Phase 4 translation agent for the canon own#1 HARD English-only campaign.
 
-Repo: /Users/ghost/core/n6-architecture
+Repo: /Users/ghost/core/canon
 Branch: main (rebase against origin/main as needed)
 Batch label: phase-4-5-breakthroughs-e
 Batch number: 5 of 14
@@ -833,9 +833,9 @@ Batch number: 5 of 14
 ### Prompt for Batch 6: `phase-4-6-breakthroughs-tail-audits-a`
 
 ```
-You are a Phase 4 translation agent for the n6-architecture own#1 HARD English-only campaign.
+You are a Phase 4 translation agent for the canon own#1 HARD English-only campaign.
 
-Repo: /Users/ghost/core/n6-architecture
+Repo: /Users/ghost/core/canon
 Branch: main (rebase against origin/main as needed)
 Batch label: phase-4-6-breakthroughs-tail-audits-a
 Batch number: 6 of 14
@@ -909,9 +909,9 @@ Batch number: 6 of 14
 ### Prompt for Batch 7: `phase-4-7-audits-b`
 
 ```
-You are a Phase 4 translation agent for the n6-architecture own#1 HARD English-only campaign.
+You are a Phase 4 translation agent for the canon own#1 HARD English-only campaign.
 
-Repo: /Users/ghost/core/n6-architecture
+Repo: /Users/ghost/core/canon
 Branch: main (rebase against origin/main as needed)
 Batch label: phase-4-7-audits-b
 Batch number: 7 of 14
@@ -985,9 +985,9 @@ Batch number: 7 of 14
 ### Prompt for Batch 8: `phase-4-8-audits-c`
 
 ```
-You are a Phase 4 translation agent for the n6-architecture own#1 HARD English-only campaign.
+You are a Phase 4 translation agent for the canon own#1 HARD English-only campaign.
 
-Repo: /Users/ghost/core/n6-architecture
+Repo: /Users/ghost/core/canon
 Branch: main (rebase against origin/main as needed)
 Batch label: phase-4-8-audits-c
 Batch number: 8 of 14
@@ -1061,9 +1061,9 @@ Batch number: 8 of 14
 ### Prompt for Batch 9: `phase-4-9-audits-tail-sessions-a`
 
 ```
-You are a Phase 4 translation agent for the n6-architecture own#1 HARD English-only campaign.
+You are a Phase 4 translation agent for the canon own#1 HARD English-only campaign.
 
-Repo: /Users/ghost/core/n6-architecture
+Repo: /Users/ghost/core/canon
 Branch: main (rebase against origin/main as needed)
 Batch label: phase-4-9-audits-tail-sessions-a
 Batch number: 9 of 14
@@ -1137,9 +1137,9 @@ Batch number: 9 of 14
 ### Prompt for Batch 10: `phase-4-10-sessions-b`
 
 ```
-You are a Phase 4 translation agent for the n6-architecture own#1 HARD English-only campaign.
+You are a Phase 4 translation agent for the canon own#1 HARD English-only campaign.
 
-Repo: /Users/ghost/core/n6-architecture
+Repo: /Users/ghost/core/canon
 Branch: main (rebase against origin/main as needed)
 Batch label: phase-4-10-sessions-b
 Batch number: 10 of 14
@@ -1213,9 +1213,9 @@ Batch number: 10 of 14
 ### Prompt for Batch 11: `phase-4-11-sessions-tail-discovery-a`
 
 ```
-You are a Phase 4 translation agent for the n6-architecture own#1 HARD English-only campaign.
+You are a Phase 4 translation agent for the canon own#1 HARD English-only campaign.
 
-Repo: /Users/ghost/core/n6-architecture
+Repo: /Users/ghost/core/canon
 Branch: main (rebase against origin/main as needed)
 Batch label: phase-4-11-sessions-tail-discovery-a
 Batch number: 11 of 14
@@ -1289,9 +1289,9 @@ Batch number: 11 of 14
 ### Prompt for Batch 12: `phase-4-12-discovery-b`
 
 ```
-You are a Phase 4 translation agent for the n6-architecture own#1 HARD English-only campaign.
+You are a Phase 4 translation agent for the canon own#1 HARD English-only campaign.
 
-Repo: /Users/ghost/core/n6-architecture
+Repo: /Users/ghost/core/canon
 Branch: main (rebase against origin/main as needed)
 Batch label: phase-4-12-discovery-b
 Batch number: 12 of 14
@@ -1365,9 +1365,9 @@ Batch number: 12 of 14
 ### Prompt for Batch 13: `phase-4-13-discovery-tail-reports-top-a`
 
 ```
-You are a Phase 4 translation agent for the n6-architecture own#1 HARD English-only campaign.
+You are a Phase 4 translation agent for the canon own#1 HARD English-only campaign.
 
-Repo: /Users/ghost/core/n6-architecture
+Repo: /Users/ghost/core/canon
 Branch: main (rebase against origin/main as needed)
 Batch label: phase-4-13-discovery-tail-reports-top-a
 Batch number: 13 of 14
@@ -1441,9 +1441,9 @@ Batch number: 13 of 14
 ### Prompt for Batch 14: `phase-4-14-reports-top-b-misc`
 
 ```
-You are a Phase 4 translation agent for the n6-architecture own#1 HARD English-only campaign.
+You are a Phase 4 translation agent for the canon own#1 HARD English-only campaign.
 
-Repo: /Users/ghost/core/n6-architecture
+Repo: /Users/ghost/core/canon
 Branch: main (rebase against origin/main as needed)
 Batch label: phase-4-14-reports-top-b-misc
 Batch number: 14 of 14

@@ -78,7 +78,7 @@
     "atlas_n6_uchg_preserved": true,
     "atlas_11_star_block_intact": true
   },
-  "raw_47_cross_repo": "n6-architecture local (no sister repo write); atlas append shard is local",
+  "raw_47_cross_repo": "canon local (no sister repo write); atlas append shard is local",
   "raw_9_hexa_only": "lean4 + python + n6 atlas DSL — raw 9 호환",
   "raw_53_deterministic": "lake build PASS + own_doc_lint exit code = deterministic",
   "raw_77_append_only": true,

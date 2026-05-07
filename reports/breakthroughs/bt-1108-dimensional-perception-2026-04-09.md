@@ -2,7 +2,7 @@
 
 ## Scope (English)
 
-Stub for BT-1108 Dimensional Perception breakthrough record, referenced across the n6-architecture repository but not yet authored.
+Stub for BT-1108 Dimensional Perception breakthrough record, referenced across the canon repository but not yet authored.
 Date: 2026-04-09.
 
 ## Status

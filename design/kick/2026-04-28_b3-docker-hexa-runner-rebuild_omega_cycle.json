@@ -148,7 +148,7 @@
       "registry_pushed": false,
       "registry_push_error": "insufficient_scope (no docker.io/library auth)"
     },
-    "witness_json": "/Users/ghost/core/n6-architecture/design/kick/2026-04-28_b3-docker-hexa-runner-rebuild_omega_cycle.json (this file)"
+    "witness_json": "/Users/ghost/core/canon/design/kick/2026-04-28_b3-docker-hexa-runner-rebuild_omega_cycle.json (this file)"
   },
 
   "follow_up_recommendations": [

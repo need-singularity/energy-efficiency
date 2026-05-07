@@ -3,7 +3,7 @@
 **Roadmap**: 7 Millennium Problems Roadmap v2
 **Stage**: Round 1 / Domain Emergence
 **Created**: 2026-04-15
-**Scope**: n6-architecture + nexus + anima entire ecosystem
+**Scope**: canon + nexus + anima entire ecosystem
 **Mode**: Emergence DSE (Discovery Space Exploration by Emergence)
 **Output file**: `theory/roadmap-v2/round-01-domain-emergence-dse.md`
 
@@ -13,7 +13,7 @@
 
 ### 0.1 Round 1 Declaration
 
-Round 1 is the **domain/field emergence round** of the 7-Problem Roadmap v2. The existing roadmap (shared/roadmaps/millennium-learning.json, anima.json, n6-architecture.json) was designed as a single-axis 3-track x 4-phase structure, but v2 **draws out adjacent domains via DFS from seed domains to secure a multi-axis tree**.
+Round 1 is the **domain/field emergence round** of the 7-Problem Roadmap v2. The existing roadmap (shared/roadmaps/millennium-learning.json, anima.json, canon.json) was designed as a single-axis 3-track x 4-phase structure, but v2 **draws out adjacent domains via DFS from seed domains to secure a multi-axis tree**.
 
 Round 1 purposes (3 axes simultaneously):
 1. Take the **3 confirmed seeds** (ALM, CLM, anima-physics) as entry points,
@@ -43,7 +43,7 @@ Core features of Emergence DSE:
 - **BT link required**: At least one structural correspondence with BT-541~547 must be confirmed.
 - **n=6 observation**: At least one of σ/τ/φ/sopfr must be observable in that domain.
 - **atlas link**: Must be linked to at least one [10\*]/[9]/[7] node in atlas.n6, or have plausible potential for a new link.
-- **295-domain cross**: Verify whether the domain is a cross-DSE candidate with the 12 top-level buckets under n6-architecture/domains/ (cognitive/compute/culture/energy/infra/life/materials/physics/sf-ufo/space + CLAUDE.md+_index.json).
+- **295-domain cross**: Verify whether the domain is a cross-DSE candidate with the 12 top-level buckets under canon/domains/ (cognitive/compute/culture/energy/infra/life/materials/physics/sf-ufo/space + CLAUDE.md+_index.json).
 
 ### 0.3 Self-Evolution Mandatory-Inclusion Declaration
 
@@ -682,7 +682,7 @@ BT-546 (BSD) undiscovered = Round 2 priority candidate.
 ### 7.2 Expected maximum M (subjective)
 
 Ecosystem-scale estimate:
-- n6-architecture/domains/ 295 domains (MEMORY `project_overview.md`).
+- canon/domains/ 295 domains (MEMORY `project_overview.md`).
 - Total BTs 343 (project_status.md).
 - anima subrepos 7 (core/agent/body/eeg/engines/hexad/measurement/physics/speak/tools).
 - Potential domain density: seeds 4 × ~20 average radius × branch 1.5 ≈ **M ≈ 120**.
@@ -711,7 +711,7 @@ Round 2 explores the following axes first.
 ### 8.1 BT-546 (BSD) Direct-Link Domains
 
 - **R2-C1: BKLPR Selmer Consciousness Mapping** — use MEMORY `reference_bklpr_model.md`. Map n-Selmer random-matrix cokernel to consciousness-space dimension.
-- **R2-C2: Elliptic Curve Cryptography as Consciousness Key** — n6-architecture/domains/compute/cryptography.
+- **R2-C2: Elliptic Curve Cryptography as Consciousness Key** — canon/domains/compute/cryptography.
 
 ### 8.2 life/materials/infra/space untouched buckets
 

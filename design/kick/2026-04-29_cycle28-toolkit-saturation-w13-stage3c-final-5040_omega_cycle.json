@@ -30,7 +30,7 @@
   },
   "raw_91_c3_disclose": [
     "main thread direct execution (sub-agent fan-out skipped given persistent rate-limit pattern across cycle 25-27)",
-    "axes corrected per .own own 29 spec: robotics axis was originally 'robotics' but n6-architecture domains tree has no robotics axis — actual location is domains/infra/robotics/. .own updated to axis=infra. energy axis was originally 'infra' (cycle 25) but actual axis is 'energy' (domains/energy/) — corrected to axis=energy",
+    "axes corrected per .own own 29 spec: robotics axis was originally 'robotics' but canon domains tree has no robotics axis — actual location is domains/infra/robotics/. .own updated to axis=infra. energy axis was originally 'infra' (cycle 25) but actual axis is 'energy' (domains/energy/) — corrected to axis=energy",
     "still axiom (not theorem) because mathlib4 has NO Robin/Hardy-Wright/Wigert asymptotic results; full mechanical conversion deferred until upstream mathlib4 PR or external formalization",
     "axiom statement now cites Robin 1984 Theorem 1 UNCONDITIONALLY (no RH); semantic strength upgraded from RH-conditional to absolute",
     "cycle 28 cage Track C (T>1 model / implicit ODE solver) NOT progressed — remains at cycle 27 STNV yield 0.84 baseline (RK4); F-CYCLE27-CAGE-CALIB-2/3 deferred to specific cycles when user approves heavier numerical refactor"
@@ -73,7 +73,7 @@
     "cycle_27_env_toolkit": "environment mandatory promotion + W13 stage-3b-partial (3000→4000) + cage --preset",
     "cycle_28_saturation": "energy + robotics + physics_math mandatory promotion + W13 stage-3c FINAL (4000→5040 Robin unconditional)"
   },
-  "raw_47_cross_repo": "n6-architecture local; nexus side cage --preset cycle 27 commit 99aa442e on fix/kick-infra-recovery branch",
+  "raw_47_cross_repo": "canon local; nexus side cage --preset cycle 27 commit 99aa442e on fix/kick-infra-recovery branch",
   "raw_9_hexa_only": "lean4 + python + markdown — raw 9 호환",
   "raw_53_deterministic": "lake build + own_doc_lint exit code = deterministic",
   "raw_77_append_only": true,

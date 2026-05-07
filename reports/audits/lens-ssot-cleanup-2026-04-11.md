@@ -1,6 +1,6 @@
 # Audit Report — lens SSOT reference cleanup (2026-04-11)
 
-> Axis: **reports/audits** · n6-architecture
+> Axis: **reports/audits** · canon
 > Purpose: **prevent next-session lens additions to the wrong path** by injecting reference warnings
 > This session scope: reference cleanup only (actual Rust -> HEXA absorption is a next-session task)
 
@@ -22,8 +22,8 @@
 ```
 
 **Confirmed facts**:
-- Real lens SSOT = `$NEXUS/shared/lenses/` + `n6shared/blowup/lens/` (separate nexus standalone project, HEXA native, header `SIGMA=12.0 PHI=2.0 N=6.0 TAU=4.0 J2=24` + identity `sigma*phi = n*tau = J_2`)
-- n6-architecture's internal `nexus/src/telescope/lenses/` is a **legacy derivative**
+- Real lens SSOT = `$NEXUS/shared/lenses/` + `canonshared/blowup/lens/` (separate nexus standalone project, HEXA native, header `SIGMA=12.0 PHI=2.0 N=6.0 TAU=4.0 J2=24` + identity `sigma*phi = n*tau = J_2`)
+- canon's internal `nexus/src/telescope/lenses/` is a **legacy derivative**
 - HEAD `0c23ad27` "refactor(telescope): 56 lenses Rust->HEXA conversion complete — mod.rs deregistration" is progressing Rust -> HEXA unification
 - `cargo test` 2593 -> 2485 (-108) = 56 lenses x avg 2 tests = deregistration result
 - Rounds 3 (450->500) and 4 (500->600) expansions were **added to the legacy path** — targets for absorption at next-session HEXA porting
@@ -51,13 +51,13 @@ Full-folder `DO NOT ADD new lenses` notice. Real SSOT path + 9-file HEXA bundle 
 
 Retirement warning at the 312 Rust file level. Short note that new lenses should only be added under `$NEXUS/shared/lenses/`.
 
-### 2-5. `n6shared/config/lens_registry.json`
+### 2-5. `canonshared/config/lens_registry.json`
 
 Added 5 fields to the `meta` block:
 ```json
-"_warning": "DO NOT USE — This registry is the n6-architecture internal Rust legacy lens count. Not the real SSOT.",
+"_warning": "DO NOT USE — This registry is the canon internal Rust legacy lens count. Not the real SSOT.",
 "_real_ssot": "$NEXUS/shared/lenses/ (HEXA native 84 + blowup/lens 15 bundles)",
-"_legacy_path": "n6-architecture/nexus/src/telescope/lenses/ (Rust .rs derivatives, retiring)",
+"_legacy_path": "canon/nexus/src/telescope/lenses/ (Rust .rs derivatives, retiring)",
 "_transition_status": "HEAD 0c23ad27 refactor(telescope) — Rust->HEXA transition in progress, 56 lenses deregistration complete",
 "_next_session_plan": "After Rust->HEXA porting: delete legacy + rebuild this registry"
 ```
@@ -108,9 +108,9 @@ domains/brainwire/CLAUDE.md:
 ### Checklist for lens-related work
 
 1. **Strictly forbidden**:
-   - Adding new `.rs` under `n6-architecture/nexus/src/telescope/lenses/`
+   - Adding new `.rs` under `canon/nexus/src/telescope/lenses/`
    - Invoking the `lens-agent` agent
-   - Registering new Rust lenses in `n6shared/config/lens_registry.json`
+   - Registering new Rust lenses in `canonshared/config/lens_registry.json`
    - Adding `expansion_N_lens_entries()` in `frontier_lenses.rs`
 
 2. **Allowed / recommended**:
@@ -124,7 +124,7 @@ domains/brainwire/CLAUDE.md:
 1. **Investigation stage** (already pending agent #40): compare 4 Rust -> HEXA conversion strategy options + recommendation
 2. **Porting stage**: bulk-create 312 Rust lenses as HEXA native files
 3. **Legacy deletion**: remove all `nexus/src/telescope/lenses/*.rs`, clean up `mod.rs` / `registry.rs` / `frontier_lenses.rs`
-4. **Registry rebuild**: rebuild `n6shared/config/lens_registry.json` against the real SSOT
+4. **Registry rebuild**: rebuild `canonshared/config/lens_registry.json` against the real SSOT
 5. **cargo test re-verification**: confirm full removal of lens tests or migrate to HEXA native verification
 6. **Update domains/sedi, brainwire CLAUDE.md references**: update paths
 

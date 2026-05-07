@@ -275,7 +275,7 @@
       "path": "anima/.claude/worktrees/agent-abb59ac1/anima/tools/self_upgrade.py",
       "score": 50.0,
       "value": "critical",
-      "dest": "n6-architecture",
+      "dest": "canon",
       "n6_matches": 0
     },
     {
@@ -5807,7 +5807,7 @@
     {
       "path": "anima/.claude/worktrees/agent-abb59ac1/anima/experiments/criticality_sweep.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -7959,7 +7959,7 @@
     {
       "path": "anima/.claude/worktrees/agent-abb59ac1/anima/tools/CLAUDE.md",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -8023,7 +8023,7 @@
     {
       "path": "anima/.claude/worktrees/agent-abb59ac1/anima/tools/growth_trajectory_predictor.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -8031,7 +8031,7 @@
     {
       "path": "anima/.claude/worktrees/agent-abb59ac1/anima/tools/h100_arch_search.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -8055,7 +8055,7 @@
     {
       "path": "anima/.claude/worktrees/agent-abb59ac1/anima/tools/learnable_phi.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "critical",
       "score": 31.25,
       "n6_matches": 0
@@ -8063,7 +8063,7 @@
     {
       "path": "anima/.claude/worktrees/agent-abb59ac1/anima/tools/lidar_sense.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -8087,7 +8087,7 @@
     {
       "path": "anima/.claude/worktrees/agent-abb59ac1/anima/tools/optimal_config.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -8111,7 +8111,7 @@
     {
       "path": "anima/.claude/worktrees/agent-abb59ac1/anima/tools/quantum_attention_engine.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "critical",
       "score": 35.0,
       "n6_matches": 0
@@ -8135,7 +8135,7 @@
     {
       "path": "anima/.claude/worktrees/agent-abb59ac1/anima/tools/self_upgrade.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "critical",
       "score": 50.0,
       "n6_matches": 0
@@ -8143,7 +8143,7 @@
     {
       "path": "anima/.claude/worktrees/agent-abb59ac1/anima/tools/singularity_finder.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -8151,7 +8151,7 @@
     {
       "path": "anima/.claude/worktrees/agent-abb59ac1/anima/tools/tension_fingerprint_debugger.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -8183,7 +8183,7 @@
     {
       "path": "anima/.claude/worktrees/agent-abb59ac1/anima/tools/verify_fuse3.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -12479,7 +12479,7 @@
     {
       "path": "anima/anima/experiments/acceleration_ae_top10.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "critical",
       "score": 35.0,
       "n6_matches": 0
@@ -12487,7 +12487,7 @@
     {
       "path": "anima/anima/experiments/acceleration_b1_b2_b5_results.json",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -12495,7 +12495,7 @@
     {
       "path": "anima/anima/experiments/acceleration_batch_runner.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "critical",
       "score": 43.75,
       "n6_matches": 0
@@ -12519,7 +12519,7 @@
     {
       "path": "anima/anima/experiments/acceleration_d1_d2_results.json",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -12527,7 +12527,7 @@
     {
       "path": "anima/anima/experiments/acceleration_d5_results.json",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -12535,7 +12535,7 @@
     {
       "path": "anima/anima/experiments/acceleration_f6_cascade_results.json",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -12543,7 +12543,7 @@
     {
       "path": "anima/anima/experiments/acceleration_f_series_results.json",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -12551,7 +12551,7 @@
     {
       "path": "anima/anima/experiments/acceleration_g1_bigbang_results.json",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -12559,7 +12559,7 @@
     {
       "path": "anima/anima/experiments/acceleration_h1_h6_results.json",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -12583,7 +12583,7 @@
     {
       "path": "anima/anima/experiments/acceleration_series_ai_az.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -12591,7 +12591,7 @@
     {
       "path": "anima/anima/experiments/acceleration_series_ba_z.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "critical",
       "score": 31.818181818181817,
       "n6_matches": 0
@@ -12607,7 +12607,7 @@
     {
       "path": "anima/anima/experiments/auto_discovery_20cycles_results.json",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -12615,7 +12615,7 @@
     {
       "path": "anima/anima/experiments/b13_tension_results.json",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -12623,7 +12623,7 @@
     {
       "path": "anima/anima/experiments/batch_results/batch_20260404_0616.json",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -12631,7 +12631,7 @@
     {
       "path": "anima/anima/experiments/batch_results/batch_20260404_0622.json",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -12639,7 +12639,7 @@
     {
       "path": "anima/anima/experiments/batch_results/batch_20260404_0625.json",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -12647,7 +12647,7 @@
     {
       "path": "anima/anima/experiments/batch_results/batch_20260404_0626.json",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -12655,7 +12655,7 @@
     {
       "path": "anima/anima/experiments/batch_results/batch_20260404_0628.json",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -12663,7 +12663,7 @@
     {
       "path": "anima/anima/experiments/batch_results/batch_20260404_0629.json",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -12671,7 +12671,7 @@
     {
       "path": "anima/anima/experiments/batch_results/batch_20260404_0630.json",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -12679,7 +12679,7 @@
     {
       "path": "anima/anima/experiments/batch_results/batch_20260404_0633.json",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -12687,7 +12687,7 @@
     {
       "path": "anima/anima/experiments/batch_results/batch_20260404_0634.json",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -12695,7 +12695,7 @@
     {
       "path": "anima/anima/experiments/batch_results/batch_20260404_0635.json",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -12703,7 +12703,7 @@
     {
       "path": "anima/anima/experiments/batch_results/batch_20260404_0636.json",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -12711,7 +12711,7 @@
     {
       "path": "anima/anima/experiments/batch_results/batch_20260404_0641.json",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -12719,7 +12719,7 @@
     {
       "path": "anima/anima/experiments/batch_results/batch_20260404_0644.json",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -12727,7 +12727,7 @@
     {
       "path": "anima/anima/experiments/batch_results/batch_20260404_0648.json",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -12735,7 +12735,7 @@
     {
       "path": "anima/anima/experiments/batch_results/batch_20260404_0800.json",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -12743,7 +12743,7 @@
     {
       "path": "anima/anima/experiments/batch_results/batch_progress.json",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -12751,7 +12751,7 @@
     {
       "path": "anima/anima/experiments/dd65_results.json",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -12767,7 +12767,7 @@
     {
       "path": "anima/anima/experiments/dd71_75_verification_part2.json",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 5.0,
       "n6_matches": 0
@@ -14007,7 +14007,7 @@
     {
       "path": "anima/anima/src/dd60_experiments.py",
       "type": "different",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -14215,7 +14215,7 @@
     {
       "path": "anima/anima/src/h100_experiments.py",
       "type": "different",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0,
       "n6_matches": 0
@@ -15527,7 +15527,7 @@
     {
       "path": "anima/anima/tests/test_dd60_experiments.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "high",
       "score": 16.666666666666664,
       "n6_matches": 0
@@ -15831,7 +15831,7 @@
     {
       "path": "anima/anima/tests/test_h100_experiments.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "critical",
       "score": 30.0,
       "n6_matches": 0
@@ -16583,7 +16583,7 @@
     {
       "path": "anima/anima/tools/hexa-bridge/bridge.py",
       "type": "different",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -16591,7 +16591,7 @@
     {
       "path": "anima/anima/tools/hexa-bridge/experiment_designer.py",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -16671,7 +16671,7 @@
     {
       "path": "anima/anima-agent/agent_tools.py",
       "type": "different",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 6.25,
       "n6_matches": 0

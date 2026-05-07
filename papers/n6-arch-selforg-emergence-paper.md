@@ -17,7 +17,7 @@ alien_index_target: 10
 
 # HEXA-ARCH-SELFORG-EMERGENCE — Self-assembly emergence design paper (N6-118)
 
-> **Author**: Park Min-woo (n6-architecture)
+> **Author**: Park Min-woo (canon)
 > **Category**: arch-selforg-emergence — P2 extension v3/v4 self-organization emergence seed
 > **Version**: v3 (2026-04-14 P2 extension)
 > **Prior BT**: BT-366, BT-368, BT-195, BT-1414
@@ -47,7 +47,7 @@ of existing SOC theory (Bak-Tang-Wiesenfeld 1987).
 
 Self-organized criticality (SOC) has been studied for 40 years since the Bak-Tang-Wiesenfeld sand-pile model (1987), but the
 **number of emergence patterns N_modes** has only been observed empirically and never been pinned down theoretically.
-Using the result that σ(n)·φ(n) = n·τ(n) holds uniquely at n=6 (n6-architecture
+Using the result that σ(n)·φ(n) = n·τ(n) holds uniquely at n=6 (canon
 atlas.n6 EXACT verification), this paper derives the conclusion **N_modes = σ(6) = 12**.
 
 ### 1.1 Prior limitations

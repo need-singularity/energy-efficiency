@@ -3,7 +3,7 @@
 - Date: 2026-04-14
 - Roadmap: CHIP-P1-3
 - Trigger: `experiments/chip-verify/verify_chip-3d.hexa`
-- Feedback target: `n6shared/config/dse-map.toml` ([chip-3d.feedback], [smr-datacenter.feedback], [digital-twin.feedback], [cross-dse.chip-3d-x-smr-x-twin])
+- Feedback target: `canonshared/config/dse-map.toml` ([chip-3d.feedback], [smr-datacenter.feedback], [digital-twin.feedback], [cross-dse.chip-3d-x-smr-x-twin])
 
 ## §1 Chain overview
 

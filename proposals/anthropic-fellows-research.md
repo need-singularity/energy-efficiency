@@ -81,5 +81,5 @@ APPROACH 3.
 - **BT nodes**: `theory/breakthroughs/bt-142{1..8}-*-2026-04-20.md` (+8)
 - **Atlas constants (EXACT)**: `theory/constants/atlas-constants.md` §Mk.V Anchor (+8)
 - **Sub-SSOT**: `domains/cognitive/_index.json` v1.4.0 (8 slug status→mk5, ai-safety newly added, total 34→35)
-- **Discovery graph**: `n6shared/discovery_graph.json` v16 ai-fellows-mk5 (523 nodes / 2129 edges, measured)
+- **Discovery graph**: `canonshared/discovery_graph.json` v16 ai-fellows-mk5 (523 nodes / 2129 edges, measured)
 - **Hypothesis index**: `theory/breakthroughs/_hypotheses_index.json` verified 666→674

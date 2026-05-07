@@ -988,7 +988,7 @@ Phase 5 completed leading work of two axes (Y7, Y8). Y7 side Enriques rephrasing
 
 ### 10.1 Phase 6 Character
 
-Phase 6 is BT-547 Poincaré retrospect phase. Since Perelman 2003 Ricci flow draft already exists, **no new draft attempt**. Retrieve **lessons** that Poincaré theorem gives in n=6 context of this n6-architecture project.
+Phase 6 is BT-547 Poincaré retrospect phase. Since Perelman 2003 Ricci flow draft already exists, **no new draft attempt**. Retrieve **lessons** that Poincaré theorem gives in n=6 context of this canon project.
 
 ### 10.2 Phase 6 Entry Conditions
 
@@ -1220,7 +1220,7 @@ Monster  no direct asset    |M| prime factor 8/15 void no direct asset
 
 ### 12.1 Phase 5 Output Metadata
 
-- **File path**: `/Users/ghost/Dev/n6-architecture/theory/roadmap-v2/phase-05-Y7Y8-bt545-bt546.md`
+- **File path**: `/Users/ghost/Dev/canon/theory/roadmap-v2/phase-05-Y7Y8-bt545-bt546.md`
 - **Target length**: 800+ lines
 - **Main axes**: Y7 LATTICE-VOA (3.9) + Y8 GALOIS-ASSEMBLY (5.4)
 - **Secondary axes**: Y1 NUM-CORE (9.5) auxiliary, Y9 HONEST-HARNESS (9.3) meta

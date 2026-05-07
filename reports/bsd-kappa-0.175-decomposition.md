@@ -5,7 +5,7 @@
 - Companion harness: `theory/predictions/bsd_alpha_log2_tau.hexa` (22/22 PASS)
 - Data: Cremona 1.73M curves 7-bin log-log regression (v3 E5)
 - Measurement: alpha_obs = 0.1752, standard error ~ +-0.02 (7-bin constraint)
-- Staging signal: `SIG-7B-401`, `SIG-7B-402` (`n6shared/staging/atlas.signals.staging.mill.n6`)
+- Staging signal: `SIG-7B-401`, `SIG-7B-402` (`canonshared/staging/atlas.signals.staging.mill.n6`)
 
 ## 7 grand problems resolved 0/7 preserved (honest)
 

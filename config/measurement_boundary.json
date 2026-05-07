@@ -1,6 +1,6 @@
 {
   "_doc": "Measurement boundary — atlas constants outside functor F's algebraic image. Declarative companion to config/invariants.json. Axis D from R24+27 witness closure roadmap.",
-  "schema": "n6-architecture/measurement_boundary/1",
+  "schema": "canon/measurement_boundary/1",
   "declared_round": "R24+30",
   "declared_ts": "2026-04-24T10:40:00Z",
   "status": "declarative_not_yet_enforced",

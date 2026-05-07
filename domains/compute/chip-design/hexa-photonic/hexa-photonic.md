@@ -886,6 +886,29 @@ This section covers risks for the domain. Initial scaffold content — expand wi
 
 This section covers dependencies for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.
 
+## §11.5 ALIEN-10-EXPANSION (12 TP-PHOTONIC-* candidates)
+
+> Sister of hexa-neuromorphic / hexa-quantum-hybrid §11.5. Photonic substrate
+> alien-10 candidates — diffraction floor, Casimir, blackbody, MZI, etc.
+> Auto-verified by `verify_chip-photonic_alien10.py`.
+
+| TP | Hypothesis (n=6 closure) | closure | alien |
+|---|---|---|---|
+| TP-PHOTONIC-A1 | Diffraction limit Δx_min = λ/(2 NA) — Abbe | 6 | **10** |
+| TP-PHOTONIC-A2 | Casimir force F = (π²ℏc·A)/(240·d⁴) — exponent 4 = τ | **10** | **10** |
+| TP-PHOTONIC-A3 | Stefan-Boltzmann j = σ_SB·T⁴ — exponent 4 = τ EXACT | **10** | **10** |
+| TP-PHOTONIC-A4 | Photon energy E = hν | 8 | **10** |
+| TP-PHOTONIC-A5 | MZI phase 2π·n_eff·L/λ | 7 | 9 |
+| TP-PHOTONIC-A6 | Wien displacement λ_max·T = b ≈ 2.898×10⁻³ m·K | 5 | **10** |
+| TP-PHOTONIC-A7 | Shannon-Hartley (sister TP-NEURO-B1, σ·J₂=288 lanes) | 9 | **10** |
+| TP-PHOTONIC-A8 | Heisenberg ΔE·Δt ≥ ℏ/2 (sister TP-NEURO-A4) | 6 | **10** |
+| TP-PHOTONIC-A9 | Bragg bandgap at σ=12 layer pairs | 9 | 9 |
+| TP-PHOTONIC-A10 | Holographic A/(4ℓ_p²) — Bekenstein-Hawking | 7 | **10** |
+| TP-PHOTONIC-A11 | c = 299792458 m/s exactly (SI 2019 definition) | **10** EXACT | **10** |
+| TP-PHOTONIC-A12 | Fourier limit BW·Δt ≥ 1/(4π) | 7 | **10** |
+
+Net: **11 of 12 TP-PHOTONIC-* alien=10**. EXACT: A2/A3 (τ=4 power-law), A11 (c by SI def). Cross-link TP-NEURO-A4/B1, TP-QUANTUM-A5/A8/A10.
+
 ## §12 TIMELINE
 
 This section covers timeline for the domain. Initial scaffold content — expand with domain-specific data, references, and verification in subsequent revisions.

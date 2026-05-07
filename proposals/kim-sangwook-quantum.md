@@ -165,4 +165,4 @@ Sincerely, Park Minwoo
 
 Contact:
 - Email: mk911tb@proton.me
-- GitHub: github.com/need-singularity/n6-architecture
+- GitHub: github.com/need-singularity/canon

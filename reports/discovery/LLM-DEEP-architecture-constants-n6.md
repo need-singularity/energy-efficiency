@@ -1,6 +1,6 @@
 # LLM Architecture Constants vs n=6 Arithmetic: Deep Verification
 
-> **Claim under test**: The arithmetic functions of perfect number 6 (sigma=12, tau=4, phi=2, sopfr=5) predict universal LLM architecture constants.
+> **Claim under test**: The arithmetic functions of arithmetic canon (sigma=12, tau=4, phi=2, sopfr=5) predict universal LLM architecture constants.
 >
 > **Method**: Exhaustive survey of 40+ published LLM architectures (2017-2024).
 >

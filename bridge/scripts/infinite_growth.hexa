@@ -1,7 +1,7 @@
 // infinite_growth.sh → .hexa 포팅
 // 원본 경로: nexus/scripts/infinite_growth.sh
 // 포팅 상태: STUB (원본 79줄)
-// 원본 요약: n6-architecture 무한 성장 루프 — growth_common.sh 기반
+// 원본 요약: canon 무한 성장 루프 — growth_common.sh 기반
 //   도메인: architecture
 //   페이즈: 아키텍처 문서 스캔 / nexus tools 빌드 / DSE 상태 / 성장 스캔
 //   run_growth_loop "domain_phases" 로 무한 실행

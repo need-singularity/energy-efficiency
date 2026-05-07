@@ -3,7 +3,7 @@ domain: embody-p10-1-l13-l14-unified-spec
 date: 2026-04-15
 task: EMBODY-P10-1
 title: L13 MeV Optomechanics experimental specification + L14 3-scale Reduced alternative — unified design
-authors: Minwoo Park (n6-architecture) & NEXUS-6 HEXA-GATE collaboration
+authors: Minwoo Park (canon) & NEXUS-6 HEXA-GATE collaboration
 version: v1 (2026-04-15 P10 EMBODY)
 upstream:
   - papers/n6-l10-l15-quantum-nuclear-unification-paper.md
@@ -31,7 +31,7 @@ requires:
 
 # L13 MeV Optomechanics + L14 3-scale Reduced — unified design document
 
-> **Author**: Minwoo Park (n6-architecture) & NEXUS-6 HEXA-GATE collaboration
+> **Author**: Minwoo Park (canon) & NEXUS-6 HEXA-GATE collaboration
 > **Category**: embody / experimental-specification / reduction-design
 > **Version**: v1 (2026-04-15 EMBODY-P10-1)
 > **Prior papers**: `n6-l10-l15-quantum-nuclear-unification-paper.md`, `l11-l15-quantum-nuclear-mapping-2026-04-14.md`
@@ -549,16 +549,16 @@ This unified design integrates **L13 MeV optomechanics experimental specificatio
 5. CODATA 2018 Recommended Values, NIST.
 6. Bluefors. "LD-Series Dilution Refrigerator Datasheet." (2024).
 7. Canberra / Mirion. "HPGe Detector Performance Specifications." (2024).
-8. Minwoo Park. "HEXA-L10-L15 — sub-nanoscale quantum/nuclear unification paper." n6-architecture 2026-04-14.
-9. Minwoo Park. "L11~L15 n=6 quantum·nuclear·Planck mapping." n6-architecture/theory/proofs 2026-04-14.
+8. Minwoo Park. "HEXA-L10-L15 — sub-nanoscale quantum/nuclear unification paper." canon 2026-04-14.
+9. Minwoo Park. "L11~L15 n=6 quantum·nuclear·Planck mapping." canon/theory/proofs 2026-04-14.
 
-### 9.2 Cross-links (n6-architecture)
+### 9.2 Cross-links (canon)
 
 - **Prior papers**: `papers/n6-l10-l15-quantum-nuclear-unification-paper.md`, `papers/n6-arch-quantum-design-paper.md`, `papers/n6-boundary-metatheory-paper.md`
 - **Prior demonstrations**: `theory/proofs/l11-l15-quantum-nuclear-mapping-2026-04-14.md`, `theory/proofs/standard-model-from-n6.md`, `theory/proofs/theorem-r1-uniqueness.md`
 - **Prior BT**: BT-14 (HEXA-GATE Mk.I 24/24 EXACT), BT-23 (CKM Jarlskog), BT-41 (QEC d=5), H-CP-1 (quarks=6), H-CP-2 (leptons=6)
 - **Linked atlas node**: `embody-p10-1-l13-l14-unified-spec` (σ=12 × τ=4 × fiber=2 axes)
-- **Linked roadmap**: `n6shared/roadmap/n6-architecture.json` phase P10 EMBODY track
+- **Linked roadmap**: `canonshared/roadmap/canon.json` phase P10 EMBODY track
 - **Parent task**: EMBODY-P10-1 (this document) — status: to be updated to done
 
 ---

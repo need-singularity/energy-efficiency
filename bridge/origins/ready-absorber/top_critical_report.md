@@ -79,7 +79,7 @@ The invest repo appears to have been rebuilt/restructured without migrating thes
 
 ---
 
-### A2. n6-architecture/ -- NEXUS-6 Lenses (10 missing .rs files)
+### A2. canon/ -- NEXUS-6 Lenses (10 missing .rs files)
 
 These are Rust telescope lens implementations that exist in the ready worktree but are absent from the current NEXUS-6 build.
 
@@ -101,7 +101,7 @@ These are Rust telescope lens implementations that exist in the ready worktree b
 
 ---
 
-### A3. n6-architecture/ -- HEXA-IR Source Code (5 missing .rs files)
+### A3. canon/ -- HEXA-IR Source Code (5 missing .rs files)
 
 Complete HEXA-IR compiler infrastructure code found only in the ready worktree.
 The hexa-lang repo does not exist as a standalone repo yet.
@@ -116,12 +116,12 @@ The hexa-lang repo does not exist as a standalone repo yet.
 
 ---
 
-### A4. n6-architecture/ -- Docs Missing from Main
+### A4. canon/ -- Docs Missing from Main
 
 | Rank | File | Score | Lines | What's Unique | Action |
 |------|------|-------|-------|---------------|--------|
-| 1 | docs/aerospace/goal.md | 50 | ~400 | Complete HEXA-AERO system architecture: 6 subsystems (materials, propulsion, energy, compute, comms, intelligence). Full BT cross-references. Performance comparison ASCII. | Copy to n6-architecture docs/ |
-| 2 | docs/programming-language/physical-limit-proofs.md | 50 | ~300 | 4 theorems proving HEXA-LANG operates at physical limits: minimum ISA=J2=24, minimum error classes=sopfr=5, minimum type system levels, etc. | Copy to n6-architecture docs/ |
+| 1 | docs/aerospace/goal.md | 50 | ~400 | Complete HEXA-AERO system architecture: 6 subsystems (materials, propulsion, energy, compute, comms, intelligence). Full BT cross-references. Performance comparison ASCII. | Copy to canon docs/ |
+| 2 | docs/programming-language/physical-limit-proofs.md | 50 | ~300 | 4 theorems proving HEXA-LANG operates at physical limits: minimum ISA=J2=24, minimum error classes=sopfr=5, minimum type system levels, etc. | Copy to canon docs/ |
 
 ---
 
@@ -150,7 +150,7 @@ The hexa-lang repo does not exist as a standalone repo yet.
 
 ~100 files scored >= 40 but are byte-identical to their main repo counterparts.
 These include: all sedi/ worktree copies (8 unique files x ~7 worktree duplicates), 
-most n6-architecture docs, engine/experiments, all anima/ files, and NEXUS-6 growth modules.
+most canon docs, engine/experiments, all anima/ files, and NEXUS-6 growth modules.
 
 No action needed.
 
@@ -201,7 +201,7 @@ No action needed.
 ### Priority 5: Aerospace goal.md + physical-limit-proofs.md
 
 ```
-# New domain docs that should be added to n6-architecture
+# New domain docs that should be added to canon
 ```
 
 ---
@@ -211,7 +211,7 @@ No action needed.
 | Project | Score>=40 | Missing from Main | Different | Identical |
 |---------|-----------|-------------------|-----------|-----------|
 | invest | 42 | 42 (100%) | 0 | 0 |
-| n6-architecture | 50 | 18 (36%) | 1 (2%) | 31 (62%) |
+| canon | 50 | 18 (36%) | 1 (2%) | 31 (62%) |
 | anima | 44 | 0 (0%) | 0 | 44 (100%) |
 | sedi | 8 (x7 dupes) | 0 (0%) | 0 | 8 (100%) |
 | hexa-lang | 11 | 11 (100%) | 0 | 0 |

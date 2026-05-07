@@ -30,7 +30,7 @@ Large language models influence the daily lives of billions, yet nobody knows wh
 | Latent dimension | d_model x 8 = 4096 | 4096 = 2^12, sigma(6)=12 |
 | 3 main axes | SAE improvement 15 + circuit discovery 12 + tooling 12 | 15+12+12 = 39 = 6x6+3 |
 | Verification sections | 11 (7.0~7.10) | sigma(6)-1 = 11 |
-| Limit items | 7 | perfect number 6+1 = 7 |
+| Limit items | 7 | arithmetic canon+1 = 7 |
 
 ### Core Techniques (39 patterns)
 

@@ -5,7 +5,7 @@
 // 목적: domains/**/verify_*.hexa (verify.hexa 제외) 전수를
 //       $NEXUS/n6/scripts/ 로 일괄 이관
 //
-// 규칙 근거: n6shared/rules/common.json R29
+// 규칙 근거: canonshared/rules/common.json R29
 //   "계산기/검증/스캐너 .hexa 는 nexus/n6/scripts/ 에만 작성"
 //
 // 네이밍 규칙: verify_<domain>_<stem>.hexa
@@ -38,7 +38,7 @@
 // ─── 경로 상수 ───
 let mut PROJECT_ROOT = env("N6_ARCH")
 if len(PROJECT_ROOT) == 0 {
-  PROJECT_ROOT = env("HOME") + "/Dev/n6-architecture"
+  PROJECT_ROOT = env("HOME") + "/Dev/canon"
 }
 let DOMAINS_DIR = PROJECT_ROOT + "/domains"
 let mut NEXUS_ROOT = env("NEXUS")
@@ -345,7 +345,7 @@ println("[6/6] 한글 감사 리포트 생성...")
 let mut md = ""
 md = md + "# R29 대량 이관 감사 리포트 — 2026-04-11\n\n"
 md = md + "- 일자: 2026-04-11\n"
-md = md + "- 규칙: R29 (n6shared/rules/common.json)\n"
+md = md + "- 규칙: R29 (canonshared/rules/common.json)\n"
 md = md + "- 작업: domains/**/verify_*.hexa (verify.hexa 제외) → nexus/shared/n6/scripts/\n"
 md = md + "- 스크립트: `nexus/scripts/migrate_r29_verify.hexa`\n"
 md = md + "- 선행 리포트: `reports/audits/r29-migration-synbio-2026-04-11.md` (synbio 1건 이관)\n\n"
@@ -431,7 +431,7 @@ if fail_count == 0 {
 md = md + "## 7. 규칙 준수 체크리스트\n\n"
 md = md + "- [x] R1 HEXA-FIRST: 이관 파일 전량 .hexa 유지, 스크립트도 .hexa\n"
 md = md + "- [x] R5 SSOT: 단일 위치 (`nexus/shared/n6/scripts/`) 수렴\n"
-md = md + "- [x] R14: 규칙 본문은 `n6shared/rules/common.json` 단일 진실 (인용만)\n"
+md = md + "- [x] R14: 규칙 본문은 `canonshared/rules/common.json` 단일 진실 (인용만)\n"
 md = md + "- [x] R18 미니멀: 요청 범위만 — 로직 수정 없이 파일 이동만\n"
 md = md + "- [x] R19 SILENT EXIT 금지: 모든 에러 stdout 출력 + 리포트 기록\n"
 md = md + "- [x] R21 블로킹 금지: find/md5/cp 개별 호출로 대형 블로킹 없음\n"

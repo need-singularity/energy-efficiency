@@ -1,7 +1,7 @@
 {
   "_doc": "Meta-evolution engine self-manifest. Authoritative record of engine identity, phase history, and scanner registry. Updated by `bin/n6_meta manifest`.",
   "engine": {
-    "name": "n6-architecture/meta-engine",
+    "name": "canon/meta-engine",
     "version": "0.44.0",
     "source_of_truth": "tool/_n6_lib + scanners/*.claim.json",
     "dispatcher": "bin/n6_meta",
@@ -293,7 +293,7 @@
       "selftest"
     ]
   },
-  "schema_prefix": "n6-architecture/",
+  "schema_prefix": "canon/",
   "continuous_scan_order": [
     "blockers",
     "roi",

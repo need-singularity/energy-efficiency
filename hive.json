@@ -1,9 +1,9 @@
 {
-  "resource": "n6-architecture",
+  "resource": "canon",
   "version": "0.1.0",
   "hive_compat": ">=0.1",
   "trust": "local",
-  "root": "/Users/ghost/Dev/n6-architecture",
+  "root": "/Users/ghost/Dev/canon",
   "runtime": "hexa",
   "entry": "run.hexa",
   "limits": {
@@ -16,7 +16,7 @@
   "caps": {
     "status": {
       "desc": "resource health check",
-      "invoke": ["hx", "run", "n6-architecture", "status"],
+      "invoke": ["hx", "run", "canon", "status"],
       "timeout_s": 30
     }
   },

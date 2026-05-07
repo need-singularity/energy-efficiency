@@ -6,7 +6,7 @@
 //    re-audit agents). This tool surfaces such divergences at build time.
 //
 // @tool(slug="lean4_axiom_count_check", desc="lean4 axiom-count vs proposal-claim divergence check (anti-cycle-13/15-anomaly): scans Foundation/Axioms.lean for `^axiom ` keywords, compares against an expected count (CLI arg / proposal sentinel / SSOT)")
-// @usage(hexa /Users/ghost/core/n6-architecture/tool/lean4_axiom_count_check.hexa --expected <N> [--file <path>] [--severity warn|block])
+// @usage(hexa /Users/ghost/core/canon/tool/lean4_axiom_count_check.hexa --expected <N> [--file <path>] [--severity warn|block])
 // @omega-saturation-exempt("text-grep over a single SSOT file (Axioms.lean); converges in O(N) per pass")
 // @exit_codes(0=PASS, 1=usage/io error, 2=block-mode mismatch with raw 66 ai-native trailer)
 //
@@ -31,7 +31,7 @@
 //
 // raw 91 C3 DECLARED LIMITS
 //   L1. The grep is BOL-anchored; a hypothetical mid-line `axiom`
-//       declaration would be missed. mathlib4 + n6-architecture style
+//       declaration would be missed. mathlib4 + canon style
 //       always puts `axiom` at column 0, so this is a non-issue in
 //       practice but called out for honesty.
 //   L2. The expected count is a CLI argument; the tool does not
@@ -50,7 +50,7 @@ fn main() {
     let argv = args()
     let mode_block = true
     let expected = -1
-    let file = "/Users/ghost/core/n6-architecture/lean4-n6/N6/MechVerif/Foundation/Axioms.lean"
+    let file = "/Users/ghost/core/canon/lean4-n6/N6/MechVerif/Foundation/Axioms.lean"
     let i = 0
     while i < len(argv) {
         let a = argv[i]

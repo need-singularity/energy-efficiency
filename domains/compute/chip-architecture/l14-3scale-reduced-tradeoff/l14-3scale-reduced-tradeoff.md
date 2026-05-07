@@ -564,7 +564,7 @@ naturalness argument that the 4-scale fabric is the physical realization of that
 lost under 3-scale.** In this sense 4-scale is a design that **"discovers"** n=6, while
 3-scale is a design that **"references"** n=6.
 
-Submitter: n6-architecture design team
+Submitter: canon design team
 Date: 2026-04-15
 Verdict: **ALTERNATIVE-DESIGN-CONJECTURE** (conditional contingency)
 

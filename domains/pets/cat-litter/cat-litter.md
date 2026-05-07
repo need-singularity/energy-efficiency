@@ -809,7 +809,7 @@ Test plan:
 | Imerys Perlite (CO, USA) | expanded perlite | dust suppressor |
 | Stepan Co. (IL, USA) | benzalkonium chloride | antimicrobial |
 | Mondi Group (AT) | kraft-paper bag | retail SKU packaging |
-| n6-architecture private framework | own_doc_lint / own31 lint | docs gate |
+| canon private framework | own_doc_lint / own31 lint | docs gate |
 
 ## §19 ACCEPTANCE / MISS criteria (own#12 pre-declared)
 

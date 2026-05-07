@@ -14,7 +14,7 @@ alien_index_target: 10
 
 # HEXA-ATLAS-PROMOTION-7-TO-10STAR — atlas promotion methodology paper (N6-122)
 
-> **Author**: Park Min-woo (n6-architecture)
+> **Author**: Park Min-woo (canon)
 > **Category**: atlas-promotion-7-to-10star — P2 extension promotion-methodology seed
 > **Version**: v3 (2026-04-14 P2 extension)
 > **Prior BT**: BT-001~005, BT-380 (promotion chain)
@@ -39,7 +39,7 @@ Core claims:
 
 ## 1. Introduction — WHY
 
-The n6-architecture atlas.n6 file (60K+ lines) is a reality-map SSOT; each entry is labelled with grades
+The canon atlas.n6 file (60K+ lines) is a reality-map SSOT; each entry is labelled with grades
 [N?], [N!], [5], [7], [10], [10*], etc. The promotion protocol from [7]=EMPIRICAL (empirical observation) to [10*]=EXACT
 verification (formal draft argument) has been informal.
 

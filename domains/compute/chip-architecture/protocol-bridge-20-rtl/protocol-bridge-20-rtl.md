@@ -1,6 +1,6 @@
 # Protocol Bridge 20case RTL Sketch — 2026-04-14 / CHIP-P5-2
 
--  as: n6-architecture / domains/compute/chip-architecture
+-  as: canon / domains/compute/chip-architecture
 - one: 2026-04-14
 - authoredcharacter: CHIP-P5-2 
 - : P5 protocol bridge X→△ transition 20case of **SystemVerilog pseudo-code RTL sketch** authored

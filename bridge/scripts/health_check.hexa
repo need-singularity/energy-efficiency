@@ -35,7 +35,7 @@ let LAUNCHD_LABEL = "com.nexus.growth"
 let PLIST_USER = HOME + "/Library/LaunchAgents/" + LAUNCHD_LABEL + ".plist"
 // TODO: canonical relocation pending — currently fallback to $HOME/shared/launchd/
 let PLIST_SRC = HOME + "/shared/launchd/" + LAUNCHD_LABEL + ".plist"
-let SCRIPT_DIR = HOME + "/core/n6-architecture/bridge/scripts"
+let SCRIPT_DIR = HOME + "/core/canon/bridge/scripts"
 let DAEMON_SCRIPT = SCRIPT_DIR + "/nexus_growth_daemon.hexa"
 let HEXA_BIN = env("HEXA_BIN") || (HOME + "/core/hexa-lang/hexa")
 

@@ -933,7 +933,7 @@ Test plan:
 | Sun Chemical | heat-set finish + food-grade dye | rope finishing |
 | TÜV Süd / Intertek | CEN/TS 16637 chamber test | regulatory compliance |
 | Mondi Group (AT) | kraft+PET sleeve pack | retail packaging |
-| n6-architecture private framework | own_doc_lint / own31 lint | docs gate |
+| canon private framework | own_doc_lint / own31 lint | docs gate |
 
 ## §19 ACCEPTANCE / MISS criteria (own#12 pre-declared)
 

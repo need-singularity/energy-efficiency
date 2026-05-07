@@ -12,13 +12,13 @@
     "creators": [
       {
         "name": "Park, M.",
-        "affiliation": "n6-architecture private research framework",
+        "affiliation": "canon private research framework",
         "orcid": "PENDING_USER_INPUT"
       }
     ],
-    "description": "We report a Lean 4 sorry-free mechanical verification of two HEXA-WEAVE keystones inside the n6-architecture private framework: (i) the n=6 master uniqueness identity AX-1, sigma(n)*phi(n) = n*tau(n) iff n = 6; and (ii) the AX-2 MK-bridge / strand-class closure invariants. The reverse direction and the bounded forward direction n in [2, 2000] are proved unconditionally via decide / interval_cases (cycle-22 W13 stage-2 extension from n=50 / 1000). The unbounded tail n>2000 is closed by a single named axiom citing Robin 1984 + Hardy-Wright Thm 322/328 + Wigert 1907. Cycle-22 final state: ONE axiom keyword remains (axiom_robin_hardy_wright_ax1_tail). Felgner Hauptsatz Section 3 is fully mechanical: 11/11 atomic sub-theorems (step1.{a,b,c} + step2.{a,b,c,d} + step3.{a,b,c,d}) discharged via mathlib4 ZFSet / Cardinal infrastructure. HEXA-COMP closure 4/4 atomic sub-theorems mechanical. MK proper-class predicate widened to `structure` form (cycle 22 W15) surfacing 11+4 atomic decomposition at predicate-type level (raw 91 C3: structural not logical strengthening, classically equivalent to True with atomic dependency now mechanically explicit). Zero sorry tokens in proof terms; all named axioms surfaced via #print axioms. NO Riemann Hypothesis claim, NO Clay Millennium claim, ZERO empirical claims. Companion biology-axis omega-cycle work (HEXA-VIROCAPSID 4-sister tetrahedron closure + Caspar-Klug 1962 n=34 corpus Bayesian audit posterior 0.9668 STRUCTURAL-EXACT) is forward-spec only and excluded from this deposit's verification claims.",
+    "description": "We report a Lean 4 sorry-free mechanical verification of two HEXA-WEAVE keystones inside the canon private framework: (i) the n=6 master uniqueness identity AX-1, sigma(n)*phi(n) = n*tau(n) iff n = 6; and (ii) the AX-2 MK-bridge / strand-class closure invariants. The reverse direction and the bounded forward direction n in [2, 2000] are proved unconditionally via decide / interval_cases (cycle-22 W13 stage-2 extension from n=50 / 1000). The unbounded tail n>2000 is closed by a single named axiom citing Robin 1984 + Hardy-Wright Thm 322/328 + Wigert 1907. Cycle-22 final state: ONE axiom keyword remains (axiom_robin_hardy_wright_ax1_tail). Felgner Hauptsatz Section 3 is fully mechanical: 11/11 atomic sub-theorems (step1.{a,b,c} + step2.{a,b,c,d} + step3.{a,b,c,d}) discharged via mathlib4 ZFSet / Cardinal infrastructure. HEXA-COMP closure 4/4 atomic sub-theorems mechanical. MK proper-class predicate widened to `structure` form (cycle 22 W15) surfacing 11+4 atomic decomposition at predicate-type level (raw 91 C3: structural not logical strengthening, classically equivalent to True with atomic dependency now mechanically explicit). Zero sorry tokens in proof terms; all named axioms surfaced via #print axioms. NO Riemann Hypothesis claim, NO Clay Millennium claim, ZERO empirical claims. Companion biology-axis omega-cycle work (HEXA-VIROCAPSID 4-sister tetrahedron closure + Caspar-Klug 1962 n=34 corpus Bayesian audit posterior 0.9668 STRUCTURAL-EXACT) is forward-spec only and excluded from this deposit's verification claims.",
     "keywords": [
-      "n6-architecture",
+      "canon",
       "formal-verification",
       "Lean4",
       "Mathlib4",
@@ -43,7 +43,7 @@
         "identifier": "PENDING_USER_INPUT_GITHUB_URL_OR_TARBALL_PATH",
         "resource_type": "software",
         "_options": [
-          "(a) https://github.com/<USER-ORG>/n6-architecture (public-github URL; requires repo public push, separate gate)",
+          "(a) https://github.com/<USER-ORG>/canon (public-github URL; requires repo public push, separate gate)",
           "(b) tarball-supplementary upload of lean4-n6-mechverif-cycle12.tar.gz alongside the PDF (no public github push required)"
         ]
       }

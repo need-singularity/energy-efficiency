@@ -7,7 +7,7 @@
 - Scope: `.own` governance hardening, lifting enforcement coverage from 24 percent to 100 percent, plus the allowlist shrinkage program through Phase 5
 - origin/main trajectory (this session): `7b1408e7` -> Phase 5 close-out HEAD `77e10b9f`
 - Branch: `main`
-- Repo: `n6-architecture`
+- Repo: `canon`
 - Allowlist state at Phase 5 close-out: **235 entries** (meta_count == len == unique == 235)
 - Phase 5 status: **Done partial (11 deferred to Phase 6)**
 
@@ -94,11 +94,11 @@ Extracted via `git log 7b1408e7..HEAD --oneline`. Grouped by intent.
 | ---------- | ------------------------------------------------------------------------------------------ | ------------------------- |
 | `fb054980` | feat(own): expand own#1 scope to `proposals/` and `CONTRIBUTING.md` (project-wide English) | Broader gate              |
 
-### 3.8 Phase 0 translation (bridge plus n6shared, 10 files)
+### 3.8 Phase 0 translation (bridge plus canonshared, 10 files)
 
 | SHA        | Message                                                                      | Impact                      |
 | ---------- | ---------------------------------------------------------------------------- | --------------------------- |
-| `5b5d5e79` | docs(translate): `bridge/` plus `n6shared/` Korean -> English (10 files)     | Phase 0 content             |
+| `5b5d5e79` | docs(translate): `bridge/` plus `canonshared/` Korean -> English (10 files)     | Phase 0 content             |
 | `77e23840` | feat(own): shrink own#1 allowlist (-10 entries, phase 0 complete)            | Allowlist shrink            |
 
 ### 3.9 Phase 1 translation (proposals, 9 files) — complete
@@ -187,7 +187,7 @@ Note: the per-batch allowlist columns are non-monotonic across the table because
 | `proposals/**/*.md`                            |   no   |    yes     | forbidden (HARD) new files           |
 | `reports/**/*.md` (this log)                   |   no   |    yes     | forbidden (HARD)                     |
 | `reports/sessions/**/*.md`                     |   no   |    yes     | forbidden (HARD)                     |
-| `bridge/**/*.md`, `n6shared/**/*.md`           |   no   |    yes     | forbidden after Phase 0              |
+| `bridge/**/*.md`, `canonshared/**/*.md`           |   no   |    yes     | forbidden after Phase 0              |
 | `experiments/**/*.md`                          |   no   |    yes     | forbidden after Phase 2 (2026-05)    |
 | `domains/**/*.md` (priority 200)               |   no   |    yes     | forbidden (HARD) after Phase 3 (2026-04-24) |
 | `papers/**/*.md`, `theory/**/*.md`             |   no   |  deferred  | allowlisted until Phase 5 (Aug-Sep)  |
@@ -198,7 +198,7 @@ Note: the per-batch allowlist columns are non-monotonic across the table because
 
 | Phase   | Window         | Scope                                         | Files         | Status          |
 | ------- | -------------- | --------------------------------------------- | ------------- | --------------- |
-| Phase 0 | 2026-04-24     | `bridge/` plus `n6shared/`                    | 10            | Done            |
+| Phase 0 | 2026-04-24     | `bridge/` plus `canonshared/`                    | 10            | Done            |
 | Phase 1 | 2026-04-24     | `proposals/` (3 parallel batches A/B/C)       | 9             | Done            |
 | Phase 2 | 2026-04-24     | `experiments/` (5 parallel batches 2-1..2-5)  | 25            | Done            |
 | Phase 3 | 2026-04-24     | `domains/` priority (10 parallel batches 3-1..3-10) | 200 of 417    | Done            |
@@ -262,14 +262,14 @@ Approximately 15-plus background agents were launched, in three classes:
 - HEXA-UFO link audit
 - `Ver` header to `Closure` audit
 - `.own` enforcement audit (24 percent -> full map)
-- English-only audit over `reports/`, `proposals/`, `bridge/`, `n6shared/`
+- English-only audit over `reports/`, `proposals/`, `bridge/`, `canonshared/`
 
 ### 10.2 general-purpose agents
 - CI job authoring (six new jobs)
 - Doc-lint extensions (own#2/#5/#8/#9/#10/#12)
 - Roadmap workflow author
 - Ouroboros v2 repo-relative port
-- Translation batches (bridge, n6shared, proposals)
+- Translation batches (bridge, canonshared, proposals)
 
 ### 10.3 safe-commit agents
 - `Ver` -> `Closure` commit

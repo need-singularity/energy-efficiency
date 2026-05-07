@@ -200,7 +200,7 @@ Split "universality" into two interpretations:
 5. Bernoulli-detour attempt: Theorem B exists but at a different layer
 6. **Recorded honestly as MISS** (per CLAUDE.md "honest verification required")
 
-This document practices the "honesty audit" spirit of n6-architecture:
+This document practices the "honesty audit" spirit of canon:
 - No self-referential verification (not demonstrating α by the OUROBOROS implementation)
 - Sources + measurements + errors mandatory (all measurements cited)
 - Honest MISS record (skipped atlas.n6 append; record-only in this document)

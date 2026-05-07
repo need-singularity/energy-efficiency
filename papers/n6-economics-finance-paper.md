@@ -5,7 +5,7 @@ requires: []
 ---
 # [CANONICAL v2] n=6 arithmetic coordinate mapping for Economics & Finance (HEXA-ECONOMICS-FINANC)
 
-> **Author**: Park Minwoo (n6-architecture)
+> **Author**: Park Minwoo (canon)
 > **Category**: economics-finance — n=6 arithmetic seed paper
 > **Version**: v2 (2026-04-14 canonical)
 > **Prior BT**: BT-147, BT-183, BT-338, BT-339, BT-147
@@ -41,7 +41,7 @@ of economics & finance knowledge.**
 | Design search space | Months of manual exploration | **n·1 minute** (DSE automated) | Search time shrinks by σ·τ=48× |
 | Design parameter count | Tens to hundreds of free variables | **σ=12 axes fixed** | Decisions tightened by τ=4× |
 | Verifiability | Case-based heuristics | **10 subsections, auto-evaluated** | Reproducibility 100% |
-| Derived design variants | 1~2 drafts | **Pareto n=6 top-6** | Options multiply by n=6× |
+| Derived design variants | 1~2 drafts | **Pareto top-K (data-driven)** | Options multiply by n=6× |
 | Cross-domain coupling | Separate project silos | **atlas.n6 unified node** | Reuse factor σ·τ=48× |
 | Honesty | Only successes recorded | **MISS/FALSIFIER stated explicitly** | Falsifiable |
 
@@ -344,7 +344,7 @@ Precondition: all §3 REQUIRES domains reach alien 10. χ²(49df) < 30, p > 0.9.
 <summary>Mk.IV — 2040~2045 cross verification</summary>
 
 Cross-domain prediction agreement with σ·τ=48 cases (architecture / chemistry / medicine
-etc.).  Falsifier stated + 0 FALSIFIER experiments observed. Pareto top-6 realized.
+etc.).  Falsifier stated + 0 FALSIFIER experiments observed. Pareto top-K (data-driven) realized.
 
 </details>
 

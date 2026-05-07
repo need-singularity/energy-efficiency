@@ -90,7 +90,7 @@ two genuinely distinct primitives that can be coupled = real molt;
 
 ## §2 Existence / tooling check
 
-Repo scan results (under `/Users/ghost/core/n6-architecture/`):
+Repo scan results (under `/Users/ghost/core/canon/`):
 
 - No pre-existing SLE_6 / Cardy / Odlyzko computational tool located
   via `find` over `experiments/`, `tool/`, `data/`,
@@ -132,7 +132,7 @@ docstring; principal computation ~30 lines).
 ## §3 Execution log
 
 ```
-$ time python3 /Users/ghost/core/n6-architecture/experiments/anomaly/bt541_leadB_sle6_gue.py
+$ time python3 /Users/ghost/core/canon/experiments/anomaly/bt541_leadB_sle6_gue.py
 ```
 
 - Wallclock: 1.79 s total (user 0.98 s, sys 0.21 s) -- well under any

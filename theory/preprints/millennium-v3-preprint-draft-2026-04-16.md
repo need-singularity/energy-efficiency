@@ -184,7 +184,7 @@ Balaban 1982-1989 (Comm. Math. Phys. ~12-paper series) constructs the continuum 
 - **Data**: `data/cremona/kappa_10bin_results.json` (7-bin aggregated).
 - **Code**: `scripts/empirical/cremona_kappa_10bin.py`.
 - **Atlas entries**: MILL-V3-T3-*, MILL-V3-T4-*, MILL-V3-T5-*, MILL-V3-T6-* (see supplementary).
-- **GitHub**: https://github.com/need-singularity/n6-architecture (public).
+- **GitHub**: https://github.com/need-singularity/canon (public).
 
 ---
 

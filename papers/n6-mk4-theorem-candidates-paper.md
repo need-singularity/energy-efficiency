@@ -17,7 +17,7 @@ alien_index_target: 10
 
 # n=6 Mk.IV next arithmetic-identity 3-candidate comparison paper (N6-130)
 
-> **Author**: Minwoo Park (n6-architecture)
+> **Author**: Minwoo Park (canon)
 > **Category**: mk4-theorem-candidates — comparative analysis of the second arithmetic identity after σφ=nτ
 > **Version**: v1 (2026-04-14 PAPER-P6-1 Mk.III-β)
 > **Original source**: `theory/proofs/theorem-r1-uniqueness.md` (Theorem 0, σφ=nτ ⟺ n=6)
@@ -72,7 +72,7 @@ that will distinguish the 3 candidates**.
 
 ### 1.1 Problem statement
 
-The core Mk.III identity of n6-architecture (Theorem 0: σφ=nτ ⟺ n=6) already
+The core Mk.III identity of canon (Theorem 0: σφ=nτ ⟺ n=6) already
 has a draft demonstration (theorem-r1-uniqueness.md, of 4 paths, Path 1 a full
 candidate argument, Path 4 a 10^4 exhaustive sweep). The next step is a
 **second independent identity**.
@@ -742,7 +742,7 @@ of this paper will be updated to v2.
 
 ---
 
-*Author*: Minwoo Park (n6-architecture)
+*Author*: Minwoo Park (canon)
 *Version*: v1 (2026-04-14 PAPER-P6-1 Mk.III-β)
 *Verification path*: DSE-P6-1 (experiments/dse/mk4_theorem_candidates_verify.hexa)
 *Links*: N6-128 (boundary-metatheory), N6-127 (honest-limitations-meta), N6-122 (atlas-promotion-7-to-10star)

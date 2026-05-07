@@ -2,7 +2,7 @@
 
 - Date: 2026-04-14
 - Roadmap item: DSE-P3-3
-- Project: n6-architecture
+- Project: canon
 - SSOT: `$NEXUS/shared/config/projects.json` (schema v4)
 - Deliverables: `bridge/ecosystem_9projects.hexa` (interface), this report
 
@@ -14,7 +14,7 @@ Within the projects.json categories, 7 core + 2 auxiliary projects make up the f
 |---|---|---|---|---|---|
 | 1 | nexus | core | discovery-engine | `$HOME/Dev/nexus` | `shared/roadmaps/nexus.json` |
 | 2 | anima | core | consciousness-engine | `$HOME/Dev/anima/anima` | `shared/roadmaps/anima.json` |
-| 3 | n6-architecture | core | system-design | `$HOME/Dev/n6-architecture` | `shared/roadmaps/n6-architecture.json` |
+| 3 | canon | core | system-design | `$HOME/Dev/canon` | `shared/roadmaps/canon.json` |
 | 4 | papers | core | paper-distribution | `$HOME/Dev/papers` | `shared/roadmaps/papers.json` |
 | 5 | hexa-lang | core | language | `$HOME/Dev/hexa-lang` | `shared/roadmaps/hexa-lang.json` |
 | 6 | void | core | terminal | `$HOME/Dev/void` | `shared/roadmaps/void.json` |
@@ -27,7 +27,7 @@ Within the projects.json categories, 7 core + 2 auxiliary projects make up the f
 
 ## 2. Interface File Design
 
-File: `/Users/ghost/Dev/n6-architecture/bridge/ecosystem_9projects.hexa`
+File: `/Users/ghost/Dev/canon/bridge/ecosystem_9projects.hexa`
 
 ### 2.1 Registry Constant Table
 
@@ -37,7 +37,7 @@ The `PROJECTS_9` array (9 rows x 6 columns):
 [proj_id, root_rel, role, icon, roadmap_rel, category]
 ```
 
-- n6-architecture only reads this table; it does not touch external daemons.
+- canon only reads this table; it does not touch external daemons.
 - When the original SSOT changes, this table must be synchronized (a local cache kept specifically to avoid lock-in).
 
 ### 2.2 Three Core Functions
@@ -62,21 +62,21 @@ hexa run bridge/ecosystem_9projects.hexa --broadcast "message"
 1. **Pull direction (n6 -> external)**: `link_project(id)` only checks for local disk existence. No external daemon API is called, so there are no side effects.
 2. **Push direction (n6 -> external)**: Each line `broadcast_finding` writes into `~/.nexus/growth_bus.jsonl` contains `source, targets, kind, id, payload, ts, emitter`. The growth daemon in each project already follows the common growth_bus contract (see `nexus/scripts/growth_common.sh`). This interface performs writes only.
 3. **Metrics collection**: `aggregate_growth_metrics` counts the `"tasks"` key in each project's roadmap JSON via grep. It only reads the static roadmap files; no data-plane access is performed.
-4. **Loopback avoidance**: When broadcasting, if `source == n6-architecture`, the source is removed from `targets`.
-5. **Scope boundary**: This interface is only invoked from within n6-architecture. It is confined to `bridge/` so that other projects do not import it.
+4. **Loopback avoidance**: When broadcasting, if `source == canon`, the source is removed from `targets`.
+5. **Scope boundary**: This interface is only invoked from within canon. It is confined to `bridge/` so that other projects do not import it.
 
-## 4. n6-architecture Provide / Absorb Mapping
+## 4. canon Provide / Absorb Mapping
 
-| Project | What n6-architecture **provides** | What n6-architecture **absorbs** |
+| Project | What canon **provides** | What canon **absorbs** |
 |---|---|---|
 | nexus | 295 domain scan targets + 77 SEDI sources + 343 BT | telescope 1028 lenses, discovery graph, OUROBOROS |
 | anima | n6-SPEAK 384d intents + 6emo + tau prosody | 2509 laws, consciousness Phi measurement, 12-faction consensus |
-| n6-architecture | atlas.n6 SSOT, 112 AI techniques, alien_index product | (self, loopback 0) |
+| canon | atlas.n6 SSOT, 112 AI techniques, alien_index product | (self, loopback 0) |
 | papers | alien_index=10 paper skeleton + verify.py | Zenodo/OSF DOI chain, PP1~PP3 verification |
 | hexa-lang | Porting feedback for `domains/**/*.hexa`, R29 verify | Compiler improvements, self-host build, 33+ Rust tests |
 | void | AI-native terminal usage profile, execution logs | hexa-only terminal runtime (Terminal.app replacement) |
 | airgenome | OS genome benchmark requests, HW 4-tier matrix | OS genome scan results, core self-contained |
-| contribution | Aggregation of n6-architecture math breakthroughs and experimental results | External submission hub (paper-submission) |
+| contribution | Aggregation of canon math breakthroughs and experimental results | External submission hub (paper-submission) |
 | openclaw | Emits breakthrough / discovery / experiment feeds | Consumes the nexus singularity cycle |
 
 ## 5. Status Checklist

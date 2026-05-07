@@ -253,4 +253,4 @@ done < /tmp/miss_48_paths.txt
 1. **products.json link update**: based on the §3 mapping table, replace 48 links in `$NEXUS/shared/n6/docs/products.json`
 2. **Re-audit**: after the update, re-run the `products-link-audit` script -> 174 - 48 = 126 expected residual (paper 116 + calc 10)
 3. **Paper/calc handling**: the remaining 126 are out of scope; handle in a separate session
-4. **Archive folder check**: optional cross-check against `n6shared/logs/absorbed/` absorption-history logs to add consolidation year/date
+4. **Archive folder check**: optional cross-check against `canonshared/logs/absorbed/` absorption-history logs to add consolidation year/date

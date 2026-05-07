@@ -766,7 +766,7 @@ camera-filter-app**:
 
 **Sister domain + framework:**
 
-18. **n6-architecture** (2026). `domains/apps/camera-filter-app/`
+18. **canon** (2026). `domains/apps/camera-filter-app/`
     mk1 PHYSICAL-LIMIT (alien-grade 10) — sister consumer of the
     FILTER-ALGEBRA compiled DAG; shares 16.67 ms real-time budget.
 19. **NIST CODATA** (2018 internationally recommended values). —
@@ -843,7 +843,7 @@ Test plan:
 | OpenAI | CLIP-B/16 model weights (Apache 2.0) | inverse-problem reference encoder |
 | Google LLC | TensorFlow Lite + NNAPI + Android 14 | Android runtime |
 | pest authors | pest 2.7+ Rust parsing-combinator crate | DSL parser |
-| n6-architecture private framework | own_doc_lint / own31 lint / camera-filter-app sister | docs gate + sister consumer |
+| canon private framework | own_doc_lint / own31 lint / camera-filter-app sister | docs gate + sister consumer |
 
 ## §19 ACCEPTANCE / MISS criteria (own#12 pre-declared)
 
@@ -990,7 +990,7 @@ limit closure with an authoring-first verb (FILTER-ALGEBRA AUTHORS
 filter-app APPLIES) that consumes its output.
 
 The sister relationship to camera-filter-app is the first
-intra-axis pairing in n6-architecture: two domains in the same axis
+intra-axis pairing in canon: two domains in the same axis
 with disjoint verbs and a shared real-time budget (16.67 ms).
 camera-filter-app mk2 (real-time video) extends FILTER-ALGEBRA's
 DAG to streaming; camera-filter-app mk4 (LLM-conditioned style) uses

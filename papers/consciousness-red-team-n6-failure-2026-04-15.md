@@ -34,7 +34,7 @@ external_sources_verified:
 
 # Consciousness Red Team — refutation of the BT-19 α-product hypothesis and formalised alternative protocols
 
-> **Authors**: Park Minwoo (n6-architecture) & NEXUS-6 collaboration
+> **Authors**: Park Minwoo (canon) & NEXUS-6 collaboration
 > **Category**: consciousness / red-team / theoretical-refutation
 > **Version**: v1 (2026-04-15 STR-P9-2)
 > **Honesty declaration**: this paper actively performs refutation of its own theory. No self-reference, 13 external references cited, and grounds for discarding the original BT-19 α-product hypothesis (DSE-P7-1 proposal) are presented along three axes: mathematical, empirical, conceptual.
@@ -45,7 +45,7 @@ external_sources_verified:
 
 ## 0. Abstract
 
-**Red Team purpose**: The CONJECTURE "α_IIT · α_GWT = 1" (BT-19) proposed by the n6-architecture project in DSE-P7-1 claimed that the product of the two exponents from IIT and GWT **closes trivially at 1** in the n=6 arithmetic coordinate system. This Red Team **refutes** that hypothesis along three axes (mathematical triviality, empirical lack of support, independence failure) and formalises **three alternative protocols** (φ(6)=2 duality / τ(6)=4 state / σ(6)=2·6 perfect-number) to replace it.
+**Red Team purpose**: The CONJECTURE "α_IIT · α_GWT = 1" (BT-19) proposed by the canon project in DSE-P7-1 claimed that the product of the two exponents from IIT and GWT **closes trivially at 1** in the n=6 arithmetic coordinate system. This Red Team **refutes** that hypothesis along three axes (mathematical triviality, empirical lack of support, independence failure) and formalises **three alternative protocols** (φ(6)=2 duality / τ(6)=4 state / σ(6)=2·6 perfect-number) to replace it.
 
 **Refutation results (§3)**: R1 Barrett-Seth 2011 lacks α_IIT=4/3; R2 Dehaene 2011 lacks α_GWT=3/4 (all-or-none not power-law); R3 product=1 is trivial identity x·(1/x)=1, Casali 2013 PCI co-varies with GNW refuting independence; R4 Orch-OR 6-fold absent, Amos-Klug 1974 measured 13+3; R5 BT-19 number conflict with existing GUT Hierarchy; R6 IIT 4.0 Albantakis 2023 still lacks α_IIT=4/3; R7 Hohwy 2020 active inference is not an α_GWT alternative; R8 Rosenthal HOT is not axiom-based; R9 Graziano AST is an independent path; R10 England thermodynamic adaptation makes no mention of n=6.
 

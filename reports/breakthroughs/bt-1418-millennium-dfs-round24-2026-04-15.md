@@ -49,7 +49,7 @@ harness_result: "38 PASS / 0 FAIL / 0 MISS"
 |---|------|----------|
 | 1 | Out(S₆) ≠ 1 | Hölder 1895 |
 | 2 | K_6 Steiner triple system | Cayley 1850 |
-| 3 | perfect number 6 = 2^1 · (2²−1) | Euclid-Euler |
+| 3 | arithmetic canon = 2^1 · (2²−1) | Euclid-Euler |
 | 4 | SO(6) ≅ SU(4)/Z₂ | Cartan |
 | 5 | Heawood torus χ=7 | Ringel-Youngs |
 | 6 | Schaefer dichotomy k=6 | Schaefer 1978 |

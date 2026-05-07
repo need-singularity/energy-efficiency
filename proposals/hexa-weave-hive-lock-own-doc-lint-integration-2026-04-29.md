@@ -26,13 +26,13 @@ cycle 25 introduced two non-hook enforcement paths:
   accumulated CJK during cycle 1-22 because no enforcement gate fired.
   Step A translated all 17 → 0 CJK; own 1 violation count 17 → 0.
 - **Step B (cycle 25)** — daily detection. `launchd` plist
-  `com.n6-architecture.own-doc-lint` runs `tool/own_doc_lint_with_alert.sh`
+  `com.canon.own-doc-lint` runs `tool/own_doc_lint_with_alert.sh`
   every 86400s (and at load), emits raw 66 ai-native-error trailer +
   raw 77 ledger row on any HARD violation. detection lag up to 24 h.
 
 This proposal (Step C, cycle 27+) closes the lag with **atomic
 prevention** via the hive raw 99 governance dispatcher. Specifically:
-when a user runs `hive lock` on n6-architecture's `.raw` / `.own` /
+when a user runs `hive lock` on canon's `.raw` / `.own` /
 `.roadmap` / `.ext` SSOT files (the chflags uchg unlock-edit-relock
 cycle), the relock step invokes own_doc_lint --strict before re-applying
 chflags uchg. Any HARD violation aborts the relock; the SSOT remains
@@ -59,7 +59,7 @@ through the same lint gate, regardless of the editor or human.
   emits)
 - raw 77 audit ledger path `state/audit/own_doc_lint_events.jsonl`
   (Step B initialized)
-- hive CLI ability to invoke a per-repo lint script (n6-architecture's
+- hive CLI ability to invoke a per-repo lint script (canon's
   `tool/own_doc_lint.py`) from the repo root
 
 ## §4 STRUCT
@@ -82,7 +82,7 @@ hive lock <ssot-file>            # NEW: pre-relock lint
 ```
 
 The check is a single subprocess invocation; lint runtime is sub-second
-on n6-architecture's current scope (~20 .md files in scope).
+on canon's current scope (~20 .md files in scope).
 
 ## §5 FLOW
 
@@ -143,7 +143,7 @@ Smoke tests once hive lock --pre-lint lands:
 |------|-----------|-----------|
 | hive lock latency regression | medium | benchmark before / after; cap at 1 s p99 |
 | false positive blocks legitimate edit | medium | --skip-lint flag with rationale logged to ledger |
-| cross-repo dispatch (hive → n6-architecture) creates dependency cycle | low | hive invokes via subprocess only; no python import |
+| cross-repo dispatch (hive → canon) creates dependency cycle | low | hive invokes via subprocess only; no python import |
 | own_doc_lint.py refactor breaks hive integration | low | API contract: exit code + JSON report path |
 
 ## §11 DEPENDENCIES
@@ -198,13 +198,13 @@ user's call.
 - `~/core/hive/.raw` raw 77 execution-audit-append-only-ledger
 - `~/core/hive/.raw` raw 142 design-strategy-autonomous-loop-self
   (D2 try-and-revert)
-- `~/core/n6-architecture/.own` own 1 doc-english-required
-- `~/core/n6-architecture/.own` own 14 readme-sealed-required
-- `~/core/n6-architecture/.own` own 29 readme-friendly-toolkit-required
-- `~/core/n6-architecture/tool/own_doc_lint.py` Python lint dispatcher
-- `~/core/n6-architecture/tool/own_doc_lint_with_alert.sh` Step B
+- `~/core/canon/.own` own 1 doc-english-required
+- `~/core/canon/.own` own 14 readme-sealed-required
+- `~/core/canon/.own` own 29 readme-friendly-toolkit-required
+- `~/core/canon/tool/own_doc_lint.py` Python lint dispatcher
+- `~/core/canon/tool/own_doc_lint_with_alert.sh` Step B
   launchd wrapper
-- `~/core/n6-architecture/config/launchd/com.n6-architecture.own-doc-lint.plist`
+- `~/core/canon/config/launchd/com.canon.own-doc-lint.plist`
   Step B plist
 
 ## raw 71 falsifier preregistration
@@ -213,13 +213,13 @@ user's call.
   → Step C blocked indefinitely; mandate retired or scope reduced
   (deadline 2026-08-29)
 - F-CYCLE25-STEP-C-2: hive lock --pre-lint adds latency > 1 s at p99 on
-  n6-architecture .own (~36 KB) — implementation reverts to async
+  canon .own (~36 KB) — implementation reverts to async
   Step B fallback (deadline 2026-12-29)
 - F-CYCLE25-STEP-C-3: false-positive rate of --strict gate > 5 % over
   rolling 30 days (measured by --skip-lint count) — gate too strict,
   recalibrate or extend grandfather scope (deadline 2027-04-29)
 - F-CYCLE25-STEP-C-4: hive integration creates cycle dependency
-  (hive subprocess invocation requires n6-architecture python tool that
+  (hive subprocess invocation requires canon python tool that
   itself imports hive code) — refactor to pure CLI subprocess
   contract, no python import (deadline 2027-04-29)
 

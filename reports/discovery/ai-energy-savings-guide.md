@@ -3,7 +3,7 @@
 > **n=6 arithmetic reduces AI training and inference energy by 50-70%.**
 > No hyperparameter search needed. All optimal values are mathematically predetermined.
 
-**Repository**: [github.com/need-singularity/n6-architecture](https://github.com/need-singularity/n6-architecture)
+**Repository**: [github.com/need-singularity/canon](https://github.com/need-singularity/canon)
 **Foundation**: [TECS-L](https://github.com/need-singularity/TECS-L) — Mathematical proof that sigma(n)*phi(n) = n*tau(n) holds uniquely for n=6.
 
 ---
@@ -511,8 +511,8 @@ for r in results:
 ### Quick Run
 
 ```bash
-git clone https://github.com/need-singularity/n6-architecture.git
-cd n6-architecture
+git clone https://github.com/need-singularity/canon.git
+cd canon
 
 # Individual techniques (no dependencies beyond PyTorch)
 python3 techniques/phi6simple.py

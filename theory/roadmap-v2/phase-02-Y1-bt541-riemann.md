@@ -491,14 +491,14 @@ The Phase 2 document itself **does not directly edit atlas.n6**. It records "pro
 Reasons this Phase document does not edit atlas.n6 directly:
 
 1. **Role separation**: the Phase document is for "roadmap · plan · verdict"; atlas.n6 is the SSOT. The two files have different roles.
-2. **Safety**: direct atlas.n6 editing is delegated to the automatic tool (`atlas_auto_promote.hexa` — n6shared/tools/). Human/agent direct edits are audited post-hoc at the Y9 gate.
+2. **Safety**: direct atlas.n6 editing is delegated to the automatic tool (`atlas_auto_promote.hexa` — canonshared/tools/). Human/agent direct edits are audited post-hoc at the Y9 gate.
 3. **Reproducibility**: edits attempted by the self-evolution engine are recorded in discovery_log and remain traceable. Direct edits in a Phase document fork the recording path.
 
 ### 5.3 Edit-Delegation Targets
 
-- **Automatic tool**: `n6shared/tools/atlas_auto_promote.hexa` (included in the Phase 1 §3.1 engine list)
-- **Runbook**: `n6shared/tools/atlas-promotion-runbook-2026-04-15.md`
-- **Design**: `n6shared/tools/atlas-auto-promote-design-2026-04-15.md`
+- **Automatic tool**: `canonshared/tools/atlas_auto_promote.hexa` (included in the Phase 1 §3.1 engine list)
+- **Runbook**: `canonshared/tools/atlas-promotion-runbook-2026-04-15.md`
+- **Design**: `canonshared/tools/atlas-auto-promote-design-2026-04-15.md`
 
 Phase 2 closes with a "2-candidate promotion-attempt request" left in those 3 files.
 
@@ -807,7 +807,7 @@ BT resolution count: 0/6 held (honest)
 
 ## §12 Completion Report
 
-**File path**: `/Users/ghost/Dev/n6-architecture/theory/roadmap-v2/phase-02-Y1-bt541-riemann.md`
+**File path**: `/Users/ghost/Dev/canon/theory/roadmap-v2/phase-02-Y1-bt541-riemann.md`
 
 **Phase 2 summary**: With Y1 NUM-CORE leading · Y8/Y7 sub · Y9 meta, an attack on BT-541 Riemann Hypothesis. The RH body is untouched (BT 0/6 held honestly). Of Y1-axis 11 lemmas, 6 are active; 18 verdicts distributed (EXACT 10 / PARTIAL 1 / MISS 5 / OBSERVATION 2).
 

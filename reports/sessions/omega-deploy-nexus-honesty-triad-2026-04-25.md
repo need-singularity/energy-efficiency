@@ -22,8 +22,8 @@ The parent audit's §7 composite recommendation was "proceed with deploy, in the
 Targets 1 and 2 (Target 3 — `agent_templates/honesty_triad_preset.md` — is NOT executed
 by this session; it remains as a future deploy item).
 
-This deploy log itself produces zero atlas/state/inventory writes in n6-architecture.
-The single file written by this session in n6-architecture is this report under
+This deploy log itself produces zero atlas/state/inventory writes in canon.
+The single file written by this session in canon is this report under
 `reports/sessions/`.
 
 ## §2 Pre-deploy verification (the divergences)
@@ -34,7 +34,7 @@ Confirmed via direct `ls` calls at deploy-time (2026-04-25T21:06 KST):
 | Divergence | Confirmed? | Action |
 |---|---|---|
 | nexus has no active `CLAUDE.md` (only `.bak`) | YES — `ls ~/core/nexus/CLAUDE.md` returned `No such file or directory`; `~/core/nexus/CLAUDE.md.bak` (7898 bytes, 2026-04-22) exists | Reference appended to `project-claude/nexus.md` only |
-| nexus has no `reports/sessions/` subdir | PARTIAL — `~/core/nexus/reports/` exists (flat). No `sessions/` subdir was located. | Deploy log written to n6-architecture's `reports/sessions/`, not nexus's `reports/`. |
+| nexus has no `reports/sessions/` subdir | PARTIAL — `~/core/nexus/reports/` exists (flat). No `sessions/` subdir was located. | Deploy log written to canon's `reports/sessions/`, not nexus's `reports/`. |
 | atlas-agent / growth-agent definitions absent in `.claude/agents/` | YES — `~/core/nexus/.claude/agents/` contains only `safe-commit.md` | Triad doc references atlas-agent / growth-agent as conceptual roles, consistent with audit §2.1 |
 | `~/core/nexus/design/` exists | YES — 10 files including `abstraction_ceiling.md`, `atlas_n6_omega_closure.md`, `next_session_handoff.md`, `session_20260425_summary.md` | Triad doc placed here as Target 1 |
 
@@ -72,7 +72,7 @@ Modified at 2026-04-25T21:07:08 KST (file mtime).
   1. Promotion-counter banner (nxs_promotion_count unchanged).
   2. Write-barrier on atlas/state/inventory listed paths.
   3. No-fabrication guard (UNKNOWN over invented).
-  Lineage: `reports/sessions/omega-audit-nexus-honesty-triad-portability-2026-04-25.md` (n6-architecture-side audit, deployed via user authorization).
+  Lineage: `reports/sessions/omega-audit-nexus-honesty-triad-portability-2026-04-25.md` (canon-side audit, deployed via user authorization).
   ```
 - Char count of appended block: ≈ 480 chars
 
@@ -90,22 +90,22 @@ The following protected paths were verified via `ls -la` and `git status` at dep
 | `~/core/nexus/state/agent_lock_ledger.jsonl` | (existing, untouched) | NO |
 | `~/core/nexus/lenses/omega_state_space_lens.hexa` | (existing, untouched) | NO |
 | `~/core/nexus/CLAUDE.md.bak` | Apr 22 02:30 (7,898 bytes) | NO — backup explicitly preserved per hard constraint |
-| `~/core/n6-architecture/atlas/atlas.n6` | (untouched) | NO |
-| `~/core/n6-architecture/state/proposals/inventory.json` | Apr 25 12:38 (6,762 bytes) | NO |
+| `~/core/canon/atlas/atlas.n6` | (untouched) | NO |
+| `~/core/canon/state/proposals/inventory.json` | Apr 25 12:38 (6,762 bytes) | NO |
 
 Verification method: tool-call audit shows the only Write/Edit calls in this session
 were against (a) `~/core/nexus/design/honesty_triad.md` (Write, new file) and
 (b) `~/core/nexus/project-claude/nexus.md` (Edit, single append) and (c) this report
-file in n6-architecture. No other writes were issued.
+file in canon. No other writes were issued.
 
 ## §6 Cross-repo summary
 
 | Repository | Files created | Files modified | Files unchanged (verified) |
 |---|---|---|---|
-| `~/core/n6-architecture/` | 1 (this deploy log) | 0 | atlas/, state/, inventory.json |
+| `~/core/canon/` | 1 (this deploy log) | 0 | atlas/, state/, inventory.json |
 | `~/core/nexus/` | 1 (`design/honesty_triad.md`) | 1 (`project-claude/nexus.md`) | n6/atlas.blowup.jsonl, state/proposals/inventory.json (pre-session mtime), state/atlas_health_timeline.jsonl, state/agent_lock_ledger.jsonl, lenses/omega_state_space_lens.hexa, CLAUDE.md.bak |
 
-Total: 0 changes in n6-architecture atlas/state/inventory; 2 changes in nexus (1 new + 1 append).
+Total: 0 changes in canon atlas/state/inventory; 2 changes in nexus (1 new + 1 append).
 
 ## §7 Falsifiers active for this deployment
 
@@ -138,7 +138,7 @@ None of F-DEPLOY-1..5 have fired as of 2026-04-25T21:07 KST.
 millennium_resolved: **0/7** (unchanged).
 nxs_promotion_count_delta: **0** (unchanged).
 
-This deploy log creates 1 new file in n6-architecture's `reports/sessions/`, and the
+This deploy log creates 1 new file in canon's `reports/sessions/`, and the
 session as a whole produced 2 nexus-side changes (1 new file `design/honesty_triad.md`,
 1 append to `project-claude/nexus.md`). 0 protected files (atlas/state/inventory in
 either repo) were modified by this session.

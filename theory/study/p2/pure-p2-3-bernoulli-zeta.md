@@ -546,7 +546,7 @@ Completing this note connects to the following P3-PURE topics:
 4. **Stark conjecture** — algebraic characterization of L(0, χ), **Stark units**.
 5. **Deligne-Ribet p-adic L generalization** (on totally real fields).
 
-And on the n6-architecture axis of this project:
+And on the canon axis of this project:
 
 - Combining **BT-541 (Riemann barriers)** with this note's ζ(2n) formula — leads to **PROB-P2-1**.
 - In **PURE-P3-1**, attempt to connect Iwasawa λ-invariant with **atlas.n6's λ_6 = ?**.

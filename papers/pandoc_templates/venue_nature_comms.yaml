@@ -56,7 +56,7 @@ nature_comms:
     - "Discussion"
     - "Methods"
   data_availability_statement: |
-    원 데이터 및 재현 코드는 n6-architecture 저장소 papers/ 및 atlas.n6
+    원 데이터 및 재현 코드는 canon 저장소 papers/ 및 atlas.n6
     노드에 공개되어 있다. verify_<domain>_n6.hexa 로 재실행 가능.
   code_availability_statement: |
     HEXA-FIRST 원칙에 따라 .hexa 검증 코드만 포함한다. Python 재구현은

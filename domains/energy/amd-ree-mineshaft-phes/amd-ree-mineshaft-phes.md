@@ -970,7 +970,7 @@ Test plan:
 | Sasol / Omnia | HCl + lime reagents | re-leach + neutralization |
 | Eskom Holdings | 132 kV grid interconnect | grid wheeling per NERSA rules |
 | SA Department of Mineral Resources | licensing | mining + water-use license |
-| n6-architecture private framework | own_doc_lint / own31 lint | docs gate |
+| canon private framework | own_doc_lint / own31 lint | docs gate |
 
 ## §19 ACCEPTANCE / MISS criteria (own#12 pre-declared)
 

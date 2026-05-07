@@ -14,7 +14,7 @@ alien_index_target: 10
 
 # HEXA-CROSS-DSE-MATRIX-112 — 225 techniques x 10 domains cross-DSE meta paper (N6-111)
 
-> **Author**: Park Minwoo (n6-architecture)
+> **Author**: Park Minwoo (canon)
 > **Category**: cross-dse-matrix-112 — P2 extended v3 meta paper
 > **Version**: v3 (2026-04-14 P2 extended)
 > **Prior BT**: BT-380 meta, BT-26, BT-33, BT-54, BT-64, BT-67, BT-73
@@ -25,7 +25,7 @@ alien_index_target: 10
 ## 0. Abstract
 
 This paper performs a meta-analysis showing that, in the combination space of
-**225 AI techniques x 10 industrial domains** accumulated in n6-architecture
+**225 AI techniques x 10 industrial domains** accumulated in canon
 (225·10=2250 candidates), **112 effective cross-DSE combinations** emerge as a
 direct consequence of the arithmetic structure of the perfect number n=6.
 The theoretical ceiling σ=12 design axes x τ=4 gates x n²=36 attractors = 1728
@@ -38,7 +38,7 @@ Each of the 112 combinations has been verified at 100% EXACT.
 
 The **cross-DSE (Cross Domain-Specific Engineering)** of AI techniques (Attention, SSM,
 Mamba, Mixture of Experts, etc.) against industrial domains (chips, energy, bio, space,
-etc.) is a core meta-activity of n6-architecture. Judging **which combination of technique
+etc.) is a core meta-activity of canon. Judging **which combination of technique
 x domain is effective** introduces a combinatorial-explosion problem.
 
 This paper demonstrates a pattern where the n=6 arithmetic constraint naturally compresses
@@ -178,7 +178,7 @@ matrix auto-updates when new techniques are registered.
 2. papers/n6-ai-techniques-68-integrated-paper.md (N6-AI 68-technique meta)
 3. papers/n6-reality-map-paper.md (atlas.n6 reality map)
 4. NEXUS-6 Discovery Engine (SEDI + brainwire)
-5. cross_dse.hexa engine (n6-architecture/engine/)
+5. cross_dse.hexa engine (canon/engine/)
 
 ## §1 WHY
 

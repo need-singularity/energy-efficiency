@@ -5,7 +5,7 @@
   "phase": "scripts-migration-to-nexus-sim-bridge-weave",
   "topic": "HEXA-WEAVE empirical sandbox canonical migration: ~/core/hexa-weave/ (cycle 14 sister-repo plan, retired) → ~/core/nexus/sim_bridge/weave/ (cycle 24 sim_bridge sub-module pattern, peer of multiverse / bostrom_test / godel_q)",
   "verdict": "MIGRATED-AND-PUSHED",
-  "verdict_detail": "User directive: nexus/sim_bridge/ 패턴 따라 sim-universe (multiverse) + rng (ouroboros_qrng) 형태로 nexus 에 포함. Name 'hexa' prefix 불필요 (sim_bridge sub 컨벤션은 snake_case + bare topic name: anu_stream / atlas_anu_corr / multiverse / weave). cycle 22 commit 67b07339 의 scripts/cage_assembly_simulation.py + scripts/polyhedral_cage_bayesian_audit.py 가 nexus 측 sim_bridge/weave/ 로 이전; n6-architecture 측은 git rm + spec path 갱신.",
+  "verdict_detail": "User directive: nexus/sim_bridge/ 패턴 따라 sim-universe (multiverse) + rng (ouroboros_qrng) 형태로 nexus 에 포함. Name 'hexa' prefix 불필요 (sim_bridge sub 컨벤션은 snake_case + bare topic name: anu_stream / atlas_anu_corr / multiverse / weave). cycle 22 commit 67b07339 의 scripts/cage_assembly_simulation.py + scripts/polyhedral_cage_bayesian_audit.py 가 nexus 측 sim_bridge/weave/ 로 이전; canon 측은 git rm + spec path 갱신.",
   "files_migrated_to_nexus": [
     "nexus/sim_bridge/weave/cage_assembly_simulation.py (21888 bytes, EVENTS_PATH MODULE_DIR/runs/ 으로 path 갱신)",
     "nexus/sim_bridge/weave/polyhedral_cage_bayesian_audit.py (17086 bytes, audit out_path MODULE_DIR/runs/ 으로 path 갱신)",
@@ -13,15 +13,15 @@
     "nexus/sim_bridge/weave/runner.sh (1258 bytes, executable, --cage-only / --audit-only / --extended / default both)"
   ],
   "files_removed_from_n6": [
-    "n6-architecture/scripts/cage_assembly_simulation.py (git rm; cycle 22 commit 67b07339 historical preservation)",
-    "n6-architecture/scripts/polyhedral_cage_bayesian_audit.py (git rm; cycle 22 commit 67b07339 historical preservation)"
+    "canon/scripts/cage_assembly_simulation.py (git rm; cycle 22 commit 67b07339 historical preservation)",
+    "canon/scripts/polyhedral_cage_bayesian_audit.py (git rm; cycle 22 commit 67b07339 historical preservation)"
   ],
   "files_preserved_in_n6": [
-    "n6-architecture/state/audit/cage_assembly_events.jsonl (cycle 22 historical snapshot, NOT removed)",
-    "n6-architecture/state/audit/polyhedral_cage_audit_events.jsonl (cycle 22 historical snapshot, NOT removed)",
-    "n6-architecture/domains/biology/hexa-weave/hexa-weave.md (declarative SSOT, no script path references)",
-    "n6-architecture/lean4-n6/N6/MechVerif/* (formal SSOT)",
-    "n6-architecture/papers/hexa-weave-formal-mechanical-w2-2026-04-28.md (paper SSOT)"
+    "canon/state/audit/cage_assembly_events.jsonl (cycle 22 historical snapshot, NOT removed)",
+    "canon/state/audit/polyhedral_cage_audit_events.jsonl (cycle 22 historical snapshot, NOT removed)",
+    "canon/domains/biology/hexa-weave/hexa-weave.md (declarative SSOT, no script path references)",
+    "canon/lean4-n6/N6/MechVerif/* (formal SSOT)",
+    "canon/papers/hexa-weave-formal-mechanical-w2-2026-04-28.md (paper SSOT)"
   ],
   "files_modified_in_n6": [
     "proposals/hexa_weave_mvp_w5_mac_cpu_fallback_2026_04_28.md §11 DEPENDENCIES + §13 TOOLS — path 갱신: ~/core/hexa-weave/ retired, ~/core/nexus/sim_bridge/weave/ canonical"

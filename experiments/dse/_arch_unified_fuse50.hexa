@@ -185,10 +185,10 @@ fn get_or(obj, key: string, default_val) {
 }
 
 fn repo_root() -> string {
-    // env("N6_ARCH") 가능하면 우선, 아니면 HOME/Dev/n6-architecture
+    // env("N6_ARCH") 가능하면 우선, 아니면 HOME/Dev/canon
     let e = env("N6_ARCH")
     if len(e) > 0 { return e }
-    return env("HOME") + "/Dev/n6-architecture"
+    return env("HOME") + "/Dev/canon"
 }
 
 fn json_escape(s: string) -> string {

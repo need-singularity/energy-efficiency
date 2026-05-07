@@ -1,7 +1,7 @@
 # atlas.n6 Promotion Dry-Run Plan — 2026-04-25
 
 Author: nexus session (cross-repo proposal n6a-20260425-001)
-Atlas snapshot: `~/core/n6-architecture/atlas/atlas.n6` (21,800 lines / 9,615 parsed entries)
+Atlas snapshot: `~/core/canon/atlas/atlas.n6` (21,800 lines / 9,615 parsed entries)
 Linked: nxs-20260424-002 (atlas eig pipeline rebuild), nexus design doc `design/atlas_n6_omega_closure.md`
 
 ## Status
@@ -139,7 +139,7 @@ For larger ceiling progress, the more impactful pools are:
 
 - `atlas.n6` body **not modified** (dry-run only)
 - no drill / loop firing (slot conflict policy)
-- cross-repo direct edit limited to `n6-architecture/state/` (no `atlas/` writes)
+- cross-repo direct edit limited to `canon/state/` (no `atlas/` writes)
 - analyzer respects `_guarded_append_atlas` schema (`shared/blowup/lib/atlas_guard.hexa.inc`):
   grade whitelist `{[10*],[10**],[11*],[12*],[10],[9],[8],[7],[6],[5],[N?],[N!]}` —
   `[10*]` promotion stays inside whitelist.

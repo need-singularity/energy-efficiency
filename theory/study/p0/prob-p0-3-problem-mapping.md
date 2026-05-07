@@ -182,7 +182,7 @@ Poincaré (solved; extension of Ricci-flow analysis to general geometric PDEs)
 
 ## 5. Scope of Interpretation within This Project
 
-- The project (n6-architecture) centers on **a small number-theoretic/combinatorial theorem around n=6** (σ·φ = n·τ iff n=6).
+- The project (canon) centers on **a small number-theoretic/combinatorial theorem around n=6** (σ·φ = n·τ iff n=6).
 - This viewpoint is **not directly equivalent** to any Millennium problem. Therefore reinterpreting Millennium problems through n=6 structures is **speculative** and lies outside the scope of this study note.
 - This document is **problem-centric**, and n=6 interpretations are kept minimal in a separate track.
 
@@ -193,7 +193,7 @@ Poincaré (solved; extension of Ricci-flow analysis to general geometric PDEs)
 - This PROB-P0-3 document is a **study note**.
 - This document **does not target any Millennium problem**.
 - The only solved Millennium problem is the **Poincaré Conjecture** (Perelman 2002–2003).
-- The project (n6-architecture) has **not independently solved** any of the seven; status is **0/7** (Perelman's solution counted as external contribution).
+- The project (canon) has **not independently solved** any of the seven; status is **0/7** (Perelman's solution counted as external contribution).
 - Discussions of selection criteria, subfield mapping, and mutual connections rely on external primary sources such as Clay's official documents · Jaffe (2006) · Arthur · Langlands expositions · Kapustin-Witten · Scholze original papers.
 - Factual errors (especially dates and paper citations), if found, should be corrected by rechecking the sources.
 

@@ -92,7 +92,7 @@ next step: append to atlas.n6 at [10*] grade (user approval required)
 
 ### [6] bridge/ecosystem_9projects.hexa
 ```
-  n6-architecture   system-design         [ok] (core)
+  canon   system-design         [ok] (core)
   papers            paper-distribution    [ok] (core)
   hexa-lang         language              [ok] (core)
   void              terminal              [ok] (core)

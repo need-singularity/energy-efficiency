@@ -1,4 +1,4 @@
-# N6 Architecture — Final Synthesis
+# CANON — Final Synthesis
 
 > 5 iterations, 300+ hypotheses, 20 domains, 3 proofs, 1 equation.
 

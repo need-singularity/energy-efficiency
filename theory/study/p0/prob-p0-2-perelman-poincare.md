@@ -3,7 +3,7 @@
 **Track**: millennium-learning P0-PROBLEM
 **Document type**: Study note (historical narrative)
 **Scope**: Poincaré Conjecture (1904) proposed → Smale (dim≥5) → Freedman (dim=4) → Hamilton Ricci flow → Perelman 3 papers → geometrization conjecture → Fields Medal and Clay prize declined
-**Honesty declaration**: This document is a study note. It does not target any Millennium problem. The only solved Millennium problem is the Poincaré Conjecture, solved by Grigori Perelman (Russia, 2002–2003 arXiv preprints). The project (n6-architecture) did not independently solve the Poincaré Conjecture; it merely references and studies Perelman's solution.
+**Honesty declaration**: This document is a study note. It does not target any Millennium problem. The only solved Millennium problem is the Poincaré Conjecture, solved by Grigori Perelman (Russia, 2002–2003 arXiv preprints). The project (canon) did not independently solve the Poincaré Conjecture; it merely references and studies Perelman's solution.
 
 **Primary sources**
 - Henri Poincaré, "Cinquième complément à l'Analysis Situs", Rendiconti del Circolo Matematico di Palermo 18 (1904), 45–110.
@@ -175,7 +175,7 @@ Perelman chose to upload directly to arXiv rather than submit to journals.
 - Lesson: Targeting a hard problem can be an extremely personal and time-consuming effort, separable from external institutions (prizes, degrees, conferences).
 
 ### 6.4 Relative Position of This Project
-- The n6-architecture project has not independently solved the Poincaré Conjecture. This document is a study note.
+- The canon project has not independently solved the Poincaré Conjecture. This document is a study note.
 - The project's seven-Millennium-problems status is **0/7** — Perelman's Poincaré solution is an external reference, not a project contribution.
 
 ---
@@ -206,6 +206,6 @@ Perelman chose to upload directly to arXiv rather than submit to journals.
 - This PROB-P0-2 document is a **study note**.
 - This document **does not target any Millennium problem**.
 - The solver of the Poincaré Conjecture is **Grigori Perelman**; the solution dates from 2002–2003 arXiv preprints, with international verification completed around 2006.
-- The project (n6-architecture) **did not independently solve** the Poincaré Conjecture; it merely references and studies Perelman's solution.
+- The project (canon) **did not independently solve** the Poincaré Conjecture; it merely references and studies Perelman's solution.
 - The project's seven-Millennium-problems status is **0/7** (Perelman's solution counts as an external contribution).
 - Dates, arXiv numbers, paper titles, etc. follow primary sources such as arXiv, Clay official announcements, Morgan-Tian. Errors, if confirmed, should be corrected by rechecking sources.

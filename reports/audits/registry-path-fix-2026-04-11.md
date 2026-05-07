@@ -1,6 +1,6 @@
 # Registry path-drift fix audit report (2026-04-11)
 
-> Axis: **reports/audits** · n6-architecture · registry path drift fix
+> Axis: **reports/audits** · canon · registry path drift fix
 > Rules basis: R2 (no hardcoding) / R5 (SSOT) / R14 (shared JSON single-source-of-truth) / R18 (minimal) / R25 (shared-settings gate)
 > Prior audit: `reports/audits/synbio-merge-2026-04-11.md` §3-1 / §3-2
 > Scope: GO mode + approved path-drift correction (R18 minimal)
@@ -141,7 +141,7 @@ All 3 files valid per JSON grammar (RFC 8259). Entry structure (keys/types/order
 | File | Line | Type | Handling |
 |---|---|---|---|
 | `$N6_ARCH/README.md` | 560 | Manual table after `AUTO:SUMMARY_tech-industry:END` | regenerate via sync-readme.hexa (R5) |
-| `$N6_ARCH/n6shared/config/dse-map.toml` | 18775 | `note` comment field | update text or remove (separate item) |
+| `$N6_ARCH/canonshared/config/dse-map.toml` | 18775 | `note` comment field | update text or remove (separate item) |
 | `$NEXUS/shared/n6/docs/dse-map.toml` | 18775 | same comment field | same as above |
 | `$N6_ARCH/reports/audits/paper-legacy-audit/verify-coverage.md` | 114 | historical audit record | **immutable** (reports point-in-time immutability) |
 | `$N6_ARCH/reports/audits/synbio-merge-2026-04-11.md` | 28-29, 98-99, 117 | audit report body | **immutable** |
@@ -188,7 +188,7 @@ In `synbio-merge-2026-04-11.md` §3-2, there was a recommendation to "include `p
 
 1. **Domain-ID replacement** (§6-2): bulk-update `"synthetic-biology"` -> `"synbio"` across 3 files
 2. **README regeneration** (§6-1): run `nexus analyze sync-readme` or `sync-readme.hexa` to update line 560
-3. **dse-map.toml comment update** (§6-1): update line 18775 `note` (n6-architecture + nexus 2 files)
+3. **dse-map.toml comment update** (§6-1): update line 18775 `note` (canon + nexus 2 files)
 4. **Synthetic-biology paper N62 completion**: confirm ```python verification code block embed of `papers/n6-synthetic-biology-paper.md` (as a separate audit)
 5. **Backup management**: keep this task's 3 backup files (for roll-back); expiry policy is separate
 

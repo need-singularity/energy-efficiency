@@ -45,7 +45,7 @@
     {"id": "F-CYCLE23-PROFILE-RE-EXPIRY", "condition": "Keychain Claude Code-credentials cdat advances zero days within 90 days (auth never re-issued)", "deadline": "2026-07-28", "status": "preregistered"},
     {"id": "F-CYCLE23-KEYCHAIN-ACL-RISK", "condition": "Keychain single acct=ghost row replaced or deleted causing cl wrapper auth fail", "deadline": "open-ended", "status": "preregistered"}
   ],
-  "raw_47_cross_repo": "n6-architecture local only (Mac Keychain is per-user not cross-repo)",
+  "raw_47_cross_repo": "canon local only (Mac Keychain is per-user not cross-repo)",
   "raw_9_hexa_only": "stat + security CLI standard tools (compatible)",
   "raw_53_deterministic": "file-existence + Keychain row count = deterministic",
   "raw_77_append_only": true,

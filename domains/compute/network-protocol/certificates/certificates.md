@@ -12,7 +12,7 @@ Sub-domains (12): 5g-nr-cert, 6g-cert, bt6-0-cert, displayport-cert, ethernet-ce
 
 # sigma=12 protocol certificate catalog
 
-- Project: n6-architecture / domains/compute/network-protocol
+- Project: canon / domains/compute/network-protocol
 - Published: 2026-04-14
 - Publishing framework: NEXUS-6 Discovery Engine / CHIP-P3-2
 - Parent document: ../network-protocol.md
@@ -112,7 +112,7 @@ The sigma(6)=12 divisor-sum axis binds the whole protocol space into a single fo
 
 # sigma=12 protocol cross-certification matrix (12x12 = 144 cells)
 
-- Project: n6-architecture / domains/compute/network-protocol
+- Project: canon / domains/compute/network-protocol
 - Published: 2026-04-14
 - Publishing framework: NEXUS-6 Discovery Engine / CHIP-P4-2
 - Parent document: ../network-protocol.md

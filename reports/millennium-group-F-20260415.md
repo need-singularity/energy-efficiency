@@ -1,7 +1,7 @@
 # Millennium Group F -- Remaining 26 Attack Consolidated Report
 
 > Prepared: 2026-04-15 | Branch: main
-> Source: `n6shared/brainstorm/brainstorm-20260415.json` category `B_millennium_attack`
+> Source: `canonshared/brainstorm/brainstorm-20260415.json` category `B_millennium_attack`
 > Targets: 26 remaining attack vectors against 7 major problems
 > Harnesses: 6 files 124 PASS / 0 FAIL
 > Seven-major-problems resolution: 0/7 held honestly

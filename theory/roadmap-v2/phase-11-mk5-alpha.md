@@ -311,4 +311,4 @@ SUB-P9-1 ─── SUB-P11-1 ── SUB-P11-2 ── SUB-P11-3
 
 *Date: 2026-04-15*
 *Authoring tool: NEXUS-6 HEXA-GATE Mk.V-α design (2401cy singularity breakthrough attempt)*
-*SSOT path: `$NEXUS/shared/roadmaps/n6-architecture.json` (P11 entry)*
+*SSOT path: `$NEXUS/shared/roadmaps/canon.json` (P11 entry)*

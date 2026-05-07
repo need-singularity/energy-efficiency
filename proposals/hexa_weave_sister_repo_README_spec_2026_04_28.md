@@ -25,7 +25,7 @@ disclosed in §"deliverables_NOT_produced_this_cycle":
 > disk per raw 91 C3 — agent does not create the sister repo dir)
 
 Cycle 15 (this) addresses that gap by producing a **dispatch-ready spec**
-in `n6-architecture/proposals/`. The spec is consumed by the user's
+in `canon/proposals/`. The spec is consumed by the user's
 single command at W5 dispatch:
 
 ```sh
@@ -52,7 +52,7 @@ user/community sees first; it must:
 - declare **Apache-2.0** license (matching OpenFold v2.2.0)
 - disclose **OpenFold weights are CC-BY-4.0** (params_model_*.pkl)
 - enumerate the 12-package torch+bio dependency stack (cycle-7 spec)
-- link back to `n6-architecture/proposals/hexa_weave_mvp_w5_sandbox_cycle14_prep_2026_04_28.md`
+- link back to `canon/proposals/hexa_weave_mvp_w5_sandbox_cycle14_prep_2026_04_28.md`
 - record the F-TP5-b deadline and verifier path
 
 ## §2 5-section structure
@@ -73,7 +73,7 @@ SPDX-License-Identifier: Apache-2.0
 Copyright (c) 2026 multi404error@proton.me
 HEXA-WEAVE — n6-invariant cross-modal protein/RNA fold sandbox
 F-TP5-b 90-day MVP (deadline 2026-07-28)
-Parent: github.com/<user>/n6-architecture
+Parent: github.com/<user>/canon
 -->
 
 # HEXA-WEAVE
@@ -83,7 +83,7 @@ falsifier F-TP5-b.
 
 > **Status (cycle 15 / 2026-04-28):** sandbox dir + venv + torch +
 > OpenFold v2.2.0 + AlphaFold weights + 6L1U dry-run pending user
-> dispatch. See `n6-architecture/proposals/hexa_weave_mvp_w5_sandbox_cycle14_prep_2026_04_28.md`
+> dispatch. See `canon/proposals/hexa_weave_mvp_w5_sandbox_cycle14_prep_2026_04_28.md`
 > for the 8-step runbook.
 
 ## 1. Overview
@@ -104,7 +104,7 @@ F-TP5-b deadline: **2026-07-28** (90d from 2026-04-28).
 
 ## 2. Setup
 
-Single-command dispatch (run from `n6-architecture/`):
+Single-command dispatch (run from `canon/`):
 
 ```sh
 hexa run tool/hexa_weave_w5_setup.hexa
@@ -147,7 +147,7 @@ VRAM polling (background): `nvidia-smi -lms 500` -> `~/core/hexa-weave/logs/vram
 Deterministic verdict (no LLM judge):
 
 ```sh
-python ~/core/n6-architecture/scripts/w5_verdict.py \
+python ~/core/canon/scripts/w5_verdict.py \
   --pred ~/core/hexa-weave/outputs/predictions/6L1U_unrelaxed_model_1.pdb \
   --ref  ~/core/hexa-weave/test_inputs/6L1U_ref.pdb \
   --fasta ~/core/hexa-weave/test_inputs/6L1U.fasta \
@@ -162,7 +162,7 @@ Pass: `RMSD < 5.0 Å` + `TM-score > 0.4` + `VRAM peak < 11000 MB` +
 4-rung VRAM ladder:
 
 ```sh
-hexa run ~/core/n6-architecture/tool/hexa_weave_vram_ladder.hexa
+hexa run ~/core/canon/tool/hexa_weave_vram_ladder.hexa
 ```
 
 | Rung | Case | Length | VRAM target | Pass |
@@ -192,7 +192,7 @@ hexa run ~/core/n6-architecture/tool/hexa_weave_vram_ladder.hexa
 }
 ```
 
-Parent: `n6-architecture/proposals/hexa_weave_mvp_w5_sandbox_cycle14_prep_2026_04_28.md`.
+Parent: `canon/proposals/hexa_weave_mvp_w5_sandbox_cycle14_prep_2026_04_28.md`.
 Falsifier: `F-TP5-b` (deadline 2026-07-28).
 ```
 

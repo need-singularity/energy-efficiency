@@ -171,7 +171,7 @@
       "path": "model_utils.py",
       "size": 10161,
       "lines": 251,
-      "preview": "#!/usr/bin/env python3\n\"\"\"Common utilities — Components shared by 7 models\n\nMathematical constants (derived from perfect number 6):\n  sigma(6) = 12  (sum of divisors)\n  tau(6)   = 4   (number of divisors)\n  phi(6)   = 2   (Euler's totient)\n  sigma_{-1}(6) = 2  (sum of divisor reciprocals)\n  {1/2, 1/3, 1/6} = divisor reciprocals (sum=1, probability distribution)\n\"\"\"\n\nimport torch\nimport torch.nn as nn\nimport torch.nn.functional as F\nfrom torch.utils.data import DataLoader\nfrom torchvision import ",
+      "preview": "#!/usr/bin/env python3\n\"\"\"Common utilities — Components shared by 7 models\n\nMathematical constants (derived from arithmetic canon):\n  sigma(6) = 12  (sum of divisors)\n  tau(6)   = 4   (number of divisors)\n  phi(6)   = 2   (Euler's totient)\n  sigma_{-1}(6) = 2  (sum of divisor reciprocals)\n  {1/2, 1/3, 1/6} = divisor reciprocals (sum=1, probability distribution)\n\"\"\"\n\nimport torch\nimport torch.nn as nn\nimport torch.nn.functional as F\nfrom torch.utils.data import DataLoader\nfrom torchvision import ",
       "project": "golden-moe",
       "ready_path": "/Users/ghost/Dev/ready/golden-moe/model_utils.py",
       "destination": "tecs-l",

@@ -4,7 +4,7 @@
   "kick_title": "Cycle 18 — sync-readme.hexa pipeline bug diagnosis + fix (Option A: scan_markers prefix-confusion + void-type guard)",
   "kick_date": "2026-04-28",
   "umbrella": "hexa-runtime-pipeline-fix",
-  "cost_center": "n6shared-sync-readme",
+  "cost_center": "canonshared-sync-readme",
   "predecessor_witness": "design/kick/2026-04-28_readme-curation-cycle16_omega_cycle.json",
   "parent_brief": "user mission cycle 18 — README sync-readme.hexa pipeline bug 진단 + fix; raw 91 C3 honest, raw 9 hexa-only, raw 142 D2, raw 47 cross-repo",
   "scope": {
@@ -13,7 +13,7 @@
       "design/kick/2026-04-28_sync-readme-bug-fix-cycle18_omega_cycle.json"
     ],
     "files_modified": [
-      "n6shared/sync-readme.hexa"
+      "canonshared/sync-readme.hexa"
     ],
     "summary": {
       "diagnosis_correct": true,
@@ -24,7 +24,7 @@
       "scan_markers_clean_pre_fix": 2,
       "scan_markers_clean_post_fix": 64,
       "marker_changes_dry_run_post_fix": 36,
-      "fix_option_chosen": "A (n6shared/sync-readme.hexa upstream)",
+      "fix_option_chosen": "A (canonshared/sync-readme.hexa upstream)",
       "fix_lines_added": 56,
       "readme_md_modified": false,
       "readme_sealed_hash_changed": false,
@@ -116,7 +116,7 @@
     "cycle_19_priority_4": "hexa-runtime upstream contribution (option C) — fix type_of() classification for JSON null + document substring/index_of multi-byte semantics",
     "cycle_18_no_op_for_alien_grade": "lean_mechanical / mvp_empirical / paper_published / cross_axis_collision / falsifier_resolution components unchanged; alien-grade pre/post = 4.6742 (cycle 17 baseline)"
   },
-  "report_to_user_korean": "cycle 18 sync-readme.hexa pipeline bug 진단 완료. cycle 11 가설 (printenv HOME 빈 결과 + json_parse multibyte+괄호 실패)은 모두 misdiagnosis 였음 — HOME 정상 / json_parse 정상 (36 roadmap entries OK). 진짜 원인 1: scan_markers 의 prefix='<!-- AUTO:' 가 START 와 END tag 모두 매치 → 첫 iteration 이후 NAME 이 'BADGE:END -->\\n[![Discord]...COMMON_LINKS' 같은 901-char 잡음 블록으로 오염 → resolve_generator nil → 64 markers 중 2 개만 처리 / 62 skip → '[OK] up to date 64 markers' 거짓 보고. 진짜 원인 2: hexa-runtime 이 JSON null 을 type_of='void' 로 분류 → get_or null/nil 가드 우회 → to_string(void)='void' 가 markdown 에 'DSE void' / '산업void%' / '실험void%' 잡음 주입. fix 옵션 A 채택 (n6shared/sync-readme.hexa 자체 fix +56 LoC): is_valid_marker_name([A-Za-z0-9_-] only, ≤64 char) NAME 검증 추가 + get_or/has_field 에 void 가드 추가. dry-run 결과: pre 0/64 → post 36/64 markers 적용 가능. 단, raw 91 C3 honest: 36 markers 중 ~30 개는 SSOT (readme-data.json) 가 hand-curated README 보다 빈약 (alien=0/tp=0 stub) → WRITE 적용 시 ~25KB 큐레이션 손실 위험. raw 142 D2 try-and-revert 실행: WRITE → diff 검증 → cp restore → byte-equal 복원 → own#14 sealed PASS 유지 (sha256:4a22aa270c17... unchanged). cycle 18 README.md 무수정. cycle 19 priority: (1) JSON SSOT 부유화 (~30 도메인 hand-curated 내용 → readme-data.json), (2) --allow-overwrite gate, (3) raw 47 cross-repo 자매 audit (anima/nexus/hexa-lang/papers/hive/void), (4) hexa-runtime upstream null-type classification fix (option C). cycle 18 alien-grade pre/post 동일 4.6742 (no lean / mvp / paper / collision / falsifier component 변경).",
+  "report_to_user_korean": "cycle 18 sync-readme.hexa pipeline bug 진단 완료. cycle 11 가설 (printenv HOME 빈 결과 + json_parse multibyte+괄호 실패)은 모두 misdiagnosis 였음 — HOME 정상 / json_parse 정상 (36 roadmap entries OK). 진짜 원인 1: scan_markers 의 prefix='<!-- AUTO:' 가 START 와 END tag 모두 매치 → 첫 iteration 이후 NAME 이 'BADGE:END -->\\n[![Discord]...COMMON_LINKS' 같은 901-char 잡음 블록으로 오염 → resolve_generator nil → 64 markers 중 2 개만 처리 / 62 skip → '[OK] up to date 64 markers' 거짓 보고. 진짜 원인 2: hexa-runtime 이 JSON null 을 type_of='void' 로 분류 → get_or null/nil 가드 우회 → to_string(void)='void' 가 markdown 에 'DSE void' / '산업void%' / '실험void%' 잡음 주입. fix 옵션 A 채택 (canonshared/sync-readme.hexa 자체 fix +56 LoC): is_valid_marker_name([A-Za-z0-9_-] only, ≤64 char) NAME 검증 추가 + get_or/has_field 에 void 가드 추가. dry-run 결과: pre 0/64 → post 36/64 markers 적용 가능. 단, raw 91 C3 honest: 36 markers 중 ~30 개는 SSOT (readme-data.json) 가 hand-curated README 보다 빈약 (alien=0/tp=0 stub) → WRITE 적용 시 ~25KB 큐레이션 손실 위험. raw 142 D2 try-and-revert 실행: WRITE → diff 검증 → cp restore → byte-equal 복원 → own#14 sealed PASS 유지 (sha256:4a22aa270c17... unchanged). cycle 18 README.md 무수정. cycle 19 priority: (1) JSON SSOT 부유화 (~30 도메인 hand-curated 내용 → readme-data.json), (2) --allow-overwrite gate, (3) raw 47 cross-repo 자매 audit (anima/nexus/hexa-lang/papers/hive/void), (4) hexa-runtime upstream null-type classification fix (option C). cycle 18 alien-grade pre/post 동일 4.6742 (no lean / mvp / paper / collision / falsifier component 변경).",
   "ts_kick": "2026-04-28T22:00:00Z",
   "schema": "design/kick/omega_cycle_v1"
 }

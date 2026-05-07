@@ -1,11 +1,11 @@
 {
   "_meta": {
     "attr": "doc",
-    "project": "n6-architecture",
+    "project": "canon",
     "version": 1,
     "inherit": false,
     "updated": "2026-04-26",
-    "description": "n6-architecture @doc 양식 — Phase 4 (2026-04-26) finalized: paper rule SSOT 는 .own own#15 (paper-canonical-sections). 본 파일의 paper entry 는 legacy reader 를 위한 migration pointer 로 잔존. ADR/SPEC 은 본 파일에서 계속 정의."
+    "description": "canon @doc 양식 — Phase 4 (2026-04-26) finalized: paper rule SSOT 는 .own own#15 (paper-canonical-sections). 본 파일의 paper entry 는 legacy reader 를 위한 migration pointer 로 잔존. ADR/SPEC 은 본 파일에서 계속 정의."
   },
   "rules": {
     "paper": {

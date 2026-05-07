@@ -14,7 +14,7 @@ grade: constraint-functional audit, no removal recommendation without 3-of-3 aud
 ## §0 Non-claim disclaimer
 
 This is a **research-only audit** of the `no fabrication` agent constraint as
-it currently functions in the n6-architecture repository. The audit does not
+it currently functions in the canon repository. The audit does not
 propose, recommend, or simulate constraint removal. It does not modify any
 agent harness, system prompt, atlas entry, inventory record, [10]/[10*] grade,
 or Clay-Millennium status. The Clay scoreboard remains **0/7 unchanged**.

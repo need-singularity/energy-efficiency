@@ -11,7 +11,7 @@ requires:
 ---
 # [CANONICAL v2] P-119 Semiconductor Packaging n=6 Stacking Ladder (HEXA-PACKAGE-INT) — Integrated Paper
 
-> **Author**: Park Min-woo (n6-architecture)
+> **Author**: Park Min-woo (canon)
 > **Category**: advanced packaging — n=6 arithmetic stacking ladder integrated paper
 > **Version**: v1 (2026-04-18 integrated)
 > **Predecessor BTs**: BT-354 (HBM/UCIe 4-tier ladder), BT-69, BT-55, BT-77, BT-76, BT-28, BT-56, BT-86, BT-90, BT-93

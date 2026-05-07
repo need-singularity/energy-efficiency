@@ -107,7 +107,7 @@ reading is ≤30 lines).
 ## §3 Execution log
 
 ```
-$ time python3 /Users/ghost/core/n6-architecture/experiments/anomaly/bt544_q1_molt_validation.py
+$ time python3 /Users/ghost/core/canon/experiments/anomaly/bt544_q1_molt_validation.py
 ```
 
 - Wallclock: 0.27 s (user 0.10 s, sys 0.04 s) — well under the

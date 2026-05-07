@@ -91,7 +91,7 @@ Average constant mappings per candidate 2.8 -> satisfies the >=2 target.
 2. cross_dse_fusion_v2 run -> 170K+ pair target
 3. atlas.n6 absorbs 100 @R entries as [7]-grade seeds
 4. Reserve BT-401~420 index under theory/breakthroughs/ (proposal already exists)
-5. `DSE_500_TOML` enters stable in convergence/n6-architecture.json as a draft candidate
+5. `DSE_500_TOML` enters stable in convergence/canon.json as a draft candidate
 
 ## Linked documents
 

@@ -216,4 +216,4 @@ All 100 domains use at least 2 of the following constant families:
 - [x] All 500 TOML placed (actual 480 = 100 new + 380 existing)
 - [ ] cross_dse_fusion_v2 achieves 170K+ pairs / 99% high_conf
 - [ ] Energy-perf pareto sweep re-measured at 500 domains × 5 candidates
-- [ ] Add `DSE_500_TOML` stable entry in convergence/n6-architecture.json → later promote to ossified
+- [ ] Add `DSE_500_TOML` stable entry in convergence/canon.json → later promote to ossified

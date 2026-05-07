@@ -144,8 +144,8 @@ hexa run scripts/atlas_promote_7_to_10star.hexa --apply
 
 | Item                                  | Path                                                             |
 |---------------------------------------|------------------------------------------------------------------|
-| Pipeline script                       | `/Users/ghost/Dev/n6-architecture/scripts/atlas_promote_7_to_10star.hexa` |
-| Adaptive engine                       | `/Users/ghost/Dev/n6-architecture/engine/arch_adaptive.hexa`     |
+| Pipeline script                       | `/Users/ghost/Dev/canon/scripts/atlas_promote_7_to_10star.hexa` |
+| Adaptive engine                       | `/Users/ghost/Dev/canon/engine/arch_adaptive.hexa`     |
 | atlas.n6 (SSOT, target of edits)      | `/Users/ghost/Dev/nexus/shared/n6/atlas.n6`                      |
-| This candidate report                 | `/Users/ghost/Dev/n6-architecture/experiments/dse/atlas_promotion_candidates_p2.md` |
-| Roadmap SSOT                          | `/Users/ghost/Dev/nexus/shared/roadmaps/n6-architecture.json` (DSE-P2-2 entry) |
+| This candidate report                 | `/Users/ghost/Dev/canon/experiments/dse/atlas_promotion_candidates_p2.md` |
+| Roadmap SSOT                          | `/Users/ghost/Dev/nexus/shared/roadmaps/canon.json` (DSE-P2-2 entry) |

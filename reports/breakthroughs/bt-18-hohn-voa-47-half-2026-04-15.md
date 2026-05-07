@@ -2,7 +2,7 @@
 
 ## Scope (English)
 
-Stub for BT-18 Höhn VOA 47-half breakthrough record, referenced across the n6-architecture repository but not yet authored.
+Stub for BT-18 Höhn VOA 47-half breakthrough record, referenced across the canon repository but not yet authored.
 Date: 2026-04-15.
 
 ## Status

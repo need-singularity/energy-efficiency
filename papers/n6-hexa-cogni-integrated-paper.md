@@ -17,7 +17,7 @@ requires:
 ---
 # [CANONICAL v2] Ultimate HEXA-COGNI Cognitive Architecture (P-150) — n=6 Arithmetic Coordinate Integrated Mapping
 
-> **Author**: Park Min-woo (n6-architecture)
+> **Author**: Park Min-woo (canon)
 > **Product ID**: P-150 HEXA-COGNI — 4-paper cognitive integrated seed
 > **Category**: hexa-cogni-integrated — n=6 arithmetic integrated seed paper
 > **Version**: v2 (2026-04-18 canonical)
@@ -939,8 +939,8 @@ consciousness-measurement-protocol.
 - OEIS A000203, A000005, A001414, A000396.
 
 ### C. Parent project rules
-- n6shared/rules/common.json R0~R27
-- n6shared/rules/n6-architecture.json N61~N65
+- canonshared/rules/common.json R0~R27
+- canonshared/rules/canon.json N61~N65
 - papers/CLAUDE.md (English required, HEXA-FIRST)
 
 ---

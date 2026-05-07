@@ -186,10 +186,10 @@
       "5 W3 TRANSCEND-tier falsifiers + 5 MISS criteria + 17 raw 91 C3 NOT-decided items"
     ],
     "evidence_paths": [
-      "/Users/ghost/core/n6-architecture/proposals/hexa_weave_mvp_w3_clone_vram_spec_2026_04_28.md (W3 prep deliverable)",
-      "/Users/ghost/core/n6-architecture/proposals/hexa_weave_mvp_w2_base_model_integration_2026_04_28.md (W2 predecessor)",
-      "/Users/ghost/core/n6-architecture/proposals/hexa_weave_mvp_w1_architecture_decision_2026_04_28.md (W1 predecessor)",
-      "/Users/ghost/core/n6-architecture/proposals/hexa_weave_mvp_2026_04_28.md (parent spec)",
+      "/Users/ghost/core/canon/proposals/hexa_weave_mvp_w3_clone_vram_spec_2026_04_28.md (W3 prep deliverable)",
+      "/Users/ghost/core/canon/proposals/hexa_weave_mvp_w2_base_model_integration_2026_04_28.md (W2 predecessor)",
+      "/Users/ghost/core/canon/proposals/hexa_weave_mvp_w1_architecture_decision_2026_04_28.md (W1 predecessor)",
+      "/Users/ghost/core/canon/proposals/hexa_weave_mvp_2026_04_28.md (parent spec)",
       "OpenFold upstream: https://github.com/aqlaboratory/openfold",
       "OpenFold v2.2.0: https://github.com/aqlaboratory/openfold/tree/v2.2.0",
       "OpenFold weight mirror: https://huggingface.co/aqlaboratory/openfold",
@@ -224,7 +224,7 @@
     "phi_6_eq_2": "φ(6)=2 maps to: APPROVE/REJECT user verdict on this W3 prep (clone / VRAM measurement); v2.2.0/main pin choice (binary); FIT/NO-FIT VRAM verdict (F-W3-3); CONFLICT/NO-CONFLICT dep-matrix verdict (F-W3-4)"
   },
   "raw_47_cross_repo_check": {
-    "n6-architecture": "this repo — parent + W1 + W2 + W3 prep + this witness",
+    "canon": "this repo — parent + W1 + W2 + W3 prep + this witness",
     "anima": "/Users/ghost/core/anima/ — sister-repo pattern reference",
     "nexus": "/Users/ghost/core/nexus/ — kick infra source (degraded; F-CL3-a)",
     "hexa-lang": "/Users/ghost/core/hexa-lang/ — runner image dep",
@@ -246,8 +246,8 @@
     "raw_53_compliant": true
   },
   "report_summary": {
-    "witness_path": "/Users/ghost/core/n6-architecture/design/kick/2026-04-28_hexa-weave-mvp-w3-clone-vram_omega_cycle.json",
-    "deliverable_path": "/Users/ghost/core/n6-architecture/proposals/hexa_weave_mvp_w3_clone_vram_spec_2026_04_28.md",
+    "witness_path": "/Users/ghost/core/canon/design/kick/2026-04-28_hexa-weave-mvp-w3-clone-vram_omega_cycle.json",
+    "deliverable_path": "/Users/ghost/core/canon/proposals/hexa_weave_mvp_w3_clone_vram_spec_2026_04_28.md",
     "w3_prep_verdict": "FORWARD-SPEC PASS (document exists; §6 falsifier count = 5 (5/5 TRANSCEND-tier); §7 NOT-list = 17 >= 10; §3.2 VRAM steps = 9 >= 5; §5.1 dep matrix = 12 rows; lint pre-flight predicted PASS; no code execution)",
     "openfold_pin_recommended": {"tag": "v2.2.0", "sha40": "e938c184a291bf053af3b14c1e3e8bb29aee57e2"},
     "openfold_pin_alternate":   {"tag": "main",   "sha40": "be2ec1841f16c966c65ae0e7599ebbadc725757d"},

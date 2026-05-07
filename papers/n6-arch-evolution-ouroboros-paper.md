@@ -17,7 +17,7 @@ alien_index_target: 10
 
 # HEXA-ARCH-EVOLUTION-OUROBOROS — Evolutionary-cycle ouroboros design paper (N6-120)
 
-> **Author**: Park Min-woo (n6-architecture)
+> **Author**: Park Min-woo (canon)
 > **Category**: arch-evolution-ouroboros — P2 extension v3/v4 self-referential cycle seed
 > **Version**: v3 (2026-04-14 P2 extension)
 > **Prior BT**: BT-195, BT-370, BT-371, BT-1108

@@ -1,11 +1,11 @@
-# n6-architecture remote-dispatch cwd mapping
+# canon remote-dispatch cwd mapping
 
 **status**: landed 2026-04-24 (patch in sister repo `nexus/scripts/bin/hexa_remote`)
 **convergence ref**: `~/core/nexus/convergence/drill_stability.convergence` @id `N6_ARCH_REMOTE_DISPATCH_CWD_MAPPING`
 
 ## Symptom
 
-Running `nexus drill` (or any heavy-compute subcmd: smash / free / absolute / meta-closure / hyperarithmetic) from `~/core/n6-architecture` aborts with:
+Running `nexus drill` (or any heavy-compute subcmd: smash / free / absolute / meta-closure / hyperarithmetic) from `~/core/canon` aborts with:
 
 ```
 hexa resolver: ⚠ heavy-compute (...run.hexa drill) remote dispatch failed (exit 64) — Mac 로컬 실행 시 stage0 SIGKILL 위험
@@ -27,14 +27,14 @@ Any other cwd falls through to `*) exit 64 ;;`. The outer wrapper (`scripts/bin/
 
 ## Fix
 
-Append a case branch for `$HOME/core/n6-architecture`:
+Append a case branch for `$HOME/core/canon`:
 
 ```bash
-"$HOME_LC/core/n6-architecture"|"$HOME_LC/core/n6-architecture"/*)
-    for candidate in "$HOME/core/n6-architecture"; do
+"$HOME_LC/core/canon"|"$HOME_LC/core/canon"/*)
+    for candidate in "$HOME/core/canon"; do
         [ -d "$candidate" ] && LOCAL_ROOT="$candidate" && break
     done
-    REMOTE_ROOT='$HOME/core/n6-architecture'
+    REMOTE_ROOT='$HOME/core/canon'
     SYNC_EXCLUDES=(
         --exclude=.git/
         --exclude='*.log'
@@ -63,7 +63,7 @@ The file has `uchg` (BSD user-immutable) flag set, which blocks edits even by th
 ls -lO ~/core/nexus/scripts/bin/hexa_remote
 # expect: ...  uchg 14756 ...  (may vary)
 
-grep -c 'core/n6-architecture' ~/core/nexus/scripts/bin/hexa_remote
+grep -c 'core/canon' ~/core/nexus/scripts/bin/hexa_remote
 # expect: 3  (if 0: patch gone, re-apply below)
 
 # re-apply (the Python block is idempotent — refuses to double-patch)
@@ -71,17 +71,17 @@ chflags nouchg ~/core/nexus/scripts/bin/hexa_remote
 python3 <<'PY'
 p = "/Users/ghost/core/nexus/scripts/bin/hexa_remote"
 txt = open(p).read()
-if '"$HOME_LC/core/n6-architecture"' in txt:
+if '"$HOME_LC/core/canon"' in txt:
     print("already_patched"); exit(0)
 needle = '        --exclude=.claude/\n    )\n    ;;\n  *)\n    exit 64 ;;'
 insertion = '''        --exclude=.claude/
     )
     ;;
-  "$HOME_LC/core/n6-architecture"|"$HOME_LC/core/n6-architecture"/*)
-    for candidate in "$HOME/core/n6-architecture"; do
+  "$HOME_LC/core/canon"|"$HOME_LC/core/canon"/*)
+    for candidate in "$HOME/core/canon"; do
         [ -d "$candidate" ] && LOCAL_ROOT="$candidate" && break
     done
-    REMOTE_ROOT='$HOME/core/n6-architecture'
+    REMOTE_ROOT='$HOME/core/canon'
     SYNC_EXCLUDES=(
         --exclude=.git/
         --exclude='*.log'
@@ -127,4 +127,4 @@ Verification:
 
 The immutable flag prevents casual overwrites — e.g., if someone re-syncs `scripts/bin/` from an upstream mirror without review. It is *not* a security boundary (owner can `chflags nouchg`), but it ensures edits require deliberate intent.
 
-Scanners that verify the patch should check `grep -c 'core/n6-architecture' ~/core/nexus/scripts/bin/hexa_remote` equals 3 and fail loudly if not.
+Scanners that verify the patch should check `grep -c 'core/canon' ~/core/nexus/scripts/bin/hexa_remote` equals 3 and fail loudly if not.

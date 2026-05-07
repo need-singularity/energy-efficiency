@@ -1,12 +1,12 @@
 // ════════════════════════════════════════════════════════════════════════════
-//  tool/governance.hexa — n6-architecture CLI `governance` topic
+//  tool/governance.hexa — canon CLI `governance` topic
 //
 //  PURPOSE
 //    raw 91 cross-repo cli-coverage parity (mirrors anima/airgenome
-//    governance.hexa Tier-A surface). n6-architecture has no .raw of its
+//    governance.hexa Tier-A surface). canon has no .raw of its
 //    own (.raw-ref pins hive canonical), so every governance subcmd wires
 //    to cross-repo sibling backends (../hive, ../hexa-lang). Paths resolve
-//    via N6_ROOT (default $HOME/core/n6-architecture).
+//    via N6_ROOT (default $HOME/core/canon).
 //
 //  SUBCMDS  (raw 9 / 175 / 13 / 21 / triad)
 //    n6 governance raw triad [--strict]    raw triad lint
@@ -43,7 +43,7 @@ fn _resolve_root() -> string {
     if n != "" { return n }
     let gt = _str(exec("git rev-parse --show-toplevel 2>/dev/null")).trim()
     if gt != "" { return gt }
-    return _str(env("HOME")) + "/core/n6-architecture"
+    return _str(env("HOME")) + "/core/canon"
 }
 
 fn _hexa() -> string {
@@ -175,7 +175,7 @@ fn _help() {
     println("  ai-config-ban    " + TOOL_AI_CONFIG_BAN)
     println("  deprecated-ban   " + TOOL_DEPRECATED)
     println("")
-    println("NOTE  n6-architecture has no .raw of its own (.raw-ref pins hive")
+    println("NOTE  canon has no .raw of its own (.raw-ref pins hive")
     println("      canonical). own 1 doc-english-required is HARD gate; all")
     println("      governance output stays English (raw 91 honest C3).")
 }

@@ -32,7 +32,7 @@
 // is pinned at embed time.
 //
 // @tool(slug="btAI2_seed_sweep", desc="BT-AI2 seed sweep runner (900 cells) — embedded sibling")
-// @usage(hexa /Users/ghost/core/n6-architecture/experiments/anomaly/btAI2_seed_sweep.hexa [--python BIN] [--tmp-dir DIR] [--results-out PATH] [--progress-every N])
+// @usage(hexa /Users/ghost/core/canon/experiments/anomaly/btAI2_seed_sweep.hexa [--python BIN] [--tmp-dir DIR] [--results-out PATH] [--progress-every N])
 // @allow-bare-exec
 // @no-sandbox
 // @exit_codes(0=verdict written, 2=simulator missing, non-zero=fatal error)
@@ -76,14 +76,14 @@ Dependencies: simpy, numpy.
 References (do not modify atlas / KG / domains.json from this file):
 
   - atlas: provenance_bit_overhead = phi/sigma_n = 1/36
-    (atlas/atlas.append.n6-architecture-historical-absorption-2026-04-26.n6:526)
+    (atlas/atlas.append.canon-historical-absorption-2026-04-26.n6:526)
   - KG nodes: silicon:provenance-bit, silicon:promotion-counter-mmu,
     silicon:bt-id-isa, arch:n6-native-accelerator,
     principle:honesty-triad, principle:write-barrier,
     principle:constraint-honesty
-    (n6shared/discovery_graph.json)
+    (canonshared/discovery_graph.json)
   - domain: ai-native-architecture (axis: compute)
-    (n6shared/n6/docs/domains.json)
+    (canonshared/n6/docs/domains.json)
   - parent session:
     reports/sessions/omega-cycle-ai-native-arch-beyond-gpu-2026-04-26.md
 
@@ -138,7 +138,7 @@ TAU_STAGES = 4
 SPARSITY_FLOOR = 1.0 / 3.0
 
 # atlas: provenance_bit_overhead = phi / sigma_n = 1 / 36 :: architecture [10*]
-# atlas/atlas.append.n6-architecture-historical-absorption-2026-04-26.n6:526
+# atlas/atlas.append.canon-historical-absorption-2026-04-26.n6:526
 PROVENANCE_BIT_OVERHEAD = 1.0 / 36.0  # ~= 0.02778
 
 # Provenance flag values.
@@ -1003,7 +1003,7 @@ event order. No additional randomness is introduced by this runner.
 
 Atlas / KG / domain references (read-only; not modified by this script):
   - atlas: provenance_bit_overhead = phi/sigma_n = 1/36
-    (atlas/atlas.append.n6-architecture-historical-absorption-2026-04-26.n6:526)
+    (atlas/atlas.append.canon-historical-absorption-2026-04-26.n6:526)
   - KG: silicon:provenance-bit, silicon:promotion-counter-mmu,
         silicon:bt-id-isa, principle:honesty-triad,
         principle:write-barrier, principle:constraint-honesty,
@@ -1044,7 +1044,7 @@ F_AI2_B_MAX_REJECT = 0.01
 # repo path so default --results-out / SINGLE_SEED_REFERENCE_PATH
 # preserve byte-identical resolution; SIM_PATH redirected to the
 # /tmp sibling written by the hexa runner.
-THIS_DIR = \"/Users/ghost/core/n6-architecture/experiments/anomaly\"
+THIS_DIR = \"/Users/ghost/core/canon/experiments/anomaly\"
 SIM_PATH = \"/tmp/_hexa_anomaly_seed_sweep_dir/btAI2_honesty_bit_scheduler.py\"
 
 # Single-seed point estimate (seed 42, workload=full, threshold=8) from

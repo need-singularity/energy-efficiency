@@ -1,10 +1,10 @@
-# TECS-L ↔ n6-architecture Connection Document
+# TECS-L ↔ canon Connection Document
 
 > Last updated: 2026-04-02
 
 ## Role separation
 
-| Item | TECS-L | n6-architecture |
+| Item | TECS-L | canon |
 |------|--------|-----------------|
 | **Identity** | mathematical system (pure theory) | industrial-field application (engineering design) |
 | **Core outputs** | proofs, hypotheses, constant derivations | DSE designs, BT validations, AI techniques |
@@ -12,7 +12,7 @@
 | **Validation criteria** | mathematical rigor, p-value | EXACT match against measured data |
 
 ```
-  TECS-L (theory)                   n6-architecture (validation)
+  TECS-L (theory)                   canon (validation)
   ┌─────────────┐                 ┌─────────────────┐
   │ proofs/hyp  │ ──→ design ──→  │ DSE/BT/tech     │
   │ constants   │ ←── measure ←── │ 307 domains     │

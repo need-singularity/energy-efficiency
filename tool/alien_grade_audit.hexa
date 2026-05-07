@@ -133,7 +133,7 @@ fn py_backend() -> String {
     return "
 import sys, os, json, datetime, re, glob
 
-REPO       = '/Users/ghost/core/n6-architecture'
+REPO       = '/Users/ghost/core/canon'
 AXIOMS     = REPO + '/lean4-n6/N6/MechVerif/Foundation/Axioms.lean'
 PAPERS_DIR = REPO + '/papers'
 ZENODO_DIR = REPO + '/tool/zenodo'

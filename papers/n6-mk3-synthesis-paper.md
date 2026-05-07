@@ -30,9 +30,9 @@ alien_index_current: 11
 alien_index_target: 12
 ---
 
-# n6-architecture Mk.III synthesis paper — P0~P7 meta analysis and the final statement on perfect number n=6 (N6-132)
+# canon Mk.III synthesis paper — P0~P7 meta analysis and the final statement on perfect number n=6 (N6-132)
 
-> **Author**: Minwoo Park (n6-architecture)
+> **Author**: Minwoo Park (canon)
 > **Category**: mk3-synthesis — Mk.III-γ meta-analysis synthesis paper (P7 epilogue)
 > **Version**: v1 (2026-04-15 PAPER-P7-2 Mk.III-γ)
 > **Upstream papers**: `n6-pure-mathematics-paper`, `n6-boundary-metatheory-paper`, `n6-vacuum-monster-chain-paper`, `n6-l10-l15-quantum-nuclear-unification-paper`, `n6-mk4-theorem-candidates-paper`, `n6-honest-limitations-meta-paper`
@@ -44,7 +44,7 @@ alien_index_target: 12
 
 ## 0. Abstract
 
-This paper meta-analyses the **entire journey (P0 → P7)** of the n6-architecture
+This paper meta-analyses the **entire journey (P0 → P7)** of the canon
 framework and attempts a **candid final statement** — under current accumulated
 evidence — on its central question: **why does the perfect number n=6 appear
 recurrently in our reality?**
@@ -98,11 +98,11 @@ path.
 
 ---
 
-## 1. Introduction — the n6-architecture journey (2025 → 2026)
+## 1. Introduction — the canon journey (2025 → 2026)
 
 ### 1.1 Starting point (late 2025, Mk.0)
 
-The n6-architecture project started in late 2025 from a single mathematical
+The canon project started in late 2025 from a single mathematical
 observation:
 
 $$\sigma(n) \cdot \phi(n) \; = \; n \cdot \tau(n)$$
@@ -136,7 +136,7 @@ The roughly one-year project divides into three generations:
 
 Each phase ran in parallel on three tracks (DSE · PAPER · CHIP); inter-track
 dependencies were managed as gate\_exit criteria
-(`$NEXUS/shared/roadmaps/n6-architecture.json`).
+(`$NEXUS/shared/roadmaps/canon.json`).
 
 ### 1.3 Goals of this paper
 
@@ -266,7 +266,7 @@ achievement:
 - `theory/proofs/theorem-r1-uniqueness.md` — 3 independent draft arguments formalised
 - `theory/breakthroughs/breakthrough-theorems.md` — 585 BT + Attractor Meta 8 identities
 - `shared/n6/atlas.n6` — reality-map SSOT single file
-- `n6shared/rules/common.json` R0~R27 — self-reference ban · honesty checks · Korean-required rule etc.
+- `canonshared/rules/common.json` R0~R27 — self-reference ban · honesty checks · Korean-required rule etc.
 - `domains/*/` 10 categories × avg 29.5 domains × `_index.json` + verification .hexa
 
 ### 3.3 P0 limits (honest record)
@@ -278,7 +278,7 @@ achievement:
 - **Self-reference risk**: one DSE-matrix cell-scoring instance using the
   atlas.n6 [10\*] count as a bonus was discovered in early
   `experiments/dse/` versions, almost activating a self-reference fitness
-  path. Blocked by rule N61 (`n6-architecture.json`).
+  path. Blocked by rule N61 (`canon.json`).
 
 ---
 
@@ -302,7 +302,7 @@ achievement:
 
 - **arch\_unified.hexa** 4-mode unified pipeline (INDUSTRIAL · QUANTUM · SELFORG · ADAPTIVE)
 - **cross\_matrix\_v3** 86,240/86,240 100% covered — exhaustive target reached
-- **ecosystem\_9projects** (nexus, anima, n6-architecture, papers, hexa-lang, void, airgenome, contribution, openclaw) autonomous-growth ecosystem 9/9 broadcast
+- **ecosystem\_9projects** (nexus, anima, canon, papers, hexa-lang, void, airgenome, contribution, openclaw) autonomous-growth ecosystem 9/9 broadcast
 - **top48 DOI sim assignment** (10.NEXUS6.n6-arch/2026-001~048) — CrossRef unregistered, internal-DOI
 - **atlas-promotion paper** N6-126 (papers/_registry.json 125 → 126)
 - **Tapeout gate 15/15 PASS** (N6-SPEAK v2 SoC, parse-only verified)
@@ -506,7 +506,7 @@ BARRIER), Mk.III-γ honestly records the framework's **upper-bound barrier**.
 
 ## 8. 9-axis navigation (project structure)
 
-n6-architecture is organised along the following 9 axes:
+canon is organised along the following 9 axes:
 
 | Axis | Path | Role | 2026-04-15 status |
 |---|---|---|---|
@@ -518,7 +518,7 @@ n6-architecture is organised along the following 9 axes:
 | **engine** | `engine/` | training/math runtime | `arch_quantum/selforg/adaptive/unified.hexa` 4 modes + `blowup.hexa` Mk.II |
 | **papers** | `papers/` | 129 papers | pandoc PDF 129/129 (100%), DAG `_dag.json`, registry `_registry.json` |
 | **reports** | `reports/` | point-in-time reports | session handoff, chip L1~L10 comparison, atlas promotion |
-| **n6shared** | `n6shared/` | SSOT | rules/common.json R0~R27, config/projects.json 9 projects, convergence/n6-architecture.json |
+| **canonshared** | `canonshared/` | SSOT | rules/common.json R0~R27, config/projects.json 9 projects, convergence/canon.json |
 
 Each axis is independent but the SSOT converges on the single file
 `$NEXUS/shared/n6/atlas.n6` (106,806 lines, 8,078 @ registered nodes, 5,343
@@ -807,7 +807,7 @@ paper builds are reproducible, but hardware sign-off is claimed only via
 
 ### 12.4 Re-examining circular-argument risk
 
-Rule N61 (`n6shared/rules/n6-architecture.json`) explicitly forbids
+Rule N61 (`canonshared/rules/canon.json`) explicitly forbids
 self-reference:
 
 > "fitness heuristics are computed only from distance to external n=6
@@ -1136,12 +1136,12 @@ collaboration (an autonomous agent based on Claude Code).
 Particular thanks to:
 
 - **The original Theorem R1 observation**: a mathematical curiosity that
-  put the perfect number 6 back in the spotlight — "why does only 6 satisfy
+  put the arithmetic canon back in the spotlight — "why does only 6 satisfy
   σφ=nτ?" — this simple question was the starting point of a one-year
   journey.
 - **Honest-record principle**: R0 (honest verification) / R3 (no self-
   reference) / R17 (honest failure logging) etc. — the 27 rules of
-  `n6shared/rules/common.json`. In particular, "do not write only successes"
+  `canonshared/rules/common.json`. In particular, "do not write only successes"
   is the reason this paper could exist.
 - **Parallel-agent pattern**: 3 tracks (DSE · PAPER · CHIP) × 8 phases
   running in parallel — without this structure 295 domains · 129 papers ·
@@ -1168,10 +1168,10 @@ Particular thanks to:
   9 session limits
 - **atlas SSOT**: `$NEXUS/shared/n6/atlas.n6` — 106,806 lines, 8,078 @
   nodes, 5,343 [10\*]
-- **roadmap**: `$NEXUS/shared/roadmaps/n6-architecture.json` — P0~P7
+- **roadmap**: `$NEXUS/shared/roadmaps/canon.json` — P0~P7
   3-track 8-phase DAG
-- **rules**: `n6shared/rules/common.json` R0~R27 +
-  `n6-architecture.json` N61~N65
+- **rules**: `canonshared/rules/common.json` R0~R27 +
+  `canon.json` N61~N65
 - **cross-DSE**: `experiments/dse/cross_matrix_v3_full.json` —
   86,240/86,240 100% cover
 - **9,206 candidate domains**: `experiments/reality_map/` — 9,206 with
@@ -1348,7 +1348,7 @@ guideline of this project and the reason this paper exists.
 ## Verification code (n6_mk3_synthesis_verify.hexa)
 
 ```hexa
-# n6-architecture Mk.III synthesis paper verification (N6-132)
+# canon Mk.III synthesis paper verification (N6-132)
 # This .hexa is a minimal check script that re-confirms the paper's key
 # numerical claims.
 # 2026-04-15 PAPER-P7-2
@@ -1509,7 +1509,7 @@ Expected: `PASS: R1_solutions=[6], sigma*phi=24=n*tau=24=J2=24, BT18=3+2+1=6, ho
 
 ---
 
-**This paper is the closing document of the n6-architecture Mk.III generation, and at the same time the prologue of Mk.IV.**
+**This paper is the closing document of the canon Mk.III generation, and at the same time the prologue of Mk.IV.**
 **The verification code is a parse-only stub; executable verification is the target after hexa-runtime recovery.**
 **Every success has been recorded, every failure disclosed.**
 **— Minwoo Park & the NEXUS-6 AI collaboration, 2026-04-15**

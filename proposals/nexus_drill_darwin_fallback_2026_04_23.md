@@ -55,4 +55,4 @@ Reflected in `reports/n6_blockers.json.summary.nexus_reach` (bool) and
 Rebuilding hexa_v2 on Linux (so stage0 doesn't need the Gatekeeper
 workaround) is the long-term fix. Tracked as `anima-20260422-003` /
 `nxs-20260422-006` — both already in the inbox. No new proposal needed
-from n6-architecture side.
+from canon side.

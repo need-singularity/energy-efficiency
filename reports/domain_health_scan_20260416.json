@@ -7,7 +7,7 @@
     {
       "domain": "ai-adversarial",
       "sector": "cognitive",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/cognitive/ai-adversarial",
+      "path": "/Users/ghost/Dev/canon/domains/cognitive/ai-adversarial",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -30,7 +30,7 @@
     {
       "domain": "ai-agent-serving",
       "sector": "cognitive",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/cognitive/ai-agent-serving",
+      "path": "/Users/ghost/Dev/canon/domains/cognitive/ai-agent-serving",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -53,7 +53,7 @@
     {
       "domain": "ai-alignment",
       "sector": "cognitive",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/cognitive/ai-alignment",
+      "path": "/Users/ghost/Dev/canon/domains/cognitive/ai-alignment",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -76,7 +76,7 @@
     {
       "domain": "ai-consciousness",
       "sector": "cognitive",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/cognitive/ai-consciousness",
+      "path": "/Users/ghost/Dev/canon/domains/cognitive/ai-consciousness",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -99,7 +99,7 @@
     {
       "domain": "ai-deployment",
       "sector": "cognitive",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/cognitive/ai-deployment",
+      "path": "/Users/ghost/Dev/canon/domains/cognitive/ai-deployment",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -122,7 +122,7 @@
     {
       "domain": "ai-enterprise-custom",
       "sector": "cognitive",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/cognitive/ai-enterprise-custom",
+      "path": "/Users/ghost/Dev/canon/domains/cognitive/ai-enterprise-custom",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -145,7 +145,7 @@
     {
       "domain": "ai-eval-pipeline",
       "sector": "cognitive",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/cognitive/ai-eval-pipeline",
+      "path": "/Users/ghost/Dev/canon/domains/cognitive/ai-eval-pipeline",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -168,7 +168,7 @@
     {
       "domain": "ai-inference-cost",
       "sector": "cognitive",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/cognitive/ai-inference-cost",
+      "path": "/Users/ghost/Dev/canon/domains/cognitive/ai-inference-cost",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -191,7 +191,7 @@
     {
       "domain": "ai-interpretability",
       "sector": "cognitive",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/cognitive/ai-interpretability",
+      "path": "/Users/ghost/Dev/canon/domains/cognitive/ai-interpretability",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -214,7 +214,7 @@
     {
       "domain": "ai-multimodal",
       "sector": "cognitive",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/cognitive/ai-multimodal",
+      "path": "/Users/ghost/Dev/canon/domains/cognitive/ai-multimodal",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -237,7 +237,7 @@
     {
       "domain": "ai-quality-scale",
       "sector": "cognitive",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/cognitive/ai-quality-scale",
+      "path": "/Users/ghost/Dev/canon/domains/cognitive/ai-quality-scale",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -260,7 +260,7 @@
     {
       "domain": "ai-training-cost",
       "sector": "cognitive",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/cognitive/ai-training-cost",
+      "path": "/Users/ghost/Dev/canon/domains/cognitive/ai-training-cost",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -283,7 +283,7 @@
     {
       "domain": "ai-welfare",
       "sector": "cognitive",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/cognitive/ai-welfare",
+      "path": "/Users/ghost/Dev/canon/domains/cognitive/ai-welfare",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -306,7 +306,7 @@
     {
       "domain": "anima-service",
       "sector": "cognitive",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/cognitive/anima-service",
+      "path": "/Users/ghost/Dev/canon/domains/cognitive/anima-service",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -329,7 +329,7 @@
     {
       "domain": "anima-soc",
       "sector": "cognitive",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/cognitive/anima-soc",
+      "path": "/Users/ghost/Dev/canon/domains/cognitive/anima-soc",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -352,7 +352,7 @@
     {
       "domain": "brain-computer-interface",
       "sector": "cognitive",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/cognitive/brain-computer-interface",
+      "path": "/Users/ghost/Dev/canon/domains/cognitive/brain-computer-interface",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -375,7 +375,7 @@
     {
       "domain": "causal-chain",
       "sector": "cognitive",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/cognitive/causal-chain",
+      "path": "/Users/ghost/Dev/canon/domains/cognitive/causal-chain",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -398,7 +398,7 @@
     {
       "domain": "cognitive-architecture",
       "sector": "cognitive",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/cognitive/cognitive-architecture",
+      "path": "/Users/ghost/Dev/canon/domains/cognitive/cognitive-architecture",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -421,7 +421,7 @@
     {
       "domain": "cognitive-social-psychology",
       "sector": "cognitive",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/cognitive/cognitive-social-psychology",
+      "path": "/Users/ghost/Dev/canon/domains/cognitive/cognitive-social-psychology",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -444,7 +444,7 @@
     {
       "domain": "dream-recorder",
       "sector": "cognitive",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/cognitive/dream-recorder",
+      "path": "/Users/ghost/Dev/canon/domains/cognitive/dream-recorder",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -467,7 +467,7 @@
     {
       "domain": "hexa-dream",
       "sector": "cognitive",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/cognitive/hexa-dream",
+      "path": "/Users/ghost/Dev/canon/domains/cognitive/hexa-dream",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -490,7 +490,7 @@
     {
       "domain": "hexa-ear",
       "sector": "cognitive",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/cognitive/hexa-ear",
+      "path": "/Users/ghost/Dev/canon/domains/cognitive/hexa-ear",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -513,7 +513,7 @@
     {
       "domain": "hexa-empath",
       "sector": "cognitive",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/cognitive/hexa-empath",
+      "path": "/Users/ghost/Dev/canon/domains/cognitive/hexa-empath",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -536,7 +536,7 @@
     {
       "domain": "hexa-mind",
       "sector": "cognitive",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/cognitive/hexa-mind",
+      "path": "/Users/ghost/Dev/canon/domains/cognitive/hexa-mind",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -559,7 +559,7 @@
     {
       "domain": "hexa-neuro",
       "sector": "cognitive",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/cognitive/hexa-neuro",
+      "path": "/Users/ghost/Dev/canon/domains/cognitive/hexa-neuro",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -582,7 +582,7 @@
     {
       "domain": "hexa-olfact",
       "sector": "cognitive",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/cognitive/hexa-olfact",
+      "path": "/Users/ghost/Dev/canon/domains/cognitive/hexa-olfact",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -605,7 +605,7 @@
     {
       "domain": "hexa-oracle",
       "sector": "cognitive",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/cognitive/hexa-oracle",
+      "path": "/Users/ghost/Dev/canon/domains/cognitive/hexa-oracle",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -628,7 +628,7 @@
     {
       "domain": "hexa-speak",
       "sector": "cognitive",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/cognitive/hexa-speak",
+      "path": "/Users/ghost/Dev/canon/domains/cognitive/hexa-speak",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -651,7 +651,7 @@
     {
       "domain": "hexa-telepathy",
       "sector": "cognitive",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/cognitive/hexa-telepathy",
+      "path": "/Users/ghost/Dev/canon/domains/cognitive/hexa-telepathy",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -674,7 +674,7 @@
     {
       "domain": "mind-upload",
       "sector": "cognitive",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/cognitive/mind-upload",
+      "path": "/Users/ghost/Dev/canon/domains/cognitive/mind-upload",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -697,7 +697,7 @@
     {
       "domain": "reality-map",
       "sector": "cognitive",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/cognitive/reality-map",
+      "path": "/Users/ghost/Dev/canon/domains/cognitive/reality-map",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -720,7 +720,7 @@
     {
       "domain": "superpowers",
       "sector": "cognitive",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/cognitive/superpowers",
+      "path": "/Users/ghost/Dev/canon/domains/cognitive/superpowers",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -743,7 +743,7 @@
     {
       "domain": "telepathy",
       "sector": "cognitive",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/cognitive/telepathy",
+      "path": "/Users/ghost/Dev/canon/domains/cognitive/telepathy",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -766,7 +766,7 @@
     {
       "domain": "temporal-architecture",
       "sector": "cognitive",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/cognitive/temporal-architecture",
+      "path": "/Users/ghost/Dev/canon/domains/cognitive/temporal-architecture",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -789,7 +789,7 @@
     {
       "domain": "5g-6g-network",
       "sector": "compute",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/compute/5g-6g-network",
+      "path": "/Users/ghost/Dev/canon/domains/compute/5g-6g-network",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -812,7 +812,7 @@
     {
       "domain": "advanced-packaging",
       "sector": "compute",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/compute/advanced-packaging",
+      "path": "/Users/ghost/Dev/canon/domains/compute/advanced-packaging",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -835,7 +835,7 @@
     {
       "domain": "ai-efficiency",
       "sector": "compute",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/compute/ai-efficiency",
+      "path": "/Users/ghost/Dev/canon/domains/compute/ai-efficiency",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -858,7 +858,7 @@
     {
       "domain": "blockchain",
       "sector": "compute",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/compute/blockchain",
+      "path": "/Users/ghost/Dev/canon/domains/compute/blockchain",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -881,7 +881,7 @@
     {
       "domain": "browser",
       "sector": "compute",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/compute/browser",
+      "path": "/Users/ghost/Dev/canon/domains/compute/browser",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -904,7 +904,7 @@
     {
       "domain": "chip-3d",
       "sector": "compute",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/compute/chip-3d",
+      "path": "/Users/ghost/Dev/canon/domains/compute/chip-3d",
       "issues": [
         "MISSING: CLAUDE.md"
       ],
@@ -929,7 +929,7 @@
     {
       "domain": "chip-architecture",
       "sector": "compute",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/compute/chip-architecture",
+      "path": "/Users/ghost/Dev/canon/domains/compute/chip-architecture",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -952,7 +952,7 @@
     {
       "domain": "chip-design",
       "sector": "compute",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/compute/chip-design",
+      "path": "/Users/ghost/Dev/canon/domains/compute/chip-design",
       "issues": [
         "MISSING: CLAUDE.md",
         "MISSING: chip-design.md"
@@ -976,7 +976,7 @@
     {
       "domain": "chip-dse-pipeline",
       "sector": "compute",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/compute/chip-dse-pipeline",
+      "path": "/Users/ghost/Dev/canon/domains/compute/chip-dse-pipeline",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -999,7 +999,7 @@
     {
       "domain": "chip-hexa1",
       "sector": "compute",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/compute/chip-hexa1",
+      "path": "/Users/ghost/Dev/canon/domains/compute/chip-hexa1",
       "issues": [
         "MISSING: CLAUDE.md"
       ],
@@ -1024,7 +1024,7 @@
     {
       "domain": "chip-isa-n6",
       "sector": "compute",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/compute/chip-isa-n6",
+      "path": "/Users/ghost/Dev/canon/domains/compute/chip-isa-n6",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -1047,7 +1047,7 @@
     {
       "domain": "chip-npu-n6",
       "sector": "compute",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/compute/chip-npu-n6",
+      "path": "/Users/ghost/Dev/canon/domains/compute/chip-npu-n6",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -1070,7 +1070,7 @@
     {
       "domain": "chip-photonic",
       "sector": "compute",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/compute/chip-photonic",
+      "path": "/Users/ghost/Dev/canon/domains/compute/chip-photonic",
       "issues": [
         "MISSING: CLAUDE.md"
       ],
@@ -1095,7 +1095,7 @@
     {
       "domain": "chip-pim",
       "sector": "compute",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/compute/chip-pim",
+      "path": "/Users/ghost/Dev/canon/domains/compute/chip-pim",
       "issues": [
         "MISSING: CLAUDE.md"
       ],
@@ -1120,7 +1120,7 @@
     {
       "domain": "chip-rtl-gen",
       "sector": "compute",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/compute/chip-rtl-gen",
+      "path": "/Users/ghost/Dev/canon/domains/compute/chip-rtl-gen",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -1143,7 +1143,7 @@
     {
       "domain": "chip-sc",
       "sector": "compute",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/compute/chip-sc",
+      "path": "/Users/ghost/Dev/canon/domains/compute/chip-sc",
       "issues": [
         "MISSING: CLAUDE.md"
       ],
@@ -1168,7 +1168,7 @@
     {
       "domain": "chip-wafer",
       "sector": "compute",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/compute/chip-wafer",
+      "path": "/Users/ghost/Dev/canon/domains/compute/chip-wafer",
       "issues": [
         "MISSING: CLAUDE.md"
       ],
@@ -1193,7 +1193,7 @@
     {
       "domain": "compiler-os",
       "sector": "compute",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/compute/compiler-os",
+      "path": "/Users/ghost/Dev/canon/domains/compute/compiler-os",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -1216,7 +1216,7 @@
     {
       "domain": "consciousness-chip",
       "sector": "compute",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/compute/consciousness-chip",
+      "path": "/Users/ghost/Dev/canon/domains/compute/consciousness-chip",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -1239,7 +1239,7 @@
     {
       "domain": "consciousness-soc",
       "sector": "compute",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/compute/consciousness-soc",
+      "path": "/Users/ghost/Dev/canon/domains/compute/consciousness-soc",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -1262,7 +1262,7 @@
     {
       "domain": "cryptography",
       "sector": "compute",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/compute/cryptography",
+      "path": "/Users/ghost/Dev/canon/domains/compute/cryptography",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -1285,7 +1285,7 @@
     {
       "domain": "digital-twin",
       "sector": "compute",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/compute/digital-twin",
+      "path": "/Users/ghost/Dev/canon/domains/compute/digital-twin",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -1308,7 +1308,7 @@
     {
       "domain": "display",
       "sector": "compute",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/compute/display",
+      "path": "/Users/ghost/Dev/canon/domains/compute/display",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -1331,7 +1331,7 @@
     {
       "domain": "display-8stack",
       "sector": "compute",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/compute/display-8stack",
+      "path": "/Users/ghost/Dev/canon/domains/compute/display-8stack",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -1354,7 +1354,7 @@
     {
       "domain": "dram",
       "sector": "compute",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/compute/dram",
+      "path": "/Users/ghost/Dev/canon/domains/compute/dram",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -1377,7 +1377,7 @@
     {
       "domain": "exynos",
       "sector": "compute",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/compute/exynos",
+      "path": "/Users/ghost/Dev/canon/domains/compute/exynos",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -1400,7 +1400,7 @@
     {
       "domain": "hexa-3d",
       "sector": "compute",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/compute/hexa-3d",
+      "path": "/Users/ghost/Dev/canon/domains/compute/hexa-3d",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -1423,7 +1423,7 @@
     {
       "domain": "hexa-accel",
       "sector": "compute",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/compute/hexa-accel",
+      "path": "/Users/ghost/Dev/canon/domains/compute/hexa-accel",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -1446,7 +1446,7 @@
     {
       "domain": "hexa-asic",
       "sector": "compute",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/compute/hexa-asic",
+      "path": "/Users/ghost/Dev/canon/domains/compute/hexa-asic",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -1469,7 +1469,7 @@
     {
       "domain": "hexa-holo",
       "sector": "compute",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/compute/hexa-holo",
+      "path": "/Users/ghost/Dev/canon/domains/compute/hexa-holo",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -1492,7 +1492,7 @@
     {
       "domain": "hexa-ios",
       "sector": "compute",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/compute/hexa-ios",
+      "path": "/Users/ghost/Dev/canon/domains/compute/hexa-ios",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -1515,7 +1515,7 @@
     {
       "domain": "hexa-macos",
       "sector": "compute",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/compute/hexa-macos",
+      "path": "/Users/ghost/Dev/canon/domains/compute/hexa-macos",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -1538,7 +1538,7 @@
     {
       "domain": "hexa-mram",
       "sector": "compute",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/compute/hexa-mram",
+      "path": "/Users/ghost/Dev/canon/domains/compute/hexa-mram",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -1561,7 +1561,7 @@
     {
       "domain": "hexa-netproto",
       "sector": "compute",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/compute/hexa-netproto",
+      "path": "/Users/ghost/Dev/canon/domains/compute/hexa-netproto",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -1584,7 +1584,7 @@
     {
       "domain": "hexa-one",
       "sector": "compute",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/compute/hexa-one",
+      "path": "/Users/ghost/Dev/canon/domains/compute/hexa-one",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -1607,7 +1607,7 @@
     {
       "domain": "hexa-photon",
       "sector": "compute",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/compute/hexa-photon",
+      "path": "/Users/ghost/Dev/canon/domains/compute/hexa-photon",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -1630,7 +1630,7 @@
     {
       "domain": "hexa-pim",
       "sector": "compute",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/compute/hexa-pim",
+      "path": "/Users/ghost/Dev/canon/domains/compute/hexa-pim",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -1653,7 +1653,7 @@
     {
       "domain": "hexa-proglang",
       "sector": "compute",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/compute/hexa-proglang",
+      "path": "/Users/ghost/Dev/canon/domains/compute/hexa-proglang",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -1676,7 +1676,7 @@
     {
       "domain": "hexa-super",
       "sector": "compute",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/compute/hexa-super",
+      "path": "/Users/ghost/Dev/canon/domains/compute/hexa-super",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -1699,7 +1699,7 @@
     {
       "domain": "hexa-wafer",
       "sector": "compute",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/compute/hexa-wafer",
+      "path": "/Users/ghost/Dev/canon/domains/compute/hexa-wafer",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -1722,7 +1722,7 @@
     {
       "domain": "isocell-comms",
       "sector": "compute",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/compute/isocell-comms",
+      "path": "/Users/ghost/Dev/canon/domains/compute/isocell-comms",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -1745,7 +1745,7 @@
     {
       "domain": "keyboard",
       "sector": "compute",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/compute/keyboard",
+      "path": "/Users/ghost/Dev/canon/domains/compute/keyboard",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -1768,7 +1768,7 @@
     {
       "domain": "learning-algorithm",
       "sector": "compute",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/compute/learning-algorithm",
+      "path": "/Users/ghost/Dev/canon/domains/compute/learning-algorithm",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -1791,7 +1791,7 @@
     {
       "domain": "mouse",
       "sector": "compute",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/compute/mouse",
+      "path": "/Users/ghost/Dev/canon/domains/compute/mouse",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -1814,7 +1814,7 @@
     {
       "domain": "network",
       "sector": "compute",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/compute/network",
+      "path": "/Users/ghost/Dev/canon/domains/compute/network",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -1837,7 +1837,7 @@
     {
       "domain": "network-protocol",
       "sector": "compute",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/compute/network-protocol",
+      "path": "/Users/ghost/Dev/canon/domains/compute/network-protocol",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -1860,7 +1860,7 @@
     {
       "domain": "nexus-breakthrough-gate",
       "sector": "compute",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/compute/nexus-breakthrough-gate",
+      "path": "/Users/ghost/Dev/canon/domains/compute/nexus-breakthrough-gate",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -1883,7 +1883,7 @@
     {
       "domain": "nexus-service",
       "sector": "compute",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/compute/nexus-service",
+      "path": "/Users/ghost/Dev/canon/domains/compute/nexus-service",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -1906,7 +1906,7 @@
     {
       "domain": "performance-chip",
       "sector": "compute",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/compute/performance-chip",
+      "path": "/Users/ghost/Dev/canon/domains/compute/performance-chip",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -1929,7 +1929,7 @@
     {
       "domain": "programming-language",
       "sector": "compute",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/compute/programming-language",
+      "path": "/Users/ghost/Dev/canon/domains/compute/programming-language",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -1952,7 +1952,7 @@
     {
       "domain": "sc-memory",
       "sector": "compute",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/compute/sc-memory",
+      "path": "/Users/ghost/Dev/canon/domains/compute/sc-memory",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -1975,7 +1975,7 @@
     {
       "domain": "semiconductor-lithography",
       "sector": "compute",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/compute/semiconductor-lithography",
+      "path": "/Users/ghost/Dev/canon/domains/compute/semiconductor-lithography",
       "issues": [],
       "maturity_stage": 3,
       "files": {
@@ -1998,7 +1998,7 @@
     {
       "domain": "software-crypto",
       "sector": "compute",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/compute/software-crypto",
+      "path": "/Users/ghost/Dev/canon/domains/compute/software-crypto",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -2021,7 +2021,7 @@
     {
       "domain": "software-design",
       "sector": "compute",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/compute/software-design",
+      "path": "/Users/ghost/Dev/canon/domains/compute/software-design",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -2044,7 +2044,7 @@
     {
       "domain": "spatial-computing",
       "sector": "compute",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/compute/spatial-computing",
+      "path": "/Users/ghost/Dev/canon/domains/compute/spatial-computing",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -2067,7 +2067,7 @@
     {
       "domain": "unified-service",
       "sector": "compute",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/compute/unified-service",
+      "path": "/Users/ghost/Dev/canon/domains/compute/unified-service",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -2090,7 +2090,7 @@
     {
       "domain": "unified-soc",
       "sector": "compute",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/compute/unified-soc",
+      "path": "/Users/ghost/Dev/canon/domains/compute/unified-soc",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -2113,7 +2113,7 @@
     {
       "domain": "vnand",
       "sector": "compute",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/compute/vnand",
+      "path": "/Users/ghost/Dev/canon/domains/compute/vnand",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -2136,7 +2136,7 @@
     {
       "domain": "ar-vr-xr",
       "sector": "culture",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/culture/ar-vr-xr",
+      "path": "/Users/ghost/Dev/canon/domains/culture/ar-vr-xr",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -2159,7 +2159,7 @@
     {
       "domain": "archaeology",
       "sector": "culture",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/culture/archaeology",
+      "path": "/Users/ghost/Dev/canon/domains/culture/archaeology",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -2182,7 +2182,7 @@
     {
       "domain": "audio",
       "sector": "culture",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/culture/audio",
+      "path": "/Users/ghost/Dev/canon/domains/culture/audio",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -2205,7 +2205,7 @@
     {
       "domain": "baduk",
       "sector": "culture",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/culture/baduk",
+      "path": "/Users/ghost/Dev/canon/domains/culture/baduk",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -2228,7 +2228,7 @@
     {
       "domain": "bell-clockwork",
       "sector": "culture",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/culture/bell-clockwork",
+      "path": "/Users/ghost/Dev/canon/domains/culture/bell-clockwork",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -2251,7 +2251,7 @@
     {
       "domain": "biometrics",
       "sector": "culture",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/culture/biometrics",
+      "path": "/Users/ghost/Dev/canon/domains/culture/biometrics",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -2274,7 +2274,7 @@
     {
       "domain": "dance-choreography",
       "sector": "culture",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/culture/dance-choreography",
+      "path": "/Users/ghost/Dev/canon/domains/culture/dance-choreography",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -2297,7 +2297,7 @@
     {
       "domain": "dice-probability",
       "sector": "culture",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/culture/dice-probability",
+      "path": "/Users/ghost/Dev/canon/domains/culture/dice-probability",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -2320,7 +2320,7 @@
     {
       "domain": "games-sports",
       "sector": "culture",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/culture/games-sports",
+      "path": "/Users/ghost/Dev/canon/domains/culture/games-sports",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -2343,7 +2343,7 @@
     {
       "domain": "hangul-script",
       "sector": "culture",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/culture/hangul-script",
+      "path": "/Users/ghost/Dev/canon/domains/culture/hangul-script",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -2366,7 +2366,7 @@
     {
       "domain": "horology",
       "sector": "culture",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/culture/horology",
+      "path": "/Users/ghost/Dev/canon/domains/culture/horology",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -2389,7 +2389,7 @@
     {
       "domain": "library-science",
       "sector": "culture",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/culture/library-science",
+      "path": "/Users/ghost/Dev/canon/domains/culture/library-science",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -2412,7 +2412,7 @@
     {
       "domain": "linguistics",
       "sector": "culture",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/culture/linguistics",
+      "path": "/Users/ghost/Dev/canon/domains/culture/linguistics",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -2435,7 +2435,7 @@
     {
       "domain": "mountaineering",
       "sector": "culture",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/culture/mountaineering",
+      "path": "/Users/ghost/Dev/canon/domains/culture/mountaineering",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -2458,7 +2458,7 @@
     {
       "domain": "music",
       "sector": "culture",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/culture/music",
+      "path": "/Users/ghost/Dev/canon/domains/culture/music",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -2481,7 +2481,7 @@
     {
       "domain": "music-mathematics",
       "sector": "culture",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/culture/music-mathematics",
+      "path": "/Users/ghost/Dev/canon/domains/culture/music-mathematics",
       "issues": [],
       "maturity_stage": 3,
       "files": {
@@ -2504,7 +2504,7 @@
     {
       "domain": "numismatics",
       "sector": "culture",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/culture/numismatics",
+      "path": "/Users/ghost/Dev/canon/domains/culture/numismatics",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -2527,7 +2527,7 @@
     {
       "domain": "photography",
       "sector": "culture",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/culture/photography",
+      "path": "/Users/ghost/Dev/canon/domains/culture/photography",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -2550,7 +2550,7 @@
     {
       "domain": "religion",
       "sector": "culture",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/culture/religion",
+      "path": "/Users/ghost/Dev/canon/domains/culture/religion",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -2573,7 +2573,7 @@
     {
       "domain": "religion-mythology",
       "sector": "culture",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/culture/religion-mythology",
+      "path": "/Users/ghost/Dev/canon/domains/culture/religion-mythology",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -2596,7 +2596,7 @@
     {
       "domain": "social-architecture",
       "sector": "culture",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/culture/social-architecture",
+      "path": "/Users/ghost/Dev/canon/domains/culture/social-architecture",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -2619,7 +2619,7 @@
     {
       "domain": "taekwondo",
       "sector": "culture",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/culture/taekwondo",
+      "path": "/Users/ghost/Dev/canon/domains/culture/taekwondo",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -2642,7 +2642,7 @@
     {
       "domain": "telecom-linguistics",
       "sector": "culture",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/culture/telecom-linguistics",
+      "path": "/Users/ghost/Dev/canon/domains/culture/telecom-linguistics",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -2665,7 +2665,7 @@
     {
       "domain": "writing-systems",
       "sector": "culture",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/culture/writing-systems",
+      "path": "/Users/ghost/Dev/canon/domains/culture/writing-systems",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -2688,7 +2688,7 @@
     {
       "domain": "yoga",
       "sector": "culture",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/culture/yoga",
+      "path": "/Users/ghost/Dev/canon/domains/culture/yoga",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -2711,7 +2711,7 @@
     {
       "domain": "battery-architecture",
       "sector": "energy",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/energy/battery-architecture",
+      "path": "/Users/ghost/Dev/canon/domains/energy/battery-architecture",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -2734,7 +2734,7 @@
     {
       "domain": "battery-energy",
       "sector": "energy",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/energy/battery-energy",
+      "path": "/Users/ghost/Dev/canon/domains/energy/battery-energy",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -2757,7 +2757,7 @@
     {
       "domain": "datacenter-reactor",
       "sector": "energy",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/energy/datacenter-reactor",
+      "path": "/Users/ghost/Dev/canon/domains/energy/datacenter-reactor",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -2780,7 +2780,7 @@
     {
       "domain": "energy-architecture",
       "sector": "energy",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/energy/energy-architecture",
+      "path": "/Users/ghost/Dev/canon/domains/energy/energy-architecture",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -2803,7 +2803,7 @@
     {
       "domain": "energy-efficiency",
       "sector": "energy",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/energy/energy-efficiency",
+      "path": "/Users/ghost/Dev/canon/domains/energy/energy-efficiency",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -2826,7 +2826,7 @@
     {
       "domain": "fusion",
       "sector": "energy",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/energy/fusion",
+      "path": "/Users/ghost/Dev/canon/domains/energy/fusion",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -2849,7 +2849,7 @@
     {
       "domain": "fusion-powerplant",
       "sector": "energy",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/energy/fusion-powerplant",
+      "path": "/Users/ghost/Dev/canon/domains/energy/fusion-powerplant",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -2872,7 +2872,7 @@
     {
       "domain": "hvac-system",
       "sector": "energy",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/energy/hvac-system",
+      "path": "/Users/ghost/Dev/canon/domains/energy/hvac-system",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -2895,7 +2895,7 @@
     {
       "domain": "nuclear-reactor",
       "sector": "energy",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/energy/nuclear-reactor",
+      "path": "/Users/ghost/Dev/canon/domains/energy/nuclear-reactor",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -2918,7 +2918,7 @@
     {
       "domain": "pemfc",
       "sector": "energy",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/energy/pemfc",
+      "path": "/Users/ghost/Dev/canon/domains/energy/pemfc",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -2941,7 +2941,7 @@
     {
       "domain": "power-grid",
       "sector": "energy",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/energy/power-grid",
+      "path": "/Users/ghost/Dev/canon/domains/energy/power-grid",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -2964,7 +2964,7 @@
     {
       "domain": "room-temp-sc",
       "sector": "energy",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/energy/room-temp-sc",
+      "path": "/Users/ghost/Dev/canon/domains/energy/room-temp-sc",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -2987,7 +2987,7 @@
     {
       "domain": "smr-datacenter",
       "sector": "energy",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/energy/smr-datacenter",
+      "path": "/Users/ghost/Dev/canon/domains/energy/smr-datacenter",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -3010,7 +3010,7 @@
     {
       "domain": "solar-architecture",
       "sector": "energy",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/energy/solar-architecture",
+      "path": "/Users/ghost/Dev/canon/domains/energy/solar-architecture",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -3033,7 +3033,7 @@
     {
       "domain": "superconductor",
       "sector": "energy",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/energy/superconductor",
+      "path": "/Users/ghost/Dev/canon/domains/energy/superconductor",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -3056,7 +3056,7 @@
     {
       "domain": "thermal-management",
       "sector": "energy",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/energy/thermal-management",
+      "path": "/Users/ghost/Dev/canon/domains/energy/thermal-management",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -3079,7 +3079,7 @@
     {
       "domain": "airbag",
       "sector": "infra",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/infra/airbag",
+      "path": "/Users/ghost/Dev/canon/domains/infra/airbag",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -3102,7 +3102,7 @@
     {
       "domain": "architecture",
       "sector": "infra",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/infra/architecture",
+      "path": "/Users/ghost/Dev/canon/domains/infra/architecture",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -3125,7 +3125,7 @@
     {
       "domain": "autonomous-driving",
       "sector": "infra",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/infra/autonomous-driving",
+      "path": "/Users/ghost/Dev/canon/domains/infra/autonomous-driving",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -3148,7 +3148,7 @@
     {
       "domain": "aviation",
       "sector": "infra",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/infra/aviation",
+      "path": "/Users/ghost/Dev/canon/domains/infra/aviation",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -3171,7 +3171,7 @@
     {
       "domain": "calendar-time-geography",
       "sector": "infra",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/infra/calendar-time-geography",
+      "path": "/Users/ghost/Dev/canon/domains/infra/calendar-time-geography",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -3194,7 +3194,7 @@
     {
       "domain": "carbon-capture",
       "sector": "infra",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/infra/carbon-capture",
+      "path": "/Users/ghost/Dev/canon/domains/infra/carbon-capture",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -3217,7 +3217,7 @@
     {
       "domain": "cartography-gis",
       "sector": "infra",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/infra/cartography-gis",
+      "path": "/Users/ghost/Dev/canon/domains/infra/cartography-gis",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -3240,7 +3240,7 @@
     {
       "domain": "civil-engineering",
       "sector": "infra",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/infra/civil-engineering",
+      "path": "/Users/ghost/Dev/canon/domains/infra/civil-engineering",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -3263,7 +3263,7 @@
     {
       "domain": "climate",
       "sector": "infra",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/infra/climate",
+      "path": "/Users/ghost/Dev/canon/domains/infra/climate",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -3286,7 +3286,7 @@
     {
       "domain": "construction-structural",
       "sector": "infra",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/infra/construction-structural",
+      "path": "/Users/ghost/Dev/canon/domains/infra/construction-structural",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -3309,7 +3309,7 @@
     {
       "domain": "control-automation",
       "sector": "infra",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/infra/control-automation",
+      "path": "/Users/ghost/Dev/canon/domains/infra/control-automation",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -3332,7 +3332,7 @@
     {
       "domain": "currency-economics",
       "sector": "infra",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/infra/currency-economics",
+      "path": "/Users/ghost/Dev/canon/domains/infra/currency-economics",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -3355,7 +3355,7 @@
     {
       "domain": "desal",
       "sector": "infra",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/infra/desal",
+      "path": "/Users/ghost/Dev/canon/domains/infra/desal",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -3378,7 +3378,7 @@
     {
       "domain": "desalination",
       "sector": "infra",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/infra/desalination",
+      "path": "/Users/ghost/Dev/canon/domains/infra/desalination",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -3401,7 +3401,7 @@
     {
       "domain": "earth-defense",
       "sector": "infra",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/infra/earth-defense",
+      "path": "/Users/ghost/Dev/canon/domains/infra/earth-defense",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -3424,7 +3424,7 @@
     {
       "domain": "earthquake-engineering",
       "sector": "infra",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/infra/earthquake-engineering",
+      "path": "/Users/ghost/Dev/canon/domains/infra/earthquake-engineering",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -3447,7 +3447,7 @@
     {
       "domain": "ecommerce-fintech",
       "sector": "infra",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/infra/ecommerce-fintech",
+      "path": "/Users/ghost/Dev/canon/domains/infra/ecommerce-fintech",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -3470,7 +3470,7 @@
     {
       "domain": "economics",
       "sector": "infra",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/infra/economics",
+      "path": "/Users/ghost/Dev/canon/domains/infra/economics",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -3493,7 +3493,7 @@
     {
       "domain": "economics-finance",
       "sector": "infra",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/infra/economics-finance",
+      "path": "/Users/ghost/Dev/canon/domains/infra/economics-finance",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -3516,7 +3516,7 @@
     {
       "domain": "electric-vehicle",
       "sector": "infra",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/infra/electric-vehicle",
+      "path": "/Users/ghost/Dev/canon/domains/infra/electric-vehicle",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -3539,7 +3539,7 @@
     {
       "domain": "environment-thermal",
       "sector": "infra",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/infra/environment-thermal",
+      "path": "/Users/ghost/Dev/canon/domains/infra/environment-thermal",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -3562,7 +3562,7 @@
     {
       "domain": "environmental-protection",
       "sector": "infra",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/infra/environmental-protection",
+      "path": "/Users/ghost/Dev/canon/domains/infra/environmental-protection",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -3585,7 +3585,7 @@
     {
       "domain": "fire-science",
       "sector": "infra",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/infra/fire-science",
+      "path": "/Users/ghost/Dev/canon/domains/infra/fire-science",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -3608,7 +3608,7 @@
     {
       "domain": "fun-car",
       "sector": "infra",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/infra/fun-car",
+      "path": "/Users/ghost/Dev/canon/domains/infra/fun-car",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -3631,7 +3631,7 @@
     {
       "domain": "geology",
       "sector": "infra",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/infra/geology",
+      "path": "/Users/ghost/Dev/canon/domains/infra/geology",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -3654,7 +3654,7 @@
     {
       "domain": "governance-safety-urban",
       "sector": "infra",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/infra/governance-safety-urban",
+      "path": "/Users/ghost/Dev/canon/domains/infra/governance-safety-urban",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -3677,7 +3677,7 @@
     {
       "domain": "hexa-defense",
       "sector": "infra",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/infra/hexa-defense",
+      "path": "/Users/ghost/Dev/canon/domains/infra/hexa-defense",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -3700,7 +3700,7 @@
     {
       "domain": "hexa-exo",
       "sector": "infra",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/infra/hexa-exo",
+      "path": "/Users/ghost/Dev/canon/domains/infra/hexa-exo",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -3723,7 +3723,7 @@
     {
       "domain": "hexa-skyway",
       "sector": "infra",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/infra/hexa-skyway",
+      "path": "/Users/ghost/Dev/canon/domains/infra/hexa-skyway",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -3746,7 +3746,7 @@
     {
       "domain": "hexa-tsunami",
       "sector": "infra",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/infra/hexa-tsunami",
+      "path": "/Users/ghost/Dev/canon/domains/infra/hexa-tsunami",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -3769,7 +3769,7 @@
     {
       "domain": "hexa-weather",
       "sector": "infra",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/infra/hexa-weather",
+      "path": "/Users/ghost/Dev/canon/domains/infra/hexa-weather",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -3792,7 +3792,7 @@
     {
       "domain": "insurance",
       "sector": "infra",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/infra/insurance",
+      "path": "/Users/ghost/Dev/canon/domains/infra/insurance",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -3815,7 +3815,7 @@
     {
       "domain": "jurisprudence",
       "sector": "infra",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/infra/jurisprudence",
+      "path": "/Users/ghost/Dev/canon/domains/infra/jurisprudence",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -3838,7 +3838,7 @@
     {
       "domain": "law-justice",
       "sector": "infra",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/infra/law-justice",
+      "path": "/Users/ghost/Dev/canon/domains/infra/law-justice",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -3861,7 +3861,7 @@
     {
       "domain": "manufacturing-quality",
       "sector": "infra",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/infra/manufacturing-quality",
+      "path": "/Users/ghost/Dev/canon/domains/infra/manufacturing-quality",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -3884,7 +3884,7 @@
     {
       "domain": "marketing",
       "sector": "infra",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/infra/marketing",
+      "path": "/Users/ghost/Dev/canon/domains/infra/marketing",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -3907,7 +3907,7 @@
     {
       "domain": "meteorology",
       "sector": "infra",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/infra/meteorology",
+      "path": "/Users/ghost/Dev/canon/domains/infra/meteorology",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -3930,7 +3930,7 @@
     {
       "domain": "mining",
       "sector": "infra",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/infra/mining",
+      "path": "/Users/ghost/Dev/canon/domains/infra/mining",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -3953,7 +3953,7 @@
     {
       "domain": "monetary-history",
       "sector": "infra",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/infra/monetary-history",
+      "path": "/Users/ghost/Dev/canon/domains/infra/monetary-history",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -3976,7 +3976,7 @@
     {
       "domain": "motorcycle",
       "sector": "infra",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/infra/motorcycle",
+      "path": "/Users/ghost/Dev/canon/domains/infra/motorcycle",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -3999,7 +3999,7 @@
     {
       "domain": "naval-architecture",
       "sector": "infra",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/infra/naval-architecture",
+      "path": "/Users/ghost/Dev/canon/domains/infra/naval-architecture",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -4022,7 +4022,7 @@
     {
       "domain": "ocean",
       "sector": "infra",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/infra/ocean",
+      "path": "/Users/ghost/Dev/canon/domains/infra/ocean",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -4045,7 +4045,7 @@
     {
       "domain": "oceanography",
       "sector": "infra",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/infra/oceanography",
+      "path": "/Users/ghost/Dev/canon/domains/infra/oceanography",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -4068,7 +4068,7 @@
     {
       "domain": "printing",
       "sector": "infra",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/infra/printing",
+      "path": "/Users/ghost/Dev/canon/domains/infra/printing",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -4091,7 +4091,7 @@
     {
       "domain": "robotics",
       "sector": "infra",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/infra/robotics",
+      "path": "/Users/ghost/Dev/canon/domains/infra/robotics",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -4114,7 +4114,7 @@
     {
       "domain": "robotics-transport",
       "sector": "infra",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/infra/robotics-transport",
+      "path": "/Users/ghost/Dev/canon/domains/infra/robotics-transport",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -4137,7 +4137,7 @@
     {
       "domain": "safety",
       "sector": "infra",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/infra/safety",
+      "path": "/Users/ghost/Dev/canon/domains/infra/safety",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -4160,7 +4160,7 @@
     {
       "domain": "seabed-grid",
       "sector": "infra",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/infra/seabed-grid",
+      "path": "/Users/ghost/Dev/canon/domains/infra/seabed-grid",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -4183,7 +4183,7 @@
     {
       "domain": "skyway",
       "sector": "infra",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/infra/skyway",
+      "path": "/Users/ghost/Dev/canon/domains/infra/skyway",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -4206,7 +4206,7 @@
     {
       "domain": "smart-city",
       "sector": "infra",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/infra/smart-city",
+      "path": "/Users/ghost/Dev/canon/domains/infra/smart-city",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -4229,7 +4229,7 @@
     {
       "domain": "surveying",
       "sector": "infra",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/infra/surveying",
+      "path": "/Users/ghost/Dev/canon/domains/infra/surveying",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -4252,7 +4252,7 @@
     {
       "domain": "transportation",
       "sector": "infra",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/infra/transportation",
+      "path": "/Users/ghost/Dev/canon/domains/infra/transportation",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -4275,7 +4275,7 @@
     {
       "domain": "tsunami-shield",
       "sector": "infra",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/infra/tsunami-shield",
+      "path": "/Users/ghost/Dev/canon/domains/infra/tsunami-shield",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -4298,7 +4298,7 @@
     {
       "domain": "ultimate-safety",
       "sector": "infra",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/infra/ultimate-safety",
+      "path": "/Users/ghost/Dev/canon/domains/infra/ultimate-safety",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -4321,7 +4321,7 @@
     {
       "domain": "underground-tunnel",
       "sector": "infra",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/infra/underground-tunnel",
+      "path": "/Users/ghost/Dev/canon/domains/infra/underground-tunnel",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -4344,7 +4344,7 @@
     {
       "domain": "water-treatment",
       "sector": "infra",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/infra/water-treatment",
+      "path": "/Users/ghost/Dev/canon/domains/infra/water-treatment",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -4367,7 +4367,7 @@
     {
       "domain": "weather-control",
       "sector": "infra",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/infra/weather-control",
+      "path": "/Users/ghost/Dev/canon/domains/infra/weather-control",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -4390,7 +4390,7 @@
     {
       "domain": "agriculture",
       "sector": "life",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/life/agriculture",
+      "path": "/Users/ghost/Dev/canon/domains/life/agriculture",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -4413,7 +4413,7 @@
     {
       "domain": "apiculture",
       "sector": "life",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/life/apiculture",
+      "path": "/Users/ghost/Dev/canon/domains/life/apiculture",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -4436,7 +4436,7 @@
     {
       "domain": "aquaculture",
       "sector": "life",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/life/aquaculture",
+      "path": "/Users/ghost/Dev/canon/domains/life/aquaculture",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -4459,7 +4459,7 @@
     {
       "domain": "baking",
       "sector": "life",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/life/baking",
+      "path": "/Users/ghost/Dev/canon/domains/life/baking",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -4482,7 +4482,7 @@
     {
       "domain": "bio-pharma",
       "sector": "life",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/life/bio-pharma",
+      "path": "/Users/ghost/Dev/canon/domains/life/bio-pharma",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -4505,7 +4505,7 @@
     {
       "domain": "biology",
       "sector": "life",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/life/biology",
+      "path": "/Users/ghost/Dev/canon/domains/life/biology",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -4528,7 +4528,7 @@
     {
       "domain": "biology-medical",
       "sector": "life",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/life/biology-medical",
+      "path": "/Users/ghost/Dev/canon/domains/life/biology-medical",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -4551,7 +4551,7 @@
     {
       "domain": "cancer-therapy",
       "sector": "life",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/life/cancer-therapy",
+      "path": "/Users/ghost/Dev/canon/domains/life/cancer-therapy",
       "issues": [],
       "maturity_stage": 3,
       "files": {
@@ -4574,7 +4574,7 @@
     {
       "domain": "cheese-dairy",
       "sector": "life",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/life/cheese-dairy",
+      "path": "/Users/ghost/Dev/canon/domains/life/cheese-dairy",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -4597,7 +4597,7 @@
     {
       "domain": "coffee",
       "sector": "life",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/life/coffee",
+      "path": "/Users/ghost/Dev/canon/domains/life/coffee",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -4620,7 +4620,7 @@
     {
       "domain": "coffee-science",
       "sector": "life",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/life/coffee-science",
+      "path": "/Users/ghost/Dev/canon/domains/life/coffee-science",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -4643,7 +4643,7 @@
     {
       "domain": "cosmetic-surgery",
       "sector": "life",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/life/cosmetic-surgery",
+      "path": "/Users/ghost/Dev/canon/domains/life/cosmetic-surgery",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -4666,7 +4666,7 @@
     {
       "domain": "crispr-gene-editing",
       "sector": "life",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/life/crispr-gene-editing",
+      "path": "/Users/ghost/Dev/canon/domains/life/crispr-gene-editing",
       "issues": [],
       "maturity_stage": 3,
       "files": {
@@ -4689,7 +4689,7 @@
     {
       "domain": "dolphin",
       "sector": "life",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/life/dolphin",
+      "path": "/Users/ghost/Dev/canon/domains/life/dolphin",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -4712,7 +4712,7 @@
     {
       "domain": "dolphin-bioacoustics",
       "sector": "life",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/life/dolphin-bioacoustics",
+      "path": "/Users/ghost/Dev/canon/domains/life/dolphin-bioacoustics",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -4735,7 +4735,7 @@
     {
       "domain": "ecology",
       "sector": "life",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/life/ecology",
+      "path": "/Users/ghost/Dev/canon/domains/life/ecology",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -4758,7 +4758,7 @@
     {
       "domain": "ecology-agriculture-food",
       "sector": "life",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/life/ecology-agriculture-food",
+      "path": "/Users/ghost/Dev/canon/domains/life/ecology-agriculture-food",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -4781,7 +4781,7 @@
     {
       "domain": "entomology",
       "sector": "life",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/life/entomology",
+      "path": "/Users/ghost/Dev/canon/domains/life/entomology",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -4804,7 +4804,7 @@
     {
       "domain": "fermentation",
       "sector": "life",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/life/fermentation",
+      "path": "/Users/ghost/Dev/canon/domains/life/fermentation",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -4827,7 +4827,7 @@
     {
       "domain": "food-science",
       "sector": "life",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/life/food-science",
+      "path": "/Users/ghost/Dev/canon/domains/life/food-science",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -4850,7 +4850,7 @@
     {
       "domain": "genetics",
       "sector": "life",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/life/genetics",
+      "path": "/Users/ghost/Dev/canon/domains/life/genetics",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -4873,7 +4873,7 @@
     {
       "domain": "hair-regeneration",
       "sector": "life",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/life/hair-regeneration",
+      "path": "/Users/ghost/Dev/canon/domains/life/hair-regeneration",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -4896,7 +4896,7 @@
     {
       "domain": "herbalism",
       "sector": "life",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/life/herbalism",
+      "path": "/Users/ghost/Dev/canon/domains/life/herbalism",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -4919,7 +4919,7 @@
     {
       "domain": "hexa-limb",
       "sector": "life",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/life/hexa-limb",
+      "path": "/Users/ghost/Dev/canon/domains/life/hexa-limb",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -4942,7 +4942,7 @@
     {
       "domain": "hexa-skin",
       "sector": "life",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/life/hexa-skin",
+      "path": "/Users/ghost/Dev/canon/domains/life/hexa-skin",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -4965,7 +4965,7 @@
     {
       "domain": "hiv",
       "sector": "life",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/life/hiv",
+      "path": "/Users/ghost/Dev/canon/domains/life/hiv",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -4988,7 +4988,7 @@
     {
       "domain": "hiv-treatment",
       "sector": "life",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/life/hiv-treatment",
+      "path": "/Users/ghost/Dev/canon/domains/life/hiv-treatment",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -5011,7 +5011,7 @@
     {
       "domain": "horticulture",
       "sector": "life",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/life/horticulture",
+      "path": "/Users/ghost/Dev/canon/domains/life/horticulture",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -5034,7 +5034,7 @@
     {
       "domain": "immunology",
       "sector": "life",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/life/immunology",
+      "path": "/Users/ghost/Dev/canon/domains/life/immunology",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -5057,7 +5057,7 @@
     {
       "domain": "medical-device",
       "sector": "life",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/life/medical-device",
+      "path": "/Users/ghost/Dev/canon/domains/life/medical-device",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -5080,7 +5080,7 @@
     {
       "domain": "mens-intimate-cleanser",
       "sector": "life",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/life/mens-intimate-cleanser",
+      "path": "/Users/ghost/Dev/canon/domains/life/mens-intimate-cleanser",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -5103,7 +5103,7 @@
     {
       "domain": "microplastics",
       "sector": "life",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/life/microplastics",
+      "path": "/Users/ghost/Dev/canon/domains/life/microplastics",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -5126,7 +5126,7 @@
     {
       "domain": "mycology",
       "sector": "life",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/life/mycology",
+      "path": "/Users/ghost/Dev/canon/domains/life/mycology",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -5149,7 +5149,7 @@
     {
       "domain": "neuro",
       "sector": "life",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/life/neuro",
+      "path": "/Users/ghost/Dev/canon/domains/life/neuro",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -5172,7 +5172,7 @@
     {
       "domain": "neuropharmacology",
       "sector": "life",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/life/neuropharmacology",
+      "path": "/Users/ghost/Dev/canon/domains/life/neuropharmacology",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -5195,7 +5195,7 @@
     {
       "domain": "neuroscience",
       "sector": "life",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/life/neuroscience",
+      "path": "/Users/ghost/Dev/canon/domains/life/neuroscience",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -5218,7 +5218,7 @@
     {
       "domain": "perfumery",
       "sector": "life",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/life/perfumery",
+      "path": "/Users/ghost/Dev/canon/domains/life/perfumery",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -5241,7 +5241,7 @@
     {
       "domain": "pharmacology",
       "sector": "life",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/life/pharmacology",
+      "path": "/Users/ghost/Dev/canon/domains/life/pharmacology",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -5264,7 +5264,7 @@
     {
       "domain": "synbio",
       "sector": "life",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/life/synbio",
+      "path": "/Users/ghost/Dev/canon/domains/life/synbio",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -5287,7 +5287,7 @@
     {
       "domain": "tattoo-removal",
       "sector": "life",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/life/tattoo-removal",
+      "path": "/Users/ghost/Dev/canon/domains/life/tattoo-removal",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -5310,7 +5310,7 @@
     {
       "domain": "therapeutic-nanobot",
       "sector": "life",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/life/therapeutic-nanobot",
+      "path": "/Users/ghost/Dev/canon/domains/life/therapeutic-nanobot",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -5333,7 +5333,7 @@
     {
       "domain": "vaccine",
       "sector": "life",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/life/vaccine",
+      "path": "/Users/ghost/Dev/canon/domains/life/vaccine",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -5356,7 +5356,7 @@
     {
       "domain": "veterinary",
       "sector": "life",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/life/veterinary",
+      "path": "/Users/ghost/Dev/canon/domains/life/veterinary",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -5379,7 +5379,7 @@
     {
       "domain": "virology",
       "sector": "life",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/life/virology",
+      "path": "/Users/ghost/Dev/canon/domains/life/virology",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -5402,7 +5402,7 @@
     {
       "domain": "viticulture",
       "sector": "life",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/life/viticulture",
+      "path": "/Users/ghost/Dev/canon/domains/life/viticulture",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -5425,7 +5425,7 @@
     {
       "domain": "wine-enology",
       "sector": "life",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/life/wine-enology",
+      "path": "/Users/ghost/Dev/canon/domains/life/wine-enology",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -5448,7 +5448,7 @@
     {
       "domain": "womens-intimate-cleanser",
       "sector": "life",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/life/womens-intimate-cleanser",
+      "path": "/Users/ghost/Dev/canon/domains/life/womens-intimate-cleanser",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -5471,7 +5471,7 @@
     {
       "domain": "aramid",
       "sector": "materials",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/materials/aramid",
+      "path": "/Users/ghost/Dev/canon/domains/materials/aramid",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -5494,7 +5494,7 @@
     {
       "domain": "ceramics",
       "sector": "materials",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/materials/ceramics",
+      "path": "/Users/ghost/Dev/canon/domains/materials/ceramics",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -5517,7 +5517,7 @@
     {
       "domain": "concrete",
       "sector": "materials",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/materials/concrete",
+      "path": "/Users/ghost/Dev/canon/domains/materials/concrete",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -5540,7 +5540,7 @@
     {
       "domain": "concrete-technology",
       "sector": "materials",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/materials/concrete-technology",
+      "path": "/Users/ghost/Dev/canon/domains/materials/concrete-technology",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -5563,7 +5563,7 @@
     {
       "domain": "epoxy",
       "sector": "materials",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/materials/epoxy",
+      "path": "/Users/ghost/Dev/canon/domains/materials/epoxy",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -5586,7 +5586,7 @@
     {
       "domain": "fashion-textile",
       "sector": "materials",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/materials/fashion-textile",
+      "path": "/Users/ghost/Dev/canon/domains/materials/fashion-textile",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -5609,7 +5609,7 @@
     {
       "domain": "gemology",
       "sector": "materials",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/materials/gemology",
+      "path": "/Users/ghost/Dev/canon/domains/materials/gemology",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -5632,7 +5632,7 @@
     {
       "domain": "hexa-fabric",
       "sector": "materials",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/materials/hexa-fabric",
+      "path": "/Users/ghost/Dev/canon/domains/materials/hexa-fabric",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -5655,7 +5655,7 @@
     {
       "domain": "hexa-glass",
       "sector": "materials",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/materials/hexa-glass",
+      "path": "/Users/ghost/Dev/canon/domains/materials/hexa-glass",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -5678,7 +5678,7 @@
     {
       "domain": "hexa-recycle",
       "sector": "materials",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/materials/hexa-recycle",
+      "path": "/Users/ghost/Dev/canon/domains/materials/hexa-recycle",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -5701,7 +5701,7 @@
     {
       "domain": "lutherie",
       "sector": "materials",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/materials/lutherie",
+      "path": "/Users/ghost/Dev/canon/domains/materials/lutherie",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -5724,7 +5724,7 @@
     {
       "domain": "material-synthesis",
       "sector": "materials",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/materials/material-synthesis",
+      "path": "/Users/ghost/Dev/canon/domains/materials/material-synthesis",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -5747,7 +5747,7 @@
     {
       "domain": "nylon",
       "sector": "materials",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/materials/nylon",
+      "path": "/Users/ghost/Dev/canon/domains/materials/nylon",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -5770,7 +5770,7 @@
     {
       "domain": "paper",
       "sector": "materials",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/materials/paper",
+      "path": "/Users/ghost/Dev/canon/domains/materials/paper",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -5793,7 +5793,7 @@
     {
       "domain": "pet-film",
       "sector": "materials",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/materials/pet-film",
+      "path": "/Users/ghost/Dev/canon/domains/materials/pet-film",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -5816,7 +5816,7 @@
     {
       "domain": "recycling",
       "sector": "materials",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/materials/recycling",
+      "path": "/Users/ghost/Dev/canon/domains/materials/recycling",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -5839,7 +5839,7 @@
     {
       "domain": "swordsmithing",
       "sector": "materials",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/materials/swordsmithing",
+      "path": "/Users/ghost/Dev/canon/domains/materials/swordsmithing",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -5862,7 +5862,7 @@
     {
       "domain": "textile-dyeing",
       "sector": "materials",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/materials/textile-dyeing",
+      "path": "/Users/ghost/Dev/canon/domains/materials/textile-dyeing",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -5885,7 +5885,7 @@
     {
       "domain": "tire-cord",
       "sector": "materials",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/materials/tire-cord",
+      "path": "/Users/ghost/Dev/canon/domains/materials/tire-cord",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -5908,7 +5908,7 @@
     {
       "domain": "antimatter-factory",
       "sector": "physics",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/physics/antimatter-factory",
+      "path": "/Users/ghost/Dev/canon/domains/physics/antimatter-factory",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -5931,7 +5931,7 @@
     {
       "domain": "classical-mechanics-accelerator",
       "sector": "physics",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/physics/classical-mechanics-accelerator",
+      "path": "/Users/ghost/Dev/canon/domains/physics/classical-mechanics-accelerator",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -5954,7 +5954,7 @@
     {
       "domain": "cosmic-observatory",
       "sector": "physics",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/physics/cosmic-observatory",
+      "path": "/Users/ghost/Dev/canon/domains/physics/cosmic-observatory",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -5977,7 +5977,7 @@
     {
       "domain": "cosmology",
       "sector": "physics",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/physics/cosmology",
+      "path": "/Users/ghost/Dev/canon/domains/physics/cosmology",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -6000,7 +6000,7 @@
     {
       "domain": "cosmology-particle",
       "sector": "physics",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/physics/cosmology-particle",
+      "path": "/Users/ghost/Dev/canon/domains/physics/cosmology-particle",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -6023,7 +6023,7 @@
     {
       "domain": "crystallography",
       "sector": "physics",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/physics/crystallography",
+      "path": "/Users/ghost/Dev/canon/domains/physics/crystallography",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -6046,7 +6046,7 @@
     {
       "domain": "crystallography-materials",
       "sector": "physics",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/physics/crystallography-materials",
+      "path": "/Users/ghost/Dev/canon/domains/physics/crystallography-materials",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -6069,7 +6069,7 @@
     {
       "domain": "electromagnetism",
       "sector": "physics",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/physics/electromagnetism",
+      "path": "/Users/ghost/Dev/canon/domains/physics/electromagnetism",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -6092,7 +6092,7 @@
     {
       "domain": "fluid",
       "sector": "physics",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/physics/fluid",
+      "path": "/Users/ghost/Dev/canon/domains/physics/fluid",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -6115,7 +6115,7 @@
     {
       "domain": "gravity-wave",
       "sector": "physics",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/physics/gravity-wave",
+      "path": "/Users/ghost/Dev/canon/domains/physics/gravity-wave",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -6138,7 +6138,7 @@
     {
       "domain": "hexa-topo",
       "sector": "physics",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/physics/hexa-topo",
+      "path": "/Users/ghost/Dev/canon/domains/physics/hexa-topo",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -6161,7 +6161,7 @@
     {
       "domain": "higgs",
       "sector": "physics",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/physics/higgs",
+      "path": "/Users/ghost/Dev/canon/domains/physics/higgs",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -6184,7 +6184,7 @@
     {
       "domain": "holography",
       "sector": "physics",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/physics/holography",
+      "path": "/Users/ghost/Dev/canon/domains/physics/holography",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -6207,7 +6207,7 @@
     {
       "domain": "light-optics",
       "sector": "physics",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/physics/light-optics",
+      "path": "/Users/ghost/Dev/canon/domains/physics/light-optics",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -6230,7 +6230,7 @@
     {
       "domain": "millennium-bsd",
       "sector": "physics",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/physics/millennium-bsd",
+      "path": "/Users/ghost/Dev/canon/domains/physics/millennium-bsd",
       "issues": [],
       "maturity_stage": 3,
       "files": {
@@ -6253,7 +6253,7 @@
     {
       "domain": "millennium-hodge",
       "sector": "physics",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/physics/millennium-hodge",
+      "path": "/Users/ghost/Dev/canon/domains/physics/millennium-hodge",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -6276,7 +6276,7 @@
     {
       "domain": "millennium-navier-stokes",
       "sector": "physics",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/physics/millennium-navier-stokes",
+      "path": "/Users/ghost/Dev/canon/domains/physics/millennium-navier-stokes",
       "issues": [],
       "maturity_stage": 3,
       "files": {
@@ -6299,7 +6299,7 @@
     {
       "domain": "millennium-p-vs-np",
       "sector": "physics",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/physics/millennium-p-vs-np",
+      "path": "/Users/ghost/Dev/canon/domains/physics/millennium-p-vs-np",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -6322,7 +6322,7 @@
     {
       "domain": "millennium-poincare",
       "sector": "physics",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/physics/millennium-poincare",
+      "path": "/Users/ghost/Dev/canon/domains/physics/millennium-poincare",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -6345,7 +6345,7 @@
     {
       "domain": "millennium-riemann",
       "sector": "physics",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/physics/millennium-riemann",
+      "path": "/Users/ghost/Dev/canon/domains/physics/millennium-riemann",
       "issues": [
         "GRADE_DECAY: verify_millennium-riemann.hexa contains FAIL/ERROR"
       ],
@@ -6370,7 +6370,7 @@
     {
       "domain": "millennium-yang-mills",
       "sector": "physics",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/physics/millennium-yang-mills",
+      "path": "/Users/ghost/Dev/canon/domains/physics/millennium-yang-mills",
       "issues": [],
       "maturity_stage": 3,
       "files": {
@@ -6393,7 +6393,7 @@
     {
       "domain": "mini-accelerator",
       "sector": "physics",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/physics/mini-accelerator",
+      "path": "/Users/ghost/Dev/canon/domains/physics/mini-accelerator",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -6416,7 +6416,7 @@
     {
       "domain": "optics",
       "sector": "physics",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/physics/optics",
+      "path": "/Users/ghost/Dev/canon/domains/physics/optics",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -6439,7 +6439,7 @@
     {
       "domain": "particle-cosmology",
       "sector": "physics",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/physics/particle-cosmology",
+      "path": "/Users/ghost/Dev/canon/domains/physics/particle-cosmology",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -6462,7 +6462,7 @@
     {
       "domain": "plasma",
       "sector": "physics",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/physics/plasma",
+      "path": "/Users/ghost/Dev/canon/domains/physics/plasma",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -6485,7 +6485,7 @@
     {
       "domain": "plasma-fusion-deep",
       "sector": "physics",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/physics/plasma-fusion-deep",
+      "path": "/Users/ghost/Dev/canon/domains/physics/plasma-fusion-deep",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -6508,7 +6508,7 @@
     {
       "domain": "plasma-physics",
       "sector": "physics",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/physics/plasma-physics",
+      "path": "/Users/ghost/Dev/canon/domains/physics/plasma-physics",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -6531,7 +6531,7 @@
     {
       "domain": "pure-mathematics",
       "sector": "physics",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/physics/pure-mathematics",
+      "path": "/Users/ghost/Dev/canon/domains/physics/pure-mathematics",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -6554,7 +6554,7 @@
     {
       "domain": "quantum-computer",
       "sector": "physics",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/physics/quantum-computer",
+      "path": "/Users/ghost/Dev/canon/domains/physics/quantum-computer",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -6577,7 +6577,7 @@
     {
       "domain": "quantum-computing",
       "sector": "physics",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/physics/quantum-computing",
+      "path": "/Users/ghost/Dev/canon/domains/physics/quantum-computing",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -6600,7 +6600,7 @@
     {
       "domain": "quantum-gravity-sensor",
       "sector": "physics",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/physics/quantum-gravity-sensor",
+      "path": "/Users/ghost/Dev/canon/domains/physics/quantum-gravity-sensor",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -6623,7 +6623,7 @@
     {
       "domain": "quantum-network",
       "sector": "physics",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/physics/quantum-network",
+      "path": "/Users/ghost/Dev/canon/domains/physics/quantum-network",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -6646,7 +6646,7 @@
     {
       "domain": "quantum-oracle",
       "sector": "physics",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/physics/quantum-oracle",
+      "path": "/Users/ghost/Dev/canon/domains/physics/quantum-oracle",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -6669,7 +6669,7 @@
     {
       "domain": "simulation-theory",
       "sector": "physics",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/physics/simulation-theory",
+      "path": "/Users/ghost/Dev/canon/domains/physics/simulation-theory",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -6692,7 +6692,7 @@
     {
       "domain": "tachyon",
       "sector": "physics",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/physics/tachyon",
+      "path": "/Users/ghost/Dev/canon/domains/physics/tachyon",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -6715,7 +6715,7 @@
     {
       "domain": "thermodynamics",
       "sector": "physics",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/physics/thermodynamics",
+      "path": "/Users/ghost/Dev/canon/domains/physics/thermodynamics",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -6738,7 +6738,7 @@
     {
       "domain": "topology",
       "sector": "physics",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/physics/topology",
+      "path": "/Users/ghost/Dev/canon/domains/physics/topology",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -6761,7 +6761,7 @@
     {
       "domain": "cloak",
       "sector": "sf-ufo",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/sf-ufo/cloak",
+      "path": "/Users/ghost/Dev/canon/domains/sf-ufo/cloak",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -6784,7 +6784,7 @@
     {
       "domain": "cross-domain-mega",
       "sector": "sf-ufo",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/sf-ufo/cross-domain-mega",
+      "path": "/Users/ghost/Dev/canon/domains/sf-ufo/cross-domain-mega",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -6807,7 +6807,7 @@
     {
       "domain": "dragon",
       "sector": "sf-ufo",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/sf-ufo/dragon",
+      "path": "/Users/ghost/Dev/canon/domains/sf-ufo/dragon",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -6830,7 +6830,7 @@
     {
       "domain": "experiments",
       "sector": "sf-ufo",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/sf-ufo/experiments",
+      "path": "/Users/ghost/Dev/canon/domains/sf-ufo/experiments",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -6853,7 +6853,7 @@
     {
       "domain": "fantasy",
       "sector": "sf-ufo",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/sf-ufo/fantasy",
+      "path": "/Users/ghost/Dev/canon/domains/sf-ufo/fantasy",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -6876,7 +6876,7 @@
     {
       "domain": "hexa-cloak",
       "sector": "sf-ufo",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/sf-ufo/hexa-cloak",
+      "path": "/Users/ghost/Dev/canon/domains/sf-ufo/hexa-cloak",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -6899,7 +6899,7 @@
     {
       "domain": "hexa-grav",
       "sector": "sf-ufo",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/sf-ufo/hexa-grav",
+      "path": "/Users/ghost/Dev/canon/domains/sf-ufo/hexa-grav",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -6922,7 +6922,7 @@
     {
       "domain": "hexa-hover",
       "sector": "sf-ufo",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/sf-ufo/hexa-hover",
+      "path": "/Users/ghost/Dev/canon/domains/sf-ufo/hexa-hover",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -6945,7 +6945,7 @@
     {
       "domain": "hexa-sim",
       "sector": "sf-ufo",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/sf-ufo/hexa-sim",
+      "path": "/Users/ghost/Dev/canon/domains/sf-ufo/hexa-sim",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -6968,7 +6968,7 @@
     {
       "domain": "hexa-teleport",
       "sector": "sf-ufo",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/sf-ufo/hexa-teleport",
+      "path": "/Users/ghost/Dev/canon/domains/sf-ufo/hexa-teleport",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -6991,7 +6991,7 @@
     {
       "domain": "hexa-ufo",
       "sector": "sf-ufo",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/sf-ufo/hexa-ufo",
+      "path": "/Users/ghost/Dev/canon/domains/sf-ufo/hexa-ufo",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -7014,7 +7014,7 @@
     {
       "domain": "hover",
       "sector": "sf-ufo",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/sf-ufo/hover",
+      "path": "/Users/ghost/Dev/canon/domains/sf-ufo/hover",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -7037,7 +7037,7 @@
     {
       "domain": "hypotheses",
       "sector": "sf-ufo",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/sf-ufo/hypotheses",
+      "path": "/Users/ghost/Dev/canon/domains/sf-ufo/hypotheses",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -7060,7 +7060,7 @@
     {
       "domain": "rtsc-12-products-evolution",
       "sector": "sf-ufo",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/sf-ufo/rtsc-12-products-evolution",
+      "path": "/Users/ghost/Dev/canon/domains/sf-ufo/rtsc-12-products-evolution",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -7083,7 +7083,7 @@
     {
       "domain": "sf",
       "sector": "sf-ufo",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/sf-ufo/sf",
+      "path": "/Users/ghost/Dev/canon/domains/sf-ufo/sf",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -7106,7 +7106,7 @@
     {
       "domain": "snowflake-ice",
       "sector": "sf-ufo",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/sf-ufo/snowflake-ice",
+      "path": "/Users/ghost/Dev/canon/domains/sf-ufo/snowflake-ice",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -7129,7 +7129,7 @@
     {
       "domain": "vampire",
       "sector": "sf-ufo",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/sf-ufo/vampire",
+      "path": "/Users/ghost/Dev/canon/domains/sf-ufo/vampire",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -7152,7 +7152,7 @@
     {
       "domain": "aerospace",
       "sector": "space",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/space/aerospace",
+      "path": "/Users/ghost/Dev/canon/domains/space/aerospace",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -7175,7 +7175,7 @@
     {
       "domain": "aerospace-transport",
       "sector": "space",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/space/aerospace-transport",
+      "path": "/Users/ghost/Dev/canon/domains/space/aerospace-transport",
       "issues": [],
       "maturity_stage": 5,
       "files": {
@@ -7198,7 +7198,7 @@
     {
       "domain": "astronomy",
       "sector": "space",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/space/astronomy",
+      "path": "/Users/ghost/Dev/canon/domains/space/astronomy",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -7221,7 +7221,7 @@
     {
       "domain": "hexa-cosmic",
       "sector": "space",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/space/hexa-cosmic",
+      "path": "/Users/ghost/Dev/canon/domains/space/hexa-cosmic",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -7244,7 +7244,7 @@
     {
       "domain": "hexa-starship",
       "sector": "space",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/space/hexa-starship",
+      "path": "/Users/ghost/Dev/canon/domains/space/hexa-starship",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -7267,7 +7267,7 @@
     {
       "domain": "observational-astronomy",
       "sector": "space",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/space/observational-astronomy",
+      "path": "/Users/ghost/Dev/canon/domains/space/observational-astronomy",
       "issues": [],
       "maturity_stage": 2,
       "files": {
@@ -7290,7 +7290,7 @@
     {
       "domain": "space-engineering",
       "sector": "space",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/space/space-engineering",
+      "path": "/Users/ghost/Dev/canon/domains/space/space-engineering",
       "issues": [],
       "maturity_stage": 4,
       "files": {
@@ -7313,7 +7313,7 @@
     {
       "domain": "space-systems",
       "sector": "space",
-      "path": "/Users/ghost/Dev/n6-architecture/domains/space/space-systems",
+      "path": "/Users/ghost/Dev/canon/domains/space/space-systems",
       "issues": [],
       "maturity_stage": 5,
       "files": {

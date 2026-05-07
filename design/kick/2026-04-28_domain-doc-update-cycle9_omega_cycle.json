@@ -4,7 +4,7 @@
   "kick_title": "HEXA-WEAVE domain-doc sync (cycle 9 / fan-out 5/5) — §6/§7/§9/§10/§11/§12/§15 refresh",
   "kick_date": "2026-04-28",
   "umbrella": "domain-governance",
-  "cost_center": "n6-architecture-domain-governance",
+  "cost_center": "canon-domain-governance",
   "parent_witness": "design/kick/2026-04-28_hexa-weave-closure_omega_cycle.json",
   "predecessor_witness": "design/kick/2026-04-28_lean4-w6-axioms-refactor_omega_cycle.json",
   "parent_spec": "domains/biology/hexa-weave/hexa-weave.md",

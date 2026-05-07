@@ -185,7 +185,7 @@ arithmetic family (with one structural exception).
   arithmetic-anchored; the L9 catalogue inherits the anchor by
   pass-through. Fixing dfs-24 fixes the catalogue.
 
-- **H2 n=6 arithmetic centrality**: the n6-architecture working
+- **H2 n=6 arithmetic centrality**: the canon working
   frame is built on n=6 arithmetic invariants
   (σ=12, τ=4, φ=2, sopfr=5, σ_2=10, J_2=24, n/φ=3). Any candidate
   the framework generates defaults to interpreting target structures
@@ -262,7 +262,7 @@ an interpretation.
 
 **Evidence FOR**:
 
-1. **The n6-architecture frame is named for and built on n=6**.
+1. **The canon frame is named for and built on n=6**.
    Every probe-design document anchors on n=6 invariants by
    construction. dfs-24-ns L20-L21 explicitly: "16 (core BT-544
    table) + 13 (2020s loop 81) + 5 (§X BLOWUP SMASH) + 1 (Π_NS
@@ -411,7 +411,7 @@ data without requiring an agent-internal corpus measurement.
 
 H1 alone would predict that fixing dfs-24 fixes the catalogue.
 But §3.2 evidence shows that dfs-24 itself is arithmetic-anchored
-**because** the n6-architecture frame is arithmetic-anchored.
+**because** the canon frame is arithmetic-anchored.
 Fixing dfs-24 without fixing the upstream framing would only
 move the bias one level up: dfs-24 v2 would still produce
 arithmetic candidates if the architecture's invariant catalogue
@@ -455,7 +455,7 @@ fit cost-shortcut) as a secondary sequencing driver.
   by pulling from dfs-24 probes, which are pre-registered with
   falsifiers. 3/4 rank-1 candidates are pass-through.
 - **H2 mechanism**: dfs-24 probes are arithmetic-anchored
-  because the n6-architecture frame defines its invariant
+  because the canon frame defines its invariant
   catalogue arithmetically. The bias is **structural**, not
   operational; it sits at the framing layer one level above
   dfs-24.
@@ -731,7 +731,7 @@ Hypotheses considered during pipeline reconstruction and rejected.
 
 - **AH-4 (the bias is unavoidable in any n6-framed pipeline)**:
   considered whether escaping arithmetic family is impossible
-  while remaining within n6-architecture. Rejected: the
+  while remaining within canon. Rejected: the
   Hirahara entry (BT-542) demonstrates that the pipeline can
   admit structurally diverse candidates if the agent steps
   outside the dfs-24 default. The n6-frame may be the structural
@@ -773,7 +773,7 @@ be retracted.
   CATALOGUE_BIAS §F-AUDIT-A). **Not active.**
 
 - **F-DIAG-B (n6-frame is genuinely necessary, not merely
-  inherited)**: if a stronger reading of H2 holds (n6-architecture
+  inherited)**: if a stronger reading of H2 holds (canon
   cannot escape arithmetic by construction, regardless of
   source), then H2 alone is dominant and the verdict should be
   H2_DOMINANT. Counter-evidence: BT-542 Hirahara escape (§1.2)
@@ -857,7 +857,7 @@ H4 weak).
   exception (BT-542 Hirahara) required active deflection from
   dfs-24-pnp.
 - **H2 (structural)**: n=6 architecture centrality. dfs-24
-  probes are arithmetic-anchored because the n6-architecture
+  probes are arithmetic-anchored because the canon
   invariant catalogue {σ, τ, φ, sopfr, σ_2, J_2, n/φ} is the
   framing lens. Bias is upstream of dfs-24.
 - **H3 (sequencing)**: discriminator-fit cost-shortcut. Rank-1

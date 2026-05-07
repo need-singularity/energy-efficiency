@@ -65,7 +65,7 @@
       "path": "docs/book/ch05-stdlib.md",
       "score": 45.0,
       "value": "critical",
-      "dest": "n6-architecture",
+      "dest": "canon",
       "n6_matches": 0
     },
     {
@@ -79,7 +79,7 @@
       "path": "docs/reference.md",
       "score": 43.75,
       "value": "critical",
-      "dest": "n6-architecture",
+      "dest": "canon",
       "n6_matches": 0
     },
     {
@@ -93,14 +93,14 @@
       "path": "docs/book/ch04-hardware.md",
       "score": 36.36363636363637,
       "value": "critical",
-      "dest": "n6-architecture",
+      "dest": "canon",
       "n6_matches": 0
     },
     {
       "path": "docs/hexa-ir-dse-recheck.md",
       "score": 36.36363636363637,
       "value": "critical",
-      "dest": "n6-architecture",
+      "dest": "canon",
       "n6_matches": 0
     },
     {
@@ -283,7 +283,7 @@
     {
       "path": "docs/book/ch04-hardware.md",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "critical",
       "score": 36.36363636363637,
       "n6_matches": 0
@@ -291,7 +291,7 @@
     {
       "path": "docs/book/ch05-stdlib.md",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "critical",
       "score": 45.0,
       "n6_matches": 0
@@ -315,7 +315,7 @@
     {
       "path": "docs/community/CODE_OF_CONDUCT.md",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0,
       "n6_matches": 0
@@ -323,7 +323,7 @@
     {
       "path": "docs/community/CONTRIBUTING.md",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -331,7 +331,7 @@
     {
       "path": "docs/community/FIRST_ISSUES.md",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -355,7 +355,7 @@
     {
       "path": "docs/hexa-ir-dse-recheck.md",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "critical",
       "score": 36.36363636363637,
       "n6_matches": 0
@@ -371,7 +371,7 @@
     {
       "path": "docs/hexa-ir-mk1-status.md",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -395,7 +395,7 @@
     {
       "path": "docs/nexus-scan-report.md",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "high",
       "score": 0.0,
       "n6_matches": 0
@@ -419,7 +419,7 @@
     {
       "path": "docs/publish-checklist.md",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -427,7 +427,7 @@
     {
       "path": "docs/reference.md",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "critical",
       "score": 43.75,
       "n6_matches": 0
@@ -435,7 +435,7 @@
     {
       "path": "docs/spec.md",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -443,7 +443,7 @@
     {
       "path": "docs/tutorial.md",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -451,7 +451,7 @@
     {
       "path": "docs/website/index.html",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -459,7 +459,7 @@
     {
       "path": "docs/website/style.css",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "low",
       "score": 0.0,
       "n6_matches": 0
@@ -723,7 +723,7 @@
     {
       "path": "examples/photonic_chip_dse.hexa",
       "type": "only_in_ready",
-      "destination": "n6-architecture",
+      "destination": "canon",
       "value": "medium",
       "score": 0.0,
       "n6_matches": 0
@@ -1009,7 +1009,7 @@
       "n6_matches": 0
     },
     {
-      "path": "n6shared/projects.json",
+      "path": "canonshared/projects.json",
       "type": "only_in_ready",
       "destination": "tecs-l",
       "value": "medium",
