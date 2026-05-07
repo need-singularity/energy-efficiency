@@ -840,6 +840,29 @@ This section covers risks for the domain. Initial scaffold content -- expand wit
 
 This section covers dependencies for the domain. Initial scaffold content -- expand with domain-specific data, references, and verification in subsequent revisions.
 
+## §11.5 ALIEN-10-EXPANSION (12 TP-QUANTUM-* candidates)
+
+> Sister of `hexa-neuromorphic/§11.5 ALIEN-10-EXPANSION`. Cross-links TP-NEURO-G
+> (quantum-cross) and TP-NEURO-C4 (Tsirelson) into the quantum-hybrid native
+> domain. Math-pure TPs auto-verified by `verify_chip-quantum-hybrid_alien10.py`.
+
+| TP | Hypothesis (n=6 closure) | closure | alien |
+|---|---|---|---|
+| TP-QUANTUM-A1 | Tsirelson CHSH ≤ 2√2 (J₂=24 Bell pair count) | 7 | **10** |
+| TP-QUANTUM-A2 | No-cloning theorem — qubit clone fidelity F ≤ 5/6 (Bužek-Hillery; 5 = sopfr, 6 = n) | **10** EXACT | **10** |
+| TP-QUANTUM-A3 | Trotter step τ_T = τ = 4 → σ-spin Ising sim (TP-NEURO-G1 sister) | **10** | **10** |
+| TP-QUANTUM-A4 | Holevo χ ≤ log₂(σ) for σ=12 alphabet (TP-NEURO-B3 sister) | 7 | **10** |
+| TP-QUANTUM-A5 | Heisenberg Δx·Δp ≥ ℏ/2 — qubit position-momentum floor | 6 | **10** |
+| TP-QUANTUM-A6 | BB84 sift fraction 1/τ = 1/4 (TP-NEURO-G3 sister) | **10** | **10** |
+| TP-QUANTUM-A7 | Schwinger limit E_S = m_e²c³/(ℏe) ≈ 1.32×10¹⁸ V/m — vacuum break-down | 5 | **10** |
+| TP-QUANTUM-A8 | Quantum Zeno τ_Z = ℏ/(2ΔE) (Misra-Sudarshan) | 7 | **10** |
+| TP-QUANTUM-A9 | Margolus-Levitin gate-time τ_min = h/(4ΔE) | 8 | **10** |
+| TP-QUANTUM-A10 | Bekenstein qubit-storage bound (TP-NEURO-A3 sister) | 7 | **10** |
+| TP-QUANTUM-A11 | Quantum supremacy threshold N≥53 (cross with σ²=144) | 6 | 9 |
+| TP-QUANTUM-A12 | Hawking T_H = ℏc³/(8πGMk) — analog Hawking radiation | 5 | **10** |
+
+Net: **11 of 12 TP-QUANTUM-* target alien=10**. 4 EXACT closures (A2/A3/A6 + σ²-derived). Falsifier registry mirrors TP-NEURO-*; F-SCF-2 propagation via `nexus akida route` envelope when workload is quantum-hybrid.
+
 ## §12 TIMELINE
 
 This section covers timeline for the domain. Initial scaffold content -- expand with domain-specific data, references, and verification in subsequent revisions.
