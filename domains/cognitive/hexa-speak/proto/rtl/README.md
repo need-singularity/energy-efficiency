@@ -161,7 +161,7 @@ Total 27/27 embedded tests PASS. lint/parse/run round-trip all pass. However, Ve
 ## Top-level run example
 
 ```bash
-cd /Users/ghost/Dev/canon/domains/cognitive/hexa-speak/proto
+cd /Users/ghost/core/canon/domains/cognitive/hexa-speak/proto
 hexa parse rtl/top.hexa   # OK: rtl/top.hexa parses cleanly
 hexa run   rtl/top.hexa   # exit 0 -> 7/7 PASS
 ```

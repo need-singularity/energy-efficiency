@@ -1550,7 +1550,7 @@ Each FALSIFIER verifies the rejection condition stated in §7.10 by measurement.
 ## §22 References and links
 
 ### 22.1 Top-level project documents
-- root CLAUDE.md: /Users/ghost/Dev/canon/CLAUDE.md
+- root CLAUDE.md: /Users/ghost/core/canon/CLAUDE.md
 - chip-architecture domain: domains/compute/chip-architecture/chip-architecture.md
 - atlas.n6 SSOT: $NEXUS/shared/n6/atlas.n6
 

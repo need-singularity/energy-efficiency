@@ -575,7 +575,7 @@ fn verify_uniqueness_theorem() {
 
 ## Primary-source annotation
 
-- HEXA-FIRST principle: `/Users/ghost/Dev/canon/CLAUDE.md`.
+- HEXA-FIRST principle: `/Users/ghost/core/canon/CLAUDE.md`.
 - atlas.n6 SSOT: `/Users/ghost/Dev/nexus/shared/n6/atlas.n6`, 60K+ lines.
 - millennium_scanner.hexa: `/Users/ghost/Dev/nexus/shared/n6/scripts/millennium_scanner.hexa`, 224 lines.
 - BKLPR axioms and Sel_n mean formula: Bhargava-Kane-Lenstra-Poonen-Rains, Cambridge J. Math. 3 (2015), 275–321.

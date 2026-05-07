@@ -93,7 +93,7 @@ def main():
     # hexa shim: __file__ points to /tmp/_hexa_..._shim.py — use repo path injected by hexa wrapper.
     base = Path(\"/Users/ghost/core/canon\")
     if not base.exists():
-        base = Path(\"/Users/ghost/Dev/canon\")
+        base = Path(\"/Users/ghost/core/canon\")
     out_path = base / \"data\" / \"cremona\" / f\"cremona_sample_{n_target}.json\"
     out_path.parent.mkdir(parents=True, exist_ok=True)
 

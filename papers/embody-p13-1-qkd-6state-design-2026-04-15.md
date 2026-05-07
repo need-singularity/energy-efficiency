@@ -270,7 +270,7 @@ yields the 6 Bloch states naturally. 1.43 Gbps key rate (theoretical), 1000 km f
 satellite, QBER threshold 12.61 %. 7-milestone 4-year plan 2027→2030 (1 kbps → Gbps). Three
 prerequisites: Rydberg τ₂, swap fidelity, and satellite atmospherics.
 
-**File**: `/Users/ghost/Dev/canon/papers/embody-p13-1-qkd-6state-design-2026-04-15.md`
+**File**: `/Users/ghost/core/canon/papers/embody-p13-1-qkd-6state-design-2026-04-15.md`
 **Selected candidate**: **6-state QKD + entanglement-swapping 6-node chain (1000 km, 1.43 Gbps)**
 **3-line summary**:
 1. Bloch-sphere 3 axes × 2 poles = 6 states natural mapping; vs BB84 (4 states), **QBER threshold 11 → 12.61 %, security margin 1.33×**.

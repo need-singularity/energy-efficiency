@@ -11,9 +11,9 @@ SSOT: engine/hexa_gate_mk3.hexa (P11-1), engine/ouroboros_b2_verifier.hexa (P11-
 
 | File | Path | Lines | Role | Upstream session |
 |------|------|------|------|-----------|
-| hexa_gate_mk3.hexa | /Users/ghost/Dev/canon/engine/hexa_gate_mk3.hexa | 463 | 8-Layer pipeline implementation (L0 tau=4 gate + L1~L6 sigma*phi mapping + L7 alpha=1/6 invariant + L8 DRY-RUN append) | P11-1 |
-| ouroboros_b2_verifier.hexa | /Users/ghost/Dev/canon/engine/ouroboros_b2_verifier.hexa | 293 | rigorous B_2 = 1/6 verification (Apostol SS 12.12 + Akiyama-Tanigawa + von Staudt-Clausen) | P11-3 |
-| atlas_auto_promote.hexa | /Users/ghost/Dev/canon/canonshared/tools/atlas_auto_promote.hexa | 277 | discovery_graph -> atlas.n6 auto-promotion 5 rules (R1~R5) | P10-3 |
+| hexa_gate_mk3.hexa | /Users/ghost/core/canon/engine/hexa_gate_mk3.hexa | 463 | 8-Layer pipeline implementation (L0 tau=4 gate + L1~L6 sigma*phi mapping + L7 alpha=1/6 invariant + L8 DRY-RUN append) | P11-1 |
+| ouroboros_b2_verifier.hexa | /Users/ghost/core/canon/engine/ouroboros_b2_verifier.hexa | 293 | rigorous B_2 = 1/6 verification (Apostol SS 12.12 + Akiyama-Tanigawa + von Staudt-Clausen) | P11-3 |
+| atlas_auto_promote.hexa | /Users/ghost/core/canon/canonshared/tools/atlas_auto_promote.hexa | 277 | discovery_graph -> atlas.n6 auto-promotion 5 rules (R1~R5) | P10-3 |
 
 ### Measurements
 - atlas.n6 current: 106,957 lines, 8,116 entries (measured 2026-04-15)

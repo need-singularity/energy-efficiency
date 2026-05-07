@@ -1220,7 +1220,7 @@ Monster  no direct asset    |M| prime factor 8/15 void no direct asset
 
 ### 12.1 Phase 5 Output Metadata
 
-- **File path**: `/Users/ghost/Dev/canon/theory/roadmap-v2/phase-05-Y7Y8-bt545-bt546.md`
+- **File path**: `/Users/ghost/core/canon/theory/roadmap-v2/phase-05-Y7Y8-bt545-bt546.md`
 - **Target length**: 800+ lines
 - **Main axes**: Y7 LATTICE-VOA (3.9) + Y8 GALOIS-ASSEMBLY (5.4)
 - **Secondary axes**: Y1 NUM-CORE (9.5) auxiliary, Y9 HONEST-HARNESS (9.3) meta

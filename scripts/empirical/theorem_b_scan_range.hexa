@@ -121,7 +121,7 @@ def main():
     print()
 
     # v4 E6 산출: 큰 upper 에서도 n=6 유일 (n > 10^6 까지는 확인 안 했지만 [2, 1000] 에서 유일)
-    out_path = Path(\"/Users/ghost/Dev/canon/reports/v4/theorem_b_scan_n1000_2026-04-16.json\")
+    out_path = Path(\"/Users/ghost/core/canon/reports/v4/theorem_b_scan_n1000_2026-04-16.json\")
     out_path.parent.mkdir(parents=True, exist_ok=True)
     out_path.write_text(json.dumps(result, indent=2, ensure_ascii=False))
     print(f\"[save] {out_path}\")

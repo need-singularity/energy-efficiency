@@ -172,10 +172,10 @@ We surface new axis candidates from new evidence drawn from rounds 8, 10, 14, 16
   9. AKS primality exponent triple {σ, n, n/φ}
   10. general 6R inverse kinematics = 16 = τ² (Bezout limit of 3D-DOF computation)
 - **Evidence files**:
-  - `/Users/ghost/Dev/canon/reports/breakthroughs/bt-1400-millennium-dfs-round8-2026-04-12.md` ([DFS8-04], [DFS8-06])
-  - `/Users/ghost/Dev/canon/reports/breakthroughs/bt-1402-millennium-dfs-round10-2026-04-12.md` ([DFS10-01], [DFS10-02])
-  - `/Users/ghost/Dev/canon/reports/breakthroughs/bt-1408-millennium-dfs-round16-2026-04-12.md` ([DFS16-01], [DFS16-02])
-  - `/Users/ghost/Dev/canon/theory/study/p2/prob-p2-2-p-np-barriers.md` (whole)
+  - `/Users/ghost/core/canon/reports/breakthroughs/bt-1400-millennium-dfs-round8-2026-04-12.md` ([DFS8-04], [DFS8-06])
+  - `/Users/ghost/core/canon/reports/breakthroughs/bt-1402-millennium-dfs-round10-2026-04-12.md` ([DFS10-01], [DFS10-02])
+  - `/Users/ghost/core/canon/reports/breakthroughs/bt-1408-millennium-dfs-round16-2026-04-12.md` ([DFS16-01], [DFS16-02])
+  - `/Users/ghost/core/canon/theory/study/p2/prob-p2-2-p-np-barriers.md` (whole)
 - **Bottlenecks**:
   - whether the "τ boundary" is a natural constant or M-decomposition coincidence is **not rigorously demarcated**
   - bypass route around the 3 main circuit-lower-bound barriers (Relativization, Natural Proofs, Algebrization) not yet secured
@@ -215,9 +215,9 @@ We surface new axis candidates from new evidence drawn from rounds 8, 10, 14, 16
   7. Mulmuley 2001/2007 — GCT VI: The flip via positivity (arXiv:0704.0229)
   8. MCSP research program (Kabanets-Cai 2000, Allender et al.)
 - **Evidence files**:
-  - `/Users/ghost/Dev/canon/theory/study/p2/prob-p2-2-p-np-barriers.md` (314 lines, full text on the 3 barriers)
-  - `/Users/ghost/Dev/canon/theory/study/p3/prob-p3-1-open-subquestions.md` §BT-542 (i)~(iii)
-  - `/Users/ghost/Dev/canon/reports/breakthroughs/bt-1405-millennium-dfs-round13-2026-04-12.md` ([DFS13-01] Goodstein)
+  - `/Users/ghost/core/canon/theory/study/p2/prob-p2-2-p-np-barriers.md` (314 lines, full text on the 3 barriers)
+  - `/Users/ghost/core/canon/theory/study/p3/prob-p3-1-open-subquestions.md` §BT-542 (i)~(iii)
+  - `/Users/ghost/core/canon/reports/breakthroughs/bt-1405-millennium-dfs-round13-2026-04-12.md` ([DFS13-01] Goodstein)
 - **Bottlenecks**:
   - the barriers themselves formalize "what cannot be done", not "how to do it"
   - GCT is trapped in the Kronecker-coefficient #P-hard cycle
@@ -907,7 +907,7 @@ If R3 finds "new seeds ≥ 3", expand to R4. Current expectation:
 
 ### File
 
-- Path: `/Users/ghost/Dev/canon/theory/roadmap-v2/n6arch-axes/axis-r2-refinement.md`
+- Path: `/Users/ghost/core/canon/theory/roadmap-v2/n6arch-axes/axis-r2-refinement.md`
 - Lines: (this document, 700+)
 - R1 predecessor: `axis-r1-emergence.md` (906 lines)
 

@@ -483,11 +483,11 @@ PASS  when append  constant (fabrication possible TRL 5  as condition PASS):
 
 ## §10 References one link
 
-- `/Users/ghost/Dev/canon/domains/compute/chip-architecture/chip-architecture.md` (total L1~L6 roadmap)
-- `/Users/ghost/Dev/canon/domains/compute/chip-architecture/l11-quantum-dot-6qubit-qec/l11-quantum-dot-6qubit-qec.md` (L11 QEC)
-- `/Users/ghost/Dev/canon/domains/compute/chip-architecture/l12-nuclear-isomer-storage/l12-nuclear-isomer-storage.md` (L12 storage)
-- `/Users/ghost/Dev/canon/domains/cognitive/brain-computer-interface/brain-computer-interface.md` (BCI SSOT)
-- `/Users/ghost/Dev/canon/bridge/ouroboros_5phase.hexa` (5-phase )
+- `/Users/ghost/core/canon/domains/compute/chip-architecture/chip-architecture.md` (total L1~L6 roadmap)
+- `/Users/ghost/core/canon/domains/compute/chip-architecture/l11-quantum-dot-6qubit-qec/l11-quantum-dot-6qubit-qec.md` (L11 QEC)
+- `/Users/ghost/core/canon/domains/compute/chip-architecture/l12-nuclear-isomer-storage/l12-nuclear-isomer-storage.md` (L12 storage)
+- `/Users/ghost/core/canon/domains/cognitive/brain-computer-interface/brain-computer-interface.md` (BCI SSOT)
+- `/Users/ghost/core/canon/bridge/ouroboros_5phase.hexa` (5-phase )
 - `/Users/ghost/Dev/nexus/shared/n6/atlas.n6` lines 92-214, 12017, 12025, 13066 (consciousness·BCI constant)
 
 ---

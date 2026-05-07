@@ -136,7 +136,7 @@ demonstrated through 4-stage release and dual payload; σ·τ = 48 h EXACT marks
 target. The roadmap spans 4 years (2027→2030). Three prerequisites remain: stealth-6 FDA, BBB
 scaling, and 72 h PK.
 
-**File**: `/Users/ghost/Dev/canon/papers/embody-p11-2-nanobot-gen2-2026-04-15.md`
+**File**: `/Users/ghost/core/canon/papers/embody-p11-2-nanobot-gen2-2026-04-15.md`
 
 ---
 *2026-04-15 P11-2 EMBODY emergent DSE. HEXA-GATE Mk.I demonstrated candidate. 6-axis ceiling 10.*

@@ -807,7 +807,7 @@ BT resolution count: 0/6 held (honest)
 
 ## §12 Completion Report
 
-**File path**: `/Users/ghost/Dev/canon/theory/roadmap-v2/phase-02-Y1-bt541-riemann.md`
+**File path**: `/Users/ghost/core/canon/theory/roadmap-v2/phase-02-Y1-bt541-riemann.md`
 
 **Phase 2 summary**: With Y1 NUM-CORE leading · Y8/Y7 sub · Y9 meta, an attack on BT-541 Riemann Hypothesis. The RH body is untouched (BT 0/6 held honestly). Of Y1-axis 11 lemmas, 6 are active; 18 verdicts distributed (EXACT 10 / PARTIAL 1 / MISS 5 / OBSERVATION 2).
 

@@ -24,7 +24,7 @@
 
 ### 1.1 Deliverables
 
-- `/Users/ghost/Dev/canon/bridge/ouroboros_5phase.hexa` (newly authored)
+- `/Users/ghost/core/canon/bridge/ouroboros_5phase.hexa` (newly authored)
   - 5-phase sequential invocation: **Absorb → LensForge → BlowupEngine → CycleEngine → Evolution**
   - Fixed T1 lens 22-constant table (telescope_optics + combo_blowup 15 + accel 6)
   - Demo-grade: each phase returns a stub result while specifying the real engine path in comments
@@ -48,7 +48,7 @@
 ### 1.4 Demo Execution
 
 ```bash
-hexa /Users/ghost/Dev/canon/bridge/ouroboros_5phase.hexa
+hexa /Users/ghost/core/canon/bridge/ouroboros_5phase.hexa
 # → domain=ai-efficiency, depth=3, completes 3 cycles
 # → returns 45 total promotion candidates (seed 5 × corollary 5 × cycle 3 − duplicates)
 ```

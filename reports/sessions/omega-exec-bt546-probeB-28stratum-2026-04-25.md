@@ -54,7 +54,7 @@ then computes `|Sel_2|` and `|Sel_3|` via the first-order approximations
 
 (see lines 31-48 of the original tool). The pre-existing main path emits a single global Cov(|Sel_2|, |Sel_3|) = 1.333 with no bootstrap or per-stratum split. Two issues required addressing:
 
-1. The hardcoded `ROOT = Path("/Users/ghost/Dev/canon")` does not exist in this checkout. Robust path resolution was added.
+1. The hardcoded `ROOT = Path("/Users/ghost/core/canon")` does not exist in this checkout. Robust path resolution was added.
 2. No bootstrap convention exists in the pre-existing tool. Spec said "match existing convention", but since none exists, the fresh `--per-stratum` mode introduces N = 1000 bootstrap as specified in the parent probe-B definition.
 
 ### 1.3 Patch scope

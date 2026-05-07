@@ -62,19 +62,19 @@ Round 5's three conditions:
 R4 organized 10 anima subrepos; but **within canon itself** there are still unorganized submodules.
 
 **D201 — n6-arch Bridge Rust Workspace Field**
-- Path: `/Users/ghost/Dev/canon/bridge/` (CLAUDE.md: "Rust integration workspace (nexus hub repo bridge)").
+- Path: `/Users/ghost/core/canon/bridge/` (CLAUDE.md: "Rust integration workspace (nexus hub repo bridge)").
 - BT: 542 (workspace build NP), 545.
 - n=6: nexus hub + 7 repos = bridge dimension.
 - Self-evolution: YES (Rust compile caching, self-evolving build).
 
 **D202 — n6-arch Engine Runtime Field**
-- Path: `/Users/ghost/Dev/canon/engine/` (CLAUDE.md: "training/math runtime (.hexa)").
+- Path: `/Users/ghost/core/canon/engine/` (CLAUDE.md: "training/math runtime (.hexa)").
 - BT: 542 + 544.
 - n=6: hexa runtime = SELF-EVO main engine file.
 - Self-evolution: YES.
 
 **D203 — canonshared Harness Meta-Field**
-- Path: `/Users/ghost/Dev/canon/canonshared/` (absent — only noted in CLAUDE.md) + `/Users/ghost/Dev/nexus/shared/harness/` (exists, CLAUDE.md link). **Honesty note**: canon/canonshared is physically linked to nexus/shared. Evidence resides in nexus/shared/harness/.
+- Path: `/Users/ghost/core/canon/canonshared/` (absent — only noted in CLAUDE.md) + `/Users/ghost/Dev/nexus/shared/harness/` (exists, CLAUDE.md link). **Honesty note**: canon/canonshared is physically linked to nexus/shared. Evidence resides in nexus/shared/harness/.
 - BT: 542 + 547.
 - n=6: 50+ harness files (breakthrough/blowup/ouroboros/growth_tick etc.).
 - Self-evolution: YES.
@@ -194,19 +194,19 @@ R4 D167 aggregated the R0~R27 28 rules as a single domain. R5 individually promo
 R4 D170/D171/D172 covered only attention/moe/sparse·compress·optim groupings. R5 individually addresses the remaining arch/graph/sota + 3 items among sparse/compress/optim.
 
 **D217 — Techniques Arch Category Field**
-- Evidence: `/Users/ghost/Dev/canon/techniques/arch/`.
+- Evidence: `/Users/ghost/core/canon/techniques/arch/`.
 - BT: 542 + 547.
 - n=6: architecture category.
 - Self-evolution: YES.
 
 **D218 — Techniques Graph Category Field**
-- Evidence: `/Users/ghost/Dev/canon/techniques/graph/`.
+- Evidence: `/Users/ghost/core/canon/techniques/graph/`.
 - BT: 547 (graph topology) + 542.
 - n=6: graph theory n=6 nodes minimum complete graph K_6.
 - Self-evolution: YES.
 
 **D219 — Techniques SOTA Baseline Field**
-- Evidence: `/Users/ghost/Dev/canon/techniques/sota/`.
+- Evidence: `/Users/ghost/core/canon/techniques/sota/`.
 - BT: 542 (SOTA distribution).
 - n=6: SOTA competition ratchet.
 - Self-evolution: YES.
@@ -220,25 +220,25 @@ R4 D170/D171/D172 covered only attention/moe/sparse·compress·optim groupings. 
 R4 D173/D174 covered only MC + BT audit. R5 takes **4 meaningful items** from the remaining blowup/cross/dse/lens-verify/meta/paper/structural/anomaly/chip-verify/ai-efficiency (preventing over-count in some supporting categories).
 
 **D220 — Experiments Blowup Field**
-- Evidence: `/Users/ghost/Dev/canon/experiments/blowup/` + MEMORY `project_blowup_mk2.md`.
+- Evidence: `/Users/ghost/core/canon/experiments/blowup/` + MEMORY `project_blowup_mk2.md`.
 - BT: 542 + 543.
 - n=6: 6 blowups stage.
 - Self-evolution: YES.
 
 **D221 — Experiments Cross-DSE Field**
-- Evidence: `/Users/ghost/Dev/canon/experiments/cross/` + MEMORY `project_millennium_dfs_complete.md` "DFS 5th-cycle loop cross-DSE".
+- Evidence: `/Users/ghost/core/canon/experiments/cross/` + MEMORY `project_millennium_dfs_complete.md` "DFS 5th-cycle loop cross-DSE".
 - BT: 542 + 545.
 - n=6: cross-DSE 7 BT × 12 buckets = 84 cells.
 - Self-evolution: YES.
 
 **D222 — Experiments Lens-Verify Field**
-- Evidence: `/Users/ghost/Dev/canon/experiments/lens-verify/` (distinct from D142: D142 is nexus lenses, D222 is n6-arch experiments/lens-verify).
+- Evidence: `/Users/ghost/core/canon/experiments/lens-verify/` (distinct from D142: D142 is nexus lenses, D222 is n6-arch experiments/lens-verify).
 - BT: 542 + 545.
 - n=6: lens verification pipeline.
 - Self-evolution: YES.
 
 **D223 — Experiments Structural/Anomaly Field**
-- Evidence: `/Users/ghost/Dev/canon/experiments/structural/` + `anomaly/`.
+- Evidence: `/Users/ghost/core/canon/experiments/structural/` + `anomaly/`.
 - BT: 542 + 547.
 - n=6: structural anomaly detection.
 - Self-evolution: YES.

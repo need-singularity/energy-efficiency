@@ -35,7 +35,7 @@ import urllib.request
 from pathlib import Path
 from datetime import datetime
 
-ROOT = Path(\"/Users/ghost/Dev/canon\")
+ROOT = Path(\"/Users/ghost/core/canon\")
 OUT = ROOT / \"data\" / \"arxiv\" / \"millennium_survey_6bt.json\"
 
 # 6 BT 별 arXiv search query

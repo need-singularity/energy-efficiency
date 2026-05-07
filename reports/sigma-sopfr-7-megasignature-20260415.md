@@ -178,7 +178,7 @@ Total **12 META signals** planned for addition (recorded in staging).
 ## 8. How to re-run the harnesses
 
 ```bash
-cd /Users/ghost/Dev/canon
+cd /Users/ghost/core/canon
 for f in theory/predictions/verify_sigma_sopfr_7_*.hexa; do
   echo "=== $f ==="
   hexa "$f" | tail -15
@@ -189,7 +189,7 @@ done
 
 ## 9. File paths
 
-- Harness: `/Users/ghost/Dev/canon/theory/predictions/verify_sigma_sopfr_7_{ns,hodge,bsd,pnp,perfect}.hexa`
-- Report: `/Users/ghost/Dev/canon/reports/sigma-sopfr-7-megasignature-20260415.md`
+- Harness: `/Users/ghost/core/canon/theory/predictions/verify_sigma_sopfr_7_{ns,hodge,bsd,pnp,perfect}.hexa`
+- Report: `/Users/ghost/core/canon/reports/sigma-sopfr-7-megasignature-20260415.md`
 - staging: `/Users/ghost/Dev/nexus/shared/n6/staging/atlas.signals.staging.sigma7.n6`
 - Upstream: Group D meganode -> `reports/meta-group-H-20260415.md`, `reports/millennium-group-F-20260415.md`

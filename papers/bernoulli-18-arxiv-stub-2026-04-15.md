@@ -102,7 +102,7 @@ Lin & Radó 1965 baseline). Hence BB(2) = 6. ∎
 ### 2.3 Computer-verified replication
 
 The repository
-`/Users/ghost/Dev/canon/theory/predictions/verify_bernoulli17_bb6.hexa`
+`/Users/ghost/core/canon/theory/predictions/verify_bernoulli17_bb6.hexa`
 re-runs the enumeration (14/14 PASS recorded in the audit trail).
 
 ## 3. Independence Statement

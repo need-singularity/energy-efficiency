@@ -180,4 +180,4 @@ Each witness increment must append the match basis to `refs`.
 - Original spec v0.2: `canonshared/specs/atlas.signals.n6.spec.md`
 - SSOT data: `$NEXUS/shared/n6/atlas.signals.n6` (350+ signals)
 - This session's backup: `$NEXUS/shared/n6/atlas.signals.n6.bak.pre-cross-backfill`
-- CROSS promotion report: `/Users/ghost/Dev/canon/reports/cross-backfill-20260415.md`
+- CROSS promotion report: `/Users/ghost/core/canon/reports/cross-backfill-20260415.md`

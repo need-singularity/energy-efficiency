@@ -197,7 +197,7 @@ wc -l $NEXUS/shared/n6/atlas.n6  # expected: 107,035 (+78 lines cumulative)
 ## 5. Log / Metric Tracking (common)
 
 ### File locations
-- Promotion log: `/Users/ghost/Dev/canon/canonshared/logs/atlas_auto_promote.jsonl`
+- Promotion log: `/Users/ghost/core/canon/canonshared/logs/atlas_auto_promote.jsonl`
 - atlas.n6 delta snapshots: `reports/atlas_deltas.jsonl`
 - B_2 verifier log: stdout -> `canonshared/logs/b2_verifier.log`
 - Mk.III execution log: stdout -> `canonshared/logs/mk3_runtime.log`

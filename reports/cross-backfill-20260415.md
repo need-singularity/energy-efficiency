@@ -30,7 +30,7 @@ Honesty: no guessing (ad hoc or epsilon annotation), structural interpretation a
 
 ## Task C -- spec v0.3 Draft
 
-Path: /Users/ghost/Dev/canon/canonshared/specs/atlas.signals.n6.spec.v0.3-draft.md (~200 lines).
+Path: /Users/ghost/core/canon/canonshared/specs/atlas.signals.n6.spec.v0.3-draft.md (~200 lines).
 
 Changes v0.2->v0.3:
 1. resonance_n6 required at [M9]+

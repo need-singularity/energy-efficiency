@@ -981,7 +981,7 @@ Next Phase 4 (Y5+Y6-led):
 
 ## §14 Completion Report
 
-**File path**: `/Users/ghost/Dev/canon/theory/roadmap-v2/phase-03-Y4-bt542-pnp.md`
+**File path**: `/Users/ghost/core/canon/theory/roadmap-v2/phase-03-Y4-bt542-pnp.md`
 
 **Phase**: Phase 3 (2nd draft-attempt phase of the v2 roadmap)
 

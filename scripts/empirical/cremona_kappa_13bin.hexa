@@ -32,7 +32,7 @@ import re
 from pathlib import Path
 from typing import Optional
 
-ROOT = Path(\"/Users/ghost/Dev/canon\")
+ROOT = Path(\"/Users/ghost/core/canon\")
 ALLBSD_DIR = ROOT / \"data/cremona/allbsd\"
 OUT_REPORT = ROOT / \"reports/v4/kappa_13bin_2026-04-16.json\"
 

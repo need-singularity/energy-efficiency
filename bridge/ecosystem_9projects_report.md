@@ -27,7 +27,7 @@ Within the projects.json categories, 7 core + 2 auxiliary projects make up the f
 
 ## 2. Interface File Design
 
-File: `/Users/ghost/Dev/canon/bridge/ecosystem_9projects.hexa`
+File: `/Users/ghost/core/canon/bridge/ecosystem_9projects.hexa`
 
 ### 2.1 Registry Constant Table
 

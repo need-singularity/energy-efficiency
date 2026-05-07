@@ -302,8 +302,8 @@ Why the pipeline does not violate OUROBOROS:
 
 | File | Path |
 |------|------|
-| Design document | /Users/ghost/Dev/canon/canonshared/tools/atlas-auto-promote-design-2026-04-15.md |
-| hexa script | /Users/ghost/Dev/canon/canonshared/tools/atlas_auto_promote.hexa |
-| Promotion log output | /Users/ghost/Dev/canon/canonshared/logs/atlas_auto_promote.jsonl |
-| Input graph | /Users/ghost/Dev/canon/canonshared/discovery_graph.json |
+| Design document | /Users/ghost/core/canon/canonshared/tools/atlas-auto-promote-design-2026-04-15.md |
+| hexa script | /Users/ghost/core/canon/canonshared/tools/atlas_auto_promote.hexa |
+| Promotion log output | /Users/ghost/core/canon/canonshared/logs/atlas_auto_promote.jsonl |
+| Input graph | /Users/ghost/core/canon/canonshared/discovery_graph.json |
 | atlas target | /Users/ghost/Dev/nexus/shared/n6/atlas.n6 |

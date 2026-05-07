@@ -81,19 +81,19 @@ Each cell is recorded as (domain name, BT x Phase, evidence, n=6 indicator, self
 ### 1.1 BT-541 x P0/P2/P3 (P1 represented by R2 D59)
 
 **D94 — BT-541 x P0 Zeta Arithmetic Drill**
-- Evidence: `/Users/ghost/Dev/canon/theory/study/p0/pure-p0-1-number-theory.md` + `n6-p0-1-uniqueness-theorem.md` + `n6-p0-2-arithmetic-drill.md`.
+- Evidence: `/Users/ghost/core/canon/theory/study/p0/pure-p0-1-number-theory.md` + `n6-p0-1-uniqueness-theorem.md` + `n6-p0-2-arithmetic-drill.md`.
 - BT x P: 541 x P0.
 - n=6: zeta(-3)=1/120, 120 = J1(6)*tau, sopfr drill.
 - Self-evolution: YES (drill stage automatically iterates).
 
 **D95 — BT-541 x P2 Riemann Barriers**
-- Evidence: `/Users/ghost/Dev/canon/theory/study/p2/prob-p2-1-riemann-barriers.md` + `pure-p2-3-bernoulli-zeta.md`.
+- Evidence: `/Users/ghost/core/canon/theory/study/p2/prob-p2-1-riemann-barriers.md` + `pure-p2-3-bernoulli-zeta.md`.
 - BT x P: 541 x P2.
 - n=6: Bernoulli B_6 = 1/42, 42 = 2*3*7 special structure.
 - Self-evolution: PART (barrier breakthrough trigger maintained).
 
 **D96 — BT-541 x P3 Research Methodology**
-- Evidence: `/Users/ghost/Dev/canon/theory/study/p3/pure-p3-2-research-methodology.md` + `n6-p3-3-synthesis-report.md`.
+- Evidence: `/Users/ghost/core/canon/theory/study/p3/pure-p3-2-research-methodology.md` + `n6-p3-3-synthesis-report.md`.
 - BT x P: 541 x P3.
 - n=6: atlas promotion rule — research-cycle ratchet.
 - Self-evolution: YES (the methodology itself evolves).
@@ -233,43 +233,43 @@ Self-evolution: YES 13, PART 5, NO 3.
 ### 2.1 culture Bucket (7 domains extracted from 27 sub)
 
 **D115 — Baduk Topological Game**
-- Evidence: `/Users/ghost/Dev/canon/domains/culture/baduk/baduk.md`.
+- Evidence: `/Users/ghost/core/canon/domains/culture/baduk/baduk.md`.
 - BT: 542 (game NP), 547 (board topology).
 - n=6: 19x19 = 361, 361-360 = 1, 9 star points = sopfr+4.
 - Self-evolution: YES (AlphaGo self-play).
 
 **D116 — Music Mathematics Harmonic Field**
-- Evidence: `/Users/ghost/Dev/canon/domains/culture/music-mathematics/music-mathematics.md` + `verify_music-mathematics.hexa`.
+- Evidence: `/Users/ghost/core/canon/domains/culture/music-mathematics/music-mathematics.md` + `verify_music-mathematics.hexa`.
 - BT: 541 (frequency distribution), 545 (scale cohomology).
 - n=6: octave 12 = sigma, pentatonic 5 = sopfr, 6-chord.
 - Self-evolution: PART (harmonic ratchet possible).
 
 **D117 — Hangul Script Octahedral Phonology**
-- Evidence: `/Users/ghost/Dev/canon/domains/culture/hangul-script/hangul-script.md`.
+- Evidence: `/Users/ghost/core/canon/domains/culture/hangul-script/hangul-script.md`.
 - BT: 547 (phoneme topology), 545 (jamo combination).
 - n=6: 14 consonants + 10 vowels = 24 = J2, initial-medial-final 3 = n/phi.
 - Self-evolution: NO (static writing system).
 
 **D118 — Horology Hexad**
-- Evidence: `/Users/ghost/Dev/canon/domains/culture/horology/horology.md` + `bell-clockwork/bell-clockwork.md`.
+- Evidence: `/Users/ghost/core/canon/domains/culture/horology/horology.md` + `bell-clockwork/bell-clockwork.md`.
 - BT: 541 (period distribution), 547 (clock manifold).
 - n=6: 60 sec = phi*30, 12 hours = sigma, 6*60=360°.
 - Self-evolution: PART (self-winding / atomic-clock correction).
 
 **D119 — Linguistics Phoneme Topology**
-- Evidence: `/Users/ghost/Dev/canon/domains/culture/linguistics/linguistics.md` + `/telecom-linguistics/`.
+- Evidence: `/Users/ghost/core/canon/domains/culture/linguistics/linguistics.md` + `/telecom-linguistics/`.
 - BT: 547 (vowel polyhedron), 542 (grammar parse complexity).
 - n=6: international IPA vowel topology + consonant combination.
 - Self-evolution: PART (language evolution).
 
 **D120 — Social Architecture Network**
-- Evidence: `/Users/ghost/Dev/canon/domains/culture/social-architecture/social-architecture.md`.
+- Evidence: `/Users/ghost/core/canon/domains/culture/social-architecture/social-architecture.md`.
 - BT: 542 (social graph NP), 547 (social link topology).
 - n=6: Dunbar layer 5 + core 1 = 6, 6 degrees of separation.
 - Self-evolution: YES (social network self-organization).
 
 **D121 — Library Science Knowledge Graph**
-- Evidence: `/Users/ghost/Dev/canon/domains/culture/library-science/library-science.md`.
+- Evidence: `/Users/ghost/core/canon/domains/culture/library-science/library-science.md`.
 - BT: 545 (knowledge classification cohomology).
 - n=6: DDC top-10 classes, LCC 21 main classes — classification hierarchy.
 - Self-evolution: YES (knowledge structure evolves).
@@ -277,31 +277,31 @@ Self-evolution: YES 13, PART 5, NO 3.
 ### 2.2 sf-ufo Bucket (5 domains extracted from 20 sub)
 
 **D122 — UFO Propulsion Warp Field**
-- Evidence: `/Users/ghost/Dev/canon/domains/sf-ufo/hexa-ufo/hexa-ufo.md` + `hexa-grav/hexa-grav.md`.
+- Evidence: `/Users/ghost/core/canon/domains/sf-ufo/hexa-ufo/hexa-ufo.md` + `hexa-grav/hexa-grav.md`.
 - BT: 544 (propulsion fluid), 547 (spacetime curvature).
 - n=6: Alcubierre bubble 6-dim + 3+1 spacetime structure.
 - Self-evolution: PART (simulation coefficients evolve).
 
 **D123 — Hover Levitation Gauge Field**
-- Evidence: `/Users/ghost/Dev/canon/domains/sf-ufo/hexa-hover/hexa-hover.md` + `hover/hover.md`.
+- Evidence: `/Users/ghost/core/canon/domains/sf-ufo/hexa-hover/hexa-hover.md` + `hover/hover.md`.
 - BT: 543 (magnetic gauge), 544.
 - n=6: Meissner effect + Lenz.
 - Self-evolution: PART (superconductor self-tuning).
 
 **D124 — Teleport Entanglement Channel**
-- Evidence: `/Users/ghost/Dev/canon/domains/sf-ufo/hexa-teleport/hexa-teleport.md`.
+- Evidence: `/Users/ghost/core/canon/domains/sf-ufo/hexa-teleport/hexa-teleport.md`.
 - BT: 543 (entanglement), 542 (no-cloning complexity).
 - n=6: Bell state 4 + correction 2 = 6 = n.
 - Self-evolution: PART.
 
 **D125 — Cloak Metamaterial Invisibility**
-- Evidence: `/Users/ghost/Dev/canon/domains/sf-ufo/hexa-cloak/hexa-cloak.md` + `cloak/cloak.md`.
+- Evidence: `/Users/ghost/core/canon/domains/sf-ufo/hexa-cloak/hexa-cloak.md` + `cloak/cloak.md`.
 - BT: 544 (Maxwell transformation), 545.
 - n=6: transformation optics 6-dim tensor.
 - Self-evolution: PART.
 
 **D126 — Snowflake Ice Hexagonal Symmetry**
-- Evidence: `/Users/ghost/Dev/canon/domains/sf-ufo/snowflake-ice/snowflake-ice.md`.
+- Evidence: `/Users/ghost/core/canon/domains/sf-ufo/snowflake-ice/snowflake-ice.md`.
 - BT: 547 (6-fold symmetry topology), 544 (phase transition).
 - n=6: snow crystal 6 arms = n, C_6v.
 - Self-evolution: PART (growth algorithm).
@@ -309,43 +309,43 @@ Self-evolution: YES 13, PART 5, NO 3.
 ### 2.3 cognitive Bucket Details (R1 only touched EEG/FPGA, 7 of remaining 23 extracted)
 
 **D127 — Cognitive Architecture Tier Stack**
-- Evidence: `/Users/ghost/Dev/canon/domains/cognitive/cognitive-architecture/cognitive-architecture.md`.
+- Evidence: `/Users/ghost/core/canon/domains/cognitive/cognitive-architecture/cognitive-architecture.md`.
 - BT: 542 (distributed tier NP), 547 (consciousness topology).
 - n=6: SOAR/ACT-R tiers, 3 = n/phi working memory chunks.
 - Self-evolution: YES.
 
 **D128 — Mind Upload Substrate Transfer**
-- Evidence: `/Users/ghost/Dev/canon/domains/cognitive/mind-upload/mind-upload.md` + `verify_mind-upload.hexa`.
+- Evidence: `/Users/ghost/core/canon/domains/cognitive/mind-upload/mind-upload.md` + `verify_mind-upload.hexa`.
 - BT: 547 (consciousness homeomorphism), 545 (information preservation).
 - n=6: 86B neural connections -> compression bound, 6h reconstruction unit.
 - Self-evolution: PART (transfer procedure improves).
 
 **D129 — Temporal Architecture Time Binding**
-- Evidence: `/Users/ghost/Dev/canon/domains/cognitive/temporal-architecture/temporal-architecture.md`.
+- Evidence: `/Users/ghost/core/canon/domains/cognitive/temporal-architecture/temporal-architecture.md`.
 - BT: 547 (time manifold), 544.
 - n=6: specious present ~2-3s, binding window tau=4.
 - Self-evolution: YES.
 
 **D130 — Causal Chain Reasoning**
-- Evidence: `/Users/ghost/Dev/canon/domains/cognitive/causal-chain/causal-chain.md`.
+- Evidence: `/Users/ghost/core/canon/domains/cognitive/causal-chain/causal-chain.md`.
 - BT: 542 (causal computation NP), 545.
 - n=6: Pearl 3 step (do/see/imagine) x 2 = 6.
 - Self-evolution: YES (do-calculus iterates).
 
 **D131 — Superpowers Cognitive Modulation**
-- Evidence: `/Users/ghost/Dev/canon/domains/cognitive/superpowers/superpowers.md`.
+- Evidence: `/Users/ghost/core/canon/domains/cognitive/superpowers/superpowers.md`.
 - BT: 547 (consciousness state manifold).
 - n=6: 6 superpower categories.
 - Self-evolution: PART.
 
 **D132 — Reality Map Cognitive Projection**
-- Evidence: `/Users/ghost/Dev/canon/domains/cognitive/reality-map/reality-map.md`.
+- Evidence: `/Users/ghost/core/canon/domains/cognitive/reality-map/reality-map.md`.
 - BT: 545 (map cohomology).
 - n=6: atlas.n6 link, reality-map v9.3 3477 nodes (MEMORY `project_reality_map.md`).
 - Self-evolution: YES.
 
 **D133 — Dream Recorder Sleep Cycle**
-- Evidence: `/Users/ghost/Dev/canon/domains/cognitive/dream-recorder/dream-recorder.md` + `hexa-dream/hexa-dream.md`.
+- Evidence: `/Users/ghost/core/canon/domains/cognitive/dream-recorder/dream-recorder.md` + `hexa-dream/hexa-dream.md`.
 - BT: 541 (sleep cycle distribution), 547.
 - n=6: 6 sleep stages (W, N1~3, REM, transition), 90 min cycle.
 - Self-evolution: PART.
@@ -353,43 +353,43 @@ Self-evolution: YES 13, PART 5, NO 3.
 ### 2.4 compute Chip Details (7 extracted from 28 chip-*/hexa-*, R2 only grazed)
 
 **D134 — Chip-3D Stacking Topology**
-- Evidence: `/Users/ghost/Dev/canon/domains/compute/chip-3d/chip-3d.md` + `verify_chip-3d.hexa`.
+- Evidence: `/Users/ghost/core/canon/domains/compute/chip-3d/chip-3d.md` + `verify_chip-3d.hexa`.
 - BT: 547 (3D topology), 542 (TSV routing NP).
 - n=6: 3D + 3 die = 6 layers, TSV pitch.
 - Self-evolution: YES.
 
 **D135 — Chip-PIM Memory Compute Fusion**
-- Evidence: `/Users/ghost/Dev/canon/domains/compute/chip-pim/chip-pim.md` + `verify_chip-pim.hexa`.
+- Evidence: `/Users/ghost/core/canon/domains/compute/chip-pim/chip-pim.md` + `verify_chip-pim.hexa`.
 - BT: 542 (memory hierarchy NP), 544 (charge diffusion).
 - n=6: 6T SRAM cell, DRAM bank structure.
 - Self-evolution: YES.
 
 **D136 — Chip-Photonic Optical Consciousness**
-- Evidence: `/Users/ghost/Dev/canon/domains/compute/chip-photonic/chip-photonic.md` + `verify_chip-photonic.hexa`.
+- Evidence: `/Users/ghost/core/canon/domains/compute/chip-photonic/chip-photonic.md` + `verify_chip-photonic.hexa`.
 - BT: 544 (optical diffusion), 543 (gauge path).
 - n=6: WDM channels, optical polarization 2=phi + 3 colors = 6.
 - Self-evolution: PART.
 
 **D137 — Chip-Wafer Scale Integration**
-- Evidence: `/Users/ghost/Dev/canon/domains/compute/chip-wafer/chip-wafer.md` + `verify_chip-wafer.hexa`.
+- Evidence: `/Users/ghost/core/canon/domains/compute/chip-wafer/chip-wafer.md` + `verify_chip-wafer.hexa`.
 - BT: 542 (defect tolerance NP), 547.
 - n=6: 300 mm wafer, 6-inch history.
 - Self-evolution: YES (defect reassignment).
 
 **D138 — Chip-Superconducting Phase Logic**
-- Evidence: `/Users/ghost/Dev/canon/domains/compute/chip-sc/chip-sc.md` + `verify_chip-sc.hexa`.
+- Evidence: `/Users/ghost/core/canon/domains/compute/chip-sc/chip-sc.md` + `verify_chip-sc.hexa`.
 - BT: 543 (Josephson gauge), 547.
 - n=6: 2pi flux quantum, SFQ circuit.
 - Self-evolution: PART.
 
 **D139 — Chip-ISA n6 Opcode**
-- Evidence: `/Users/ghost/Dev/canon/domains/compute/chip-isa-n6/chip-isa-n6.md` + `xn6_isa_24_spec.md` + `xn6_opcode_table.md` + `xn6_asm_examples.hexa`.
+- Evidence: `/Users/ghost/core/canon/domains/compute/chip-isa-n6/chip-isa-n6.md` + `xn6_isa_24_spec.md` + `xn6_opcode_table.md` + `xn6_asm_examples.hexa`.
 - BT: 542 (ISA complexity).
 - n=6: 24 opcodes = J2, n6 architecture.
 - Self-evolution: YES (ISA extension rule).
 
 **D140 — Chip-RTL Auto-Generation**
-- Evidence: `/Users/ghost/Dev/canon/domains/compute/chip-rtl-gen/chip-rtl-gen.md` + `rtl_generator.hexa` + `generated/` + `templates/` + MEMORY `project_session_20260411_atlas_sweep.md` "RTL OP_POW".
+- Evidence: `/Users/ghost/core/canon/domains/compute/chip-rtl-gen/chip-rtl-gen.md` + `rtl_generator.hexa` + `generated/` + `templates/` + MEMORY `project_session_20260411_atlas_sweep.md` "RTL OP_POW".
 - BT: 542 (RTL synthesis NP).
 - n=6: OP_POW new op, 6 synthesis templates.
 - Self-evolution: YES (the generator itself learns).
@@ -421,13 +421,13 @@ DSE (Discovery Space Exploration) itself becomes a domain — promoting the expl
 - Self-evolution: YES (the lens itself evolves).
 
 **D143 — DSE Cluster Methodology**
-- Evidence: `/Users/ghost/Dev/canon/experiments/dse_cluster_v2.hexa` + `dse_cross_pilot.hexa` + `mc_methodology_v3.hexa` + `mc_v93_by_domain.hexa` + `monte_carlo_v93.hexa`.
+- Evidence: `/Users/ghost/core/canon/experiments/dse_cluster_v2.hexa` + `dse_cross_pilot.hexa` + `mc_methodology_v3.hexa` + `mc_v93_by_domain.hexa` + `monte_carlo_v93.hexa`.
 - BT: 542 (clustering NP), 541 (MC distribution).
 - n=6: MC v93 — 93-domain auto-cluster (same as R2-end domain count!).
 - Self-evolution: YES (v1 -> v2 -> v3 evolution).
 
 **D144 — DSE Pipeline Chip Integration**
-- Evidence: `/Users/ghost/Dev/canon/domains/compute/chip-dse-pipeline/chip-dse-pipeline.md`.
+- Evidence: `/Users/ghost/core/canon/domains/compute/chip-dse-pipeline/chip-dse-pipeline.md`.
 - BT: 542 (pipeline NP), 547.
 - n=6: pipeline stage count.
 - Self-evolution: YES.
@@ -869,13 +869,13 @@ R3 is similar to R2 in growth (59 -> 65, +10%) — meta-axis introduction added 
 ### 10.7 Techniques 66 Individual Domains
 
 **R4-C7: Techniques 66 as Individual Fields**
-- `/Users/ghost/Dev/canon/techniques/` arch, attention, compress, graph, moe, optim, sota, sparse 8 majors x avg 8 subs = 64~66.
+- `/Users/ghost/core/canon/techniques/` arch, attention, compress, graph, moe, optim, sota, sparse 8 majors x avg 8 subs = 64~66.
 - Through this Round consolidated into one parent domain. R4 can promote individually.
 
 ### 10.8 Experiments 122 Classification
 
 **R4-C8: Experiments Taxonomy Fields**
-- Under `/Users/ghost/Dev/canon/experiments/`: blowup, cross, dse, lens-verify, meta, paper, structural, anomaly etc.
+- Under `/Users/ghost/core/canon/experiments/`: blowup, cross, dse, lens-verify, meta, paper, structural, anomaly etc.
 - Each experimental category as a domain.
 
 ### 10.9 Papers-Metadata Axis (paper contents still excluded)

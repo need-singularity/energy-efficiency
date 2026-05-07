@@ -6,7 +6,7 @@ Goal: 5 modules (field/holographic/quantum/string/toe) × DFS depth-3 breakthrou
 
 ## Path correction
 
-The path specified by the user, `/Users/ghost/Dev/canon/canonshared/blowup/`, does not exist.
+The path specified by the user, `/Users/ghost/core/canon/canonshared/blowup/`, does not exist.
 The actual blowup engine is located in the nexus SSOT:
 
 - core: `/Users/ghost/Dev/nexus/shared/blowup/core/blowup.hexa`

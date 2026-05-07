@@ -8,223 +8,223 @@
     "first_run_seconds": 0.0808
   },
   "files": {
-    "/Users/ghost/Dev/canon/experiments/chip-verify/verify_anima_soc.hexa": {
+    "/Users/ghost/core/canon/experiments/chip-verify/verify_anima_soc.hexa": {
       "mtime": 1776168572.0115695,
       "size": 5244,
       "last_verify_result": "unknown",
       "verified_at": "2026-04-14T12:56:59Z"
     },
-    "/Users/ghost/Dev/canon/experiments/chip-verify/verify_bci_6ch_n6.hexa": {
+    "/Users/ghost/core/canon/experiments/chip-verify/verify_bci_6ch_n6.hexa": {
       "mtime": 1776168635.547815,
       "size": 5009,
       "last_verify_result": "unknown",
       "verified_at": "2026-04-14T12:56:59Z"
     },
-    "/Users/ghost/Dev/canon/experiments/chip-verify/verify_chip-3d.hexa": {
+    "/Users/ghost/core/canon/experiments/chip-verify/verify_chip-3d.hexa": {
       "mtime": 1776167671.9331264,
       "size": 2237,
       "last_verify_result": "unknown",
       "verified_at": "2026-04-14T12:56:59Z"
     },
-    "/Users/ghost/Dev/canon/experiments/chip-verify/verify_dse_cache_6level.hexa": {
+    "/Users/ghost/core/canon/experiments/chip-verify/verify_dse_cache_6level.hexa": {
       "mtime": 1776171419.513897,
       "size": 1569,
       "last_verify_result": "unknown",
       "verified_at": "2026-04-14T12:56:59Z"
     },
-    "/Users/ghost/Dev/canon/experiments/chip-verify/verify_npu_systolic_6x6.hexa": {
+    "/Users/ghost/core/canon/experiments/chip-verify/verify_npu_systolic_6x6.hexa": {
       "mtime": 1775910456.1852658,
       "size": 1837,
       "last_verify_result": "unknown",
       "verified_at": "2026-04-14T12:56:59Z"
     },
-    "/Users/ghost/Dev/canon/experiments/chip-verify/verify_rtl_6stage_pipeline.hexa": {
+    "/Users/ghost/core/canon/experiments/chip-verify/verify_rtl_6stage_pipeline.hexa": {
       "mtime": 1775910443.5335941,
       "size": 1501,
       "last_verify_result": "unknown",
       "verified_at": "2026-04-14T12:56:59Z"
     },
-    "/Users/ghost/Dev/canon/experiments/chip-verify/verify_xn6_branch_predictor.hexa": {
+    "/Users/ghost/core/canon/experiments/chip-verify/verify_xn6_branch_predictor.hexa": {
       "mtime": 1775910516.8652053,
       "size": 1649,
       "last_verify_result": "unknown",
       "verified_at": "2026-04-14T12:56:59Z"
     },
-    "/Users/ghost/Dev/canon/experiments/chip-verify/verify_xn6_dma_6channel.hexa": {
+    "/Users/ghost/core/canon/experiments/chip-verify/verify_xn6_dma_6channel.hexa": {
       "mtime": 1775910972.1658442,
       "size": 417,
       "last_verify_result": "unknown",
       "verified_at": "2026-04-14T12:56:59Z"
     },
-    "/Users/ghost/Dev/canon/experiments/chip-verify/verify_xn6_fpu_6lane.hexa": {
+    "/Users/ghost/core/canon/experiments/chip-verify/verify_xn6_fpu_6lane.hexa": {
       "mtime": 1775910978.2155495,
       "size": 385,
       "last_verify_result": "unknown",
       "verified_at": "2026-04-14T12:56:59Z"
     },
-    "/Users/ghost/Dev/canon/experiments/chip-verify/verify_xn6_hls_6stage.hexa": {
+    "/Users/ghost/core/canon/experiments/chip-verify/verify_xn6_hls_6stage.hexa": {
       "mtime": 1775910980.5459144,
       "size": 406,
       "last_verify_result": "unknown",
       "verified_at": "2026-04-14T12:56:59Z"
     },
-    "/Users/ghost/Dev/canon/experiments/chip-verify/verify_xn6_interconnect_6port.hexa": {
+    "/Users/ghost/core/canon/experiments/chip-verify/verify_xn6_interconnect_6port.hexa": {
       "mtime": 1775910489.4958534,
       "size": 1675,
       "last_verify_result": "unknown",
       "verified_at": "2026-04-14T12:56:59Z"
     },
-    "/Users/ghost/Dev/canon/experiments/chip-verify/verify_xn6_io_6pcie.hexa": {
+    "/Users/ghost/core/canon/experiments/chip-verify/verify_xn6_io_6pcie.hexa": {
       "mtime": 1775910993.685141,
       "size": 369,
       "last_verify_result": "unknown",
       "verified_at": "2026-04-14T12:56:59Z"
     },
-    "/Users/ghost/Dev/canon/experiments/chip-verify/verify_xn6_isa_24ops.hexa": {
+    "/Users/ghost/core/canon/experiments/chip-verify/verify_xn6_isa_24ops.hexa": {
       "mtime": 1775910433.7854419,
       "size": 1507,
       "last_verify_result": "unknown",
       "verified_at": "2026-04-14T12:56:59Z"
     },
-    "/Users/ghost/Dev/canon/experiments/chip-verify/verify_xn6_issue_width_6.hexa": {
+    "/Users/ghost/core/canon/experiments/chip-verify/verify_xn6_issue_width_6.hexa": {
       "mtime": 1775910511.3857615,
       "size": 1534,
       "last_verify_result": "unknown",
       "verified_at": "2026-04-14T12:56:59Z"
     },
-    "/Users/ghost/Dev/canon/experiments/chip-verify/verify_xn6_mesh_6x6.hexa": {
+    "/Users/ghost/core/canon/experiments/chip-verify/verify_xn6_mesh_6x6.hexa": {
       "mtime": 1775910990.8988423,
       "size": 390,
       "last_verify_result": "unknown",
       "verified_at": "2026-04-14T12:56:59Z"
     },
-    "/Users/ghost/Dev/canon/experiments/chip-verify/verify_xn6_power_gating_6.hexa": {
+    "/Users/ghost/core/canon/experiments/chip-verify/verify_xn6_power_gating_6.hexa": {
       "mtime": 1775910526.5555887,
       "size": 1790,
       "last_verify_result": "unknown",
       "verified_at": "2026-04-14T12:56:59Z"
     },
-    "/Users/ghost/Dev/canon/experiments/chip-verify/verify_xn6_regfile_24_entries.hexa": {
+    "/Users/ghost/core/canon/experiments/chip-verify/verify_xn6_regfile_24_entries.hexa": {
       "mtime": 1775910499.832698,
       "size": 1653,
       "last_verify_result": "unknown",
       "verified_at": "2026-04-14T12:56:59Z"
     },
-    "/Users/ghost/Dev/canon/experiments/chip-verify/verify_xn6_simd_6way.hexa": {
+    "/Users/ghost/core/canon/experiments/chip-verify/verify_xn6_simd_6way.hexa": {
       "mtime": 1775910988.2631707,
       "size": 370,
       "last_verify_result": "unknown",
       "verified_at": "2026-04-14T12:56:59Z"
     },
-    "/Users/ghost/Dev/canon/experiments/chip-verify/verify_xn6_thermal_6zone.hexa": {
+    "/Users/ghost/core/canon/experiments/chip-verify/verify_xn6_thermal_6zone.hexa": {
       "mtime": 1775910996.785927,
       "size": 435,
       "last_verify_result": "unknown",
       "verified_at": "2026-04-14T12:56:59Z"
     },
-    "/Users/ghost/Dev/canon/experiments/chip-verify/verify_xn6_tlb_64entries.hexa": {
+    "/Users/ghost/core/canon/experiments/chip-verify/verify_xn6_tlb_64entries.hexa": {
       "mtime": 1775910974.8867512,
       "size": 396,
       "last_verify_result": "unknown",
       "verified_at": "2026-04-14T12:56:59Z"
     },
-    "/Users/ghost/Dev/canon/experiments/chip-verify/verify_xn6_vector_width.hexa": {
+    "/Users/ghost/core/canon/experiments/chip-verify/verify_xn6_vector_width.hexa": {
       "mtime": 1775910465.6051307,
       "size": 1648,
       "last_verify_result": "unknown",
       "verified_at": "2026-04-14T12:56:59Z"
     },
-    "/Users/ghost/Dev/canon/experiments/lens-verify/verify_attractor_basin_lens.hexa": {
+    "/Users/ghost/core/canon/experiments/lens-verify/verify_attractor_basin_lens.hexa": {
       "mtime": 1776074172.81933,
       "size": 1338,
       "last_verify_result": "unknown",
       "verified_at": "2026-04-14T12:56:59Z"
     },
-    "/Users/ghost/Dev/canon/experiments/lens-verify/verify_bayesian_inference_lens.hexa": {
+    "/Users/ghost/core/canon/experiments/lens-verify/verify_bayesian_inference_lens.hexa": {
       "mtime": 1776074172.8194926,
       "size": 1557,
       "last_verify_result": "unknown",
       "verified_at": "2026-04-14T12:56:59Z"
     },
-    "/Users/ghost/Dev/canon/experiments/lens-verify/verify_category_theory_lens.hexa": {
+    "/Users/ghost/core/canon/experiments/lens-verify/verify_category_theory_lens.hexa": {
       "mtime": 1776074172.8197968,
       "size": 449,
       "last_verify_result": "unknown",
       "verified_at": "2026-04-14T12:56:59Z"
     },
-    "/Users/ghost/Dev/canon/experiments/lens-verify/verify_causal_discovery_lens.hexa": {
+    "/Users/ghost/core/canon/experiments/lens-verify/verify_causal_discovery_lens.hexa": {
       "mtime": 1776074172.8199499,
       "size": 1737,
       "last_verify_result": "unknown",
       "verified_at": "2026-04-14T12:56:59Z"
     },
-    "/Users/ghost/Dev/canon/experiments/lens-verify/verify_chaos_lyapunov_lens.hexa": {
+    "/Users/ghost/core/canon/experiments/lens-verify/verify_chaos_lyapunov_lens.hexa": {
       "mtime": 1776074172.8200939,
       "size": 451,
       "last_verify_result": "unknown",
       "verified_at": "2026-04-14T12:56:59Z"
     },
-    "/Users/ghost/Dev/canon/experiments/lens-verify/verify_information_bottleneck_lens.hexa": {
+    "/Users/ghost/core/canon/experiments/lens-verify/verify_information_bottleneck_lens.hexa": {
       "mtime": 1776074172.8202372,
       "size": 1664,
       "last_verify_result": "unknown",
       "verified_at": "2026-04-14T12:56:59Z"
     },
-    "/Users/ghost/Dev/canon/experiments/lens-verify/verify_koopman_operator_lens.hexa": {
+    "/Users/ghost/core/canon/experiments/lens-verify/verify_koopman_operator_lens.hexa": {
       "mtime": 1776074172.8203783,
       "size": 448,
       "last_verify_result": "unknown",
       "verified_at": "2026-04-14T12:56:59Z"
     },
-    "/Users/ghost/Dev/canon/experiments/lens-verify/verify_manifold_learning_lens.hexa": {
+    "/Users/ghost/core/canon/experiments/lens-verify/verify_manifold_learning_lens.hexa": {
       "mtime": 1776074172.8205225,
       "size": 1784,
       "last_verify_result": "unknown",
       "verified_at": "2026-04-14T12:56:59Z"
     },
-    "/Users/ghost/Dev/canon/experiments/lens-verify/verify_optimal_transport_lens.hexa": {
+    "/Users/ghost/core/canon/experiments/lens-verify/verify_optimal_transport_lens.hexa": {
       "mtime": 1776074172.8206758,
       "size": 1408,
       "last_verify_result": "unknown",
       "verified_at": "2026-04-14T12:56:59Z"
     },
-    "/Users/ghost/Dev/canon/experiments/lens-verify/verify_persistence_homology_lens.hexa": {
+    "/Users/ghost/core/canon/experiments/lens-verify/verify_persistence_homology_lens.hexa": {
       "mtime": 1776074172.8208292,
       "size": 1566,
       "last_verify_result": "unknown",
       "verified_at": "2026-04-14T12:56:59Z"
     },
-    "/Users/ghost/Dev/canon/experiments/lens-verify/verify_quantum_circuit_lens.hexa": {
+    "/Users/ghost/core/canon/experiments/lens-verify/verify_quantum_circuit_lens.hexa": {
       "mtime": 1776074172.8220396,
       "size": 447,
       "last_verify_result": "unknown",
       "verified_at": "2026-04-14T12:56:59Z"
     },
-    "/Users/ghost/Dev/canon/experiments/lens-verify/verify_renormalization_lens.hexa": {
+    "/Users/ghost/core/canon/experiments/lens-verify/verify_renormalization_lens.hexa": {
       "mtime": 1776074172.8222318,
       "size": 429,
       "last_verify_result": "unknown",
       "verified_at": "2026-04-14T12:56:59Z"
     },
-    "/Users/ghost/Dev/canon/experiments/lens-verify/verify_sheaf_cohomology_lens.hexa": {
+    "/Users/ghost/core/canon/experiments/lens-verify/verify_sheaf_cohomology_lens.hexa": {
       "mtime": 1776074172.8224046,
       "size": 454,
       "last_verify_result": "unknown",
       "verified_at": "2026-04-14T12:56:59Z"
     },
-    "/Users/ghost/Dev/canon/experiments/lens-verify/verify_spectral_graph_lens.hexa": {
+    "/Users/ghost/core/canon/experiments/lens-verify/verify_spectral_graph_lens.hexa": {
       "mtime": 1776074172.8225834,
       "size": 1736,
       "last_verify_result": "unknown",
       "verified_at": "2026-04-14T12:56:59Z"
     },
-    "/Users/ghost/Dev/canon/experiments/lens-verify/verify_topological_data_lens.hexa": {
+    "/Users/ghost/core/canon/experiments/lens-verify/verify_topological_data_lens.hexa": {
       "mtime": 1776074172.822767,
       "size": 1671,
       "last_verify_result": "unknown",
       "verified_at": "2026-04-14T12:56:59Z"
     },
-    "/Users/ghost/Dev/canon/experiments/lens-verify/verify_variational_inference_lens.hexa": {
+    "/Users/ghost/core/canon/experiments/lens-verify/verify_variational_inference_lens.hexa": {
       "mtime": 1776074172.8230295,
       "size": 1547,
       "last_verify_result": "unknown",

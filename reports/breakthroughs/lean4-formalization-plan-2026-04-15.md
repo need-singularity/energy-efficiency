@@ -38,7 +38,7 @@ curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf 
 elan default leanprover/lean4:stable
 
 # Step 3: create project with mathlib dependency
-cd /Users/ghost/Dev/canon
+cd /Users/ghost/core/canon
 mkdir lean && cd lean
 lake new n6arch --lang lean4
 cd n6arch

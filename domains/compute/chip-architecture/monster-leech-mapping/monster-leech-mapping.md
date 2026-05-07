@@ -281,10 +281,10 @@ semiconductor chip **physics design**(cell xvalue, clock distribution, power sup
 
 ## References  inside connection
 
-- `/Users/ghost/Dev/canon/theory/proofs/the-number-24.md` — 24 of n=6 base
-- `/Users/ghost/Dev/canon/theory/breakthroughs/breakthrough-theorems.md` BT-6 (Golay-Leech)
-- `/Users/ghost/Dev/canon/theory/breakthroughs/breakthrough-theorems.md` BT-18 (Vacuum→Monster)
-- `/Users/ghost/Dev/canon/domains/compute/chip-architecture/chip-architecture.md` — this domain main
+- `/Users/ghost/core/canon/theory/proofs/the-number-24.md` — 24 of n=6 base
+- `/Users/ghost/core/canon/theory/breakthroughs/breakthrough-theorems.md` BT-6 (Golay-Leech)
+- `/Users/ghost/core/canon/theory/breakthroughs/breakthrough-theorems.md` BT-18 (Vacuum→Monster)
+- `/Users/ghost/core/canon/domains/compute/chip-architecture/chip-architecture.md` — this domain main
 
 ---
 

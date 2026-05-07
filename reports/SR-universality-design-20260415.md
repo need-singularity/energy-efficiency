@@ -116,7 +116,7 @@ output: data/sr_universal/free_will_sigma<sigma>.jsonl
 ### 4.3 n6 (N6)
 
 ```
-path: /Users/ghost/Dev/canon/engine/sr_entropy_sweep/
+path: /Users/ghost/core/canon/engine/sr_entropy_sweep/
 run: hexa theory/predictions/sr_entropy_sweep.hexa --sigma <sigma> --trials 20
 output: reports/sr_universal/n6_sigma<sigma>.jsonl
 ```

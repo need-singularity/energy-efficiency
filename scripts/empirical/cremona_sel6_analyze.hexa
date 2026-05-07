@@ -32,7 +32,7 @@ import sys
 from pathlib import Path
 from collections import Counter
 
-ROOT = Path(\"/Users/ghost/Dev/canon\")
+ROOT = Path(\"/Users/ghost/core/canon\")
 DATA_DIR = ROOT / \"data\" / \"cremona\" / \"allbsd\"
 
 

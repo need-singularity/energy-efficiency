@@ -11,7 +11,7 @@
 
 | Item | Value |
 |---|---|
-| Paper path | `/Users/ghost/Dev/canon/papers/n6-mk3-synthesis-paper.md` |
+| Paper path | `/Users/ghost/core/canon/papers/n6-mk3-synthesis-paper.md` |
 | Line count (wc -l) | **1,198** |
 | Top-level sections (##) | **22** |
 | Sub-sections (###) | **79** |

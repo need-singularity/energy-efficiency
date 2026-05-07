@@ -295,7 +295,7 @@ Six independent paths confirmed → `!` (breakthrough) suffix added. This patter
 
 ## 7. Primary Sources
 
-- `/Users/ghost/Dev/canon/CLAUDE.md` — atlas.n6 section (highest source for format, grade system, promotion-path rules)
+- `/Users/ghost/core/canon/CLAUDE.md` — atlas.n6 section (highest source for format, grade system, promotion-path rules)
 - `/Users/ghost/Dev/nexus/shared/n6/atlas.n6` header L1–L22 — source of the `.n6 format v1` grammar
 - `/Users/ghost/Dev/nexus/shared/n6/atlas.n6` L25–L100 — seven primitive-constant `@P` registration block
 - `/Users/ghost/Dev/nexus/shared/n6/atlas.n6` L13391–L13551 — millennium DFS full-verification block (65 tight)

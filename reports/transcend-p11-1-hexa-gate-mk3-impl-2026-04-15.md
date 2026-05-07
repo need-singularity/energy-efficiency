@@ -262,7 +262,7 @@ Alien index 10 (TRANSCEND ceiling) confirmed as draft-target.
 
 ## 13. Output files
 
-- `/Users/ghost/Dev/canon/engine/hexa_gate_mk3.hexa` (463-line implementation)
-- `/Users/ghost/Dev/canon/reports/transcend-p11-1-hexa-gate-mk3-impl-2026-04-15.md` (this report)
-- Design original: `/Users/ghost/Dev/canon/engine/hexa-gate-mk3-design-2026-04-15.md`
+- `/Users/ghost/core/canon/engine/hexa_gate_mk3.hexa` (463-line implementation)
+- `/Users/ghost/core/canon/reports/transcend-p11-1-hexa-gate-mk3-impl-2026-04-15.md` (this report)
+- Design original: `/Users/ghost/core/canon/engine/hexa-gate-mk3-design-2026-04-15.md`
 - Reference: `/Users/ghost/Dev/nexus/shared/blowup/core/blowup.hexa` (Mk.II 4099 lines)

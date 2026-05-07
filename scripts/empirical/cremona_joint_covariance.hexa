@@ -35,12 +35,12 @@ from collections import Counter, defaultdict
 import math
 
 # Resolve ROOT robustly: prefer current repo (canon) over the
-# legacy hardcoded /Users/ghost/Dev/canon path.
+# legacy hardcoded /Users/ghost/core/canon path.
 _HERE = Path(__file__).resolve()
 _CANDIDATES = [
     _HERE.parents[2],                          # repo containing scripts/
     Path(\"/Users/ghost/core/canon\"),
-    Path(\"/Users/ghost/Dev/canon\"),
+    Path(\"/Users/ghost/core/canon\"),
 ]
 ROOT = next(
     (p for p in _CANDIDATES if (p / \"data\" / \"cremona\" / \"allbsd\").is_dir()),

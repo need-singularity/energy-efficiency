@@ -10,7 +10,7 @@ Upstream bases:
  - atlas auto-promote integration report (`reports/transcend-p12-2-mk3-atlas-integration-2026-04-15.md`)
  - Uniqueness theorem sigma(n) * phi(n) = n * tau(n) iff n=6 (atlas.n6 SSOT)
 
-Output path: `/Users/ghost/Dev/canon/reports/transcend-p13-2-discovery-engine-mk3-2026-04-15.md`
+Output path: `/Users/ghost/core/canon/reports/transcend-p13-2-discovery-engine-mk3-2026-04-15.md`
 
 ---
 

@@ -32,7 +32,7 @@ import math
 import sys
 from pathlib import Path
 
-ROOT = Path(\"/Users/ghost/Dev/canon\")
+ROOT = Path(\"/Users/ghost/core/canon\")
 DATA_DIR = ROOT / \"data\" / \"cremona\" / \"allbsd\"
 
 BINS = {

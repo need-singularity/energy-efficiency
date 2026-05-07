@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "hive_compat": ">=0.1",
   "trust": "local",
-  "root": "/Users/ghost/Dev/canon",
+  "root": "/Users/ghost/core/canon",
   "runtime": "hexa",
   "entry": "run.hexa",
   "limits": {

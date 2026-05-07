@@ -49,7 +49,7 @@ reviewer sees the seed source clearly in run logs.
 ### 1. Baseline verification (all 3 constants)
 
 ```bash
-cd /Users/ghost/Dev/canon/experiments/anu_mc_verification
+cd /Users/ghost/core/canon/experiments/anu_mc_verification
 HEXA_LOCAL=1 $NEXUS/shared/bin/hexa ./anu_mc_verify.hexa 1000000 all
 ```
 
@@ -162,5 +162,5 @@ toolchain (integrators, RNG, arithmetic) is operating correctly; it does
 
 - ANU infrastructure: `$NEXUS/shared/sim_bridge/godel_q/anu_source.hexa`
 - atlas.n6: `$NEXUS/shared/n6/atlas.n6` (L0 protected, read-only from here)
-- Prior MC experiments: `/Users/ghost/Dev/canon/experiments/{monte_carlo_v93,mc_methodology_v3}.hexa` (stubs)
+- Prior MC experiments: `/Users/ghost/core/canon/experiments/{monte_carlo_v93,mc_methodology_v3}.hexa` (stubs)
 - DSE-P5-2 report (prior [7]→[10*] pass): `atlas_promotion_p5_report.md`
