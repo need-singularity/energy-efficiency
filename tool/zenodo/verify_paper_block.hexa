@@ -11,7 +11,7 @@
 // [2, 1000] sweep yielding {6} without parsing markdown.
 //
 // @tool(slug="verify_paper_block", desc="HEXA-WEAVE paper §7.1 (a) — sigma/phi/tau verify + AX1Eq sweep [2,1000] → {6}")
-// @usage(hexa /Users/ghost/core/canon/tool/zenodo/verify_paper_block.hexa)
+// @usage(hexa $HOME/core/canon/tool/zenodo/verify_paper_block.hexa)
 // @exit_codes(0=PASS, 2=ASSERTION FAIL — F-W6-ZEN-13-2 falsifier fired, do NOT deposit)
 
 // sigma_1(n) = sum of positive divisors of n

@@ -10,10 +10,10 @@
 // (raw 18 self-host fixpoint, no regex dep).
 //
 // @tool(slug="proposal_lint", desc="proposal#1 naming + proposal#2 umbrella consolidation HARD lint for proposals/*.md")
-// @usage(hexa /Users/ghost/core/canon/tool/proposal_lint.hexa [--rule 1|2] [files...])
+// @usage(hexa $HOME/core/canon/tool/proposal_lint.hexa [--rule 1|2] [files...])
 // @exit_codes(0=PASS, 1=violations found, 2=internal error)
 
-let REPO_ROOT = "/Users/ghost/core/canon"
+let REPO_ROOT = env("HOME") + "/core/canon"
 let PROPOSALS_DIR = REPO_ROOT + "/proposals"
 
 fn _file_exists(path: string) -> bool {
