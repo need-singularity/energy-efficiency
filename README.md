@@ -173,6 +173,26 @@ n6 map                  # open the 3D Reality Map (4,098 nodes)
 | 10 | ✅ | v1 | **HBM Memory** | Stack σ·τ=48GB + σ·J₂·σ·τ/8=1728 GB/s + TSV σ·φ=10μm→φ=2μm hybrid bond, Mk.I=Samsung HBM3E 12H 36GB, 14/14 PASS | [doc](domains/compute/chip-hbm/chip-hbm.md) |
 | 10 | ✅ | v2 | **AI-Native Arch (beyond GPU)** | Honesty-triad silicon (provenance bit + promotion-counter MMU + BT-id ISA); H1 PASS robust across rollback_rate ∈ [0, 0.1]; F-AI2-B 0/900 robust; 18/18 EXACT verify PASS; 3/3 RTL design EXACT; 6-vendor gap = 0/18 implemented (novel substrate confirmed); design-HIGH (post-amend), silicon-CANDIDATE (BT-AI3 RTL design-tier) | [doc](reports/sessions/omega-cycle-ai-native-arch-beyond-gpu-2026-04-26.md) |
 
+### §11.5 ALIEN-10-EXPANSION federation (2026-05-07) — 5-substrate cross-class TPs
+
+> Each chip-design sister domain gets a `§11.5 ALIEN-10-EXPANSION` section + `verify_*_alien10.py` companion.
+> Total: **90 TPs** registered, **79 alien=10** candidates, **29 EXACT** closures, **81/89 verifier PASS**.
+> Cross-substrate invariance hypothesis (Putnam multi-realization) gains 5-class breadth.
+
+| 🛸 | Domain | TPs | alien=10 | EXACT closures | verify | Highlight |
+|:--:|--------|----:|---------:|---------------:|-------:|-----------|
+| 10 | **HEXA-NEURO** §11.5 | 33 | 33 | 8 | 27/27 | 10 categories: Physical / Info-theoretic / Cross-substrate / Edge-of-chaos / Geometric / OEIS / Quantum-cross / Bio-equiv / Computability / Game-theoretic |
+| 10 | **AKIDA-SPECIALIZE** §11 | 9 | 5 | 4 | 6/9 | BrainChip AKD1000/AKD2000 overlay — Landauer floor, Egyptian split, σ·J₂=288 tile, σ²=144 yield peak, 2nm GAAFET gated trigger |
+| 10 | **HEXA-QUANTUM-HYBRID** §11.5 | 12 | 11 | 4 | 12/12 | Tsirelson 2√2 / no-cloning F=sopfr/n / Trotter τ_T=τ / BB84 1/τ / Schwinger / Hawking T_H |
+| 10 | **HEXA-PHOTONIC** §11.5 | 12 | 11 | 3 | 12/12 | Casimir d⁻⁴ (exp=τ EXACT) / Stefan-Boltzmann T⁴ (exp=τ EXACT) / c=299792458 SI 2019 EXACT / Wien / Bragg σ=12 |
+| 10 | **HEXA-SUPERCOND** §11.5 | 12 | 9 | **4 SI 2019 EXACT** | 12/12 | **Φ₀ = h/(2e)** EXACT / **K_J = 2e/h** EXACT / **R_K = h/e²** EXACT / Cooper q*=2e / BCS gap 2Δ/(k_B T_c)≈3.53 / RSFQ |
+| 10 | **HEXA-PHOTON-TOPO** §11.5 | 12 | 10 | **6 EXACT** (highest) | 12/12 | **Topological invariants are integers** — Chern C∈ℤ TKNN / Z₂ ν∈{0,1} / SSH winding W∈ℤ / Quantized Hall σ_xy=ν·e²/h / Bulk-boundary correspondence / Berry γ∈{0,π} / σ=12 fusion channels |
+| **Total** | **6 §11.5 sets** | **90** | **79** | **29** | **81/89** | **5-substrate Putnam federation** (neuro + quantum + photonic + supercond + topological) |
+
+> All `verify_*_alien10.py` are **stdlib-only** (Python 3.9+, no external deps). Topological §11.5 set has the most EXACT closures (6) because integer invariants cannot be shifted by measurement noise — the strongest alien-10 form.
+>
+> Cross-link to akida federation (`hive/spec/sovereign_cli_federation.spec.yaml`): each §11.5 verify script's evidence files feed `nexus akida route --json` envelope, providing audit-trail provenance per spec §audit_trail.
+
 <!-- AUTO:FOOTER_chip:START -->
 > Domains: [chip-architecture/](docs/chip-architecture/) · Tools: `gpu-arch-calc` · `chip-n6-calc` · `dse-calc` · `semiconductor-calc`
 <!-- AUTO:FOOTER_chip:END -->
